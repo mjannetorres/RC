@@ -1,0 +1,306 @@
+unit fExpense;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, cxGraphics, cxControls, cxLookAndFeels,
+  cxLookAndFeelPainters, cxStyles, dxSkinsCore, dxSkinBlack, dxSkinBlue,
+  dxSkinBlueprint, dxSkinCaramel, dxSkinCoffee, dxSkinDarkRoom, dxSkinDarkSide,
+  dxSkinDevExpressDarkStyle, dxSkinDevExpressStyle, dxSkinFoggy,
+  dxSkinGlassOceans, dxSkinHighContrast, dxSkiniMaginary, dxSkinLilian,
+  dxSkinLiquidSky, dxSkinLondonLiquidSky, dxSkinMcSkin, dxSkinMetropolis,
+  dxSkinMetropolisDark, dxSkinMoneyTwins, dxSkinOffice2007Black,
+  dxSkinOffice2007Blue, dxSkinOffice2007Green, dxSkinOffice2007Pink,
+  dxSkinOffice2007Silver, dxSkinOffice2010Black, dxSkinOffice2010Blue,
+  dxSkinOffice2010Silver, dxSkinOffice2013DarkGray, dxSkinOffice2013LightGray,
+  dxSkinOffice2013White, dxSkinOffice2016Colorful, dxSkinOffice2016Dark,
+  dxSkinPumpkin, dxSkinSeven, dxSkinSevenClassic, dxSkinSharp, dxSkinSharpPlus,
+  dxSkinSilver, dxSkinSpringTime, dxSkinStardust, dxSkinSummer2008,
+  dxSkinTheAsphaltWorld, dxSkinsDefaultPainters, dxSkinValentine,
+  dxSkinVisualStudio2013Blue, dxSkinVisualStudio2013Dark,
+  dxSkinVisualStudio2013Light, dxSkinVS2010, dxSkinWhiteprint,
+  dxSkinXmas2008Blue, dxSkinscxPCPainter, cxCustomData, cxFilter, cxData,
+  cxDataStorage, cxEdit, cxNavigator, Data.DB, cxDBData, cxImageComboBox,
+  cxClasses, System.ImageList, Vcl.ImgList, acAlphaImageList, System.Actions,
+  Vcl.ActnList, cxGridLevel, cxGridCustomTableView, cxGridTableView,
+  cxGridDBTableView, cxGridCustomView, cxGrid, Vcl.ComCtrls, Vcl.ToolWin,
+  scControls, Vcl.StdCtrls, Vcl.ExtCtrls;
+
+type
+  Tf_Expense = class(TForm)
+    Splitter1: TSplitter;
+    Panel3: TPanel;
+    Label1: TLabel;
+    Label2: TLabel;
+    Label3: TLabel;
+    cmb_filter: TComboBox;
+    date_1: TDateTimePicker;
+    date_2: TDateTimePicker;
+    txt_search: TButtonedEdit;
+    scToolBar2: TscToolBar;
+    ToolButton1: TToolButton;
+    ToolButton2: TToolButton;
+    ToolButton3: TToolButton;
+    btnPrint: TToolButton;
+    s: TcxGrid;
+    sDBTableView1: TcxGridDBTableView;
+    sLevel1: TcxGridLevel;
+    ActionList1: TActionList;
+    New: TAction;
+    Edit: TAction;
+    Delete: TAction;
+    Print: TAction;
+    sCharImageList1: TsCharImageList;
+    ds_Expense: TDataSource;
+    cxStyleRepository1: TcxStyleRepository;
+    header_style: TcxStyle;
+    select_style: TcxStyle;
+    sDBTableView1ID: TcxGridDBColumn;
+    sDBTableView1PAYEE: TcxGridDBColumn;
+    sDBTableView1NOTES: TcxGridDBColumn;
+    sDBTableView1PAYMENTMODE: TcxGridDBColumn;
+    sDBTableView1CHECKNO: TcxGridDBColumn;
+    sDBTableView1CHECKDATE: TcxGridDBColumn;
+    sDBTableView1NETAMOUNT: TcxGridDBColumn;
+    sDBTableView1EXPENSEDATE: TcxGridDBColumn;
+    sDBTableView1POSTED: TcxGridDBColumn;
+    sDBTableView1POSTEDDATETIME: TcxGridDBColumn;
+    sDBTableView1BANK: TcxGridDBColumn;
+    procedure NewExecute(Sender: TObject);
+    procedure EditExecute(Sender: TObject);
+    procedure PrintExecute(Sender: TObject);
+    procedure DeleteExecute(Sender: TObject);
+    procedure txt_searchRightButtonClick(Sender: TObject);
+    procedure txt_searchKeyPress(Sender: TObject; var Key: Char);
+    procedure sDBTableView1CellClick(Sender: TcxCustomGridTableView;
+      ACellViewInfo: TcxGridTableDataCellViewInfo; AButton: TMouseButton;
+      AShift: TShiftState; var AHandled: Boolean);
+    procedure FormCreate(Sender: TObject);
+  private
+    { Private declarations }
+    procedure search;
+  public
+    { Public declarations }
+  end;
+
+var
+  f_Expense: Tf_Expense;
+
+implementation
+
+{$R *.dfm}
+
+uses dmPM, fExpenseTemp, DateUtils;
+
+procedure Tf_Expense.DeleteExecute(Sender: TObject);
+begin
+  with dm_PM do
+  begin
+    if not brw_ExpensePOSTED.Value then
+    begin
+      if MessageDlg('Continue to delete Expense No. '+brw_ExpenseID.AsString +'?', mtConfirmation, [mbYes, mbNo], 0) = mrYes then
+      begin
+        qry_Expense.Close;
+        qry_Expense.SQL[2] := 'WHERE ID = :ID';
+        qry_Expense.ParamByName('ID').Value  := brw_ExpenseID.Value;
+        qry_Expense.Open();
+
+        qry_Expense.Edit;
+        qry_ExpenseCANCELLED.Value         := True;
+        qry_ExpenseCANCELLEDBYID.Value     := userid;
+        qry_ExpenseCANCELLEDDATETIME.Value := Now;
+        qry_Expense.Post;
+        qry_Expense.ApplyUpdates();
+
+        del_ExpenseDetail.Close;
+        del_ExpenseDetail.SQL[1] := 'SET CANCELLED = FALSE,';
+        del_ExpenseDetail.SQL[2] := 'CANCELLEDBYID = '+IntToStr(dm_PM.userid)+',';
+        del_ExpenseDetail.SQL[3] := 'CANCELLEDDATETIME = '''+DateToStr(Now)+'''';
+        del_ExpenseDetail.SQL[4] := 'WHERE HEADERID = '+qry_ExpenseID.AsString;
+        ShowMessage(del_ExpenseDetail.SQL.Text);
+        del_ExpenseDetail.ExecSQL;
+
+        MessageDlg('Expense has been deleted!', mtInformation, [mbOK], 0);
+        search;
+      end;
+    end
+    else
+      MessageDlg('Posted Payment cannot be deleted!', mtError, [mbOK], 0);
+  end;
+end;
+
+procedure Tf_Expense.EditExecute(Sender: TObject);
+begin
+  with dm_PM do
+  begin
+    qry_Expense.Close;
+    qry_Expense.SQL[2]  := 'WHERE ID = :ID';
+    qry_Expense.ParamByName('ID').Value := brw_ExpenseID.Value;
+    qry_Expense.Open();
+    qry_Expense.Edit;
+
+    tb_ExpenseDetail.Close;
+    tb_ExpenseDetail.Open;
+
+    qry_ExpenseDetail.Close;
+    qry_ExpenseDetail.SQL[2]  := 'WHERE HEADERID = :HEADERID AND CANCELLED = FALSE';
+    qry_ExpenseDetail.ParamByName('HEADERID').Value := brw_ExpenseID.Value;
+    qry_ExpenseDetail.Open();
+
+    qry_ExpenseDetail.First;
+    while not qry_ExpenseDetail.Eof do
+    begin
+      tb_ExpenseDetail.Append;
+      tb_ExpenseDetailDESCRIPTION.Value := qry_ExpenseDetailDESCRIPTION.Value;
+      tb_ExpenseDetailAMOUNT.Value      := qry_ExpenseDetailAMOUNT.Value;
+      tb_ExpenseDetailREMARKS.Value     := qry_ExpenseDetailREMARKS.Value;
+      tb_ExpenseDetailID.Value          := qry_ExpenseDetailID.Value;
+      tb_ExpenseDetail.Post;
+      qry_ExpenseDetail.Next;
+    end;
+    tb_ExpenseDetail.First;
+
+    f_ExpenseTemp := Tf_ExpenseTemp.Create(Self);
+    if f_ExpenseTemp.ShowModal = mrOk then
+    begin
+      qry_ExpenseBANK.Value             := f_ExpenseTemp.cmb_bank.Text;
+      qry_Expense.Post;
+      qry_Expense.ApplyUpdates();
+
+      tb_ExpenseDetail.First;
+      while not tb_ExpenseDetail.Eof do
+      begin
+        if tb_ExpenseDetailAMOUNT.Value > 0 then
+        begin
+          qry_ExpenseDetail.Close;
+          if tb_ExpenseDetailID.Value > 0 then
+          begin
+            qry_ExpenseDetail.SQL[2]  := 'WHERE ID = :ID';
+            qry_ExpenseDetail.ParamByName('ID').Value := tb_ExpenseDetailID.Value;
+          end
+          else
+          qry_ExpenseDetail.SQL[2]  := 'WHERE ID = 0';
+          qry_ExpenseDetail.Open();
+
+          if tb_ExpenseDetailID.Value > 0 then
+          qry_ExpenseDetail.Edit
+          else
+          qry_ExpenseDetail.Append;
+
+          qry_ExpenseDetailHEADERID.Value     := qry_ExpenseID.Value;
+          qry_ExpenseDetailDESCRIPTION.Value  := tb_ExpenseDetailDESCRIPTION.Value;
+          qry_ExpenseDetailAMOUNT.Value       := tb_ExpenseDetailAMOUNT.Value;
+          qry_ExpenseDetailREMARKS.Value      := tb_ExpenseDetailREMARKS.Value;
+          qry_ExpenseDetailCANCELLED.Value    := False;
+          qry_ExpenseDetail.Post;
+          qry_ExpenseDetail.ApplyUpdates();
+        end;
+        tb_ExpenseDetail.Next;
+      end;
+      search;
+    end;
+  end;
+end;
+
+procedure Tf_Expense.FormCreate(Sender: TObject);
+begin
+  date_1.Date := StartOfTheMonth(Now);
+  date_2.Date := EndOfTheMonth(Now);
+  cmb_filter.ItemIndex  := 0;
+  search;
+end;
+
+procedure Tf_Expense.NewExecute(Sender: TObject);
+begin
+  with dm_PM do
+  begin
+    qry_Expense.Close;
+    qry_Expense.SQL[2]  := 'WHERE ID = 0';
+    qry_Expense.Open();
+
+    qry_Expense.Append;
+    qry_ExpenseEXPENSEDATE.Value      := Now;
+    qry_ExpenseCANCELLED.Value    := False;
+    qry_ExpenseCREATEDBYID.Value  := userid;
+    qry_ExpensePOSTED.Value       := False;
+    qry_ExpensePAYMENTMODE.Value  := 'CHECK';
+
+    tb_ExpenseDetail.Close;
+    tb_ExpenseDetail.Open;
+
+    f_ExpenseTemp := Tf_ExpenseTemp.Create(Self);
+    if f_ExpenseTemp.ShowModal = mrOk then
+    begin
+      qry_ExpenseBANK.Value             := f_ExpenseTemp.cmb_bank.Text;
+      qry_ExpenseCREATEDDATETIME.Value  := Now;
+      qry_Expense.Post;
+      qry_Expense.ApplyUpdates();
+
+      tb_ExpenseDetail.First;
+      while not tb_ExpenseDetail.Eof do
+      begin
+        if tb_ExpenseDetailAMOUNT.Value > 0 then
+        begin
+          qry_ExpenseDetail.Close;
+          qry_ExpenseDetail.SQL[2]  := 'WHERE ID = 0';
+          qry_ExpenseDetail.Open();
+
+          qry_ExpenseDetail.Append;
+          qry_ExpenseDetailHEADERID.Value     := qry_ExpenseID.Value;
+          qry_ExpenseDetailDESCRIPTION.Value  := tb_ExpenseDetailDESCRIPTION.Value;
+          qry_ExpenseDetailAMOUNT.Value       := tb_ExpenseDetailAMOUNT.Value;
+          qry_ExpenseDetailREMARKS.Value      := tb_ExpenseDetailREMARKS.Value;
+          qry_ExpenseDetailCANCELLED.Value    := False;
+          qry_ExpenseDetail.Post;
+          qry_ExpenseDetail.ApplyUpdates();
+        end;
+        tb_ExpenseDetail.Next;
+      end;
+      search;
+    end;
+  end;
+end;
+
+procedure Tf_Expense.PrintExecute(Sender: TObject);
+begin
+  //
+end;
+
+procedure Tf_Expense.sDBTableView1CellClick(Sender: TcxCustomGridTableView;
+  ACellViewInfo: TcxGridTableDataCellViewInfo; AButton: TMouseButton;
+  AShift: TShiftState; var AHandled: Boolean);
+begin
+  btnPrint.Visible  := not dm_PM.brw_ExpensePOSTED.Value;
+end;
+
+procedure Tf_Expense.search;
+begin
+  with dm_PM do
+  begin
+    brw_Expense.Close;
+    if cmb_filter.ItemIndex = 0 then
+    brw_Expense.SQL[2]  := 'WHERE ID LIKE :SEARCH AND (EXPENSEDATE BETWEEN :date1 and :date2) AND CANCELLED = FALSE'
+    else if cmb_filter.ItemIndex = 1 then
+    brw_Expense.SQL[2]  := 'WHERE PAYEE LIKE :SEARCH AND (EXPENSEDATE BETWEEN :date1 and :date2) AND CANCELLED = FALSE'
+    else if cmb_filter.ItemIndex = 2 then
+    brw_Expense.SQL[2]  := 'WHERE CHECKNO LIKE :SEARCH AND (EXPENSEDATE BETWEEN :date1 and :date2) AND CANCELLED = FALSE';
+    brw_Expense.ParamByName('SEARCH').Value := '%'+Trim(txt_search.Text)+'%';
+    brw_Expense.ParamByName('date1').Value  := FormatDateTime('yyyy-mm-dd', date_1.Date);
+    brw_Expense.ParamByName('date2').Value  :=FormatDateTime('yyyy-mm-dd', date_2.Date);
+    brw_Expense.Open();
+  end;
+end;
+
+procedure Tf_Expense.txt_searchKeyPress(Sender: TObject; var Key: Char);
+begin
+  if Key = #13 then
+  search;
+end;
+
+procedure Tf_Expense.txt_searchRightButtonClick(Sender: TObject);
+begin
+  search;
+end;
+
+end.

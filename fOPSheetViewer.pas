@@ -1,0 +1,32 @@
+unit fOPSheetViewer;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls;
+
+type
+  Tf_OPSheetViewer = class(TForm)
+    Panel1: TPanel;
+    btnSave: TButton;
+    Image1: TImage;
+    Panel2: TPanel;
+    Label6: TLabel;
+    Label1: TLabel;
+    lblDesc: TLabel;
+    lblFabric: TLabel;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  f_OPSheetViewer: Tf_OPSheetViewer;
+
+implementation
+
+{$R *.dfm}
+
+end.

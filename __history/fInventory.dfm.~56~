@@ -1,0 +1,711 @@
+object f_Inventory: Tf_Inventory
+  Left = 0
+  Top = 0
+  BorderStyle = bsDialog
+  Caption = 'Inventory'
+  ClientHeight = 471
+  ClientWidth = 857
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  Position = poMainFormCenter
+  OnShow = FormShow
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Panel1: TPanel
+    Left = 0
+    Top = 434
+    Width = 857
+    Height = 37
+    Align = alBottom
+    BevelOuter = bvNone
+    TabOrder = 0
+    ExplicitTop = 440
+    DesignSize = (
+      857
+      37)
+    object Button1: TButton
+      Left = 767
+      Top = 6
+      Width = 75
+      Height = 25
+      Anchors = [akTop, akRight]
+      Caption = 'OK'
+      Default = True
+      ModalResult = 1
+      TabOrder = 0
+    end
+  end
+  object Panel3: TPanel
+    Left = 0
+    Top = 0
+    Width = 857
+    Height = 137
+    Align = alTop
+    Anchors = [akTop, akRight]
+    BevelOuter = bvNone
+    Color = clTeal
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clBlack
+    Font.Height = -11
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    Padding.Left = 10
+    Padding.Top = 5
+    Padding.Right = 10
+    Padding.Bottom = 5
+    ParentBackground = False
+    ParentFont = False
+    TabOrder = 1
+    StyleElements = [seFont, seBorder]
+    ExplicitTop = -3
+    DesignSize = (
+      857
+      137)
+    object Label1: TLabel
+      Left = 698
+      Top = 11
+      Width = 29
+      Height = 17
+      Anchors = [akTop, akRight]
+      Caption = 'NO. '
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWhite
+      Font.Height = -13
+      Font.Name = 'Segoe UI Black'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object Label4: TLabel
+      Left = 698
+      Top = 35
+      Width = 28
+      Height = 17
+      Alignment = taRightJustify
+      Anchors = [akTop, akRight]
+      Caption = 'Date'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWhite
+      Font.Height = -13
+      Font.Name = 'Segoe UI Semibold'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object Label6: TLabel
+      Left = 9
+      Top = 60
+      Width = 36
+      Height = 17
+      Caption = 'Notes'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWhite
+      Font.Height = -13
+      Font.Name = 'Segoe UI Semibold'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object Label3: TLabel
+      Left = 9
+      Top = 10
+      Width = 41
+      Height = 17
+      Caption = 'Source'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWhite
+      Font.Height = -13
+      Font.Name = 'Segoe UI Semibold'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object Label2: TLabel
+      Left = 379
+      Top = 9
+      Width = 75
+      Height = 17
+      Alignment = taRightJustify
+      Caption = 'Onhand Qty'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWhite
+      Font.Height = -13
+      Font.Name = 'Segoe UI Semibold'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object Label5: TLabel
+      Left = 379
+      Top = 35
+      Width = 80
+      Height = 17
+      Alignment = taRightJustify
+      Caption = 'Adjusted Qty'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWhite
+      Font.Height = -13
+      Font.Name = 'Segoe UI Semibold'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object Label7: TLabel
+      Left = 379
+      Top = 60
+      Width = 80
+      Height = 17
+      Alignment = taRightJustify
+      Caption = 'New Onhand'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWhite
+      Font.Height = -13
+      Font.Name = 'Segoe UI Semibold'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object Label8: TLabel
+      Left = 664
+      Top = 60
+      Width = 62
+      Height = 17
+      Alignment = taRightJustify
+      Anchors = [akTop, akRight]
+      Caption = 'Fiscal Year'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWhite
+      Font.Height = -13
+      Font.Name = 'Segoe UI Semibold'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object date_date: TcxDBDateEdit
+      Left = 748
+      Top = 34
+      Anchors = [akTop, akRight]
+      DataBinding.DataField = 'CREATEDDATETIME'
+      DataBinding.DataSource = ds_inv
+      ParentFont = False
+      Properties.DisplayFormat = 'mm/dd/yyyy'
+      Properties.EditFormat = 'mm/dd/yyyy'
+      Properties.ImmediatePost = True
+      Properties.ReadOnly = True
+      Properties.SaveTime = False
+      Properties.ShowTime = False
+      Style.BorderColor = 1184274
+      Style.BorderStyle = ebsThick
+      Style.Color = 6570553
+      Style.Edges = [bLeft, bTop, bRight, bBottom]
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWhite
+      Style.Font.Height = -11
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.LookAndFeel.Kind = lfUltraFlat
+      Style.LookAndFeel.NativeStyle = False
+      Style.LookAndFeel.SkinName = ''
+      Style.Shadow = False
+      Style.TransparentBorder = False
+      Style.ButtonStyle = btsOffice11
+      Style.ButtonTransparency = ebtAlways
+      Style.PopupBorderStyle = epbsDefault
+      Style.IsFontAssigned = True
+      StyleDisabled.Color = 6570553
+      StyleDisabled.LookAndFeel.Kind = lfUltraFlat
+      StyleDisabled.LookAndFeel.NativeStyle = False
+      StyleDisabled.LookAndFeel.SkinName = ''
+      StyleFocused.LookAndFeel.Kind = lfUltraFlat
+      StyleFocused.LookAndFeel.NativeStyle = False
+      StyleFocused.LookAndFeel.SkinName = ''
+      StyleHot.LookAndFeel.Kind = lfUltraFlat
+      StyleHot.LookAndFeel.NativeStyle = False
+      StyleHot.LookAndFeel.SkinName = ''
+      TabOrder = 5
+      OnExit = rad_sourceExit
+      Width = 94
+    end
+    object cxDBLabel1: TcxDBLabel
+      Left = 755
+      Top = 5
+      Anchors = [akTop, akRight]
+      AutoSize = True
+      DataBinding.DataField = 'ID'
+      DataBinding.DataSource = ds_inv
+      ParentColor = False
+      ParentFont = False
+      Properties.Alignment.Horz = taRightJustify
+      Style.Font.Charset = ANSI_CHARSET
+      Style.Font.Color = clWhite
+      Style.Font.Height = -15
+      Style.Font.Name = 'Segoe UI Black'
+      Style.Font.Style = [fsBold]
+      Style.IsFontAssigned = True
+      Transparent = True
+      AnchorX = 842
+    end
+    object txt_notes: TcxDBMemo
+      Left = 88
+      Top = 60
+      DataBinding.DataField = 'NOTES'
+      DataBinding.DataSource = ds_inv
+      ParentFont = False
+      Properties.CharCase = ecUpperCase
+      Style.BorderColor = 1184274
+      Style.BorderStyle = ebsThick
+      Style.Color = 6570553
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWhite
+      Style.Font.Height = -11
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.LookAndFeel.NativeStyle = False
+      Style.IsFontAssigned = True
+      StyleDisabled.Color = 6570553
+      StyleDisabled.LookAndFeel.NativeStyle = False
+      StyleFocused.LookAndFeel.NativeStyle = False
+      StyleHot.LookAndFeel.NativeStyle = False
+      TabOrder = 1
+      OnExit = rad_sourceExit
+      Height = 59
+      Width = 263
+    end
+    object rad_source: TcxDBRadioGroup
+      Left = 88
+      Top = 9
+      Alignment = alCenterCenter
+      Caption = 'SOURCE'
+      DataBinding.DataField = 'CLASSIFICATION'
+      DataBinding.DataSource = ds_inv
+      ParentBackground = False
+      ParentColor = False
+      ParentFont = False
+      Properties.DefaultValue = 'O'
+      Properties.ImmediatePost = True
+      Properties.Items = <
+        item
+          Caption = 'Beginning Inventory'
+          Value = 'BI'
+        end
+        item
+          Caption = 'Inventory Adjustments'
+          Value = 'IA'
+        end>
+      Properties.ReadOnly = True
+      Properties.WordWrap = True
+      Style.BorderColor = 1184274
+      Style.BorderStyle = ebsThick
+      Style.Color = 6570553
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clBlack
+      Style.Font.Height = -11
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.LookAndFeel.NativeStyle = False
+      Style.Shadow = False
+      Style.TextColor = clWhite
+      Style.TransparentBorder = True
+      Style.IsFontAssigned = True
+      StyleDisabled.Color = 6570553
+      StyleDisabled.LookAndFeel.NativeStyle = False
+      StyleFocused.LookAndFeel.NativeStyle = False
+      StyleHot.LookAndFeel.NativeStyle = False
+      TabOrder = 0
+      OnExit = rad_sourceExit
+      Height = 46
+      Width = 263
+    end
+    object txt_onhand: TcxDBTextEdit
+      Left = 484
+      Top = 9
+      DataBinding.DataField = 'ONHAND'
+      DataBinding.DataSource = ds_inv
+      Enabled = False
+      ParentFont = False
+      ParentShowHint = False
+      Properties.CharCase = ecUpperCase
+      Properties.ReadOnly = True
+      ShowHint = False
+      Style.BorderColor = 1184274
+      Style.BorderStyle = ebsThick
+      Style.Color = 6570553
+      Style.Font.Charset = ANSI_CHARSET
+      Style.Font.Color = clWhite
+      Style.Font.Height = -11
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.LookAndFeel.NativeStyle = False
+      Style.IsFontAssigned = True
+      StyleDisabled.Color = 6570553
+      StyleDisabled.LookAndFeel.NativeStyle = False
+      StyleFocused.LookAndFeel.NativeStyle = False
+      StyleHot.LookAndFeel.NativeStyle = False
+      TabOrder = 2
+      OnExit = rad_sourceExit
+      Width = 97
+    end
+    object txt_adj: TcxDBTextEdit
+      Left = 484
+      Top = 34
+      DataBinding.DataField = 'ADJCCALC'
+      DataBinding.DataSource = ds_inv
+      Enabled = False
+      ParentFont = False
+      ParentShowHint = False
+      Properties.CharCase = ecUpperCase
+      Properties.ReadOnly = True
+      ShowHint = False
+      Style.BorderColor = 1184274
+      Style.BorderStyle = ebsThick
+      Style.Color = 6570553
+      Style.Font.Charset = ANSI_CHARSET
+      Style.Font.Color = clWhite
+      Style.Font.Height = -11
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.LookAndFeel.NativeStyle = False
+      Style.IsFontAssigned = True
+      StyleDisabled.Color = 6570553
+      StyleDisabled.LookAndFeel.NativeStyle = False
+      StyleFocused.LookAndFeel.NativeStyle = False
+      StyleHot.LookAndFeel.NativeStyle = False
+      TabOrder = 3
+      OnExit = rad_sourceExit
+      Width = 97
+    end
+    object txt_newonhand: TcxDBTextEdit
+      Left = 484
+      Top = 59
+      DataBinding.DataField = 'NEWONHAND'
+      DataBinding.DataSource = ds_inv
+      ParentFont = False
+      ParentShowHint = False
+      Properties.CharCase = ecUpperCase
+      Properties.ValidateOnEnter = True
+      ShowHint = False
+      Style.BorderColor = 1184274
+      Style.BorderStyle = ebsThick
+      Style.Color = 6570553
+      Style.Font.Charset = ANSI_CHARSET
+      Style.Font.Color = clWhite
+      Style.Font.Height = -11
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.LookAndFeel.NativeStyle = False
+      Style.IsFontAssigned = True
+      StyleDisabled.Color = 6570553
+      StyleDisabled.LookAndFeel.NativeStyle = False
+      StyleFocused.LookAndFeel.NativeStyle = False
+      StyleHot.LookAndFeel.NativeStyle = False
+      TabOrder = 4
+      OnExit = rad_sourceExit
+      Width = 97
+    end
+    object spin_year: TcxDBSpinEdit
+      Left = 748
+      Top = 61
+      Anchors = [akTop, akRight]
+      DataBinding.DataField = 'FISCALYEAR'
+      DataBinding.DataSource = ds_inv
+      Enabled = False
+      ParentFont = False
+      Properties.ImmediatePost = True
+      Properties.ReadOnly = True
+      Properties.SpinButtons.Position = sbpHorzLeftRight
+      Style.BorderColor = 1184274
+      Style.BorderStyle = ebsThick
+      Style.Color = 6570553
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWhite
+      Style.Font.Height = -11
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.LookAndFeel.Kind = lfUltraFlat
+      Style.LookAndFeel.NativeStyle = False
+      Style.LookAndFeel.SkinName = ''
+      Style.TransparentBorder = False
+      Style.ButtonStyle = btsFlat
+      Style.IsFontAssigned = True
+      StyleDisabled.BorderColor = clBtnShadow
+      StyleDisabled.Color = 6570553
+      StyleDisabled.LookAndFeel.Kind = lfUltraFlat
+      StyleDisabled.LookAndFeel.NativeStyle = False
+      StyleDisabled.LookAndFeel.SkinName = ''
+      StyleFocused.LookAndFeel.Kind = lfUltraFlat
+      StyleFocused.LookAndFeel.NativeStyle = False
+      StyleFocused.LookAndFeel.SkinName = ''
+      StyleHot.LookAndFeel.Kind = lfUltraFlat
+      StyleHot.LookAndFeel.NativeStyle = False
+      StyleHot.LookAndFeel.SkinName = ''
+      TabOrder = 6
+      Width = 94
+    end
+  end
+  object grid_jodetail: TcxGrid
+    Left = 0
+    Top = 167
+    Width = 857
+    Height = 267
+    Align = alClient
+    BevelInner = bvNone
+    BevelOuter = bvNone
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 2
+    LookAndFeel.Kind = lfUltraFlat
+    LookAndFeel.NativeStyle = False
+    LookAndFeel.SkinName = 'VisualStudio2013Light'
+    ExplicitTop = 170
+    object cxGridDBTableView1: TcxGridDBTableView
+      Navigator.Buttons.CustomButtons = <>
+      DataController.DataSource = ds_details
+      DataController.Summary.DefaultGroupSummaryItems = <>
+      DataController.Summary.FooterSummaryItems = <
+        item
+          Format = '###,###,##0.00'
+          Kind = skSum
+          FieldName = 'QTY'
+          Column = cxGridDBTableView1QTY
+        end
+        item
+          Format = '###,###,##0'
+          Kind = skCount
+          FieldName = 'SOURCE'
+          Column = cxGridDBTableView1SOURCE
+        end>
+      DataController.Summary.SummaryGroups = <>
+      OptionsData.Appending = True
+      OptionsSelection.CellSelect = False
+      OptionsView.NoDataToDisplayInfoText = 'No Data To Display'
+      OptionsView.ColumnAutoWidth = True
+      OptionsView.Footer = True
+      OptionsView.GroupByBox = False
+      Styles.Selection = select_style
+      Styles.Header = Header_style
+      object cxGridDBTableView1SOURCE: TcxGridDBColumn
+        Caption = 'INVENTORY SOURCE'
+        DataBinding.FieldName = 'SOURCECALC'
+        HeaderAlignmentHorz = taCenter
+        Options.Editing = False
+        Options.Filtering = False
+        Options.Sorting = False
+        Width = 184
+      end
+      object cxGridDBTableView1SOURCEID: TcxGridDBColumn
+        Caption = 'REF NO.'
+        DataBinding.FieldName = 'SOURCEID'
+        HeaderAlignmentHorz = taCenter
+        Options.Editing = False
+        Options.Filtering = False
+        Options.Sorting = False
+        Width = 53
+      end
+      object cxGridDBTableView1QTY: TcxGridDBColumn
+        DataBinding.FieldName = 'QTY'
+        HeaderAlignmentHorz = taCenter
+        Options.Editing = False
+        Options.Filtering = False
+        Options.Sorting = False
+        Width = 68
+      end
+      object cxGridDBTableView1CREATEDDATETIME: TcxGridDBColumn
+        Caption = 'CREATED ON'
+        DataBinding.FieldName = 'DATETIMECALC'
+        HeaderAlignmentHorz = taCenter
+        Options.Editing = False
+        Options.Filtering = False
+        Options.Sorting = False
+        Width = 140
+      end
+      object cxGridDBTableView1CREATEDBYNAME: TcxGridDBColumn
+        Caption = 'CREATED BY'
+        DataBinding.FieldName = 'CREATEDBYCALC'
+        HeaderAlignmentHorz = taCenter
+        Options.Editing = False
+        Options.Filtering = False
+        Options.Sorting = False
+        Width = 161
+      end
+      object cxGridDBTableView1NOTES: TcxGridDBColumn
+        DataBinding.FieldName = 'NOTES'
+        HeaderAlignmentHorz = taCenter
+        Options.Editing = False
+        Options.Filtering = False
+        Options.Sorting = False
+        Width = 249
+      end
+    end
+    object cxGridLevel1: TcxGridLevel
+      GridView = cxGridDBTableView1
+    end
+  end
+  object scToolBar2: TscToolBar
+    Left = 0
+    Top = 137
+    Width = 857
+    Height = 30
+    Margins.Left = 0
+    Margins.Top = 0
+    Margins.Right = 0
+    Margins.Bottom = 0
+    AutoSize = True
+    ButtonHeight = 30
+    ButtonWidth = 120
+    Caption = 'scToolBar1'
+    Color = clWhite
+    Customizable = True
+    DrawingStyle = dsGradient
+    EdgeInner = esNone
+    EdgeOuter = esNone
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clTeal
+    Font.Height = -13
+    Font.Name = 'Segoe UI'
+    Font.Style = []
+    GradientEndColor = clWhite
+    GradientStartColor = clWhite
+    HotTrackColor = clWhite
+    Images = sCharImageList1
+    Indent = 5
+    List = True
+    ParentColor = False
+    ParentFont = False
+    ShowCaptions = True
+    TabOrder = 3
+    Transparent = True
+    StyleElements = []
+    object btnNew: TToolButton
+      Left = 5
+      Top = 0
+      Action = New
+      AutoSize = True
+      ImageIndex = 1
+    end
+    object btnSave: TToolButton
+      Left = 129
+      Top = 0
+      Action = Save
+      AutoSize = True
+    end
+    object btnRefresh: TToolButton
+      Left = 197
+      Top = 0
+      Action = Refresh
+      AutoSize = True
+      ImageIndex = 5
+    end
+  end
+  object cxStyleRepository1: TcxStyleRepository
+    Left = 232
+    Top = 200
+    PixelsPerInch = 96
+    object Header_style: TcxStyle
+      AssignedValues = [svColor, svFont, svTextColor]
+      Color = clTeal
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Segoe UI'
+      Font.Style = [fsBold]
+      TextColor = 6570553
+    end
+    object select_style: TcxStyle
+      AssignedValues = [svColor, svFont, svTextColor]
+      Color = clTeal
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Segoe UI Semibold'
+      Font.Style = [fsBold]
+      TextColor = clWhite
+    end
+  end
+  object ActionList1: TActionList
+    Images = sCharImageList1
+    Left = 365
+    Top = 191
+    object New: TAction
+      Caption = 'New Inventory'
+      OnExecute = NewExecute
+    end
+    object Refresh: TAction
+      Caption = 'Refresh'
+      OnExecute = RefreshExecute
+    end
+    object Save: TAction
+      Caption = 'Save'
+      ImageIndex = 3
+      OnExecute = SaveExecute
+    end
+  end
+  object sCharImageList1: TsCharImageList
+    EmbeddedFonts = <
+      item
+        FontName = 'FontAwesome'
+        FontData = {}
+      end>
+    Items = <
+      item
+        ScalingFactor = 0.740000000000000000
+        OffsetY = 4
+        Char = 61525
+      end
+      item
+        ScalingFactor = 0.740000000000000000
+        OffsetY = 4
+        Char = 61504
+      end
+      item
+        ScalingFactor = 0.740000000000000000
+        OffsetY = 4
+        Char = 61527
+      end
+      item
+        ScalingFactor = 0.740000000000000000
+        OffsetY = 4
+        Char = 61639
+      end
+      item
+        ScalingFactor = 0.730000000000000000
+        OffsetY = 2
+        Char = 61442
+      end
+      item
+        ScalingFactor = 0.740000000000000000
+        OffsetY = 5
+        Char = 61473
+      end
+      item
+        ScalingFactor = 0.740000000000000000
+        OffsetY = 4
+        Char = 61504
+        Color = 11645361
+      end
+      item
+        ScalingFactor = 0.740000000000000000
+        OffsetY = 4
+        Char = 61639
+        Color = 11645361
+      end>
+    Left = 413
+    Top = 192
+    Bitmap = {
+      494C010100000800080001000100FFFFFFFF0400FFFFFFFFFFFFFFFF424D7600
+      0000000000007600000028000000040000000100000001000400000000000400
+      0000000000000000000000000000000000000000000000008000008000000080
+      8000800000008000800080800000C0C0C000808080000000FF0000FF000000FF
+      FF00FF000000FF00FF00FFFF0000FFFFFF0000000000}
+  end
+  object ds_details: TDataSource
+    DataSet = dm_PM.brw_InvDetail
+    Left = 480
+    Top = 192
+  end
+  object ds_inv: TDataSource
+    DataSet = dm_PM.qry_inventory
+    Left = 528
+    Top = 192
+  end
+end

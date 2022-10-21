@@ -1,0 +1,164 @@
+object f_Policy: Tf_Policy
+  Left = 0
+  Top = 0
+  Caption = 'System Policy'
+  ClientHeight = 518
+  ClientWidth = 972
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  FormStyle = fsMDIChild
+  OldCreateOrder = False
+  Position = poMainFormCenter
+  Visible = True
+  WindowState = wsMaximized
+  OnShow = FormShow
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Panel3: TPanel
+    Left = 0
+    Top = 0
+    Width = 972
+    Height = 57
+    Align = alTop
+    BevelOuter = bvNone
+    Color = clTeal
+    Padding.Left = 10
+    Padding.Top = 5
+    Padding.Right = 10
+    Padding.Bottom = 5
+    ParentBackground = False
+    TabOrder = 0
+    StyleElements = [seFont, seBorder]
+    ExplicitWidth = 700
+    object Label1: TLabel
+      AlignWithMargins = True
+      Left = 13
+      Top = 13
+      Width = 148
+      Height = 25
+      Caption = 'SYSTEM POLICY'
+      Color = clWhite
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWhite
+      Font.Height = -19
+      Font.Name = 'Segoe UI Black'
+      Font.Style = [fsBold]
+      ParentColor = False
+      ParentFont = False
+      Layout = tlCenter
+      StyleElements = []
+    end
+  end
+  object cxGrid1: TcxGrid
+    Left = 0
+    Top = 57
+    Width = 972
+    Height = 461
+    Align = alClient
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -12
+    Font.Name = 'Segoe UI'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 1
+    LookAndFeel.NativeStyle = False
+    LookAndFeel.SkinName = 'VisualStudio2013Light'
+    ExplicitTop = 63
+    ExplicitWidth = 982
+    ExplicitHeight = 471
+    object cxGrid1DBTableView1: TcxGridDBTableView
+      Navigator.Buttons.CustomButtons = <>
+      DataController.DataSource = DataSource1
+      DataController.Summary.DefaultGroupSummaryItems = <>
+      DataController.Summary.FooterSummaryItems = <
+        item
+          Format = '###,###,##0'
+          Kind = skCount
+          FieldName = 'POLICY'
+          Column = cxGrid1DBTableView1POLICY
+        end>
+      DataController.Summary.SummaryGroups = <>
+      OptionsSelection.CellSelect = False
+      OptionsView.NoDataToDisplayInfoText = 'No Data To Display'
+      OptionsView.ColumnAutoWidth = True
+      OptionsView.Footer = True
+      OptionsView.FooterMultiSummaries = True
+      OptionsView.GroupByBox = False
+      OptionsView.GroupFooterMultiSummaries = True
+      OptionsView.GroupFooters = gfVisibleWhenExpanded
+      OptionsView.Indicator = True
+      Styles.Selection = select_style
+      Styles.Header = header_style
+      object cxGrid1DBTableView1MODULES: TcxGridDBColumn
+        DataBinding.FieldName = 'MODULES'
+        Visible = False
+        GroupIndex = 0
+        HeaderAlignmentHorz = taCenter
+        Options.Editing = False
+        Options.Filtering = False
+        Options.Sorting = False
+      end
+      object cxGrid1DBTableView1POLICY: TcxGridDBColumn
+        DataBinding.FieldName = 'POLICY'
+        HeaderAlignmentHorz = taCenter
+        Options.Editing = False
+        Options.Filtering = False
+        Options.Sorting = False
+        Width = 172
+      end
+      object cxGrid1DBTableView1SECURITY: TcxGridDBColumn
+        DataBinding.FieldName = 'SECURITY'
+        HeaderAlignmentHorz = taCenter
+        Options.Editing = False
+        Options.Filtering = False
+        Options.Sorting = False
+        Width = 395
+      end
+    end
+    object cxGrid1Level1: TcxGridLevel
+      GridView = cxGrid1DBTableView1
+    end
+  end
+  object cxStyleRepository1: TcxStyleRepository
+    Left = 501
+    Top = 192
+    PixelsPerInch = 96
+    object header_style: TcxStyle
+      AssignedValues = [svColor, svFont, svTextColor]
+      Color = clWhite
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWhite
+      Font.Height = -11
+      Font.Name = 'Segoe UI'
+      Font.Style = [fsBold]
+      TextColor = 6570553
+    end
+    object select_style: TcxStyle
+      AssignedValues = [svColor, svTextColor]
+      Color = clTeal
+      TextColor = clWhite
+    end
+  end
+  object DataSource1: TDataSource
+    DataSet = dm_PM.brw_Policy
+    Left = 552
+    Top = 192
+  end
+  object PopupMenu1: TPopupMenu
+    Left = 592
+    Top = 192
+  end
+  object ActionList1: TActionList
+    Left = 640
+    Top = 192
+    object AddRoles: TAction
+      Caption = 'Add Roles'
+      OnExecute = AddRolesExecute
+    end
+  end
+end

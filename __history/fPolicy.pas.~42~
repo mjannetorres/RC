@@ -1,0 +1,157 @@
+unit fPolicy;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.StdCtrls, cxGraphics,
+  cxControls, cxLookAndFeels, cxLookAndFeelPainters, cxStyles, dxSkinsCore,
+  dxSkinBlack, dxSkinBlue, dxSkinBlueprint, dxSkinCaramel, dxSkinCoffee,
+  dxSkinDarkRoom, dxSkinDarkSide, dxSkinDevExpressDarkStyle,
+  dxSkinDevExpressStyle, dxSkinFoggy, dxSkinGlassOceans, dxSkinHighContrast,
+  dxSkiniMaginary, dxSkinLilian, dxSkinLiquidSky, dxSkinLondonLiquidSky,
+  dxSkinMcSkin, dxSkinMetropolis, dxSkinMetropolisDark, dxSkinMoneyTwins,
+  dxSkinOffice2007Black, dxSkinOffice2007Blue, dxSkinOffice2007Green,
+  dxSkinOffice2007Pink, dxSkinOffice2007Silver, dxSkinOffice2010Black,
+  dxSkinOffice2010Blue, dxSkinOffice2010Silver, dxSkinOffice2013DarkGray,
+  dxSkinOffice2013LightGray, dxSkinOffice2013White, dxSkinOffice2016Colorful,
+  dxSkinOffice2016Dark, dxSkinPumpkin, dxSkinSeven, dxSkinSevenClassic,
+  dxSkinSharp, dxSkinSharpPlus, dxSkinSilver, dxSkinSpringTime, dxSkinStardust,
+  dxSkinSummer2008, dxSkinTheAsphaltWorld, dxSkinsDefaultPainters,
+  dxSkinValentine, dxSkinVisualStudio2013Blue, dxSkinVisualStudio2013Dark,
+  dxSkinVisualStudio2013Light, dxSkinVS2010, dxSkinWhiteprint,
+  dxSkinXmas2008Blue, dxSkinscxPCPainter, cxCustomData, cxFilter, cxData,
+  cxDataStorage, cxEdit, cxNavigator, Data.DB, cxDBData, cxClasses, cxGridLevel,
+  cxGridCustomTableView, cxGridTableView, cxGridDBTableView, cxGridCustomView,
+  cxGrid, cxButtonEdit, System.Actions, Vcl.ActnList, Vcl.Menus;
+
+type
+  Tf_Policy = class(TForm)
+    Panel3: TPanel;
+    Label1: TLabel;
+    cxGrid1: TcxGrid;
+    cxGrid1DBTableView1: TcxGridDBTableView;
+    cxGrid1Level1: TcxGridLevel;
+    cxStyleRepository1: TcxStyleRepository;
+    header_style: TcxStyle;
+    select_style: TcxStyle;
+    DataSource1: TDataSource;
+    cxGrid1DBTableView1MODULES: TcxGridDBColumn;
+    cxGrid1DBTableView1POLICY: TcxGridDBColumn;
+    cxGrid1DBTableView1SECURITY: TcxGridDBColumn;
+    PopupMenu1: TPopupMenu;
+    ActionList1: TActionList;
+    AddRoles: TAction;
+    AddRoles1: TMenuItem;
+    procedure FormShow(Sender: TObject);
+    procedure AddRolesExecute(Sender: TObject);
+  private
+    { Private declarations }
+    procedure display;
+  public
+    { Public declarations }
+  end;
+
+var
+  f_Policy: Tf_Policy;
+
+implementation
+
+{$R *.dfm}
+
+uses dmPM, fSecurity;
+
+{ Tf_Policy }
+
+procedure Tf_Policy.AddRolesExecute(Sender: TObject);
+begin
+  with dm_PM do
+  begin
+    brw_roles.Close;
+    brw_roles.SQL[2]  := 'WHERE CANCELLED = FALSE';
+    brw_roles.Open();
+
+    brw_roles.First;
+
+    tb_Rights.Close;
+    tb_Rights.Open;
+
+    while not brw_roles.Eof do
+    begin
+      tb_Rights.Append;
+
+      qry_Rights.Close;
+      qry_Rights.SQL[2] := 'WHERE POLICYID = :POLICY AND ROLEID = :ID';
+      qry_Rights.ParamByName('ID').Value      := brw_rolesID.Value;
+      qry_Rights.ParamByName('POLICY').Value  := brw_PolicyID.Value;
+      qry_Rights.Open();
+
+      if qry_Rights.RecordCount > 0 then
+      tb_RightsID.Value       := qry_RightsID.Value;
+      tb_RightsSELECT.Value   := qry_RightsSELECT.Value;
+      tb_RightsPOLICYID.Value := brw_PolicyID.Value;
+      tb_RightsROLEID.Value   := brw_rolesID.Value;
+      tb_RightsROLE.Value     := brw_rolesTITLE.Value;
+
+      tb_Rights.Post;
+      brw_roles.Next;
+    end;
+
+    f_Security  := Tf_Security.Create(Self);
+    if f_Security.ShowModal = mrOk then
+    begin
+      tb_Rights.First;
+      while not tb_Rights.Eof do
+      begin
+        qry_Rights.Close;
+        qry_Rights.SQL[2] := 'WHERE ID = :ID';
+        qry_Rights.ParamByName('ID').Value  := tb_RightsID.Value;
+        qry_Rights.Open();
+
+        qry_Rights.Edit;
+        if tb_RightsID.IsNull then
+        begin
+          qry_RightsCREATEDBYID.Value       := userid;
+          qry_RightsCREATEDDATETIME.Value   := Now;
+        end;
+        qry_RightsPOLICYID.Value  := tb_RightsPOLICYID.Value;
+        qry_RightsROLEID.Value    := tb_RightsROLEID.Value;
+        qry_RightsCANCELLED.Value := False;
+        qry_RightsSELECT.Value    := tb_RightsSELECT.Value;
+        qry_Rights.Post;
+        qry_Rights.ApplyUpdates();
+        tb_Rights.Next;
+      end;
+
+      display;
+    end;
+  end;
+end;
+
+procedure Tf_Policy.display;
+var id: Integer;
+begin
+  with dm_PM do
+  begin
+    if brw_Policy.Active then
+    id  := brw_PolicyID.Value
+    else
+    id  := 0;
+
+    brw_Policy.Close;
+    brw_Policy.Open();
+    brw_Policy.IndexFieldNames  := 'MODULES;ID';
+
+    cxGrid1DBTableView1.ViewData.Expand(True);
+
+    brw_Policy.First;
+    brw_Policy.Locate('ID', id, []);
+  end;
+end;
+
+procedure Tf_Policy.FormShow(Sender: TObject);
+begin
+  display;
+end;
+
+end.

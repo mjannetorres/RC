@@ -1,0 +1,151 @@
+object f_OPSheetViewer: Tf_OPSheetViewer
+  Left = 0
+  Top = 0
+  BorderStyle = bsDialog
+  Caption = 'Image Viewer'
+  ClientHeight = 294
+  ClientWidth = 380
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  Position = poMainFormCenter
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Image1: TImage
+    Left = 0
+    Top = 65
+    Width = 380
+    Height = 192
+    Align = alClient
+    Center = True
+    Proportional = True
+    ExplicitLeft = 56
+    ExplicitTop = 71
+    ExplicitWidth = 289
+    ExplicitHeight = 183
+  end
+  object Panel1: TPanel
+    Left = 0
+    Top = 257
+    Width = 380
+    Height = 37
+    Align = alBottom
+    BevelOuter = bvNone
+    TabOrder = 0
+    ExplicitTop = 164
+    ExplicitWidth = 370
+    DesignSize = (
+      380
+      37)
+    object btnSave: TButton
+      Left = 289
+      Top = 6
+      Width = 75
+      Height = 25
+      Anchors = [akTop, akRight]
+      Caption = '&OK'
+      Default = True
+      ModalResult = 1
+      TabOrder = 0
+    end
+  end
+  object Panel2: TPanel
+    Left = 0
+    Top = 0
+    Width = 380
+    Height = 65
+    Align = alTop
+    BevelOuter = bvNone
+    Color = clTeal
+    Padding.Left = 10
+    Padding.Top = 10
+    Padding.Right = 10
+    Padding.Bottom = 10
+    ParentBackground = False
+    TabOrder = 1
+    StyleElements = []
+    ExplicitTop = -6
+    object Label6: TLabel
+      Left = 13
+      Top = 6
+      Width = 75
+      Height = 17
+      Caption = 'Description :'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWhite
+      Font.Height = -13
+      Font.Name = 'Segoe UI Semibold'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object Label1: TLabel
+      Left = 13
+      Top = 23
+      Width = 43
+      Height = 17
+      Caption = 'Fabric :'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWhite
+      Font.Height = -13
+      Font.Name = 'Segoe UI Semibold'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object Label2: TLabel
+      Left = 14
+      Top = 40
+      Width = 57
+      Height = 17
+      Caption = 'Size | Fit :'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWhite
+      Font.Height = -13
+      Font.Name = 'Segoe UI Semibold'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object lblDesc: TLabel
+      Left = 100
+      Top = 6
+      Width = 68
+      Height = 17
+      Caption = 'Description'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWhite
+      Font.Height = -13
+      Font.Name = 'Segoe UI Semibold'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object lblFabric: TLabel
+      Left = 100
+      Top = 23
+      Width = 68
+      Height = 17
+      Caption = 'Description'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWhite
+      Font.Height = -13
+      Font.Name = 'Segoe UI Semibold'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object lblSize: TLabel
+      Left = 100
+      Top = 40
+      Width = 68
+      Height = 17
+      Caption = 'Description'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWhite
+      Font.Height = -13
+      Font.Name = 'Segoe UI Semibold'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+  end
+end

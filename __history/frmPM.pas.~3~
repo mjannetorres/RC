@@ -1,0 +1,30 @@
+unit frmPM;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes,
+  Vcl.Graphics, Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Buttons, sSpeedButton;
+
+type
+  Tfrm_PM = class(TFrame)
+    sSpeedButton1: TsSpeedButton;
+    procedure sSpeedButton1Click(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+implementation
+
+{$R *.dfm}
+
+uses fPMBoard;
+
+procedure Tfrm_PM.sSpeedButton1Click(Sender: TObject);
+begin
+  fPMBoard := Tf_PMBoard.Create(nil);
+end;
+
+end.

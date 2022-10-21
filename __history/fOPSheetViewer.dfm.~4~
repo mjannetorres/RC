@@ -1,0 +1,58 @@
+object f_OPSheetViewer: Tf_OPSheetViewer
+  Left = 0
+  Top = 0
+  BorderStyle = bsDialog
+  Caption = 'Image Viewer'
+  ClientHeight = 294
+  ClientWidth = 380
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  Padding.Left = 10
+  Padding.Top = 10
+  Padding.Right = 10
+  OldCreateOrder = False
+  Position = poMainFormCenter
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Image1: TImage
+    Left = 10
+    Top = 10
+    Width = 360
+    Height = 247
+    Align = alClient
+    ExplicitLeft = 24
+    ExplicitTop = 8
+    ExplicitWidth = 289
+    ExplicitHeight = 217
+  end
+  object Panel1: TPanel
+    Left = 10
+    Top = 257
+    Width = 360
+    Height = 37
+    Align = alBottom
+    BevelOuter = bvNone
+    TabOrder = 0
+    ExplicitLeft = 0
+    ExplicitTop = 164
+    ExplicitWidth = 370
+    DesignSize = (
+      360
+      37)
+    object btnSave: TButton
+      Left = 285
+      Top = 6
+      Width = 75
+      Height = 25
+      Anchors = [akTop, akRight]
+      Caption = '&OK'
+      Default = True
+      ModalResult = 1
+      TabOrder = 0
+    end
+  end
+end

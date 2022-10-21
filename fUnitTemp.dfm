@@ -1,0 +1,114 @@
+object f_UnitTemp: Tf_UnitTemp
+  Left = 0
+  Top = 0
+  BorderStyle = bsDialog
+  Caption = 'New Unit'
+  ClientHeight = 124
+  ClientWidth = 357
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -12
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  Position = poMainFormCenter
+  OnShow = FormShow
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Panel1: TPanel
+    Left = 0
+    Top = 87
+    Width = 357
+    Height = 37
+    Align = alBottom
+    BevelOuter = bvNone
+    TabOrder = 0
+    ExplicitTop = 83
+    DesignSize = (
+      357
+      37)
+    object btnSave: TButton
+      Left = 176
+      Top = 6
+      Width = 75
+      Height = 25
+      Anchors = [akTop, akRight]
+      Caption = 'Save'
+      Default = True
+      ModalResult = 1
+      TabOrder = 0
+    end
+    object Button2: TButton
+      Left = 263
+      Top = 6
+      Width = 75
+      Height = 25
+      Anchors = [akTop, akRight]
+      Cancel = True
+      Caption = 'Cancel'
+      ModalResult = 2
+      TabOrder = 1
+    end
+  end
+  object Panel2: TPanel
+    Left = 0
+    Top = 0
+    Width = 357
+    Height = 87
+    Align = alClient
+    BevelOuter = bvNone
+    Color = clTeal
+    Padding.Left = 10
+    Padding.Right = 10
+    ParentBackground = False
+    TabOrder = 1
+    StyleElements = []
+    ExplicitWidth = 347
+    ExplicitHeight = 77
+    object Label1: TLabel
+      Left = 13
+      Top = 28
+      Width = 72
+      Height = 17
+      Caption = 'Description '
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWhite
+      Font.Height = -13
+      Font.Name = 'Segoe UI Semibold'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object txt_desc: TcxDBTextEdit
+      Left = 88
+      Top = 27
+      DataBinding.DataField = 'DESCRIPTION'
+      DataBinding.DataSource = ds_unit
+      ParentFont = False
+      ParentShowHint = False
+      Properties.CharCase = ecUpperCase
+      ShowHint = False
+      Style.BorderColor = 1184274
+      Style.BorderStyle = ebsThick
+      Style.Color = 6570553
+      Style.Font.Charset = ANSI_CHARSET
+      Style.Font.Color = clWhite
+      Style.Font.Height = -12
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.LookAndFeel.NativeStyle = False
+      Style.IsFontAssigned = True
+      StyleDisabled.LookAndFeel.NativeStyle = False
+      StyleFocused.LookAndFeel.NativeStyle = False
+      StyleHot.LookAndFeel.NativeStyle = False
+      TabOrder = 0
+      OnExit = txt_descExit
+      Width = 247
+    end
+  end
+  object ds_unit: TDataSource
+    DataSet = dm_PM.qry_Unit
+    Left = 80
+    Top = 64
+  end
+end

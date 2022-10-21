@@ -1,0 +1,16 @@
+object f_ClientsTemp: Tf_ClientsTemp
+  Left = 0
+  Top = 0
+  Caption = 'f_ClientsTemp'
+  ClientHeight = 284
+  ClientWidth = 370
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  PixelsPerInch = 96
+  TextHeight = 13
+end

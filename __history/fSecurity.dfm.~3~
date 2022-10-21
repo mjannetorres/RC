@@ -1,0 +1,92 @@
+object f_Security: Tf_Security
+  Left = 0
+  Top = 0
+  BorderStyle = bsDialog
+  Caption = 'User Rights'
+  ClientHeight = 251
+  ClientWidth = 406
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  Position = poMainFormCenter
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Panel1: TPanel
+    Left = 0
+    Top = 214
+    Width = 406
+    Height = 37
+    Align = alBottom
+    BevelOuter = bvNone
+    TabOrder = 0
+    ExplicitTop = 170
+    ExplicitWidth = 455
+    DesignSize = (
+      406
+      37)
+    object Button1: TButton
+      Left = 238
+      Top = 6
+      Width = 75
+      Height = 25
+      Anchors = [akTop, akRight]
+      Caption = 'OK'
+      Default = True
+      ModalResult = 1
+      TabOrder = 0
+      ExplicitLeft = 287
+    end
+    object Button2: TButton
+      Left = 325
+      Top = 6
+      Width = 75
+      Height = 25
+      Anchors = [akTop, akRight]
+      Cancel = True
+      Caption = 'Cancel'
+      ModalResult = 2
+      TabOrder = 1
+      ExplicitLeft = 374
+    end
+  end
+  object Panel3: TPanel
+    Left = 0
+    Top = 0
+    Width = 406
+    Height = 57
+    Align = alTop
+    BevelOuter = bvNone
+    Color = clTeal
+    Padding.Left = 10
+    Padding.Top = 5
+    Padding.Right = 10
+    Padding.Bottom = 5
+    ParentBackground = False
+    TabOrder = 1
+    StyleElements = [seFont, seBorder]
+    ExplicitLeft = -566
+    ExplicitWidth = 972
+    object Label1: TLabel
+      AlignWithMargins = True
+      Left = 13
+      Top = 13
+      Width = 136
+      Height = 25
+      Caption = 'ASSIGN ROLES'
+      Color = clWhite
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWhite
+      Font.Height = -19
+      Font.Name = 'Segoe UI Black'
+      Font.Style = [fsBold]
+      ParentColor = False
+      ParentFont = False
+      Layout = tlCenter
+      StyleElements = []
+    end
+  end
+end

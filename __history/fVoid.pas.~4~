@@ -1,0 +1,29 @@
+unit fVoid;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.StdCtrls;
+
+type
+  Tf_Void = class(TForm)
+    btnVoid: TButton;
+    Button2: TButton;
+    Panel1: TPanel;
+    Panel2: TPanel;
+    Label3: TLabel;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  f_Void: Tf_Void;
+
+implementation
+
+{$R *.dfm}
+
+end.

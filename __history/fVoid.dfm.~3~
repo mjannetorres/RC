@@ -1,0 +1,72 @@
+object f_Void: Tf_Void
+  Left = 0
+  Top = 0
+  BorderStyle = bsDialog
+  Caption = 'Void'
+  ClientHeight = 168
+  ClientWidth = 371
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  Position = poMainFormCenter
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Panel1: TPanel
+    Left = 0
+    Top = 131
+    Width = 371
+    Height = 37
+    Align = alBottom
+    BevelOuter = bvNone
+    TabOrder = 0
+    ExplicitTop = 170
+    ExplicitWidth = 455
+    DesignSize = (
+      371
+      37)
+    object btnVoid: TButton
+      Left = 193
+      Top = 6
+      Width = 75
+      Height = 25
+      Anchors = [akTop, akRight]
+      Caption = 'Void'
+      Default = True
+      ModalResult = 1
+      TabOrder = 0
+      ExplicitLeft = 277
+    end
+    object Button2: TButton
+      Left = 280
+      Top = 6
+      Width = 75
+      Height = 25
+      Anchors = [akTop, akRight]
+      Cancel = True
+      Caption = 'Cancel'
+      ModalResult = 2
+      TabOrder = 1
+      ExplicitLeft = 364
+    end
+  end
+  object Panel2: TPanel
+    Left = 0
+    Top = 0
+    Width = 371
+    Height = 131
+    Align = alClient
+    BevelOuter = bvNone
+    Color = clTeal
+    ParentBackground = False
+    TabOrder = 1
+    StyleElements = []
+    ExplicitLeft = 80
+    ExplicitTop = 24
+    ExplicitWidth = 185
+    ExplicitHeight = 41
+  end
+end

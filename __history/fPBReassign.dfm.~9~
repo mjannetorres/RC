@@ -1,0 +1,146 @@
+object f_PBReassign: Tf_PBReassign
+  Left = 0
+  Top = 0
+  BorderStyle = bsDialog
+  Caption = 'Reassignment'
+  ClientHeight = 175
+  ClientWidth = 430
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  Position = poMainFormCenter
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Panel1: TPanel
+    Left = 0
+    Top = 138
+    Width = 430
+    Height = 37
+    Align = alBottom
+    BevelOuter = bvNone
+    TabOrder = 0
+    ExplicitLeft = 8
+    ExplicitTop = 144
+    DesignSize = (
+      430
+      37)
+    object Button1: TButton
+      Left = 253
+      Top = 6
+      Width = 75
+      Height = 25
+      Anchors = [akTop, akRight]
+      Caption = 'OK'
+      Default = True
+      ModalResult = 1
+      TabOrder = 0
+      ExplicitLeft = 278
+    end
+    object Button2: TButton
+      Left = 340
+      Top = 6
+      Width = 75
+      Height = 25
+      Anchors = [akTop, akRight]
+      Cancel = True
+      Caption = 'Cancel'
+      ModalResult = 2
+      TabOrder = 1
+      ExplicitLeft = 365
+    end
+  end
+  object Panel2: TPanel
+    Left = 0
+    Top = 0
+    Width = 430
+    Height = 138
+    Align = alClient
+    BevelOuter = bvNone
+    Color = clTeal
+    Padding.Left = 10
+    Padding.Top = 10
+    Padding.Right = 10
+    Padding.Bottom = 10
+    ParentBackground = False
+    TabOrder = 1
+    StyleElements = []
+    ExplicitLeft = 176
+    ExplicitTop = 16
+    ExplicitWidth = 185
+    ExplicitHeight = 41
+    object Label3: TLabel
+      Left = 13
+      Top = 62
+      Width = 97
+      Height = 21
+      Caption = 'Reassign To :'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWhite
+      Font.Height = -16
+      Font.Name = 'Segoe UI'
+      Font.Style = [fsBold]
+      ParentFont = False
+      StyleElements = []
+    end
+    object Label1: TLabel
+      Left = 13
+      Top = 2
+      Width = 86
+      Height = 30
+      Caption = 'LAYOUT'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWhite
+      Font.Height = -21
+      Font.Name = 'Segoe UI Black'
+      Font.Style = [fsBold]
+      ParentFont = False
+      StyleElements = []
+    end
+    object Splitter1: TSplitter
+      Left = 10
+      Top = 39
+      Width = 405
+      Height = 1
+      Align = alNone
+    end
+    object cxLookupComboBox1: TcxLookupComboBox
+      Left = 123
+      Top = 59
+      ParentFont = False
+      Properties.ImmediatePost = True
+      Properties.KeyFieldNames = 'EMPID'
+      Properties.ListColumns = <
+        item
+          FieldName = 'EMPNAME'
+        end>
+      Properties.ListOptions.ShowHeader = False
+      Properties.ListSource = ds_workers
+      Style.BorderColor = 1184274
+      Style.BorderStyle = ebsThick
+      Style.Color = 6570553
+      Style.Font.Charset = ANSI_CHARSET
+      Style.Font.Color = clWindowText
+      Style.Font.Height = -16
+      Style.Font.Name = 'Segoe UI Semibold'
+      Style.Font.Style = [fsBold]
+      Style.LookAndFeel.NativeStyle = False
+      Style.ButtonStyle = btsUltraFlat
+      Style.ButtonTransparency = ebtAlways
+      Style.IsFontAssigned = True
+      StyleDisabled.LookAndFeel.NativeStyle = False
+      StyleFocused.LookAndFeel.NativeStyle = False
+      StyleHot.LookAndFeel.NativeStyle = False
+      TabOrder = 0
+      Width = 292
+    end
+  end
+  object ds_workers: TDataSource
+    DataSet = dm_PM.qry_WorkersDetails
+    Left = 312
+    Top = 56
+  end
+end

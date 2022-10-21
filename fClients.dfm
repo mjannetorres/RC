@@ -1,0 +1,565 @@
+object f_Clients: Tf_Clients
+  Left = 0
+  Top = 0
+  BorderStyle = bsDialog
+  Caption = 'Clients'
+  ClientHeight = 491
+  ClientWidth = 857
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  FormStyle = fsMDIChild
+  OldCreateOrder = False
+  Position = poMainFormCenter
+  Visible = True
+  WindowState = wsMaximized
+  OnCreate = FormCreate
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Splitter1: TSplitter
+    Left = 0
+    Top = 101
+    Width = 857
+    Height = 3
+    Cursor = crVSplit
+    Align = alTop
+    Color = clWhite
+    ParentColor = False
+    StyleElements = []
+    ExplicitLeft = 7
+    ExplicitTop = 111
+    ExplicitWidth = 827
+  end
+  object Panel3: TPanel
+    Left = 0
+    Top = 0
+    Width = 857
+    Height = 71
+    Align = alTop
+    BevelOuter = bvNone
+    Color = clTeal
+    Padding.Left = 10
+    Padding.Top = 5
+    Padding.Right = 10
+    Padding.Bottom = 5
+    ParentBackground = False
+    TabOrder = 0
+    StyleElements = [seFont, seBorder]
+    ExplicitWidth = 847
+    DesignSize = (
+      857
+      71)
+    object Label1: TLabel
+      AlignWithMargins = True
+      Left = 14
+      Top = 24
+      Width = 77
+      Height = 25
+      Caption = 'CLIENTS'
+      Color = clWhite
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWhite
+      Font.Height = -19
+      Font.Name = 'Segoe UI Black'
+      Font.Style = [fsBold]
+      ParentColor = False
+      ParentFont = False
+      Layout = tlCenter
+      StyleElements = []
+    end
+    object txt_search: TButtonedEdit
+      Left = 456
+      Top = 23
+      Width = 387
+      Height = 25
+      Anchors = [akTop, akRight]
+      CharCase = ecUpperCase
+      Color = clWhite
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'Segoe UI Semibold'
+      Font.Style = [fsBold]
+      Images = sCharImageList1
+      LeftButton.HotImageIndex = 0
+      LeftButton.ImageIndex = 0
+      LeftButton.PressedImageIndex = 0
+      ParentFont = False
+      RightButton.DisabledImageIndex = 0
+      RightButton.HotImageIndex = 4
+      RightButton.ImageIndex = 4
+      RightButton.PressedImageIndex = 4
+      RightButton.Visible = True
+      TabOrder = 0
+      TextHint = 'Search ...'
+      StyleElements = [seFont, seBorder]
+      OnKeyPress = txt_searchKeyPress
+      OnRightButtonClick = txt_searchRightButtonClick
+    end
+  end
+  object scToolBar2: TscToolBar
+    Left = 0
+    Top = 71
+    Width = 857
+    Height = 30
+    Margins.Left = 0
+    Margins.Top = 0
+    Margins.Right = 0
+    Margins.Bottom = 0
+    AutoSize = True
+    ButtonHeight = 30
+    ButtonWidth = 74
+    Caption = 'scToolBar1'
+    Color = clWhite
+    Customizable = True
+    DrawingStyle = dsGradient
+    EdgeInner = esNone
+    EdgeOuter = esNone
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clTeal
+    Font.Height = -13
+    Font.Name = 'Segoe UI'
+    Font.Style = []
+    GradientEndColor = clWhite
+    GradientStartColor = clWhite
+    HotTrackColor = clWhite
+    Images = sCharImageList1
+    Indent = 5
+    List = True
+    ParentColor = False
+    ParentFont = False
+    ShowCaptions = True
+    TabOrder = 1
+    Transparent = True
+    StyleElements = []
+    object btnNew: TToolButton
+      Left = 5
+      Top = 0
+      Action = New
+      AutoSize = True
+      ImageIndex = 0
+    end
+    object btnEdit: TToolButton
+      Left = 72
+      Top = 0
+      Action = Edit
+      AutoSize = True
+      ImageIndex = 1
+    end
+    object btnDelete: TToolButton
+      Left = 135
+      Top = 0
+      Action = Delete
+      AutoSize = True
+      ImageIndex = 2
+    end
+  end
+  object cxGrid1: TcxGrid
+    Left = 0
+    Top = 104
+    Width = 857
+    Height = 387
+    Align = alClient
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -12
+    Font.Name = 'Segoe UI'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 2
+    LookAndFeel.NativeStyle = False
+    LookAndFeel.SkinName = 'VisualStudio2013Light'
+    ExplicitLeft = -8
+    ExplicitTop = 96
+    object cxGrid1DBTableView1: TcxGridDBTableView
+      Navigator.Buttons.CustomButtons = <>
+      DataController.DataSource = ds_client
+      DataController.Summary.DefaultGroupSummaryItems = <>
+      DataController.Summary.FooterSummaryItems = <
+        item
+          Format = '###,###,##0'
+          Kind = skCount
+          FieldName = 'CODE'
+          Column = cxGrid1DBTableView1CODE
+        end>
+      DataController.Summary.SummaryGroups = <>
+      OptionsSelection.CellSelect = False
+      OptionsView.NoDataToDisplayInfoText = 'No Data To Display'
+      OptionsView.ColumnAutoWidth = True
+      OptionsView.Footer = True
+      OptionsView.GroupByBox = False
+      Styles.Selection = select_style
+      Styles.Header = header_style
+      object cxGrid1DBTableView1CODE: TcxGridDBColumn
+        DataBinding.FieldName = 'CODE'
+        HeaderAlignmentHorz = taCenter
+        Options.Editing = False
+        Options.Filtering = False
+        Options.Sorting = False
+        Width = 65
+      end
+      object cxGrid1DBTableView1DESCRIPTION: TcxGridDBColumn
+        DataBinding.FieldName = 'DESCRIPTION'
+        HeaderAlignmentHorz = taCenter
+        Options.Editing = False
+        Options.Filtering = False
+        Options.Sorting = False
+        Width = 252
+      end
+      object cxGrid1DBTableView1FABRIC: TcxGridDBColumn
+        DataBinding.FieldName = 'FABRIC'
+        HeaderAlignmentHorz = taCenter
+        Options.Editing = False
+        Options.Filtering = False
+        Options.Sorting = False
+        Width = 204
+      end
+      object cxGrid1DBTableView1UNIT: TcxGridDBColumn
+        DataBinding.FieldName = 'UNIT'
+        HeaderAlignmentHorz = taCenter
+        Options.Editing = False
+        Options.Filtering = False
+        Options.Sorting = False
+        Width = 125
+      end
+      object cxGrid1DBTableView1UNITQTY: TcxGridDBColumn
+        Caption = 'UNIT QTY'
+        DataBinding.FieldName = 'UNITQTY'
+        HeaderAlignmentHorz = taCenter
+        Options.Editing = False
+        Options.Filtering = False
+        Options.Sorting = False
+      end
+      object cxGrid1DBTableView1PRICE: TcxGridDBColumn
+        DataBinding.FieldName = 'PRICE'
+        HeaderAlignmentHorz = taCenter
+        Options.Editing = False
+        Options.Filtering = False
+        Options.Sorting = False
+        Width = 101
+      end
+      object cxGrid1DBTableView1EMPSHARE: TcxGridDBColumn
+        Caption = 'ARTIST'
+        DataBinding.FieldName = 'ARTISTSHARE'
+        HeaderAlignmentHorz = taCenter
+        Options.Editing = False
+        Options.Filtering = False
+        Options.Sorting = False
+        Width = 98
+      end
+    end
+    object cxGrid1DBBandedTableView1: TcxGridDBBandedTableView
+      Navigator.Buttons.CustomButtons = <>
+      DataController.DataSource = ds_client
+      DataController.Summary.DefaultGroupSummaryItems = <>
+      DataController.Summary.FooterSummaryItems = <
+        item
+          Format = '###,###,##0.00'
+          Kind = skSum
+          FieldName = 'PRICE'
+          Column = cxGrid1DBBandedTableView1PRICE
+        end
+        item
+          Format = '###,###,##0.00'
+          Kind = skSum
+          FieldName = 'ARTISTSHARE'
+          Column = cxGrid1DBBandedTableView1ARTISTSHARE
+        end
+        item
+          Format = '###,###,##0.00'
+          Kind = skSum
+          FieldName = 'CUTTERSHARE'
+          Column = cxGrid1DBBandedTableView1CUTTERSHARE
+        end
+        item
+          Format = '###,###,##0.00'
+          Kind = skSum
+          FieldName = 'HEATPRESSSHARE'
+          Column = cxGrid1DBBandedTableView1HEATPRESSSHARE
+        end
+        item
+          Format = '###,###,##0.00'
+          Kind = skSum
+          FieldName = 'PRINTOPSHARE'
+          Column = cxGrid1DBBandedTableView1PRINTOPSHARE
+        end
+        item
+          Format = '###,###,##0.00'
+          Kind = skSum
+          FieldName = 'TAILORSHARE'
+          Column = cxGrid1DBBandedTableView1TAILORSHARE
+        end
+        item
+          Format = '###,###,##0'
+          Kind = skCount
+          FieldName = 'CODE'
+          Column = cxGrid1DBBandedTableView1CODE
+        end>
+      DataController.Summary.SummaryGroups = <>
+      OptionsSelection.CellSelect = False
+      OptionsView.ColumnAutoWidth = True
+      OptionsView.Footer = True
+      OptionsView.GroupByBox = False
+      Styles.Selection = select_style
+      Styles.Header = header_style
+      Styles.BandHeader = header_style
+      Bands = <
+        item
+          Width = 481
+        end
+        item
+          Caption = 'EMPLOYEE SHARE'
+          Width = 365
+        end>
+      object cxGrid1DBBandedTableView1CODE: TcxGridDBBandedColumn
+        DataBinding.FieldName = 'CODE'
+        HeaderAlignmentHorz = taCenter
+        Options.Editing = False
+        Options.Filtering = False
+        Options.Sorting = False
+        Width = 38
+        Position.BandIndex = 0
+        Position.ColIndex = 0
+        Position.RowIndex = 0
+      end
+      object cxGrid1DBBandedTableView1DESCRIPTION: TcxGridDBBandedColumn
+        DataBinding.FieldName = 'DESCRIPTION'
+        HeaderAlignmentHorz = taCenter
+        Options.Editing = False
+        Options.Filtering = False
+        Options.Sorting = False
+        Width = 157
+        Position.BandIndex = 0
+        Position.ColIndex = 1
+        Position.RowIndex = 0
+      end
+      object cxGrid1DBBandedTableView1UNIT: TcxGridDBBandedColumn
+        DataBinding.FieldName = 'UNIT'
+        HeaderAlignmentHorz = taCenter
+        Options.Editing = False
+        Options.Filtering = False
+        Options.Sorting = False
+        Width = 77
+        Position.BandIndex = 0
+        Position.ColIndex = 2
+        Position.RowIndex = 0
+      end
+      object cxGrid1DBBandedTableView1FABRIC: TcxGridDBBandedColumn
+        DataBinding.FieldName = 'FABRIC'
+        HeaderAlignmentHorz = taCenter
+        Options.Editing = False
+        Options.Filtering = False
+        Options.Sorting = False
+        Width = 130
+        Position.BandIndex = 0
+        Position.ColIndex = 3
+        Position.RowIndex = 0
+      end
+      object cxGrid1DBBandedTableView1PRICE: TcxGridDBBandedColumn
+        DataBinding.FieldName = 'PRICE'
+        HeaderAlignmentHorz = taCenter
+        Options.Editing = False
+        Options.Filtering = False
+        Options.Sorting = False
+        Width = 79
+        Position.BandIndex = 0
+        Position.ColIndex = 4
+        Position.RowIndex = 0
+      end
+      object cxGrid1DBBandedTableView1ARTISTSHARE: TcxGridDBBandedColumn
+        Caption = 'ARTIST'
+        DataBinding.FieldName = 'ARTISTSHARE'
+        HeaderAlignmentHorz = taCenter
+        Options.Editing = False
+        Options.Filtering = False
+        Options.Sorting = False
+        Position.BandIndex = 1
+        Position.ColIndex = 0
+        Position.RowIndex = 0
+      end
+      object cxGrid1DBBandedTableView1PRINTOPSHARE: TcxGridDBBandedColumn
+        Caption = 'PRINT OP.'
+        DataBinding.FieldName = 'PRINTOPSHARE'
+        HeaderAlignmentHorz = taCenter
+        Options.Editing = False
+        Options.Filtering = False
+        Options.Sorting = False
+        Position.BandIndex = 1
+        Position.ColIndex = 1
+        Position.RowIndex = 0
+      end
+      object cxGrid1DBBandedTableView1HEATPRESSSHARE: TcxGridDBBandedColumn
+        Caption = 'HEAT PRESS'
+        DataBinding.FieldName = 'HEATPRESSSHARE'
+        HeaderAlignmentHorz = taCenter
+        Options.Editing = False
+        Options.Filtering = False
+        Options.Sorting = False
+        Position.BandIndex = 1
+        Position.ColIndex = 2
+        Position.RowIndex = 0
+      end
+      object cxGrid1DBBandedTableView1CUTTERSHARE: TcxGridDBBandedColumn
+        Caption = 'CUTTER'
+        DataBinding.FieldName = 'CUTTERSHARE'
+        HeaderAlignmentHorz = taCenter
+        Options.Editing = False
+        Options.Filtering = False
+        Options.Sorting = False
+        Position.BandIndex = 1
+        Position.ColIndex = 3
+        Position.RowIndex = 0
+      end
+      object cxGrid1DBBandedTableView1TAILORSHARE: TcxGridDBBandedColumn
+        Caption = 'TAILOR'
+        DataBinding.FieldName = 'TAILORSHARE'
+        HeaderAlignmentHorz = taCenter
+        Options.Editing = False
+        Options.Filtering = False
+        Options.Sorting = False
+        Position.BandIndex = 1
+        Position.ColIndex = 4
+        Position.RowIndex = 0
+      end
+    end
+    object cxGrid1DBTableView2: TcxGridDBTableView
+      OnDblClick = cxGrid1DBTableView2DblClick
+      Navigator.Buttons.CustomButtons = <>
+      DataController.DataSource = ds_client
+      DataController.Summary.DefaultGroupSummaryItems = <>
+      DataController.Summary.FooterSummaryItems = <>
+      DataController.Summary.SummaryGroups = <>
+      OptionsSelection.CellSelect = False
+      OptionsView.NoDataToDisplayInfoText = 'No Data to Display'
+      OptionsView.ColumnAutoWidth = True
+      OptionsView.Footer = True
+      OptionsView.GroupByBox = False
+      Styles.Selection = select_style
+      object cxGrid1DBTableView2NAME: TcxGridDBColumn
+        DataBinding.FieldName = 'NAME'
+        HeaderAlignmentHorz = taCenter
+        Options.Editing = False
+        Options.Filtering = False
+        Options.Sorting = False
+        Styles.Header = header_style
+        Width = 316
+      end
+      object cxGrid1DBTableView2ADDRESS: TcxGridDBColumn
+        DataBinding.FieldName = 'ADDRESS'
+        HeaderAlignmentHorz = taCenter
+        Options.Editing = False
+        Options.Filtering = False
+        Options.Sorting = False
+        Styles.Header = header_style
+        Width = 228
+      end
+      object cxGrid1DBTableView2CONTACTNO: TcxGridDBColumn
+        Caption = 'CONTACT NO.'
+        DataBinding.FieldName = 'CONTACTNO'
+        HeaderAlignmentHorz = taCenter
+        Options.Editing = False
+        Options.Filtering = False
+        Options.Sorting = False
+        Styles.Header = header_style
+        Width = 132
+      end
+      object cxGrid1DBTableView2EMAIL: TcxGridDBColumn
+        DataBinding.FieldName = 'EMAIL'
+        HeaderAlignmentHorz = taCenter
+        Options.Editing = False
+        Options.Filtering = False
+        Options.Sorting = False
+        Styles.Header = header_style
+        Width = 179
+      end
+    end
+    object cxGrid1Level1: TcxGridLevel
+      GridView = cxGrid1DBTableView2
+    end
+  end
+  object ActionList1: TActionList
+    Left = 365
+    Top = 191
+    object New: TAction
+      Caption = 'New'
+      OnExecute = NewExecute
+    end
+    object Edit: TAction
+      Caption = 'Edit'
+      OnExecute = EditExecute
+    end
+    object Delete: TAction
+      Caption = 'Delete'
+      OnExecute = DeleteExecute
+    end
+  end
+  object sCharImageList1: TsCharImageList
+    EmbeddedFonts = <
+      item
+        FontName = 'FontAwesome'
+        FontData = {}
+      end>
+    Items = <
+      item
+        ScalingFactor = 0.740000000000000000
+        OffsetY = 4
+        Char = 61525
+      end
+      item
+        ScalingFactor = 0.740000000000000000
+        OffsetY = 4
+        Char = 61504
+      end
+      item
+        ScalingFactor = 0.740000000000000000
+        OffsetY = 4
+        Char = 61527
+      end
+      item
+        ScalingFactor = 0.740000000000000000
+        OffsetY = 4
+        Char = 61639
+      end
+      item
+        ScalingFactor = 0.730000000000000000
+        OffsetY = 2
+        Char = 61442
+      end>
+    Left = 413
+    Top = 192
+    Bitmap = {
+      494C010100000800080001000100FFFFFFFF0400FFFFFFFFFFFFFFFF424D7600
+      0000000000007600000028000000040000000100000001000400000000000400
+      0000000000000000000000000000000000000000000000008000008000000080
+      8000800000008000800080800000C0C0C000808080000000FF0000FF000000FF
+      FF00FF000000FF00FF00FFFF0000FFFFFF0000000000}
+  end
+  object ds_client: TDataSource
+    DataSet = dm_PM.brw_Client
+    Left = 469
+    Top = 192
+  end
+  object cxStyleRepository1: TcxStyleRepository
+    Left = 501
+    Top = 192
+    PixelsPerInch = 96
+    object header_style: TcxStyle
+      AssignedValues = [svColor, svFont, svTextColor]
+      Color = clWhite
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWhite
+      Font.Height = -12
+      Font.Name = 'Segoe UI'
+      Font.Style = [fsBold]
+      TextColor = 6570553
+    end
+    object select_style: TcxStyle
+      AssignedValues = [svColor, svTextColor]
+      Color = clTeal
+      TextColor = clWhite
+    end
+  end
+end

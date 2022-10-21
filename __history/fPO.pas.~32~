@@ -1,0 +1,313 @@
+unit fPO;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, cxGraphics, cxControls, cxLookAndFeels,
+  cxLookAndFeelPainters, cxStyles, dxSkinsCore, dxSkinBlack, dxSkinBlue,
+  dxSkinBlueprint, dxSkinCaramel, dxSkinCoffee, dxSkinDarkRoom, dxSkinDarkSide,
+  dxSkinDevExpressDarkStyle, dxSkinDevExpressStyle, dxSkinFoggy,
+  dxSkinGlassOceans, dxSkinHighContrast, dxSkiniMaginary, dxSkinLilian,
+  dxSkinLiquidSky, dxSkinLondonLiquidSky, dxSkinMcSkin, dxSkinMetropolis,
+  dxSkinMetropolisDark, dxSkinMoneyTwins, dxSkinOffice2007Black,
+  dxSkinOffice2007Blue, dxSkinOffice2007Green, dxSkinOffice2007Pink,
+  dxSkinOffice2007Silver, dxSkinOffice2010Black, dxSkinOffice2010Blue,
+  dxSkinOffice2010Silver, dxSkinOffice2013DarkGray, dxSkinOffice2013LightGray,
+  dxSkinOffice2013White, dxSkinOffice2016Colorful, dxSkinOffice2016Dark,
+  dxSkinPumpkin, dxSkinSeven, dxSkinSevenClassic, dxSkinSharp, dxSkinSharpPlus,
+  dxSkinSilver, dxSkinSpringTime, dxSkinStardust, dxSkinSummer2008,
+  dxSkinTheAsphaltWorld, dxSkinsDefaultPainters, dxSkinValentine,
+  dxSkinVisualStudio2013Blue, dxSkinVisualStudio2013Dark,
+  dxSkinVisualStudio2013Light, dxSkinVS2010, dxSkinWhiteprint,
+  dxSkinXmas2008Blue, dxSkinscxPCPainter, cxCustomData, cxFilter, cxData,
+  cxDataStorage, cxEdit, cxNavigator, Data.DB, cxDBData, cxImageComboBox,
+  cxClasses, System.ImageList, Vcl.ImgList, acAlphaImageList, System.Actions,
+  Vcl.ActnList, cxGridLevel, cxGridCustomTableView, cxGridTableView,
+  cxGridDBTableView, cxGridCustomView, cxGrid, Vcl.ComCtrls, Vcl.ToolWin,
+  scControls, Vcl.StdCtrls, Vcl.ExtCtrls;
+
+type
+  Tf_PO = class(TForm)
+    Splitter1: TSplitter;
+    Panel3: TPanel;
+    Label1: TLabel;
+    Label2: TLabel;
+    Label3: TLabel;
+    cmb_filter: TComboBox;
+    date_1: TDateTimePicker;
+    date_2: TDateTimePicker;
+    txt_search: TButtonedEdit;
+    scToolBar2: TscToolBar;
+    ToolButton1: TToolButton;
+    ToolButton2: TToolButton;
+    ToolButton3: TToolButton;
+    btnPrint: TToolButton;
+    s: TcxGrid;
+    sDBTableView1: TcxGridDBTableView;
+    sLevel1: TcxGridLevel;
+    ActionList1: TActionList;
+    New: TAction;
+    Edit: TAction;
+    Delete: TAction;
+    Print: TAction;
+    sCharImageList1: TsCharImageList;
+    ds_PO: TDataSource;
+    cxStyleRepository1: TcxStyleRepository;
+    header_style: TcxStyle;
+    select_style: TcxStyle;
+    sDBTableView1ID: TcxGridDBColumn;
+    sDBTableView1REFID: TcxGridDBColumn;
+    sDBTableView1POTYPE: TcxGridDBColumn;
+    sDBTableView1VENDOR: TcxGridDBColumn;
+    sDBTableView1NOTES: TcxGridDBColumn;
+    sDBTableView1PODATE: TcxGridDBColumn;
+    sDBTableView1POSTED: TcxGridDBColumn;
+    sDBTableView1POSTEDDATETIME: TcxGridDBColumn;
+    sDBTableView1NETAMOUNT: TcxGridDBColumn;
+    procedure NewExecute(Sender: TObject);
+    procedure EditExecute(Sender: TObject);
+    procedure DeleteExecute(Sender: TObject);
+    procedure PrintExecute(Sender: TObject);
+    procedure txt_searchRightButtonClick(Sender: TObject);
+    procedure txt_searchKeyPress(Sender: TObject; var Key: Char);
+    procedure FormCreate(Sender: TObject);
+  private
+    { Private declarations }
+    procedure search;
+  public
+    { Public declarations }
+  end;
+
+var
+  f_PO: Tf_PO;
+
+implementation
+
+{$R *.dfm}
+
+uses dmPM, DateUtils, fPOTemp;
+
+procedure Tf_PO.DeleteExecute(Sender: TObject);
+begin
+  with dm_PM do
+  begin
+    if not brw_POPOSTED.Value then
+    begin
+      if MessageDlg('Continue to delete PO No. '+brw_POID.AsString +'?', mtConfirmation, [mbYes, mbNo], 0) = mrYes then
+      begin
+        qry_PO.Close;
+        qry_PO.SQL[2] := 'WHERE ID = :ID';
+        qry_PO.ParamByName('ID').Value  := brw_POID.Value;
+        qry_PO.Open();
+
+        qry_PO.Edit;
+        qry_POCANCELLED.Value         := True;
+        qry_POCANCELLEDBYID.Value     := userid;
+        qry_POCANCELLEDDATETIME.Value := Now;
+        qry_PO.Post;
+        qry_PO.ApplyUpdates();
+
+        del_PODetail.Close;
+        del_PODetail.SQL[2] := 'WHERE HEADERID = '+qry_POID.AsString;
+        del_PODetail.ExecSQL;
+
+        MessageDlg('Purchase Order has been deleted!', mtInformation, [mbOK], 0);
+        search;
+      end;
+    end
+    else
+      MessageDlg('Posted PO cannot be deleted!', mtError, [mbOK], 0);
+
+  end;
+end;
+
+procedure Tf_PO.EditExecute(Sender: TObject);
+begin
+  with dm_PM do
+  begin
+    qry_PO.Close;
+    qry_PO.SQL[2] := 'WHERE ID = :ID';
+    qry_PO.ParamByName('ID').Value  := brw_POID.Value;
+    qry_PO.Open();
+
+    qry_PO.Edit;
+
+    qry_PODetail.Close;
+    qry_PODetail.SQL[2] := 'WHERE HEADERID = :ID AND CANCELLED = FALSE';
+    qry_PODetail.ParamByName('ID').Value  := brw_POID.Value;
+    qry_PODetail.Open();
+
+    tb_PODetail.Close;
+    tb_PODetail.Open;
+
+    if qry_PODetail.RecordCount > 0 then
+    begin
+      qry_PODetail.First;
+      while not qry_PODetail.Eof do
+      begin
+        tb_PODetail.Append;
+        tb_PODetailID.Value           := qry_PODetailID.Value;
+        tb_PODetailDESCRIPTION.Value  := qry_PODetailDESCRIPTION.Value;
+        tb_PODetailUNIT.Value         := qry_PODetailUNIT.Value;
+        tb_PODetailONHANDQTY.Value    := qry_PODetailONHANDQTY.Value;
+        tb_PODetailQTY.Value          := qry_PODetailQTY.Value;
+        tb_PODetailCOST.Value         := qry_PODetailCOST.Value;
+        tb_PODetailAMOUNT.Value       := qry_PODetailAMOUNT.Value;
+        tb_PODetailOVERRIDE.Value     := qry_PODetailOVERRIDE.Value;
+        tb_PODetailITEMID.Value       := qry_PODetailITEMID.Value;
+        tb_PODetail.Post;
+        qry_PODetail.Next;
+      end;
+    end;
+
+    f_POTemp := Tf_POTemp.Create(Self);
+    if f_POTemp.ShowModal = mrOk then
+    begin
+      qry_POVENDOR.Value          := f_POTemp.cmb_vendor.Text;
+      qry_PO.Post;
+      qry_PO.ApplyUpdates();
+
+      tb_PODetail.First;
+      while not tb_PODetail.Eof do
+      begin
+        qry_PODetail.Close;
+        if tb_PODetailID.IsNull then
+        qry_PODetail.SQL[2] := 'WHERE ID = 0'
+        else
+        begin
+          qry_PODetail.SQL[2] := 'WHERE ID = :ID';
+          qry_PODetail.ParamByName('ID').Value  := tb_PODetailID.Value;
+        end;
+        qry_PODetail.Open();
+
+        if tb_PODetailID.IsNull then
+        qry_PODetail.Append
+        else
+        qry_PODetail.Edit;
+
+        qry_PODetailHEADERID.Value    := qry_POID.Value;
+        qry_PODetailITEMID.Value      := tb_PODetailITEMID.Value;
+        qry_PODetailDESCRIPTION.Value := tb_PODetailDESCRIPTION.Value;
+        qry_PODetailUNIT.Value        := tb_PODetailUNIT.Value;
+        qry_PODetailONHANDQTY.Value   := tb_PODetailONHANDQTY.Value;
+        qry_PODetailQTY.Value         := tb_PODetailQTY.Value;
+        qry_PODetailCOST.Value        := tb_PODetailCOST.Value;
+        qry_PODetailAMOUNT.Value      := tb_PODetailAMOUNT.Value;
+        qry_PODetailOVERRIDE.Value    := tb_PODetailOVERRIDE.Value;
+        qry_PODetailCANCELLED.Value   := False;
+        qry_PODetail.Post;
+        qry_PODetail.ApplyUpdates();
+        tb_PODetail.Next;
+      end;
+
+      search;
+    end;
+  end;
+end;
+
+procedure Tf_PO.FormCreate(Sender: TObject);
+begin
+  date_1.Date :=  StartOfTheMonth(Now);
+  date_2.Date := EndOfTheMonth(Now);
+  cmb_filter.ItemIndex  := 0;
+  search;
+end;
+
+procedure Tf_PO.NewExecute(Sender: TObject);
+begin
+  with dm_PM do
+  begin
+    qry_PO.Close;
+    qry_PO.SQL[2] := 'WHERE ID = 0';
+    qry_PO.Open();
+
+    qry_PO.Append;
+    qry_POCREATEDBYID.Value := userid;
+    qry_POCANCELLED.Value   := False;
+    qry_POPODATE.Value      := Now;
+    qry_POPOSTED.Value      := False;
+    qry_POPOTYPE.Value      := 'CASH';
+
+    tb_PODetail.Close;
+    tb_PODetail.Open;
+
+    f_POTemp := Tf_POTemp.Create(Self);
+    if f_POTemp.ShowModal = mrOk then
+    begin
+      qry_POVENDOR.Value          := f_POTemp.cmb_vendor.Text;
+      qry_POCREATEDDATETIME.Value := Now;
+      qry_PO.Post;
+      qry_PO.ApplyUpdates();
+
+      tb_PODetail.First;
+      while not tb_PODetail.Eof do
+      begin
+        qry_PODetail.Close;
+        qry_PODetail.SQL[2] := 'WHERE ID = 0';
+        qry_PODetail.Open();
+
+        qry_PODetail.Append;
+        qry_PODetailHEADERID.Value    := qry_POID.Value;
+        qry_PODetailITEMID.Value      := tb_PODetailITEMID.Value;
+        qry_PODetailDESCRIPTION.Value := tb_PODetailDESCRIPTION.Value;
+        qry_PODetailUNIT.Value        := tb_PODetailUNIT.Value;
+        qry_PODetailONHANDQTY.Value   := tb_PODetailONHANDQTY.Value;
+        qry_PODetailQTY.Value         := tb_PODetailQTY.Value;
+        qry_PODetailCOST.Value        := tb_PODetailCOST.Value;
+        qry_PODetailAMOUNT.Value      := tb_PODetailAMOUNT.Value;
+        qry_PODetailOVERRIDE.Value    := tb_PODetailOVERRIDE.Value;
+        qry_PODetailCANCELLED.Value   := False;
+        qry_PODetail.Post;
+        qry_PODetail.ApplyUpdates();
+        tb_PODetail.Next;
+      end;
+
+      search;
+    end;
+  end;
+end;
+
+procedure Tf_PO.PrintExecute(Sender: TObject);
+begin
+  //
+end;
+
+procedure Tf_PO.search;
+begin
+  with dm_PM do
+  begin
+    brw_PO.Close;
+    if cmb_filter.ItemIndex = 0 then
+    begin
+      brw_PO.SQL[2] := 'WHERE ID LIKE :ID AND CANCELLED = FALSE AND (PODATE BETWEEN :date1 and :date2)';
+      brw_PO.ParamByName('ID').Value  := '%'+Trim(txt_search.Text)+'%';
+    end
+    else if cmb_filter.ItemIndex = 1 then
+    begin
+      brw_PO.SQL[2] := 'WHERE REFID LIKE :ID AND CANCELLED = FALSE AND (PODATE BETWEEN :date1 and :date2)';
+      brw_PO.ParamByName('ID').Value  := '%'+Trim(txt_search.Text)+'%';
+    end
+    else
+    begin
+      brw_PO.SQL[2] := 'WHERE VENDOR LIKE :VENDOR AND CANCELLED = FALSE AND (PODATE BETWEEN :date1 and :date2)';
+      brw_PO.ParamByName('VENDOR').Value  := '%'+Trim(txt_search.Text)+'%';
+    end;
+    brw_PO.ParamByName('date1').Value   := FormatDateTime('yyyy-mm-dd', date_1.Date);
+    brw_PO.ParamByName('date2').Value   := FormatDateTime('yyyy-mm-dd', date_2.Date);
+    brw_PO.Open();
+  end;
+end;
+
+procedure Tf_PO.txt_searchKeyPress(Sender: TObject; var Key: Char);
+begin
+  if Key = #13 then
+  search;
+end;
+
+procedure Tf_PO.txt_searchRightButtonClick(Sender: TObject);
+begin
+  search;
+end;
+
+end.

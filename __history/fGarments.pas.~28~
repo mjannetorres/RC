@@ -1,0 +1,209 @@
+unit fGarments;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, cxGraphics, cxControls, cxLookAndFeels,
+  cxLookAndFeelPainters, cxStyles, dxSkinsCore, dxSkinBlack, dxSkinBlue,
+  dxSkinBlueprint, dxSkinCaramel, dxSkinCoffee, dxSkinDarkRoom, dxSkinDarkSide,
+  dxSkinDevExpressDarkStyle, dxSkinDevExpressStyle, dxSkinFoggy,
+  dxSkinGlassOceans, dxSkinHighContrast, dxSkiniMaginary, dxSkinLilian,
+  dxSkinLiquidSky, dxSkinLondonLiquidSky, dxSkinMcSkin, dxSkinMetropolis,
+  dxSkinMetropolisDark, dxSkinMoneyTwins, dxSkinOffice2007Black,
+  dxSkinOffice2007Blue, dxSkinOffice2007Green, dxSkinOffice2007Pink,
+  dxSkinOffice2007Silver, dxSkinOffice2010Black, dxSkinOffice2010Blue,
+  dxSkinOffice2010Silver, dxSkinOffice2013DarkGray, dxSkinOffice2013LightGray,
+  dxSkinOffice2013White, dxSkinOffice2016Colorful, dxSkinOffice2016Dark,
+  dxSkinPumpkin, dxSkinSeven, dxSkinSevenClassic, dxSkinSharp, dxSkinSharpPlus,
+  dxSkinSilver, dxSkinSpringTime, dxSkinStardust, dxSkinSummer2008,
+  dxSkinTheAsphaltWorld, dxSkinsDefaultPainters, dxSkinValentine,
+  dxSkinVisualStudio2013Blue, dxSkinVisualStudio2013Dark,
+  dxSkinVisualStudio2013Light, dxSkinVS2010, dxSkinWhiteprint,
+  dxSkinXmas2008Blue, dxSkinscxPCPainter, cxCustomData, cxFilter, cxData,
+  cxDataStorage, cxEdit, cxNavigator, Data.DB, cxDBData, cxClasses,
+  System.ImageList, Vcl.ImgList, acAlphaImageList, System.Actions, Vcl.ActnList,
+  cxGridLevel, cxGridCustomTableView, cxGridTableView, cxGridDBTableView,
+  cxGridCustomView, cxGrid, Vcl.ComCtrls, Vcl.ToolWin, scControls, Vcl.StdCtrls,
+  Vcl.ExtCtrls, cxGridBandedTableView, cxGridDBBandedTableView;
+
+type
+  Tf_Garments = class(TForm)
+    Splitter1: TSplitter;
+    Panel3: TPanel;
+    Label1: TLabel;
+    txt_search: TButtonedEdit;
+    scToolBar2: TscToolBar;
+    ToolButton1: TToolButton;
+    ToolButton2: TToolButton;
+    ToolButton3: TToolButton;
+    cxGrid1: TcxGrid;
+    cxGrid1DBTableView1: TcxGridDBTableView;
+    cxGrid1Level1: TcxGridLevel;
+    ActionList1: TActionList;
+    New: TAction;
+    Edit: TAction;
+    Delete: TAction;
+    sCharImageList1: TsCharImageList;
+    ds_garments: TDataSource;
+    cxStyleRepository1: TcxStyleRepository;
+    header_style: TcxStyle;
+    select_style: TcxStyle;
+    cxGrid1DBTableView1CODE: TcxGridDBColumn;
+    cxGrid1DBTableView1DESCRIPTION: TcxGridDBColumn;
+    cxGrid1DBTableView1UNIT: TcxGridDBColumn;
+    cxGrid1DBTableView1FABRIC: TcxGridDBColumn;
+    cxGrid1DBTableView1PRICE: TcxGridDBColumn;
+    cxGrid1DBTableView1EMPSHARE: TcxGridDBColumn;
+    Label2: TLabel;
+    cmb_filter: TComboBox;
+    cxGrid1DBTableView1UNITQTY: TcxGridDBColumn;
+    cxGrid1DBBandedTableView1: TcxGridDBBandedTableView;
+    cxGrid1DBBandedTableView1CODE: TcxGridDBBandedColumn;
+    cxGrid1DBBandedTableView1DESCRIPTION: TcxGridDBBandedColumn;
+    cxGrid1DBBandedTableView1UNIT: TcxGridDBBandedColumn;
+    cxGrid1DBBandedTableView1FABRIC: TcxGridDBBandedColumn;
+    cxGrid1DBBandedTableView1PRICE: TcxGridDBBandedColumn;
+    cxGrid1DBBandedTableView1ARTISTSHARE: TcxGridDBBandedColumn;
+    cxGrid1DBBandedTableView1PRINTOPSHARE: TcxGridDBBandedColumn;
+    cxGrid1DBBandedTableView1HEATPRESSSHARE: TcxGridDBBandedColumn;
+    cxGrid1DBBandedTableView1CUTTERSHARE: TcxGridDBBandedColumn;
+    cxGrid1DBBandedTableView1TAILORSHARE: TcxGridDBBandedColumn;
+    procedure FormCreate(Sender: TObject);
+    procedure NewExecute(Sender: TObject);
+    procedure EditExecute(Sender: TObject);
+    procedure DeleteExecute(Sender: TObject);
+    procedure txt_searchRightButtonClick(Sender: TObject);
+    procedure txt_searchKeyPress(Sender: TObject; var Key: Char);
+  private
+    { Private declarations }
+    procedure search;
+  public
+    { Public declarations }
+  end;
+
+var
+  f_Garments: Tf_Garments;
+
+implementation
+
+{$R *.dfm}
+
+uses dmPM, fGarmentsTemp;
+
+{ Tf_Garments }
+
+procedure Tf_Garments.DeleteExecute(Sender: TObject);
+begin
+  if MessageDlg('Do you want to delete this record?', mtConfirmation, [mbYes, mbNo], 0) = mrYes then
+  begin
+    with dm_PM do
+    begin
+      qry_garments.Close;
+      qry_garments.SQL[2] := 'WHERE ID = :ID';
+      qry_garments.ParamByName('ID').Value  := brw_GarmentDescID.Value;
+      qry_garments.Open();
+
+      qry_garments.Edit;
+      qry_garmentsCANCELLED.Value       := True;
+      qry_garmentsDELETEDBYID.Value     := userid;
+      qry_garmentsDELETEDDATETIME.Value := Now;
+      qry_garments.Post;
+      qry_garments.ApplyUpdates();
+
+      search;
+    end;
+  end;
+end;
+
+procedure Tf_Garments.EditExecute(Sender: TObject);
+begin
+  with dm_PM do
+  begin
+    qry_garments.Close;
+    qry_garments.SQL[2] := 'WHERE ID = :ID';
+    qry_garments.ParamByName('ID').Value  := brw_GarmentDescID.Value;
+    qry_garments.Open();
+
+    qry_garments.Edit;
+
+    f_GarmentsTemp  := Tf_GarmentsTemp.Create(Self);
+    f_GarmentsTemp.Caption  := qry_garmentsDESCRIPTION.AsString;
+    if f_GarmentsTemp.ShowModal =  mrOk then
+    begin
+      qry_garments.Post;
+      qry_garments.ApplyUpdates();
+
+      search;
+    end;
+  end;
+end;
+
+procedure Tf_Garments.FormCreate(Sender: TObject);
+begin
+  cmb_filter.ItemIndex := 0;
+  search;
+end;
+
+procedure Tf_Garments.NewExecute(Sender: TObject);
+begin
+  with dm_PM do
+  begin
+    qry_garments.Close;
+    qry_garments.SQL[2] := 'WHERE ID = 0';
+    qry_garments.Open();
+
+    qry_garments.Append;
+    qry_garmentsUNITQTY.Value         := 1;
+    qry_garmentsCANCELLED.Value       := False;
+    qry_garmentsCREATEDBYID.Value     := userid;
+    qry_garmentsCREATEDDATETIME.Value := Now;
+
+    f_GarmentsTemp  := Tf_GarmentsTemp.Create(Self);
+    f_GarmentsTemp.Caption  := 'New Garments';
+    if f_GarmentsTemp.ShowModal =  mrOk then
+    begin
+      qry_garments.Post;
+      qry_garments.ApplyUpdates();
+
+      search;
+    end;
+  end;
+end;
+
+procedure Tf_Garments.search;
+begin
+  with dm_PM do
+  begin
+    brw_GarmentDesc.Close;
+    if cmb_filter.ItemIndex = 0 then
+    begin
+      brw_GarmentDesc.SQL[3]  := 'WHERE GAR.CODE LIKE :CODE AND GAR.CANCELLED = FALSE';
+      brw_GarmentDesc.ParamByName('CODE').Value := '%'+Trim(txt_search.Text)+'%';
+    end
+    else if cmb_filter.ItemIndex = 1 then
+    begin
+      brw_GarmentDesc.SQL[3]  := 'WHERE GAR.DESCRIPTION LIKE :DESCRIPTION AND GAR.CANCELLED = FALSE';
+      brw_GarmentDesc.ParamByName('DESCRIPTION').Value := '%'+Trim(txt_search.Text)+'%';
+    end
+    else
+    begin
+      brw_GarmentDesc.SQL[3]  := 'WHERE FAB.DESCRIPTION LIKE :FABRIC AND GAR.CANCELLED = FALSE';
+      brw_GarmentDesc.ParamByName('FABRIC').Value := '%'+Trim(txt_search.Text)+'%';
+    end;
+    brw_GarmentDesc.Open();
+  end;
+end;
+
+procedure Tf_Garments.txt_searchKeyPress(Sender: TObject; var Key: Char);
+begin
+  if Key = #13 then
+  search;
+end;
+
+procedure Tf_Garments.txt_searchRightButtonClick(Sender: TObject);
+begin
+  search;
+end;
+
+end.

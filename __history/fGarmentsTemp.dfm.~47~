@@ -1,0 +1,456 @@
+object f_GarmentsTemp: Tf_GarmentsTemp
+  Left = 0
+  Top = 0
+  BorderStyle = bsDialog
+  Caption = 'Garments'
+  ClientHeight = 285
+  ClientWidth = 455
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  Position = poMainFormCenter
+  OnShow = FormShow
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Panel1: TPanel
+    Left = 0
+    Top = 248
+    Width = 455
+    Height = 37
+    Align = alBottom
+    BevelOuter = bvNone
+    TabOrder = 0
+    ExplicitTop = 223
+    DesignSize = (
+      455
+      37)
+    object btnSave: TButton
+      Left = 276
+      Top = 6
+      Width = 75
+      Height = 25
+      Anchors = [akTop, akRight]
+      Caption = 'OK'
+      Default = True
+      ModalResult = 1
+      TabOrder = 0
+    end
+    object Button2: TButton
+      Left = 363
+      Top = 6
+      Width = 75
+      Height = 25
+      Anchors = [akTop, akRight]
+      Cancel = True
+      Caption = 'Cancel'
+      ModalResult = 2
+      TabOrder = 1
+    end
+  end
+  object Panel2: TPanel
+    Left = 0
+    Top = 0
+    Width = 455
+    Height = 248
+    Align = alClient
+    BevelOuter = bvNone
+    Color = clTeal
+    ParentBackground = False
+    TabOrder = 1
+    StyleElements = []
+    ExplicitHeight = 223
+    object Label1: TLabel
+      Left = 13
+      Top = 15
+      Width = 31
+      Height = 17
+      Caption = 'Code'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWhite
+      Font.Height = -13
+      Font.Name = 'Segoe UI Semibold'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object Label2: TLabel
+      Left = 220
+      Top = 13
+      Width = 36
+      Height = 17
+      Caption = 'Fabric'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWhite
+      Font.Height = -13
+      Font.Name = 'Segoe UI Semibold'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object Label3: TLabel
+      Left = 13
+      Top = 42
+      Width = 63
+      Height = 17
+      Caption = 'Item Label'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWhite
+      Font.Height = -13
+      Font.Name = 'Segoe UI Semibold'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object Label4: TLabel
+      Left = 13
+      Top = 97
+      Width = 25
+      Height = 17
+      Caption = 'Unit'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWhite
+      Font.Height = -13
+      Font.Name = 'Segoe UI Semibold'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object Label5: TLabel
+      Left = 203
+      Top = 95
+      Width = 53
+      Height = 17
+      Caption = 'Unit QTY'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWhite
+      Font.Height = -13
+      Font.Name = 'Segoe UI Semibold'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object Label6: TLabel
+      Left = 13
+      Top = 69
+      Width = 68
+      Height = 17
+      Caption = 'Description'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWhite
+      Font.Height = -13
+      Font.Name = 'Segoe UI Semibold'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object txt_code: TcxDBTextEdit
+      Left = 100
+      Top = 13
+      DataBinding.DataField = 'CODE'
+      DataBinding.DataSource = ds_garments
+      ParentFont = False
+      ParentShowHint = False
+      Properties.CharCase = ecUpperCase
+      ShowHint = False
+      Style.BorderColor = 1184274
+      Style.BorderStyle = ebsThick
+      Style.Color = 6570553
+      Style.Font.Charset = ANSI_CHARSET
+      Style.Font.Color = clWhite
+      Style.Font.Height = -11
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.LookAndFeel.NativeStyle = False
+      Style.IsFontAssigned = True
+      StyleDisabled.LookAndFeel.NativeStyle = False
+      StyleFocused.LookAndFeel.NativeStyle = False
+      StyleHot.LookAndFeel.NativeStyle = False
+      TabOrder = 0
+      OnExit = txt_codeExit
+      Width = 97
+    end
+    object cmb_fabric: TcxDBLookupComboBox
+      Left = 262
+      Top = 13
+      DataBinding.DataField = 'FABRICID'
+      DataBinding.DataSource = ds_garments
+      ParentFont = False
+      Properties.CharCase = ecUpperCase
+      Properties.ImmediatePost = True
+      Properties.KeyFieldNames = 'ID'
+      Properties.ListColumns = <
+        item
+          FieldName = 'DESCRIPTION'
+        end>
+      Properties.ListOptions.ShowHeader = False
+      Properties.ListSource = ds_fabric
+      Style.BorderColor = 1184274
+      Style.BorderStyle = ebsThick
+      Style.Color = 6570553
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWhite
+      Style.Font.Height = -11
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.LookAndFeel.NativeStyle = False
+      Style.LookAndFeel.SkinName = 'DevExpressDarkStyle'
+      Style.ButtonStyle = btsUltraFlat
+      Style.ButtonTransparency = ebtAlways
+      Style.IsFontAssigned = True
+      StyleDisabled.LookAndFeel.NativeStyle = False
+      StyleDisabled.LookAndFeel.SkinName = 'DevExpressDarkStyle'
+      StyleFocused.LookAndFeel.NativeStyle = False
+      StyleFocused.LookAndFeel.SkinName = 'DevExpressDarkStyle'
+      StyleHot.LookAndFeel.NativeStyle = False
+      StyleHot.LookAndFeel.SkinName = 'DevExpressDarkStyle'
+      TabOrder = 1
+      OnExit = txt_codeExit
+      Width = 163
+    end
+    object txt_specs: TcxDBTextEdit
+      Left = 100
+      Top = 40
+      DataBinding.DataField = 'SPECIFICATIONS'
+      DataBinding.DataSource = ds_garments
+      ParentFont = False
+      ParentShowHint = False
+      Properties.CharCase = ecUpperCase
+      ShowHint = False
+      Style.BorderColor = 1184274
+      Style.BorderStyle = ebsThick
+      Style.Color = 6570553
+      Style.Font.Charset = ANSI_CHARSET
+      Style.Font.Color = clWhite
+      Style.Font.Height = -11
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.LookAndFeel.NativeStyle = False
+      Style.IsFontAssigned = True
+      StyleDisabled.LookAndFeel.NativeStyle = False
+      StyleFocused.LookAndFeel.NativeStyle = False
+      StyleHot.LookAndFeel.NativeStyle = False
+      TabOrder = 2
+      OnExit = txt_codeExit
+      Width = 325
+    end
+    object cmb_unit: TcxDBLookupComboBox
+      Left = 100
+      Top = 95
+      DataBinding.DataField = 'UNIT'
+      DataBinding.DataSource = ds_garments
+      ParentFont = False
+      Properties.CharCase = ecUpperCase
+      Properties.ImmediatePost = True
+      Properties.KeyFieldNames = 'DESCRIPTION'
+      Properties.ListColumns = <
+        item
+          FieldName = 'DESCRIPTION'
+        end>
+      Properties.ListOptions.ShowHeader = False
+      Properties.ListSource = ds_unit
+      Properties.OnCloseUp = cmb_unitPropertiesCloseUp
+      Style.BorderColor = 1184274
+      Style.BorderStyle = ebsThick
+      Style.Color = 6570553
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWhite
+      Style.Font.Height = -11
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.LookAndFeel.NativeStyle = False
+      Style.LookAndFeel.SkinName = 'DevExpressDarkStyle'
+      Style.ButtonStyle = btsUltraFlat
+      Style.ButtonTransparency = ebtAlways
+      Style.IsFontAssigned = True
+      StyleDisabled.LookAndFeel.NativeStyle = False
+      StyleDisabled.LookAndFeel.SkinName = 'DevExpressDarkStyle'
+      StyleFocused.LookAndFeel.NativeStyle = False
+      StyleFocused.LookAndFeel.SkinName = 'DevExpressDarkStyle'
+      StyleHot.LookAndFeel.NativeStyle = False
+      StyleHot.LookAndFeel.SkinName = 'DevExpressDarkStyle'
+      TabOrder = 4
+      OnExit = txt_codeExit
+      Width = 97
+    end
+    object cxGroupBox1: TcxGroupBox
+      Left = 100
+      Top = 130
+      Alignment = alTopCenter
+      Caption = 'PRICING'
+      ParentBackground = False
+      ParentColor = False
+      ParentFont = False
+      Style.BorderColor = clWhite
+      Style.BorderStyle = ebsThick
+      Style.Color = 6570553
+      Style.Font.Charset = ANSI_CHARSET
+      Style.Font.Color = clWhite
+      Style.Font.Height = -13
+      Style.Font.Name = 'Segoe UI Semibold'
+      Style.Font.Style = [fsBold]
+      Style.LookAndFeel.Kind = lfUltraFlat
+      Style.LookAndFeel.NativeStyle = False
+      Style.LookAndFeel.SkinName = ''
+      Style.IsFontAssigned = True
+      StyleDisabled.LookAndFeel.Kind = lfUltraFlat
+      StyleDisabled.LookAndFeel.NativeStyle = False
+      StyleDisabled.LookAndFeel.SkinName = ''
+      StyleFocused.LookAndFeel.Kind = lfUltraFlat
+      StyleFocused.LookAndFeel.NativeStyle = False
+      StyleFocused.LookAndFeel.SkinName = ''
+      StyleHot.LookAndFeel.Kind = lfUltraFlat
+      StyleHot.LookAndFeel.NativeStyle = False
+      StyleHot.LookAndFeel.SkinName = ''
+      TabOrder = 6
+      Transparent = True
+      Height = 100
+      Width = 325
+      object Label12: TLabel
+        Left = 69
+        Top = 29
+        Width = 35
+        Height = 17
+        Alignment = taRightJustify
+        Caption = 'PRICE'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWhite
+        Font.Height = -13
+        Font.Name = 'Segoe UI Semibold'
+        Font.Style = [fsBold]
+        ParentFont = False
+      end
+      object Label14: TLabel
+        Left = 31
+        Top = 55
+        Width = 73
+        Height = 17
+        Alignment = taRightJustify
+        Caption = 'EMP. SHARE'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWhite
+        Font.Height = -13
+        Font.Name = 'Segoe UI Semibold'
+        Font.Style = [fsBold]
+        ParentFont = False
+      end
+      object txt_empshare: TcxDBTextEdit
+        Left = 112
+        Top = 54
+        DataBinding.DataField = 'EMPSHARE'
+        DataBinding.DataSource = ds_garments
+        ParentFont = False
+        ParentShowHint = False
+        Properties.CharCase = ecUpperCase
+        ShowHint = False
+        Style.BorderColor = 1184274
+        Style.BorderStyle = ebsThick
+        Style.Color = 6570553
+        Style.Font.Charset = ANSI_CHARSET
+        Style.Font.Color = clWhite
+        Style.Font.Height = -11
+        Style.Font.Name = 'Tahoma'
+        Style.Font.Style = []
+        Style.LookAndFeel.NativeStyle = False
+        Style.IsFontAssigned = True
+        StyleDisabled.LookAndFeel.NativeStyle = False
+        StyleFocused.LookAndFeel.NativeStyle = False
+        StyleHot.LookAndFeel.NativeStyle = False
+        TabOrder = 1
+        OnExit = txt_codeExit
+        Width = 96
+      end
+      object txt_price: TcxDBTextEdit
+        Left = 112
+        Top = 27
+        DataBinding.DataField = 'PRICE'
+        DataBinding.DataSource = ds_garments
+        ParentFont = False
+        ParentShowHint = False
+        Properties.CharCase = ecUpperCase
+        ShowHint = False
+        Style.BorderColor = 1184274
+        Style.BorderStyle = ebsThick
+        Style.Color = 6570553
+        Style.Font.Charset = ANSI_CHARSET
+        Style.Font.Color = clWhite
+        Style.Font.Height = -11
+        Style.Font.Name = 'Tahoma'
+        Style.Font.Style = []
+        Style.LookAndFeel.NativeStyle = False
+        Style.IsFontAssigned = True
+        StyleDisabled.LookAndFeel.NativeStyle = False
+        StyleFocused.LookAndFeel.NativeStyle = False
+        StyleHot.LookAndFeel.NativeStyle = False
+        TabOrder = 0
+        OnExit = txt_codeExit
+        Width = 97
+      end
+    end
+    object txt_unitqty: TcxDBSpinEdit
+      Left = 262
+      Top = 95
+      DataBinding.DataField = 'UNITQTY'
+      DataBinding.DataSource = ds_garments
+      ParentFont = False
+      Properties.ImmediatePost = True
+      Properties.OnValidate = txt_unitqtyPropertiesValidate
+      Style.BorderColor = 1184274
+      Style.BorderStyle = ebsThick
+      Style.Color = 6570553
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWhite
+      Style.Font.Height = -11
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.LookAndFeel.NativeStyle = False
+      Style.ButtonStyle = btsUltraFlat
+      Style.ButtonTransparency = ebtAlways
+      Style.IsFontAssigned = True
+      StyleDisabled.LookAndFeel.NativeStyle = False
+      StyleFocused.LookAndFeel.NativeStyle = False
+      StyleHot.LookAndFeel.NativeStyle = False
+      TabOrder = 5
+      Width = 83
+    end
+    object txt_desc: TcxDBTextEdit
+      Left = 100
+      Top = 67
+      DataBinding.DataField = 'DESCRIPTION'
+      DataBinding.DataSource = ds_garments
+      ParentFont = False
+      ParentShowHint = False
+      Properties.CharCase = ecUpperCase
+      Properties.ReadOnly = True
+      ShowHint = False
+      Style.BorderColor = 1184274
+      Style.BorderStyle = ebsThick
+      Style.Color = 6570553
+      Style.Font.Charset = ANSI_CHARSET
+      Style.Font.Color = clWhite
+      Style.Font.Height = -11
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.LookAndFeel.NativeStyle = False
+      Style.IsFontAssigned = True
+      StyleDisabled.LookAndFeel.NativeStyle = False
+      StyleFocused.LookAndFeel.NativeStyle = False
+      StyleHot.LookAndFeel.NativeStyle = False
+      TabOrder = 3
+      OnExit = txt_codeExit
+      Width = 325
+    end
+  end
+  object ds_garments: TDataSource
+    DataSet = dm_PM.qry_garments
+    Left = 32
+    Top = 136
+  end
+  object ds_fabric: TDataSource
+    DataSet = dm_PM.brw_Fabrics
+    Left = 32
+    Top = 184
+  end
+  object ds_unit: TDataSource
+    DataSet = dm_PM.brw_Unit
+    Left = 96
+    Top = 208
+  end
+end

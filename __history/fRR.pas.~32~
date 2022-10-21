@@ -1,0 +1,354 @@
+unit fRR;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, cxGraphics, cxControls, cxLookAndFeels,
+  cxLookAndFeelPainters, cxStyles, dxSkinsCore, dxSkinBlack, dxSkinBlue,
+  dxSkinBlueprint, dxSkinCaramel, dxSkinCoffee, dxSkinDarkRoom, dxSkinDarkSide,
+  dxSkinDevExpressDarkStyle, dxSkinDevExpressStyle, dxSkinFoggy,
+  dxSkinGlassOceans, dxSkinHighContrast, dxSkiniMaginary, dxSkinLilian,
+  dxSkinLiquidSky, dxSkinLondonLiquidSky, dxSkinMcSkin, dxSkinMetropolis,
+  dxSkinMetropolisDark, dxSkinMoneyTwins, dxSkinOffice2007Black,
+  dxSkinOffice2007Blue, dxSkinOffice2007Green, dxSkinOffice2007Pink,
+  dxSkinOffice2007Silver, dxSkinOffice2010Black, dxSkinOffice2010Blue,
+  dxSkinOffice2010Silver, dxSkinOffice2013DarkGray, dxSkinOffice2013LightGray,
+  dxSkinOffice2013White, dxSkinOffice2016Colorful, dxSkinOffice2016Dark,
+  dxSkinPumpkin, dxSkinSeven, dxSkinSevenClassic, dxSkinSharp, dxSkinSharpPlus,
+  dxSkinSilver, dxSkinSpringTime, dxSkinStardust, dxSkinSummer2008,
+  dxSkinTheAsphaltWorld, dxSkinsDefaultPainters, dxSkinValentine,
+  dxSkinVisualStudio2013Blue, dxSkinVisualStudio2013Dark,
+  dxSkinVisualStudio2013Light, dxSkinVS2010, dxSkinWhiteprint,
+  dxSkinXmas2008Blue, dxSkinscxPCPainter, cxCustomData, cxFilter, cxData,
+  cxDataStorage, cxEdit, cxNavigator, Data.DB, cxDBData, cxClasses,
+  System.ImageList, Vcl.ImgList, acAlphaImageList, System.Actions, Vcl.ActnList,
+  cxGridLevel, cxGridCustomTableView, cxGridTableView, cxGridDBTableView,
+  cxGridCustomView, cxGrid, Vcl.ComCtrls, Vcl.ToolWin, scControls, Vcl.StdCtrls,
+  Vcl.ExtCtrls;
+
+type
+  Tf_RR = class(TForm)
+    Splitter1: TSplitter;
+    Panel3: TPanel;
+    Label1: TLabel;
+    Label2: TLabel;
+    Label3: TLabel;
+    cmb_filter: TComboBox;
+    date_1: TDateTimePicker;
+    date_2: TDateTimePicker;
+    txt_search: TButtonedEdit;
+    scToolBar2: TscToolBar;
+    ToolButton1: TToolButton;
+    ToolButton2: TToolButton;
+    ToolButton3: TToolButton;
+    btnPrint: TToolButton;
+    s: TcxGrid;
+    sDBTableView1: TcxGridDBTableView;
+    sLevel1: TcxGridLevel;
+    ActionList1: TActionList;
+    New: TAction;
+    Edit: TAction;
+    Delete: TAction;
+    Print: TAction;
+    sCharImageList1: TsCharImageList;
+    ds_RR: TDataSource;
+    cxStyleRepository1: TcxStyleRepository;
+    header_style: TcxStyle;
+    select_style: TcxStyle;
+    sDBTableView1ID: TcxGridDBColumn;
+    sDBTableView1POID: TcxGridDBColumn;
+    sDBTableView1POTYPE: TcxGridDBColumn;
+    sDBTableView1VENDOR: TcxGridDBColumn;
+    sDBTableView1NOTES: TcxGridDBColumn;
+    sDBTableView1IRDATE: TcxGridDBColumn;
+    sDBTableView1POSTED: TcxGridDBColumn;
+    sDBTableView1POSTEDDATETIME: TcxGridDBColumn;
+    sDBTableView1NETAMNT: TcxGridDBColumn;
+    sDBTableView1INVOICE: TcxGridDBColumn;
+    procedure NewExecute(Sender: TObject);
+    procedure EditExecute(Sender: TObject);
+    procedure DeleteExecute(Sender: TObject);
+    procedure PrintExecute(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure txt_searchRightButtonClick(Sender: TObject);
+    procedure txt_searchKeyPress(Sender: TObject; var Key: Char);
+  private
+    { Private declarations }
+    procedure search;
+  public
+    { Public declarations }
+  end;
+
+var
+  f_RR: Tf_RR;
+
+implementation
+
+{$R *.dfm}
+
+uses dmPM, DateUtils, fRRTemp;
+
+procedure Tf_RR.DeleteExecute(Sender: TObject);
+begin
+  with dm_PM do
+  begin
+    if not brw_RRPOSTED.Value then
+    begin
+      if MessageDlg('Continue to delete PO No. '+brw_RRID.AsString +'?', mtConfirmation, [mbYes, mbNo], 0) = mrYes then
+      begin
+        qry_RR.Close;
+        qry_RR.SQL[2] := 'WHERE ID = :ID';
+        qry_RR.ParamByName('ID').Value  := brw_RRID.Value;
+        qry_RR.Open();
+
+        qry_RR.Edit;
+        qry_RRCANCELLED.Value         := True;
+        qry_RRCANCELLEDBYID.Value     := userid;
+        qry_RRCANCELLEDDATETIME.Value := Now;
+        qry_RR.Post;
+        qry_RR.ApplyUpdates();
+
+        del_RRDetail.Close;
+        del_RRDetail.SQL[2] := 'WHERE HEADERID = '+qry_RRID.AsString;
+        del_RRDetail.ExecSQL;
+
+        MessageDlg('Receiving Report has been deleted!', mtInformation, [mbOK], 0);
+        search;
+      end;
+    end
+    else
+      MessageDlg('Posted RR cannot be deleted!', mtError, [mbOK], 0);
+  end;
+end;
+
+procedure Tf_RR.EditExecute(Sender: TObject);
+begin
+  with dm_PM do
+  begin
+    qry_RR.Close;
+    qry_RR.SQL[2] := 'WHERE ID = :ID';
+    qry_RR.ParamByName('ID').Value  := brw_RRID.Value;
+    qry_RR.Open();
+
+    qry_RR.Edit;
+
+    qry_RRDetail.Close;
+    qry_RRDetail.SQL[2] := 'WHERE HEADERID = :ID AND CANCELLED = FALSE';
+    qry_RRDetail.ParamByName('ID').Value  := brw_RRID.Value;
+    qry_RRDetail.Open();
+
+    tb_RRDetail.Close;
+    tb_RRDetail.Open;
+
+    if qry_RRDetail.RecordCount > 0 then
+    begin
+      qry_RRDetail.First;
+      while not qry_RRDetail.Eof do
+      begin
+        tb_RRDetail.Append;
+        tb_RRDetailID.Value           := qry_RRDetailID.Value;
+        tb_RRDetailDESCRIPTION.Value  := qry_RRDetailDESCRIPTION.Value;
+        tb_RRDetailUNIT.Value         := qry_RRDetailUNIT.Value;
+        tb_RRDetailONHANDQTY.Value    := qry_RRDetailONHANDQTY.Value;
+        tb_RRDetailQTY.Value          := qry_RRDetailQTY.Value;
+        tb_RRDetailCOST.Value         := qry_RRDetailCOST.Value;
+        tb_RRDetailAMOUNT.Value       := qry_RRDetailAMOUNT.Value;
+        tb_RRDetailOVERRIDE.Value     := qry_RRDetailOVERRIDE.Value;
+        tb_RRDetailITEMID.Value       := qry_RRDetailITEMID.Value;
+        tb_RRDetail.Post;
+        qry_RRDetail.Next;
+      end;
+    end;
+
+    f_RRTemp := Tf_RRTemp.Create(Self);
+    if f_RRTemp.ShowModal = mrOk then
+    begin
+      qry_RRVENDOR.Value          := f_RRTemp.cmb_vendor.Text;
+      qry_RR.Post;
+      qry_RR.ApplyUpdates();
+
+      tb_RRDetail.First;
+      while not tb_RRDetail.Eof do
+      begin
+        qry_RRDetail.Close;
+        if tb_RRDetailID.IsNull then
+        qry_RRDetail.SQL[2] := 'WHERE ID = 0'
+        else
+        begin
+          qry_RRDetail.SQL[2] := 'WHERE ID = :ID';
+          qry_RRDetail.ParamByName('ID').Value  := tb_RRDetailID.Value;
+        end;
+        qry_RRDetail.Open();
+
+        if tb_RRDetailID.IsNull then
+        qry_RRDetail.Append
+        else
+        qry_RRDetail.Edit;
+
+        qry_RRDetailHEADERID.Value    := qry_RRID.Value;
+        qry_RRDetailITEMID.Value      := tb_RRDetailITEMID.Value;
+        qry_RRDetailDESCRIPTION.Value := tb_RRDetailDESCRIPTION.Value;
+        qry_RRDetailUNIT.Value        := tb_RRDetailUNIT.Value;
+        qry_RRDetailONHANDQTY.Value   := tb_RRDetailONHANDQTY.Value;
+        qry_RRDetailQTY.Value         := tb_RRDetailQTY.Value;
+        qry_RRDetailCOST.Value        := tb_RRDetailCOST.Value;
+        qry_RRDetailAMOUNT.Value      := tb_RRDetailAMOUNT.Value;
+        qry_RRDetailOVERRIDE.Value    := tb_RRDetailOVERRIDE.Value;
+        qry_RRDetailCANCELLED.Value   := False;
+        qry_RRDetail.Post;
+        qry_RRDetail.ApplyUpdates();
+        tb_RRDetail.Next;
+      end;
+
+      search;
+    end;
+  end;
+end;
+
+procedure Tf_RR.FormCreate(Sender: TObject);
+begin
+  date_1.Date := StartOfTheMonth(Now);
+  date_2.Date := EndOfTheMonth(Now);
+  cmb_filter.ItemIndex := 0;
+  search;
+end;
+
+procedure Tf_RR.NewExecute(Sender: TObject);
+begin
+  with dm_PM do
+  begin
+    qry_RR.Close;
+    qry_RR.SQL[2] := 'WHERE ID = 0';
+    qry_RR.Open();
+
+    qry_RR.Append;
+    qry_RRCANCELLED.Value := False;
+    qry_RRIRDATE.Value    := Now;
+    qry_RRPOSTED.Value    := False;
+    qry_RRSOURCE.Value    := 'CPR';
+    qry_RRCREATEDBYID.Value       := userid;
+
+    tb_RRDetail.Close;
+    tb_RRDetail.Open;
+
+    f_RRTemp := Tf_RRTemp.Create(Self);
+    if f_RRTemp.ShowModal = mrOk then
+    begin
+      qry_RRVENDOR.Value            := f_RRTemp.cmb_vendor.Text;
+      qry_RRCREATEDDATETIME.Value   := Now;
+      qry_RR.Post;
+      qry_RR.ApplyUpdates();
+
+      tb_RRDetail.First;
+      while not tb_RRDetail.Eof do
+      begin
+        qry_RRDetail.Close;
+        qry_RRDetail.SQL[2] := 'WHERE ID = 0';
+        qry_RRDetail.Open();
+
+        qry_RRDetail.Append;
+        qry_RRDetailHEADERID.Value    := qry_RRID.Value;
+        qry_RRDetailITEMID.Value      := tb_RRDetailITEMID.Value;
+        qry_RRDetailDESCRIPTION.Value := tb_RRDetailDESCRIPTION.Value;
+        qry_RRDetailUNIT.Value        := tb_RRDetailUNIT.Value;
+        qry_RRDetailONHANDQTY.Value   := tb_RRDetailONHANDQTY.Value;
+        qry_RRDetailQTY.Value         := tb_RRDetailQTY.Value;
+        qry_RRDetailCOST.Value        := tb_RRDetailCOST.Value;
+        qry_RRDetailAMOUNT.Value      := tb_RRDetailAMOUNT.Value;
+        qry_RRDetailCANCELLED.Value   := False;
+        qry_RRDetail.Post;
+        qry_RRDetail.ApplyUpdates();
+
+        tb_RRDetail.Next;
+      end;
+
+      search;
+
+    end;
+
+  end;
+end;
+
+procedure Tf_RR.PrintExecute(Sender: TObject);
+begin
+  with dm_PM do
+  begin
+    qry_RR.Close;
+    qry_RR.SQL[2] := 'WHERE ID = :ID';
+    qry_RR.ParamByName('ID').Value  := brw_RRID.Value;
+    qry_RR.Open();
+
+    qry_RR.Edit;
+
+    qry_RRDetail.Close;
+    qry_RRDetail.SQL[2] := 'WHERE HEADERID = :ID AND CANCELLED = FALSE';
+    qry_RRDetail.ParamByName('ID').Value  := brw_RRID.Value;
+    qry_RRDetail.Open();
+
+    tb_RRDetail.Close;
+    tb_RRDetail.Open;
+
+    if qry_RRDetail.RecordCount > 0 then
+    begin
+      qry_RRDetail.First;
+      while not qry_RRDetail.Eof do
+      begin
+        tb_RRDetail.Append;
+        tb_RRDetailID.Value           := qry_RRDetailID.Value;
+        tb_RRDetailDESCRIPTION.Value  := qry_RRDetailDESCRIPTION.Value;
+        tb_RRDetailUNIT.Value         := qry_RRDetailUNIT.Value;
+        tb_RRDetailONHANDQTY.Value    := qry_RRDetailONHANDQTY.Value;
+        tb_RRDetailQTY.Value          := qry_RRDetailQTY.Value;
+        tb_RRDetailCOST.Value         := qry_RRDetailCOST.Value;
+        tb_RRDetailAMOUNT.Value       := qry_RRDetailAMOUNT.Value;
+        tb_RRDetailOVERRIDE.Value     := qry_RRDetailOVERRIDE.Value;
+        tb_RRDetailITEMID.Value       := qry_RRDetailITEMID.Value;
+        tb_RRDetail.Post;
+        qry_RRDetail.Next;
+      end;
+    end;
+
+    f_RRTemp := Tf_RRTemp.Create(Self);
+    f_RRTemp.PrintExecute(nil);
+  end;
+end;
+
+procedure Tf_RR.search;
+begin
+  with dm_PM do
+  begin
+    brw_RR.Close;
+    if cmb_filter.ItemIndex = 0 then
+    begin
+      brw_RR.SQL[2] := 'WHERE ID LIKE :ID AND CANCELLED = FALSE AND (IRDATE BETWEEN :date1 and :date2)';
+      brw_RR.ParamByName('ID').Value  := '%'+Trim(txt_search.Text)+'%';
+    end
+    else if cmb_filter.ItemIndex = 1 then
+    begin
+      brw_RR.SQL[2] := 'WHERE REFID LIKE :ID AND CANCELLED = FALSE AND (IRDATE BETWEEN :date1 and :date2)';
+      brw_RR.ParamByName('ID').Value  := '%'+Trim(txt_search.Text)+'%';
+    end
+    else
+    begin
+      brw_RR.SQL[2] := 'WHERE VENDOR LIKE :VENDOR AND CANCELLED = FALSE AND (IRDATE BETWEEN :date1 and :date2)';
+      brw_RR.ParamByName('VENDOR').Value  := '%'+Trim(txt_search.Text)+'%';
+    end;
+    brw_RR.ParamByName('date1').Value   := FormatDateTime('yyyy-mm-dd', date_1.Date);
+    brw_RR.ParamByName('date2').Value   := FormatDateTime('yyyy-mm-dd', date_2.Date);
+    brw_RR.Open();
+  end;
+end;
+
+procedure Tf_RR.txt_searchKeyPress(Sender: TObject; var Key: Char);
+begin
+  if Key = #13 then
+  search;
+end;
+
+procedure Tf_RR.txt_searchRightButtonClick(Sender: TObject);
+begin
+  search;
+end;
+
+end.

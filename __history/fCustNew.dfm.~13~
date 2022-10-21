@@ -1,0 +1,197 @@
+object f_CustNew: Tf_CustNew
+  Left = 0
+  Top = 0
+  BorderStyle = bsDialog
+  Caption = 'New Customer'
+  ClientHeight = 157
+  ClientWidth = 376
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  Position = poMainFormCenter
+  OnShow = FormShow
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Panel1: TPanel
+    Left = 0
+    Top = 120
+    Width = 376
+    Height = 37
+    Align = alBottom
+    BevelOuter = bvNone
+    TabOrder = 0
+    ExplicitTop = 116
+    DesignSize = (
+      376
+      37)
+    object Button1: TButton
+      Left = 199
+      Top = 6
+      Width = 75
+      Height = 25
+      Anchors = [akTop, akRight]
+      Caption = 'OK'
+      Default = True
+      ModalResult = 1
+      TabOrder = 0
+    end
+    object Button2: TButton
+      Left = 286
+      Top = 6
+      Width = 75
+      Height = 25
+      Anchors = [akTop, akRight]
+      Cancel = True
+      Caption = 'Cancel'
+      ModalResult = 2
+      TabOrder = 1
+    end
+  end
+  object Panel2: TPanel
+    Left = 0
+    Top = 0
+    Width = 376
+    Height = 49
+    Align = alTop
+    BevelOuter = bvNone
+    Color = clTeal
+    ParentBackground = False
+    TabOrder = 1
+    ExplicitWidth = 455
+    object Label3: TLabel
+      Left = 0
+      Top = 0
+      Width = 145
+      Height = 49
+      Align = alLeft
+      Caption = '    Select Customer :'
+      Color = clWhite
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWhite
+      Font.Height = -13
+      Font.Name = 'Segoe UI'
+      Font.Style = [fsBold]
+      ParentColor = False
+      ParentFont = False
+      Layout = tlCenter
+      StyleElements = []
+    end
+    object rad_cash: TcxRadioButton
+      Left = 145
+      Top = 0
+      Width = 81
+      Height = 49
+      Align = alLeft
+      Caption = 'Cash Only'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWhite
+      Font.Height = -12
+      Font.Name = 'Segoe UI Semibold'
+      Font.Style = [fsBold]
+      ParentFont = False
+      TabOrder = 0
+      StyleElements = []
+      OnClick = rad_cashClick
+      LookAndFeel.NativeStyle = False
+      Transparent = True
+      ExplicitLeft = 120
+      ExplicitTop = -2
+    end
+    object rad_cust: TcxRadioButton
+      Left = 226
+      Top = 0
+      Width = 98
+      Height = 49
+      Align = alLeft
+      Caption = 'New Customer'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWhite
+      Font.Height = -12
+      Font.Name = 'Segoe UI Semibold'
+      Font.Style = [fsBold]
+      ParentFont = False
+      TabOrder = 1
+      StyleElements = []
+      OnClick = rad_custClick
+      LookAndFeel.NativeStyle = False
+      Transparent = True
+      ExplicitLeft = 195
+      ExplicitTop = 17
+      ExplicitHeight = 17
+    end
+  end
+  object pan_name: TPanel
+    Left = 0
+    Top = 49
+    Width = 376
+    Height = 71
+    Align = alClient
+    BevelOuter = bvNone
+    Color = clWhite
+    Padding.Left = 10
+    Padding.Top = 10
+    Padding.Right = 10
+    Padding.Bottom = 10
+    ParentBackground = False
+    TabOrder = 2
+    StyleElements = []
+    ExplicitLeft = 168
+    ExplicitTop = 64
+    ExplicitWidth = 185
+    ExplicitHeight = 41
+    object Label1: TLabel
+      Left = 10
+      Top = 10
+      Width = 79
+      Height = 51
+      Align = alLeft
+      AutoSize = False
+      Caption = 'Name / Company :'
+      Color = clWhite
+      Font.Charset = ANSI_CHARSET
+      Font.Color = 6570553
+      Font.Height = -13
+      Font.Name = 'Segoe UI'
+      Font.Style = [fsBold]
+      ParentColor = False
+      ParentFont = False
+      Layout = tlCenter
+      WordWrap = True
+      StyleElements = []
+      ExplicitTop = 0
+      ExplicitHeight = 71
+    end
+    object cxMemo1: TcxMemo
+      Left = 89
+      Top = 10
+      Align = alClient
+      Lines.Strings = (
+        'cxMemo1')
+      ParentFont = False
+      Style.BorderColor = 1184274
+      Style.BorderStyle = ebsThick
+      Style.Color = 6570553
+      Style.Font.Charset = ANSI_CHARSET
+      Style.Font.Color = clWhite
+      Style.Font.Height = -12
+      Style.Font.Name = 'Segoe UI'
+      Style.Font.Style = []
+      Style.LookAndFeel.NativeStyle = False
+      Style.IsFontAssigned = True
+      StyleDisabled.LookAndFeel.NativeStyle = False
+      StyleFocused.LookAndFeel.NativeStyle = False
+      StyleHot.LookAndFeel.NativeStyle = False
+      TabOrder = 0
+      ExplicitLeft = 95
+      ExplicitTop = -2
+      ExplicitWidth = 185
+      ExplicitHeight = 67
+      Height = 51
+      Width = 277
+    end
+  end
+end

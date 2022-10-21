@@ -1,0 +1,19 @@
+object frm_PM: Tfrm_PM
+  Left = 0
+  Top = 0
+  Width = 209
+  Height = 165
+  Padding.Left = 20
+  Padding.Top = 20
+  Padding.Right = 20
+  Padding.Bottom = 20
+  TabOrder = 0
+  object sSpeedButton1: TsSpeedButton
+    Left = 20
+    Top = 20
+    Width = 169
+    Height = 25
+    Align = alTop
+    Caption = 'PM Board'
+  end
+end

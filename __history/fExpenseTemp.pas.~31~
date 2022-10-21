@@ -1,0 +1,381 @@
+unit fExpenseTemp;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, cxGraphics, cxControls, cxLookAndFeels,
+  cxLookAndFeelPainters, cxContainer, cxEdit, dxSkinsCore, dxSkinBlack,
+  dxSkinBlue, dxSkinBlueprint, dxSkinCaramel, dxSkinCoffee, dxSkinDarkRoom,
+  dxSkinDarkSide, dxSkinDevExpressDarkStyle, dxSkinDevExpressStyle, dxSkinFoggy,
+  dxSkinGlassOceans, dxSkinHighContrast, dxSkiniMaginary, dxSkinLilian,
+  dxSkinLiquidSky, dxSkinLondonLiquidSky, dxSkinMcSkin, dxSkinMetropolis,
+  dxSkinMetropolisDark, dxSkinMoneyTwins, dxSkinOffice2007Black,
+  dxSkinOffice2007Blue, dxSkinOffice2007Green, dxSkinOffice2007Pink,
+  dxSkinOffice2007Silver, dxSkinOffice2010Black, dxSkinOffice2010Blue,
+  dxSkinOffice2010Silver, dxSkinOffice2013DarkGray, dxSkinOffice2013LightGray,
+  dxSkinOffice2013White, dxSkinOffice2016Colorful, dxSkinOffice2016Dark,
+  dxSkinPumpkin, dxSkinSeven, dxSkinSevenClassic, dxSkinSharp, dxSkinSharpPlus,
+  dxSkinSilver, dxSkinSpringTime, dxSkinStardust, dxSkinSummer2008,
+  dxSkinTheAsphaltWorld, dxSkinsDefaultPainters, dxSkinValentine,
+  dxSkinVisualStudio2013Blue, dxSkinVisualStudio2013Dark,
+  dxSkinVisualStudio2013Light, dxSkinVS2010, dxSkinWhiteprint,
+  dxSkinXmas2008Blue, cxStyles, dxSkinscxPCPainter, cxCustomData, cxFilter,
+  cxData, cxDataStorage, cxNavigator, Data.DB, cxDBData, cxTextEdit, Vcl.Menus,
+  frxClass, cxClasses, System.Actions, Vcl.ActnList, cxGridLevel,
+  cxGridCustomTableView, cxGridTableView, cxGridDBTableView, cxGridCustomView,
+  cxGrid, scControls, scGPFontControls, cxGroupBox, cxRadioGroup, cxDBEdit,
+  cxDropDownEdit, cxLookupEdit, cxDBLookupEdit, cxDBLookupComboBox, cxCheckBox,
+  cxMemo, cxLabel, cxDBLabel, cxMaskEdit, cxCalendar, Vcl.StdCtrls, Vcl.ExtCtrls;
+
+type
+  Tf_ExpenseTemp = class(TForm)
+    Panel2: TPanel;
+    btnSave: TButton;
+    btnCancel: TButton;
+    btnPrint: TButton;
+    Panel3: TPanel;
+    Label1: TLabel;
+    Label4: TLabel;
+    Label6: TLabel;
+    Label2: TLabel;
+    Label7: TLabel;
+    Label8: TLabel;
+    Label3: TLabel;
+    Label5: TLabel;
+    date_date: TcxDBDateEdit;
+    date_posted: TcxDBDateEdit;
+    cxDBLabel1: TcxDBLabel;
+    txt_notes: TcxDBMemo;
+    chk_posted: TcxDBCheckBox;
+    txt_checkno: TcxDBTextEdit;
+    date_checkdate: TcxDBDateEdit;
+    cmb_bank: TcxDBLookupComboBox;
+    rad_paymode: TcxDBRadioGroup;
+    txt_netamnt: TcxDBTextEdit;
+    grid_jodetail: TcxGrid;
+    cxGridDBTableView1: TcxGridDBTableView;
+    cxGridLevel1: TcxGridLevel;
+    ds_Expense: TDataSource;
+    ActionList1: TActionList;
+    UI: TAction;
+    Print: TAction;
+    Delete: TAction;
+    cxStyleRepository1: TcxStyleRepository;
+    Header_style: TcxStyle;
+    frxReport1: TfrxReport;
+    ds_details: TDataSource;
+    PopupMenu1: TPopupMenu;
+    Delete1: TMenuItem;
+    ds_Bank: TDataSource;
+    txt_Payee: TcxDBTextEdit;
+    cxGridDBTableView1DESCRIPTION: TcxGridDBColumn;
+    cxGridDBTableView1AMOUNT: TcxGridDBColumn;
+    cxGridDBTableView1REMARKS: TcxGridDBColumn;
+    ds_ExpType: TDataSource;
+    procedure UIExecute(Sender: TObject);
+    procedure PrintExecute(Sender: TObject);
+    procedure DeleteExecute(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+    procedure cmb_bankPropertiesCloseUp(Sender: TObject);
+    procedure txt_checknoPropertiesValidate(Sender: TObject;
+      var DisplayValue: Variant; var ErrorText: TCaption; var Error: Boolean);
+    procedure cxGridDBTableView1AMOUNTPropertiesValidate(Sender: TObject;
+      var DisplayValue: Variant; var ErrorText: TCaption; var Error: Boolean);
+    procedure chk_postedClick(Sender: TObject);
+  private
+    { Private declarations }
+    posted: Boolean;
+    function manageui: Boolean;
+    procedure readonly(flag: Boolean);
+  public
+    { Public declarations }
+  end;
+
+var
+  f_ExpenseTemp: Tf_ExpenseTemp;
+
+implementation
+
+{$R *.dfm}
+
+uses dmPM, fReports;
+
+{ Tf_ExpenseTemp }
+
+procedure Tf_ExpenseTemp.chk_postedClick(Sender: TObject);
+begin
+  if chk_posted.Checked then
+  begin
+    if manageui then
+    dm_PM.qry_ExpensePOSTEDDATETIME.Value  := Now
+    else
+    begin
+      dm_PM.qry_ExpensePOSTEDDATETIME.Clear;
+      dm_PM.qry_ExpensePOSTED.Value  := False;
+      chk_posted.Checked        := False;
+    end;
+
+    if dm_PM.tb_ExpenseDetail.RecordCount = 0 then
+    MessageDlg('Details cannot be empty!', mtError, [mbOK], 0)
+    else if (dm_PM.qry_ExpenseNETAMOUNT.Value = 0) or (dm_PM.qry_ExpenseNETAMOUNT.IsNull) then
+    MessageDlg('Net amount cannot be 0!', mtError, [mbOK], 0)
+    else if dm_PM.qry_ExpenseEXPENSEDATE.IsNull then
+    MessageDlg('Date cannot be empty!', mtError, [mbOK], 0)
+    else if (dm_PM.qry_ExpenseNOTES.IsNull) or (Trim(dm_PM.qry_ExpenseNOTES.AsString) = '') then
+    MessageDlg('Notes cannot be empty!', mtError, [mbOK], 0)
+    else if (dm_PM.qry_ExpensePAYEE.IsNull) or (Trim(dm_PM.qry_ExpensePAYEE.AsString) = '') then
+    MessageDlg('Payee cannot be empty!', mtError, [mbOK], 0)
+    else if dm_PM.qry_ExpensePAYMENTMODE.Value = 'CHECK' then
+    begin
+      if dm_PM.qry_ExpenseBANKID.IsNull then
+      MessageDlg('Bank cannot be empty!', mtError, [mbOK], 0)
+      else if dm_PM.qry_ExpenseCHECKNO.IsNull then
+      MessageDlg('Check No. cannot be empty!', mtError, [mbOK], 0)
+      else if dm_PM.qry_ExpenseCHECKDATE.IsNull then
+      MessageDlg('Check Date cannot be empty!', mtError, [mbOK], 0);
+    end;
+  end
+  else
+    dm_PM.qry_ExpensePOSTEDDATETIME.Clear;
+end;
+
+procedure Tf_ExpenseTemp.cmb_bankPropertiesCloseUp(Sender: TObject);
+begin
+  with dm_PM do
+  begin
+    if brw_Bank.Locate('ID', cmb_bank.EditValue, []) then
+    qry_ExpenseCHECKNO.Value  := brw_BankCHECKSERIESNO.Value;
+  end;
+end;
+
+procedure Tf_ExpenseTemp.cxGridDBTableView1AMOUNTPropertiesValidate(
+  Sender: TObject; var DisplayValue: Variant; var ErrorText: TCaption;
+  var Error: Boolean);
+begin
+  if DisplayValue <=0 then
+  begin
+    MessageDlg('Amount should be greater than 0', mtError, [mbOK], 0);
+    DisplayValue  := 0;
+  end;
+end;
+
+procedure Tf_ExpenseTemp.DeleteExecute(Sender: TObject);
+begin
+  with dm_PM do
+  begin
+    if MessageDlg('Continue to delete '+tb_ExpenseDetailDESCRIPTION.AsString + ' from the list?', mtConfirmation, [mbYes, mbNo], 0) = mrYes then
+    begin
+      if tb_ExpenseDetailID.Value > 0 then
+      begin
+        qry_ExpenseDetail.Close;
+        qry_ExpenseDetail.SQL[2] := 'WHERE ID = :ID';
+        qry_ExpenseDetail.ParamByName('ID').Value  := tb_ExpenseDetailID.Value;
+        qry_ExpenseDetail.Open();
+
+        if qry_ExpenseDetail.RecordCount > 0 then
+        begin
+          qry_ExpenseDetail.Edit;
+          qry_ExpenseDetailCANCELLED.Value             := True;
+          qry_ExpenseDetailCANCELLEDDATETIME.Value     := Now;
+          qry_ExpenseDetailCANCELLEDBYID.Value         := userid;
+          qry_ExpenseDetail.Post;
+          qry_ExpenseDetail.ApplyUpdates();
+        end;
+      end;
+      tb_ExpenseDetail.Delete;
+      UIExecute(nil);
+    end;
+  end;
+end;
+
+procedure Tf_ExpenseTemp.FormShow(Sender: TObject);
+begin
+  with dm_PM do
+  begin
+    brw_Bank.Close;
+    brw_Bank.SQL[2]   := 'WHERE CANCELLED = FALSE';
+    brw_Bank.Open();
+
+    brw_ExpenseType.Close;
+    brw_ExpenseType.SQL[2]  := 'WHERE CANCELLED = FALSE';
+    brw_ExpenseType.Open();
+
+    txt_Payee.SetFocus;
+
+    posted  := qry_ExpensePOSTED.Value;
+
+    readonly(qry_ExpensePOSTED.Value);
+    if not qry_ExpensePOSTED.Value then
+    manageui;
+  end;
+end;
+
+function Tf_ExpenseTemp.manageui: Boolean;
+begin
+  with dm_PM do
+  begin
+
+    date_date.Style.BorderColor     := $00121212;
+    if qry_ExpenseEXPENSEDATE.IsNull then
+    date_date.Style.BorderColor     := clRed;
+
+    txt_notes.Style.BorderColor   := $00121212;
+    if (qry_ExpenseNOTES.IsNull) or (Trim(qry_ExpenseNOTES.Value) = '')  then
+    txt_notes.Style.BorderColor := clRed;
+
+    txt_Payee.Style.BorderColor   := $00121212;
+    if (qry_ExpensePAYEE.IsNull) or (Trim(qry_ExpensePAYEE.Value) = '')  then
+    txt_Payee.Style.BorderColor := clRed;
+
+    cmb_bank.Style.BorderColor     := $00121212;
+    txt_checkno.Style.BorderColor   := $00121212;
+    date_checkdate.Style.BorderColor     := $00121212;
+    if qry_ExpensePAYMENTMODE.Value = 'CHECK' then
+    begin
+      if qry_ExpenseBANKID.IsNull then
+      cmb_bank.Style.BorderColor    := clRed;
+
+      if (qry_ExpenseCHECKNO.IsNull) then
+      txt_checkno.Style.BorderColor := clRed;
+
+      if qry_ExpenseCHECKDATE.IsNull then
+      date_checkdate.Style.BorderColor     := clRed;
+    end;
+
+    if ((qry_ExpenseNETAMOUNT.Value = 0) or (qry_ExpenseNETAMOUNT.IsNull)) or (cmb_bank.Style.BorderColor = clRed) or (date_date.Style.BorderColor = clRed) or (txt_Payee.Style.BorderColor = clRed) or (txt_notes.Style.BorderColor = clRed) or (txt_checkno.Style.BorderColor = clRed) or (date_checkdate.Style.BorderColor = clRed) or (tb_ExpenseDetail.RecordCount = 0) then
+    btnSave.Enabled := False
+    else
+    btnSave.Enabled := True;
+
+    Result  := btnSave.Enabled;
+  end;
+end;
+
+procedure Tf_ExpenseTemp.PrintExecute(Sender: TObject);
+begin
+  with dm_PM do
+  begin
+    qry_company.Close;
+    qry_company.SQL[2]  := 'WHERE ID = 1';
+    qry_company.Open();
+
+    brw_Emp.Close;
+    brw_Emp.SQL[2]   := 'WHERE USERID = :ID';
+    brw_Emp.ParamByName('ID').Value := qry_ExpenseCREATEDBYID.Value;
+    brw_Emp.Open();
+
+    f_reports := Tf_Reports.Create(Self);
+    TfrxMemoView(f_Reports.rep_Expense.FindObject('bank')).Visible      := qry_ExpensePAYMENTMODE.Value = 'CHECK';
+    TfrxMemoView(f_Reports.rep_Expense.FindObject('lblbank')).Visible   := qry_ExpensePAYMENTMODE.Value = 'CHECK';
+    TfrxMemoView(f_Reports.rep_Expense.FindObject('ptbank')).Visible    := qry_ExpensePAYMENTMODE.Value = 'CHECK';
+    TfrxMemoView(f_Reports.rep_Expense.FindObject('checkno')).Visible   := qry_ExpensePAYMENTMODE.Value = 'CHECK';
+    TfrxMemoView(f_Reports.rep_Expense.FindObject('lblcheckno')).Visible:= qry_ExpensePAYMENTMODE.Value = 'CHECK';
+    TfrxMemoView(f_Reports.rep_Expense.FindObject('ptcheckno')).Visible := qry_ExpensePAYMENTMODE.Value = 'CHECK';
+    TfrxMemoView(f_Reports.rep_Expense.FindObject('check')).Visible     := qry_ExpensePAYMENTMODE.Value = 'CHECK';
+    TfrxMemoView(f_Reports.rep_Expense.FindObject('ptcheck')).Visible   := qry_ExpensePAYMENTMODE.Value = 'CHECK';
+    TfrxMemoView(f_Reports.rep_Expense.FindObject('lblcheck')).Visible  := qry_ExpensePAYMENTMODE.Value = 'CHECK';
+    f_Reports.rep_Expense.ShowReport(True);
+  end;
+end;
+
+procedure Tf_ExpenseTemp.readonly(flag: Boolean);
+begin
+  with dm_PM do
+  begin
+    cxGridDBTableView1DESCRIPTION.Options.Editing := not flag;
+    cxGridDBTableView1AMOUNT.Options.Editing      := not flag;
+    cxGridDBTableView1REMARKS.Options.Editing     := not flag;
+    rad_paymode.Properties.ReadOnly             := flag;
+    cmb_bank.Properties.ReadOnly                := flag;
+    txt_notes.Properties.ReadOnly               := flag;
+    txt_Payee.Properties.ReadOnly               := flag;
+    date_date.Properties.ReadOnly               := flag;
+    txt_checkno.Properties.ReadOnly             := flag;
+    date_checkdate.Properties.ReadOnly          := flag;
+    Delete1.Visible                             := not flag;
+
+    cmb_bank.Enabled        := qry_ExpensePAYMENTMODE.Value = 'CHECK';
+    txt_checkno.Enabled     := qry_ExpensePAYMENTMODE.Value = 'CHECK';
+    date_checkdate.Enabled  := qry_ExpensePAYMENTMODE.Value = 'CHECK';
+
+    if posted then
+    btnSave.Enabled       := not flag
+    else
+    btnSave.Enabled       := True;
+
+    if dm_PM.qry_Expense.State = dsInsert then
+    begin
+      chk_posted.Properties.ReadOnly  := False;
+      btnPrint.Visible                := False;
+    end
+    else
+    begin
+      chk_posted.Properties.ReadOnly  := posted;
+      btnPrint.Visible                := posted;
+    end;
+
+  end;
+end;
+
+procedure Tf_ExpenseTemp.txt_checknoPropertiesValidate(Sender: TObject;
+  var DisplayValue: Variant; var ErrorText: TCaption; var Error: Boolean);
+  var voucher: string;
+begin
+  with dm_PM do
+  begin
+    if DisplayValue > 0 then
+    begin
+      brw_PaidVoucher.Close;
+      brw_PaidVoucher.SQL[2]  := 'WHERE ID <> :ID AND CHECKNO = :CHECKNO AND BANKID = :BANKID AND CANCELLED = FALSE';
+      brw_PaidVoucher.ParamByName('CHECKNO').Value  := DisplayValue;
+      brw_PaidVoucher.ParamByName('BANKID').Value   := qry_ExpenseBANKID.Value;
+      brw_PaidVoucher.ParamByName('ID').Value       := qry_ExpenseID.Value;
+      brw_PaidVoucher.Open();
+
+      if brw_PaidVoucher.RecordCount > 0 then
+      voucher := 'Payment Voucher '+brw_PaidVoucherCHECKNO.AsString;
+
+      brw_PaidExpense.Close;
+      brw_PaidExpense.SQL[2]  := 'WHERE ID <> :ID AND CHECKNO = :CHECKNO AND BANKID = :BANKID AND CANCELLED = FALSE';
+      brw_PaidExpense.ParamByName('CHECKNO').Value  := DisplayValue;
+      brw_PaidExpense.ParamByName('BANKID').Value   := qry_ExpenseBANKID.Value;
+      brw_PaidExpense.ParamByName('ID').Value       := qry_ExpenseID.Value;
+      brw_PaidExpense.Open();
+
+      if brw_PaidExpense.RecordCount > 0 then
+      voucher := 'Expense Voucher '+ brw_PaidExpenseCHECKNO.AsString;
+
+      if (brw_PaidVoucher.RecordCount > 0) or (brw_PaidExpense.RecordCount > 0) then
+      begin
+        DisplayValue  := qry_ExpenseCHECKNO.Value;
+        MessageDlg('Check No. is already used with '+ voucher, mtError, [mbOK], 0);
+      end;
+    end;
+  end;
+end;
+
+procedure Tf_ExpenseTemp.UIExecute(Sender: TObject);
+var amnt: Variant;
+begin
+  with dm_PM do
+  begin
+    if (qry_Expense.State = dsEdit) or (qry_Expense.State = dsInsert) then
+    begin
+      tb_ExpenseDetail.Append;
+      tb_ExpenseDetail.Delete;
+
+      amnt  := cxGridDBTableView1.DataController.Summary.FooterSummaryValues[1];
+      if tb_ExpenseDetail.RecordCount > 0 then
+      qry_ExpenseNETAMOUNT.Value := StrToFloat(VarToStr(amnt))
+      else
+      qry_ExpenseNETAMOUNT.Value := 0;
+    end;
+  end;
+
+  readonly(dm_PM.qry_ExpensePOSTED.Value);
+  if not dm_PM.qry_ExpensePOSTED.Value then
+  manageui;
+end;
+
+end.

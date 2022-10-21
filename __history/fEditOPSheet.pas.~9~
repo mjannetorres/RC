@@ -1,0 +1,227 @@
+unit fEditOPSheet;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, cxGraphics, cxControls, cxLookAndFeels,
+  cxLookAndFeelPainters, cxContainer, cxEdit, dxSkinsCore, dxSkinBlack,
+  dxSkinBlue, dxSkinBlueprint, dxSkinCaramel, dxSkinCoffee, dxSkinDarkRoom,
+  dxSkinDarkSide, dxSkinDevExpressDarkStyle, dxSkinDevExpressStyle, dxSkinFoggy,
+  dxSkinGlassOceans, dxSkinHighContrast, dxSkiniMaginary, dxSkinLilian,
+  dxSkinLiquidSky, dxSkinLondonLiquidSky, dxSkinMcSkin, dxSkinMetropolis,
+  dxSkinMetropolisDark, dxSkinMoneyTwins, dxSkinOffice2007Black,
+  dxSkinOffice2007Blue, dxSkinOffice2007Green, dxSkinOffice2007Pink,
+  dxSkinOffice2007Silver, dxSkinOffice2010Black, dxSkinOffice2010Blue,
+  dxSkinOffice2010Silver, dxSkinOffice2013DarkGray, dxSkinOffice2013LightGray,
+  dxSkinOffice2013White, dxSkinOffice2016Colorful, dxSkinOffice2016Dark,
+  dxSkinPumpkin, dxSkinSeven, dxSkinSevenClassic, dxSkinSharp, dxSkinSharpPlus,
+  dxSkinSilver, dxSkinSpringTime, dxSkinStardust, dxSkinSummer2008,
+  dxSkinTheAsphaltWorld, dxSkinsDefaultPainters, dxSkinValentine,
+  dxSkinVisualStudio2013Blue, dxSkinVisualStudio2013Dark,
+  dxSkinVisualStudio2013Light, dxSkinVS2010, dxSkinWhiteprint,
+  dxSkinXmas2008Blue, cxStyles, dxSkinscxPCPainter, cxCustomData, cxFilter,
+  cxData, cxDataStorage, cxNavigator, Data.DB, cxDBData, cxButtonEdit,
+  cxDBLookupComboBox, cxDropDownEdit, cxImageComboBox, Vcl.Menus, frxClass,
+  Vcl.ExtDlgs, System.ImageList, Vcl.ImgList, acAlphaImageList, cxClasses,
+  System.Actions, Vcl.ActnList, cxGridDBTableView, cxGridLevel,
+  cxGridCustomTableView, cxGridTableView, cxGridBandedTableView,
+  cxGridDBBandedTableView, cxGridCustomView, cxGrid, scControls, scGPPagers,
+  cxLookupEdit, cxDBLookupEdit, cxMemo, cxDBEdit, cxLabel, cxDBLabel,
+  cxTextEdit, cxMaskEdit, cxCalendar, Vcl.StdCtrls, Vcl.ExtCtrls;
+
+type
+  Tf_EditOPSheet = class(TForm)
+    Panel2: TPanel;
+    btnSave: TButton;
+    btnCancel: TButton;
+    btnPrint: TButton;
+    Panel3: TPanel;
+    Label3: TLabel;
+    Label1: TLabel;
+    Label4: TLabel;
+    Label5: TLabel;
+    Label6: TLabel;
+    Label2: TLabel;
+    cxDBDateEdit1: TcxDBDateEdit;
+    cxDBDateEdit2: TcxDBDateEdit;
+    cxDBDateEdit3: TcxDBDateEdit;
+    cxDBLabel1: TcxDBLabel;
+    cxDBMemo1: TcxDBMemo;
+    cxDBLookupComboBox1: TcxDBLookupComboBox;
+    scGPPageControl2: TscGPPageControl;
+    scGPPageControlPage1: TscGPPageControlPage;
+    grid_jodetail: TcxGrid;
+    cxGridDBTableView1: TcxGridDBTableView;
+    cxGridDBTableView1SHIRTID: TcxGridDBColumn;
+    cxGridDBTableView1FABRICID: TcxGridDBColumn;
+    cxGridDBTableView1SIZE: TcxGridDBColumn;
+    cxGridDBTableView1FIT: TcxGridDBColumn;
+    cxGridDBTableView1QTY: TcxGridDBColumn;
+    cxGridDBTableView1FREE: TcxGridDBColumn;
+    cxGridDBTableView1UNIT: TcxGridDBColumn;
+    cxGridDBTableView1REMARKS: TcxGridDBColumn;
+    cxGridDBTableView1PRINT: TcxGridDBColumn;
+    cxGridDBTableView1ICUTTING: TcxGridDBColumn;
+    cxGridDBTableView1HEATOP: TcxGridDBColumn;
+    cxGridDBTableView1FCUTTING: TcxGridDBColumn;
+    cxGridDBTableView1SEWING: TcxGridDBColumn;
+    cxGridDBTableView1Column1: TcxGridDBColumn;
+    cxGridDBTableView1Column2: TcxGridDBColumn;
+    grid_jodetailDBBandedTableView1: TcxGridDBBandedTableView;
+    grid_jodetailDBBandedTableView1SHIRTID: TcxGridDBBandedColumn;
+    grid_jodetailDBBandedTableView1FABRICID: TcxGridDBBandedColumn;
+    grid_jodetailDBBandedTableView1SIZE: TcxGridDBBandedColumn;
+    grid_jodetailDBBandedTableView1FIT: TcxGridDBBandedColumn;
+    grid_jodetailDBBandedTableView1QTY: TcxGridDBBandedColumn;
+    grid_jodetailDBBandedTableView1UNIT: TcxGridDBBandedColumn;
+    grid_jodetailDBBandedTableView1REMARKS: TcxGridDBBandedColumn;
+    grid_jodetailDBBandedTableView1PAPERSIZE: TcxGridDBBandedColumn;
+    cxGridLevel1: TcxGridLevel;
+    ds_JO: TDataSource;
+    ds_Client: TDataSource;
+    ds_OPDetail: TDataSource;
+    ActionList1: TActionList;
+    Print: TAction;
+    Delete: TAction;
+    ManageUI: TAction;
+    cxStyleRepository1: TcxStyleRepository;
+    Header_style: TcxStyle;
+    Band_Header: TcxStyle;
+    ds_emp: TDataSource;
+    sCharImageList1: TsCharImageList;
+    SavePictureDialog1: TSavePictureDialog;
+    frxReport1: TfrxReport;
+    ds_jodetail: TDataSource;
+    ds_garment: TDataSource;
+    PopupMenu1: TPopupMenu;
+    Delete1: TMenuItem;
+    grid_jodetailDBBandedTableView1EMPID: TcxGridDBBandedColumn;
+    procedure grid_jodetailDBBandedTableView1SHIRTIDPropertiesCloseUp(
+      Sender: TObject);
+    procedure FormShow(Sender: TObject);
+    procedure ManageUIExecute(Sender: TObject);
+    procedure grid_jodetailExit(Sender: TObject);
+    procedure cxDBLookupComboBox1Exit(Sender: TObject);
+    procedure PrintExecute(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  f_EditOPSheet: Tf_EditOPSheet;
+
+implementation
+
+{$R *.dfm}
+
+uses dmPM, fReports;
+
+procedure Tf_EditOPSheet.cxDBLookupComboBox1Exit(Sender: TObject);
+begin
+  ManageUIExecute(nil);
+end;
+
+procedure Tf_EditOPSheet.FormShow(Sender: TObject);
+begin
+  with dm_PM do
+  begin
+    brw_Client.Close;
+    brw_Client.SQL[2] := 'WHERE CANCELLED = FALSE';
+    brw_Client.Open();
+
+    brw_GarmentDesc.Close;
+    brw_GarmentDesc.SQL[3]  := 'WHERE GAR.CANCELLED = FALSE';
+    brw_GarmentDesc.Open();
+
+    brw_Emp.Close;
+    brw_Emp.SQL[2]  := 'WHERE ROLEID <= 6 AND CANCELLED = FALSE';
+    brw_Emp.Open();
+
+    ManageUIExecute(nil);
+  end;
+end;
+
+procedure Tf_EditOPSheet.grid_jodetailDBBandedTableView1SHIRTIDPropertiesCloseUp(
+  Sender: TObject);
+begin
+  with dm_PM do
+  begin
+    if brw_GarmentDesc.Locate('ID', tb_OPDetailSHIRTID.Value, []) then
+    begin
+      tb_OPDetail.Edit;
+      tb_OPDetailUNIT.Value       := brw_GarmentDescUNIT.AsString;
+      tb_OPDetailFABRIC.Value     := brw_GarmentDescFABRIC.AsString;
+      tb_OPDetailFABRICID.Value   := brw_GarmentDescFABRICID.Value;
+      tb_OPDetail.Post;
+    end;
+
+  end;
+end;
+
+procedure Tf_EditOPSheet.grid_jodetailExit(Sender: TObject);
+begin
+  ManageUIExecute(nil);
+end;
+
+procedure Tf_EditOPSheet.ManageUIExecute(Sender: TObject);
+var disable: Boolean;
+begin
+  with dm_PM do
+  begin
+    disable := disable or( dm_PM.tb_OPDetail.RecordCount = 0);
+    disable := disable or (dm_PM.tb_OPDetail.Locate('SHIRTID', Null, [])  or dm_PM.tb_OPDetail.Locate('SHIRTID', 0, []));
+    disable := disable or (dm_PM.tb_OPDetail.Locate('SIZE', Null, []));
+    disable := disable or (dm_PM.tb_OPDetail.Locate('FIT', Null, []));
+    disable := disable or (dm_PM.tb_OPDetail.Locate('SIZE', Null, []));
+    disable := disable or (dm_PM.tb_OPDetail.Locate('QTY', Null, [])  or dm_PM.tb_OPDetail.Locate('QTY', 0, []));
+    disable := disable or (dm_PM.tb_OPDetail.Locate('PAPERSIZE', Null, [])  or dm_PM.tb_OPDetail.Locate('PAPERSIZE', 0, []));
+    disable := disable or qry_JORELEASED.Value;
+
+    btnSave.Enabled := not disable;
+  end;
+end;
+
+procedure Tf_EditOPSheet.PrintExecute(Sender: TObject);
+begin
+  with dm_PM do
+  begin
+    if qry_JORELEASED.Value then
+    begin
+      qry_company.Close;
+      qry_company.SQL[2]  := 'WHERE ID = 1';
+      qry_company.Open();
+
+      qry_JODetail.Close;
+      qry_JODetail.SQL[2] := 'WHERE HEADERID = :ID AND CANCELLED = FALSE';
+      qry_JODetail.ParamByName('ID').Value  := qry_JOID.Value;
+      qry_JODetail.Open();
+
+      qry_WorkersDetails.Close;
+      qry_WorkersDetails.SQL[2] := 'WHERE HEADERID = :ID AND CANCELLED = FALSE';
+      qry_WorkersDetails.ParamByName('ID').Value   := qry_JOID.Value;
+      qry_WorkersDetails.Open();
+
+      f_Reports := Tf_Reports.Create(Self);
+
+      qry_WorkersDetails.DisableControls;
+      if qry_WorkersDetails.Locate('ROLEID',  2, []) then
+      TfrxMemoView(f_Reports.rep_OPSheet.FindObject('printer')).Text := qry_WorkersDetailsEMPNAME.AsString;
+      if qry_WorkersDetails.Locate('ROLEID', 3, []) then
+      TfrxMemoView(f_Reports.rep_OPSheet.FindObject('cutter')).Text := qry_WorkersDetailsEMPNAME.AsString;
+      if qry_WorkersDetails.Locate('ROLEID', 4, []) then
+      TfrxMemoView(f_Reports.rep_OPSheet.FindObject('heatpress')).Text := qry_WorkersDetailsEMPNAME.AsString;
+      if qry_WorkersDetails.Locate('ROLEID', 5, []) then
+      TfrxMemoView(f_Reports.rep_OPSheet.FindObject('tailor')).Text := qry_WorkersDetailsEMPNAME.AsString;
+      if qry_WorkersDetails.Locate('ROLEID', 1, []) then
+      TfrxMemoView(f_Reports.rep_OPSheet.FindObject('artist')).Text := qry_WorkersDetailsEMPNAME.AsString;
+
+      f_Reports.rep_OPSheet.ShowReport();
+      qry_WorkersDetails.EnableControls;
+    end;
+  end;
+end;
+
+end.
