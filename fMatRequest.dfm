@@ -18,7 +18,7 @@ object f_MatRequest: Tf_MatRequest
   WindowState = wsMaximized
   OnShow = FormShow
   PixelsPerInch = 96
-  TextHeight = 13
+  TextHeight = 14
   object Splitter1: TSplitter
     Left = 0
     Top = 111
@@ -47,6 +47,7 @@ object f_MatRequest: Tf_MatRequest
     ParentBackground = False
     TabOrder = 0
     StyleElements = [seFont, seBorder]
+    ExplicitTop = 13
     DesignSize = (
       847
       71)
@@ -107,7 +108,7 @@ object f_MatRequest: Tf_MatRequest
       Left = 743
       Top = 41
       Width = 89
-      Height = 21
+      Height = 23
       Style = csDropDownList
       Anchors = [akTop, akRight]
       Font.Charset = ANSI_CHARSET

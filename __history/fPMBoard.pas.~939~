@@ -169,6 +169,23 @@ begin
       brw_CashReg.ParamByName('ID').Value := brw_JOID.Value;
       brw_CashReg.Open();
 
+//      if brw_CashReg.RecordCount > 0 then
+//      begin
+//        MessageDlg('Cannot override Job Order! Please void receipt first.', mtInformation, [mbOK], 0);
+//        Exit
+//      end;
+//      if brw_JOLAYOUT.Value and not brw_JORELEASED.Value then
+//      begin
+//        MessageDlg('Cannot override Job Order! Please cancel layout first.', mtInformation, [mbOK], 0);
+//        Exit
+//      end
+//      else if brw_JORELEASED.Value then
+//      begin
+//        MessageDlg('Cannot override Job Order! Please cancel Operator Sheet to continue.', mtInformation, [mbOK], 0);
+//        Exit
+//      end;
+
+
       f_Password  := Tf_Password.Create(Self);
       f_Password.Caption  := 'Enter your Password';
       if f_Password.ShowModal = mrOk then

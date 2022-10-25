@@ -890,11 +890,155 @@ object f_JO: Tf_JO
         ShowCloseButton = True
         UseCustomOptions = False
       end>
-    TabIndex = 2
-    ActivePage = scGPPageControlPage3
+    TabIndex = 0
+    ActivePage = scGPPageControlPage1
     StorePaintBuffer = False
     FreeOnClose = False
     OnChangePage = ComputeAmntExecute
+    object scGPPageControlPage3: TscGPPageControlPage
+      Left = 0
+      Top = 30
+      Width = 837
+      Height = 218
+      HorzScrollBar.Tracking = True
+      VertScrollBar.Tracking = True
+      BorderStyle = bsNone
+      Color = clBtnFace
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentColor = False
+      ParentFont = False
+      TabOrder = 2
+      Visible = False
+      WallpaperIndex = -1
+      CustomBackgroundImageIndex = -1
+      FluentUIOpaque = False
+      StorePaintBuffer = False
+      BGStyle = scgppsForm
+      object cxGrid2: TcxGrid
+        Left = 0
+        Top = 0
+        Width = 837
+        Height = 218
+        Align = alClient
+        BevelInner = bvNone
+        BevelOuter = bvNone
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -12
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ParentFont = False
+        TabOrder = 0
+        OnExit = cxGrid2Exit
+        LookAndFeel.Kind = lfUltraFlat
+        LookAndFeel.NativeStyle = False
+        LookAndFeel.SkinName = 'VisualStudio2013Light'
+        object cxGridDBTableView3: TcxGridDBTableView
+          PopupMenu = PopupMenu2
+          Navigator.Buttons.CustomButtons = <>
+          DataController.DataSource = ds_details
+          DataController.Summary.DefaultGroupSummaryItems = <>
+          DataController.Summary.FooterSummaryItems = <
+            item
+              Format = '###,###,##0'
+              Kind = skCount
+              FieldName = 'ITEMID'
+              Column = cxGridDBTableView1ITEMID
+            end
+            item
+              Format = '###,###,##0.00'
+              Kind = skSum
+              FieldName = 'TOTALCOST'
+              Column = cxGridDBColumn4
+            end>
+          DataController.Summary.SummaryGroups = <>
+          OptionsData.Appending = True
+          OptionsView.NoDataToDisplayInfoText = 'No Data To Display'
+          OptionsView.Footer = True
+          OptionsView.GroupByBox = False
+          object cxGridDBTableView1ITEMID: TcxGridDBColumn
+            Caption = 'ITEM DESCRIPTION'
+            DataBinding.FieldName = 'ITEMID'
+            PropertiesClassName = 'TcxLookupComboBoxProperties'
+            Properties.CharCase = ecUpperCase
+            Properties.DropDownWidth = 360
+            Properties.ImmediatePost = True
+            Properties.KeyFieldNames = 'ID'
+            Properties.ListColumns = <
+              item
+                Caption = 'CODE'
+                HeaderAlignment = taCenter
+                Width = 80
+                FieldName = 'CODE'
+              end
+              item
+                HeaderAlignment = taCenter
+                Width = 200
+                FieldName = 'DESCRIPTION'
+              end
+              item
+                Caption = 'ONHAND'
+                HeaderAlignment = taCenter
+                Width = 80
+                FieldName = 'ONHAND'
+              end>
+            Properties.ListFieldIndex = 1
+            Properties.ListSource = ds_items
+            Properties.OnCloseUp = cxGridDBTableView1ITEMIDPropertiesCloseUp
+            HeaderAlignmentHorz = taCenter
+            Options.Filtering = False
+            Options.Sorting = False
+            Styles.Header = Header_style
+            Width = 197
+          end
+          object cxGridDBColumn1: TcxGridDBColumn
+            DataBinding.FieldName = 'QTY'
+            PropertiesClassName = 'TcxTextEditProperties'
+            Properties.ValidateOnEnter = True
+            Properties.OnValidate = cxGridDBColumn1PropertiesValidate
+            HeaderAlignmentHorz = taCenter
+            Options.Filtering = False
+            Options.Sorting = False
+            Styles.Header = Header_style
+            Width = 66
+          end
+          object cxGridDBColumn2: TcxGridDBColumn
+            DataBinding.FieldName = 'UNIT'
+            HeaderAlignmentHorz = taCenter
+            Options.Editing = False
+            Options.Filtering = False
+            Options.Sorting = False
+            Styles.Header = Header_style
+            Width = 78
+          end
+          object cxGridDBColumn3: TcxGridDBColumn
+            DataBinding.FieldName = 'COST'
+            HeaderAlignmentHorz = taCenter
+            Options.Filtering = False
+            Options.Sorting = False
+            Styles.Header = Header_style
+            Width = 102
+          end
+          object cxGridDBColumn4: TcxGridDBColumn
+            Caption = 'TOTAL COST'
+            DataBinding.FieldName = 'TOTALCOST'
+            HeaderAlignmentHorz = taCenter
+            Options.Editing = False
+            Options.Filtering = False
+            Options.Sorting = False
+            Styles.Header = Header_style
+            Width = 102
+          end
+        end
+        object cxGridLevel3: TcxGridLevel
+          GridView = cxGridDBTableView3
+        end
+      end
+    end
     object scGPPageControlPage2: TscGPPageControlPage
       Left = 0
       Top = 30
@@ -1015,7 +1159,6 @@ object f_JO: Tf_JO
       ParentColor = False
       ParentFont = False
       TabOrder = 0
-      Visible = False
       WallpaperIndex = -1
       CustomBackgroundImageIndex = -1
       FluentUIOpaque = False
@@ -1178,149 +1321,6 @@ object f_JO: Tf_JO
         end
         object cxGridLevel1: TcxGridLevel
           GridView = cxGridDBTableView1
-        end
-      end
-    end
-    object scGPPageControlPage3: TscGPPageControlPage
-      Left = 0
-      Top = 30
-      Width = 837
-      Height = 218
-      HorzScrollBar.Tracking = True
-      VertScrollBar.Tracking = True
-      BorderStyle = bsNone
-      Color = clBtnFace
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -11
-      Font.Name = 'Tahoma'
-      Font.Style = []
-      ParentColor = False
-      ParentFont = False
-      TabOrder = 2
-      WallpaperIndex = -1
-      CustomBackgroundImageIndex = -1
-      FluentUIOpaque = False
-      StorePaintBuffer = False
-      BGStyle = scgppsForm
-      object cxGrid2: TcxGrid
-        Left = 0
-        Top = 0
-        Width = 837
-        Height = 218
-        Align = alClient
-        BevelInner = bvNone
-        BevelOuter = bvNone
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -12
-        Font.Name = 'Tahoma'
-        Font.Style = []
-        ParentFont = False
-        TabOrder = 0
-        OnExit = cxGrid2Exit
-        LookAndFeel.Kind = lfUltraFlat
-        LookAndFeel.NativeStyle = False
-        LookAndFeel.SkinName = 'VisualStudio2013Light'
-        object cxGridDBTableView3: TcxGridDBTableView
-          PopupMenu = PopupMenu2
-          Navigator.Buttons.CustomButtons = <>
-          DataController.DataSource = ds_details
-          DataController.Summary.DefaultGroupSummaryItems = <>
-          DataController.Summary.FooterSummaryItems = <
-            item
-              Format = '###,###,##0'
-              Kind = skCount
-              FieldName = 'ITEMID'
-              Column = cxGridDBTableView1ITEMID
-            end
-            item
-              Format = '###,###,##0.00'
-              Kind = skSum
-              FieldName = 'TOTALCOST'
-              Column = cxGridDBColumn4
-            end>
-          DataController.Summary.SummaryGroups = <>
-          OptionsData.Appending = True
-          OptionsView.NoDataToDisplayInfoText = 'No Data To Display'
-          OptionsView.Footer = True
-          OptionsView.GroupByBox = False
-          object cxGridDBTableView1ITEMID: TcxGridDBColumn
-            Caption = 'ITEM DESCRIPTION'
-            DataBinding.FieldName = 'ITEMID'
-            PropertiesClassName = 'TcxLookupComboBoxProperties'
-            Properties.CharCase = ecUpperCase
-            Properties.DropDownWidth = 360
-            Properties.ImmediatePost = True
-            Properties.KeyFieldNames = 'ID'
-            Properties.ListColumns = <
-              item
-                Caption = 'CODE'
-                HeaderAlignment = taCenter
-                Width = 80
-                FieldName = 'CODE'
-              end
-              item
-                HeaderAlignment = taCenter
-                Width = 200
-                FieldName = 'DESCRIPTION'
-              end
-              item
-                Caption = 'ONHAND'
-                HeaderAlignment = taCenter
-                Width = 80
-                FieldName = 'ONHAND'
-              end>
-            Properties.ListFieldIndex = 1
-            Properties.ListSource = ds_items
-            Properties.OnCloseUp = cxGridDBTableView1ITEMIDPropertiesCloseUp
-            HeaderAlignmentHorz = taCenter
-            Options.Filtering = False
-            Options.Sorting = False
-            Styles.Header = Header_style
-            Width = 197
-          end
-          object cxGridDBColumn1: TcxGridDBColumn
-            DataBinding.FieldName = 'QTY'
-            PropertiesClassName = 'TcxTextEditProperties'
-            Properties.ValidateOnEnter = True
-            Properties.OnValidate = cxGridDBColumn1PropertiesValidate
-            HeaderAlignmentHorz = taCenter
-            Options.Filtering = False
-            Options.Sorting = False
-            Styles.Header = Header_style
-            Width = 66
-          end
-          object cxGridDBColumn2: TcxGridDBColumn
-            DataBinding.FieldName = 'UNIT'
-            HeaderAlignmentHorz = taCenter
-            Options.Editing = False
-            Options.Filtering = False
-            Options.Sorting = False
-            Styles.Header = Header_style
-            Width = 78
-          end
-          object cxGridDBColumn3: TcxGridDBColumn
-            DataBinding.FieldName = 'COST'
-            HeaderAlignmentHorz = taCenter
-            Options.Filtering = False
-            Options.Sorting = False
-            Styles.Header = Header_style
-            Width = 102
-          end
-          object cxGridDBColumn4: TcxGridDBColumn
-            Caption = 'TOTAL COST'
-            DataBinding.FieldName = 'TOTALCOST'
-            HeaderAlignmentHorz = taCenter
-            Options.Editing = False
-            Options.Filtering = False
-            Options.Sorting = False
-            Styles.Header = Header_style
-            Width = 102
-          end
-        end
-        object cxGridLevel3: TcxGridLevel
-          GridView = cxGridDBTableView3
         end
       end
     end

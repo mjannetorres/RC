@@ -42,7 +42,7 @@ object f_PMBoard: Tf_PMBoard
       Height = 71
       Align = alTop
       BevelOuter = bvNone
-      Color = clTeal
+      Color = 3614763
       Padding.Left = 10
       Padding.Top = 5
       Padding.Right = 10
@@ -51,9 +51,6 @@ object f_PMBoard: Tf_PMBoard
       TabOrder = 0
       StyleElements = [seFont, seBorder]
       ExplicitWidth = 665
-      DesignSize = (
-        1370
-        71)
       object Label1: TLabel
         AlignWithMargins = True
         Left = 13
@@ -63,7 +60,7 @@ object f_PMBoard: Tf_PMBoard
         Caption = 'JOB ORDER'
         Color = clWhite
         Font.Charset = ANSI_CHARSET
-        Font.Color = clWhite
+        Font.Color = clTeal
         Font.Height = -19
         Font.Name = 'Segoe UI Black'
         Font.Style = [fsBold]
@@ -73,11 +70,10 @@ object f_PMBoard: Tf_PMBoard
         StyleElements = []
       end
       object Label2: TLabel
-        Left = 1228
+        Left = 500
         Top = 43
         Width = 32
         Height = 17
-        Anchors = [akTop, akRight]
         Caption = 'Filter'
         Color = clWhite
         Font.Charset = ANSI_CHARSET
@@ -90,11 +86,10 @@ object f_PMBoard: Tf_PMBoard
         StyleElements = []
       end
       object Label3: TLabel
-        Left = 973
+        Left = 245
         Top = 44
         Width = 40
         Height = 17
-        Anchors = [akTop, akRight]
         Caption = 'Period'
         Color = clWhite
         Font.Charset = ANSI_CHARSET
@@ -107,12 +102,11 @@ object f_PMBoard: Tf_PMBoard
         StyleElements = []
       end
       object cmb_filter: TComboBox
-        Left = 1271
+        Left = 543
         Top = 41
         Width = 89
         Height = 23
         Style = csDropDownList
-        Anchors = [akTop, akRight]
         Font.Charset = ANSI_CHARSET
         Font.Color = clWindowText
         Font.Height = -12
@@ -125,31 +119,28 @@ object f_PMBoard: Tf_PMBoard
           'JO NO.')
       end
       object date_1: TDateTimePicker
-        Left = 1030
+        Left = 302
         Top = 41
         Width = 93
         Height = 21
-        Anchors = [akTop, akRight]
         Date = 44189.551065162040000000
         Time = 44189.551065162040000000
         TabOrder = 1
       end
       object date_2: TDateTimePicker
-        Left = 1129
+        Left = 401
         Top = 41
         Width = 93
         Height = 21
-        Anchors = [akTop, akRight]
         Date = 44189.551065162040000000
         Time = 44189.551065162040000000
         TabOrder = 2
       end
       object txt_search: TButtonedEdit
-        Left = 973
+        Left = 245
         Top = 12
         Width = 387
         Height = 25
-        Anchors = [akTop, akRight]
         CharCase = ecUpperCase
         Color = clWhite
         Font.Charset = ANSI_CHARSET

@@ -100,12 +100,15 @@ type
       AShift: TShiftState; var AHandled: Boolean);
     procedure AssignExecute(Sender: TObject);
     procedure OverridebyExecute(Sender: TObject);
+    procedure CreateLayoutExecute(Sender: TObject);
     procedure EditOPSheetExecute(Sender: TObject);
     procedure CancelLayoutExecute(Sender: TObject);
+    procedure LayoutExecute(Sender: TObject);
     procedure Timer1Timer(Sender: TObject);
   private
     { Private declarations }
     ARedStyle,AYellowStyle: TcxStyle;
+    procedure create_layout(jono: String);
     procedure user_rights;
     procedure load_workers;
     procedure notif;
@@ -168,6 +171,23 @@ begin
       brw_CashReg.SQL[2]  := 'WHERE REFID = :ID AND SOURCE = ''JO'' AND CANCELLED = FALSE';
       brw_CashReg.ParamByName('ID').Value := brw_JOID.Value;
       brw_CashReg.Open();
+
+//      if brw_CashReg.RecordCount > 0 then
+//      begin
+//        MessageDlg('Cannot override Job Order! Please void receipt first.', mtInformation, [mbOK], 0);
+//        Exit
+//      end;
+//      if brw_JOLAYOUT.Value and not brw_JORELEASED.Value then
+//      begin
+//        MessageDlg('Cannot override Job Order! Please cancel layout first.', mtInformation, [mbOK], 0);
+//        Exit
+//      end
+//      else if brw_JORELEASED.Value then
+//      begin
+//        MessageDlg('Cannot override Job Order! Please cancel Operator Sheet to continue.', mtInformation, [mbOK], 0);
+//        Exit
+//      end;
+
 
       f_Password  := Tf_Password.Create(Self);
       f_Password.Caption  := 'Enter your Password';
@@ -249,6 +269,19 @@ begin
     end;
   end;
 end;
+
+procedure Tf_PMBoard.CreateLayoutExecute(Sender: TObject);
+begin
+  with dm_PM do
+  begin
+    f_EnterJO := Tf_EnterJO.Create(Self);
+    if f_EnterJO.ShowModal = mrOk then
+    begin
+      create_layout(Trim(f_EnterJO.txt_JO.EditValue));
+    end;
+  end;
+end;
+
 
 procedure Tf_PMBoard.cxGrid1DBTableView1CellClick(
   Sender: TcxCustomGridTableView; ACellViewInfo: TcxGridTableDataCellViewInfo;
@@ -804,6 +837,30 @@ begin
   //generate_logs;
 end;
 
+procedure Tf_PMBoard.generate_done;
+begin
+  
+end;
+
+procedure Tf_PMBoard.generate_logs;
+begin
+  
+end;
+
+procedure Tf_PMBoard.generate_pending;
+begin
+
+end;
+
+procedure Tf_PMBoard.generate_pm;
+begin
+
+end;
+
+procedure Tf_PMBoard.LayoutExecute(Sender: TObject);
+begin
+  create_layout(dm_PM.brw_PendingJONO.AsString);
+end;
 
 procedure Tf_PMBoard.load_workers;
 begin

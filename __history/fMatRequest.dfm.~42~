@@ -7,13 +7,11 @@ object f_MatRequest: Tf_MatRequest
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -11
+  Font.Height = -12
   Font.Name = 'Tahoma'
   Font.Style = []
   FormStyle = fsMDIChild
-  Padding.Left = 10
   Padding.Top = 10
-  Padding.Right = 10
   OldCreateOrder = False
   Position = poMainFormCenter
   Visible = True
@@ -22,21 +20,22 @@ object f_MatRequest: Tf_MatRequest
   PixelsPerInch = 96
   TextHeight = 13
   object Splitter1: TSplitter
-    Left = 10
+    Left = 0
     Top = 111
-    Width = 827
+    Width = 847
     Height = 3
     Cursor = crVSplit
     Align = alTop
     Color = clWhite
     ParentColor = False
     StyleElements = []
-    ExplicitTop = 101
+    ExplicitLeft = 7
+    ExplicitWidth = 827
   end
   object Panel3: TPanel
-    Left = 10
+    Left = 0
     Top = 10
-    Width = 827
+    Width = 847
     Height = 71
     Align = alTop
     BevelOuter = bvNone
@@ -49,15 +48,15 @@ object f_MatRequest: Tf_MatRequest
     TabOrder = 0
     StyleElements = [seFont, seBorder]
     DesignSize = (
-      827
+      847
       71)
     object Label1: TLabel
       AlignWithMargins = True
       Left = 13
       Top = 24
-      Width = 189
+      Width = 248
       Height = 25
-      Caption = 'MATERIAL REQUEST'
+      Caption = 'CASH PURCHASE REQUEST'
       Color = clWhite
       Font.Charset = ANSI_CHARSET
       Font.Color = clWhite
@@ -70,7 +69,7 @@ object f_MatRequest: Tf_MatRequest
       StyleElements = []
     end
     object Label2: TLabel
-      Left = 684
+      Left = 704
       Top = 43
       Width = 32
       Height = 17
@@ -85,9 +84,10 @@ object f_MatRequest: Tf_MatRequest
       ParentColor = False
       ParentFont = False
       StyleElements = []
+      ExplicitLeft = 684
     end
     object Label3: TLabel
-      Left = 425
+      Left = 445
       Top = 44
       Width = 40
       Height = 17
@@ -102,10 +102,9 @@ object f_MatRequest: Tf_MatRequest
       ParentColor = False
       ParentFont = False
       StyleElements = []
-      ExplicitLeft = 445
     end
     object cmb_filter: TComboBox
-      Left = 723
+      Left = 743
       Top = 41
       Width = 89
       Height = 21
@@ -113,7 +112,7 @@ object f_MatRequest: Tf_MatRequest
       Anchors = [akTop, akRight]
       Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText
-      Font.Height = -11
+      Font.Height = -12
       Font.Name = 'Segoe UI Semibold'
       Font.Style = [fsBold]
       ParentFont = False
@@ -124,7 +123,7 @@ object f_MatRequest: Tf_MatRequest
         'REQUESTED BY')
     end
     object date_1: TDateTimePicker
-      Left = 482
+      Left = 502
       Top = 41
       Width = 93
       Height = 21
@@ -134,7 +133,7 @@ object f_MatRequest: Tf_MatRequest
       TabOrder = 1
     end
     object date_2: TDateTimePicker
-      Left = 581
+      Left = 601
       Top = 41
       Width = 93
       Height = 21
@@ -144,8 +143,8 @@ object f_MatRequest: Tf_MatRequest
       TabOrder = 2
     end
     object txt_search: TButtonedEdit
-      Left = 425
-      Top = 12
+      Left = 445
+      Top = 13
       Width = 387
       Height = 25
       Anchors = [akTop, akRight]
@@ -174,9 +173,9 @@ object f_MatRequest: Tf_MatRequest
     end
   end
   object scToolBar2: TscToolBar
-    Left = 10
+    Left = 0
     Top = 81
-    Width = 827
+    Width = 847
     Height = 30
     Margins.Left = 0
     Margins.Top = 0
@@ -238,9 +237,9 @@ object f_MatRequest: Tf_MatRequest
     end
   end
   object cxGrid1: TcxGrid
-    Left = 10
+    Left = 0
     Top = 114
-    Width = 827
+    Width = 847
     Height = 367
     Align = alClient
     Font.Charset = ANSI_CHARSET
@@ -286,7 +285,7 @@ object f_MatRequest: Tf_MatRequest
         Options.Editing = False
         Options.Filtering = False
         Options.Sorting = False
-        Width = 71
+        Width = 59
       end
       object cxGrid1DBTableView1JONO: TcxGridDBColumn
         Caption = 'JO NO.'
@@ -295,7 +294,7 @@ object f_MatRequest: Tf_MatRequest
         Options.Editing = False
         Options.Filtering = False
         Options.Sorting = False
-        Width = 59
+        Width = 48
       end
       object cxGrid1DBTableView1SOURCE: TcxGridDBColumn
         DataBinding.FieldName = 'SOURCE'
@@ -335,7 +334,7 @@ object f_MatRequest: Tf_MatRequest
         Options.Editing = False
         Options.Filtering = False
         Options.Sorting = False
-        Width = 109
+        Width = 90
       end
       object cxGrid1DBTableView1NOTE: TcxGridDBColumn
         Caption = 'NOTES'
@@ -344,7 +343,7 @@ object f_MatRequest: Tf_MatRequest
         Options.Editing = False
         Options.Filtering = False
         Options.Sorting = False
-        Width = 203
+        Width = 168
       end
       object cxGrid1DBTableView1EMPNAME: TcxGridDBColumn
         Caption = 'REQUESTED BY'
@@ -353,7 +352,7 @@ object f_MatRequest: Tf_MatRequest
         Options.Editing = False
         Options.Filtering = False
         Options.Sorting = False
-        Width = 148
+        Width = 122
       end
       object cxGrid1DBTableView1TOTALCOST: TcxGridDBColumn
         Caption = 'TOTAL COST'
@@ -362,7 +361,7 @@ object f_MatRequest: Tf_MatRequest
         Options.Editing = False
         Options.Filtering = False
         Options.Sorting = False
-        Width = 87
+        Width = 78
       end
       object cxGrid1DBTableView1REQDATETIME: TcxGridDBColumn
         Caption = 'REQ. DATE'
@@ -372,7 +371,7 @@ object f_MatRequest: Tf_MatRequest
         Options.Filtering = False
         Options.Sorting = False
         Styles.Header = header_style
-        Width = 105
+        Width = 68
       end
       object cxGrid1DBTableView1POSTED: TcxGridDBColumn
         DataBinding.FieldName = 'POSTED'
@@ -380,7 +379,24 @@ object f_MatRequest: Tf_MatRequest
         Options.Editing = False
         Options.Filtering = False
         Options.Sorting = False
-        Width = 43
+        Width = 62
+      end
+      object cxGrid1DBTableView1POSTEDDATETIME: TcxGridDBColumn
+        Caption = 'POSTED DATE'
+        DataBinding.FieldName = 'POSTEDDATETIME'
+        HeaderAlignmentHorz = taCenter
+        Options.Editing = False
+        Options.Filtering = False
+        Options.Sorting = False
+        Width = 76
+      end
+      object cxGrid1DBTableView1PAID: TcxGridDBColumn
+        DataBinding.FieldName = 'REIMBURSED'
+        HeaderAlignmentHorz = taCenter
+        Options.Editing = False
+        Options.Filtering = False
+        Options.Sorting = False
+        Width = 74
       end
     end
     object cxGrid1Level1: TcxGridLevel
@@ -388,7 +404,7 @@ object f_MatRequest: Tf_MatRequest
     end
   end
   object ActionList1: TActionList
-    Left = 368
+    Left = 365
     Top = 191
     object New: TAction
       Caption = 'New'
@@ -439,7 +455,7 @@ object f_MatRequest: Tf_MatRequest
         OffsetY = 2
         Char = 61442
       end>
-    Left = 416
+    Left = 413
     Top = 192
     Bitmap = {
       494C010100000800080001000100FFFFFFFF0400FFFFFFFFFFFFFFFF424D7600
@@ -450,11 +466,11 @@ object f_MatRequest: Tf_MatRequest
   end
   object ds_MR: TDataSource
     DataSet = dm_PM.brw_MR
-    Left = 472
+    Left = 469
     Top = 192
   end
   object cxStyleRepository1: TcxStyleRepository
-    Left = 504
+    Left = 501
     Top = 192
     PixelsPerInch = 96
     object header_style: TcxStyle
@@ -462,7 +478,7 @@ object f_MatRequest: Tf_MatRequest
       Color = clWhite
       Font.Charset = ANSI_CHARSET
       Font.Color = clWhite
-      Font.Height = -11
+      Font.Height = -12
       Font.Name = 'Segoe UI'
       Font.Style = [fsBold]
       TextColor = 6570553

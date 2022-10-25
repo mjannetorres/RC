@@ -564,28 +564,25 @@ procedure Tf_JO.readonly(flag: Boolean);
 begin
   with dm_PM do
   begin
-    cxDBLookupComboBox1.Properties.ReadOnly    := (flag or qry_JOLAYOUT.Value);
-    cxDBMemo1.Properties.ReadOnly              := (flag or qry_JOLAYOUT.Value);
-    cxDBDateEdit1.Properties.ReadOnly          := (flag or qry_JOLAYOUT.Value);
-    cxDBDateEdit2.Properties.ReadOnly          := (flag or qry_JOLAYOUT.Value);
-    cxGridDBTableView1SHIRTID.Options.Editing  := (not flag and not (qry_JOLAYOUT.Value));
-    cxGridDBTableView1QTY.Options.Editing      := (not flag and not (qry_JOLAYOUT.Value));
-    cxGridDBTableView1FREE.Options.Editing     := (not flag and not (qry_JOLAYOUT.Value));
-    cxGridDBTableView1COST.Options.Editing     := (not flag and not (qry_JOLAYOUT.Value));
-    cxGridDBTableView1QTY.Options.Editing      := (not flag and not (qry_JOLAYOUT.Value));
-    cxGridDBTableView1REMARKS.Options.Editing  := (not flag and not (qry_JOLAYOUT.Value));
-    cxGridDBTableView2EMPID.Options.Editing    := (not flag and not (qry_JOLAYOUT.Value));
-    cxGridDBTableView2ROLEID.Options.Editing   := (not flag and not (qry_JOLAYOUT.Value));
-    //cxGridDBTableView1ITEMID.Options.Editing   := (not flag and not (qry_JOLAYOUT.Value));
-    //cxGridDBColumn1.Options.Editing            := (not flag and not (qry_JOLAYOUT.Value));
-    //cxGridDBColumn3.Options.Editing            := (not flag and not (qry_JOLAYOUT.Value));
+    cxDBLookupComboBox1.Properties.ReadOnly    := flag;
+    cxDBMemo1.Properties.ReadOnly              := flag;
+    cxDBDateEdit1.Properties.ReadOnly          := flag;
+    cxDBDateEdit2.Properties.ReadOnly          := flag;
+    cxGridDBTableView1SHIRTID.Options.Editing  := (not flag);
+    cxGridDBTableView1QTY.Options.Editing      := (not flag);
+    cxGridDBTableView1FREE.Options.Editing     := (not flag);
+    cxGridDBTableView1COST.Options.Editing     := (not flag);
+    cxGridDBTableView1QTY.Options.Editing      := (not flag);
+    cxGridDBTableView1REMARKS.Options.Editing  := (not flag);
+    cxGridDBTableView2EMPID.Options.Editing    := (not flag);
+    cxGridDBTableView2ROLEID.Options.Editing   := (not flag);
 
-    cxDBTextEdit1.Properties.ReadOnly          := (flag or qry_JOLAYOUT.Value);
-    Delete1.Visible                            := ((not flag) and not (qry_JOLAYOUT.Value));
-//    MenuItem1.Visible                          := ((not flag) and not (qry_JOLAYOUT.Value));
+
+    cxDBTextEdit1.Properties.ReadOnly          := (flag);
+    Delete1.Visible                            := ((not flag));
 
     if posted then
-    btnSave.Enabled       := (not flag and not (qry_JOLAYOUT.Value))
+    btnSave.Enabled       := (not flag)
     else
     btnSave.Enabled       := True;
 
@@ -600,7 +597,7 @@ begin
       chk_posted.Properties.ReadOnly  := True;
       btnPrint.Visible                := True;
     end;
-    btnAdd.Enabled  := (not flag and not (qry_JOLAYOUT.Value));
+    btnAdd.Enabled  := (not flag);
   end;
 end;
 

@@ -54,6 +54,24 @@ type
     cxImageList1: TcxImageList;
     sCharImageList1: TsCharImageList;
     ds_sprint: TDataSource;
+    select_style: TcxStyle;
+    scToolBar2: TscToolBar;
+    btnNew: TToolButton;
+    btnEdit: TToolButton;
+    btnDelete: TToolButton;
+    ds_logs: TDataSource;
+    btnPrint: TToolButton;
+    Print: TAction;
+    Overrideby: TAction;
+    btnOverride: TToolButton;
+    PopupMenu1: TPopupMenu;
+    ReassignWorker1: TMenuItem;
+    EditOPSheet1: TMenuItem;
+    CancelOPSheet1: TMenuItem;
+    ds_pending: TDataSource;
+    PopupMenu2: TPopupMenu;
+    CreateLayout1: TMenuItem;
+    Timer1: TTimer;
     cxGrid1: TcxGrid;
     cxGrid1DBTableView1: TcxGridDBTableView;
     cxGrid1DBTableView1JONO: TcxGridDBColumn;
@@ -62,121 +80,12 @@ type
     cxGrid1DBTableView1LOGDATE: TcxGridDBColumn;
     cxGrid1DBTableView1DUEDATE: TcxGridDBColumn;
     cxGrid1DBTableView1POSTED: TcxGridDBColumn;
-    cxGrid1Level1: TcxGridLevel;
-    select_style: TcxStyle;
-    pan_PM: TPanel;
-    cxGrid2: TcxGrid;
-    cxGridDBTableView1: TcxGridDBTableView;
-    cxGridDBTableView1JODESC: TcxGridDBColumn;
-    cxGridDBTableView1DATEDUE: TcxGridDBColumn;
-    cxGridDBTableView1EMPNAME: TcxGridDBColumn;
-    cxGridDBTableView1DESCRIPTION: TcxGridDBColumn;
-    cxGridDBTableView1FABRIC: TcxGridDBColumn;
-    cxGridDBTableView1SIZE: TcxGridDBColumn;
-    cxGridDBTableView1FIT: TcxGridDBColumn;
-    cxGridDBTableView1TOTALQTY: TcxGridDBColumn;
-    cxGridDBTableView1UNIT: TcxGridDBColumn;
-    cxGridDBTableView1STARTDATE: TcxGridDBColumn;
-    cxGridDBTableView1FINISHEDDATE: TcxGridDBColumn;
-    cxGridDBTableView1STATUS: TcxGridDBColumn;
-    cxGridLevel1: TcxGridLevel;
-    scPageControl2: TscPageControl;
-    scTabSheet8: TscTabSheet;
-    CreateProject: TAction;
-    EditProject: TAction;
-    scToolBar1: TscToolBar;
-    btnOPEdit: TToolButton;
-    btnMatRequest: TToolButton;
-    Splitter1: TSplitter;
-    scToolBar2: TscToolBar;
-    btnNew: TToolButton;
-    btnEdit: TToolButton;
-    btnDelete: TToolButton;
-    MaterialRequest: TAction;
-    ReleaseOP: TAction;
-    btnOPExport: TToolButton;
-    btnOPPrint: TToolButton;
-    PrintOP: TAction;
-    scToolBar3: TscToolBar;
-    btnLogNew: TToolButton;
-    btnLogEdit: TToolButton;
-    btnLogDelete: TToolButton;
-    NewLog: TAction;
-    EditLog: TAction;
-    DeleteLog: TAction;
-    Splitter2: TSplitter;
-    cxGrid3: TcxGrid;
-    cxGridLevel2: TcxGridLevel;
-    ds_logs: TDataSource;
-    cxGrid3DBBandedTableView1: TcxGridDBBandedTableView;
-    cxGrid3DBBandedTableView1JONO: TcxGridDBBandedColumn;
-    cxGrid3DBBandedTableView1QTY: TcxGridDBBandedColumn;
-    cxGrid3DBBandedTableView1TOTALQTY: TcxGridDBBandedColumn;
-    cxGrid3DBBandedTableView1DONE: TcxGridDBBandedColumn;
-    cxGrid3DBBandedTableView1LOGDATE: TcxGridDBBandedColumn;
-    cxGrid3DBBandedTableView1REMAINING: TcxGridDBBandedColumn;
-    cxGrid3DBBandedTableView1EMPNAME: TcxGridDBBandedColumn;
-    cxGrid3DBBandedTableView1DESCRIPTION: TcxGridDBBandedColumn;
-    cxGrid3DBBandedTableView1FABRIC: TcxGridDBBandedColumn;
-    cxGrid3DBBandedTableView1SIZE: TcxGridDBBandedColumn;
-    cxGrid3DBBandedTableView1FIT: TcxGridDBBandedColumn;
-    cxGrid3DBBandedTableView1SPRINT: TcxGridDBBandedColumn;
-    cxGridDBTableView1PAPERSIZE: TcxGridDBColumn;
-    cxGridDBTableView1AGE: TcxGridDBColumn;
-    cxGrid1DBTableView1CLOSED: TcxGridDBColumn;
-    cxGrid1DBTableView1RELEASED: TcxGridDBColumn;
-    btnPrint: TToolButton;
-    Print: TAction;
-    cxGridDBTableView1STREXPORTEDDATETIME: TcxGridDBColumn;
-    Assign: TAction;
     cxGrid1DBTableView1LAYOUT: TcxGridDBColumn;
-    Overrideby: TAction;
-    btnOverride: TToolButton;
+    cxGrid1DBTableView1RELEASED: TcxGridDBColumn;
+    cxGrid1DBTableView1CLOSED: TcxGridDBColumn;
     cxGrid1DBTableView1PAIDAMNT: TcxGridDBColumn;
     cxGrid1DBTableView1BALAMNT: TcxGridDBColumn;
-    PopupMenu1: TPopupMenu;
-    Reassign: TAction;
-    ReassignWorker1: TMenuItem;
-    scPageControl1: TscPageControl;
-    scTabSheet1: TscTabSheet;
-    scTabSheet2: TscTabSheet;
-    scTabSheet3: TscTabSheet;
-    scTabSheet4: TscTabSheet;
-    scTabSheet5: TscTabSheet;
-    scTabSheet6: TscTabSheet;
-    scTabSheet7: TscTabSheet;
-    btnCreateLayout: TToolButton;
-    CreateLayout: TAction;
-    cxGridDBTableView1REMQTY: TcxGridDBColumn;
-    cxGridDBTableView1SPRINT: TcxGridDBColumn;
-    btnCancelLayout: TToolButton;
-    CancelLayout: TAction;
-    CancelOPSheet: TAction;
-    EditOPSheet: TAction;
-    EditOPSheet1: TMenuItem;
-    CancelOPSheet1: TMenuItem;
-    scTabSheet9: TscTabSheet;
-    ds_pending: TDataSource;
-    cxGrid2DBTableView1: TcxGridDBTableView;
-    cxGrid2DBTableView1EMPNAME: TcxGridDBColumn;
-    cxGrid2DBTableView1ROLE: TcxGridDBColumn;
-    cxGrid2DBTableView1DUEDATE: TcxGridDBColumn;
-    cxGrid2DBTableView1REMARKS: TcxGridDBColumn;
-    cxGrid2DBTableView1POSTED: TcxGridDBColumn;
-    cxGrid2DBTableView1DESCRIPTION: TcxGridDBColumn;
-    cxGrid2DBTableView1FABRIC: TcxGridDBColumn;
-    cxGrid2DBTableView1QTY: TcxGridDBColumn;
-    cxGrid2DBTableView1FREE: TcxGridDBColumn;
-    cxGrid2DBTableView1UNIT: TcxGridDBColumn;
-    cxGrid2DBTableView1JODESC: TcxGridDBColumn;
-    cxGrid2DBTableView1AGE: TcxGridDBColumn;
-    cxGrid2DBTableView1LOGDATE: TcxGridDBColumn;
-    PopupMenu2: TPopupMenu;
-    Layout: TAction;
-    CreateLayout1: TMenuItem;
-    ToolButton2: TToolButton;
-    cxGrid2DBTableView1STATUS: TcxGridDBColumn;
-    Timer1: TTimer;
+    cxGrid1Level1: TcxGridLevel;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure EditExecute(Sender: TObject);
     procedure DeleteExecute(Sender: TObject);
@@ -184,36 +93,17 @@ type
     procedure txt_searchRightButtonClick(Sender: TObject);
     procedure txt_searchKeyPress(Sender: TObject; var Key: Char);
     procedure EditProjectExecute(Sender: TObject);
-    procedure scPageControl1Change(Sender: TObject);
     procedure FormCreate(Sender: TObject);
-    procedure cxGridDBTableView1DblClick(Sender: TObject);
-    procedure ReleaseOPExecute(Sender: TObject);
-    procedure PrintOPExecute(Sender: TObject);
-    procedure NewLogExecute(Sender: TObject);
-    procedure EditLogExecute(Sender: TObject);
-    procedure DeleteLogExecute(Sender: TObject);
-    procedure cxGridDBTableView1DATEDUEStylesGetContentStyle(
-      Sender: TcxCustomGridTableView; ARecord: TcxCustomGridRecord;
-      AItem: TcxCustomGridTableItem; var AStyle: TcxStyle);
     procedure PrintExecute(Sender: TObject);
     procedure cxGrid1DBTableView1CellClick(Sender: TcxCustomGridTableView;
       ACellViewInfo: TcxGridTableDataCellViewInfo; AButton: TMouseButton;
       AShift: TShiftState; var AHandled: Boolean);
-    procedure cxGridDBTableView1CellClick(Sender: TcxCustomGridTableView;
-      ACellViewInfo: TcxGridTableDataCellViewInfo; AButton: TMouseButton;
-      AShift: TShiftState; var AHandled: Boolean);
-    procedure MaterialRequestExecute(Sender: TObject);
     procedure AssignExecute(Sender: TObject);
     procedure OverridebyExecute(Sender: TObject);
-    procedure ReassignExecute(Sender: TObject);
     procedure CreateLayoutExecute(Sender: TObject);
     procedure EditOPSheetExecute(Sender: TObject);
-    procedure CancelOPSheetExecute(Sender: TObject);
     procedure CancelLayoutExecute(Sender: TObject);
     procedure LayoutExecute(Sender: TObject);
-    procedure cxGrid2DBTableView1DUEDATEStylesGetContentStyle(
-      Sender: TcxCustomGridTableView; ARecord: TcxCustomGridRecord;
-      AItem: TcxCustomGridTableItem; var AStyle: TcxStyle);
     procedure Timer1Timer(Sender: TObject);
   private
     { Private declarations }
@@ -221,12 +111,6 @@ type
     procedure create_layout(jono: String);
     procedure user_rights;
     procedure load_workers;
-    procedure role_ui;
-    procedure op_sheet_ui;
-    procedure generate_pending;
-    procedure generate_pm;
-    procedure generate_logs;
-    procedure generate_done;
     procedure notif;
   public
     { Public declarations }
@@ -246,7 +130,9 @@ uses dmPM, fJO, DateUtils, fOPSheet, fLogTemp, fmenu, fMatRequest, fPassword,
 procedure Tf_PMBoard.txt_searchKeyPress(Sender: TObject; var Key: Char);
 begin
   if Key = #13 then
-  search;
+  begin
+    search;
+  end;
 end;
 
 procedure Tf_PMBoard.txt_searchRightButtonClick(Sender: TObject);
@@ -267,15 +153,11 @@ begin
     btnEdit.Visible     := brw_Rights.Locate('POLICYID;SELECT;ROLEID',VarArrayOf([2, True, roleid]), []);
     btnDelete.Visible   := brw_Rights.Locate('POLICYID;SELECT;ROLEID',VarArrayOf([3, True, roleid]), []);
     btnOverride.Visible  := brw_Rights.Locate('POLICYID;SELECT;ROLEID',VarArrayOf([5, True, roleid]), []);
-    CancelLayout.Visible := brw_Rights.Locate('POLICYID;SELECT;ROLEID',VarArrayOf([60, True, roleid]), []);
-    EditOPSheet.Enabled  := brw_Rights.Locate('POLICYID;SELECT;ROLEID',VarArrayOf([61, True, roleid]), []);
-    CancelOPSheet.Enabled := brw_Rights.Locate('POLICYID;SELECT;ROLEID',VarArrayOf([62, True, roleid]), []);
 
     New.Enabled         := btnNew.Visible;
     Edit.Enabled        := btnEdit.Visible;
     Delete.Enabled      := btnDelete.Visible;
     Overrideby.Enabled  := btnOverride.Visible;
-    Layout.Enabled      := roleid = 1;
   end;
 end;
 
@@ -295,16 +177,16 @@ begin
 //        MessageDlg('Cannot override Job Order! Please void receipt first.', mtInformation, [mbOK], 0);
 //        Exit
 //      end;
-      if brw_JOLAYOUT.Value and not brw_JORELEASED.Value then
-      begin
-        MessageDlg('Cannot override Job Order! Please cancel layout first.', mtInformation, [mbOK], 0);
-        Exit
-      end
-      else if brw_JORELEASED.Value then
-      begin
-        MessageDlg('Cannot override Job Order! Please cancel Operator Sheet to continue.', mtInformation, [mbOK], 0);
-        Exit
-      end;
+//      if brw_JOLAYOUT.Value and not brw_JORELEASED.Value then
+//      begin
+//        MessageDlg('Cannot override Job Order! Please cancel layout first.', mtInformation, [mbOK], 0);
+//        Exit
+//      end
+//      else if brw_JORELEASED.Value then
+//      begin
+//        MessageDlg('Cannot override Job Order! Please cancel Operator Sheet to continue.', mtInformation, [mbOK], 0);
+//        Exit
+//      end;
 
 
       f_Password  := Tf_Password.Create(Self);
@@ -382,69 +264,6 @@ begin
 
         MessageDlg('Layout has been cancelled', mtInformation, [mbOK], 0);
 
-        generate_pm;
-        search;
-      end;
-    end;
-  end;
-end;
-
-procedure Tf_PMBoard.CancelOPSheetExecute(Sender: TObject);
-begin
-  with dm_PM do
-  begin
-
-    f_EnterJO := Tf_EnterJO.Create(Self);
-    if f_EnterJO.ShowModal = mrOk then
-    begin
-      brw_PMDetail.Close;
-      brw_PMDetail.SQL[2] := 'WHERE JONO = :JONO AND SPRINT <> ''LAYOUT/DESIGN'' AND CANCELLED = FALSE';
-      brw_PMDetail.ParamByName('JONO').Value  := Trim(f_EnterJO.txt_JO.Text);
-      brw_PMDetail.Open();
-
-      if brw_PMDetail.RecordCount = 0 then
-      begin
-        MessageDlg('No Operator Sheet exported matching Job Order '+Trim(f_EnterJO.txt_JO.Text)+'.', mtError, [mbOK], 0);
-        Exit;
-      end;
-
-      qry_Logs.Close;
-      qry_Logs.SQL[2]  := 'WHERE JONO = :JONO AND CANCELLED = FALSE';
-      qry_Logs.ParamByName('JONO').Value    := Trim(f_EnterJO.txt_JO.Text);
-      qry_Logs.Open();
-
-      if qry_Logs.RecordCount > 0 then
-      begin
-        MessageDlg('Job Order No. '+Trim(f_EnterJO.txt_JO.Text)+' has record(s) on work logs. Please delete all work logs of this Job Order to continue!', mtError, [mbOK], 0);
-        Exit
-
-      end;
-
-      if MessageDlg('Are you sure to cancel OP Sheet of JO No.'+Trim(f_EnterJO.txt_JO.Text)+'?', mtConfirmation, [mbYes, mbNo], 0) = mrYes then
-      begin
-        qry_JO.Close;
-        qry_JO.SQL[2] := 'WHERE JONO = :ID AND CANCELLED = FALSE';
-        qry_JO.ParamByName('ID').Value  := Trim(f_EnterJO.txt_JO.EditValue);
-        qry_JO.Open();
-
-        upd_PMBoard.Close;
-        upd_PMBoard.SQL[1]  := 'SET CANCELLED = TRUE';
-        upd_PMBoard.SQL[2]  := 'WHERE SPRINT <> ''LAYOUT/DESIGN'' AND  JONO = '+qry_JOJONO.AsString;
-        upd_PMBoard.ExecSQL;
-
-        upd_PMBoard.Close;
-        upd_PMBoard.SQL[1]  := 'SET DONE = FALSE';
-        upd_PMBoard.SQL[2]  := 'WHERE SPRINT = ''LAYOUT/DESIGN'' AND  JONO = '+qry_JOJONO.AsString;
-        upd_PMBoard.ExecSQL;
-
-        qry_JO.Edit;
-        qry_JORELEASED.Value  := False;
-        qry_JO.Post;
-        qry_JO.ApplyUpdates();
-
-        MessageDlg('OP Sheet has been cancelled!', mtInformation, [mbOK], 0);
-
-        generate_pm;
         search;
       end;
     end;
@@ -563,45 +382,6 @@ begin
   btnOverride.Visible   := (dm_PM.brw_JOPOSTED.Value or dm_PM.brw_JOLAYOUT.Value) and dm_PM.brw_Rights.Locate('POLICYID;SELECT;ROLEID',VarArrayOf([5, True, dm_PM.roleid]), [])
 end;
 
-procedure Tf_PMBoard.cxGrid2DBTableView1DUEDATEStylesGetContentStyle(
-  Sender: TcxCustomGridTableView; ARecord: TcxCustomGridRecord;
-  AItem: TcxCustomGridTableItem; var AStyle: TcxStyle);
-begin
-  if (ARecord.Values[cxGrid2DBTableView1STATUS.Index] = 'OFF TRACK') then
-  AStyle  :=  ARedStyle
-  else if (ARecord.Values[cxGrid2DBTableView1STATUS.Index] = 'AT RISK') then
-  AStyle  :=  AYellowStyle;
-end;
-
-procedure Tf_PMBoard.cxGridDBTableView1CellClick(Sender: TcxCustomGridTableView;
-  ACellViewInfo: TcxGridTableDataCellViewInfo; AButton: TMouseButton;
-  AShift: TShiftState; var AHandled: Boolean);
-begin
-  if scPageControl1.ActivePageIndex = 1 then
-  btnOPExport.Visible := not dm_PM.brw_pmboardRELEASED.Value;
- // btnOPPrint.Visible  := dm_PM.brw_pmboardRELEASED.Value;
-  CancelLayout.Visible  := (scPageControl1.ActivePageIndex = 1) and (dm_PM.brw_pmboardSPRINT.Value = 'LAYOUT/DESIGN') and dm_PM.brw_Rights.Locate('POLICYID;SELECT;ROLEID',VarArrayOf([62, True, dm_PM.roleid]), []);
-  EditOPSheet.Enabled   := (scPageControl1.ActivePageIndex > 1) and dm_PM.brw_Rights.Locate('POLICYID;SELECT;ROLEID',VarArrayOf([61, True, dm_PM.roleid]), []);
-  CancelOPSheet.Enabled := (scPageControl1.ActivePageIndex > 1) and dm_PM.brw_Rights.Locate('POLICYID;SELECT;ROLEID',VarArrayOf([62, True, dm_PM.roleid]), []);
-
-end;
-
-procedure Tf_PMBoard.cxGridDBTableView1DATEDUEStylesGetContentStyle(
-  Sender: TcxCustomGridTableView; ARecord: TcxCustomGridRecord;
-  AItem: TcxCustomGridTableItem; var AStyle: TcxStyle);
-begin
-  if (ARecord.Values[cxGridDBTableView1STATUS.Index] = 'OFF TRACK') then
-  AStyle  :=  ARedStyle
-  else if (ARecord.Values[cxGridDBTableView1STATUS.Index] = 'AT RISK') then
-  AStyle  :=  AYellowStyle;
-end;
-
-procedure Tf_PMBoard.cxGridDBTableView1DblClick(Sender: TObject);
-begin
-  if scPageControl1.ActivePageIndex = 1 then
-  EditProjectExecute(nil);
-end;
-
 procedure Tf_PMBoard.DeleteExecute(Sender: TObject);
 begin
   with dm_PM do
@@ -663,80 +443,6 @@ begin
       end
       else
          MessageDlg('Cannot delete posted transaction(s)', mtError, [mbOK], 0);
-    end;
-  end;
-end;
-
-procedure Tf_PMBoard.DeleteLogExecute(Sender: TObject);
-begin
-  with dm_PM do
-  begin
-    if (scPageControl1.ActivePageIndex < 7) then
-    begin
-      if brw_Logs.RecordCount > 0 then
-      begin
-        if MessageDlg('Do you want to delete this record?', mtConfirmation, [mbYes, mbNo], 0) = mrYes then
-        begin
-          qry_Logs.Close;
-          qry_Logs.SQL[2] := 'WHERE ID = :ID';
-          qry_Logs.ParamByName('ID').Value  := brw_LogsID.Value;
-          qry_Logs.Open();
-
-          if qry_Logs.RecordCount > 0 then
-          begin
-            qry_Logs.Edit;
-            qry_LogsCANCELLED.Value         := True;
-            qry_LogsDELETEDDATETIME.Value   := Now;
-            qry_LogsDELETEDBYID.Value       := userid;
-            qry_Logs.Post;
-            qry_Logs.ApplyUpdates();
-
-            brw_LogDone.Close;
-            brw_LogDone.SQL[2]  := 'WHERE JONO = :JONO AND SHIRTID = :ID AND SPRINT = :SPRINT AND SIZE = :SIZE AND FIT = :FIT AND CANCELLED = FALSE';
-            brw_LogDone.ParamByName('JONO').Value    := qry_LogsJONO.Value;
-            brw_LogDone.ParamByName('ID').Value      := qry_LogsSHIRTID.Value;
-            brw_LogDone.ParamByName('SPRINT').Value  := qry_LogsSPRINT.Value;
-            brw_LogDone.ParamByName('SIZE').Value    := qry_LogsSIZE.Value;
-            brw_LogDone.ParamByName('FIT').Value     := qry_LogsFIT.Value;
-            brw_LogDone.Open();
-
-            brw_PMDetail.Close;
-            brw_PMDetail.SQL[2] := 'WHERE JONO = :JONO AND SHIRTID = :ID AND SPRINT = :SPRINT AND SIZE = :SIZE AND FIT = :FIT AND CANCELLED = FALSE';
-            brw_PMDetail.ParamByName('JONO').Value    := qry_LogsJONO.Value;
-            brw_PMDetail.ParamByName('ID').Value      := qry_LogsSHIRTID.Value;
-            brw_PMDetail.ParamByName('SPRINT').Value  := qry_LogsSPRINT.Value;
-            brw_PMDetail.ParamByName('SIZE').Value    := qry_LogsSIZE.Value;
-            brw_PMDetail.ParamByName('FIT').Value     := qry_LogsFIT.Value;
-            brw_PMDetail.Open();
-
-            brw_PMDetail.First;
-            while not brw_PMDetail.Eof do
-            begin
-              qry_PB.Close;
-              qry_PB.SQL[2] := 'WHERE ID = :ID';
-              qry_PB.ParamByName('ID').Value  := brw_PMDetailID.Value;
-              qry_PB.Open();
-
-              qry_PB.Edit;
-              qry_PBREMQTY.Value       := brw_LogDoneTOTAL.AsInteger;
-              qry_PB.Post;
-              qry_PB.ApplyUpdates();
-
-              brw_PMDetail.Next;
-            end;
-
-
-            MessageDlg('Log has been deleted!', mtInformation, [mbOK], 0);
-            generate_logs;
-            generate_pm;
-
-          end
-          else
-          MessageDlg('No log to delete!', mtError, [mbOK], 0);
-        end;
-      end
-      else
-       MessageDlg('No log to delete!', mtError, [mbOK], 0);
     end;
   end;
 end;
@@ -961,113 +667,6 @@ begin
 
         search;
       end;
-    end;
-  end;
-end;
-
-procedure Tf_PMBoard.EditLogExecute(Sender: TObject);
-begin
-  with dm_PM do
-  begin
-    if (scPageControl1.ActivePageIndex < 7) and (scPageControl1.ActivePageIndex > 0) then
-    begin
-      if brw_Logs.RecordCount > 0 then
-      begin
-        if MessageDlg('Continue to override current record?', mtInformation, [mbYes, mbNo], 0) = mrYes then
-        begin
-          qry_Logs.Close;
-          qry_Logs.SQL[2]   := 'WHERE ID = :ID';
-          qry_Logs.ParamByName('ID').Value  := brw_LogsID.Value;
-          qry_Logs.Open();
-
-          qry_Logs.Edit;
-          f_LogTemp := Tf_LogTemp.Create(Self);
-          with f_LogTemp do
-          begin
-            Caption := 'New Log';
-
-            brw_Emp.Close;
-            brw_Emp.SQL[2]  := 'WHERE ID = :ID';
-            brw_Emp.ParamByName('ID').Value := qry_LogsEMPID.Value;
-            brw_Emp.Open();
-
-            txt_EmpName.Text                := brw_EmpEMPNAME.AsString;
-            txt_desc.Text                   := brw_pmboardDESCRIPTION.AsString;
-            txt_fabric.Text                 := brw_pmboardFABRIC.AsString;
-            txt_size.Text                   := brw_pmboardSIZE.AsString;
-            txt_fit.Text                    := brw_pmboardFIT.AsString;
-            txt_unit.Text                   := brw_pmboardUNIT.AsString;
-
-            if ShowModal = mrOk then
-            begin
-              qry_Logs.Edit;
-              qry_Logs.Post;
-              qry_Logs.ApplyUpdates();
-
-
-              brw_PMDetail.Close;
-              brw_PMDetail.SQL[2] := 'WHERE JONO = :JONO AND SHIRTID = :ID AND SPRINT = :SPRINT AND SIZE = :SIZE AND FIT = :FIT AND CANCELLED = FALSE';
-              brw_PMDetail.ParamByName('JONO').Value    := qry_LogsJONO.Value;
-              brw_PMDetail.ParamByName('ID').Value      := qry_LogsSHIRTID.Value;
-              brw_PMDetail.ParamByName('SPRINT').Value  := qry_LogsSPRINT.Value;
-              brw_PMDetail.ParamByName('SIZE').Value    := qry_LogsSIZE.Value;
-              brw_PMDetail.ParamByName('FIT').Value     := qry_LogsFIT.Value;
-              brw_PMDetail.Open();
-
-              brw_PMDetail.First;
-              while not brw_PMDetail.Eof do
-              begin
-                qry_PB.Close;
-                qry_PB.SQL[2] := 'WHERE ID = :ID';
-                qry_PB.ParamByName('ID').Value  := brw_PMDetailID.Value;
-                qry_PB.Open();
-
-                qry_PB.Edit;
-                qry_PBREMQTY.Value       := qry_LogsREMAINING.Value;
-                qry_PB.Post;
-                qry_PB.ApplyUpdates();
-
-                brw_PMDetail.Next;
-              end;
-
-              if qry_LogsREMAINING.Value = 0 then
-              begin
-                brw_PMDetail.Close;
-                brw_PMDetail.SQL[2] := 'WHERE JONO = :JONO AND SHIRTID = :ID AND SPRINT = :SPRINT AND SIZE = :SIZE AND FIT = :FIT AND CANCELLED = FALSE';
-                brw_PMDetail.ParamByName('JONO').Value    := qry_LogsJONO.Value;
-                brw_PMDetail.ParamByName('ID').Value      := qry_LogsSHIRTID.Value;
-                brw_PMDetail.ParamByName('SPRINT').Value  := qry_LogsSPRINT.Value;
-                brw_PMDetail.ParamByName('SIZE').Value    := qry_LogsSIZE.Value;
-                brw_PMDetail.ParamByName('FIT').Value     := qry_LogsFIT.Value;
-                brw_PMDetail.Open();
-
-                brw_PMDetail.First;
-                while not brw_PMDetail.Eof do
-                begin
-                  qry_PB.Close;
-                  qry_PB.SQL[2] := 'WHERE ID = :ID';
-                  qry_PB.ParamByName('ID').Value  := brw_PMDetailID.Value;
-                  qry_PB.Open();
-
-                  qry_PB.Edit;
-                  qry_PBFINISHEDDATE.Value    := Now;
-                  qry_PBDONE.Value            := True;
-                  qry_PBDONEBYID.Value        := userid;
-                  qry_PB.Post;
-                  qry_PB.ApplyUpdates();
-
-                  brw_PMDetail.Next;
-                end;
-              end;
-
-              MessageDlg('Changes has been saved successfully!', mtInformation, [mbOK], 0);
-              generate_logs;
-              generate_pm;
-            end;
-          end;
-        end;
-      end;
-
     end;
   end;
 end;
@@ -1307,6 +906,7 @@ end;
 
 procedure Tf_PMBoard.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
+  Timer1.Enabled  := False;
   Action  := caFree;
 end;
 
@@ -1322,12 +922,9 @@ begin
   date_2.Date := Now;
   cmb_filter.ItemIndex := 0;
 
-  role_ui;
-  op_sheet_ui;
   user_rights;
 
   search;
-  generate_pending;
 
   notif;
   //generate_pm;
@@ -1336,107 +933,22 @@ end;
 
 procedure Tf_PMBoard.generate_done;
 begin
-  with dm_PM do
-  begin
-
-    brw_Emp.Close;
-    brw_Emp.SQL[2]  := 'WHERE CANCELLED = FALSE';
-    brw_Emp.Open();
-
-    brw_PMDone.Close;
-    if roleid < 6 then
-    begin
-      brw_PMDone.SQL[3]  := 'WHERE PM_BOARD.DONE = TRUE AND PM_BOARD.EMPID = :ID'
-       +' AND JO_HEADER.CANCELLED = FALSE AND PM_BOARD.CANCELLED = FALSE';
-      brw_PMDone.ParamByName('ID').Value     := empid;
-    end
-    else
-    brw_PMDone.SQL[3]  := 'WHERE PM_BOARD.DONE = TRUE AND JO_HEADER.CANCELLED = FALSE AND PM_BOARD.CANCELLED = FALSE';
-    brw_PMDone.Open();
-
-    ds_sprint.DataSet := brw_PMDone;
-    cxGridDBTableView1FINISHEDDATE.Visible  := True;
-    cxGridDBTableView1.ViewData.Expand(True);
-  end;
+  
 end;
 
 procedure Tf_PMBoard.generate_logs;
 begin
-  with dm_PM do
-  begin
-     if scPageControl1.ActivePageIndex > 1 then
-     begin
-      brw_Logs.Close;
-      if roleid < 6 then
-      begin
-        brw_Logs.SQL[4] := 'WHERE PM_LOGS.SPRINT = :SPRINT AND PM_LOGS.CANCELLED = FALSE AND PM_LOGS.EMPID = :EMPID AND PM_BOARD.CANCELLED = FALSE';
-        brw_Logs.ParamByName('EMPID').Value     := dm_PM.empid;
-      end
-      else
-        brw_Logs.SQL[4] := 'WHERE PM_LOGS.SPRINT = :SPRINT AND PM_LOGS.CANCELLED = FALSE AND PM_BOARD.CANCELLED = FALSE';
-      brw_Logs.ParamByName('SPRINT').Value    := scPageControl1.Pages[scPageControl1.ActivePageIndex].Caption;
-      brw_Logs.Open();
-
-     end;
-   cxGrid3DBBandedTableView1.ViewData.Expand(True);
-  end;
+  
 end;
 
 procedure Tf_PMBoard.generate_pending;
 begin
-  with dm_PM do
-  begin
-    if scPageControl1.ActivePageIndex = 0 then
-    begin
-      brw_Pending.Close;
-      if roleid < 6 then
-      begin
-        brw_Pending.SQL[4]  := 'WHERE EMP.EMPID = :EMPID AND HEADER.LAYOUT = FALSE AND HEADER.CANCELLED = FALSE';
-        brw_Pending.ParamByName('EMPID').Value  := dm_PM.empid;
-      end
-      else
-      begin
-        brw_Pending.SQL[4]  := 'WHERE HEADER.LAYOUT = FALSE AND HEADER.CANCELLED = FALSE';
-      end;
-      brw_Pending.Open();
 
-      cxGridLevel1.GridView := cxGrid2DBTableView1;
-      cxGrid2DBTableView1.ViewData.Expand(True);
-    end;
-  end;
 end;
 
 procedure Tf_PMBoard.generate_pm;
-var sprint: string;
-  pageid, userid: Integer;
 begin
-  with dm_PM do
-  begin
 
-    if scPageControl1.ActivePageIndex > 0 then
-    begin
-      sprint  := scPageControl1.Pages[scPageControl1.ActivePageIndex].Caption;
-      pageid  := scPageControl1.ActivePageIndex;
-      brw_pmboard.Close;
-      if roleid < 6 then
-      begin
-        brw_pmboard.SQL[4]  := 'WHERE PM_BOARD.EMPID = :EMPID AND PM_BOARD.SPRINT = :SPRINT AND PM_BOARD.DONE = FALSE AND JO_HEADER.CANCELLED = FALSE  AND PM_BOARD.CANCELLED = FALSE';
-        brw_pmboard.ParamByName('SPRINT').Value := sprint;
-        brw_pmboard.ParamByName('EMPID').Value  := dm_PM.empid;
-      end
-      else
-      begin
-        brw_pmboard.SQL[4]  := 'WHERE PM_BOARD.SPRINT = :SPRINT AND PM_BOARD.DONE = FALSE AND JO_HEADER.CANCELLED = FALSE AND PM_BOARD.CANCELLED = FALSE';
-        brw_pmboard.ParamByName('SPRINT').Value := sprint;
-      end;
-      brw_pmboard.Open();
-
-      ds_sprint.DataSet := brw_pmboard;
-      cxGridDBTableView1FINISHEDDATE.Visible  := False;
-      cxGridLevel1.GridView := cxGridDBTableView1;
-      cxGridDBTableView1.ViewData.Expand(True);
-    end;
-  end;
 end;
 
 procedure Tf_PMBoard.LayoutExecute(Sender: TObject);
@@ -1505,11 +1017,6 @@ begin
     end;
     tb_JOEmp.Post;
   end;
-end;
-
-procedure Tf_PMBoard.MaterialRequestExecute(Sender: TObject);
-begin
-  f_menu.FabRequestExecute(nil);
 end;
 
 procedure Tf_PMBoard.NewExecute(Sender: TObject);
@@ -1647,181 +1154,6 @@ begin
   end;
 end;
 
-procedure Tf_PMBoard.NewLogExecute(Sender: TObject);
-begin
-  with dm_PM do
-  begin
-    if (scPageControl1.ActivePageIndex < 7) and (scPageControl1.ActivePageIndex > 0) then
-    begin
-      if brw_pmboard.RecordCount > 0 then
-      begin
-        if brw_pmboardEMPID.Value <> empid then
-        begin
-          MessageDlg('You are not the assigned worker for this task!', mtError, [mbOK], 0);
-          Exit;
-        end;
-
-        if MessageDlg('Continue to log current record?', mtInformation, [mbYes, mbNo], 0) = mrYes then
-        begin
-
-          f_LogTemp := Tf_LogTemp.Create(Self);
-          with f_LogTemp do
-          begin
-            Caption := 'New Log';
-
-            brw_Emp.Close;
-            brw_Emp.SQL[2]  := 'WHERE USERID = :ID';
-            brw_Emp.ParamByName('ID').Value := userid;
-            brw_Emp.Open();
-
-            brw_LogDone.Close;
-            brw_LogDone.SQL[2]  := 'WHERE JONO = :JONO AND SHIRTID = :ID AND SPRINT = :SPRINT AND SIZE = :SIZE AND FIT = :FIT AND CANCELLED = FALSE';
-            brw_LogDone.ParamByName('JONO').Value    := brw_pmboardJONO.Value;
-            brw_LogDone.ParamByName('ID').Value      := brw_pmboardSHIRTID.Value;
-            brw_LogDone.ParamByName('SPRINT').Value  := brw_pmboardSPRINT.Value;
-            brw_LogDone.ParamByName('SIZE').Value    := brw_pmboardSIZE.Value;
-            brw_LogDone.ParamByName('FIT').Value     := brw_pmboardFIT.Value;
-            brw_LogDone.Open();
-
-            txt_EmpName.Text                := brw_EmpEMPNAME.AsString;
-            txt_desc.Text                   := brw_pmboardDESCRIPTION.AsString;
-            txt_fabric.Text                 := brw_pmboardFABRIC.AsString;
-            txt_size.Text                   := brw_pmboardSIZE.AsString;
-            txt_fit.Text                    := brw_pmboardFIT.AsString;
-            txt_unit.Text                   := brw_pmboardUNIT.AsString;
-
-            qry_Logs.Close;
-            qry_Logs.SQL[2]   := 'WHERE ID = 0';
-            qry_Logs.Open();
-
-            qry_Logs.Append;
-
-            qry_LogsJONO.Value              := brw_pmboardJONO.Value;
-            qry_LogsHEADERID.Value          := brw_pmboardID.Value;
-            qry_LogsDETAILID.Value          := brw_pmboardDETAILID.Value;
-            qry_LogsEMPID.Value             := empid;
-            qry_LogsSPRINT.Value            := brw_pmboardSPRINT.Value;
-            qry_LogsTOTALQTY.Value          := brw_pmboardTOTALQTY.Value;
-            qry_LogsDONE.Value              := brw_LogDoneTOTAL.AsInteger;
-            qry_LogsLOGDATE.Value           := Now;
-            qry_LogsCANCELLED.Value         := False;
-            qry_LogsCREATEDBYID.Value       := userid;
-            qry_LogsCREATEDDATETIME.Value   := Now;
-            qry_LogsSHIRTID.Value           := brw_pmboardSHIRTID.Value;
-            qry_LogsFIT.Value               := brw_pmboardFIT.Value;
-            qry_LogsSIZE.Value              := brw_pmboardSIZE.Value;
-
-            if ShowModal = mrOk then
-            begin
-              if qry_LogsQTY.Value = 0 then
-              begin
-                MessageDlg('Qty to log should be above zero! Cannot proceed at the moment', mtError, [mbOK], 0);
-                qry_Logs.Cancel;
-                Exit;
-              end;
-
-              brw_CountLogs.Close;
-              brw_CountLogs.SQL[2]  := 'WHERE HEADERID = :HEADERID AND CANCELLED = FALSE';
-              brw_CountLogs.ParamByName('HEADERID').Value   := brw_pmboardID.Value;
-              brw_CountLogs.Open();
-
-
-              if brw_CountLogsCOUNT.Value = 0 then
-              begin
-                qry_PB.Close;
-                qry_PB.SQL[2] := 'WHERE ID = :ID';
-                qry_PB.ParamByName('ID').Value  := qry_LogsHEADERID.Value;
-                qry_PB.Open();
-
-                qry_PB.Edit;
-                qry_PBSTARTDATE.Value    := Now;
-
-                qry_PB.Post;
-                qry_PB.ApplyUpdates();
-              end;
-
-              qry_Logs.Post;
-              qry_Logs.ApplyUpdates();
-
-              brw_PMDetail.Close;
-              brw_PMDetail.SQL[2] := 'WHERE JONO = :JONO AND SHIRTID = :ID AND SPRINT = :SPRINT AND SIZE = :SIZE AND FIT = :FIT';
-              brw_PMDetail.ParamByName('JONO').Value    := qry_LogsJONO.Value;
-              brw_PMDetail.ParamByName('ID').Value      := qry_LogsSHIRTID.Value;
-              brw_PMDetail.ParamByName('SPRINT').Value  := qry_LogsSPRINT.Value;
-              brw_PMDetail.ParamByName('SIZE').Value    := qry_LogsSIZE.Value;
-              brw_PMDetail.ParamByName('FIT').Value     := qry_LogsFIT.Value;
-              brw_PMDetail.Open();
-
-              brw_PMDetail.First;
-              while not brw_PMDetail.Eof do
-              begin
-
-                qry_PB.Close;
-                qry_PB.SQL[2] := 'WHERE ID = :ID';
-                qry_PB.ParamByName('ID').Value  := brw_PMDetailID.Value;
-                qry_PB.Open();
-
-                qry_PB.Edit;
-                qry_PBREMQTY.Value       := qry_LogsREMAINING.Value;
-                qry_PB.Post;
-                qry_PB.ApplyUpdates();
-
-                brw_PMDetail.Next;
-              end;
-
-
-              if qry_LogsREMAINING.Value = 0 then
-              begin
-
-                brw_PMDetail.Close;
-                brw_PMDetail.SQL[2] := 'WHERE JONO = :JONO AND SHIRTID = :ID AND SPRINT = :SPRINT AND SIZE = :SIZE AND FIT = :FIT AND CANCELLED = FALSE';
-                brw_PMDetail.ParamByName('JONO').Value    := qry_LogsJONO.Value;
-                brw_PMDetail.ParamByName('ID').Value      := qry_LogsSHIRTID.Value;
-                brw_PMDetail.ParamByName('SPRINT').Value  := qry_LogsSPRINT.Value;
-                brw_PMDetail.ParamByName('SIZE').Value    := qry_LogsSIZE.Value;
-                brw_PMDetail.ParamByName('FIT').Value     := qry_LogsFIT.Value;
-                brw_PMDetail.Open();
-
-                brw_PMDetail.First;
-                while not brw_PMDetail.Eof do
-                begin
-                  brw_Emp.Close;
-                  brw_Emp.SQL[2]  := 'WHERE ID = :ID';
-                  brw_Emp.ParamByName('ID').Value := brw_PMDetailEMPID.Value;
-                  brw_Emp.Open();
-
-                  qry_PB.Close;
-                  qry_PB.SQL[2] := 'WHERE ID = :ID';
-                  qry_PB.ParamByName('ID').Value  := brw_PMDetailID.Value;
-                  qry_PB.Open();
-
-                  qry_PB.Edit;
-                  qry_PBFINISHEDDATE.Value    := Now;
-                  qry_PBDONE.Value            := True;
-                  if brw_PMDetailEMPID.Value = empid then
-                  qry_PBDONEBYID.Value        := userid
-                  else
-                  qry_PBDONEBYID.Value        := brw_EmpUSERID.Value;
-                  qry_PB.Post;
-                  qry_PB.ApplyUpdates();
-
-                  brw_PMDetail.Next;
-                end;
-              end;
-
-              MessageDlg('Your work has been logged!', mtInformation, [mbOK], 0);
-              generate_logs;
-              generate_pm;
-            end;
-          end;
-        end;
-      end
-      else
-      MessageDlg('Please select record to log!', mtInformation, [mbOK], 0);
-    end;
-  end;
-end;
-
 procedure Tf_PMBoard.notif;
 begin
   with dm_PM do
@@ -1831,60 +1163,10 @@ begin
     qry_Notif.Open();
 
     Timer1.Interval := qry_NotifINTERVAL.AsInteger * 10000;
-    Timer1.Enabled  := True;
+    Timer1.Enabled  := qry_NotifENABLED.Value;
   end;
 end;
 
-procedure Tf_PMBoard.op_sheet_ui;
-begin
-  btnCreateLayout.Visible := True;
-  btnOPEdit.Visible       := True;
-  btnOPExport.Visible     := True;
-  btnOPPrint.Visible      := True;
-  btnMatRequest.Visible   := True;
-  btnLogNew.Visible       := True;
-  btnLogDelete.Visible    := True;
-  btnCancelLayout.Visible    := False;
-
-  cxGridDBTableView1SPRINT.Visible  :=  scPageControl1.ActivePageIndex = 7;
-
-  if (scPageControl1.ActivePageIndex = 0) then
-  begin
-    btnCreateLayout.Visible := False;
-    btnOPEdit.Visible       := False;
-    btnOPExport.Visible     := False;
-    btnOPPrint.Visible      := False;
-    btnMatRequest.Visible   := False;
-    btnLogNew.Visible       := False;
-    btnLogDelete.Visible    := False;
-    btnCancelLayout.Visible := False;
-  end;
-
-  if (scPageControl1.ActivePageIndex > 1) then
-  begin
-    btnCreateLayout.Visible := False;
-    btnOPEdit.Visible       := False;
-    btnOPExport.Visible     := False;
-  end;
-
-  if scPageControl1.ActivePageIndex = 7 then
-  begin
-    btnLogNew.Visible := False;
-    Reassign.Enabled  := False;
-  end
-  else
-  begin
-    if dm_PM.roleid < 6 then
-    begin
-      Reassign.Enabled  := False;
-    end
-    else
-    begin
-      Reassign.Enabled  := True;
-    end;
-  end;
-
-end;
 
 procedure Tf_PMBoard.PrintExecute(Sender: TObject);
 begin
@@ -1936,376 +1218,6 @@ begin
 
 end;
 
-procedure Tf_PMBoard.PrintOPExecute(Sender: TObject);
-var opjono, opheaderid, opempid: Integer;
-  sprint: string;
-begin
-  with dm_PM do
-  begin
-    if scPageControl1.ActivePageIndex = 7 then
-    begin
-      opjono      := brw_PMDoneJONO.Value;
-      opheaderid  := brw_PMDoneHEADERID.Value;
-      sprint    := brw_PMDoneSPRINT.Value;
-      opempid     := brw_PMDoneEMPID.Value;
-    end
-    else
-    begin
-      opjono      := brw_pmboardJONO.Value;
-      opheaderid  := brw_pmboardHEADERID.Value;
-      sprint    := brw_pmboardSPRINT.Value;
-      opempid     := brw_pmboardEMPID.Value;
-    end;
-
-    if (brw_pmboard.RecordCount > 0) or (brw_PMDone.RecordCount > 0) then
-    begin
-      qry_JO.Close;
-      qry_JO.SQL[2] := 'WHERE JONO = :JONO AND CANCELLED = FALSE';
-      qry_JO.ParamByName('JONO').Value  := opjono;
-      qry_JO.Open();
-
-      qry_JODetail.Close;
-      qry_JODetail.SQL[2] := 'WHERE HEADERID = :ID AND CANCELLED = FALSE';
-      qry_JODetail.ParamByName('ID').Value  := opheaderid;
-      qry_JODetail.Open();
-
-      brw_PMDetail.Close;
-      brw_PMDetail.SQL[2] := 'WHERE JONO = :JONO AND SPRINT = :SPRINT AND EMPID = :EMPID AND CANCELLED = FALSE';
-      brw_PMDetail.ParamByName('JONO').Value    := opjono;
-      brw_PMDetail.ParamByName('SPRINT').Value  := sprint; //scPageControl1.Pages[scPageControl1.ActivePageIndex].Caption;
-      brw_PMDetail.ParamByName('EMPID').Value   := opempid;
-      brw_PMDetail.Open();
-
-      brw_PMDetail.First;
-
-
-      tb_OPDetail.Close;
-      tb_OPDetail.Open;
-      brw_PMDetail.DisableControls;
-      while not brw_PMDetail.Eof do
-      begin
-        tb_OPDetail.Append;
-        tb_OPDetailSHIRT.Value      := brw_PMDetailDESCRIPTION.Value;
-        tb_OPDetailFABRIC.Value     := brw_PMDetailFABRIC.Value;
-        tb_OPDetailSIZE.Value       := brw_PMDetailSIZE.Value;
-        tb_OPDetailFIT.Value        := brw_PMDetailFIT.Value;
-        tb_OPDetailQTY.Value        := brw_PMDetailQTY.Value;
-        tb_OPDetailFREE.Value       := brw_PMDetailFREE.Value;
-        tb_OPDetailUNIT.Value       := brw_PMDetailUNIT.Value;
-        tb_OPDetailREMARKS.Value    := brw_PMDetailREMARKS.Value;
-        tb_OPDetailDETAILID.Value   := brw_PMDetailDETAILID.Value;
-        tb_OPDetailEMPID.Value      := brw_PMDetailEMPID.Value;
-        tb_OPDetailROLEID.Value     := brw_PMDetailROLEID.Value;
-        tb_OPDetailPAPERSIZE.Value  := brw_PMDetailPAPERSIZE.Value;
-        tb_OPDetail.Post;
-
-        brw_PMDetail.Next;
-      end;
-      brw_PMDetail.EnableControls;
-
-      f_OPSheet := Tf_OPSheet.Create(Self);
-      f_OPSheet.PrintExecute(Self);
-    end
-    else
-      MessageDlg('Nothing to print!', mtInformation, [mbOK], 0);
-  end;
-end;
-
-procedure Tf_PMBoard.ReassignExecute(Sender: TObject);
-begin
-  with dm_PM do
-  begin
-    if MessageDlg('Continue to reassign to another worker?', mtConfirmation, [mbYes, mbNo], 0) = mrYes then
-    begin
-      brw_Emp1.Close;
-      brw_Emp1.SQL[2] := 'WHERE CANCELLED = FALSE';
-      brw_Emp1.Open();
-
-      qry_PB.Close;
-      qry_PB.SQL[2] := 'WHERE ID = :ID';
-      qry_PB.ParamByName('ID').Value  := brw_pmboardID.Value;
-      qry_PB.Open();
-
-      qry_PB.Edit;
-
-      f_PBReassign  := Tf_PBReassign.Create(Self);
-      f_PBReassign.Label1.Caption := qry_PBSPRINT.AsString;
-      if f_PBReassign.ShowModal = mrOk then
-      begin
-        qry_PB.Post;
-        qry_PB.ApplyUpdates();
-
-        MessageDlg('Successfully reassigned to '+ f_PBReassign.cxDBLookupComboBox1.Text, mtInformation, [mbOK], 0);
-        generate_pm;
-        generate_logs;
-      end;
-    end;
-  end;
-end;
-
-procedure Tf_PMBoard.ReleaseOPExecute(Sender: TObject);
-
-function check_if_complete: Boolean;
-var inc_count: Integer;
-begin
-  with dm_PM do
-  begin
-    Result := False;
-
-    brw_PMDetail.Close;
-    brw_PMDetail.SQL[2] := 'WHERE JONO = :JONO AND CANCELLED = FALSE';
-    brw_PMDetail.ParamByName('JONO').Value  := brw_pmboardJONO.Value;
-    brw_PMDetail.Open();
-
-    inc_count := 0;
-    if brw_PMDetail.RecordCount > 0 then
-    begin
-      brw_PMDetail.First;
-      while not brw_PMDetail.Eof do
-      begin
-        if (brw_PMDetailPAPERSIZE.IsNull) or (brw_PMDetailPAPERSIZE.Value = 0) then
-        inc_count := inc_count +1;
-        if (brw_PMDetailSHIRTID.IsNull) or (brw_PMDetailSHIRTID.Value = 0) then
-        inc_count := inc_count +1;
-        if (brw_PMDetailSIZE.IsNull) then
-        inc_count := inc_count +1;
-        if (brw_PMDetailFIT.IsNull)then
-        inc_count := inc_count +1;
-        if (brw_PMDetailQTY.IsNull) or (brw_PMDetailQTY.Value = 0) then
-        inc_count := inc_count +1;
-        brw_PMDetail.Next;
-      end;
-    end;
-
-    qry_JODetail.Close;
-    qry_JODetail.SQL[2] := 'WHERE HEADERID = :ID AND CANCELLED = FALSE';
-    qry_JODetail.ParamByName('ID').Value  := brw_pmboardHEADERID.Value;
-    qry_JODetail.Open();
-
-    if qry_JODetail.RecordCount > 0 then
-    begin
-      qry_JODetail.First;
-      while not qry_JODetail.Eof do
-      begin
-        if (qry_JODetailLAYOUT.IsNull) then
-        inc_count := inc_count +1;
-        qry_JODetail.Next;
-      end;
-    end;
-
-    if inc_count = 0 then
-    Result  := True;
-  end;
-end;
-
-var sprintcount: Integer;
-exported: Boolean;
-begin
-  with dm_PM do
-  begin
-    qry_JO.Close;
-    qry_JO.SQL[2]  := 'WHERE JONO = :JONO AND CANCELLED = FALSE';
-    qry_JO.ParamByName('JONO').Value  := brw_pmboardJONO.Value;
-    qry_JO.Open();
-
-    if qry_JO.RecordCount > 0 then
-    begin
-      if not qry_JORELEASED.Value then
-      begin
-        if MessageDlg('Continue to export Operator Sheet?', mtConfirmation, [mbYes, mbNo], 0) = mrYes then
-        begin
-
-          if qry_JO.RecordCount > 0 then
-          begin
-            if check_if_complete then
-            begin
-              qry_JO.Edit;
-              qry_JORELEASED.Value          := True;
-              qry_JOEXPORTEDDATETIME.Value  := Now;
-              qry_JO.Post;
-              qry_JO.ApplyUpdates();
-
-              qry_WorkersDetails.Close;
-              qry_WorkersDetails.SQL[2] := 'WHERE ROLEID > 0 AND HEADERID = :ID AND CANCELLED = FALSE';
-              qry_WorkersDetails.ParamByName('ID').Value  := qry_JOID.Value;
-              qry_WorkersDetails.Open();
-
-              qry_WorkersDetails.First;
-              while not qry_WorkersDetails.Eof do
-              begin
-
-                brw_PMDetail.Close;
-                brw_PMDetail.SQL[2] := 'WHERE JONO = :JONO AND SPRINT = :SPRINT AND CANCELLED = FALSE';
-                brw_PMDetail.ParamByName('JONO').Value  := brw_pmboardJONO.Value;
-                brw_PMDetail.ParamByName('SPRINT').Value  := 'LAYOUT/DESIGN';
-                brw_PMDetail.Open();
-
-                brw_PMDetail.First;
-                while not brw_PMDetail.Eof do
-                begin
-                  if qry_WorkersDetailsROLEID.Value = 1 then
-                  begin
-                    qry_Logs.Close;
-                    qry_Logs.SQL[2] := 'WHERE ID = 0';
-                    qry_Logs.Open();
-
-                    qry_Logs.Append;
-                    qry_LogsJONO.Value              := brw_PMDetailJONO.Value;
-                    qry_LogsHEADERID.Value          := brw_PMDetailID.Value;
-                    qry_LogsDETAILID.Value          := brw_PMDetailDETAILID.Value;
-                    qry_LogsEMPID.Value             := empid;
-                    qry_LogsSPRINT.Value            := 'LAYOUT/DESIGN';
-                    qry_LogsTOTALQTY.Value          := brw_PMDetailQTY.Value + brw_PMDetailFREE.Value;
-                    qry_LogsQTY.Value               := qry_LogsTOTALQTY.Value;
-                    qry_LogsDONE.Value              := 0;
-                    qry_LogsREMAINING.Value         := 0;
-                    qry_LogsLOGDATE.Value           := Now;
-                    qry_LogsCANCELLED.Value         := False;
-                    qry_LogsCREATEDBYID.Value       := userid;
-                    qry_LogsCREATEDDATETIME.Value   := Now;
-                    qry_LogsSHIRTID.Value           := brw_PMDetailSHIRTID.Value;
-                    qry_LogsFIT.Value               := brw_PMDetailFIT.Value;
-                    qry_LogsSIZE.Value              := brw_PMDetailSIZE.Value;
-
-                    qry_Logs.Post;
-                    qry_Logs.ApplyUpdates();
-
-                    if qry_LogsREMAINING.Value = 0 then
-                    begin
-                      qry_PB.Close;
-                      qry_PB.SQL[2] := 'WHERE ID = :ID';
-                      qry_PB.ParamByName('ID').Value  := qry_LogsHEADERID.Value;
-                      qry_PB.Open();
-
-                      qry_PB.Edit;
-                      qry_PBREMQTY.Value          := 0;
-                      qry_PBFINISHEDDATE.Value    := Now;
-                      qry_PBDONE.Value            := True;
-                      qry_PBDONEBYID.Value        := userid;
-                      qry_PB.Post;
-                      qry_PB.ApplyUpdates();
-                    end;
-
-                  end
-                  else
-                  begin
-
-                    sprintcount := 0;
-                    exported    := False;
-
-                    repeat
-
-                      qry_PB.Close;
-                      qry_PB.SQL[2] := 'WHERE ID = 0';
-                      qry_PB.Open();
-
-                      qry_PB.Append;
-                      qry_PBJONO.Value            := qry_JOJONO.Value;
-                      qry_PBDATEDUE.Value         := qry_JODUEDATE.Value;
-                      qry_PBDONE.Value            := False;
-                      qry_PBPAPERSIZE.Value       := brw_PMDetailPAPERSIZE.Value;
-                      qry_PBSHIRTID.Value         := brw_PMDetailSHIRTID.Value;
-                      qry_PBDESCRIPTION.Value     := brw_PMDetailDESCRIPTION.Value;
-                      qry_PBFABRICID.Value        := brw_PMDetailFABRICID.Value;
-                      qry_PBFABRIC.Value          := brw_PMDetailFABRIC.Value;
-                      qry_PBSIZE.Value            := brw_PMDetailSIZE.Value;
-                      qry_PBFIT.Value             := brw_PMDetailFIT.Value;
-                      qry_PBQTY.Value             := brw_PMDetailQTY.Value;
-                      qry_PBREMQTY.Value          := brw_PMDetailQTY.Value;
-                      qry_PBFREE.Value            := brw_PMDetailFREE.Value;
-                      qry_PBUNIT.Value            := brw_PMDetailUNIT.Value;
-                      qry_PBREMARKS.Value         := brw_PMDetailREMARKS.Value;
-
-                      if qry_WorkersDetailsROLEID.Value = 2 then
-                      begin
-                        qry_PBSPRINT.Value        := 'PRINTING';
-                        exported  := True;
-                      end
-                      else if qry_WorkersDetailsROLEID.Value = 4 then
-                      begin
-                        qry_PBSPRINT.Value          := 'HEAT PRESS';
-                        exported  := True;
-                      end
-                      else if qry_WorkersDetailsROLEID.Value = 5 then
-                      begin
-                        qry_PBSPRINT.Value          := 'SEWING';
-                        exported  := True;
-                      end
-                      else if qry_WorkersDetailsROLEID.Value = 3 then
-                      begin
-                        if sprintcount = 0 then
-                        begin
-                          qry_PBSPRINT.Value          := 'FIRST CUTTING';
-                          Inc(sprintcount);
-                        end
-                        else
-                        begin
-                          qry_PBSPRINT.Value          := 'FINAL CUTTING';
-                          exported := True;
-                        end;
-                      end;
-
-                      qry_PBEMPID.Value           := qry_WorkersDetailsEMPID.Value;
-                      qry_PBROLEID.Value          := qry_WorkersDetailsROLEID.Value;
-                      qry_PBCANCELLED.Value       := False;
-                      qry_PBCREATEDBYID.Value     := userid;
-                      qry_PBCREATEDDATETIME.Value := Now;
-                      qry_PBDETAILID.Value        := brw_PMDetailDETAILID.Value;
-                      qry_PB.Post;
-                      qry_PB.ApplyUpdates();
-
-                    until exported;
-                  end;
-
-                  brw_PMDetail.Next;
-                end;
-                qry_WorkersDetails.Next;
-              end;
-              MessageDlg('Operator Sheet has been exported successfully!', mtInformation, [mbOK], 0);
-              search;
-              generate_pm;
-              generate_logs;
-            end
-            else
-              MessageDlg('Incomplete layout/design specifications cannot be exported!', mtInformation, [mbOK], 0);
-          end;
-        end;
-      end
-      else
-      MessageDlg('This sheet was already exported!', mtWarning, [mbOK], 0);
-    end
-    else
-      MessageDlg('Nothing to export!', mtInformation, [mbOK], 0);
-  end;
-end;
-
-procedure Tf_PMBoard.role_ui;
-var I: Integer;
-begin
-  if dm_PM.roleid < 6 then
-  begin
-    pan_JO.Visible          := False;
-  end
-  else
-  begin
-    pan_JO.Visible          := True;
-  end;
-  scPageControl1.ActivePageIndex  := 0;
-end;
-
-procedure Tf_PMBoard.scPageControl1Change(Sender: TObject);
-begin
-  op_sheet_ui;
-  if scPageControl1.ActivePageIndex = 7 then
-    generate_done
-  else if scPageControl1.ActivePageIndex = 0 then
-    generate_pending
-  else
-  begin
-    generate_pm;
-    generate_logs;
-  end;
-end;
 
 procedure Tf_PMBoard.search;
 begin

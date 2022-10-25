@@ -238,9 +238,19 @@ begin
     end;
   end;
 
-   readonly(dm_PM.qry_JOPOSTED.Value);
-   if not dm_PM.qry_JOPOSTED.Value then
-   manageui;
+  if not dm_PM.qry_JOOVERRIDE.Value then
+  begin
+    posted  := dm_PM.qry_JOPOSTED.Value;
+    readonly(dm_PM.qry_JOPOSTED.Value);
+    if not (dm_PM.qry_JOPOSTED.Value) then
+    manageui;
+  end
+  else
+  begin
+    posted  := True;
+    readonly(False);
+  end;
+
 end;
 
 procedure Tf_JO.cxDBDateEdit2PropertiesValidate(Sender: TObject;
@@ -349,17 +359,17 @@ begin
 end;
 
 procedure Tf_JO.cxGridDBTableView2EMPIDPropertiesCloseUp(Sender: TObject);
-var roleid : Integer;
+var jo_roleid : Integer;
 begin
   with dm_PM do
   begin
     if tb_JOEmpROLEID.IsNull then
-    roleid  := 0
+    jo_roleid  := 0
     else
-    roleid  := tb_JOEmpROLEID.Value;
+    jo_roleid  := tb_JOEmpROLEID.Value;
 
     brw_EmpRoles.DisableControls;
-    brw_EmpRoles.Locate('ID', roleid, []);
+    brw_EmpRoles.Locate('ID', jo_roleid, []);
     brw_EmpRoles.EnableControls;
 
     brw_Emp.DisableControls;
@@ -472,12 +482,19 @@ begin
     brw_EmpRoles.SQL[2] := 'WHERE (ID >= 1 AND ID <= 5) AND CANCELLED = FALSE';
     brw_EmpRoles.Open();
 
-    posted  := qry_JOPOSTED.Value;
-
     scGPPageControl1.ActivePage := scGPPageControlPage1;
-    readonly(qry_JOPOSTED.Value);
-    if not qry_JOPOSTED.Value then
-    manageui;
+    if not qry_JOOVERRIDE.Value then
+    begin
+      posted  := qry_JOPOSTED.Value;
+      readonly(qry_JOPOSTED.Value);
+      if not (qry_JOPOSTED.Value) then
+      manageui;
+    end
+    else
+    begin
+      posted  := True;
+      readonly(False);
+    end;
   end;
 end;
 
@@ -557,8 +574,8 @@ begin
     cxGridDBTableView1COST.Options.Editing     := (not flag and not (qry_JOLAYOUT.Value));
     cxGridDBTableView1QTY.Options.Editing      := (not flag and not (qry_JOLAYOUT.Value));
     cxGridDBTableView1REMARKS.Options.Editing  := (not flag and not (qry_JOLAYOUT.Value));
-    cxGridDBTableView2EMPID.Options.Editing    := True; //(not flag and not (qry_JOLAYOUT.Value));
-    cxGridDBTableView2ROLEID.Options.Editing   := True; //(not flag and not (qry_JOLAYOUT.Value));
+    cxGridDBTableView2EMPID.Options.Editing    := (not flag and not (qry_JOLAYOUT.Value));
+    cxGridDBTableView2ROLEID.Options.Editing   := (not flag and not (qry_JOLAYOUT.Value));
     //cxGridDBTableView1ITEMID.Options.Editing   := (not flag and not (qry_JOLAYOUT.Value));
     //cxGridDBColumn1.Options.Editing            := (not flag and not (qry_JOLAYOUT.Value));
     //cxGridDBColumn3.Options.Editing            := (not flag and not (qry_JOLAYOUT.Value));

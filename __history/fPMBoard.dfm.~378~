@@ -42,7 +42,7 @@ object f_PMBoard: Tf_PMBoard
       Height = 71
       Align = alTop
       BevelOuter = bvNone
-      Color = clTeal
+      Color = 3614763
       Padding.Left = 10
       Padding.Top = 5
       Padding.Right = 10
@@ -63,7 +63,7 @@ object f_PMBoard: Tf_PMBoard
         Caption = 'JOB ORDER'
         Color = clWhite
         Font.Charset = ANSI_CHARSET
-        Font.Color = clWhite
+        Font.Color = clTeal
         Font.Height = -19
         Font.Name = 'Segoe UI Black'
         Font.Style = [fsBold]
