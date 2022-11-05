@@ -34,7 +34,6 @@ object f_PMBoard: Tf_PMBoard
     Font.Style = []
     ParentFont = False
     TabOrder = 0
-    ExplicitWidth = 665
     object Panel3: TPanel
       Left = 0
       Top = 0
@@ -50,7 +49,6 @@ object f_PMBoard: Tf_PMBoard
       ParentBackground = False
       TabOrder = 0
       StyleElements = [seFont, seBorder]
-      ExplicitWidth = 665
       DesignSize = (
         1370
         71)
@@ -208,7 +206,6 @@ object f_PMBoard: Tf_PMBoard
       TabOrder = 1
       Transparent = True
       StyleElements = []
-      ExplicitWidth = 665
       object btnNew: TToolButton
         Left = 0
         Top = 0
@@ -263,7 +260,6 @@ object f_PMBoard: Tf_PMBoard
       LookAndFeel.Kind = lfUltraFlat
       LookAndFeel.NativeStyle = False
       LookAndFeel.SkinName = 'VisualStudio2013Light'
-      ExplicitWidth = 665
       object cxGrid1DBTableView1: TcxGridDBTableView
         OnDblClick = EditExecute
         Navigator.Buttons.CustomButtons = <>

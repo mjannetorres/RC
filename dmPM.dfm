@@ -1,6 +1,6 @@
 object dm_PM: Tdm_PM
   OldCreateOrder = False
-  Height = 736
+  Height = 758
   Width = 841
   object dbConn: TFDConnection
     Params.Strings = (
@@ -8,6 +8,7 @@ object dm_PM: Tdm_PM
       'User_Name=root'
       'Port='
       'DriverID=MySQL')
+    Connected = True
     LoginPrompt = False
     Left = 16
     Top = 40
@@ -12388,6 +12389,217 @@ object dm_PM: Tdm_PM
       Origin = 'CODE'
       ProviderFlags = []
       ReadOnly = True
+    end
+  end
+  object qry_WorkLogs: TFDQuery
+    CachedUpdates = True
+    Connection = dbConn
+    SQL.Strings = (
+      'SELECT *'
+      'FROM PM_WORKLOGS'
+      ''
+      ';')
+    Left = 320
+    Top = 584
+    object qry_WorkLogsID: TFDAutoIncField
+      FieldName = 'ID'
+      Origin = 'ID'
+      ProviderFlags = [pfInWhere, pfInKey]
+      ReadOnly = True
+    end
+    object qry_WorkLogsJONO: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'JONO'
+      Origin = 'JONO'
+    end
+    object qry_WorkLogsCLIENTID: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'CLIENTID'
+      Origin = 'CLIENTID'
+    end
+    object qry_WorkLogsCLIENT: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'CLIENT'
+      Origin = 'CLIENT'
+      Size = 50
+    end
+    object qry_WorkLogsWORKERID: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'WORKERID'
+      Origin = 'WORKERID'
+    end
+    object qry_WorkLogsWORKER: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'WORKER'
+      Origin = 'WORKER'
+      Size = 50
+    end
+    object qry_WorkLogsROLEID: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'ROLEID'
+      Origin = 'ROLEID'
+    end
+    object qry_WorkLogsROLE: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'ROLE'
+      Origin = 'ROLE'
+    end
+    object qry_WorkLogsOUTPUT: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'OUTPUT'
+      Origin = 'OUTPUT'
+    end
+    object qry_WorkLogsQTY: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'QTY'
+      Origin = 'QTY'
+    end
+    object qry_WorkLogsCOST: TSingleField
+      AutoGenerateValue = arDefault
+      FieldName = 'COST'
+      Origin = 'COST'
+    end
+    object qry_WorkLogsCREATEDBYID: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'CREATEDBYID'
+      Origin = 'CREATEDBYID'
+    end
+    object qry_WorkLogsCREATEDDATETIME: TDateTimeField
+      AutoGenerateValue = arDefault
+      FieldName = 'CREATEDDATETIME'
+      Origin = 'CREATEDDATETIME'
+    end
+    object qry_WorkLogsUPDATEDBYID: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'UPDATEDBYID'
+      Origin = 'UPDATEDBYID'
+    end
+    object qry_WorkLogsUPDATEDDATETIME: TDateTimeField
+      AutoGenerateValue = arDefault
+      FieldName = 'UPDATEDDATETIME'
+      Origin = 'UPDATEDDATETIME'
+    end
+    object qry_WorkLogsCANCELLED: TBooleanField
+      AutoGenerateValue = arDefault
+      FieldName = 'CANCELLED'
+      Origin = 'CANCELLED'
+    end
+    object qry_WorkLogsCANCELLEDDATETIME: TDateTimeField
+      AutoGenerateValue = arDefault
+      FieldName = 'CANCELLEDDATETIME'
+      Origin = 'CANCELLEDDATETIME'
+    end
+    object qry_WorkLogsCANCELLEDBYID: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'CANCELLEDBYID'
+      Origin = 'CANCELLEDBYID'
+    end
+  end
+  object brw_WorkLogs: TFDQuery
+    Connection = dbConn
+    SQL.Strings = (
+      'SELECT PM_WORKLOGS.*, JO_DETAIL.DESCRIPTION'
+      'FROM PM_WORKLOGS'
+      'INNER JOIN JO_DETAIL ON JO_DETAIL.ID = PM_WORKLOGS.OUTPUT'
+      ''
+      'ORDER BY CREATEDDATETIME DESC;')
+    Left = 560
+    Top = 720
+    object brw_WorkLogsID: TIntegerField
+      FieldName = 'ID'
+      Origin = 'ID'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object brw_WorkLogsJONO: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'JONO'
+      Origin = 'JONO'
+    end
+    object brw_WorkLogsWORKERID: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'WORKERID'
+      Origin = 'WORKERID'
+    end
+    object brw_WorkLogsWORKER: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'WORKER'
+      Origin = 'WORKER'
+      Size = 50
+    end
+    object brw_WorkLogsROLEID: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'ROLEID'
+      Origin = 'ROLEID'
+    end
+    object brw_WorkLogsOUTPUT: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'OUTPUT'
+      Origin = 'OUTPUT'
+    end
+    object brw_WorkLogsQTY: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'QTY'
+      Origin = 'QTY'
+    end
+    object brw_WorkLogsCOST: TSingleField
+      AutoGenerateValue = arDefault
+      FieldName = 'COST'
+      Origin = 'COST'
+    end
+    object brw_WorkLogsCREATEDBYID: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'CREATEDBYID'
+      Origin = 'CREATEDBYID'
+    end
+    object brw_WorkLogsCREATEDDATETIME: TDateTimeField
+      AutoGenerateValue = arDefault
+      FieldName = 'CREATEDDATETIME'
+      Origin = 'CREATEDDATETIME'
+    end
+    object brw_WorkLogsUPDATEDBYID: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'UPDATEDBYID'
+      Origin = 'UPDATEDBYID'
+    end
+    object brw_WorkLogsUPDATEDDATETIME: TDateTimeField
+      AutoGenerateValue = arDefault
+      FieldName = 'UPDATEDDATETIME'
+      Origin = 'UPDATEDDATETIME'
+    end
+    object brw_WorkLogsCANCELLED: TBooleanField
+      AutoGenerateValue = arDefault
+      FieldName = 'CANCELLED'
+      Origin = 'CANCELLED'
+    end
+    object brw_WorkLogsCANCELLEDDATETIME: TDateTimeField
+      AutoGenerateValue = arDefault
+      FieldName = 'CANCELLEDDATETIME'
+      Origin = 'CANCELLEDDATETIME'
+    end
+    object brw_WorkLogsCANCELLEDBYID: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'CANCELLEDBYID'
+      Origin = 'CANCELLEDBYID'
+    end
+    object brw_WorkLogsCLIENT: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'CLIENT'
+      Origin = 'CLIENT'
+      Size = 50
+    end
+    object brw_WorkLogsROLE: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'ROLE'
+      Origin = 'ROLE'
+    end
+    object brw_WorkLogsDESCRIPTION: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'DESCRIPTION'
+      Origin = 'DESCRIPTION'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 50
     end
   end
 end

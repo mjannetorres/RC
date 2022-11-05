@@ -1067,7 +1067,6 @@ begin
 
 end;
 
-
 procedure Tf_PMBoard.search;
 begin
   with dm_PM do

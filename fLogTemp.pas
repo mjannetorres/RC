@@ -23,7 +23,8 @@ uses
   dxSkinXmas2008Blue, cxTextEdit, cxStyles, dxSkinscxPCPainter, cxCustomData,
   cxFilter, cxData, cxDataStorage, cxNavigator, Data.DB, cxDBData, cxGridLevel,
   cxClasses, cxGridCustomView, cxGridCustomTableView, cxGridTableView,
-  cxGridDBTableView, cxGrid, cxMemo, cxDBEdit, cxLabel, cxDBLabel, cxSpinEdit;
+  cxGridDBTableView, cxGrid, cxMemo, cxDBEdit, cxLabel, cxDBLabel, cxSpinEdit,
+  cxMaskEdit, cxDropDownEdit, cxLookupEdit, cxDBLookupEdit, cxDBLookupComboBox;
 
 type
   Tf_LogTemp = class(TForm)
@@ -31,37 +32,32 @@ type
     Button2: TButton;
     Panel1: TPanel;
     Panel2: TPanel;
-    Label3: TLabel;
     Label1: TLabel;
     Label2: TLabel;
-    Label4: TLabel;
     Label5: TLabel;
     Label6: TLabel;
     Label7: TLabel;
-    txt_EmpName: TcxTextEdit;
-    txt_desc: TcxTextEdit;
-    txt_fabric: TcxTextEdit;
-    txt_size: TcxTextEdit;
-    txt_fit: TcxTextEdit;
     Label9: TLabel;
-    Label13: TLabel;
-    txt_unit: TcxTextEdit;
     Label14: TLabel;
-    cxGrid1DBTableView1: TcxGridDBTableView;
-    cxGrid1Level1: TcxGridLevel;
-    cxGrid1: TcxGrid;
     ds_logs: TDataSource;
-    cxGrid1DBTableView1QTY: TcxGridDBColumn;
-    cxGrid1DBTableView1TOTALQTY: TcxGridDBColumn;
-    cxGrid1DBTableView1DONE: TcxGridDBColumn;
-    cxGrid1DBTableView1REMAINING: TcxGridDBColumn;
     cxStyleRepository1: TcxStyleRepository;
     header_style: TcxStyle;
-    cxDBMemo1: TcxDBMemo;
-    cxDBLabel1: TcxDBLabel;
-    cxDBLabel2: TcxDBLabel;
-    procedure cxGrid1DBTableView1QTYPropertiesValidate(Sender: TObject;
+    Label3: TLabel;
+    cmb_jo: TcxDBLookupComboBox;
+    cmb_client: TcxDBLookupComboBox;
+    cmb_worker: TcxDBLookupComboBox;
+    cmb_role: TcxDBLookupComboBox;
+    cmb_output: TcxDBLookupComboBox;
+    txt_qty: TcxDBTextEdit;
+    txt_cost: TcxDBTextEdit;
+    ds_client: TDataSource;
+    ds_workers: TDataSource;
+    ds_role: TDataSource;
+    ds_output: TDataSource;
+    ds_jo: TDataSource;
+    procedure cmb_joPropertiesValidate(Sender: TObject;
       var DisplayValue: Variant; var ErrorText: TCaption; var Error: Boolean);
+    procedure cmb_outputExit(Sender: TObject);
   private
     { Private declarations }
   public
@@ -77,20 +73,47 @@ implementation
 
 uses dmPM;
 
-procedure Tf_LogTemp.cxGrid1DBTableView1QTYPropertiesValidate(Sender: TObject;
+procedure Tf_LogTemp.cmb_joPropertiesValidate(Sender: TObject;
   var DisplayValue: Variant; var ErrorText: TCaption; var Error: Boolean);
 begin
-  if DisplayValue > dm_PM.qry_LogsREMAINING.Value then
+  with dm_PM do
   begin
-    DisplayValue := 0;
-    MessageDlg('QTY cannot be greater than the total qty', mtError, [mbOK], 0);
-  end
-  else if DisplayValue < 0 then
-  begin
-    DisplayValue := 0;
-    MessageDlg('Invalid Qty!', mtError, [mbOK], 0);
-  end;
+    if DisplayValue <> null then
+    begin
 
+      qry_JO.Close;
+      qry_JO.SQL[2] := 'WHERE ID = :ID';
+      qry_JO.ParamByName('ID').Value  := DisplayValue;
+      qry_JO.Open();
+
+      brw_JODetail.Close;
+      brw_JODetail.SQL[3] := 'WHERE JO_DETAIL.HEADERID = :ID';
+      brw_JODetail.ParamByName('ID').Value  := DisplayValue;
+      brw_JODetail.Open();
+
+      if qry_JO.RecordCount > 0 then
+        qry_WorkLogsCLIENTID.Value  := qry_JOCLIENTID.Value;
+
+    end;
+  end;
+end;
+
+procedure Tf_LogTemp.cmb_outputExit(Sender: TObject);
+begin
+  with dm_PM do
+  begin
+    if qry_WorkLogsOUTPUT.Value <> Null then
+    begin
+      qry_JODetail.Close;
+      qry_JODetail.SQL[2] := 'WHERE ID = :ID';
+      qry_JODetail.ParamByName('ID').Value  := qry_WorkLogsOUTPUT.Value;
+      qry_JODetail.Open();
+
+      if qry_JODetail.RecordCount > 0 then
+        qry_WorkLogsCOST.Value := qry_JODetailCOST.Value;
+    end;
+  end;
 end;
 
 end.
+

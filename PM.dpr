@@ -78,7 +78,8 @@ uses
   fnotif in 'fnotif.pas' {f_notif},
   fClients in 'fClients.pas' {f_Clients},
   fClientsTemp in 'fClientsTemp.pas' {f_ClientsTemp},
-  fLogin1 in 'fLogin1.pas' {f_Login1};
+  fLogin1 in 'fLogin1.pas' {f_Login1},
+  fWorkLog in 'fWorkLog.pas' {f_WorkLog};
 
 {$R *.res}
 

@@ -165,6 +165,8 @@ type
     Clients: TAction;
     btnMatRequest: TscGPButton;
     scGPButton5: TscGPButton;
+    btnWorkLog: TscGPButton;
+    WorkLog: TAction;
     procedure MinButtonClick(Sender: TObject);
     procedure MaxButtonClick(Sender: TObject);
     procedure CloseButtonClick(Sender: TObject);
@@ -214,6 +216,7 @@ type
     procedure ReplenishmentSummaryExecute(Sender: TObject);
     procedure NotifExecute(Sender: TObject);
     procedure ClientsExecute(Sender: TObject);
+    procedure WorkLogExecute(Sender: TObject);
   private
     { Private declarations }
     procedure user_rights;
@@ -234,7 +237,7 @@ implementation
 uses frmPM, fPMBoard, FJO, dmPM, DateUtils, fMatRequest, fCompany, fUsers, fEmp,
   fFabrics, fGarments, fUnit, fItems, fLogin, fCashReg, fPO, fRR, fPayment,
   fPettyCash, fExpense, fPayroll, fPolicy, fVendor, fBank, fExpenseType,
-  fRequest, fDateRange, fReports, fnotif, fClients, fLogin1;
+  fRequest, fDateRange, fReports, fnotif, fClients, fLogin1, fWorkLog;
 
 procedure Tf_menu.BankExecute(Sender: TObject);
 begin
@@ -1262,6 +1265,13 @@ begin
   sWebBrowser1.Width  := f_menu.Width;
   sWebBrowser1.Height := f_menu.Height;
   sWebBrowser1.Align  := alClient;
+end;
+
+procedure Tf_menu.WorkLogExecute(Sender: TObject);
+begin
+  CloseAllForms;
+  f_WorkLog := Tf_WorkLog.Create(Self);
+  webOff;
 end;
 
 end.
