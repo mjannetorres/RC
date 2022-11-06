@@ -42,6 +42,7 @@ type
     ToolButton1: TToolButton;
     ToolButton2: TToolButton;
     ToolButton3: TToolButton;
+    btnPrint: TToolButton;
     cxGrid1: TcxGrid;
     cxGrid1DBTableView1: TcxGridDBTableView;
     cxGrid1Level1: TcxGridLevel;
@@ -114,10 +115,7 @@ begin
           qry_WorkLogsCANCELLEDDATETIME.Value := Now;
           qry_WorkLogs.Post;
           qry_WorkLogs.ApplyUpdates();
-
           MessageDlg('Record has been deleted.', mtInformation, [mbOK], 0);
-
-          search;
         end;
       end;
     end
@@ -183,6 +181,10 @@ begin
     brw_Users.Close;
     brw_Users.SQL[2] := 'WHERE CANCELLED = FALSE';
     brw_Users.Open();
+
+    brw_roles.Close;
+    brw_roles.SQL[2]  := 'WHERE CANCELLED = FALSE';
+    brw_roles.Open();         
 
     brw_JODetail.Close;
 

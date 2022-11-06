@@ -116,6 +116,7 @@ type
     procedure cxGridDBTableView1KeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
     procedure DeleteExecute(Sender: TObject);
+    procedure cxGridDBTableView2EMPIDPropertiesCloseUp(Sender: TObject);
     procedure cxGridDBTableView1ITEMIDPropertiesCloseUp(Sender: TObject);
     procedure cxGridDBColumn1PropertiesValidate(Sender: TObject;
       var DisplayValue: Variant; var ErrorText: TCaption; var Error: Boolean);
@@ -176,6 +177,7 @@ begin
 end;
 
 procedure Tf_JO.chk_postedClick(Sender: TObject);
+var emp_done : Boolean;
 begin
 
   if chk_posted.Checked then
@@ -189,6 +191,11 @@ begin
       chk_posted.Checked        := False;
     end;
 
+    dm_PM.tb_JOEmp.First;
+    if dm_PM.tb_JOEmp.Locate('EMPID', null, [])  or dm_PM.tb_JOEmp.Locate('EMPID', 0, []) then
+    emp_done := False
+    else
+    emp_done := True;
 
     if dm_PM.tb_JODetail.RecordCount = 0 then
     MessageDlg('Details cannot be empty!', mtError, [mbOK], 0)
@@ -197,7 +204,9 @@ begin
     else if dm_PM.qry_JODUEDATE.IsNull then
     MessageDlg('Due Date cannot be empty!', mtError, [mbOK], 0)
     else if dm_PM.qry_JOLOGDATE.IsNull then
-    MessageDlg('Log Date cannot be empty', mtError, [mbOK], 0);
+    MessageDlg('Log Date cannot be empty', mtError, [mbOK], 0)
+    else if (not emp_done) then
+    MessageDlg('Incomplete Worker''s assigned!', mtError, [mbOK], 0);
   end
   else
     dm_PM.qry_JOPOSTEDDATETIME.Clear;
@@ -343,6 +352,32 @@ begin
   end;
 end;
 
+procedure Tf_JO.cxGridDBTableView2EMPIDPropertiesCloseUp(Sender: TObject);
+var jo_roleid : Integer;
+begin
+  with dm_PM do
+  begin
+    if tb_JOEmpROLEID.IsNull then
+    jo_roleid  := 0
+    else
+    jo_roleid  := tb_JOEmpROLEID.Value;
+
+    brw_EmpRoles.DisableControls;
+    brw_EmpRoles.Locate('ID', jo_roleid, []);
+    brw_EmpRoles.EnableControls;
+
+    brw_Emp.DisableControls;
+    if brw_Emp.Locate('ID', tb_JOEmpEMPID.Value, []) then
+    begin
+      tb_JOEmp.Edit;
+      tb_JOEmpROLE.Value      := brw_EmpRolesTITLE.AsString;
+      tb_JOEmpEMPNAME.Value   := brw_EmpEMPNAME.AsString;
+      tb_JOEmp.Post;
+    end;
+    brw_Emp.EnableControls;
+  end;
+end;
+
 procedure Tf_JO.DeleteCostExecute(Sender: TObject);
 begin
   with dm_PM do
@@ -458,6 +493,7 @@ begin
 end;
 
 function Tf_JO.manageui: Boolean;
+var emp_done: Boolean;
 begin
   with dm_PM do
   begin
@@ -473,7 +509,13 @@ begin
     if qry_JODUEDATE.IsNull then
     cxDBDateEdit2.Style.BorderColor     := clRed;
 
-    if (qry_JOCLIENTID.IsNull) or (qry_JOLOGDATE.IsNull) or (qry_JODUEDATE.IsNull) or (tb_JODetail.RecordCount = 0) or (tb_InvReqDetail.RecordCount = 0) then
+    tb_JOEmp.First;
+    if tb_JOEmp.Locate('EMPID', null, [])  or tb_JOEmp.Locate('EMPID', 0, []) or tb_JOEmp.Locate('ROLEID', 0, []) or tb_JOEmp.Locate('ROLEID', null, []) then
+    emp_done := False
+    else
+    emp_done := True;
+
+    if (qry_JOCLIENTID.IsNull) or (qry_JOLOGDATE.IsNull) or (qry_JODUEDATE.IsNull) or (tb_JODetail.RecordCount = 0) or (tb_InvReqDetail.RecordCount = 0) or (not emp_done) then
     btnSave.Enabled := False
     else
     btnSave.Enabled := True;

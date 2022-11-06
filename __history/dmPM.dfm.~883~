@@ -629,9 +629,7 @@ object dm_PM: Tdm_PM
   object brw_Garments: TFDQuery
     Connection = dbConn
     SQL.Strings = (
-      
-        'SELECT ID, CODE, DESCRIPTION, UNIT, FABRICID, ARTISTSHARE, PRINT' +
-        'OPSHARE, HEATPRESSSHARE, CUTTERSHARE, TAILORSHARE'
+      'SELECT ID, CODE, DESCRIPTION, UNIT, FABRICID'
       'FROM INV_GARMENTS'
       ''
       'ORDER BY DESCRIPTION;')
@@ -664,31 +662,6 @@ object dm_PM: Tdm_PM
       AutoGenerateValue = arDefault
       FieldName = 'FABRICID'
       Origin = 'FABRICID'
-    end
-    object brw_GarmentsARTISTSHARE: TFloatField
-      AutoGenerateValue = arDefault
-      FieldName = 'ARTISTSHARE'
-      Origin = 'ARTISTSHARE'
-    end
-    object brw_GarmentsPRINTOPSHARE: TFloatField
-      AutoGenerateValue = arDefault
-      FieldName = 'PRINTOPSHARE'
-      Origin = 'PRINTOPSHARE'
-    end
-    object brw_GarmentsHEATPRESSSHARE: TFloatField
-      AutoGenerateValue = arDefault
-      FieldName = 'HEATPRESSSHARE'
-      Origin = 'HEATPRESSSHARE'
-    end
-    object brw_GarmentsCUTTERSHARE: TFloatField
-      AutoGenerateValue = arDefault
-      FieldName = 'CUTTERSHARE'
-      Origin = 'CUTTERSHARE'
-    end
-    object brw_GarmentsTAILORSHARE: TFloatField
-      AutoGenerateValue = arDefault
-      FieldName = 'TAILORSHARE'
-      Origin = 'TAILORSHARE'
     end
   end
   object brw_Fabrics: TFDQuery

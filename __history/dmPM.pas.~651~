@@ -2060,6 +2060,7 @@ type
     brw_WorkLogsJONO: TIntegerField;
     brw_WorkLogsWORKERID: TIntegerField;
     brw_WorkLogsWORKER: TStringField;
+    brw_WorkLogsROLEID: TIntegerField;
     brw_WorkLogsOUTPUT: TIntegerField;
     brw_WorkLogsQTY: TIntegerField;
     brw_WorkLogsCOST: TSingleField;
@@ -2079,6 +2080,7 @@ type
     qry_WorkLogsCLIENT: TStringField;
     qry_WorkLogsWORKERID: TIntegerField;
     qry_WorkLogsWORKER: TStringField;
+    qry_WorkLogsROLEID: TIntegerField;
     qry_WorkLogsROLE: TStringField;
     qry_WorkLogsOUTPUT: TIntegerField;
     qry_WorkLogsQTY: TIntegerField;
@@ -2090,15 +2092,7 @@ type
     qry_WorkLogsCANCELLED: TBooleanField;
     qry_WorkLogsCANCELLEDDATETIME: TDateTimeField;
     qry_WorkLogsCANCELLEDBYID: TIntegerField;
-    brw_WorkLogsCALC_DATE: TStringField;
-    qry_WorkLogsROLEID: TStringField;
-    brw_WorkLogsCLIENTID: TIntegerField;
-    brw_WorkLogsROLEID: TStringField;
-    brw_GarmentsARTISTSHARE: TFloatField;
-    brw_GarmentsPRINTOPSHARE: TFloatField;
-    brw_GarmentsHEATPRESSSHARE: TFloatField;
-    brw_GarmentsCUTTERSHARE: TFloatField;
-    brw_GarmentsTAILORSHARE: TFloatField;
+    brw_WorkLogsCALC_DATE: TDateField;
     procedure tb_JODetailCalcFields(DataSet: TDataSet);
     procedure brw_pmboardCalcFields(DataSet: TDataSet);
     procedure brw_EmpCalcFields(DataSet: TDataSet);
@@ -2416,7 +2410,7 @@ end;
 
 procedure Tdm_PM.brw_WorkLogsCalcFields(DataSet: TDataSet);
 begin
-  brw_WorkLogsCALC_DATE.Value := FormatDateTime('mm/dd/yyyy hh:nn AM/PM', brw_WorkLogsCREATEDDATETIME.Value);
+  brw_WorkLogsCALC_DATE.Value := FormatDateTime('mm/dd/yyyy hh:nn AM/PM', brw_WorkLogsCREATEDDATETIME.AsString);
 end;
 
 procedure Tdm_PM.qry_CashRegCalcFields(DataSet: TDataSet);

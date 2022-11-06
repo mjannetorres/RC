@@ -47,6 +47,7 @@ object f_WorkLog: Tf_WorkLog
     ParentBackground = False
     TabOrder = 0
     StyleElements = [seFont, seBorder]
+    ExplicitWidth = 847
     DesignSize = (
       977
       71)
@@ -123,6 +124,7 @@ object f_WorkLog: Tf_WorkLog
         'CLIENT'
         'WORKER'
         'ROLE')
+      ExplicitLeft = 743
     end
     object date_1: TDateTimePicker
       Left = 632
@@ -133,6 +135,7 @@ object f_WorkLog: Tf_WorkLog
       Date = 44189.551065162040000000
       Time = 44189.551065162040000000
       TabOrder = 1
+      ExplicitLeft = 502
     end
     object date_2: TDateTimePicker
       Left = 731
@@ -143,6 +146,7 @@ object f_WorkLog: Tf_WorkLog
       Date = 44189.551065162040000000
       Time = 44189.551065162040000000
       TabOrder = 2
+      ExplicitLeft = 601
     end
     object txt_search: TButtonedEdit
       Left = 575
@@ -172,6 +176,7 @@ object f_WorkLog: Tf_WorkLog
       StyleElements = [seFont, seBorder]
       OnKeyPress = txt_searchKeyPress
       OnRightButtonClick = txt_searchRightButtonClick
+      ExplicitLeft = 445
     end
   end
   object scToolBar2: TscToolBar
@@ -209,6 +214,7 @@ object f_WorkLog: Tf_WorkLog
     TabOrder = 1
     Transparent = True
     StyleElements = []
+    ExplicitWidth = 847
     object ToolButton1: TToolButton
       Left = 5
       Top = 0
@@ -230,6 +236,13 @@ object f_WorkLog: Tf_WorkLog
       AutoSize = True
       ImageIndex = 2
     end
+    object btnPrint: TToolButton
+      Left = 213
+      Top = 0
+      Action = Print
+      AutoSize = True
+      ImageIndex = 3
+    end
   end
   object cxGrid1: TcxGrid
     Left = 0
@@ -246,8 +259,10 @@ object f_WorkLog: Tf_WorkLog
     TabOrder = 2
     LookAndFeel.NativeStyle = False
     LookAndFeel.SkinName = 'VisualStudio2013Light'
+    ExplicitTop = 103
+    ExplicitWidth = 847
+    ExplicitHeight = 377
     object cxGrid1DBTableView1: TcxGridDBTableView
-      OnDblClick = cxGrid1DBTableView1DblClick
       Navigator.Buttons.CustomButtons = <>
       DataController.DataSource = ds_Logs
       DataController.Summary.DefaultGroupSummaryItems = <>
@@ -331,7 +346,7 @@ object f_WorkLog: Tf_WorkLog
       end
       object cxGrid1DBTableView1CREATEDDATETIME: TcxGridDBColumn
         Caption = 'CREATED'
-        DataBinding.FieldName = 'CALC_DATE'
+        DataBinding.FieldName = 'CREATEDDATETIME'
         HeaderAlignmentHorz = taCenter
         Options.Editing = False
         Options.Filtering = False

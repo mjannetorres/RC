@@ -1,7 +1,6 @@
 object dm_PM: Tdm_PM
   OldCreateOrder = False
   Height = 758
-  VerticalOffset = 10
   Width = 841
   object dbConn: TFDConnection
     Params.Strings = (
@@ -9,7 +8,6 @@ object dm_PM: Tdm_PM
       'User_Name=root'
       'Port='
       'DriverID=MySQL')
-    Connected = True
     LoginPrompt = False
     Left = 16
     Top = 40
@@ -629,9 +627,7 @@ object dm_PM: Tdm_PM
   object brw_Garments: TFDQuery
     Connection = dbConn
     SQL.Strings = (
-      
-        'SELECT ID, CODE, DESCRIPTION, UNIT, FABRICID, ARTISTSHARE, PRINT' +
-        'OPSHARE, HEATPRESSSHARE, CUTTERSHARE, TAILORSHARE'
+      'SELECT ID, CODE, DESCRIPTION, UNIT, FABRICID'
       'FROM INV_GARMENTS'
       ''
       'ORDER BY DESCRIPTION;')
@@ -664,31 +660,6 @@ object dm_PM: Tdm_PM
       AutoGenerateValue = arDefault
       FieldName = 'FABRICID'
       Origin = 'FABRICID'
-    end
-    object brw_GarmentsARTISTSHARE: TFloatField
-      AutoGenerateValue = arDefault
-      FieldName = 'ARTISTSHARE'
-      Origin = 'ARTISTSHARE'
-    end
-    object brw_GarmentsPRINTOPSHARE: TFloatField
-      AutoGenerateValue = arDefault
-      FieldName = 'PRINTOPSHARE'
-      Origin = 'PRINTOPSHARE'
-    end
-    object brw_GarmentsHEATPRESSSHARE: TFloatField
-      AutoGenerateValue = arDefault
-      FieldName = 'HEATPRESSSHARE'
-      Origin = 'HEATPRESSSHARE'
-    end
-    object brw_GarmentsCUTTERSHARE: TFloatField
-      AutoGenerateValue = arDefault
-      FieldName = 'CUTTERSHARE'
-      Origin = 'CUTTERSHARE'
-    end
-    object brw_GarmentsTAILORSHARE: TFloatField
-      AutoGenerateValue = arDefault
-      FieldName = 'TAILORSHARE'
-      Origin = 'TAILORSHARE'
     end
   end
   object brw_Fabrics: TFDQuery
@@ -12462,6 +12433,11 @@ object dm_PM: Tdm_PM
       Origin = 'WORKER'
       Size = 50
     end
+    object qry_WorkLogsROLEID: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'ROLEID'
+      Origin = 'ROLEID'
+    end
     object qry_WorkLogsROLE: TStringField
       AutoGenerateValue = arDefault
       FieldName = 'ROLE'
@@ -12519,16 +12495,8 @@ object dm_PM: Tdm_PM
       FieldName = 'CANCELLEDBYID'
       Origin = 'CANCELLEDBYID'
     end
-    object qry_WorkLogsROLEID: TStringField
-      AutoGenerateValue = arDefault
-      FieldName = 'ROLEID'
-      Origin = 'ROLEID'
-      FixedChar = True
-      Size = 1
-    end
   end
   object brw_WorkLogs: TFDQuery
-    OnCalcFields = brw_WorkLogsCalcFields
     Connection = dbConn
     SQL.Strings = (
       'SELECT PM_WORKLOGS.*, JO_DETAIL.DESCRIPTION'
@@ -12560,6 +12528,11 @@ object dm_PM: Tdm_PM
       Origin = 'WORKER'
       Size = 50
     end
+    object brw_WorkLogsROLEID: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'ROLEID'
+      Origin = 'ROLEID'
+    end
     object brw_WorkLogsOUTPUT: TIntegerField
       AutoGenerateValue = arDefault
       FieldName = 'OUTPUT'
@@ -12574,8 +12547,6 @@ object dm_PM: Tdm_PM
       AutoGenerateValue = arDefault
       FieldName = 'COST'
       Origin = 'COST'
-      DisplayFormat = '###,###,##0.00'
-      currency = True
     end
     object brw_WorkLogsCREATEDBYID: TIntegerField
       AutoGenerateValue = arDefault
@@ -12630,23 +12601,6 @@ object dm_PM: Tdm_PM
       ProviderFlags = []
       ReadOnly = True
       Size = 50
-    end
-    object brw_WorkLogsCALC_DATE: TStringField
-      FieldKind = fkCalculated
-      FieldName = 'CALC_DATE'
-      Calculated = True
-    end
-    object brw_WorkLogsCLIENTID: TIntegerField
-      AutoGenerateValue = arDefault
-      FieldName = 'CLIENTID'
-      Origin = 'CLIENTID'
-    end
-    object brw_WorkLogsROLEID: TStringField
-      AutoGenerateValue = arDefault
-      FieldName = 'ROLEID'
-      Origin = 'ROLEID'
-      FixedChar = True
-      Size = 1
     end
   end
 end

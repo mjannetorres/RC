@@ -24,8 +24,7 @@ uses
   cxFilter, cxData, cxDataStorage, cxNavigator, Data.DB, cxDBData, cxGridLevel,
   cxClasses, cxGridCustomView, cxGridCustomTableView, cxGridTableView,
   cxGridDBTableView, cxGrid, cxMemo, cxDBEdit, cxLabel, cxDBLabel, cxSpinEdit,
-  cxMaskEdit, cxDropDownEdit, cxLookupEdit, cxDBLookupEdit, cxDBLookupComboBox,
-  cxImageComboBox;
+  cxMaskEdit, cxDropDownEdit, cxLookupEdit, cxDBLookupEdit, cxDBLookupComboBox;
 
 type
   Tf_LogTemp = class(TForm)
@@ -47,18 +46,18 @@ type
     cmb_jo: TcxDBLookupComboBox;
     cmb_client: TcxDBLookupComboBox;
     cmb_worker: TcxDBLookupComboBox;
+    cmb_role: TcxDBLookupComboBox;
     cmb_output: TcxDBLookupComboBox;
     txt_qty: TcxDBTextEdit;
     txt_cost: TcxDBTextEdit;
     ds_client: TDataSource;
     ds_workers: TDataSource;
+    ds_role: TDataSource;
     ds_output: TDataSource;
     ds_jo: TDataSource;
-    cmb_role: TcxDBImageComboBox;
     procedure cmb_joPropertiesValidate(Sender: TObject;
       var DisplayValue: Variant; var ErrorText: TCaption; var Error: Boolean);
-    procedure cmb_rolePropertiesValidate(Sender: TObject;
-      var DisplayValue: Variant; var ErrorText: TCaption; var Error: Boolean);
+    procedure cmb_outputExit(Sender: TObject);
   private
     { Private declarations }
   public
@@ -99,42 +98,19 @@ begin
   end;
 end;
 
-procedure Tf_LogTemp.cmb_rolePropertiesValidate(Sender: TObject;
-  var DisplayValue: Variant; var ErrorText: TCaption; var Error: Boolean);
+procedure Tf_LogTemp.cmb_outputExit(Sender: TObject);
 begin
   with dm_PM do
   begin
-    if (qry_WorkLogsOUTPUT.Value <> null) and (DisplayValue <> Null) then
+    if qry_WorkLogsOUTPUT.Value <> Null then
     begin
       qry_JODetail.Close;
-      qry_JODetail.SQL[2]   := 'WHERE ID = :ID AND CANCELLED = FALSE';
-      qry_JODetail.ParamByName('ID').Value    := qry_WorkLogsOUTPUT.Value;
+      qry_JODetail.SQL[2] := 'WHERE ID = :ID';
+      qry_JODetail.ParamByName('ID').Value  := qry_WorkLogsOUTPUT.Value;
       qry_JODetail.Open();
 
       if qry_JODetail.RecordCount > 0 then
-      begin
-        brw_Garments.Close;
-        brw_Garments.SQL[2]   := 'WHERE ID = :ID AND CANCELLED = FALSE';
-        brw_Garments.ParamByName('ID').Value    := qry_JODetailSHIRTID.Value;
-        brw_Garments.Open();
-
-
-        if brw_Garments.RecordCount > 0 then
-        begin
-          if DisplayValue = 'ARTIST' then
-          qry_WorkLogsCOST.Value := brw_GarmentsARTISTSHARE.Value
-          else if DisplayValue = 'PRINTER OPERATOR' then
-          qry_WorkLogsCOST.Value := brw_GarmentsPRINTOPSHARE.Value
-          else if DisplayValue = 'HEAT PRESS OPERATOR' then
-          qry_WorkLogsCOST.Value := brw_GarmentsHEATPRESSSHARE.Value
-          else if DisplayValue = 'CUTTER' then
-          qry_WorkLogsCOST.Value := brw_GarmentsCUTTERSHARE.Value
-          else if DisplayValue = 'TAILOR' then
-          qry_WorkLogsCOST.Value := brw_GarmentsTAILORSHARE.Value
-          else
-          qry_WorkLogsCOST.Value := 0;
-        end;
-      end;
+        qry_WorkLogsCOST.Value := qry_JODetailCOST.Value;
     end;
   end;
 end;

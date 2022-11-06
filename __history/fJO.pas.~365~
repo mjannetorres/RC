@@ -473,7 +473,7 @@ begin
     if qry_JODUEDATE.IsNull then
     cxDBDateEdit2.Style.BorderColor     := clRed;
 
-    if (qry_JOCLIENTID.IsNull) or (qry_JOLOGDATE.IsNull) or (qry_JODUEDATE.IsNull) or (tb_JODetail.RecordCount = 0) or (tb_InvReqDetail.RecordCount = 0) then
+    if (qry_JOCLIENTID.IsNull) or (qry_JOLOGDATE.IsNull) or (qry_JODUEDATE.IsNull) or (tb_JODetail.RecordCount = 0) or (tb_InvReqDetail.RecordCount = 0) or (not emp_done) then
     btnSave.Enabled := False
     else
     btnSave.Enabled := True;

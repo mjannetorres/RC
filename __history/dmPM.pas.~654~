@@ -2093,12 +2093,7 @@ type
     brw_WorkLogsCALC_DATE: TStringField;
     qry_WorkLogsROLEID: TStringField;
     brw_WorkLogsCLIENTID: TIntegerField;
-    brw_WorkLogsROLEID: TStringField;
-    brw_GarmentsARTISTSHARE: TFloatField;
-    brw_GarmentsPRINTOPSHARE: TFloatField;
-    brw_GarmentsHEATPRESSSHARE: TFloatField;
-    brw_GarmentsCUTTERSHARE: TFloatField;
-    brw_GarmentsTAILORSHARE: TFloatField;
+    brw_WorkLogsROLEID: TIntegerField;
     procedure tb_JODetailCalcFields(DataSet: TDataSet);
     procedure brw_pmboardCalcFields(DataSet: TDataSet);
     procedure brw_EmpCalcFields(DataSet: TDataSet);

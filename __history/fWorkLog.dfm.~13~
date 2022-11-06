@@ -230,6 +230,13 @@ object f_WorkLog: Tf_WorkLog
       AutoSize = True
       ImageIndex = 2
     end
+    object btnPrint: TToolButton
+      Left = 213
+      Top = 0
+      Action = Print
+      AutoSize = True
+      ImageIndex = 3
+    end
   end
   object cxGrid1: TcxGrid
     Left = 0

@@ -42,6 +42,7 @@ type
     ToolButton1: TToolButton;
     ToolButton2: TToolButton;
     ToolButton3: TToolButton;
+    btnPrint: TToolButton;
     cxGrid1: TcxGrid;
     cxGrid1DBTableView1: TcxGridDBTableView;
     cxGrid1Level1: TcxGridLevel;
@@ -95,35 +96,7 @@ end;
 
 procedure Tf_WorkLog.DeleteExecute(Sender: TObject);
 begin
-  with dm_PM do
-  begin
-    if brw_WorkLogs.RecordCount > 0 then
-    begin
-      if MessageDlg('Do you want to delete this record?', mtConfirmation, [mbYes, mbNo], 0) = mrYes then
-      begin
-        qry_WorkLogs.Close;
-        qry_WorkLogs.SQL[2] := 'WHERE ID = :ID';
-        qry_WorkLogs.ParamByName('ID').Value  := brw_WorkLogsID.Value;
-        qry_WorkLogs.Open();
-
-        if qry_WorkLogs.RecordCount > 0 then
-        begin
-          qry_WorkLogs.Edit;
-          qry_WorkLogsCANCELLED.Value         := True;
-          qry_WorkLogsCANCELLEDBYID.Value     := userid;
-          qry_WorkLogsCANCELLEDDATETIME.Value := Now;
-          qry_WorkLogs.Post;
-          qry_WorkLogs.ApplyUpdates();
-
-          MessageDlg('Record has been deleted.', mtInformation, [mbOK], 0);
-
-          search;
-        end;
-      end;
-    end
-    else
-    MessageDlg('Empty Record. Nothing to delete.', mtError, [mbOK], 0);
-  end;
+  //
 end;
 
 procedure Tf_WorkLog.EditExecute(Sender: TObject);
@@ -142,7 +115,7 @@ begin
     loaddetails;
 
     f_LogTemp  := Tf_LogTemp.Create(Self);
-    f_LogTemp.Caption  := 'Edit Log';
+    f_LogTemp.Caption  := 'New Log';
     if f_LogTemp.ShowModal = mrOk then
     begin
        with f_LogTemp do
@@ -184,6 +157,10 @@ begin
     brw_Users.SQL[2] := 'WHERE CANCELLED = FALSE';
     brw_Users.Open();
 
+    brw_roles.Close;
+    brw_roles.SQL[2]  := 'WHERE CANCELLED = FALSE';
+    brw_roles.Open();         
+
     brw_JODetail.Close;
 
     if qry_WorkLogs.State = dsInsert then
@@ -202,7 +179,8 @@ procedure Tf_WorkLog.NewExecute(Sender: TObject);
 begin
   with dm_PM do
   begin
-
+    
+    loaddetails;
     
     qry_WorkLogs.Close;
     qry_WorkLogs.SQL[2] := 'WHERE ID = 0';
@@ -213,8 +191,6 @@ begin
     qry_WorkLogsCREATEDBYID.Value     := userid;
     qry_WorkLogsCREATEDDATETIME.Value := Now;
     qry_WorkLogsQTY.Value             := 0;
-
-    loaddetails;
 
     f_LogTemp  := Tf_LogTemp.Create(Self);
     f_LogTemp.Caption  := 'New Log';

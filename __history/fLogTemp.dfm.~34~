@@ -73,7 +73,7 @@ object f_LogTemp: Tf_LogTemp
     end
     object Label5: TLabel
       Left = 12
-      Top = 154
+      Top = 121
       Width = 33
       Height = 21
       Caption = 'Role'
@@ -86,10 +86,10 @@ object f_LogTemp: Tf_LogTemp
     end
     object Label6: TLabel
       Left = 13
-      Top = 120
-      Width = 52
+      Top = 153
+      Width = 46
       Height = 21
-      Caption = 'Output'
+      Caption = 'Ouput'
       Font.Charset = ANSI_CHARSET
       Font.Color = clWhite
       Font.Height = -16
@@ -312,7 +312,7 @@ object f_LogTemp: Tf_LogTemp
     end
     object cmb_output: TcxDBLookupComboBox
       Left = 120
-      Top = 119
+      Top = 152
       DataBinding.DataField = 'OUTPUT'
       DataBinding.DataSource = ds_logs
       ParentFont = False
@@ -375,7 +375,8 @@ object f_LogTemp: Tf_LogTemp
       StyleDisabled.LookAndFeel.NativeStyle = False
       StyleFocused.LookAndFeel.NativeStyle = False
       StyleHot.LookAndFeel.NativeStyle = False
-      TabOrder = 4
+      TabOrder = 3
+      OnExit = cmb_outputExit
       Width = 270
     end
     object txt_qty: TcxDBTextEdit
@@ -400,7 +401,7 @@ object f_LogTemp: Tf_LogTemp
       StyleDisabled.LookAndFeel.NativeStyle = False
       StyleFocused.LookAndFeel.NativeStyle = False
       StyleHot.LookAndFeel.NativeStyle = False
-      TabOrder = 5
+      TabOrder = 4
       Width = 94
     end
     object txt_cost: TcxDBTextEdit
@@ -425,14 +426,12 @@ object f_LogTemp: Tf_LogTemp
       StyleDisabled.LookAndFeel.NativeStyle = False
       StyleFocused.LookAndFeel.NativeStyle = False
       StyleHot.LookAndFeel.NativeStyle = False
-      TabOrder = 6
+      TabOrder = 5
       Width = 110
     end
     object cmb_role: TcxDBImageComboBox
       Left = 120
-      Top = 152
-      DataBinding.DataField = 'ROLEID'
-      DataBinding.DataSource = ds_logs
+      Top = 118
       ParentFont = False
       Properties.ButtonGlyph.Data = {
         36040000424D3604000000000000360000002800000010000000100000000100
@@ -469,7 +468,6 @@ object f_LogTemp: Tf_LogTemp
         02030D2A4F965894BBFF0E2C55B1000000070000000000000000000000000000
         0000000000000000000000000000000000000000000000000000000000000000
         0000000000000C284A950205091A000000010000000000000000}
-      Properties.ImmediatePost = True
       Properties.Items = <
         item
           Description = 'ARTIST'
@@ -492,15 +490,14 @@ object f_LogTemp: Tf_LogTemp
           Description = 'TAILOR'
           Value = 'T'
         end>
-      Properties.OnValidate = cmb_rolePropertiesValidate
       Style.BorderColor = 1184274
       Style.BorderStyle = ebsThick
       Style.Color = 6570553
       Style.Font.Charset = ANSI_CHARSET
       Style.Font.Color = clWindowText
       Style.Font.Height = -16
-      Style.Font.Name = 'Tahoma'
-      Style.Font.Style = []
+      Style.Font.Name = 'Segoe UI Semibold'
+      Style.Font.Style = [fsBold]
       Style.LookAndFeel.Kind = lfUltraFlat
       Style.LookAndFeel.NativeStyle = False
       Style.TextColor = clWhite
@@ -514,7 +511,7 @@ object f_LogTemp: Tf_LogTemp
       StyleFocused.LookAndFeel.NativeStyle = False
       StyleHot.LookAndFeel.Kind = lfUltraFlat
       StyleHot.LookAndFeel.NativeStyle = False
-      TabOrder = 3
+      TabOrder = 6
       Width = 270
     end
   end

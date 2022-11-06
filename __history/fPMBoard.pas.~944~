@@ -291,6 +291,12 @@ begin
               del_JoDetails.SQL[4] := 'WHERE HEADERID = '+brw_JOID.AsString;
               del_JoDetails.ExecSQL;
 
+              del_JoEmp.Close;
+              del_JoEmp.SQL[1] := 'SET CANCELLED = TRUE,';
+              del_JoEmp.SQL[2] := 'DELETEDBYID = '+IntToStr(userid)+',';
+              del_JoEmp.SQL[3] := 'DELETEDDATETIME = '+''''+FormatDateTime('yyyy-mm-dd hh:nn:ss', Now)+'''';
+              del_JoEmp.SQL[4] := 'WHERE HEADERID = '+brw_JOID.AsString;
+              del_JoEmp.ExecSQL;
 
               del_JOCost.Close;
               del_JOCost.SQL[1] := 'SET CANCELLED = FALSE,';
@@ -436,6 +442,33 @@ begin
           qry_JODetail.ApplyUpdates();
 
           tb_JODetail.Next;
+        end;
+
+        tb_JOEmp.First;
+        while not tb_JOEmp.Eof do
+        begin
+          qry_WorkersDetails.Close;
+          qry_WorkersDetails.SQL[2] := 'WHERE ID = :ID';
+          if tb_JOEmpID.IsNull then
+          qry_WorkersDetails.ParamByName('ID').Value  := 0
+          else
+          qry_WorkersDetails.ParamByName('ID').Value  := tb_JOEmpID.Value;
+          qry_WorkersDetails.Open();
+
+          if tb_JOEmpID.IsNull then
+          qry_WorkersDetails.Append
+          else
+          qry_WorkersDetails.Edit;
+          qry_WorkersDetailsHEADERID.Value  := qry_JOID.Value;
+          qry_WorkersDetailsROLEID.Value    := tb_JOEmpROLEID.Value;
+          qry_WorkersDetailsROLE.Value      := tb_JOEmpROLE.AsString;
+          qry_WorkersDetailsEMPNAME.Value   := tb_JOEmpEMPNAME.AsString;
+          qry_WorkersDetailsEMPID.Value     := tb_JOEmpEMPID.Value;
+          qry_WorkersDetailsCANCELLED.Value := False;
+          qry_WorkersDetails.Post;
+          qry_WorkersDetails.ApplyUpdates();
+
+          tb_JOEmp.Next;
         end;
 
         tb_InvReqDetail.First;
@@ -776,6 +809,7 @@ begin
     tb_InvReqDetail.Close;
     tb_InvReqDetail.Open;
 
+    load_workers;
 
     f_JO  := Tf_JO.Create(Self);
     if f_JO.ShowModal = mrOk then
@@ -819,6 +853,26 @@ begin
         qry_JODetail.ApplyUpdates();
 
         tb_JODetail.Next;
+      end;
+
+      tb_JOEmp.First;
+      while not tb_JOEmp.Eof do
+      begin
+        qry_WorkersDetails.Close;
+        qry_WorkersDetails.SQL[2] := 'WHERE ID = 0';
+        qry_WorkersDetails.Open();
+
+        qry_WorkersDetails.Append;
+        qry_WorkersDetailsHEADERID.Value  := qry_JOID.Value;
+        qry_WorkersDetailsROLEID.Value    := tb_JOEmpROLEID.Value;
+        qry_WorkersDetailsROLE.Value      := tb_JOEmpROLE.AsString;
+        qry_WorkersDetailsEMPNAME.Value   := tb_JOEmpEMPNAME.AsString;
+        qry_WorkersDetailsEMPID.Value     := tb_JOEmpEMPID.Value;
+        qry_WorkersDetailsCANCELLED.Value := False;
+        qry_WorkersDetails.Post;
+        qry_WorkersDetails.ApplyUpdates();
+
+        tb_JOEmp.Next;
       end;
 
       tb_InvReqDetail.First;

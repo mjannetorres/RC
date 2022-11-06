@@ -185,6 +185,11 @@ begin
     brw_GarmentDesc.Close;
     if cmb_filter.ItemIndex = 0 then
     begin
+      brw_GarmentDesc.SQL[3]  := 'WHERE GAR.CODE LIKE :CODE AND GAR.CANCELLED = FALSE';
+      brw_GarmentDesc.ParamByName('CODE').Value := '%'+Trim(txt_search.Text)+'%';
+    end
+    else if cmb_filter.ItemIndex = 1 then
+    begin
       brw_GarmentDesc.SQL[3]  := 'WHERE GAR.DESCRIPTION LIKE :DESCRIPTION AND GAR.CANCELLED = FALSE';
       brw_GarmentDesc.ParamByName('DESCRIPTION').Value := '%'+Trim(txt_search.Text)+'%';
     end
@@ -193,6 +198,7 @@ begin
       brw_GarmentDesc.SQL[3]  := 'WHERE FAB.DESCRIPTION LIKE :FABRIC AND GAR.CANCELLED = FALSE';
       brw_GarmentDesc.ParamByName('FABRIC').Value := '%'+Trim(txt_search.Text)+'%';
     end;
+    ShowMessage(brw_GarmentDesc.SQL.Text);
     brw_GarmentDesc.Open();
   end;
 end;

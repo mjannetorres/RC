@@ -791,6 +791,56 @@ object f_JO: Tf_JO
         UseCustomOptions = False
       end
       item
+        Page = scGPPageControlPage2
+        Visible = True
+        Enabled = True
+        ImageIndex = -1
+        Caption = 'Workers Assignment'
+        CustomOptions.NormalColor = clBtnShadow
+        CustomOptions.ActiveColor = clBtnFace
+        CustomOptions.MouseInColor = clBtnShadow
+        CustomOptions.FocusedColor = clBtnFace
+        CustomOptions.NormalColorAlpha = 70
+        CustomOptions.ActiveColorAlpha = 230
+        CustomOptions.MouseInColorAlpha = 40
+        CustomOptions.FocusedColorAlpha = 255
+        CustomOptions.FrameNormalColor = clBtnText
+        CustomOptions.FrameActiveColor = clBtnText
+        CustomOptions.FrameMouseInColor = clBtnText
+        CustomOptions.FrameFocusedColor = clBtnText
+        CustomOptions.FrameWidth = 2
+        CustomOptions.FrameNormalColorAlpha = 50
+        CustomOptions.FrameActiveColorAlpha = 80
+        CustomOptions.FrameMouseInColorAlpha = 60
+        CustomOptions.FrameFocusedColorAlpha = 80
+        CustomOptions.FontNormalColor = clBtnText
+        CustomOptions.FontActiveColor = clBtnText
+        CustomOptions.FontMouseInColor = clBtnText
+        CustomOptions.FontFocusedColor = clBtnText
+        CustomOptions.TabStyle = gptsShape
+        CustomOptions.ShapeFillGradientAngle = 90
+        CustomOptions.GradientColorOffset = 30
+        CustomOptions.ShapeCornerRadius = 5
+        CustomOptions.StyleColors = True
+        CustomGlowEffect.Enabled = False
+        CustomGlowEffect.Color = clHighlight
+        CustomGlowEffect.AlphaValue = 255
+        CustomGlowEffect.GlowSize = 7
+        CustomGlowEffect.Offset = 0
+        CustomGlowEffect.Intensive = True
+        CustomGlowEffect.StyleColors = True
+        CustomGlowEffect.HotColor = clNone
+        CustomGlowEffect.PressedColor = clNone
+        CustomGlowEffect.FocusedColor = clNone
+        CustomGlowEffect.PressedGlowSize = 7
+        CustomGlowEffect.PressedAlphaValue = 255
+        CustomGlowEffect.States = [scsFocused]
+        CustomFrameColor = clNone
+        CustomFrameColorAlpha = 255
+        ShowCloseButton = True
+        UseCustomOptions = False
+      end
+      item
         Page = scGPPageControlPage3
         Visible = True
         Enabled = True
@@ -840,8 +890,8 @@ object f_JO: Tf_JO
         ShowCloseButton = True
         UseCustomOptions = False
       end>
-    TabIndex = 0
-    ActivePage = scGPPageControlPage1
+    TabIndex = 1
+    ActivePage = scGPPageControlPage2
     StorePaintBuffer = False
     FreeOnClose = False
     OnChangePage = ComputeAmntExecute
@@ -861,7 +911,7 @@ object f_JO: Tf_JO
       Font.Style = []
       ParentColor = False
       ParentFont = False
-      TabOrder = 1
+      TabOrder = 2
       Visible = False
       WallpaperIndex = -1
       CustomBackgroundImageIndex = -1
@@ -1006,6 +1056,7 @@ object f_JO: Tf_JO
       ParentColor = False
       ParentFont = False
       TabOrder = 0
+      Visible = False
       WallpaperIndex = -1
       CustomBackgroundImageIndex = -1
       FluentUIOpaque = False
@@ -1168,6 +1219,108 @@ object f_JO: Tf_JO
         end
         object cxGridLevel1: TcxGridLevel
           GridView = cxGridDBTableView1
+        end
+      end
+    end
+    object scGPPageControlPage2: TscGPPageControlPage
+      Left = 0
+      Top = 30
+      Width = 837
+      Height = 218
+      HorzScrollBar.Tracking = True
+      VertScrollBar.Tracking = True
+      BorderStyle = bsNone
+      Color = clBtnFace
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentColor = False
+      ParentFont = False
+      TabOrder = 1
+      WallpaperIndex = -1
+      CustomBackgroundImageIndex = -1
+      FluentUIOpaque = False
+      StorePaintBuffer = False
+      BGStyle = scgppsForm
+      object cxGrid1: TcxGrid
+        Left = 0
+        Top = 0
+        Width = 837
+        Height = 218
+        Align = alClient
+        BevelInner = bvNone
+        BevelOuter = bvNone
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -12
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ParentFont = False
+        TabOrder = 0
+        OnExit = ComputeAmntExecute
+        LookAndFeel.Kind = lfUltraFlat
+        LookAndFeel.NativeStyle = False
+        LookAndFeel.SkinName = 'VisualStudio2013Light'
+        object cxGridDBTableView2: TcxGridDBTableView
+          PopupMenu = PopupMenu1
+          Navigator.Buttons.CustomButtons = <>
+          DataController.DataSource = ds_Emp
+          DataController.Summary.DefaultGroupSummaryItems = <>
+          DataController.Summary.FooterSummaryItems = <
+            item
+              Format = '###,###,##0'
+              Kind = skCount
+              FieldName = 'ROLEID'
+              Column = cxGridDBTableView2ROLEID
+            end>
+          DataController.Summary.SummaryGroups = <>
+          OptionsData.Appending = True
+          OptionsData.Inserting = False
+          OptionsView.NoDataToDisplayInfoText = 'No Data To Display'
+          OptionsView.Footer = True
+          OptionsView.GroupByBox = False
+          Styles.Header = Header_style
+          object cxGridDBTableView2ROLEID: TcxGridDBColumn
+            Caption = 'ROLE'
+            DataBinding.FieldName = 'ROLEID'
+            PropertiesClassName = 'TcxLookupComboBoxProperties'
+            Properties.CharCase = ecUpperCase
+            Properties.ImmediatePost = True
+            Properties.KeyFieldNames = 'ID'
+            Properties.ListColumns = <
+              item
+                FieldName = 'TITLE'
+              end>
+            Properties.ListOptions.ShowHeader = False
+            Properties.ListSource = ds_roles
+            HeaderAlignmentHorz = taCenter
+            Options.Filtering = False
+            Options.Sorting = False
+            Width = 194
+          end
+          object cxGridDBTableView2EMPID: TcxGridDBColumn
+            Caption = 'ASSIGNED TO'
+            DataBinding.FieldName = 'EMPID'
+            PropertiesClassName = 'TcxLookupComboBoxProperties'
+            Properties.ImmediatePost = True
+            Properties.KeyFieldNames = 'ID'
+            Properties.ListColumns = <
+              item
+                FieldName = 'EMPNAME'
+              end>
+            Properties.ListOptions.ShowHeader = False
+            Properties.ListSource = ds_workers
+            Properties.OnCloseUp = cxGridDBTableView2EMPIDPropertiesCloseUp
+            HeaderAlignmentHorz = taCenter
+            Options.Filtering = False
+            Options.Sorting = False
+            Width = 206
+          end
+        end
+        object cxGridLevel2: TcxGridLevel
+          GridView = cxGridDBTableView2
         end
       end
     end

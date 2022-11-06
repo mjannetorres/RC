@@ -121,15 +121,15 @@ begin
 
         if brw_Garments.RecordCount > 0 then
         begin
-          if DisplayValue = 'ARTIST' then
+          if DisplayValue = 'A' then
           qry_WorkLogsCOST.Value := brw_GarmentsARTISTSHARE.Value
-          else if DisplayValue = 'PRINTER OPERATOR' then
+          else if DisplayValue = 'P' then
           qry_WorkLogsCOST.Value := brw_GarmentsPRINTOPSHARE.Value
-          else if DisplayValue = 'HEAT PRESS OPERATOR' then
+          else if DisplayValue = 'H' then
           qry_WorkLogsCOST.Value := brw_GarmentsHEATPRESSSHARE.Value
-          else if DisplayValue = 'CUTTER' then
+          else if DisplayValue = 'C' then
           qry_WorkLogsCOST.Value := brw_GarmentsCUTTERSHARE.Value
-          else if DisplayValue = 'TAILOR' then
+          else if DisplayValue = 'T' then
           qry_WorkLogsCOST.Value := brw_GarmentsTAILORSHARE.Value
           else
           qry_WorkLogsCOST.Value := 0;

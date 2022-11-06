@@ -230,6 +230,13 @@ object f_WorkLog: Tf_WorkLog
       AutoSize = True
       ImageIndex = 2
     end
+    object btnPrint: TToolButton
+      Left = 213
+      Top = 0
+      Action = Print
+      AutoSize = True
+      ImageIndex = 3
+    end
   end
   object cxGrid1: TcxGrid
     Left = 0
@@ -247,7 +254,6 @@ object f_WorkLog: Tf_WorkLog
     LookAndFeel.NativeStyle = False
     LookAndFeel.SkinName = 'VisualStudio2013Light'
     object cxGrid1DBTableView1: TcxGridDBTableView
-      OnDblClick = cxGrid1DBTableView1DblClick
       Navigator.Buttons.CustomButtons = <>
       DataController.DataSource = ds_Logs
       DataController.Summary.DefaultGroupSummaryItems = <>
