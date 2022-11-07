@@ -49,6 +49,10 @@ object f_PayrollComp: Tf_PayrollComp
     ParentBackground = False
     TabOrder = 1
     StyleElements = []
+    ExplicitLeft = 32
+    ExplicitTop = 40
+    ExplicitWidth = 185
+    ExplicitHeight = 41
     DesignSize = (
       258
       100)

@@ -9629,15 +9629,11 @@ object dm_PM: Tdm_PM
       AutoGenerateValue = arDefault
       FieldName = 'GROSS'
       Origin = 'GROSS'
-      DisplayFormat = '###,###,##0.00'
-      currency = True
     end
     object qry_CashOutDetailCASHADVANCES: TSingleField
       AutoGenerateValue = arDefault
       FieldName = 'CASHADVANCES'
       Origin = 'CASHADVANCES'
-      DisplayFormat = '###,###,##0.00'
-      currency = True
     end
   end
   object brw_CashSum: TFDQuery

@@ -124,9 +124,9 @@ begin
 
           qry_CashOutDetailCASHADVANCES.Value :=  brw_CompExpenseAMOUNT.Value;
 
-          qry_CashOutDetailAMOUNT.Value := (qry_CashOutDetailGROSS.Value - qry_CashOutDetailCASHADVANCES.Value);
        end;
 
+       qry_CashOutDetailAMOUNT.Value := (qry_CashOutDetailGROSS.Value - qry_CashOutDetailCASHADVANCES.Value);
     end;
 
   end;

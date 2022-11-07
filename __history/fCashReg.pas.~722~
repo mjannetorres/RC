@@ -581,7 +581,7 @@ begin
     pan_search.Visible        := False;
 
     f_CashOut := Tf_CashOut.Create(Self);
-    f_CashOut.pan_payroll.Visible   := False;
+    f_CashOut.pan_payroll.Visible := False;
     f_CashOut.cmb_exptype.ItemIndex := 0;
     if f_CashOut.ShowModal = mrOk then
     begin

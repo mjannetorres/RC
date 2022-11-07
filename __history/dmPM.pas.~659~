@@ -2104,8 +2104,6 @@ type
     qry_CashOutDetailGROSS: TSingleField;
     qry_CashOutDetailCASHADVANCES: TSingleField;
     brw_ComputePay: TFDQuery;
-    brw_ComputePayAMNT: TFloatField;
-    brw_ComputePayWORKER: TStringField;
     procedure tb_JODetailCalcFields(DataSet: TDataSet);
     procedure brw_pmboardCalcFields(DataSet: TDataSet);
     procedure brw_EmpCalcFields(DataSet: TDataSet);

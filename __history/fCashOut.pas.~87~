@@ -127,6 +127,7 @@ begin
           qry_CashOutDetailAMOUNT.Value := (qry_CashOutDetailGROSS.Value - qry_CashOutDetailCASHADVANCES.Value);
        end;
 
+
     end;
 
   end;

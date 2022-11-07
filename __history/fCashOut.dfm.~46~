@@ -334,16 +334,12 @@ object f_CashOut: Tf_CashOut
       Layout = tlCenter
       StyleElements = []
     end
-    object date_payfrom: TcxDBDateEdit
+    object cxDBDateEdit1: TcxDBDateEdit
       Left = 155
       Top = 6
       DataBinding.DataField = 'PAYDATEFROM'
       DataBinding.DataSource = ds_cash
       ParentFont = False
-      Properties.ImmediatePost = True
-      Properties.ShowTime = False
-      Properties.ShowToday = False
-      Properties.OnCloseUp = date_payfromPropertiesCloseUp
       Style.BorderColor = 1184274
       Style.BorderStyle = ebsThick
       Style.Color = 6570553
@@ -360,16 +356,12 @@ object f_CashOut: Tf_CashOut
       TabOrder = 0
       Width = 126
     end
-    object date_payto: TcxDBDateEdit
+    object cxDBDateEdit2: TcxDBDateEdit
       Left = 299
       Top = 6
       DataBinding.DataField = 'PAYDATETO'
       DataBinding.DataSource = ds_cash
       ParentFont = False
-      Properties.ImmediatePost = True
-      Properties.ShowTime = False
-      Properties.ShowToday = False
-      Properties.OnCloseUp = date_paytoPropertiesCloseUp
       Style.BorderColor = 1184274
       Style.BorderStyle = ebsThick
       Style.Color = 6570553
@@ -386,7 +378,7 @@ object f_CashOut: Tf_CashOut
       TabOrder = 1
       Width = 126
     end
-    object txt_gross: TcxDBTextEdit
+    object cxDBTextEdit1: TcxDBTextEdit
       Left = 155
       Top = 41
       DataBinding.DataField = 'GROSS'
@@ -411,7 +403,7 @@ object f_CashOut: Tf_CashOut
       OnExit = txt_amntExit
       Width = 270
     end
-    object txt_ca: TcxDBTextEdit
+    object cxDBTextEdit2: TcxDBTextEdit
       Left = 155
       Top = 76
       DataBinding.DataField = 'CASHADVANCES'
@@ -419,7 +411,6 @@ object f_CashOut: Tf_CashOut
       ParentFont = False
       Properties.Alignment.Horz = taRightJustify
       Properties.CharCase = ecUpperCase
-      Properties.ReadOnly = True
       Style.BorderColor = 1184274
       Style.BorderStyle = ebsThick
       Style.Color = clWhite
@@ -448,7 +439,6 @@ object f_CashOut: Tf_CashOut
     Color = clWhite
     ParentBackground = False
     TabOrder = 5
-    StyleElements = []
     ExplicitLeft = 80
     ExplicitTop = 312
     ExplicitWidth = 185

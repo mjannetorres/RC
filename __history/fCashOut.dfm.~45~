@@ -3,7 +3,7 @@ object f_CashOut: Tf_CashOut
   Top = 0
   BorderStyle = bsDialog
   Caption = 'Cash Out Detail'
-  ClientHeight = 420
+  ClientHeight = 339
   ClientWidth = 442
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -18,13 +18,12 @@ object f_CashOut: Tf_CashOut
   TextHeight = 13
   object Panel1: TPanel
     Left = 0
-    Top = 383
+    Top = 302
     Width = 442
     Height = 37
     Align = alBottom
     BevelOuter = bvNone
     TabOrder = 3
-    ExplicitTop = 302
     DesignSize = (
       442
       37)
@@ -97,6 +96,7 @@ object f_CashOut: Tf_CashOut
     ParentBackground = False
     TabOrder = 0
     StyleElements = []
+    ExplicitTop = 48
     object Label5: TLabel
       Left = 15
       Top = 16
@@ -160,15 +160,49 @@ object f_CashOut: Tf_CashOut
   end
   object Panel3: TPanel
     Left = 0
-    Top = 96
+    Top = 131
     Width = 442
-    Height = 35
-    Align = alTop
+    Height = 171
+    Align = alClient
     BevelOuter = bvNone
     Color = clWhite
     ParentBackground = False
     TabOrder = 2
     StyleElements = []
+    object Label4: TLabel
+      Left = 15
+      Top = 43
+      Width = 97
+      Height = 17
+      Caption = 'Amount Given :'
+      Color = clWhite
+      Font.Charset = ANSI_CHARSET
+      Font.Color = 6570553
+      Font.Height = -13
+      Font.Name = 'Segoe UI'
+      Font.Style = [fsBold]
+      ParentColor = False
+      ParentFont = False
+      Layout = tlCenter
+      StyleElements = []
+    end
+    object Label2: TLabel
+      Left = 15
+      Top = 80
+      Width = 131
+      Height = 17
+      Caption = 'Particulars/Remarks :'
+      Color = clWhite
+      Font.Charset = ANSI_CHARSET
+      Font.Color = 6570553
+      Font.Height = -13
+      Font.Name = 'Segoe UI'
+      Font.Style = [fsBold]
+      ParentColor = False
+      ParentFont = False
+      Layout = tlCenter
+      StyleElements = []
+    end
     object Label1: TLabel
       Left = 15
       Top = 6
@@ -185,6 +219,56 @@ object f_CashOut: Tf_CashOut
       ParentFont = False
       Layout = tlCenter
       StyleElements = []
+    end
+    object txt_remarks: TcxDBMemo
+      Left = 155
+      Top = 73
+      DataBinding.DataField = 'REMARKS'
+      DataBinding.DataSource = ds_cash
+      ParentFont = False
+      Properties.CharCase = ecUpperCase
+      Style.BorderColor = 1184274
+      Style.BorderStyle = ebsThick
+      Style.Color = 6570553
+      Style.Font.Charset = ANSI_CHARSET
+      Style.Font.Color = clWhite
+      Style.Font.Height = -16
+      Style.Font.Name = 'Segoe UI'
+      Style.Font.Style = []
+      Style.LookAndFeel.NativeStyle = False
+      Style.IsFontAssigned = True
+      StyleDisabled.LookAndFeel.NativeStyle = False
+      StyleFocused.LookAndFeel.NativeStyle = False
+      StyleHot.LookAndFeel.NativeStyle = False
+      TabOrder = 3
+      OnExit = txt_amntExit
+      Height = 61
+      Width = 270
+    end
+    object txt_amnt: TcxDBTextEdit
+      Left = 155
+      Top = 38
+      DataBinding.DataField = 'AMOUNT'
+      DataBinding.DataSource = ds_cash
+      ParentFont = False
+      Properties.Alignment.Horz = taRightJustify
+      Properties.CharCase = ecUpperCase
+      Style.BorderColor = 1184274
+      Style.BorderStyle = ebsThick
+      Style.Color = 6570553
+      Style.Font.Charset = ANSI_CHARSET
+      Style.Font.Color = clWhite
+      Style.Font.Height = -16
+      Style.Font.Name = 'Segoe UI Semibold'
+      Style.Font.Style = [fsBold]
+      Style.LookAndFeel.NativeStyle = False
+      Style.IsFontAssigned = True
+      StyleDisabled.LookAndFeel.NativeStyle = False
+      StyleFocused.LookAndFeel.NativeStyle = False
+      StyleHot.LookAndFeel.NativeStyle = False
+      TabOrder = 2
+      OnExit = txt_amntExit
+      Width = 270
     end
     object cmb_emp: TcxDBLookupComboBox
       Left = 155
@@ -257,18 +341,19 @@ object f_CashOut: Tf_CashOut
   end
   object pan_payroll: TPanel
     Left = 0
-    Top = 131
+    Top = 96
     Width = 442
-    Height = 110
+    Height = 35
     Align = alTop
     BevelOuter = bvNone
     Color = clWhite
     ParentBackground = False
     TabOrder = 1
     StyleElements = []
+    ExplicitTop = 102
     object Label6: TLabel
       Left = 15
-      Top = 11
+      Top = 5
       Width = 95
       Height = 17
       Caption = 'Payroll Period :'
@@ -283,67 +368,30 @@ object f_CashOut: Tf_CashOut
       Layout = tlCenter
       StyleElements = []
     end
-    object Label7: TLabel
-      Left = 287
-      Top = 10
-      Width = 5
-      Height = 17
-      Caption = '-'
-      Color = clWhite
-      Font.Charset = ANSI_CHARSET
-      Font.Color = 6570553
-      Font.Height = -13
-      Font.Name = 'Segoe UI'
-      Font.Style = [fsBold]
-      ParentColor = False
-      ParentFont = False
-      Layout = tlCenter
-      StyleElements = []
-    end
-    object Label8: TLabel
-      Left = 15
-      Top = 49
-      Width = 42
-      Height = 17
-      Caption = 'Gross :'
-      Color = clWhite
-      Font.Charset = ANSI_CHARSET
-      Font.Color = 6570553
-      Font.Height = -13
-      Font.Name = 'Segoe UI'
-      Font.Style = [fsBold]
-      ParentColor = False
-      ParentFont = False
-      Layout = tlCenter
-      StyleElements = []
-    end
-    object Label9: TLabel
-      Left = 15
-      Top = 84
-      Width = 109
-      Height = 17
-      Caption = '(Cash Advances) :'
-      Color = clWhite
-      Font.Charset = ANSI_CHARSET
-      Font.Color = clRed
-      Font.Height = -13
-      Font.Name = 'Segoe UI'
-      Font.Style = [fsBold]
-      ParentColor = False
-      ParentFont = False
-      Layout = tlCenter
-      StyleElements = []
-    end
-    object date_payfrom: TcxDBDateEdit
+    object cmb_payroll: TcxDBLookupComboBox
       Left = 155
-      Top = 6
-      DataBinding.DataField = 'PAYDATEFROM'
+      Top = 0
+      DataBinding.DataField = 'PAYREFID'
       DataBinding.DataSource = ds_cash
       ParentFont = False
+      Properties.CharCase = ecUpperCase
+      Properties.DropDownWidth = 270
       Properties.ImmediatePost = True
-      Properties.ShowTime = False
-      Properties.ShowToday = False
-      Properties.OnCloseUp = date_payfromPropertiesCloseUp
+      Properties.KeyFieldNames = 'ID'
+      Properties.ListColumns = <
+        item
+          Caption = 'NO.'
+          Width = 70
+          FieldName = 'ID'
+        end
+        item
+          Caption = 'PAY DATE'
+          Width = 200
+          FieldName = 'PAYDATE'
+        end>
+      Properties.ListFieldIndex = 1
+      Properties.ListSource = ds_payroll
+      Properties.OnCloseUp = cmb_exptypePropertiesCloseUp
       Style.BorderColor = 1184274
       Style.BorderStyle = ebsThick
       Style.Color = 6570553
@@ -352,188 +400,22 @@ object f_CashOut: Tf_CashOut
       Style.Font.Height = -16
       Style.Font.Name = 'Segoe UI'
       Style.Font.Style = []
+      Style.LookAndFeel.Kind = lfUltraFlat
       Style.LookAndFeel.NativeStyle = False
+      Style.LookAndFeel.SkinName = ''
+      Style.ButtonStyle = btsFlat
+      Style.ButtonTransparency = ebtNone
       Style.IsFontAssigned = True
+      StyleDisabled.LookAndFeel.Kind = lfUltraFlat
       StyleDisabled.LookAndFeel.NativeStyle = False
+      StyleDisabled.LookAndFeel.SkinName = ''
+      StyleFocused.LookAndFeel.Kind = lfUltraFlat
       StyleFocused.LookAndFeel.NativeStyle = False
+      StyleFocused.LookAndFeel.SkinName = ''
+      StyleHot.LookAndFeel.Kind = lfUltraFlat
       StyleHot.LookAndFeel.NativeStyle = False
+      StyleHot.LookAndFeel.SkinName = ''
       TabOrder = 0
-      Width = 126
-    end
-    object date_payto: TcxDBDateEdit
-      Left = 299
-      Top = 6
-      DataBinding.DataField = 'PAYDATETO'
-      DataBinding.DataSource = ds_cash
-      ParentFont = False
-      Properties.ImmediatePost = True
-      Properties.ShowTime = False
-      Properties.ShowToday = False
-      Properties.OnCloseUp = date_paytoPropertiesCloseUp
-      Style.BorderColor = 1184274
-      Style.BorderStyle = ebsThick
-      Style.Color = 6570553
-      Style.Font.Charset = ANSI_CHARSET
-      Style.Font.Color = clWhite
-      Style.Font.Height = -16
-      Style.Font.Name = 'Segoe UI'
-      Style.Font.Style = []
-      Style.LookAndFeel.NativeStyle = False
-      Style.IsFontAssigned = True
-      StyleDisabled.LookAndFeel.NativeStyle = False
-      StyleFocused.LookAndFeel.NativeStyle = False
-      StyleHot.LookAndFeel.NativeStyle = False
-      TabOrder = 1
-      Width = 126
-    end
-    object txt_gross: TcxDBTextEdit
-      Left = 155
-      Top = 41
-      DataBinding.DataField = 'GROSS'
-      DataBinding.DataSource = ds_cash
-      ParentFont = False
-      Properties.Alignment.Horz = taRightJustify
-      Properties.CharCase = ecUpperCase
-      Style.BorderColor = 1184274
-      Style.BorderStyle = ebsThick
-      Style.Color = 6570553
-      Style.Font.Charset = ANSI_CHARSET
-      Style.Font.Color = clWhite
-      Style.Font.Height = -16
-      Style.Font.Name = 'Segoe UI Semibold'
-      Style.Font.Style = [fsBold]
-      Style.LookAndFeel.NativeStyle = False
-      Style.IsFontAssigned = True
-      StyleDisabled.LookAndFeel.NativeStyle = False
-      StyleFocused.LookAndFeel.NativeStyle = False
-      StyleHot.LookAndFeel.NativeStyle = False
-      TabOrder = 2
-      OnExit = txt_amntExit
-      Width = 270
-    end
-    object txt_ca: TcxDBTextEdit
-      Left = 155
-      Top = 76
-      DataBinding.DataField = 'CASHADVANCES'
-      DataBinding.DataSource = ds_cash
-      ParentFont = False
-      Properties.Alignment.Horz = taRightJustify
-      Properties.CharCase = ecUpperCase
-      Properties.ReadOnly = True
-      Style.BorderColor = 1184274
-      Style.BorderStyle = ebsThick
-      Style.Color = clWhite
-      Style.Font.Charset = ANSI_CHARSET
-      Style.Font.Color = clRed
-      Style.Font.Height = -16
-      Style.Font.Name = 'Segoe UI'
-      Style.Font.Style = []
-      Style.LookAndFeel.NativeStyle = False
-      Style.IsFontAssigned = True
-      StyleDisabled.LookAndFeel.NativeStyle = False
-      StyleFocused.LookAndFeel.NativeStyle = False
-      StyleHot.LookAndFeel.NativeStyle = False
-      TabOrder = 3
-      OnExit = txt_amntExit
-      Width = 270
-    end
-  end
-  object pan_amnt: TPanel
-    Left = 0
-    Top = 241
-    Width = 442
-    Height = 142
-    Align = alClient
-    BevelOuter = bvNone
-    Color = clWhite
-    ParentBackground = False
-    TabOrder = 5
-    StyleElements = []
-    ExplicitLeft = 80
-    ExplicitTop = 312
-    ExplicitWidth = 185
-    ExplicitHeight = 41
-    object Label4: TLabel
-      Left = 15
-      Top = 9
-      Width = 97
-      Height = 17
-      Caption = 'Amount Given :'
-      Color = clWhite
-      Font.Charset = ANSI_CHARSET
-      Font.Color = 6570553
-      Font.Height = -13
-      Font.Name = 'Segoe UI'
-      Font.Style = [fsBold]
-      ParentColor = False
-      ParentFont = False
-      Layout = tlCenter
-      StyleElements = []
-    end
-    object Label2: TLabel
-      Left = 15
-      Top = 48
-      Width = 131
-      Height = 17
-      Caption = 'Particulars/Remarks :'
-      Color = clWhite
-      Font.Charset = ANSI_CHARSET
-      Font.Color = 6570553
-      Font.Height = -13
-      Font.Name = 'Segoe UI'
-      Font.Style = [fsBold]
-      ParentColor = False
-      ParentFont = False
-      Layout = tlCenter
-      StyleElements = []
-    end
-    object txt_remarks: TcxDBMemo
-      Left = 155
-      Top = 39
-      DataBinding.DataField = 'REMARKS'
-      DataBinding.DataSource = ds_cash
-      ParentFont = False
-      Properties.CharCase = ecUpperCase
-      Style.BorderColor = 1184274
-      Style.BorderStyle = ebsThick
-      Style.Color = 6570553
-      Style.Font.Charset = ANSI_CHARSET
-      Style.Font.Color = clWhite
-      Style.Font.Height = -16
-      Style.Font.Name = 'Segoe UI'
-      Style.Font.Style = []
-      Style.LookAndFeel.NativeStyle = False
-      Style.IsFontAssigned = True
-      StyleDisabled.LookAndFeel.NativeStyle = False
-      StyleFocused.LookAndFeel.NativeStyle = False
-      StyleHot.LookAndFeel.NativeStyle = False
-      TabOrder = 0
-      OnExit = txt_amntExit
-      Height = 61
-      Width = 270
-    end
-    object txt_amnt: TcxDBTextEdit
-      Left = 155
-      Top = 4
-      DataBinding.DataField = 'AMOUNT'
-      DataBinding.DataSource = ds_cash
-      ParentFont = False
-      Properties.Alignment.Horz = taRightJustify
-      Properties.CharCase = ecUpperCase
-      Style.BorderColor = 1184274
-      Style.BorderStyle = ebsThick
-      Style.Color = 6570553
-      Style.Font.Charset = ANSI_CHARSET
-      Style.Font.Color = clWhite
-      Style.Font.Height = -16
-      Style.Font.Name = 'Segoe UI Semibold'
-      Style.Font.Style = [fsBold]
-      Style.LookAndFeel.NativeStyle = False
-      Style.IsFontAssigned = True
-      StyleDisabled.LookAndFeel.NativeStyle = False
-      StyleFocused.LookAndFeel.NativeStyle = False
-      StyleHot.LookAndFeel.NativeStyle = False
-      TabOrder = 1
       OnExit = txt_amntExit
       Width = 270
     end

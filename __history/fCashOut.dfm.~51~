@@ -340,10 +340,8 @@ object f_CashOut: Tf_CashOut
       DataBinding.DataField = 'PAYDATEFROM'
       DataBinding.DataSource = ds_cash
       ParentFont = False
-      Properties.ImmediatePost = True
       Properties.ShowTime = False
       Properties.ShowToday = False
-      Properties.OnCloseUp = date_payfromPropertiesCloseUp
       Style.BorderColor = 1184274
       Style.BorderStyle = ebsThick
       Style.Color = 6570553
@@ -366,10 +364,8 @@ object f_CashOut: Tf_CashOut
       DataBinding.DataField = 'PAYDATETO'
       DataBinding.DataSource = ds_cash
       ParentFont = False
-      Properties.ImmediatePost = True
       Properties.ShowTime = False
       Properties.ShowToday = False
-      Properties.OnCloseUp = date_paytoPropertiesCloseUp
       Style.BorderColor = 1184274
       Style.BorderStyle = ebsThick
       Style.Color = 6570553
@@ -419,7 +415,6 @@ object f_CashOut: Tf_CashOut
       ParentFont = False
       Properties.Alignment.Horz = taRightJustify
       Properties.CharCase = ecUpperCase
-      Properties.ReadOnly = True
       Style.BorderColor = 1184274
       Style.BorderStyle = ebsThick
       Style.Color = clWhite
@@ -448,7 +443,6 @@ object f_CashOut: Tf_CashOut
     Color = clWhite
     ParentBackground = False
     TabOrder = 5
-    StyleElements = []
     ExplicitLeft = 80
     ExplicitTop = 312
     ExplicitWidth = 185

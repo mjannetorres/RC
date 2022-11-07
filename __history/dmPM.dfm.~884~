@@ -1,6 +1,7 @@
 object dm_PM: Tdm_PM
   OldCreateOrder = False
   Height = 758
+  VerticalOffset = 10
   Width = 841
   object dbConn: TFDConnection
     Params.Strings = (
@@ -9615,30 +9616,6 @@ object dm_PM: Tdm_PM
       Origin = 'CATEGORY'
       Size = 50
     end
-    object qry_CashOutDetailPAYDATEFROM: TDateField
-      AutoGenerateValue = arDefault
-      FieldName = 'PAYDATEFROM'
-      Origin = 'PAYDATEFROM'
-    end
-    object qry_CashOutDetailPAYDATETO: TDateField
-      AutoGenerateValue = arDefault
-      FieldName = 'PAYDATETO'
-      Origin = 'PAYDATETO'
-    end
-    object qry_CashOutDetailGROSS: TSingleField
-      AutoGenerateValue = arDefault
-      FieldName = 'GROSS'
-      Origin = 'GROSS'
-      DisplayFormat = '###,###,##0.00'
-      currency = True
-    end
-    object qry_CashOutDetailCASHADVANCES: TSingleField
-      AutoGenerateValue = arDefault
-      FieldName = 'CASHADVANCES'
-      Origin = 'CASHADVANCES'
-      DisplayFormat = '###,###,##0.00'
-      currency = True
-    end
   end
   object brw_CashSum: TFDQuery
     OnCalcFields = brw_CashSumCalcFields
@@ -12670,29 +12647,6 @@ object dm_PM: Tdm_PM
       Origin = 'ROLEID'
       FixedChar = True
       Size = 1
-    end
-  end
-  object brw_ComputePay: TFDQuery
-    Connection = dbConn
-    SQL.Strings = (
-      'SELECT SUM(QTY * COST) AS AMNT, WORKER '
-      'FROM pm_worklogs'
-      ''
-      'GROUP BY WORKER;')
-    Left = 616
-    Top = 720
-    object brw_ComputePayAMNT: TFloatField
-      AutoGenerateValue = arDefault
-      FieldName = 'AMNT'
-      Origin = 'AMNT'
-      ProviderFlags = []
-      ReadOnly = True
-    end
-    object brw_ComputePayWORKER: TStringField
-      AutoGenerateValue = arDefault
-      FieldName = 'WORKER'
-      Origin = 'WORKER'
-      Size = 50
     end
   end
 end

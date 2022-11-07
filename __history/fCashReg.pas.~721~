@@ -538,6 +538,10 @@ begin
  with dm_PM do
   begin
 
+    brw_Payroll.Close;
+    brw_Payroll.SQL[2]  := 'WHERE CANCELLED = FALSE';
+    brw_Payroll.Open();
+
     brw_Emp.Close;
     brw_Emp.SQL[2]  := 'WHERE CANCELLED = FALSE';
     brw_Emp.Open();
@@ -581,7 +585,7 @@ begin
     pan_search.Visible        := False;
 
     f_CashOut := Tf_CashOut.Create(Self);
-    f_CashOut.pan_payroll.Visible   := False;
+    f_CashOut.pan_payroll.Visible := False;
     f_CashOut.cmb_exptype.ItemIndex := 0;
     if f_CashOut.ShowModal = mrOk then
     begin

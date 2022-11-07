@@ -91,7 +91,6 @@ begin
 end;
 
 procedure Tf_CashOut.compute_payroll;
-var date1, date2: TDateTime;
 begin
   with dm_PM do
   begin
@@ -99,17 +98,13 @@ begin
     begin
       qry_CashOutDetailPAYEE.Value   := cmb_emp.Text;
 
-       if (date_payfrom.Date <> Null) and (date_payto.Date <> Null) then
+       if (not qry_CashOutDetailPAYDATEFROM.IsNull) and (not qry_CashOutDetailPAYDATETO.IsNull) then
        begin
-
-          date1   :=  StartOfTheDay(date_payfrom.Date);
-          date2   :=  EndOfTheDay(date_payto.Date);
-
           brw_ComputePay.Close;
           brw_ComputePay.SQL[2]  := 'WHERE WORKERID = :EMPID AND (CREATEDDATETIME BETWEEN :DATE1 AND :DATE2) AND CANCELLED = FALSE';
           brw_ComputePay.ParamByName('EMPID').Value    := qry_CashOutDetailEMPID.Value;
-          brw_ComputePay.ParamByName('DATE1').Value    := date1; //FormatDateTime('yyyy-mm-dd hh:nn', StartOfTheDay(qry_CashOutDetailPAYDATEFROM.Value));
-          brw_ComputePay.ParamByName('DATE2').Value    := date2; //FormatDateTime('yyyy-mm-dd hh:nn', EndOfTheDay(qry_CashOutDetailPAYDATETO.Value));
+          brw_ComputePay.ParamByName('DATE1').Value    := FormatDateTime('yyyy-mm-dd hh:nn', StartOfTheDay(qry_CashOutDetailPAYDATEFROM.Value));
+          brw_ComputePay.ParamByName('DATE2').Value    := FormatDateTime('yyyy-mm-dd hh:nn', EndOfTheDay(qry_CashOutDetailPAYDATETO.Value));
 //          ShowMessage(qry_CashOutDetailEMPID.AsString + #13#10 + qry_CashOutDetailPAYDATEFROM.AsString + #13#10 + qry_CashOutDetailPAYDATETO.AsString);
           brw_ComputePay.Open();
 
@@ -118,13 +113,14 @@ begin
           brw_CompExpense.Close;
           brw_CompExpense.SQL[4]  := 'WHERE (DETAIL.REFDATE BETWEEN :date1 and :date2) AND DETAIL.EMPID = :EMPID AND EXP.CATEGORY = 2 AND HEADER.CANCELLED = FALSE AND DETAIL.CANCELLED = FALSE';
           brw_CompExpense.ParamByName('EMPID').Value   := qry_CashOutDetailEMPID.Value;
-          brw_CompExpense.ParamByName('date1').Value   := date1;
-          brw_CompExpense.ParamByName('date2').Value   := date2;
+          brw_CompExpense.ParamByName('date1').Value   := FormatDateTime('yyyy-mm-dd hh:nn', StartOfTheDay(qry_CashOutDetailPAYDATEFROM.Value));
+          brw_CompExpense.ParamByName('date2').Value   := FormatDateTime('yyyy-mm-dd hh:nn', EndOfTheDay(qry_CashOutDetailPAYDATETO.Value));
           brw_CompExpense.Open();
 
           qry_CashOutDetailCASHADVANCES.Value :=  brw_CompExpenseAMOUNT.Value;
 
           qry_CashOutDetailAMOUNT.Value := (qry_CashOutDetailGROSS.Value - qry_CashOutDetailCASHADVANCES.Value);
+
        end;
 
     end;

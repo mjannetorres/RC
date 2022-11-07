@@ -43,6 +43,8 @@ object f_LogTemp: Tf_LogTemp
     ParentBackground = False
     TabOrder = 1
     StyleElements = []
+    ExplicitWidth = 353
+    ExplicitHeight = 228
     object Label1: TLabel
       Left = 13
       Top = 57
@@ -285,7 +287,8 @@ object f_LogTemp: Tf_LogTemp
       Properties.KeyFieldNames = 'ID'
       Properties.ListColumns = <
         item
-          FieldName = 'EMPNAME'
+          Caption = 'WORKER'
+          FieldName = 'FULLNAME'
         end>
       Properties.ListOptions.ShowHeader = False
       Properties.ListSource = ds_workers
@@ -523,6 +526,8 @@ object f_LogTemp: Tf_LogTemp
     Align = alBottom
     BevelOuter = bvNone
     TabOrder = 0
+    ExplicitTop = 228
+    ExplicitWidth = 353
     DesignSize = (
       410
       37)
@@ -575,7 +580,7 @@ object f_LogTemp: Tf_LogTemp
     Top = 200
   end
   object ds_workers: TDataSource
-    DataSet = dm_PM.brw_Emp
+    DataSet = dm_PM.brw_Users
     Left = 224
     Top = 200
   end

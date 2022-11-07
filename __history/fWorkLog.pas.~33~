@@ -180,9 +180,9 @@ begin
     brw_Client.SQL[2] := 'WHERE CANCELLED = FALSE';
     brw_Client.Open();
 
-    brw_Emp.Close;
-    brw_Emp.SQL[2] := 'WHERE CANCELLED = FALSE';
-    brw_Emp.Open();
+    brw_Users.Close;
+    brw_Users.SQL[2] := 'WHERE CANCELLED = FALSE';
+    brw_Users.Open();
 
     brw_JODetail.Close;
 

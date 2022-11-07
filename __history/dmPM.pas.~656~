@@ -2099,13 +2099,6 @@ type
     brw_GarmentsHEATPRESSSHARE: TFloatField;
     brw_GarmentsCUTTERSHARE: TFloatField;
     brw_GarmentsTAILORSHARE: TFloatField;
-    qry_CashOutDetailPAYDATEFROM: TDateField;
-    qry_CashOutDetailPAYDATETO: TDateField;
-    qry_CashOutDetailGROSS: TSingleField;
-    qry_CashOutDetailCASHADVANCES: TSingleField;
-    brw_ComputePay: TFDQuery;
-    brw_ComputePayAMNT: TFloatField;
-    brw_ComputePayWORKER: TStringField;
     procedure tb_JODetailCalcFields(DataSet: TDataSet);
     procedure brw_pmboardCalcFields(DataSet: TDataSet);
     procedure brw_EmpCalcFields(DataSet: TDataSet);
