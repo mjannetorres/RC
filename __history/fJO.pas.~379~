@@ -121,6 +121,7 @@ type
       var DisplayValue: Variant; var ErrorText: TCaption; var Error: Boolean);
     procedure DeleteCostExecute(Sender: TObject);
     procedure cxGrid2Exit(Sender: TObject);
+    procedure scGPPageControl1ChangePage(Sender: TObject);
   private
     { Private declarations }
     posted: Boolean;
@@ -208,8 +209,6 @@ procedure Tf_JO.ComputeAmntExecute(Sender: TObject);
 var
   AValue: Variant;
 begin
-  generate_costing;
-
   dm_PM.tb_JODetail.Append;
   dm_PM.tb_JODetail.Delete;
 
@@ -464,6 +463,7 @@ procedure Tf_JO.generate_costing;
 begin
   with dm_PM do
   begin
+    ShowMessage(IntToStr(tb_JODetail.RecordCount));
     //tb_JODetail.Post;
     //tb_JOClone.CopyRecord(tb_JODetail);
 
@@ -476,7 +476,7 @@ begin
         begin
           brw_GarCosting.Close;
           brw_GarCosting.SQL[2]  := 'WHERE HEADERID = :ID AND CANCELLED = FALSE';
-          brw_GarCosting.ParamByName('ID').Value  := tb_JODetailSHIRTID.Value;
+          brw_GarCosting.ParamByName('HEADERID').Value  := tb_JODetailSHIRTID.Value;
           brw_GarCosting.Open();
 
           if brw_GarCosting.RecordCount > 0 then
@@ -487,10 +487,8 @@ begin
               if not tb_InvReqDetail.Locate('GARMENTID;ITEMID', VarArrayOf([tb_JODetailSHIRTID.Value, brw_GarCostingITEMID.Value])) then
               begin
                 tb_InvReqDetail.Append;
-                tb_InvReqDetailITEMID.Value    := brw_GarCostingITEMID.Value;
                 tb_InvReqDetailITEMDESC.Value  := brw_GarCostingITEMDESC.Value;
                 tb_InvReqDetailGARMENTID.Value := tb_JODetailSHIRTID.Value;
-                tb_InvReqDetailQTY.Value       := brw_GarCostingQTY.Value * (tb_JODetailQTY.Value + tb_JODetailFREE.Value);
                 tb_InvReqDetailUNIT.Value      := brw_GarCostingUNIT.Value;
                 tb_InvReqDetailCOST.Value      := brw_GarCostingCOST.Value;
                 tb_InvReqDetail.Post;
@@ -598,6 +596,12 @@ begin
     end;
     btnAdd.Enabled  := (not flag);
   end;
+end;
+
+procedure Tf_JO.scGPPageControl1ChangePage(Sender: TObject);
+begin
+  generate_costing;
+  ComputeAmntExecute(nil);
 end;
 
 end.

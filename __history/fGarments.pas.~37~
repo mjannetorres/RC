@@ -120,9 +120,9 @@ begin
 
       del_GarCost.Close;
       del_GarCost.SQL[1] := 'SET CANCELLED = FALSE,';
-      del_GarCost.SQL[2] := 'CANCELLEDBYID = '+IntToStr(userid)+',';
+      del_GarCost.SQL[2] := 'CANCELLEDBYID = '+IntToStr(dm_PM.userid)+',';
       del_GarCost.SQL[3] := 'CANCELLEDDATETIME = '''+FormatDateTime('yyyy-mm-dd hh:nn:ss', Now)+'''';
-      del_GarCost.SQL[4] := 'WHERE HEADERID = '+qry_garmentsID.AsString;
+      del_GarCost.SQL[4] := 'WHERE HEADERID = '+qry_JOID.AsString;
       del_GarCost.ExecSQL;
 
       search;
@@ -143,30 +143,6 @@ begin
 
     tb_InvReqDetail.Close;
     tb_InvReqDetail.Open;
-
-    qry_GarCosting.Close;
-    qry_GarCosting.SQL[2]  := 'WHERE HEADERID = :ID AND CANCELLED = FALSE';
-    qry_GarCosting.ParamByName('ID').Value := qry_garmentsID.Value;
-    qry_GarCosting.Open();
-
-    if qry_GarCosting.RecordCount > 0 then
-    begin
-      qry_GarCosting.First;
-       while not qry_GarCosting.Eof do
-       begin
-        tb_InvReqDetail.Append;
-        tb_InvReqDetailID.Value        := qry_GarCostingID.Value;
-        tb_InvReqDetailITEMID.Value    := qry_GarCostingITEMID.Value;
-        tb_InvReqDetailITEMDESC.Value  := qry_GarCostingITEMDESC.Value;
-        tb_InvReqDetailUNIT.Value      := qry_GarCostingUNIT.Value;
-        tb_InvReqDetailQTY.Value       := qry_GarCostingQTY.Value;
-        tb_InvReqDetailCOST.Value      := qry_GarCostingCOST.Value;
-        tb_InvReqDetail.Post;
-
-        qry_GarCosting.Next;
-       end;
-       tb_InvReqDetail.First;
-    end;
 
 
     f_GarmentsTemp  := Tf_GarmentsTemp.Create(Self);
@@ -196,7 +172,6 @@ begin
 
         qry_GarCostingHEADERID.Value         := qry_garmentsID.Value;
         qry_GarCostingITEMID.Value           := tb_InvReqDetailITEMID.Value;
-        qry_GarCostingITEMDESC.Value         := tb_InvReqDetailITEMDESC.Value;
         qry_GarCostingCOST.Value             := tb_InvReqDetailCOST.Value;
         qry_GarCostingTOTAL.Value            := tb_InvReqDetailTOTALCOST.Value;
         qry_GarCostingUNIT.Value             := tb_InvReqDetailUNIT.Value;
@@ -255,7 +230,6 @@ begin
         qry_GarCosting.Append;
         qry_GarCostingHEADERID.Value     := qry_garmentsID.Value;
         qry_GarCostingITEMID.Value       := tb_InvReqDetailITEMID.Value;
-        qry_GarCostingITEMDESC.Value     := tb_InvReqDetailITEMDESC.Value;
         qry_GarCostingCOST.Value         := tb_InvReqDetailCOST.Value;
         qry_GarCostingTOTAL.Value        := tb_InvReqDetailTOTALCOST.Value;
         qry_GarCostingUNIT.Value         := tb_InvReqDetailUNIT.Value;

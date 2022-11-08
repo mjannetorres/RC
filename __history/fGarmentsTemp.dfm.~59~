@@ -657,7 +657,6 @@ object f_GarmentsTemp: Tf_GarmentsTemp
         ExplicitWidth = 837
         ExplicitHeight = 218
         object cxGridDBTableView3: TcxGridDBTableView
-          PopupMenu = PopupMenu1
           Navigator.Buttons.CustomButtons = <>
           DataController.DataSource = ds_costing
           DataController.Summary.DefaultGroupSummaryItems = <>
@@ -708,7 +707,6 @@ object f_GarmentsTemp: Tf_GarmentsTemp
               end>
             Properties.ListFieldIndex = 1
             Properties.ListSource = ds_items
-            Properties.OnCloseUp = cxGridDBTableView1ITEMIDPropertiesCloseUp
             HeaderAlignmentHorz = taCenter
             Options.Filtering = False
             Options.Sorting = False
@@ -778,20 +776,5 @@ object f_GarmentsTemp: Tf_GarmentsTemp
     DataSet = dm_PM.tb_InvReqDetail
     Left = 37
     Top = 260
-  end
-  object PopupMenu1: TPopupMenu
-    Left = 109
-    Top = 252
-    object Delete1: TMenuItem
-      Action = Delete
-    end
-  end
-  object ActionList1: TActionList
-    Left = 109
-    Top = 196
-    object Delete: TAction
-      Caption = 'Delete'
-      OnExecute = DeleteExecute
-    end
   end
 end

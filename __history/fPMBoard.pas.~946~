@@ -293,7 +293,7 @@ begin
 
 
               del_JOCost.Close;
-              del_JOCost.SQL[1] := 'SET CANCELLED = TRUE,';
+              del_JOCost.SQL[1] := 'SET CANCELLED = FALSE,';
               del_JOCost.SQL[2] := 'CANCELLEDBYID = '+IntToStr(dm_PM.userid)+',';
               del_JOCost.SQL[3] := 'CANCELLEDDATETIME = '''+FormatDateTime('yyyy-mm-dd hh:nn:ss', Now)+'''';
               del_JOCost.SQL[4] := 'WHERE HEADERID = '+qry_JOID.AsString;
@@ -377,7 +377,6 @@ begin
          begin
           tb_InvReqDetail.Append;
           tb_InvReqDetailID.Value        := qry_JoCostID.Value;
-          tb_InvReqDetailGARMENTID.Value := qry_JoCostGARMENTID.Value;
           tb_InvReqDetailITEMID.Value    := qry_JoCostITEMID.Value;
           tb_InvReqDetailITEMDESC.Value  := qry_JoCostITEMDESC.Value;
           tb_InvReqDetailUNIT.Value      := qry_JoCostUNIT.Value;
@@ -458,7 +457,6 @@ begin
           qry_JoCost.Edit;
 
           qry_JoCostHEADERID.Value         := qry_JOID.Value;
-          qry_JoCostGARMENTID.Value        := tb_InvReqDetailGARMENTID.Value;
           qry_JoCostITEMID.Value           := tb_InvReqDetailITEMID.Value;
           qry_JoCostITEMDESC.Value         := tb_InvReqDetailITEMDESC.Value;
           qry_JoCostCOST.Value             := tb_InvReqDetailCOST.Value;
@@ -834,7 +832,6 @@ begin
         qry_JoCost.Append;
         qry_JoCostHEADERID.Value         := qry_JOID.Value;
         qry_JoCostITEMID.Value           := tb_InvReqDetailITEMID.Value;
-        qry_JoCostGARMENTID.Value        := tb_InvReqDetailGARMENTID.Value;
         qry_JoCostITEMDESC.Value         := tb_InvReqDetailITEMDESC.Value;
         qry_JoCostCOST.Value             := tb_InvReqDetailCOST.Value;
         qry_JoCostTOTALCOST.Value        := tb_InvReqDetailTOTALCOST.Value;

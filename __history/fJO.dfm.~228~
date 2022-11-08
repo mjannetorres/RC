@@ -844,7 +844,7 @@ object f_JO: Tf_JO
     ActivePage = scGPPageControlPage3
     StorePaintBuffer = False
     FreeOnClose = False
-    OnChangePage = ComputeAmntExecute
+    OnChangePage = scGPPageControl1ChangePage
     object scGPPageControlPage1: TscGPPageControlPage
       Left = 0
       Top = 30

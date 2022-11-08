@@ -121,6 +121,7 @@ type
       var DisplayValue: Variant; var ErrorText: TCaption; var Error: Boolean);
     procedure DeleteCostExecute(Sender: TObject);
     procedure cxGrid2Exit(Sender: TObject);
+    procedure scGPPageControl1ChangePage(Sender: TObject);
   private
     { Private declarations }
     posted: Boolean;
@@ -208,8 +209,6 @@ procedure Tf_JO.ComputeAmntExecute(Sender: TObject);
 var
   AValue: Variant;
 begin
-  generate_costing;
-
   dm_PM.tb_JODetail.Append;
   dm_PM.tb_JODetail.Delete;
 
@@ -598,6 +597,12 @@ begin
     end;
     btnAdd.Enabled  := (not flag);
   end;
+end;
+
+procedure Tf_JO.scGPPageControl1ChangePage(Sender: TObject);
+begin
+  generate_costing;
+  ComputeAmntExecute(nil);
 end;
 
 end.

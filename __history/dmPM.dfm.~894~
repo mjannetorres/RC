@@ -9025,9 +9025,6 @@ object dm_PM: Tdm_PM
       DisplayFormat = '###,##0.00'
       EditFormat = '###,##0.00'
     end
-    object tb_InvReqDetailGARMENTID: TIntegerField
-      FieldName = 'GARMENTID'
-    end
   end
   object del_InvReqDetail: TFDQuery
     Connection = dbConn
@@ -11779,11 +11776,6 @@ object dm_PM: Tdm_PM
       FieldName = 'CANCELLEDDATETIME'
       Origin = 'CANCELLEDDATETIME'
     end
-    object qry_JoCostGARMENTID: TIntegerField
-      AutoGenerateValue = arDefault
-      FieldName = 'GARMENTID'
-      Origin = 'GARMENTID'
-    end
   end
   object del_JOCost: TFDQuery
     Connection = dbConn
@@ -12768,11 +12760,6 @@ object dm_PM: Tdm_PM
       FieldName = 'CANCELLEDDATETIME'
       Origin = 'CANCELLEDDATETIME'
     end
-    object qry_GarCostingITEMDESC: TStringField
-      AutoGenerateValue = arDefault
-      FieldName = 'ITEMDESC'
-      Origin = 'ITEMDESC'
-    end
   end
   object brw_GarCosting: TFDQuery
     Connection = dbConn
@@ -12833,11 +12820,6 @@ object dm_PM: Tdm_PM
       AutoGenerateValue = arDefault
       FieldName = 'CANCELLEDDATETIME'
       Origin = 'CANCELLEDDATETIME'
-    end
-    object brw_GarCostingITEMDESC: TStringField
-      AutoGenerateValue = arDefault
-      FieldName = 'ITEMDESC'
-      Origin = 'ITEMDESC'
     end
   end
   object del_GarCost: TFDQuery

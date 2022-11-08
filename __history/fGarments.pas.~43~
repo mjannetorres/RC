@@ -157,7 +157,6 @@ begin
         tb_InvReqDetail.Append;
         tb_InvReqDetailID.Value        := qry_GarCostingID.Value;
         tb_InvReqDetailITEMID.Value    := qry_GarCostingITEMID.Value;
-        tb_InvReqDetailITEMDESC.Value  := qry_GarCostingITEMDESC.Value;
         tb_InvReqDetailUNIT.Value      := qry_GarCostingUNIT.Value;
         tb_InvReqDetailQTY.Value       := qry_GarCostingQTY.Value;
         tb_InvReqDetailCOST.Value      := qry_GarCostingCOST.Value;
@@ -196,7 +195,6 @@ begin
 
         qry_GarCostingHEADERID.Value         := qry_garmentsID.Value;
         qry_GarCostingITEMID.Value           := tb_InvReqDetailITEMID.Value;
-        qry_GarCostingITEMDESC.Value         := tb_InvReqDetailITEMDESC.Value;
         qry_GarCostingCOST.Value             := tb_InvReqDetailCOST.Value;
         qry_GarCostingTOTAL.Value            := tb_InvReqDetailTOTALCOST.Value;
         qry_GarCostingUNIT.Value             := tb_InvReqDetailUNIT.Value;
@@ -255,7 +253,6 @@ begin
         qry_GarCosting.Append;
         qry_GarCostingHEADERID.Value     := qry_garmentsID.Value;
         qry_GarCostingITEMID.Value       := tb_InvReqDetailITEMID.Value;
-        qry_GarCostingITEMDESC.Value     := tb_InvReqDetailITEMDESC.Value;
         qry_GarCostingCOST.Value         := tb_InvReqDetailCOST.Value;
         qry_GarCostingTOTAL.Value        := tb_InvReqDetailTOTALCOST.Value;
         qry_GarCostingUNIT.Value         := tb_InvReqDetailUNIT.Value;

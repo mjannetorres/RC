@@ -25,7 +25,7 @@ uses
   Vcl.ActnList, cxSpinEdit, cxStyles, dxSkinscxPCPainter, cxCustomData,
   cxFilter, cxData, cxDataStorage, cxNavigator, cxDBData, cxGridLevel,
   cxGridCustomTableView, cxGridTableView, cxGridDBTableView, cxClasses,
-  cxGridCustomView, cxGrid, Vcl.Menus;
+  cxGridCustomView, cxGrid;
 
 type
   Tf_GarmentsTemp = class(TForm)
@@ -72,17 +72,12 @@ type
     cxGridLevel3: TcxGridLevel;
     ds_items: TDataSource;
     ds_costing: TDataSource;
-    PopupMenu1: TPopupMenu;
-    ActionList1: TActionList;
-    Delete: TAction;
-    Delete1: TMenuItem;
     procedure FormShow(Sender: TObject);
     procedure txt_codeExit(Sender: TObject);
     procedure cmb_unitPropertiesCloseUp(Sender: TObject);
     procedure txt_unitqtyPropertiesValidate(Sender: TObject;
       var DisplayValue: Variant; var ErrorText: TCaption; var Error: Boolean);
     procedure cxGridDBTableView1ITEMIDPropertiesCloseUp(Sender: TObject);
-    procedure DeleteExecute(Sender: TObject);
   private
     { Private declarations }
     procedure write_desc;
@@ -143,7 +138,6 @@ begin
     if brw_items.Locate('ID', tb_InvReqDetailITEMID.Value) then
     begin
       tb_InvReqDetail.Edit;
-      tb_InvReqDetailITEMID.Value    := brw_itemsID.Value;
       tb_InvReqDetailITEMDESC.Value  := brw_itemsDESCRIPTION.AsString;
       tb_InvReqDetailQTY.Value       := 1;
       tb_InvReqDetailUNIT.Value      := brw_itemsINVUNIT.Value;
@@ -151,31 +145,6 @@ begin
       tb_InvReqDetail.Post;
     end;
     brw_items.EnableControls;
-  end;
-end;
-
-procedure Tf_GarmentsTemp.DeleteExecute(Sender: TObject);
-begin
- with dm_PM do
-  begin
-     if not tb_InvReqDetailID.IsNull then
-     begin
-       qry_GarCosting.Close;
-       qry_GarCosting.SQL[2]  := 'WHERE ID = :ID';
-       qry_GarCosting.ParamByName('ID').Value := tb_InvReqDetailID.Value;
-       qry_GarCosting.Open();
-
-       if qry_GarCosting.RecordCount > 0 then
-       begin
-         qry_GarCosting.Edit;
-         qry_GarCostingCANCELLED.Value          := True;
-         qry_GarCostingCANCELLEDBYID.Value      := userid;
-         qry_GarCostingCANCELLEDDATETIME.Value  := Now;
-         qry_GarCosting.Post;
-         qry_GarCosting.ApplyUpdates();
-       end;
-     end;
-     tb_InvReqDetail.Delete;
   end;
 end;
 
@@ -190,10 +159,6 @@ begin
     brw_Unit.Close;
     brw_Unit.SQL[2]  := 'WHERE CANCELLED = FALSE';
     brw_Unit.Open();
-
-    brw_items.Close;
-    brw_items.SQL[2]  := 'WHERE CANCELLED = FALSE';
-    brw_items.Open();
 
     manageui;
     txt_code.SetFocus;

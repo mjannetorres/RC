@@ -3,8 +3,8 @@ object f_GarmentsTemp: Tf_GarmentsTemp
   Top = 0
   BorderStyle = bsDialog
   Caption = 'Garments'
-  ClientHeight = 586
-  ClientWidth = 445
+  ClientHeight = 376
+  ClientWidth = 455
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -15,22 +15,20 @@ object f_GarmentsTemp: Tf_GarmentsTemp
   Position = poMainFormCenter
   OnShow = FormShow
   PixelsPerInch = 96
-  TextHeight = 14
+  TextHeight = 13
   object Panel1: TPanel
     Left = 0
-    Top = 549
-    Width = 445
+    Top = 339
+    Width = 455
     Height = 37
     Align = alBottom
     BevelOuter = bvNone
     TabOrder = 0
-    ExplicitTop = 339
-    ExplicitWidth = 455
     DesignSize = (
-      445
+      455
       37)
     object btnSave: TButton
-      Left = 266
+      Left = 276
       Top = 6
       Width = 75
       Height = 25
@@ -39,10 +37,9 @@ object f_GarmentsTemp: Tf_GarmentsTemp
       Default = True
       ModalResult = 1
       TabOrder = 0
-      ExplicitLeft = 276
     end
     object Button2: TButton
-      Left = 353
+      Left = 363
       Top = 6
       Width = 75
       Height = 25
@@ -51,22 +48,19 @@ object f_GarmentsTemp: Tf_GarmentsTemp
       Caption = 'Cancel'
       ModalResult = 2
       TabOrder = 1
-      ExplicitLeft = 363
     end
   end
   object Panel2: TPanel
     Left = 0
     Top = 0
-    Width = 445
-    Height = 549
+    Width = 455
+    Height = 339
     Align = alClient
     BevelOuter = bvNone
     Color = clTeal
     ParentBackground = False
     TabOrder = 1
     StyleElements = []
-    ExplicitWidth = 455
-    ExplicitHeight = 339
     object Label1: TLabel
       Left = 13
       Top = 15
@@ -276,7 +270,7 @@ object f_GarmentsTemp: Tf_GarmentsTemp
     end
     object cxGroupBox1: TcxGroupBox
       Left = 13
-      Top = 132
+      Top = 122
       Alignment = alTopCenter
       Caption = 'PRICING/EMP. SHARE'
       ParentBackground = False
@@ -601,158 +595,6 @@ object f_GarmentsTemp: Tf_GarmentsTemp
       OnExit = txt_codeExit
       Width = 325
     end
-    object cxGroupBox2: TcxGroupBox
-      Left = 13
-      Top = 331
-      Alignment = alTopCenter
-      Caption = 'COSTING'
-      ParentBackground = False
-      ParentColor = False
-      ParentFont = False
-      Style.BorderColor = clWhite
-      Style.BorderStyle = ebsThick
-      Style.Color = 6570553
-      Style.Font.Charset = ANSI_CHARSET
-      Style.Font.Color = clWhite
-      Style.Font.Height = -13
-      Style.Font.Name = 'Segoe UI Semibold'
-      Style.Font.Style = [fsBold]
-      Style.LookAndFeel.Kind = lfUltraFlat
-      Style.LookAndFeel.NativeStyle = False
-      Style.LookAndFeel.SkinName = ''
-      Style.IsFontAssigned = True
-      StyleDisabled.LookAndFeel.Kind = lfUltraFlat
-      StyleDisabled.LookAndFeel.NativeStyle = False
-      StyleDisabled.LookAndFeel.SkinName = ''
-      StyleFocused.LookAndFeel.Kind = lfUltraFlat
-      StyleFocused.LookAndFeel.NativeStyle = False
-      StyleFocused.LookAndFeel.SkinName = ''
-      StyleHot.LookAndFeel.Kind = lfUltraFlat
-      StyleHot.LookAndFeel.NativeStyle = False
-      StyleHot.LookAndFeel.SkinName = ''
-      TabOrder = 7
-      Transparent = True
-      Height = 191
-      Width = 412
-      object cxGrid2: TcxGrid
-        Left = 2
-        Top = 22
-        Width = 408
-        Height = 167
-        Align = alClient
-        BevelInner = bvNone
-        BevelOuter = bvNone
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -12
-        Font.Name = 'Tahoma'
-        Font.Style = []
-        ParentFont = False
-        TabOrder = 0
-        LookAndFeel.Kind = lfUltraFlat
-        LookAndFeel.NativeStyle = False
-        LookAndFeel.SkinName = 'VisualStudio2013Light'
-        ExplicitLeft = 0
-        ExplicitTop = 0
-        ExplicitWidth = 837
-        ExplicitHeight = 218
-        object cxGridDBTableView3: TcxGridDBTableView
-          PopupMenu = PopupMenu1
-          Navigator.Buttons.CustomButtons = <>
-          DataController.DataSource = ds_costing
-          DataController.Summary.DefaultGroupSummaryItems = <>
-          DataController.Summary.FooterSummaryItems = <
-            item
-              Format = '###,###,##0'
-              Kind = skCount
-              FieldName = 'ITEMID'
-              Column = cxGridDBTableView1ITEMID
-            end
-            item
-              Format = '###,###,##0.00'
-              Kind = skSum
-              FieldName = 'TOTALCOST'
-              Column = cxGridDBColumn4
-            end>
-          DataController.Summary.SummaryGroups = <>
-          OptionsData.Appending = True
-          OptionsView.NoDataToDisplayInfoText = 'No Data To Display'
-          OptionsView.ColumnAutoWidth = True
-          OptionsView.Footer = True
-          OptionsView.GroupByBox = False
-          object cxGridDBTableView1ITEMID: TcxGridDBColumn
-            Caption = 'ITEM DESCRIPTION'
-            DataBinding.FieldName = 'ITEMID'
-            PropertiesClassName = 'TcxLookupComboBoxProperties'
-            Properties.CharCase = ecUpperCase
-            Properties.DropDownWidth = 360
-            Properties.ImmediatePost = True
-            Properties.KeyFieldNames = 'ID'
-            Properties.ListColumns = <
-              item
-                Caption = 'CODE'
-                HeaderAlignment = taCenter
-                Width = 80
-                FieldName = 'CODE'
-              end
-              item
-                HeaderAlignment = taCenter
-                Width = 200
-                FieldName = 'DESCRIPTION'
-              end
-              item
-                Caption = 'ONHAND'
-                HeaderAlignment = taCenter
-                Width = 80
-                FieldName = 'ONHAND'
-              end>
-            Properties.ListFieldIndex = 1
-            Properties.ListSource = ds_items
-            Properties.OnCloseUp = cxGridDBTableView1ITEMIDPropertiesCloseUp
-            HeaderAlignmentHorz = taCenter
-            Options.Filtering = False
-            Options.Sorting = False
-            Width = 190
-          end
-          object cxGridDBColumn1: TcxGridDBColumn
-            DataBinding.FieldName = 'QTY'
-            PropertiesClassName = 'TcxTextEditProperties'
-            Properties.ValidateOnEnter = True
-            HeaderAlignmentHorz = taCenter
-            Options.Filtering = False
-            Options.Sorting = False
-            Width = 37
-          end
-          object cxGridDBColumn2: TcxGridDBColumn
-            DataBinding.FieldName = 'UNIT'
-            HeaderAlignmentHorz = taCenter
-            Options.Editing = False
-            Options.Filtering = False
-            Options.Sorting = False
-            Width = 61
-          end
-          object cxGridDBColumn3: TcxGridDBColumn
-            DataBinding.FieldName = 'COST'
-            HeaderAlignmentHorz = taCenter
-            Options.Filtering = False
-            Options.Sorting = False
-            Width = 37
-          end
-          object cxGridDBColumn4: TcxGridDBColumn
-            Caption = 'TOTAL COST'
-            DataBinding.FieldName = 'TOTALCOST'
-            HeaderAlignmentHorz = taCenter
-            Options.Editing = False
-            Options.Filtering = False
-            Options.Sorting = False
-            Width = 81
-          end
-        end
-        object cxGridLevel3: TcxGridLevel
-          GridView = cxGridDBTableView3
-        end
-      end
-    end
   end
   object ds_garments: TDataSource
     DataSet = dm_PM.qry_garments
@@ -768,30 +610,5 @@ object f_GarmentsTemp: Tf_GarmentsTemp
     DataSet = dm_PM.brw_Unit
     Left = 112
     Top = 56
-  end
-  object ds_items: TDataSource
-    DataSet = dm_PM.brw_items
-    Left = 32
-    Top = 200
-  end
-  object ds_costing: TDataSource
-    DataSet = dm_PM.tb_InvReqDetail
-    Left = 37
-    Top = 260
-  end
-  object PopupMenu1: TPopupMenu
-    Left = 109
-    Top = 252
-    object Delete1: TMenuItem
-      Action = Delete
-    end
-  end
-  object ActionList1: TActionList
-    Left = 109
-    Top = 196
-    object Delete: TAction
-      Caption = 'Delete'
-      OnExecute = DeleteExecute
-    end
   end
 end

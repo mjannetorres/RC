@@ -2146,7 +2146,6 @@ type
     tb_InvReqDetailGARMENTID: TIntegerField;
     qry_GarCostingITEMDESC: TStringField;
     brw_GarCostingITEMDESC: TStringField;
-    qry_JoCostGARMENTID: TIntegerField;
     procedure tb_JODetailCalcFields(DataSet: TDataSet);
     procedure brw_pmboardCalcFields(DataSet: TDataSet);
     procedure brw_EmpCalcFields(DataSet: TDataSet);

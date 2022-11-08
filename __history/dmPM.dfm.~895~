@@ -11779,11 +11779,6 @@ object dm_PM: Tdm_PM
       FieldName = 'CANCELLEDDATETIME'
       Origin = 'CANCELLEDDATETIME'
     end
-    object qry_JoCostGARMENTID: TIntegerField
-      AutoGenerateValue = arDefault
-      FieldName = 'GARMENTID'
-      Origin = 'GARMENTID'
-    end
   end
   object del_JOCost: TFDQuery
     Connection = dbConn

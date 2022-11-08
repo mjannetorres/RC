@@ -9025,9 +9025,6 @@ object dm_PM: Tdm_PM
       DisplayFormat = '###,##0.00'
       EditFormat = '###,##0.00'
     end
-    object tb_InvReqDetailGARMENTID: TIntegerField
-      FieldName = 'GARMENTID'
-    end
   end
   object del_InvReqDetail: TFDQuery
     Connection = dbConn
@@ -11779,11 +11776,6 @@ object dm_PM: Tdm_PM
       FieldName = 'CANCELLEDDATETIME'
       Origin = 'CANCELLEDDATETIME'
     end
-    object qry_JoCostGARMENTID: TIntegerField
-      AutoGenerateValue = arDefault
-      FieldName = 'GARMENTID'
-      Origin = 'GARMENTID'
-    end
   end
   object del_JOCost: TFDQuery
     Connection = dbConn
@@ -12703,8 +12695,18 @@ object dm_PM: Tdm_PM
       Size = 50
     end
   end
+  object FDMemTable1: TFDMemTable
+    FetchOptions.AssignedValues = [evMode]
+    FetchOptions.Mode = fmAll
+    ResourceOptions.AssignedValues = [rvSilentMode]
+    ResourceOptions.SilentMode = True
+    UpdateOptions.AssignedValues = [uvCheckRequired, uvAutoCommitUpdates]
+    UpdateOptions.CheckRequired = False
+    UpdateOptions.AutoCommitUpdates = True
+    Left = 232
+    Top = 584
+  end
   object qry_GarCosting: TFDQuery
-    CachedUpdates = True
     Connection = dbConn
     SQL.Strings = (
       'SELECT *'
@@ -12768,11 +12770,6 @@ object dm_PM: Tdm_PM
       FieldName = 'CANCELLEDDATETIME'
       Origin = 'CANCELLEDDATETIME'
     end
-    object qry_GarCostingITEMDESC: TStringField
-      AutoGenerateValue = arDefault
-      FieldName = 'ITEMDESC'
-      Origin = 'ITEMDESC'
-    end
   end
   object brw_GarCosting: TFDQuery
     Connection = dbConn
@@ -12834,11 +12831,6 @@ object dm_PM: Tdm_PM
       FieldName = 'CANCELLEDDATETIME'
       Origin = 'CANCELLEDDATETIME'
     end
-    object brw_GarCostingITEMDESC: TStringField
-      AutoGenerateValue = arDefault
-      FieldName = 'ITEMDESC'
-      Origin = 'ITEMDESC'
-    end
   end
   object del_GarCost: TFDQuery
     Connection = dbConn
@@ -12851,88 +12843,5 @@ object dm_PM: Tdm_PM
       ';')
     Left = 56
     Top = 496
-  end
-  object tb_JOClone: TFDMemTable
-    FetchOptions.AssignedValues = [evMode]
-    FetchOptions.Mode = fmAll
-    ResourceOptions.AssignedValues = [rvSilentMode]
-    ResourceOptions.SilentMode = True
-    UpdateOptions.AssignedValues = [uvCheckRequired, uvAutoCommitUpdates]
-    UpdateOptions.CheckRequired = False
-    UpdateOptions.AutoCommitUpdates = True
-    Left = 232
-    Top = 584
-    object tb_JOCloneSHIRTID: TIntegerField
-      AutoGenerateValue = arDefault
-      FieldName = 'SHIRTID'
-      Origin = 'SHIRTID'
-    end
-    object tb_JOCloneDESCRIPTION: TStringField
-      AutoGenerateValue = arDefault
-      FieldName = 'DESCRIPTION'
-      Origin = 'DESCRIPTION'
-      Size = 50
-    end
-    object tb_JOCloneFABRICID: TIntegerField
-      AutoGenerateValue = arDefault
-      FieldName = 'FABRICID'
-      Origin = 'FABRICID'
-    end
-    object tb_JOCloneFABRIC: TStringField
-      AutoGenerateValue = arDefault
-      FieldName = 'FABRIC'
-      Origin = 'FABRIC'
-      Size = 50
-    end
-    object tb_JOCloneQTY: TIntegerField
-      AutoGenerateValue = arDefault
-      FieldName = 'QTY'
-      Origin = 'QTY'
-      DisplayFormat = '###,###,##0'
-    end
-    object tb_JOCloneFREE: TIntegerField
-      AutoGenerateValue = arDefault
-      FieldName = 'FREE'
-      Origin = 'FREE'
-      DisplayFormat = '###,###,##0'
-    end
-    object tb_JOCloneCOST: TFloatField
-      AutoGenerateValue = arDefault
-      FieldName = 'COST'
-      Origin = 'COST'
-      DisplayFormat = '###,###,##0.00'
-      currency = True
-    end
-    object tb_JOCloneUNIT: TStringField
-      AutoGenerateValue = arDefault
-      FieldName = 'UNIT'
-      Origin = 'UNIT'
-    end
-    object tb_JOCloneTOTALCOST: TFloatField
-      AutoGenerateValue = arDefault
-      FieldKind = fkCalculated
-      FieldName = 'TOTALCOST'
-      Origin = 'TOTALCOST'
-      DisplayFormat = '###,###,##0.00'
-      currency = True
-      Calculated = True
-    end
-    object tb_JOCloneREMARKS: TStringField
-      AutoGenerateValue = arDefault
-      FieldName = 'REMARKS'
-      Origin = 'REMARKS'
-      Size = 255
-    end
-    object tb_JOCloneID: TIntegerField
-      FieldName = 'ID'
-    end
-    object tb_JOCloneLAYOUT: TStringField
-      FieldName = 'LAYOUT'
-      Size = 500
-    end
-    object tb_JOCloneFILENAME: TStringField
-      FieldName = 'FILENAME'
-      Size = 200
-    end
   end
 end
