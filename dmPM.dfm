@@ -1,6 +1,6 @@
 object dm_PM: Tdm_PM
   OldCreateOrder = False
-  Height = 787
+  Height = 816
   Width = 841
   object dbConn: TFDConnection
     Params.Strings = (
@@ -8,7 +8,6 @@ object dm_PM: Tdm_PM
       'User_Name=root'
       'Port='
       'DriverID=MySQL')
-    Connected = True
     LoginPrompt = False
     Left = 16
     Top = 40
@@ -2364,7 +2363,6 @@ object dm_PM: Tdm_PM
     end
   end
   object qry_company: TFDQuery
-    Active = True
     CachedUpdates = True
     Connection = dbConn
     SQL.Strings = (
@@ -12680,6 +12678,12 @@ object dm_PM: Tdm_PM
       FixedChar = True
       Size = 1
     end
+    object brw_WorkLogsTOTAL: TCurrencyField
+      FieldKind = fkCalculated
+      FieldName = 'TOTAL'
+      DisplayFormat = '###,###,##0.00'
+      Calculated = True
+    end
   end
   object brw_ComputePay: TFDQuery
     Connection = dbConn
@@ -13086,11 +13090,10 @@ object dm_PM: Tdm_PM
     Connection = dbConn
     SQL.Strings = (
       
-        'SELECT SUM(CASH.NETAMNT) AS NETAMNT, SUM(CASH.CASHAMNT) AS CASHA' +
-        'MNT, SUM(CASH.CARDAMNT) AS CARDAMNT, SUM(CASH.CHECKAMNT) AS CHEC' +
-        'KAMNT, SUM(CASH.CHANGEAMNT) AS CHANGEAMNT'
-      'FROM CASH_HEADER CASH'
-      'INNER JOIN JO_HEADER HEADER ON HEADER.ID = CASH.REFID'
+        'SELECT SUM(NETAMNT) AS NETAMNT, SUM(CASHAMNT) AS CASHAMNT, SUM(C' +
+        'ARDAMNT) AS CARDAMNT, SUM(CHECKAMNT) AS CHECKAMNT, SUM(CHANGEAMN' +
+        'T) AS CHANGEAMNT'
+      'FROM CASH_HEADER'
       ''
       ';')
     Left = 760
@@ -13139,6 +13142,122 @@ object dm_PM: Tdm_PM
       ReadOnly = True
       DisplayFormat = '###,###,##0.00'
       currency = True
+    end
+  end
+  object brw_Salaries: TFDQuery
+    Connection = dbConn
+    SQL.Strings = (
+      'SELECT DETAIL.*, EXP.CATEGORY AS EXPENSETYPE'
+      'FROM CASH_OUTDETAIL DETAIL'
+      'INNER JOIN CASH_HEADER HEADER ON DETAIL.HEADERID = HEADER.ID'
+      'INNER JOIN EXPENSE_TYPE EXP ON EXP.ID = DETAIL.CATEGORYID'
+      ''
+      'ORDER BY DETAIL.PAYEE;')
+    Left = 560
+    Top = 768
+    object brw_SalariesID: TFDAutoIncField
+      FieldName = 'ID'
+      Origin = 'ID'
+      ProviderFlags = [pfInWhere, pfInKey]
+    end
+    object brw_SalariesHEADERID: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'HEADERID'
+      Origin = 'HEADERID'
+    end
+    object brw_SalariesCATEGORY: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'CATEGORY'
+      Origin = 'CATEGORY'
+      Size = 50
+    end
+    object brw_SalariesCATEGORYID: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'CATEGORYID'
+      Origin = 'CATEGORYID'
+    end
+    object brw_SalariesPAYREFID: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'PAYREFID'
+      Origin = 'PAYREFID'
+    end
+    object brw_SalariesPAYDATEFROM: TDateField
+      AutoGenerateValue = arDefault
+      FieldName = 'PAYDATEFROM'
+      Origin = 'PAYDATEFROM'
+    end
+    object brw_SalariesPAYDATETO: TDateField
+      AutoGenerateValue = arDefault
+      FieldName = 'PAYDATETO'
+      Origin = 'PAYDATETO'
+    end
+    object brw_SalariesEMPID: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'EMPID'
+      Origin = 'EMPID'
+    end
+    object brw_SalariesPAYEE: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'PAYEE'
+      Origin = 'PAYEE'
+    end
+    object brw_SalariesREMARKS: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'REMARKS'
+      Origin = 'REMARKS'
+      Size = 500
+    end
+    object brw_SalariesGROSS: TSingleField
+      AutoGenerateValue = arDefault
+      FieldName = 'GROSS'
+      Origin = 'GROSS'
+    end
+    object brw_SalariesCASHADVANCES: TSingleField
+      AutoGenerateValue = arDefault
+      FieldName = 'CASHADVANCES'
+      Origin = 'CASHADVANCES'
+    end
+    object brw_SalariesAMOUNT: TSingleField
+      AutoGenerateValue = arDefault
+      FieldName = 'AMOUNT'
+      Origin = 'AMOUNT'
+    end
+    object brw_SalariesREFDATE: TDateField
+      AutoGenerateValue = arDefault
+      FieldName = 'REFDATE'
+      Origin = 'REFDATE'
+    end
+    object brw_SalariesCREATEDBY: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'CREATEDBY'
+      Origin = 'CREATEDBY'
+    end
+    object brw_SalariesCREATEDDATETIME: TDateTimeField
+      AutoGenerateValue = arDefault
+      FieldName = 'CREATEDDATETIME'
+      Origin = 'CREATEDDATETIME'
+    end
+    object brw_SalariesCANCELLED: TBooleanField
+      AutoGenerateValue = arDefault
+      FieldName = 'CANCELLED'
+      Origin = 'CANCELLED'
+    end
+    object brw_SalariesCANCELLEDBYID: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'CANCELLEDBYID'
+      Origin = 'CANCELLEDBYID'
+    end
+    object brw_SalariesCANCELLEDDATETIME: TDateTimeField
+      AutoGenerateValue = arDefault
+      FieldName = 'CANCELLEDDATETIME'
+      Origin = 'CANCELLEDDATETIME'
+    end
+    object brw_SalariesEXPENSETYPE: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'EXPENSETYPE'
+      Origin = 'CATEGORY'
+      ProviderFlags = []
+      ReadOnly = True
     end
   end
 end

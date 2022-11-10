@@ -23,8 +23,7 @@ object f_CashOut: Tf_CashOut
     Height = 37
     Align = alBottom
     BevelOuter = bvNone
-    TabOrder = 3
-    ExplicitTop = 302
+    TabOrder = 4
     DesignSize = (
       442
       37)
@@ -61,7 +60,7 @@ object f_CashOut: Tf_CashOut
     Color = clTeal
     Padding.Left = 10
     ParentBackground = False
-    TabOrder = 4
+    TabOrder = 5
     object Label3: TLabel
       Left = 10
       Top = 0
@@ -167,7 +166,7 @@ object f_CashOut: Tf_CashOut
     BevelOuter = bvNone
     Color = clWhite
     ParentBackground = False
-    TabOrder = 2
+    TabOrder = 1
     StyleElements = []
     object Label1: TLabel
       Left = 15
@@ -264,7 +263,7 @@ object f_CashOut: Tf_CashOut
     BevelOuter = bvNone
     Color = clWhite
     ParentBackground = False
-    TabOrder = 1
+    TabOrder = 2
     StyleElements = []
     object Label6: TLabel
       Left = 15
@@ -386,54 +385,138 @@ object f_CashOut: Tf_CashOut
       TabOrder = 1
       Width = 126
     end
-    object txt_gross: TcxDBTextEdit
+    object txt_ca: TcxDBButtonEdit
       Left = 155
-      Top = 41
-      DataBinding.DataField = 'GROSS'
-      DataBinding.DataSource = ds_cash
-      ParentFont = False
-      Properties.Alignment.Horz = taRightJustify
-      Properties.CharCase = ecUpperCase
-      Style.BorderColor = 1184274
-      Style.BorderStyle = ebsThick
-      Style.Color = 6570553
-      Style.Font.Charset = ANSI_CHARSET
-      Style.Font.Color = clWhite
-      Style.Font.Height = -16
-      Style.Font.Name = 'Segoe UI Semibold'
-      Style.Font.Style = [fsBold]
-      Style.LookAndFeel.NativeStyle = False
-      Style.IsFontAssigned = True
-      StyleDisabled.LookAndFeel.NativeStyle = False
-      StyleFocused.LookAndFeel.NativeStyle = False
-      StyleHot.LookAndFeel.NativeStyle = False
-      TabOrder = 2
-      OnExit = txt_amntExit
-      Width = 270
-    end
-    object txt_ca: TcxDBTextEdit
-      Left = 155
-      Top = 76
+      Top = 79
       DataBinding.DataField = 'CASHADVANCES'
       DataBinding.DataSource = ds_cash
       ParentFont = False
       Properties.Alignment.Horz = taRightJustify
+      Properties.Buttons = <
+        item
+          Action = ViewCA
+          Default = True
+          Glyph.Data = {
+            36040000424D3604000000000000360000002800000010000000100000000100
+            2000000000000004000000000000000000000000000000000000000000000000
+            0000000000000000000000000000000000000000000000000000000000000000
+            0000000000000000000000000000000000000000000000000000000000000000
+            0000000000000000000000000000000000000000000000000000000000000000
+            0000000000000000000000000000000000000000000000000000000000000000
+            000000000000000000040000000A000000100000001300000015000000140000
+            00110000000C0000000500000001000000000000000000000000000000000000
+            00030000000C070404263F271F836E4235CA7A4839DE915644FF774436DE693C
+            30CE3A2019870704032B00000010000000040000000000000000000000030000
+            0011442C2486976253F5BE998EFFD9C5BEFFE0CFCAFFEFE6E3FFDDCAC4FFD3BC
+            B5FFB48B7FFF895140F540231B92000000180000000500000001010204145536
+            2D9CC5A398FFF2E9E7FFF5EFEDFFBCAEA8FF71574CFF593A2DFF755B4EFFBEAE
+            A7FFEBE2DEFFE5D8D3FFB79085FF4E2A21A90101021A000000032F23246BB58D
+            80FFF9F5F4FFF7F3F2FFC1B3ADFF826555FFB19A85FFC2AC97FFB09783FF7F62
+            51FFC0B0A9FFECE3DFFFECE2DFFFA37467FF28191A750000000A5E4F60E1BCB1
+            ACFFF6F3F3FFF8F4F3FF7A5E50FFBEA995FF857162FF3F2A22FF746053FFB8A3
+            8FFF806658FFEEE5E2FFECE2DFFFB1A29CFF503F50E40000000D182C4D885C63
+            72FFB2B0B0FFF1EEEDFF725242FFDDD1B9FF806D5EFF493229FF493228FFCFC0
+            A9FF745545FFEBE3E1FFABA6A3FF505566FF142A55AA0000000A05080F21395F
+            9DFA697F9AFF626160FF55443CFFB2A894FFE4E0C1FF584135FF847466FFA498
+            87FF58483FFF5F5C5CFF4E6586FF2F5191FF050B173C00000004000000031221
+            3B685A7FB7FFA6C5E3FF7990ABFF444D59FF3E4248FF2B2A25FF3C4148FF3E48
+            56FF627D9EFF789DC9FF3C609FFD0B172E630000000600000000000000000000
+            00030F1B3159315593ED6F91C1FF9BB9DCFFB0CDE9FFCBE8FCFFA7C7E6FF87AA
+            D3FF5A7EB3FF284B8BF10A152958000000060000000100000000000000000000
+            0000000000020204071112223E6F1C3765B0213F76D0274C91FC1E3C74D01933
+            62B40F1F3D750204081700000003000000000000000000000000000000000000
+            0000000000000000000000000002000000030000000400000005000000050000
+            0004000000020000000100000000000000000000000000000000000000000000
+            0000000000000000000000000000000000000000000000000000000000000000
+            0000000000000000000000000000000000000000000000000000000000000000
+            0000000000000000000000000000000000000000000000000000000000000000
+            0000000000000000000000000000000000000000000000000000}
+          Kind = bkGlyph
+        end>
       Properties.CharCase = ecUpperCase
       Properties.ReadOnly = True
       Style.BorderColor = 1184274
       Style.BorderStyle = ebsThick
-      Style.Color = clWhite
       Style.Font.Charset = ANSI_CHARSET
-      Style.Font.Color = clRed
+      Style.Font.Color = clWindowText
       Style.Font.Height = -16
       Style.Font.Name = 'Segoe UI'
       Style.Font.Style = []
       Style.LookAndFeel.NativeStyle = False
+      Style.TextColor = clRed
       Style.IsFontAssigned = True
       StyleDisabled.LookAndFeel.NativeStyle = False
       StyleFocused.LookAndFeel.NativeStyle = False
       StyleHot.LookAndFeel.NativeStyle = False
       TabOrder = 3
+      OnExit = txt_amntExit
+      Width = 270
+    end
+    object txt_gross: TcxDBButtonEdit
+      Left = 155
+      Top = 44
+      DataBinding.DataField = 'GROSS'
+      DataBinding.DataSource = ds_cash
+      ParentFont = False
+      Properties.Alignment.Horz = taRightJustify
+      Properties.Buttons = <
+        item
+          Action = ViewParticulars
+          Default = True
+          Glyph.Data = {
+            36040000424D3604000000000000360000002800000010000000100000000100
+            2000000000000004000000000000000000000000000000000000000000000000
+            0000000000000000000000000000000000000000000000000000000000000000
+            0000000000000000000000000000000000000000000000000000000000000000
+            0000000000000000000000000000000000000000000000000000000000000000
+            0000000000000000000000000000000000000000000000000000000000000000
+            000000000000000000040000000A000000100000001300000015000000140000
+            00110000000C0000000500000001000000000000000000000000000000000000
+            00030000000C070404263F271F836E4235CA7A4839DE915644FF774436DE693C
+            30CE3A2019870704032B00000010000000040000000000000000000000030000
+            0011442C2486976253F5BE998EFFD9C5BEFFE0CFCAFFEFE6E3FFDDCAC4FFD3BC
+            B5FFB48B7FFF895140F540231B92000000180000000500000001010204145536
+            2D9CC5A398FFF2E9E7FFF5EFEDFFBCAEA8FF71574CFF593A2DFF755B4EFFBEAE
+            A7FFEBE2DEFFE5D8D3FFB79085FF4E2A21A90101021A000000032F23246BB58D
+            80FFF9F5F4FFF7F3F2FFC1B3ADFF826555FFB19A85FFC2AC97FFB09783FF7F62
+            51FFC0B0A9FFECE3DFFFECE2DFFFA37467FF28191A750000000A5E4F60E1BCB1
+            ACFFF6F3F3FFF8F4F3FF7A5E50FFBEA995FF857162FF3F2A22FF746053FFB8A3
+            8FFF806658FFEEE5E2FFECE2DFFFB1A29CFF503F50E40000000D182C4D885C63
+            72FFB2B0B0FFF1EEEDFF725242FFDDD1B9FF806D5EFF493229FF493228FFCFC0
+            A9FF745545FFEBE3E1FFABA6A3FF505566FF142A55AA0000000A05080F21395F
+            9DFA697F9AFF626160FF55443CFFB2A894FFE4E0C1FF584135FF847466FFA498
+            87FF58483FFF5F5C5CFF4E6586FF2F5191FF050B173C00000004000000031221
+            3B685A7FB7FFA6C5E3FF7990ABFF444D59FF3E4248FF2B2A25FF3C4148FF3E48
+            56FF627D9EFF789DC9FF3C609FFD0B172E630000000600000000000000000000
+            00030F1B3159315593ED6F91C1FF9BB9DCFFB0CDE9FFCBE8FCFFA7C7E6FF87AA
+            D3FF5A7EB3FF284B8BF10A152958000000060000000100000000000000000000
+            0000000000020204071112223E6F1C3765B0213F76D0274C91FC1E3C74D01933
+            62B40F1F3D750204081700000003000000000000000000000000000000000000
+            0000000000000000000000000002000000030000000400000005000000050000
+            0004000000020000000100000000000000000000000000000000000000000000
+            0000000000000000000000000000000000000000000000000000000000000000
+            0000000000000000000000000000000000000000000000000000000000000000
+            0000000000000000000000000000000000000000000000000000000000000000
+            0000000000000000000000000000000000000000000000000000}
+          Kind = bkGlyph
+        end>
+      Properties.CharCase = ecUpperCase
+      Properties.ReadOnly = True
+      Style.BorderColor = 1184274
+      Style.BorderStyle = ebsThick
+      Style.Color = 6570553
+      Style.Font.Charset = ANSI_CHARSET
+      Style.Font.Color = clWindowText
+      Style.Font.Height = -16
+      Style.Font.Name = 'Segoe UI'
+      Style.Font.Style = [fsBold]
+      Style.LookAndFeel.NativeStyle = False
+      Style.TextColor = clWhite
+      Style.IsFontAssigned = True
+      StyleDisabled.LookAndFeel.NativeStyle = False
+      StyleFocused.LookAndFeel.NativeStyle = False
+      StyleHot.LookAndFeel.NativeStyle = False
+      TabOrder = 2
       OnExit = txt_amntExit
       Width = 270
     end
@@ -447,18 +530,14 @@ object f_CashOut: Tf_CashOut
     BevelOuter = bvNone
     Color = clWhite
     ParentBackground = False
-    TabOrder = 5
+    TabOrder = 3
     StyleElements = []
-    ExplicitLeft = 80
-    ExplicitTop = 312
-    ExplicitWidth = 185
-    ExplicitHeight = 41
     object Label4: TLabel
       Left = 15
       Top = 9
-      Width = 97
+      Width = 56
       Height = 17
-      Caption = 'Amount Given :'
+      Caption = 'Net Pay :'
       Color = clWhite
       Font.Charset = ANSI_CHARSET
       Font.Color = 6570553
@@ -507,7 +586,7 @@ object f_CashOut: Tf_CashOut
       StyleDisabled.LookAndFeel.NativeStyle = False
       StyleFocused.LookAndFeel.NativeStyle = False
       StyleHot.LookAndFeel.NativeStyle = False
-      TabOrder = 0
+      TabOrder = 1
       OnExit = txt_amntExit
       Height = 61
       Width = 270
@@ -533,7 +612,7 @@ object f_CashOut: Tf_CashOut
       StyleDisabled.LookAndFeel.NativeStyle = False
       StyleFocused.LookAndFeel.NativeStyle = False
       StyleHot.LookAndFeel.NativeStyle = False
-      TabOrder = 1
+      TabOrder = 0
       OnExit = txt_amntExit
       Width = 270
     end
@@ -557,5 +636,17 @@ object f_CashOut: Tf_CashOut
     DataSet = dm_PM.brw_Payroll
     Left = 192
     Top = 16
+  end
+  object ActionList1: TActionList
+    Left = 368
+    Top = 16
+    object ViewCA: TAction
+      Caption = 'View Cash Advances'
+      OnExecute = ViewCAExecute
+    end
+    object ViewParticulars: TAction
+      Caption = 'View Particulars'
+      OnExecute = ViewParticularsExecute
+    end
   end
 end

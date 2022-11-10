@@ -12570,7 +12570,6 @@ object f_Reports: Tf_Reports
           Width = 132.283550000000000000
           Height = 15.118120000000000000
           StretchMode = smMaxHeight
-          AutoWidth = True
           DataField = 'ITEMDESC'
           DataSet = ds_cashdetail
           DataSetName = 'ds_cashdetail'
@@ -34902,7 +34901,7 @@ object f_Reports: Tf_Reports
       end
       object Footer1: TfrxFooter
         FillType = ftBrush
-        Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
+        Frame.Typ = []
         Height = 49.913420000000000000
         Top = 453.543600000000000000
         Width = 980.410081999999900000
@@ -35469,6 +35468,811 @@ object f_Reports: Tf_Reports
           HAlign = haCenter
           Memo.UTF8W = (
             'AMOUNT DUE')
+          ParentFont = False
+        end
+      end
+    end
+  end
+  object ds_Salaries: TfrxDBDataset
+    UserName = 'ds_Salaries'
+    CloseDataSource = False
+    FieldAliases.Strings = (
+      'ID=ID'
+      'HEADERID=HEADERID'
+      'CATEGORY=CATEGORY'
+      'CATEGORYID=CATEGORYID'
+      'PAYREFID=PAYREFID'
+      'PAYDATEFROM=PAYDATEFROM'
+      'PAYDATETO=PAYDATETO'
+      'EMPID=EMPID'
+      'PAYEE=PAYEE'
+      'REMARKS=REMARKS'
+      'GROSS=GROSS'
+      'CASHADVANCES=CASHADVANCES'
+      'AMOUNT=AMOUNT'
+      'REFDATE=REFDATE'
+      'CREATEDBY=CREATEDBY'
+      'CREATEDDATETIME=CREATEDDATETIME'
+      'CANCELLED=CANCELLED'
+      'CANCELLEDBYID=CANCELLEDBYID'
+      'CANCELLEDDATETIME=CANCELLEDDATETIME'
+      'EXPENSETYPE=EXPENSETYPE')
+    DataSet = dm_PM.brw_Salaries
+    BCDToCurrency = False
+    Left = 320
+    Top = 392
+  end
+  object rep_Salaries: TfrxReport
+    Version = '6.6'
+    DotMatrixReport = False
+    IniFile = '\Software\Fast Reports'
+    PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick, pbCopy, pbSelection]
+    PreviewOptions.Zoom = 1.000000000000000000
+    PrintOptions.Printer = 'Default'
+    PrintOptions.PrintOnSheet = 0
+    ReportOptions.CreateDate = 44197.500587766200000000
+    ReportOptions.LastChange = 44289.927110659700000000
+    ScriptLanguage = 'PascalScript'
+    ScriptText.Strings = (
+      ''
+      'procedure Picture1OnBeforePrint(Sender: TfrxComponent);'
+      'begin'
+      
+        '   TfrxPictureView(Sender).Picture.LoadFromFile(<ds_Comp."LOGO">' +
+        ');          '
+      'end;'
+      ''
+      'procedure Memo23OnBeforePrint(Sender: TfrxComponent);'
+      'begin'
+      '       '
+      'end;'
+      ''
+      'procedure Memo24OnBeforePrint(Sender: TfrxComponent);'
+      'begin'
+      '         '
+      'end;'
+      ''
+      'procedure Memo25OnBeforePrint(Sender: TfrxComponent);'
+      'begin'
+      '           '
+      'end;'
+      ''
+      'procedure Memo26OnBeforePrint(Sender: TfrxComponent);'
+      'begin'
+      '    '
+      'end;'
+      ''
+      'procedure Memo27OnBeforePrint(Sender: TfrxComponent);'
+      'begin'
+      '  '
+      'end;'
+      ''
+      'procedure Memo35OnBeforePrint(Sender: TfrxComponent);'
+      'begin'
+      '   '
+      'end;'
+      ''
+      'procedure Memo36OnBeforePrint(Sender: TfrxComponent);'
+      'begin'
+      '        '
+      'end;'
+      ''
+      'procedure Memo37OnBeforePrint(Sender: TfrxComponent);'
+      'begin'
+      '        '
+      'end;'
+      ''
+      'procedure Memo43OnBeforePrint(Sender: TfrxComponent);'
+      'begin'
+      '   '
+      'end;'
+      ''
+      'begin'
+      ''
+      'end.')
+    Left = 80
+    Top = 456
+    Datasets = <
+      item
+        DataSet = ds_Comp
+        DataSetName = 'ds_Comp'
+      end
+      item
+        DataSet = ds_Salaries
+        DataSetName = 'ds_Salaries'
+      end>
+    Variables = <>
+    Style = <>
+    object Data: TfrxDataPage
+      Height = 1000.000000000000000000
+      Width = 1000.000000000000000000
+    end
+    object Page1: TfrxReportPage
+      PaperWidth = 215.900000000000000000
+      PaperHeight = 279.400000000000000000
+      PaperSize = 1
+      LeftMargin = 10.000000000000000000
+      RightMargin = 10.000000000000000000
+      TopMargin = 10.000000000000000000
+      BottomMargin = 10.000000000000000000
+      Frame.Typ = []
+      MirrorMode = []
+      object PageHeader1: TfrxPageHeader
+        FillType = ftBrush
+        Frame.Typ = []
+        Height = 170.078850000000000000
+        Top = 18.897650000000000000
+        Width = 740.409927000000000000
+        Stretched = True
+        object Memo1: TfrxMemoView
+          AllowVectorExport = True
+          Left = 3.779530000000000000
+          Top = 7.559060000000000000
+          Width = 287.244280000000000000
+          Height = 18.897650000000000000
+          DataField = 'NAME'
+          DataSet = ds_Comp
+          DataSetName = 'ds_Comp'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -15
+          Font.Name = 'Segoe UI Black'
+          Font.Style = [fsBold]
+          Frame.Typ = []
+          Memo.UTF8W = (
+            '[ds_Comp."NAME"]')
+          ParentFont = False
+        end
+        object Memo2: TfrxMemoView
+          AllowVectorExport = True
+          Left = 3.779530000000000000
+          Top = 30.236240000000000000
+          Width = 287.244280000000000000
+          Height = 15.118120000000000000
+          DataField = 'ADDRESS1'
+          DataSet = ds_Comp
+          DataSetName = 'ds_Comp'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -12
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          Frame.Typ = []
+          Memo.UTF8W = (
+            '[ds_Comp."ADDRESS1"]')
+          ParentFont = False
+        end
+        object Memo3: TfrxMemoView
+          AllowVectorExport = True
+          Left = 3.779530000000000000
+          Top = 47.913420000000000000
+          Width = 287.244280000000000000
+          Height = 15.118120000000000000
+          DataField = 'ADDRESS2'
+          DataSet = ds_Comp
+          DataSetName = 'ds_Comp'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -12
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          Frame.Typ = []
+          Memo.UTF8W = (
+            '[ds_Comp."ADDRESS2"]')
+          ParentFont = False
+        end
+        object Memo4: TfrxMemoView
+          AllowVectorExport = True
+          Left = 3.779530000000000000
+          Top = 66.590600000000000000
+          Width = 287.244280000000000000
+          Height = 15.118120000000000000
+          DataField = 'CONTACTNO'
+          DataSet = ds_Comp
+          DataSetName = 'ds_Comp'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -12
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          Frame.Typ = []
+          Memo.UTF8W = (
+            '[ds_Comp."CONTACTNO"]')
+          ParentFont = False
+        end
+        object Picture1: TfrxPictureView
+          Align = baRight
+          AllowVectorExport = True
+          Left = 562.772017000000000000
+          Top = 7.559060000000000000
+          Width = 177.637910000000000000
+          Height = 86.929190000000000000
+          OnBeforePrint = 'Picture1OnBeforePrint'
+          Center = True
+          DataField = 'LOGO'
+          DataSet = ds_Comp
+          DataSetName = 'ds_Comp'
+          Frame.Typ = []
+          HightQuality = False
+          Transparent = False
+          TransparentColor = clWhite
+        end
+        object Memo32: TfrxMemoView
+          AllowVectorExport = True
+          Left = 3.779530000000000000
+          Top = 84.149660000000000000
+          Width = 287.244280000000000000
+          Height = 15.118120000000000000
+          DataField = 'EMAIL'
+          DataSet = ds_Comp
+          DataSetName = 'ds_Comp'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -12
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          Frame.Typ = []
+          Memo.UTF8W = (
+            '[ds_Comp."EMAIL"]')
+          ParentFont = False
+        end
+        object item: TfrxMemoView
+          Align = baLeft
+          AllowVectorExport = True
+          Top = 132.283550000000000000
+          Width = 222.992270000000000000
+          Height = 37.795300000000000000
+          StretchMode = smMaxHeight
+          AutoWidth = True
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWhite
+          Font.Height = -17
+          Font.Name = 'Segoe UI Black'
+          Font.Style = [fsBold]
+          Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
+          Fill.BackColor = clTeal
+          GapX = 5.000000000000000000
+          HAlign = haCenter
+          Memo.UTF8W = (
+            'SALARIES AND WAGES')
+          ParagraphGap = 5.000000000000000000
+          ParentFont = False
+          VAlign = vaCenter
+        end
+      end
+      object MasterData2: TfrxMasterData
+        FillType = ftBrush
+        Frame.Typ = []
+        Height = 18.897637800000000000
+        Top = 306.141930000000000000
+        Width = 740.409927000000000000
+        DataSet = ds_Salaries
+        DataSetName = 'ds_Salaries'
+        RowCount = 0
+        object Memo18: TfrxMemoView
+          Align = baLeft
+          AllowVectorExport = True
+          Width = 52.913420000000000000
+          Height = 18.897650000000000000
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWhite
+          Font.Height = -13
+          Font.Name = 'Segoe UI Semibold'
+          Font.Style = [fsBold]
+          Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
+          Fill.BackColor = clTeal
+          HAlign = haCenter
+          Memo.UTF8W = (
+            'NO.')
+          ParentFont = False
+        end
+        object Memo19: TfrxMemoView
+          Align = baLeft
+          AllowVectorExport = True
+          Left = 52.913420000000000000
+          Width = 166.299320000000000000
+          Height = 18.897650000000000000
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWhite
+          Font.Height = -13
+          Font.Name = 'Segoe UI Semibold'
+          Font.Style = [fsBold]
+          Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
+          Fill.BackColor = clTeal
+          HAlign = haCenter
+          Memo.UTF8W = (
+            'EMPLOYEE')
+          ParentFont = False
+        end
+        object Memo20: TfrxMemoView
+          Align = baLeft
+          AllowVectorExport = True
+          Left = 219.212740000000000000
+          Width = 102.047263620000000000
+          Height = 18.897650000000000000
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWhite
+          Font.Height = -13
+          Font.Name = 'Segoe UI Semibold'
+          Font.Style = [fsBold]
+          Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
+          Fill.BackColor = clTeal
+          HAlign = haCenter
+          Memo.UTF8W = (
+            'DATE')
+          ParentFont = False
+        end
+        object Memo21: TfrxMemoView
+          Align = baLeft
+          AllowVectorExport = True
+          Left = 321.260003620000000000
+          Width = 71.811070000000000000
+          Height = 18.897650000000000000
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWhite
+          Font.Height = -13
+          Font.Name = 'Segoe UI Semibold'
+          Font.Style = [fsBold]
+          Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
+          Fill.BackColor = clTeal
+          HAlign = haCenter
+          Memo.UTF8W = (
+            'GROSS')
+          ParentFont = False
+        end
+        object Memo22: TfrxMemoView
+          Align = baLeft
+          AllowVectorExport = True
+          Left = 468.661629680000000000
+          Top = -0.220469999999978000
+          Width = 90.708588190000000000
+          Height = 18.897650000000000000
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWhite
+          Font.Height = -13
+          Font.Name = 'Segoe UI Semibold'
+          Font.Style = [fsBold]
+          Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
+          Fill.BackColor = clTeal
+          HAlign = haCenter
+          Memo.UTF8W = (
+            'NET AMNT')
+          ParentFont = False
+        end
+        object Memo34: TfrxMemoView
+          Align = baLeft
+          AllowVectorExport = True
+          Left = 393.071073620000000000
+          Width = 75.590556060000000000
+          Height = 18.897650000000000000
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWhite
+          Font.Height = -13
+          Font.Name = 'Segoe UI Semibold'
+          Font.Style = [fsBold]
+          Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
+          Fill.BackColor = clTeal
+          HAlign = haCenter
+          Memo.UTF8W = (
+            'CASH ADV.')
+          ParentFont = False
+        end
+        object Memo36: TfrxMemoView
+          Align = baWidth
+          AllowVectorExport = True
+          Left = 559.370217869999900000
+          Width = 181.039709130000100000
+          Height = 18.897650000000000000
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWhite
+          Font.Height = -13
+          Font.Name = 'Segoe UI Semibold'
+          Font.Style = [fsBold]
+          Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
+          Fill.BackColor = clTeal
+          HAlign = haCenter
+          Memo.UTF8W = (
+            'REMARKS')
+          ParentFont = False
+        end
+      end
+      object DetailData1: TfrxDetailData
+        FillType = ftBrush
+        Frame.Typ = []
+        Height = 18.897637800000000000
+        Top = 347.716760000000000000
+        Width = 740.409927000000000000
+        DataSet = ds_Salaries
+        DataSetName = 'ds_Salaries'
+        RowCount = 0
+        Stretched = True
+        object Memo23: TfrxMemoView
+          Align = baLeft
+          AllowVectorExport = True
+          Width = 52.913420000000000000
+          Height = 18.897650000000000000
+          StretchMode = smMaxHeight
+          DataSet = ds_Salaries
+          DataSetName = 'ds_Salaries'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -12
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
+          GapX = 5.000000000000000000
+          Memo.UTF8W = (
+            '[ds_Salaries."HEADERID"]')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object Memo24: TfrxMemoView
+          Align = baLeft
+          AllowVectorExport = True
+          Left = 52.913420000000000000
+          Width = 166.299320000000000000
+          Height = 18.897650000000000000
+          StretchMode = smMaxHeight
+          DataField = 'PAYEE'
+          DataSet = ds_Salaries
+          DataSetName = 'ds_Salaries'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -12
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
+          GapX = 3.000000000000000000
+          Memo.UTF8W = (
+            '[ds_Salaries."PAYEE"]')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object Memo25: TfrxMemoView
+          Align = baLeft
+          AllowVectorExport = True
+          Left = 219.212740000000000000
+          Width = 102.047263620000000000
+          Height = 18.897650000000000000
+          StretchMode = smMaxHeight
+          DataSet = ds_Salaries
+          DataSetName = 'ds_Salaries'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -12
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
+          GapX = 5.000000000000000000
+          Memo.UTF8W = (
+            '[ds_Salaries."REFDATE"]')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object Memo26: TfrxMemoView
+          Align = baLeft
+          AllowVectorExport = True
+          Left = 321.260003620000000000
+          Width = 71.811023620000000000
+          Height = 18.897650000000000000
+          StretchMode = smMaxHeight
+          DataSet = ds_Salaries
+          DataSetName = 'ds_Salaries'
+          DisplayFormat.FormatStr = '%2.2n'
+          DisplayFormat.Kind = fkNumeric
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -12
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
+          GapX = 3.000000000000000000
+          HAlign = haRight
+          Memo.UTF8W = (
+            '[ds_Salaries."GROSS"]')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object Memo27: TfrxMemoView
+          Align = baLeft
+          AllowVectorExport = True
+          Left = 468.661583300000000000
+          Width = 90.708588180000010000
+          Height = 18.897650000000000000
+          StretchMode = smMaxHeight
+          DataSet = ds_Salaries
+          DataSetName = 'ds_Salaries'
+          DisplayFormat.FormatStr = '%2.2n'
+          DisplayFormat.Kind = fkNumeric
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -12
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
+          GapX = 5.000000000000000000
+          HAlign = haRight
+          Memo.UTF8W = (
+            '[ds_Salaries."AMOUNT"]')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object Memo38: TfrxMemoView
+          Align = baLeft
+          AllowVectorExport = True
+          Left = 393.071027240000100000
+          Width = 75.590556060000000000
+          Height = 18.897650000000000000
+          StretchMode = smMaxHeight
+          DataSet = ds_Salaries
+          DataSetName = 'ds_Salaries'
+          DisplayFormat.FormatStr = '%2.2n'
+          DisplayFormat.Kind = fkNumeric
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -12
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
+          GapX = 5.000000000000000000
+          HAlign = haRight
+          Memo.UTF8W = (
+            '[ds_Salaries."CASHADVANCES"]')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object Memo39: TfrxMemoView
+          Align = baWidth
+          AllowVectorExport = True
+          Left = 559.370171480000100000
+          Width = 181.039755520000000000
+          Height = 18.897650000000000000
+          StretchMode = smMaxHeight
+          DataSet = ds_Salaries
+          DataSetName = 'ds_Salaries'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -12
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
+          GapX = 5.000000000000000000
+          Memo.UTF8W = (
+            '[ds_Salaries."REMARKS"]')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+      end
+      object Footer1: TfrxFooter
+        FillType = ftBrush
+        Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
+        Height = 49.913420000000000000
+        Top = 389.291590000000000000
+        Width = 740.409927000000000000
+        object Memo51: TfrxMemoView
+          AllowVectorExport = True
+          Left = 229.669450000000000000
+          Top = 3.440940000000012000
+          Width = 90.708720000000000000
+          Height = 18.897650000000000000
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Segoe UI Semibold'
+          Font.Style = [fsBold]
+          Frame.Typ = []
+          HAlign = haRight
+          Memo.UTF8W = (
+            'TOTAL :')
+          ParentFont = False
+        end
+        object netamnt: TfrxMemoView
+          AllowVectorExport = True
+          Left = 321.819110000000000000
+          Top = 4.000000000000000000
+          Width = 71.811070000000000000
+          Height = 18.897650000000000000
+          DisplayFormat.FormatStr = '%2.2n'
+          DisplayFormat.Kind = fkNumeric
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -12
+          Font.Name = 'Segoe UI'
+          Font.Style = [fsBold]
+          Frame.Typ = [ftBottom]
+          Frame.BottomLine.Style = fsDouble
+          HAlign = haRight
+          Memo.UTF8W = (
+            '[SUM(<ds_Salaries."GROSS">,DetailData1)]')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object paid: TfrxMemoView
+          AllowVectorExport = True
+          Left = 395.630180000000000000
+          Top = 4.000000000000000000
+          Width = 75.590600000000000000
+          Height = 18.897650000000000000
+          DisplayFormat.FormatStr = '%2.2n'
+          DisplayFormat.Kind = fkNumeric
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -12
+          Font.Name = 'Segoe UI'
+          Font.Style = [fsBold]
+          Frame.Typ = [ftBottom]
+          Frame.BottomLine.Style = fsDouble
+          HAlign = haRight
+          Memo.UTF8W = (
+            '[SUM(<ds_Salaries."CASHADVANCES">,DetailData1)]')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object Memo28: TfrxMemoView
+          AllowVectorExport = True
+          Left = 472.441250000000000000
+          Top = 3.779530000000022000
+          Width = 86.929190000000000000
+          Height = 18.897650000000000000
+          DisplayFormat.FormatStr = '%2.2n'
+          DisplayFormat.Kind = fkNumeric
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -12
+          Font.Name = 'Segoe UI'
+          Font.Style = [fsBold]
+          Frame.Typ = [ftBottom]
+          Frame.BottomLine.Style = fsDouble
+          HAlign = haRight
+          Memo.UTF8W = (
+            '[SUM(<ds_Salaries."AMOUNT">,DetailData1)]')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+      end
+      object PageFooter1: TfrxPageFooter
+        FillType = ftBrush
+        Frame.Typ = []
+        Height = 22.677180000000000000
+        Top = 498.897960000000000000
+        Width = 740.409927000000000000
+        object Memo30: TfrxMemoView
+          Align = baLeft
+          AllowVectorExport = True
+          Width = 139.842610000000000000
+          Height = 18.897650000000000000
+          StretchMode = smMaxHeight
+          AutoWidth = True
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -12
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          Frame.Typ = []
+          Memo.UTF8W = (
+            'Date and Time Printed :')
+          ParentFont = False
+        end
+        object SysMemo1: TfrxSysMemoView
+          Align = baLeft
+          AllowVectorExport = True
+          Left = 139.842610000000000000
+          Width = 71.811070000000000000
+          Height = 18.897650000000000000
+          StretchMode = smMaxHeight
+          AutoWidth = True
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -12
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          Frame.Typ = []
+          Memo.UTF8W = (
+            '[DATE]')
+          ParentFont = False
+        end
+        object SysMemo2: TfrxSysMemoView
+          Align = baLeft
+          AllowVectorExport = True
+          Left = 211.653680000000000000
+          Width = 94.488250000000000000
+          Height = 18.897650000000000000
+          StretchMode = smMaxHeight
+          AutoWidth = True
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -12
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          Frame.Typ = []
+          Memo.UTF8W = (
+            '[TIME]')
+          ParentFont = False
+        end
+        object SysMemo3: TfrxSysMemoView
+          Align = baRight
+          AllowVectorExport = True
+          Left = 585.449197000000000000
+          Width = 154.960730000000000000
+          Height = 18.897650000000000000
+          AutoWidth = True
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -12
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          Frame.Typ = []
+          HAlign = haRight
+          Memo.UTF8W = (
+            '[PAGE#] of [TOTALPAGES#]')
+          ParentFont = False
+        end
+        object Memo31: TfrxMemoView
+          Align = baRight
+          AllowVectorExport = True
+          Left = 536.315307000000100000
+          Width = 49.133890000000000000
+          Height = 18.897650000000000000
+          StretchMode = smMaxHeight
+          AutoWidth = True
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -12
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          Frame.Typ = []
+          HAlign = haRight
+          Memo.UTF8W = (
+            'Pages:')
+          ParentFont = False
+        end
+      end
+      object Header1: TfrxHeader
+        FillType = ftBrush
+        Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
+        Height = 34.236240000000000000
+        Top = 249.448980000000000000
+        Width = 740.409927000000000000
+        object Memo5: TfrxMemoView
+          Align = baLeft
+          AllowVectorExport = True
+          Top = 12.220470000000000000
+          Width = 113.385900000000000000
+          Height = 18.897650000000000000
+          StretchMode = smActualHeight
+          AutoWidth = True
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Segoe UI Semibold'
+          Font.Style = [fsBold]
+          Frame.Typ = []
+          GapX = 3.000000000000000000
+          HAlign = haRight
+          Memo.UTF8W = (
+            'Period Covered :')
+          ParentFont = False
+        end
+        object period: TfrxMemoView
+          AllowMirrorMode = True
+          Align = baLeft
+          AllowVectorExport = True
+          Left = 113.385900000000000000
+          Top = 12.220470000000000000
+          Width = 177.637910000000000000
+          Height = 18.897650000000000000
+          StretchMode = smActualHeight
+          AutoWidth = True
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          Frame.Typ = []
+          GapX = 3.000000000000000000
+          HAlign = haRight
+          Memo.UTF8W = (
+            'Period :')
           ParentFont = False
         end
       end

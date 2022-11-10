@@ -22,7 +22,8 @@ uses
   dxSkinVisualStudio2013Light, dxSkinVS2010, dxSkinWhiteprint,
   dxSkinXmas2008Blue, Data.DB, cxDBEdit, cxTextEdit, cxMemo, Vcl.StdCtrls,
   Vcl.ExtCtrls, Vcl.ComCtrls, cxMaskEdit, cxDropDownEdit, cxLookupEdit,
-  cxDBLookupEdit, cxDBLookupComboBox, cxCalendar;
+  cxDBLookupEdit, cxDBLookupComboBox, cxCalendar, System.Actions, Vcl.ActnList,
+  cxButtonEdit;
 
 type
   Tf_CashOut = class(TForm)
@@ -53,15 +54,20 @@ type
     date_payto: TcxDBDateEdit;
     Label7: TLabel;
     Label8: TLabel;
-    txt_gross: TcxDBTextEdit;
     Label9: TLabel;
-    txt_ca: TcxDBTextEdit;
+    txt_ca: TcxDBButtonEdit;
+    ActionList1: TActionList;
+    ViewCA: TAction;
+    txt_gross: TcxDBButtonEdit;
+    ViewParticulars: TAction;
     procedure FormShow(Sender: TObject);
     procedure txt_amntExit(Sender: TObject);
     procedure cmb_exptypePropertiesCloseUp(Sender: TObject);
     procedure cmb_empPropertiesCloseUp(Sender: TObject);
     procedure date_payfromPropertiesCloseUp(Sender: TObject);
     procedure date_paytoPropertiesCloseUp(Sender: TObject);
+    procedure ViewCAExecute(Sender: TObject);
+    procedure ViewParticularsExecute(Sender: TObject);
   private
     { Private declarations }
     procedure exp_type_ui;
@@ -78,7 +84,7 @@ implementation
 
 {$R *.dfm}
 
-uses dmPM, DateUtils;
+uses dmPM, DateUtils, fViewCA, fPayrollDetail;
 
 procedure Tf_CashOut.cmb_empPropertiesCloseUp(Sender: TObject);
 begin
@@ -95,40 +101,45 @@ var date1, date2: TDateTime;
 begin
   with dm_PM do
   begin
-    if (qry_CashOutDetailEMPID.Value > 0) then
+    brw_ExpenseType.DisableControls;
+    if brw_ExpenseType.Locate('ID', qry_CashOutDetailCATEGORYID.Value, []) then
     begin
-      qry_CashOutDetailPAYEE.Value   := cmb_emp.Text;
+      if brw_ExpenseTypeCATEGORY.Value = 1 then
+      begin
+        if (qry_CashOutDetailEMPID.Value > 0) then
+        begin
+          qry_CashOutDetailPAYEE.Value   := cmb_emp.Text;
 
-       if (date_payfrom.Date <> Null) and (date_payto.Date <> Null) then
-       begin
+           if (date_payfrom.Date <> Null) and (date_payto.Date <> Null) then
+           begin
 
-          date1   :=  StartOfTheDay(date_payfrom.Date);
-          date2   :=  EndOfTheDay(date_payto.Date);
+              date1   :=  StartOfTheDay(date_payfrom.Date);
+              date2   :=  EndOfTheDay(date_payto.Date);
 
-          brw_ComputePay.Close;
-          brw_ComputePay.SQL[2]  := 'WHERE WORKERID = :EMPID AND (CREATEDDATETIME BETWEEN :DATE1 AND :DATE2) AND CANCELLED = FALSE';
-          brw_ComputePay.ParamByName('EMPID').Value    := qry_CashOutDetailEMPID.Value;
-          brw_ComputePay.ParamByName('DATE1').Value    := date1; //FormatDateTime('yyyy-mm-dd hh:nn', StartOfTheDay(qry_CashOutDetailPAYDATEFROM.Value));
-          brw_ComputePay.ParamByName('DATE2').Value    := date2; //FormatDateTime('yyyy-mm-dd hh:nn', EndOfTheDay(qry_CashOutDetailPAYDATETO.Value));
-//          ShowMessage(qry_CashOutDetailEMPID.AsString + #13#10 + qry_CashOutDetailPAYDATEFROM.AsString + #13#10 + qry_CashOutDetailPAYDATETO.AsString);
-          brw_ComputePay.Open();
+              brw_ComputePay.Close;
+              brw_ComputePay.SQL[2]  := 'WHERE WORKERID = :EMPID AND (CREATEDDATETIME BETWEEN :DATE1 AND :DATE2) AND CANCELLED = FALSE';
+              brw_ComputePay.ParamByName('EMPID').Value    := qry_CashOutDetailEMPID.Value;
+              brw_ComputePay.ParamByName('DATE1').Value    := date1;
+              brw_ComputePay.ParamByName('DATE2').Value    := date2;
+              brw_ComputePay.Open();
 
-          qry_CashOutDetailGROSS.Value := brw_ComputePayAMNT.Value;
+              qry_CashOutDetailGROSS.Value := brw_ComputePayAMNT.Value;
 
-          brw_CompExpense.Close;
-          brw_CompExpense.SQL[4]  := 'WHERE (DETAIL.REFDATE BETWEEN :date1 and :date2) AND DETAIL.EMPID = :EMPID AND EXP.CATEGORY = 2 AND HEADER.CANCELLED = FALSE AND DETAIL.CANCELLED = FALSE';
-          brw_CompExpense.ParamByName('EMPID').Value   := qry_CashOutDetailEMPID.Value;
-          brw_CompExpense.ParamByName('date1').Value   := date1;
-          brw_CompExpense.ParamByName('date2').Value   := date2;
-          brw_CompExpense.Open();
+              brw_CompExpense.Close;
+              brw_CompExpense.SQL[4]  := 'WHERE (DETAIL.REFDATE BETWEEN :date1 and :date2) AND DETAIL.EMPID = :EMPID AND EXP.CATEGORY = 2 AND HEADER.CANCELLED = FALSE AND DETAIL.CANCELLED = FALSE';
+              brw_CompExpense.ParamByName('EMPID').Value   := qry_CashOutDetailEMPID.Value;
+              brw_CompExpense.ParamByName('date1').Value   := date1;
+              brw_CompExpense.ParamByName('date2').Value   := date2;
+              brw_CompExpense.Open();
 
-          qry_CashOutDetailCASHADVANCES.Value :=  brw_CompExpenseAMOUNT.Value;
+              qry_CashOutDetailCASHADVANCES.Value :=  brw_CompExpenseAMOUNT.Value;
 
-          qry_CashOutDetailAMOUNT.Value := (qry_CashOutDetailGROSS.Value - qry_CashOutDetailCASHADVANCES.Value);
-       end;
-
+              qry_CashOutDetailAMOUNT.Value := (qry_CashOutDetailGROSS.Value - qry_CashOutDetailCASHADVANCES.Value);
+           end;
+        end;
+      end;
     end;
-
+    brw_ExpenseType.EnableControls;
   end;
 end;
 
@@ -158,6 +169,10 @@ begin
         cmb_emp.Visible     :=  (brw_ExpenseTypeCATEGORY.Value = 1) or (brw_ExpenseTypeCATEGORY.Value = 2);
         txt_payee.Visible   :=  (brw_ExpenseTypeCATEGORY.Value <> 1) and (brw_ExpenseTypeCATEGORY.Value <> 2);
         txt_amnt.Properties.ReadOnly :=  brw_ExpenseTypeCATEGORY.Value = 1;
+        if brw_ExpenseTypeCATEGORY.Value = 1 then
+        Label4.Caption  := 'Net Pay :'
+        else
+        Label4.Caption  := 'Amount Given :';
 
         brw_Emp.Close;
         brw_Emp.SQL[2] := 'WHERE CANCELLED = FALSE';
@@ -214,6 +229,8 @@ begin
     dm_PM.brw_ExpenseType.DisableControls;
     if dm_PM.brw_ExpenseType.Locate('ID', dm_PM.qry_CashOutDetailCATEGORYID.Value, []) then
     begin
+      if (dm_PM.brw_ExpenseTypeCATEGORY.Value = 1) or (dm_PM.brw_ExpenseTypeCATEGORY.Value = 2) then
+      dm_PM.qry_CashOutDetailPAYEE.Value := cmb_emp.Text;
 
       if (dm_PM.brw_ExpenseTypeCATEGORY.Value = 1) and ((dm_PM.qry_CashOutDetailPAYDATEFROM.IsNull) or (dm_PM.qry_CashOutDetailPAYDATEFROM.AsString = '')) then
       date_payfrom.Style.BorderColor  := clRed;
@@ -239,7 +256,7 @@ begin
     txt_payee.Style.BorderColor      := clRed;
   end;
 
-  if dm_PM.qry_CashOutDetailAMOUNT.Value = 0 then
+  if dm_PM.qry_CashOutDetailAMOUNT.Value <= 0 then
   txt_amnt.Style.BorderColor      := clRed;
   if (Trim(dm_PM.qry_CashOutDetailREMARKS.Value) = '') or (dm_PM.qry_CashOutDetailREMARKS.IsNull)  then
   txt_remarks.Style.BorderColor      := clRed;
@@ -252,5 +269,65 @@ procedure Tf_CashOut.txt_amntExit(Sender: TObject);
 begin
   manageui;
 end;
+
+procedure Tf_CashOut.ViewCAExecute(Sender: TObject);
+var date1, date2 : TDateTime;
+begin
+  with dm_PM do
+  begin
+    if qry_CashOutDetailEMPID.Value > 0 then
+    begin
+      date1 := date_payfrom.Date;
+      date2 := date_payto.Date;
+
+      brw_ViewCA.Close;
+      brw_ViewCA.SQL[4]  := 'WHERE (HEADER.SALESDATE BETWEEN :date1 and :date2) AND DETAIL.EMPID = :EMPID AND EXP.CATEGORY = 2 AND HEADER.CANCELLED = FALSE AND DETAIL.CANCELLED = FALSE';
+      brw_ViewCA.ParamByName('EMPID').Value   := qry_CashOutDetailEMPID.Value;
+      brw_ViewCA.ParamByName('date1').Value   := date1;
+      brw_ViewCA.ParamByName('date2').Value   := date2;
+      brw_ViewCA.Open();
+
+      brw_ViewCA.First;
+
+
+      f_ViewCA   := Tf_ViewCA.Create(Self);
+      f_ViewCA.cxLabel1.Caption  := qry_CashOutDetailPAYEE.AsString;
+      f_ViewCA.ShowModal;
+    end;
+  end;
+end;
+
+procedure Tf_CashOut.ViewParticularsExecute(Sender: TObject);
+var empname : string;
+  date1, date2: TDateTime;
+begin
+  with dm_PM do
+  begin
+
+    if qry_CashOutDetailEMPID.Value > 0  then
+    begin
+
+      date1 := date_payfrom.Date;
+      date2 := date_payto.Date;
+
+      brw_WorkLogs.Close;
+      brw_WorkLogs.SQL[3] := 'WHERE PM_WORKLOGS.WORKERID = :EMPID AND (PM_WORKLOGS.CREATEDDATETIME BETWEEN :DATE1 AND :DATE2) AND PM_WORKLOGS.CANCELLED = FALSE';
+      brw_WorkLogs.ParamByName('EMPID').Value := qry_CashOutDetailEMPID.Value;
+      brw_WorkLogs.ParamByName('DATE1').Value := FormatDateTime('yyyy-mm-dd hh:nn', StartOfTheDay(date1));
+      brw_WorkLogs.ParamByName('DATE2').Value := FormatDateTime('yyyy-mm-dd hh:nn', EndOfTheDay(date2));
+      brw_WorkLogs.Open();
+
+
+      empname := qry_CashOutDetailPAYEE.AsString;
+
+      f_PayrollDetail := Tf_payrollDetail.Create(Self);
+      f_PayrollDetail.cxLabel1.Caption  := empname;
+      f_PayrollDetail.ShowModal;
+
+
+    end;
+  end;
+end;
+
 
 end.

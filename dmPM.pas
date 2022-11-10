@@ -2169,6 +2169,28 @@ type
     brw_OutstandingCARDAMNT: TFloatField;
     brw_OutstandingCHECKAMNT: TFloatField;
     brw_OutstandingCHANGEAMNT: TFloatField;
+    brw_WorkLogsTOTAL: TCurrencyField;
+    brw_Salaries: TFDQuery;
+    brw_SalariesID: TFDAutoIncField;
+    brw_SalariesHEADERID: TIntegerField;
+    brw_SalariesCATEGORY: TStringField;
+    brw_SalariesCATEGORYID: TIntegerField;
+    brw_SalariesPAYREFID: TIntegerField;
+    brw_SalariesPAYDATEFROM: TDateField;
+    brw_SalariesPAYDATETO: TDateField;
+    brw_SalariesEMPID: TIntegerField;
+    brw_SalariesPAYEE: TStringField;
+    brw_SalariesREMARKS: TStringField;
+    brw_SalariesGROSS: TSingleField;
+    brw_SalariesCASHADVANCES: TSingleField;
+    brw_SalariesAMOUNT: TSingleField;
+    brw_SalariesREFDATE: TDateField;
+    brw_SalariesCREATEDBY: TIntegerField;
+    brw_SalariesCREATEDDATETIME: TDateTimeField;
+    brw_SalariesCANCELLED: TBooleanField;
+    brw_SalariesCANCELLEDBYID: TIntegerField;
+    brw_SalariesCANCELLEDDATETIME: TDateTimeField;
+    brw_SalariesEXPENSETYPE: TIntegerField;
     procedure tb_JODetailCalcFields(DataSet: TDataSet);
     procedure brw_pmboardCalcFields(DataSet: TDataSet);
     procedure brw_EmpCalcFields(DataSet: TDataSet);
@@ -2487,6 +2509,7 @@ end;
 procedure Tdm_PM.brw_WorkLogsCalcFields(DataSet: TDataSet);
 begin
   brw_WorkLogsCALC_DATE.Value := FormatDateTime('mm/dd/yyyy hh:nn AM/PM', brw_WorkLogsCREATEDDATETIME.Value);
+  brw_WorkLogsTOTAL.Value     := brw_WorkLogsQTY.Value * brw_WorkLogsCOST.Value;
 end;
 
 procedure Tdm_PM.qry_CashRegCalcFields(DataSet: TDataSet);

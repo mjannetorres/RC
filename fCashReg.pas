@@ -585,8 +585,9 @@ begin
     f_CashOut.cmb_exptype.ItemIndex := 0;
     if f_CashOut.ShowModal = mrOk then
     begin
-      qry_CashRegCUSTOMER.Value := qry_CashOutDetailPAYEE.AsString;
+
     end;
+    qry_CashRegCUSTOMER.Value := qry_CashOutDetailPAYEE.Value;
     compute_total;
   end;
 end;
@@ -1064,7 +1065,7 @@ begin
         brw_JOPaid.ParamByName('ID').Value := qry_CashRegREFID.Value;
         brw_JOPaid.Open();
 
-        paid  := (brw_JOPaidCASHAMNT.Value + brw_JOPaidCARDAMNT.Value + brw_JOPaidCHECKAMNT.Value) - brw_JOPaidCHECKAMNT.Value;
+        paid  := brw_JOPaidNETAMNT.Value; //(brw_JOPaidCASHAMNT.Value + brw_JOPaidCARDAMNT.Value + brw_JOPaidCHECKAMNT.Value) - brw_JOPaidCHECKAMNT.Value;
 
         brw_JOPaid.Close;
         brw_JOPaid.SQL[2] := 'WHERE SOURCE = ''JO'' AND PAYMENTTYPE = ''D'' AND REFID = :ID AND CANCELLED = FALSE';
@@ -1078,11 +1079,11 @@ begin
         brw_JOBalance.ParamByName('ID').Value := qry_CashRegREFID.Value;
         brw_JOBalance.Open();
 
-        lblBalance.Caption  := FormatCurr('###,###,##0.00', brw_JOBalanceNETAMNT.Value - paidamnt);
-        lblPayable.Caption  := FormatCurr('###,###,##0.00', brw_JOGROSSAMNT.Value);
+        lblBalance.Caption  := FormatCurr('###,###,##0.00', brw_JONETAMNT.Value - paidamnt);
+        lblPayable.Caption  := FormatCurr('###,###,##0.00', brw_JONETAMNT.Value);
         lblPaid.Caption     := FormatCurr('###,###,##0.00', paidamnt);
 
-        qry_CashRegBALAMNT.Value      := brw_JOBalanceNETAMNT.Value - paidamnt;
+        qry_CashRegBALAMNT.Value      := brw_JONETAMNT.Value - paidamnt;
         if brw_CashReg.RecordCount = 0 then
         begin
           qry_CashRegDISCOUNT.Value     := brw_JODISCOUNT.Value;
@@ -1333,7 +1334,7 @@ begin
                 else
                 qry_JOPOSTEDDATETIME.Value  := qry_dateconfigDATE.Value;
                 qry_JOPAIDAMNT.Value        := paidamnt;
-                qry_JOBALAMNT.Value         := (brw_JOBalanceNETAMNT.Value - paidamnt);
+                qry_JOBALAMNT.Value         := (qry_JONETAMNT.Value - paidamnt);
                 qry_JO.Post;
                 qry_JO.ApplyUpdates();
               end;
@@ -1378,7 +1379,7 @@ begin
             end
             else
             begin
-              qry_CashOutDetailHEADERID.Value  := qry_CashRegID.Value;
+              qry_CashOutDetailHEADERID.Value        := qry_CashRegID.Value;
               qry_CashOutDetailCANCELLED.Value       := False;
               qry_CashOutDetailCREATEDBY.Value       := userid;
               if qry_dateconfigAUTONOW.Value then

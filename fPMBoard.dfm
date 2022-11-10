@@ -284,6 +284,12 @@ object f_PMBoard: Tf_PMBoard
             Kind = skSum
             FieldName = 'BALAMNT'
             Column = cxGrid1DBTableView1BALAMNT
+          end
+          item
+            Format = '###,###,##0.00'
+            Kind = skSum
+            FieldName = 'NETAMNT'
+            Column = cxGrid1DBTableView1NETAMNT
           end>
         DataController.Summary.SummaryGroups = <>
         OptionsSelection.CellSelect = False
@@ -348,24 +354,6 @@ object f_PMBoard: Tf_PMBoard
           Options.Sorting = False
           Width = 40
         end
-        object cxGrid1DBTableView1LAYOUT: TcxGridDBColumn
-          DataBinding.FieldName = 'LAYOUT'
-          HeaderAlignmentHorz = taCenter
-          Options.Editing = False
-          Options.Filtering = False
-          Options.Sorting = False
-          Width = 37
-        end
-        object cxGrid1DBTableView1RELEASED: TcxGridDBColumn
-          Caption = 'EXPORTED'
-          DataBinding.FieldName = 'RELEASED'
-          HeaderAlignmentHorz = taCenter
-          Options.Editing = False
-          Options.Filtering = False
-          Options.Sorting = False
-          Styles.Header = Header_style
-          Width = 40
-        end
         object cxGrid1DBTableView1CLOSED: TcxGridDBColumn
           DataBinding.FieldName = 'CLOSED'
           HeaderAlignmentHorz = taCenter
@@ -374,6 +362,14 @@ object f_PMBoard: Tf_PMBoard
           Options.Sorting = False
           Styles.Header = Header_style
           Width = 36
+        end
+        object cxGrid1DBTableView1NETAMNT: TcxGridDBColumn
+          Caption = 'NET AMOUNT'
+          DataBinding.FieldName = 'NETAMNT'
+          HeaderAlignmentHorz = taCenter
+          Options.Editing = False
+          Options.Filtering = False
+          Options.Sorting = False
         end
         object cxGrid1DBTableView1PAIDAMNT: TcxGridDBColumn
           Caption = 'PAID'

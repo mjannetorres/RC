@@ -4,7 +4,7 @@ object f_PayrollDetail: Tf_PayrollDetail
   BorderStyle = bsDialog
   Caption = 'Payroll Detail'
   ClientHeight = 319
-  ClientWidth = 694
+  ClientWidth = 825
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -18,17 +18,17 @@ object f_PayrollDetail: Tf_PayrollDetail
   object Panel1: TPanel
     Left = 0
     Top = 282
-    Width = 694
+    Width = 825
     Height = 37
     Align = alBottom
     BevelOuter = bvNone
     TabOrder = 0
-    ExplicitWidth = 543
+    ExplicitWidth = 694
     DesignSize = (
-      694
+      825
       37)
     object Button1: TButton
-      Left = 606
+      Left = 737
       Top = 6
       Width = 75
       Height = 25
@@ -37,20 +37,20 @@ object f_PayrollDetail: Tf_PayrollDetail
       Default = True
       ModalResult = 2
       TabOrder = 0
-      ExplicitLeft = 455
+      ExplicitLeft = 606
     end
   end
   object Panel2: TPanel
     Left = 0
     Top = 0
-    Width = 694
+    Width = 825
     Height = 41
     Align = alTop
     BevelOuter = bvNone
     Color = clTeal
     ParentBackground = False
     TabOrder = 1
-    ExplicitWidth = 543
+    ExplicitWidth = 694
     object cxLabel1: TcxLabel
       Left = 8
       Top = 8
@@ -68,7 +68,7 @@ object f_PayrollDetail: Tf_PayrollDetail
   object grid_jodetail: TcxGrid
     Left = 0
     Top = 41
-    Width = 694
+    Width = 825
     Height = 241
     Align = alClient
     BevelInner = bvNone
@@ -83,7 +83,7 @@ object f_PayrollDetail: Tf_PayrollDetail
     LookAndFeel.Kind = lfUltraFlat
     LookAndFeel.NativeStyle = False
     LookAndFeel.SkinName = 'VisualStudio2013Light'
-    ExplicitWidth = 543
+    ExplicitWidth = 694
     object cxGridDBTableView1: TcxGridDBTableView
       Navigator.Buttons.CustomButtons = <>
       DataController.DataSource = ds_detail
@@ -98,20 +98,14 @@ object f_PayrollDetail: Tf_PayrollDetail
         item
           Format = '###,###,##0.00'
           Kind = skSum
-          FieldName = 'PRICE'
-          Column = cxGridDBTableView1PRICE
+          FieldName = 'COST'
+          Column = cxGridDBTableView1COST
         end
         item
           Format = '###,###,##0.00'
           Kind = skSum
-          FieldName = 'AMNT'
-          Column = cxGridDBTableView1AMNT
-        end
-        item
-          Format = '###,###,##0'
-          Kind = skSum
-          FieldName = 'QTY'
-          Column = cxGridDBTableView1QTY
+          FieldName = 'TOTAL'
+          Column = cxGridDBTableView1TOTAL
         end>
       DataController.Summary.SummaryGroups = <>
       OptionsData.Appending = True
@@ -124,21 +118,36 @@ object f_PayrollDetail: Tf_PayrollDetail
       Styles.Selection = select_style
       Styles.Header = Header_style
       object cxGridDBTableView1JONO: TcxGridDBColumn
-        Caption = 'JO NO.'
         DataBinding.FieldName = 'JONO'
         HeaderAlignmentHorz = taCenter
         Options.Editing = False
         Options.Filtering = False
         Options.Sorting = False
-        Width = 42
+        Width = 46
       end
-      object cxGridDBTableView1GARMENT: TcxGridDBColumn
-        DataBinding.FieldName = 'GARMENT'
+      object cxGridDBTableView1CLIENT: TcxGridDBColumn
+        DataBinding.FieldName = 'CLIENT'
         HeaderAlignmentHorz = taCenter
         Options.Editing = False
         Options.Filtering = False
         Options.Sorting = False
-        Width = 250
+        Width = 142
+      end
+      object cxGridDBTableView1DESCRIPTION: TcxGridDBColumn
+        DataBinding.FieldName = 'DESCRIPTION'
+        HeaderAlignmentHorz = taCenter
+        Options.Editing = False
+        Options.Filtering = False
+        Options.Sorting = False
+        Width = 179
+      end
+      object cxGridDBTableView1ROLE: TcxGridDBColumn
+        DataBinding.FieldName = 'ROLE'
+        HeaderAlignmentHorz = taCenter
+        Options.Editing = False
+        Options.Filtering = False
+        Options.Sorting = False
+        Width = 93
       end
       object cxGridDBTableView1QTY: TcxGridDBColumn
         DataBinding.FieldName = 'QTY'
@@ -146,41 +155,32 @@ object f_PayrollDetail: Tf_PayrollDetail
         Options.Editing = False
         Options.Filtering = False
         Options.Sorting = False
-        Width = 59
+        Width = 60
       end
-      object cxGridDBTableView1PRICE: TcxGridDBColumn
-        DataBinding.FieldName = 'PRICE'
+      object cxGridDBTableView1COST: TcxGridDBColumn
+        DataBinding.FieldName = 'COST'
         HeaderAlignmentHorz = taCenter
         Options.Editing = False
         Options.Filtering = False
         Options.Sorting = False
-        Width = 54
+        Width = 99
       end
-      object cxGridDBTableView1AMNT: TcxGridDBColumn
-        DataBinding.FieldName = 'AMNT'
+      object cxGridDBTableView1TOTAL: TcxGridDBColumn
+        DataBinding.FieldName = 'TOTAL'
         HeaderAlignmentHorz = taCenter
         Options.Editing = False
         Options.Filtering = False
         Options.Sorting = False
-        Width = 63
+        Width = 102
       end
-      object cxGridDBTableView1WORK: TcxGridDBColumn
-        Caption = 'WORK DONE'
-        DataBinding.FieldName = 'WORK'
+      object cxGridDBTableView1CALC_DATE: TcxGridDBColumn
+        Caption = 'CREATED'
+        DataBinding.FieldName = 'CALC_DATE'
         HeaderAlignmentHorz = taCenter
         Options.Editing = False
         Options.Filtering = False
         Options.Sorting = False
-        Width = 109
-      end
-      object cxGridDBTableView1LOGDATE: TcxGridDBColumn
-        Caption = 'LOG DATE'
-        DataBinding.FieldName = 'LOGDATE'
-        HeaderAlignmentHorz = taCenter
-        Options.Editing = False
-        Options.Filtering = False
-        Options.Sorting = False
-        Width = 115
+        Width = 102
       end
     end
     object cxGridLevel1: TcxGridLevel
@@ -208,7 +208,7 @@ object f_PayrollDetail: Tf_PayrollDetail
     end
   end
   object ds_detail: TDataSource
-    DataSet = dm_PM.tb_PayParticular
+    DataSet = dm_PM.brw_WorkLogs
     Left = 248
     Top = 96
   end

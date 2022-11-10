@@ -80,12 +80,11 @@ type
     cxGrid1DBTableView1LOGDATE: TcxGridDBColumn;
     cxGrid1DBTableView1DUEDATE: TcxGridDBColumn;
     cxGrid1DBTableView1POSTED: TcxGridDBColumn;
-    cxGrid1DBTableView1LAYOUT: TcxGridDBColumn;
-    cxGrid1DBTableView1RELEASED: TcxGridDBColumn;
     cxGrid1DBTableView1CLOSED: TcxGridDBColumn;
     cxGrid1DBTableView1PAIDAMNT: TcxGridDBColumn;
     cxGrid1DBTableView1BALAMNT: TcxGridDBColumn;
     cxGrid1Level1: TcxGridLevel;
+    cxGrid1DBTableView1NETAMNT: TcxGridDBColumn;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure EditExecute(Sender: TObject);
     procedure DeleteExecute(Sender: TObject);

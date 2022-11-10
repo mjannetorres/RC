@@ -39,12 +39,13 @@ type
     cxGridLevel1: TcxGridLevel;
     ds_detail: TDataSource;
     cxGridDBTableView1JONO: TcxGridDBColumn;
-    cxGridDBTableView1GARMENT: TcxGridDBColumn;
     cxGridDBTableView1QTY: TcxGridDBColumn;
-    cxGridDBTableView1PRICE: TcxGridDBColumn;
-    cxGridDBTableView1LOGDATE: TcxGridDBColumn;
-    cxGridDBTableView1AMNT: TcxGridDBColumn;
-    cxGridDBTableView1WORK: TcxGridDBColumn;
+    cxGridDBTableView1COST: TcxGridDBColumn;
+    cxGridDBTableView1CLIENT: TcxGridDBColumn;
+    cxGridDBTableView1ROLE: TcxGridDBColumn;
+    cxGridDBTableView1DESCRIPTION: TcxGridDBColumn;
+    cxGridDBTableView1CALC_DATE: TcxGridDBColumn;
+    cxGridDBTableView1TOTAL: TcxGridDBColumn;
   private
     { Private declarations }
   public

@@ -102,6 +102,8 @@ type
     ds_invcost: TfrxDBDataset;
     ds_ARAging: TfrxDBDataset;
     rep_ARAging: TfrxReport;
+    ds_Salaries: TfrxDBDataset;
+    rep_Salaries: TfrxReport;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
     { Private declarations }

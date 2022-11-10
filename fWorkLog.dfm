@@ -263,6 +263,12 @@ object f_WorkLog: Tf_WorkLog
           Kind = skSum
           FieldName = 'COST'
           Column = cxGrid1DBTableView1COST
+        end
+        item
+          Format = '###,###,##0.00'
+          Kind = skSum
+          FieldName = 'TOTAL'
+          Column = cxGrid1DBTableView1TOTAL
         end>
       DataController.Summary.SummaryGroups = <>
       OptionsSelection.CellSelect = False
@@ -328,6 +334,13 @@ object f_WorkLog: Tf_WorkLog
         Options.Filtering = False
         Options.Sorting = False
         Width = 47
+      end
+      object cxGrid1DBTableView1TOTAL: TcxGridDBColumn
+        DataBinding.FieldName = 'TOTAL'
+        HeaderAlignmentHorz = taCenter
+        Options.Editing = False
+        Options.Filtering = False
+        Options.Sorting = False
       end
       object cxGrid1DBTableView1CREATEDDATETIME: TcxGridDBColumn
         Caption = 'CREATED'

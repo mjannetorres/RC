@@ -63,6 +63,7 @@ type
     cxGrid1DBTableView1CLIENT: TcxGridDBColumn;
     cxGrid1DBTableView1ROLE: TcxGridDBColumn;
     cxGrid1DBTableView1DESCRIPTION: TcxGridDBColumn;
+    cxGrid1DBTableView1TOTAL: TcxGridDBColumn;
     procedure FormShow(Sender: TObject);
     procedure txt_searchKeyPress(Sender: TObject; var Key: Char);
     procedure txt_searchRightButtonClick(Sender: TObject);
