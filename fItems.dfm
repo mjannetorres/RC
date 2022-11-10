@@ -137,7 +137,6 @@ object f_Items: Tf_Items
     TabOrder = 1
     LookAndFeel.NativeStyle = False
     LookAndFeel.SkinName = 'VisualStudio2013Light'
-    ExplicitWidth = 776
     object cxGrid1DBTableView1: TcxGridDBTableView
       Navigator.Buttons.CustomButtons = <>
       DataController.DataSource = ds_items
@@ -408,7 +407,6 @@ object f_Items: Tf_Items
     ParentBackground = False
     TabOrder = 2
     StyleElements = [seFont, seBorder]
-    ExplicitWidth = 776
     DesignSize = (
       991
       71)
@@ -466,7 +464,6 @@ object f_Items: Tf_Items
         'CODE'
         'DESCRIPTION'
         'ITEM TYPE')
-      ExplicitLeft = 653
     end
     object txt_search: TButtonedEdit
       Left = 437
@@ -496,7 +493,6 @@ object f_Items: Tf_Items
       StyleElements = [seFont, seBorder]
       OnKeyPress = txt_searchKeyPress
       OnRightButtonClick = txt_searchRightButtonClick
-      ExplicitLeft = 222
     end
   end
   object ActionList1: TActionList

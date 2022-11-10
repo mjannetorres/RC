@@ -2,7 +2,7 @@ object f_Reports: Tf_Reports
   Left = 0
   Top = 0
   Caption = 'f_Reports'
-  ClientHeight = 450
+  ClientHeight = 513
   ClientWidth = 665
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -906,7 +906,7 @@ object f_Reports: Tf_Reports
         object Memo37: TfrxMemoView
           Align = baRight
           AllowVectorExport = True
-          Left = 653.480793141732300000
+          Left = 653.480793141732400000
           Top = 12.000000000000000000
           Width = 86.929133858267720000
           Height = 18.897650000000000000
@@ -927,7 +927,7 @@ object f_Reports: Tf_Reports
         object Memo38: TfrxMemoView
           Align = baRight
           AllowVectorExport = True
-          Left = 653.480793141732300000
+          Left = 653.480793141732400000
           Top = 31.913385830000040000
           Width = 86.929133858267720000
           Height = 18.897650000000000000
@@ -948,7 +948,7 @@ object f_Reports: Tf_Reports
         object Memo39: TfrxMemoView
           Align = baRight
           AllowVectorExport = True
-          Left = 653.480793141732300000
+          Left = 653.480793141732400000
           Top = 52.795300000000000000
           Width = 86.929133858267720000
           Height = 18.897650000000000000
@@ -24585,7 +24585,7 @@ object f_Reports: Tf_Reports
         object Memo31: TfrxMemoView
           Align = baRight
           AllowVectorExport = True
-          Left = 536.315307000000100000
+          Left = 536.315307000000000000
           Width = 49.133890000000000000
           Height = 18.897650000000000000
           StretchMode = smMaxHeight
@@ -24712,7 +24712,7 @@ object f_Reports: Tf_Reports
         FillType = ftBrush
         Frame.Typ = []
         Height = 22.677180000000000000
-        Top = 544.252320000000100000
+        Top = 544.252320000000000000
         Visible = False
         Width = 740.409927000000000000
         object Memo33: TfrxMemoView
@@ -25032,7 +25032,7 @@ object f_Reports: Tf_Reports
         object Memo39: TfrxMemoView
           Align = baRight
           AllowVectorExport = True
-          Left = 517.417656999999900000
+          Left = 517.417657000000000000
           Top = 22.677180000000000000
           Width = 120.944960000000000000
           Height = 22.677180000000000000
@@ -31183,7 +31183,7 @@ object f_Reports: Tf_Reports
         Frame.Typ = []
         Height = 170.078850000000000000
         Top = 18.897650000000000000
-        Width = 980.410081999999900000
+        Width = 980.410082000000000000
         Stretched = True
         object Memo1: TfrxMemoView
           AllowVectorExport = True
@@ -31264,7 +31264,7 @@ object f_Reports: Tf_Reports
         object Picture1: TfrxPictureView
           Align = baRight
           AllowVectorExport = True
-          Left = 802.772171999999900000
+          Left = 802.772172000000000000
           Top = 7.559059999999999000
           Width = 177.637910000000000000
           Height = 86.929190000000000000
@@ -31326,7 +31326,7 @@ object f_Reports: Tf_Reports
         Frame.Typ = [ftRight]
         Height = 18.897637800000000000
         Top = 306.141930000000000000
-        Width = 980.410081999999900000
+        Width = 980.410082000000000000
         DataSet = ds_projectsum
         DataSetName = 'ds_projectsum'
         RowCount = 0
@@ -31513,7 +31513,7 @@ object f_Reports: Tf_Reports
         object Memo44: TfrxMemoView
           Align = baLeft
           AllowVectorExport = True
-          Left = 808.819109982047100000
+          Left = 808.819109982047200000
           Width = 75.590556060000000000
           Height = 18.897650000000000000
           Font.Charset = ANSI_CHARSET
@@ -31534,7 +31534,7 @@ object f_Reports: Tf_Reports
         Frame.Typ = [ftRight]
         Height = 18.897637800000000000
         Top = 347.716760000000000000
-        Width = 980.410081999999900000
+        Width = 980.410082000000000000
         DataSet = ds_projectsum
         DataSetName = 'ds_projectsum'
         RowCount = 0
@@ -31773,7 +31773,7 @@ object f_Reports: Tf_Reports
         object Memo45: TfrxMemoView
           Align = baLeft
           AllowVectorExport = True
-          Left = 808.819063599999900000
+          Left = 808.819063600000000000
           Width = 75.590556060000000000
           Height = 18.897650000000000000
           StretchMode = smMaxHeight
@@ -31802,7 +31802,7 @@ object f_Reports: Tf_Reports
         Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
         Height = 49.913420000000000000
         Top = 389.291590000000000000
-        Width = 980.410081999999900000
+        Width = 980.410082000000000000
         object total: TfrxMemoView
           AllowVectorExport = True
           Left = 365.393517720000000000
@@ -31977,7 +31977,7 @@ object f_Reports: Tf_Reports
         Frame.Typ = []
         Height = 22.677180000000000000
         Top = 498.897960000000000000
-        Width = 980.410081999999900000
+        Width = 980.410082000000000000
         object Memo30: TfrxMemoView
           Align = baLeft
           AllowVectorExport = True
@@ -32034,7 +32034,7 @@ object f_Reports: Tf_Reports
         object SysMemo3: TfrxSysMemoView
           Align = baRight
           AllowVectorExport = True
-          Left = 825.449351999999900000
+          Left = 825.449352000000000000
           Width = 154.960730000000000000
           Height = 18.897650000000000000
           AutoWidth = True
@@ -32052,7 +32052,7 @@ object f_Reports: Tf_Reports
         object Memo31: TfrxMemoView
           Align = baRight
           AllowVectorExport = True
-          Left = 776.315461999999900000
+          Left = 776.315462000000000000
           Width = 49.133890000000000000
           Height = 18.897650000000000000
           StretchMode = smMaxHeight
@@ -32074,7 +32074,7 @@ object f_Reports: Tf_Reports
         Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
         Height = 34.236240000000000000
         Top = 249.448980000000000000
-        Width = 980.410081999999900000
+        Width = 980.410082000000000000
         object Memo5: TfrxMemoView
           Align = baLeft
           AllowVectorExport = True
@@ -34377,5 +34377,1101 @@ object f_Reports: Tf_Reports
     BCDToCurrency = False
     Left = 584
     Top = 352
+  end
+  object ds_ARAging: TfrxDBDataset
+    UserName = 'ds_ARAging'
+    CloseDataSource = False
+    FieldAliases.Strings = (
+      'CLIENT=CLIENT'
+      'TOTAL=TOTAL'
+      'BALANCE=BALANCE'
+      'CURRENT=CURRENT'
+      '30DAYS=30DAYS'
+      '60DAYS=60DAYS'
+      '90DAYS=90DAYS'
+      '120DAYS=120DAYS'
+      '121DAYS=121DAYS'
+      'PAID=PAID')
+    DataSet = dm_PM.tb_ARAging
+    BCDToCurrency = False
+    Left = 264
+    Top = 392
+  end
+  object rep_ARAging: TfrxReport
+    Version = '6.6'
+    DotMatrixReport = False
+    IniFile = '\Software\Fast Reports'
+    PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick, pbCopy, pbSelection]
+    PreviewOptions.Zoom = 1.000000000000000000
+    PrintOptions.Printer = 'Default'
+    PrintOptions.PrintOnSheet = 0
+    ReportOptions.CreateDate = 44197.500587766200000000
+    ReportOptions.LastChange = 44289.890007407400000000
+    ScriptLanguage = 'PascalScript'
+    ScriptText.Strings = (
+      ''
+      'procedure Picture1OnBeforePrint(Sender: TfrxComponent);'
+      'begin'
+      
+        '   TfrxPictureView(Sender).Picture.LoadFromFile(<ds_Comp."LOGO">' +
+        ');          '
+      'end;'
+      ''
+      'procedure Memo23OnBeforePrint(Sender: TfrxComponent);'
+      'begin'
+      '       '
+      'end;'
+      ''
+      'procedure Memo24OnBeforePrint(Sender: TfrxComponent);'
+      'begin'
+      '         '
+      'end;'
+      ''
+      'procedure Memo25OnBeforePrint(Sender: TfrxComponent);'
+      'begin'
+      '           '
+      'end;'
+      ''
+      'procedure Memo26OnBeforePrint(Sender: TfrxComponent);'
+      'begin'
+      '    '
+      'end;'
+      ''
+      'procedure Memo27OnBeforePrint(Sender: TfrxComponent);'
+      'begin'
+      '  '
+      'end;'
+      ''
+      'procedure Memo35OnBeforePrint(Sender: TfrxComponent);'
+      'begin'
+      '   '
+      'end;'
+      ''
+      'procedure Memo36OnBeforePrint(Sender: TfrxComponent);'
+      'begin'
+      '        '
+      'end;'
+      ''
+      'procedure Memo37OnBeforePrint(Sender: TfrxComponent);'
+      'begin'
+      '        '
+      'end;'
+      ''
+      'procedure Memo43OnBeforePrint(Sender: TfrxComponent);'
+      'begin'
+      '   '
+      'end;'
+      ''
+      'begin'
+      ''
+      'end.')
+    Left = 32
+    Top = 448
+    Datasets = <
+      item
+        DataSet = ds_ARAging
+        DataSetName = 'ds_ARAging'
+      end
+      item
+        DataSet = ds_Comp
+        DataSetName = 'ds_Comp'
+      end>
+    Variables = <>
+    Style = <>
+    object Data: TfrxDataPage
+      Height = 1000.000000000000000000
+      Width = 1000.000000000000000000
+    end
+    object Page1: TfrxReportPage
+      Orientation = poLandscape
+      PaperWidth = 279.400000000000000000
+      PaperHeight = 215.900000000000000000
+      PaperSize = 1
+      LeftMargin = 10.000000000000000000
+      RightMargin = 10.000000000000000000
+      TopMargin = 10.000000000000000000
+      BottomMargin = 10.000000000000000000
+      Frame.Typ = []
+      MirrorMode = []
+      VGuides.Strings = (
+        '0')
+      object PageHeader1: TfrxPageHeader
+        FillType = ftBrush
+        Frame.Typ = []
+        Height = 170.078850000000000000
+        Top = 18.897650000000000000
+        Width = 980.410081999999900000
+        Child = rep_ARAging.Child1
+        Stretched = True
+        object Memo1: TfrxMemoView
+          AllowVectorExport = True
+          Left = 3.779530000000000000
+          Top = 7.559060000000000000
+          Width = 287.244280000000000000
+          Height = 18.897650000000000000
+          DataField = 'NAME'
+          DataSet = ds_Comp
+          DataSetName = 'ds_Comp'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -15
+          Font.Name = 'Segoe UI Black'
+          Font.Style = [fsBold]
+          Frame.Typ = []
+          Memo.UTF8W = (
+            '[ds_Comp."NAME"]')
+          ParentFont = False
+        end
+        object Memo2: TfrxMemoView
+          AllowVectorExport = True
+          Left = 3.779530000000000000
+          Top = 30.236240000000000000
+          Width = 287.244280000000000000
+          Height = 15.118120000000000000
+          DataField = 'ADDRESS1'
+          DataSet = ds_Comp
+          DataSetName = 'ds_Comp'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -12
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          Frame.Typ = []
+          Memo.UTF8W = (
+            '[ds_Comp."ADDRESS1"]')
+          ParentFont = False
+        end
+        object Memo3: TfrxMemoView
+          AllowVectorExport = True
+          Left = 3.779530000000000000
+          Top = 47.913420000000000000
+          Width = 287.244280000000000000
+          Height = 15.118120000000000000
+          DataField = 'ADDRESS2'
+          DataSet = ds_Comp
+          DataSetName = 'ds_Comp'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -12
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          Frame.Typ = []
+          Memo.UTF8W = (
+            '[ds_Comp."ADDRESS2"]')
+          ParentFont = False
+        end
+        object Memo4: TfrxMemoView
+          AllowVectorExport = True
+          Left = 3.779530000000000000
+          Top = 66.590600000000000000
+          Width = 287.244280000000000000
+          Height = 15.118120000000000000
+          DataField = 'CONTACTNO'
+          DataSet = ds_Comp
+          DataSetName = 'ds_Comp'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -12
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          Frame.Typ = []
+          Memo.UTF8W = (
+            '[ds_Comp."CONTACTNO"]')
+          ParentFont = False
+        end
+        object Picture1: TfrxPictureView
+          Align = baRight
+          AllowVectorExport = True
+          Left = 802.772171999999900000
+          Top = 7.559060000000000000
+          Width = 177.637910000000000000
+          Height = 86.929190000000000000
+          OnBeforePrint = 'Picture1OnBeforePrint'
+          Center = True
+          DataField = 'LOGO'
+          DataSet = ds_Comp
+          DataSetName = 'ds_Comp'
+          Frame.Typ = []
+          HightQuality = False
+          Transparent = False
+          TransparentColor = clWhite
+        end
+        object Memo32: TfrxMemoView
+          AllowVectorExport = True
+          Left = 3.779530000000000000
+          Top = 84.149660000000000000
+          Width = 287.244280000000000000
+          Height = 15.118120000000000000
+          DataField = 'EMAIL'
+          DataSet = ds_Comp
+          DataSetName = 'ds_Comp'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -12
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          Frame.Typ = []
+          Memo.UTF8W = (
+            '[ds_Comp."EMAIL"]')
+          ParentFont = False
+        end
+        object item: TfrxMemoView
+          Align = baLeft
+          AllowVectorExport = True
+          Top = 132.283550000000000000
+          Width = 377.953000000000000000
+          Height = 37.795300000000000000
+          StretchMode = smMaxHeight
+          AutoWidth = True
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWhite
+          Font.Height = -17
+          Font.Name = 'Segoe UI Black'
+          Font.Style = [fsBold]
+          Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
+          Fill.BackColor = clTeal
+          GapX = 5.000000000000000000
+          HAlign = haCenter
+          Memo.UTF8W = (
+            'ACCOUNTS RECEIVABLE AGING SCHEDULE')
+          ParagraphGap = 5.000000000000000000
+          ParentFont = False
+          VAlign = vaCenter
+        end
+      end
+      object MasterData2: TfrxMasterData
+        FillType = ftBrush
+        Frame.Typ = []
+        Height = 18.897637800000000000
+        Top = 370.393940000000000000
+        Width = 980.410081999999900000
+        DataSet = ds_ARAging
+        DataSetName = 'ds_ARAging'
+        RowCount = 0
+      end
+      object DetailData1: TfrxDetailData
+        FillType = ftBrush
+        Frame.Typ = []
+        Height = 18.897637800000000000
+        Top = 411.968770000000000000
+        Width = 980.410081999999900000
+        DataSet = ds_ARAging
+        DataSetName = 'ds_ARAging'
+        RowCount = 0
+        Stretched = True
+        object Memo24: TfrxMemoView
+          Align = baLeft
+          AllowVectorExport = True
+          Width = 177.637910000000000000
+          Height = 18.897650000000000000
+          StretchMode = smMaxHeight
+          DataField = 'CLIENT'
+          DataSet = ds_ARAging
+          DataSetName = 'ds_ARAging'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -12
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
+          GapX = 3.000000000000000000
+          Memo.UTF8W = (
+            '[ds_ARAging."CLIENT"]')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object Memo25: TfrxMemoView
+          Align = baLeft
+          AllowVectorExport = True
+          Left = 177.637910000000000000
+          Width = 71.811023620000000000
+          Height = 18.897650000000000000
+          StretchMode = smMaxHeight
+          DataField = 'CURRENT'
+          DataSet = ds_ARAging
+          DataSetName = 'ds_ARAging'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -12
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
+          GapX = 5.000000000000000000
+          HAlign = haRight
+          Memo.UTF8W = (
+            '[ds_ARAging."CURRENT"]')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object Memo26: TfrxMemoView
+          Align = baLeft
+          AllowVectorExport = True
+          Left = 249.448933620000000000
+          Width = 71.811023620000000000
+          Height = 18.897650000000000000
+          StretchMode = smMaxHeight
+          DataField = '30DAYS'
+          DataSet = ds_ARAging
+          DataSetName = 'ds_ARAging'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -12
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
+          GapX = 3.000000000000000000
+          HAlign = haRight
+          Memo.UTF8W = (
+            '[ds_ARAging."30DAYS"]')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object Memo27: TfrxMemoView
+          Align = baLeft
+          AllowVectorExport = True
+          Left = 321.259957240000000000
+          Width = 79.370086060000000000
+          Height = 18.897650000000000000
+          StretchMode = smMaxHeight
+          DataField = '60DAYS'
+          DataSet = ds_ARAging
+          DataSetName = 'ds_ARAging'
+          DisplayFormat.FormatStr = '%2.2n'
+          DisplayFormat.Kind = fkNumeric
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -12
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
+          GapX = 5.000000000000000000
+          HAlign = haRight
+          Memo.UTF8W = (
+            '[ds_ARAging."60DAYS"]')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object Memo35: TfrxMemoView
+          Align = baLeft
+          AllowVectorExport = True
+          Left = 400.630043300000000000
+          Width = 75.590556060000000000
+          Height = 18.897650000000000000
+          StretchMode = smMaxHeight
+          DataField = '90DAYS'
+          DataSet = ds_ARAging
+          DataSetName = 'ds_ARAging'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -12
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
+          GapX = 5.000000000000000000
+          HAlign = haRight
+          Memo.UTF8W = (
+            '[ds_ARAging."90DAYS"]')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object Memo29: TfrxMemoView
+          Align = baLeft
+          AllowVectorExport = True
+          Left = 476.220599360000000000
+          Width = 83.149616060000000000
+          Height = 18.897650000000000000
+          StretchMode = smMaxHeight
+          DataField = '120DAYS'
+          DataSet = ds_ARAging
+          DataSetName = 'ds_ARAging'
+          DisplayFormat.FormatStr = '%2.2n'
+          DisplayFormat.Kind = fkNumeric
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -12
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
+          GapX = 5.000000000000000000
+          HAlign = haRight
+          Memo.UTF8W = (
+            '[ds_ARAging."120DAYS"]')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object Memo36: TfrxMemoView
+          Align = baLeft
+          AllowVectorExport = True
+          Left = 559.370215420000000000
+          Width = 79.370086060000000000
+          Height = 18.897650000000000000
+          StretchMode = smMaxHeight
+          DataField = '121DAYS'
+          DataSet = ds_ARAging
+          DataSetName = 'ds_ARAging'
+          DisplayFormat.FormatStr = '%2.2n'
+          DisplayFormat.Kind = fkNumeric
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -12
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
+          GapX = 5.000000000000000000
+          HAlign = haRight
+          Memo.UTF8W = (
+            '[ds_ARAging."121DAYS"]')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object Memo38: TfrxMemoView
+          Align = baLeft
+          AllowVectorExport = True
+          Left = 638.740301480000000000
+          Width = 102.047266060000000000
+          Height = 18.897650000000000000
+          StretchMode = smMaxHeight
+          DataField = 'BALANCE'
+          DataSet = ds_ARAging
+          DataSetName = 'ds_ARAging'
+          DisplayFormat.FormatStr = '%2.2n'
+          DisplayFormat.Kind = fkNumeric
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -12
+          Font.Name = 'Segoe UI Semibold'
+          Font.Style = [fsBold]
+          Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
+          GapX = 5.000000000000000000
+          HAlign = haRight
+          Memo.UTF8W = (
+            '[ds_ARAging."BALANCE"]')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object Memo40: TfrxMemoView
+          Align = baLeft
+          AllowVectorExport = True
+          Left = 740.787567540000000000
+          Width = 86.929146060000000000
+          Height = 18.897650000000000000
+          StretchMode = smMaxHeight
+          DataField = 'PAID'
+          DataSet = ds_ARAging
+          DataSetName = 'ds_ARAging'
+          DisplayFormat.FormatStr = '%2.2n'
+          DisplayFormat.Kind = fkNumeric
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -12
+          Font.Name = 'Segoe UI Semibold'
+          Font.Style = [fsBold]
+          Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
+          GapX = 5.000000000000000000
+          HAlign = haRight
+          Memo.UTF8W = (
+            '[ds_ARAging."PAID"]')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object Memo47: TfrxMemoView
+          Align = baLeft
+          AllowVectorExport = True
+          Left = 827.716713599999900000
+          Width = 86.929146060000000000
+          Height = 18.897650000000000000
+          StretchMode = smMaxHeight
+          DataField = 'TOTAL'
+          DataSet = ds_ARAging
+          DataSetName = 'ds_ARAging'
+          DisplayFormat.FormatStr = '%2.2n'
+          DisplayFormat.Kind = fkNumeric
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -12
+          Font.Name = 'Segoe UI Semibold'
+          Font.Style = [fsBold]
+          Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
+          GapX = 5.000000000000000000
+          HAlign = haRight
+          Memo.UTF8W = (
+            '[ds_ARAging."TOTAL"]')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+      end
+      object Footer1: TfrxFooter
+        FillType = ftBrush
+        Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
+        Height = 49.913420000000000000
+        Top = 453.543600000000000000
+        Width = 980.410081999999900000
+        object total: TfrxMemoView
+          AllowVectorExport = True
+          Left = 180.196547720000000000
+          Top = 7.220470000000000000
+          Width = 68.031540000000000000
+          Height = 18.897650000000000000
+          DisplayFormat.FormatStr = '%2.2n'
+          DisplayFormat.Kind = fkNumeric
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -12
+          Font.Name = 'Segoe UI'
+          Font.Style = [fsBold]
+          Frame.Typ = [ftBottom]
+          Frame.BottomLine.Style = fsDouble
+          HAlign = haRight
+          Memo.UTF8W = (
+            '[SUM(<ds_ARAging."CURRENT">,DetailData1)]')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object Memo51: TfrxMemoView
+          AllowVectorExport = True
+          Left = 84.267780000000000000
+          Top = 7.220470000000000000
+          Width = 90.708720000000000000
+          Height = 18.897650000000000000
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Segoe UI Semibold'
+          Font.Style = [fsBold]
+          Frame.Typ = []
+          HAlign = haRight
+          Memo.UTF8W = (
+            'TOTAL :')
+          ParentFont = False
+        end
+        object paid: TfrxMemoView
+          AllowVectorExport = True
+          Left = 252.008040000000000000
+          Top = 7.779530000000000000
+          Width = 68.031540000000000000
+          Height = 18.897650000000000000
+          DisplayFormat.FormatStr = '%2.2n'
+          DisplayFormat.Kind = fkNumeric
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -12
+          Font.Name = 'Segoe UI'
+          Font.Style = [fsBold]
+          Frame.Typ = [ftBottom]
+          Frame.BottomLine.Style = fsDouble
+          HAlign = haRight
+          Memo.UTF8W = (
+            '[SUM(<ds_ARAging."30DAYS">,DetailData1)]')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object balance: TfrxMemoView
+          AllowVectorExport = True
+          Left = 322.039580000000000000
+          Top = 7.779530000000000000
+          Width = 79.370130000000000000
+          Height = 18.897650000000000000
+          DisplayFormat.FormatStr = '%2.2n'
+          DisplayFormat.Kind = fkNumeric
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -12
+          Font.Name = 'Segoe UI'
+          Font.Style = [fsBold]
+          Frame.Typ = [ftBottom]
+          Frame.BottomLine.Style = fsDouble
+          HAlign = haRight
+          Memo.UTF8W = (
+            '[SUM(<ds_ARAging."60DAYS">,DetailData1)]')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object Memo41: TfrxMemoView
+          AllowVectorExport = True
+          Left = 404.409710000000000000
+          Top = 7.559060000000000000
+          Width = 71.811070000000000000
+          Height = 18.897650000000000000
+          DisplayFormat.FormatStr = '%2.2n'
+          DisplayFormat.Kind = fkNumeric
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -12
+          Font.Name = 'Segoe UI'
+          Font.Style = [fsBold]
+          Frame.Typ = [ftBottom]
+          Frame.BottomLine.Style = fsDouble
+          HAlign = haRight
+          Memo.UTF8W = (
+            '[SUM(<ds_ARAging."90DAYS">,DetailData1)]')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object Memo42: TfrxMemoView
+          AllowVectorExport = True
+          Left = 479.000310000000000000
+          Top = 7.559060000000000000
+          Width = 79.370130000000000000
+          Height = 18.897650000000000000
+          DisplayFormat.FormatStr = '%2.2n'
+          DisplayFormat.Kind = fkNumeric
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -12
+          Font.Name = 'Segoe UI'
+          Font.Style = [fsBold]
+          Frame.Typ = [ftBottom]
+          Frame.BottomLine.Style = fsDouble
+          HAlign = haRight
+          Memo.UTF8W = (
+            '[SUM(<ds_ARAging."120DAYS">,DetailData1)]')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object Memo43: TfrxMemoView
+          AllowVectorExport = True
+          Left = 559.370440000000000000
+          Top = 7.559060000000000000
+          Width = 79.370130000000000000
+          Height = 18.897650000000000000
+          DisplayFormat.FormatStr = '%2.2n'
+          DisplayFormat.Kind = fkNumeric
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -12
+          Font.Name = 'Segoe UI'
+          Font.Style = [fsBold]
+          Frame.Typ = [ftBottom]
+          Frame.BottomLine.Style = fsDouble
+          HAlign = haRight
+          Memo.UTF8W = (
+            '[SUM(<ds_ARAging."121DAYS">,DetailData1)]')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object Memo46: TfrxMemoView
+          AllowVectorExport = True
+          Left = 642.520100000000000000
+          Top = 7.559060000000000000
+          Width = 98.267780000000000000
+          Height = 18.897650000000000000
+          DisplayFormat.FormatStr = '%2.2n'
+          DisplayFormat.Kind = fkNumeric
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -12
+          Font.Name = 'Segoe UI'
+          Font.Style = [fsBold]
+          Frame.Typ = [ftBottom]
+          Frame.BottomLine.Style = fsDouble
+          HAlign = haRight
+          Memo.UTF8W = (
+            '[SUM(<ds_ARAging."BALANCE">,DetailData1)]')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object Memo44: TfrxMemoView
+          AllowVectorExport = True
+          Left = 744.567410000000000000
+          Top = 7.559059999999990000
+          Width = 83.149660000000000000
+          Height = 18.897650000000000000
+          DisplayFormat.FormatStr = '%2.2n'
+          DisplayFormat.Kind = fkNumeric
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -12
+          Font.Name = 'Segoe UI'
+          Font.Style = [fsBold]
+          Frame.Typ = [ftBottom]
+          Frame.BottomLine.Style = fsDouble
+          HAlign = haRight
+          Memo.UTF8W = (
+            '[SUM(<ds_ARAging."PAID">,DetailData1)]')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object Memo48: TfrxMemoView
+          AllowVectorExport = True
+          Left = 831.496600000000000000
+          Top = 7.559059999999990000
+          Width = 83.149660000000000000
+          Height = 18.897650000000000000
+          DisplayFormat.FormatStr = '%2.2n'
+          DisplayFormat.Kind = fkNumeric
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -12
+          Font.Name = 'Segoe UI'
+          Font.Style = [fsBold]
+          Frame.Typ = [ftBottom]
+          Frame.BottomLine.Style = fsDouble
+          HAlign = haRight
+          Memo.UTF8W = (
+            '[SUM(<ds_ARAging."TOTAL">,DetailData1)]')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+      end
+      object PageFooter1: TfrxPageFooter
+        FillType = ftBrush
+        Frame.Typ = []
+        Height = 22.677180000000000000
+        Top = 563.149970000000100000
+        Width = 980.410081999999900000
+        object Memo30: TfrxMemoView
+          Align = baLeft
+          AllowVectorExport = True
+          Width = 139.842610000000000000
+          Height = 18.897650000000000000
+          StretchMode = smMaxHeight
+          AutoWidth = True
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -12
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          Frame.Typ = []
+          Memo.UTF8W = (
+            'Date and Time Printed :')
+          ParentFont = False
+        end
+        object SysMemo1: TfrxSysMemoView
+          Align = baLeft
+          AllowVectorExport = True
+          Left = 139.842610000000000000
+          Width = 71.811070000000000000
+          Height = 18.897650000000000000
+          StretchMode = smMaxHeight
+          AutoWidth = True
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -12
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          Frame.Typ = []
+          Memo.UTF8W = (
+            '[DATE]')
+          ParentFont = False
+        end
+        object SysMemo2: TfrxSysMemoView
+          Align = baLeft
+          AllowVectorExport = True
+          Left = 211.653680000000000000
+          Width = 94.488250000000000000
+          Height = 18.897650000000000000
+          StretchMode = smMaxHeight
+          AutoWidth = True
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -12
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          Frame.Typ = []
+          Memo.UTF8W = (
+            '[TIME]')
+          ParentFont = False
+        end
+        object SysMemo3: TfrxSysMemoView
+          Align = baRight
+          AllowVectorExport = True
+          Left = 825.449351999999900000
+          Width = 154.960730000000000000
+          Height = 18.897650000000000000
+          AutoWidth = True
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -12
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          Frame.Typ = []
+          HAlign = haRight
+          Memo.UTF8W = (
+            '[PAGE#] of [TOTALPAGES#]')
+          ParentFont = False
+        end
+        object Memo31: TfrxMemoView
+          Align = baRight
+          AllowVectorExport = True
+          Left = 776.315461999999900000
+          Width = 49.133890000000000000
+          Height = 18.897650000000000000
+          StretchMode = smMaxHeight
+          AutoWidth = True
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -12
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          Frame.Typ = []
+          HAlign = haRight
+          Memo.UTF8W = (
+            'Pages:')
+          ParentFont = False
+        end
+      end
+      object Child1: TfrxChild
+        FillType = ftBrush
+        Frame.Typ = []
+        Height = 98.488250000000000000
+        Top = 211.653680000000000000
+        Width = 980.410081999999900000
+        ToNRows = 0
+        ToNRowsMode = rmCount
+        object Memo5: TfrxMemoView
+          Align = baLeft
+          AllowVectorExport = True
+          Top = 22.677180000000000000
+          Width = 102.047310000000000000
+          Height = 18.897650000000000000
+          StretchMode = smActualHeight
+          AutoWidth = True
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Segoe UI Semibold'
+          Font.Style = [fsBold]
+          Frame.Typ = []
+          GapX = 3.000000000000000000
+          HAlign = haRight
+          Memo.UTF8W = (
+            'Period Ending :')
+          ParentFont = False
+        end
+        object period: TfrxMemoView
+          AllowMirrorMode = True
+          Align = baLeft
+          AllowVectorExport = True
+          Left = 102.047310000000000000
+          Top = 22.677180000000000000
+          Width = 177.637910000000000000
+          Height = 18.897650000000000000
+          StretchMode = smActualHeight
+          AutoWidth = True
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          Frame.Typ = []
+          GapX = 3.000000000000000000
+          HAlign = haRight
+          Memo.UTF8W = (
+            'Period :')
+          ParentFont = False
+        end
+        object Memo19: TfrxMemoView
+          Align = baLeft
+          AllowVectorExport = True
+          Top = 60.472440940000000000
+          Width = 177.637910000000000000
+          Height = 38.173228346456700000
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWhite
+          Font.Height = -13
+          Font.Name = 'Segoe UI Semibold'
+          Font.Style = [fsBold]
+          Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
+          Fill.BackColor = clTeal
+          HAlign = haCenter
+          Memo.UTF8W = (
+            'CLIENT')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object Memo20: TfrxMemoView
+          Align = baLeft
+          AllowVectorExport = True
+          Left = 177.637910000000000000
+          Top = 79.850393700000000000
+          Width = 71.811023620000000000
+          Height = 19.275590550000000000
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWhite
+          Font.Height = -13
+          Font.Name = 'Segoe UI Semibold'
+          Font.Style = [fsBold]
+          Frame.Typ = [ftLeft, ftRight, ftBottom]
+          Fill.BackColor = clTeal
+          HAlign = haCenter
+          Memo.UTF8W = (
+            'CURRENT')
+          ParentFont = False
+        end
+        object Memo21: TfrxMemoView
+          Align = baLeft
+          AllowVectorExport = True
+          Left = 249.448933620000000000
+          Top = 79.850393700000000000
+          Width = 71.811070000000000000
+          Height = 19.275590550000000000
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWhite
+          Font.Height = -13
+          Font.Name = 'Segoe UI Semibold'
+          Font.Style = [fsBold]
+          Frame.Typ = [ftLeft, ftRight, ftBottom]
+          Fill.BackColor = clTeal
+          HAlign = haCenter
+          Memo.UTF8W = (
+            '1-30 DAYS')
+          ParentFont = False
+        end
+        object Memo22: TfrxMemoView
+          Align = baLeft
+          AllowVectorExport = True
+          Left = 321.260003619999900000
+          Top = 79.850393700000000000
+          Width = 79.370086060000000000
+          Height = 19.275590550000000000
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWhite
+          Font.Height = -13
+          Font.Name = 'Segoe UI Semibold'
+          Font.Style = [fsBold]
+          Frame.Typ = [ftLeft, ftRight, ftBottom]
+          Fill.BackColor = clTeal
+          HAlign = haCenter
+          Memo.UTF8W = (
+            '31-60 DAYS')
+          ParentFont = False
+        end
+        object Memo33: TfrxMemoView
+          Align = baLeft
+          AllowVectorExport = True
+          Left = 400.630089680000000000
+          Top = 79.850393700000000000
+          Width = 75.590556060000000000
+          Height = 19.275590550000000000
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWhite
+          Font.Height = -13
+          Font.Name = 'Segoe UI Semibold'
+          Font.Style = [fsBold]
+          Frame.Typ = [ftLeft, ftRight, ftBottom]
+          Fill.BackColor = clTeal
+          HAlign = haCenter
+          Memo.UTF8W = (
+            '61-90 DAYS')
+          ParentFont = False
+        end
+        object Memo28: TfrxMemoView
+          Align = baLeft
+          AllowVectorExport = True
+          Left = 476.220645739999900000
+          Top = 79.850393700000000000
+          Width = 83.149616060000000000
+          Height = 19.275590550000000000
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWhite
+          Font.Height = -13
+          Font.Name = 'Segoe UI Semibold'
+          Font.Style = [fsBold]
+          Frame.Typ = [ftLeft, ftRight, ftBottom]
+          Fill.BackColor = clTeal
+          HAlign = haCenter
+          Memo.UTF8W = (
+            '91-120 DAYS')
+          ParentFont = False
+        end
+        object Memo34: TfrxMemoView
+          Align = baLeft
+          AllowVectorExport = True
+          Left = 559.370261800000000000
+          Top = 79.850393700000000000
+          Width = 79.370086060000000000
+          Height = 19.275590550000000000
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWhite
+          Font.Height = -13
+          Font.Name = 'Segoe UI Semibold'
+          Font.Style = [fsBold]
+          Frame.Typ = [ftLeft, ftRight, ftBottom]
+          Fill.BackColor = clTeal
+          HAlign = haCenter
+          Memo.UTF8W = (
+            '121+ DAYS')
+          ParentFont = False
+        end
+        object Memo37: TfrxMemoView
+          Align = baLeft
+          AllowVectorExport = True
+          Left = 638.740347859999900000
+          Top = 60.472440940000000000
+          Width = 102.047266060000000000
+          Height = 38.173228346456700000
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWhite
+          Font.Height = -13
+          Font.Name = 'Segoe UI Semibold'
+          Font.Style = [fsBold]
+          Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
+          Fill.BackColor = clTeal
+          HAlign = haCenter
+          Memo.UTF8W = (
+            'OUTSTANDING')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object Memo39: TfrxMemoView
+          Align = baLeft
+          AllowVectorExport = True
+          Left = 740.787613919999900000
+          Top = 60.472440940000000000
+          Width = 86.929146060000000000
+          Height = 38.173228346456700000
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWhite
+          Font.Height = -13
+          Font.Name = 'Segoe UI Semibold'
+          Font.Style = [fsBold]
+          Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
+          Fill.BackColor = clTeal
+          HAlign = haCenter
+          Memo.UTF8W = (
+            'PAID')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object Memo45: TfrxMemoView
+          Align = baLeft
+          AllowVectorExport = True
+          Left = 827.716759979999900000
+          Top = 60.472440940000000000
+          Width = 86.929146060000000000
+          Height = 38.173228346456700000
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWhite
+          Font.Height = -13
+          Font.Name = 'Segoe UI Semibold'
+          Font.Style = [fsBold]
+          Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
+          Fill.BackColor = clTeal
+          HAlign = haCenter
+          Memo.UTF8W = (
+            'TOTAL')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object Memo49: TfrxMemoView
+          AllowVectorExport = True
+          Left = 177.637910000000000000
+          Top = 60.574830000000000000
+          Width = 461.102613620000000000
+          Height = 18.897650000000000000
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWhite
+          Font.Height = -13
+          Font.Name = 'Segoe UI Semibold'
+          Font.Style = [fsBold]
+          Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
+          Fill.BackColor = clTeal
+          HAlign = haCenter
+          Memo.UTF8W = (
+            'AMOUNT DUE')
+          ParentFont = False
+        end
+      end
+    end
   end
 end

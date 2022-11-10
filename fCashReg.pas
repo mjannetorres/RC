@@ -1301,10 +1301,12 @@ begin
                 brw_JOPaid.ParamByName('ID').Value := qry_CashRegREFID.Value;
                 brw_JOPaid.Open();
 
-                if qry_CashRegPAYMENTTYPE.Value = 'D' then
-                paid  := brw_JOPaidNETAMNT.Value
-                else
-                paid  := (brw_JOPaidCASHAMNT.Value + brw_JOPaidCARDAMNT.Value + brw_JOPaidCHECKAMNT.Value) - brw_JOPaidCHECKAMNT.Value;
+                paid  := brw_JOPaidNETAMNT.Value;
+
+//                if qry_CashRegPAYMENTTYPE.Value = 'D' then
+//                paid  := brw_JOPaidNETAMNT.Value
+//                else
+//                paid  := (brw_JOPaidCASHAMNT.Value + brw_JOPaidCARDAMNT.Value + brw_JOPaidCHECKAMNT.Value) - brw_JOPaidCHECKAMNT.Value;
 
                 brw_JOPaid.Close;
                 brw_JOPaid.SQL[2] := 'WHERE SOURCE = ''JO'' AND PAYMENTTYPE = ''D'' AND REFID = :ID AND CANCELLED = FALSE';

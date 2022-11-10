@@ -2364,6 +2364,7 @@ object dm_PM: Tdm_PM
     end
   end
   object qry_company: TFDQuery
+    Active = True
     CachedUpdates = True
     Connection = dbConn
     SQL.Strings = (
@@ -12717,6 +12718,7 @@ object dm_PM: Tdm_PM
       FieldName = 'ID'
       Origin = 'ID'
       ProviderFlags = [pfInWhere, pfInKey]
+      ReadOnly = True
     end
     object qry_GarCostingHEADERID: TIntegerField
       AutoGenerateValue = arDefault
@@ -12787,6 +12789,7 @@ object dm_PM: Tdm_PM
       FieldName = 'ID'
       Origin = 'ID'
       ProviderFlags = [pfInWhere, pfInKey]
+      ReadOnly = True
     end
     object brw_GarCostingHEADERID: TIntegerField
       AutoGenerateValue = arDefault
@@ -12933,6 +12936,209 @@ object dm_PM: Tdm_PM
     object tb_JOCloneFILENAME: TStringField
       FieldName = 'FILENAME'
       Size = 200
+    end
+  end
+  object brw_AR: TFDQuery
+    Connection = dbConn
+    SQL.Strings = (
+      
+        'SELECT CLIENTS.NAME, SUM(`NETAMNT`) AS NETAMNT, SUM(HEADER.PAIDA' +
+        'MNT) AS PAID, SUM(HEADER.BALAMNT) AS BALANCE '
+      'FROM JO_HEADER HEADER'
+      'INNER JOIN JO_CLIENTS CLIENTS ON CLIENTS.ID = HEADER.CLIENTID'
+      ''
+      'GROUP BY CLIENTS.`NAME`')
+    Left = 720
+    Top = 720
+    object brw_ARNAME: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'NAME'
+      Origin = '`NAME`'
+      Size = 100
+    end
+    object brw_ARNETAMNT: TFloatField
+      AutoGenerateValue = arDefault
+      FieldName = 'NETAMNT'
+      Origin = 'NETAMNT'
+      DisplayFormat = '###,###,##0.00'
+      currency = True
+    end
+    object brw_ARPAID: TFloatField
+      AutoGenerateValue = arDefault
+      FieldName = 'PAID'
+      Origin = 'PAID'
+      DisplayFormat = '###,###,##0.00'
+      currency = True
+    end
+    object brw_ARBALANCE: TFloatField
+      AutoGenerateValue = arDefault
+      FieldName = 'BALANCE'
+      Origin = 'BALANCE'
+      DisplayFormat = '###,###,##0.00'
+      currency = True
+    end
+  end
+  object tb_ARAging: TFDMemTable
+    Active = True
+    FieldDefs = <
+      item
+        Name = 'CLIENT'
+        DataType = ftString
+        Size = 50
+      end
+      item
+        Name = 'TOTAL'
+        DataType = ftCurrency
+        Precision = 19
+      end
+      item
+        Name = 'BALANCE'
+        DataType = ftCurrency
+        Precision = 19
+      end
+      item
+        Name = 'CURRENT'
+        DataType = ftCurrency
+        Precision = 19
+      end
+      item
+        Name = '30DAYS'
+        DataType = ftCurrency
+        Precision = 19
+      end
+      item
+        Name = '60DAYS'
+        DataType = ftCurrency
+        Precision = 19
+      end
+      item
+        Name = '90DAYS'
+        DataType = ftCurrency
+        Precision = 19
+      end
+      item
+        Name = '120DAYS'
+        DataType = ftCurrency
+        Precision = 19
+      end
+      item
+        Name = '121DAYS'
+        DataType = ftCurrency
+        Precision = 19
+      end
+      item
+        Name = 'PAID'
+        DataType = ftCurrency
+        Precision = 19
+      end>
+    IndexDefs = <>
+    FetchOptions.AssignedValues = [evMode]
+    FetchOptions.Mode = fmAll
+    ResourceOptions.AssignedValues = [rvSilentMode]
+    ResourceOptions.SilentMode = True
+    UpdateOptions.AssignedValues = [uvCheckRequired, uvAutoCommitUpdates]
+    UpdateOptions.CheckRequired = False
+    UpdateOptions.AutoCommitUpdates = True
+    StoreDefs = True
+    Left = 184
+    Top = 632
+    object tb_ARAgingCLIENT: TStringField
+      FieldName = 'CLIENT'
+      Size = 50
+    end
+    object tb_ARAgingTOTAL: TCurrencyField
+      FieldName = 'TOTAL'
+      DisplayFormat = '###,###,##0.00'
+    end
+    object tb_ARAgingBALANCE: TCurrencyField
+      FieldName = 'BALANCE'
+      DisplayFormat = '###,###,##0.00'
+    end
+    object tb_ARAgingCURRENT: TCurrencyField
+      FieldName = 'CURRENT'
+      DisplayFormat = '###,###,##0.00'
+    end
+    object tb_ARAgingField30DAYS: TCurrencyField
+      FieldName = '30DAYS'
+      DisplayFormat = '###,###,##0.00'
+    end
+    object tb_ARAgingField60DAYS: TCurrencyField
+      FieldName = '60DAYS'
+      DisplayFormat = '###,###,##0.00'
+    end
+    object tb_ARAgingField90DAYS: TCurrencyField
+      FieldName = '90DAYS'
+      DisplayFormat = '###,###,##0.00'
+    end
+    object tb_ARAgingField120DAYS: TCurrencyField
+      FieldName = '120DAYS'
+      DisplayFormat = '###,###,##0.00'
+    end
+    object tb_ARAgingField121DAYS: TCurrencyField
+      FieldName = '121DAYS'
+      DisplayFormat = '###,###,##0.00'
+    end
+    object tb_ARAgingPAID: TCurrencyField
+      FieldName = 'PAID'
+    end
+  end
+  object brw_Outstanding: TFDQuery
+    Connection = dbConn
+    SQL.Strings = (
+      
+        'SELECT SUM(CASH.NETAMNT) AS NETAMNT, SUM(CASH.CASHAMNT) AS CASHA' +
+        'MNT, SUM(CASH.CARDAMNT) AS CARDAMNT, SUM(CASH.CHECKAMNT) AS CHEC' +
+        'KAMNT, SUM(CASH.CHANGEAMNT) AS CHANGEAMNT'
+      'FROM CASH_HEADER CASH'
+      'INNER JOIN JO_HEADER HEADER ON HEADER.ID = CASH.REFID'
+      ''
+      ';')
+    Left = 760
+    Top = 720
+    object brw_OutstandingNETAMNT: TFloatField
+      AutoGenerateValue = arDefault
+      FieldName = 'NETAMNT'
+      Origin = 'NETAMNT'
+      ProviderFlags = []
+      ReadOnly = True
+      DisplayFormat = '###,###,##0.00'
+      currency = True
+    end
+    object brw_OutstandingCASHAMNT: TFloatField
+      AutoGenerateValue = arDefault
+      FieldName = 'CASHAMNT'
+      Origin = 'CASHAMNT'
+      ProviderFlags = []
+      ReadOnly = True
+      DisplayFormat = '###,###,##0.00'
+      currency = True
+    end
+    object brw_OutstandingCARDAMNT: TFloatField
+      AutoGenerateValue = arDefault
+      FieldName = 'CARDAMNT'
+      Origin = 'CARDAMNT'
+      ProviderFlags = []
+      ReadOnly = True
+      DisplayFormat = '###,###,##0.00'
+      currency = True
+    end
+    object brw_OutstandingCHECKAMNT: TFloatField
+      AutoGenerateValue = arDefault
+      FieldName = 'CHECKAMNT'
+      Origin = 'CHECKAMNT'
+      ProviderFlags = []
+      ReadOnly = True
+      DisplayFormat = '###,###,##0.00'
+      currency = True
+    end
+    object brw_OutstandingCHANGEAMNT: TFloatField
+      AutoGenerateValue = arDefault
+      FieldName = 'CHANGEAMNT'
+      Origin = 'CHANGEAMNT'
+      ProviderFlags = []
+      ReadOnly = True
+      DisplayFormat = '###,###,##0.00'
+      currency = True
     end
   end
 end

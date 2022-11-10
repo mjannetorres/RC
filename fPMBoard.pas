@@ -361,7 +361,6 @@ begin
 
       tb_JODetail.First;
 
-
       tb_InvReqDetail.Close;
       tb_InvReqDetail.Open;
 
@@ -369,6 +368,7 @@ begin
       qry_JoCost.SQL[2]  := 'WHERE HEADERID = :ID AND CANCELLED = FALSE';
       qry_JoCost.ParamByName('ID').Value := qry_JOID.Value;
       qry_JoCost.Open();
+
 
       if qry_JoCost.RecordCount > 0 then
       begin

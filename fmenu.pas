@@ -167,6 +167,8 @@ type
     scGPButton5: TscGPButton;
     btnWorkLog: TscGPButton;
     WorkLog: TAction;
+    ARAgingSchedule: TAction;
+    ARAgingSchedule1: TMenuItem;
     procedure MinButtonClick(Sender: TObject);
     procedure MaxButtonClick(Sender: TObject);
     procedure CloseButtonClick(Sender: TObject);
@@ -217,6 +219,7 @@ type
     procedure NotifExecute(Sender: TObject);
     procedure ClientsExecute(Sender: TObject);
     procedure WorkLogExecute(Sender: TObject);
+    procedure ARAgingScheduleExecute(Sender: TObject);
   private
     { Private declarations }
     procedure user_rights;
@@ -238,6 +241,112 @@ uses frmPM, fPMBoard, FJO, dmPM, DateUtils, fMatRequest, fCompany, fUsers, fEmp,
   fFabrics, fGarments, fUnit, fItems, fLogin, fCashReg, fPO, fRR, fPayment,
   fPettyCash, fExpense, fPayroll, fPolicy, fVendor, fBank, fExpenseType,
   fRequest, fDateRange, fReports, fnotif, fClients, fLogin1, fWorkLog;
+
+procedure Tf_menu.ARAgingScheduleExecute(Sender: TObject);
+var d30, d60, d90, d120, d121, current, paid, fp, paidamnt : Real;
+begin
+  with dm_PM do
+  begin
+    f_DateRange := Tf_DateRange.Create(Self);
+    f_DateRange.date_1.Date           := Now;
+    f_DateRange.date_2.Visible        := False;
+    f_DateRange.lbl_date_to.Visible   := False;
+    f_DateRange.lbl_date_from.Caption := 'Period Ending :';
+
+    if f_DateRange.ShowModal = mrOk then
+    begin
+      brw_AR.Close;
+      brw_AR.SQL[3] := 'WHERE HEADER.LOGDATE <= :DATE1 AND HEADER.CANCELLED = FALSE';
+      brw_AR.ParamByName('DATE1').Value   := FormatDateTime('yyyy-mm-dd hh:nn', EndOfTheDay(f_DateRange.date_1.Date));
+      brw_AR.Open();
+
+      tb_ARAging.Close;
+      tb_ARAging.Open;
+
+      brw_AR.First;
+      while not brw_AR.Eof do
+      begin
+        tb_ARAging.Append;
+        tb_ARAgingCLIENT.Value  := brw_ARNAME.Value;
+        tb_ARAgingTOTAL.Value   := brw_ARNETAMNT.Value;
+        //tb_ARAgingBALANCE.Value := brw_ARBALANCE.Value;
+
+        brw_JO.Close;
+        brw_JO.SQL[3] := 'WHERE JO_HEADER.LOGDATE <= :DATE1 AND JO_CLIENTS.NAME = :NAME AND JO_HEADER.CANCELLED = FALSE';
+        brw_JO.ParamByName('NAME').Value  := Trim(tb_ARAgingCLIENT.Value);
+        brw_JO.ParamByName('DATE1').Value := FormatDateTime('yyyy-mm-dd hh:nn', EndOfTheDay(f_DateRange.date_1.Date));
+        brw_JO.Open();
+
+        d30 := 0; d60 := 0;  d90 := 0; d120 := 0; d121 := 0;
+        current:= 0;
+        paid := 0;
+        fp := 0;
+        paidamnt := 0;
+
+        if brw_JO.RecordCount > 0 then
+        begin
+
+          brw_JO.First;
+          while not brw_JO.Eof do
+          begin
+            brw_Outstanding.Close;
+            brw_Outstanding.SQL[3] := 'WHERE CASH.SALESDATE <= :DATE1 AND CASH.SOURCE = ''JO'' AND CASH.PAYMENTTYPE = ''FP'' AND CASH.REFID = :ID AND CASH.CANCELLED = FALSE';
+            brw_Outstanding.ParamByName('ID').Value := brw_JOID.Value;
+            brw_Outstanding.ParamByName('DATE1').Value  := FormatDateTime('yyyy-mm-dd hh:nn', EndOfTheDay(f_DateRange.date_1.Date));
+            brw_Outstanding.Open();
+
+            fp  := brw_OutstandingNETAMNT.Value;
+
+            brw_Outstanding.Close;
+            brw_Outstanding.SQL[3] := 'WHERE CASH.SALESDATE <= :DATE1 AND CASH.SOURCE = ''JO'' AND CASH.PAYMENTTYPE = ''D'' AND CASH.REFID = :ID AND CASH.CANCELLED = FALSE';
+            brw_Outstanding.ParamByName('ID').Value := brw_JOID.Value;
+            brw_Outstanding.ParamByName('DATE1').Value  := FormatDateTime('yyyy-mm-dd hh:nn', EndOfTheDay(f_DateRange.date_1.Date));
+            brw_Outstanding.Open();
+
+            paidamnt  := fp + (brw_OutstandingCASHAMNT.Value + brw_OutstandingCARDAMNT.Value + brw_OutstandingCHECKAMNT.Value);
+
+            paid  := paid + paidamnt;
+
+            if DaysBetween(EndOfTheDay(f_DateRange.date_1.Date), brw_JODUEDATE.Value) <= 30 then
+            current := current + (brw_JONETAMNT.Value - paidamnt)
+            else if DaysBetween(EndOfTheDay(f_DateRange.date_1.Date), brw_JODUEDATE.Value) <= 60 then
+            d30 := d30 + (brw_JONETAMNT.Value - paidamnt)
+            else if DaysBetween(EndOfTheDay(f_DateRange.date_1.Date), brw_JODUEDATE.Value) <= 90 then
+            d60 := d60 + (brw_JONETAMNT.Value - paidamnt)
+            else if DaysBetween(EndOfTheDay(f_DateRange.date_1.Date), brw_JODUEDATE.Value) <= 120 then
+            d90 := d90 + (brw_JONETAMNT.Value - paidamnt)
+            else if DaysBetween(EndOfTheDay(f_DateRange.date_1.Date), brw_JODUEDATE.Value) <= 150 then
+            d120 := d120 + (brw_JONETAMNT.Value - paidamnt)
+            else
+            d121 := d121 + (brw_JONETAMNT.Value - paidamnt);
+
+            brw_JO.Next;
+          end;
+
+        end;
+
+        tb_ARAgingBALANCE.Value       := tb_ARAgingTOTAL.Value - paid;
+        tb_ARAgingPAID.Value          := paid;
+        tb_ARAgingCURRENT.Value       := current;
+        tb_ARAgingField30DAYS.Value   := d30;
+        tb_ARAgingField60DAYS.Value   := d60;
+        tb_ARAgingField90DAYS.Value   := d90;
+        tb_ARAgingField120DAYS.Value  := d120;
+        tb_ARAgingField121DAYS.Value  := d121;
+        tb_ARAging.Post;
+
+        brw_AR.Next;
+      end;
+
+      f_Reports := Tf_Reports.Create(Self);
+
+      TfrxMemoView(f_Reports.rep_ARAging.FindObject('period')).Text  := DateToStr(f_DateRange.date_1.Date);
+
+      f_Reports.rep_ARAging.ShowReport();
+
+    end;
+  end;
+end;
 
 procedure Tf_menu.BankExecute(Sender: TObject);
 begin

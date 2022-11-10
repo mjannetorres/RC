@@ -101,6 +101,7 @@ type
     PopupMenu2: TPopupMenu;
     MenuItem1: TMenuItem;
     DeleteCost: TAction;
+    cxGridDBTableView3ID: TcxGridDBColumn;
     procedure chk_postedClick(Sender: TObject);
     procedure cxGridDBTableView1SHIRTIDPropertiesCloseUp(Sender: TObject);
     procedure CancelExecute(Sender: TObject);
@@ -121,8 +122,13 @@ type
       var DisplayValue: Variant; var ErrorText: TCaption; var Error: Boolean);
     procedure DeleteCostExecute(Sender: TObject);
     procedure cxGrid2Exit(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure cxGridDBTableView1ITEMIDStylesGetContentStyle(
+      Sender: TcxCustomGridTableView; ARecord: TcxCustomGridRecord;
+      AItem: TcxCustomGridTableItem; var AStyle: TcxStyle);
   private
     { Private declarations }
+    ARedStyle: TcxStyle;
     posted: Boolean;
     procedure generate_costing;
     procedure readonly(flag: Boolean);
@@ -319,6 +325,14 @@ begin
   end;
 end;
 
+procedure Tf_JO.cxGridDBTableView1ITEMIDStylesGetContentStyle(
+  Sender: TcxCustomGridTableView; ARecord: TcxCustomGridRecord;
+  AItem: TcxCustomGridTableItem; var AStyle: TcxStyle);
+begin
+  if ARecord.Values[cxGridDBTableView3ID.Index] = Null then
+  AStyle  := ARedStyle;
+end;
+
 procedure Tf_JO.cxGridDBTableView1KeyDown(Sender: TObject; var Key: Word;
   Shift: TShiftState);
 begin
@@ -327,9 +341,32 @@ begin
 end;
 
 procedure Tf_JO.cxGridDBTableView1SHIRTIDPropertiesCloseUp(Sender: TObject);
+var detailid: Integer;
 begin
   with dm_PM do
   begin
+    detailid  := tb_JODetailSHIRTID.Value;
+
+    tb_JODetail.DisableControls;
+    tb_JODetail.Filtered := False;
+    tb_JODetail.Filter   := 'SHIRTID = '+IntToStr(detailid);
+    tb_JODetail.Filtered := True;
+
+    if tb_JODetail.RecordCount > 1 then
+    begin
+      tb_JODetail.Last;
+      tb_JODetail.Delete;
+      MessageDlg('Shirt already on the list!', mtInformation, [mbOK], 0);
+      tb_JODetail.Filtered := False;
+      tb_JODetail.EnableControls;
+      Exit;
+    end
+    else
+    begin
+      tb_JODetail.Filtered := False;
+      tb_JODetail.EnableControls;
+    end;
+
     if brw_GarmentDesc.Locate('ID', tb_JODetailSHIRTID.Value, []) then
     begin
       tb_JODetail.Edit;
@@ -354,7 +391,7 @@ begin
      begin
        qry_JoCost.Close;
        qry_JoCost.SQL[2]  := 'WHERE ID = :ID';
-       qry_JoCost.ParamByName('ID').Value := tb_InvReqDetailID.Value;
+       qry_JoCost.ParamByName('ID').Value   := tb_InvReqDetailID.Value;
        qry_JoCost.Open();
 
        if qry_JoCost.RecordCount > 0 then
@@ -368,7 +405,7 @@ begin
        end;
      end;
      tb_InvReqDetail.Delete;
-     ComputeAmntExecute(nil);
+     //ComputeAmntExecute(nil);
   end;
 end;
 
@@ -410,6 +447,12 @@ begin
   end;
 
   Action  := caFree;
+end;
+
+procedure Tf_JO.FormCreate(Sender: TObject);
+begin
+  ARedStyle             := TcxStyle.Create(Self);
+  ARedStyle.TextColor   := clRed;
 end;
 
 procedure Tf_JO.FormShow(Sender: TObject);
@@ -495,6 +538,12 @@ begin
                 tb_InvReqDetailCOST.Value      := brw_GarCostingCOST.Value;
                 tb_InvReqDetail.Post;
               end;
+//              else
+//              begin
+//                tb_InvReqDetail.Edit;
+//                tb_InvReqDetailQTY.Value       := tb_InvReqDetailQTY.Value + (brw_GarCostingQTY.Value * (tb_JODetailQTY.Value + tb_JODetailFREE.Value));
+//                tb_InvReqDetail.Post;
+//              end;
 
               brw_GarCosting.Next;
             end;

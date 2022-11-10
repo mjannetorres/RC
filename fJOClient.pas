@@ -61,17 +61,8 @@ implementation
 uses dmPM;
 
 procedure Tf_JOClient.ComboBoxSearchExit(Sender: TObject);
-const
-    MaxHistory=200;//max number of items
 begin
-   //check if the text entered exist in the list, if not add to the list
-   if (Trim(ComboBoxSearch.Text)<>'') and (ComboBoxSearch.Items.IndexOf(ComboBoxSearch.Text)=-1) then
-   begin
-     if ComboBoxSearch.Items.Count = MaxHistory then
-     ComboBoxSearch.Items.Delete(ComboBoxSearch.Items.Count-1);
-     ComboBoxSearch.Items.Insert(0,ComboBoxSearch.Text);
-   end;
-   manageui;
+  manageui;
 end;
 
 procedure Tf_JOClient.cxDBTextEdit2Exit(Sender: TObject);
@@ -105,11 +96,20 @@ begin
 end;
 
 procedure Tf_JOClient.manageui;
+const
+  MaxHistory=200;//max number of items
 begin
-  if Trim(ComboBoxSearch.Text) <> '' then
-  btnSave.Enabled := True
-  else
-  btnSave.Enabled := False;
+   //check if the text entered exist in the list, if not add to the list
+   if (Trim(ComboBoxSearch.Text)<>'') and (ComboBoxSearch.Items.IndexOf(ComboBoxSearch.Text)=-1) then
+   begin
+     if ComboBoxSearch.Items.Count = MaxHistory then
+     ComboBoxSearch.Items.Delete(ComboBoxSearch.Items.Count-1);
+     ComboBoxSearch.Items.Insert(0,ComboBoxSearch.Text);
+
+     btnSave.Enabled := True;
+   end
+   else
+    btnSave.Enabled := False;
 end;
 
 end.

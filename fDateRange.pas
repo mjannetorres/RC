@@ -29,8 +29,8 @@ type
     Button2: TButton;
     Panel1: TPanel;
     Panel2: TPanel;
-    Label6: TLabel;
-    Label1: TLabel;
+    lbl_date_from: TLabel;
+    lbl_date_to: TLabel;
     date_1: TcxDateEdit;
     date_2: TcxDateEdit;
   private

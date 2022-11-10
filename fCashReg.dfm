@@ -3846,8 +3846,6 @@ object f_CashReg: Tf_CashReg
       OnExit = cxGrid1Exit
       LookAndFeel.NativeStyle = False
       LookAndFeel.SkinName = 'Foggy'
-      ExplicitLeft = 115
-      ExplicitTop = 66
       object cxGrid1DBTableView1: TcxGridDBTableView
         Navigator.Buttons.CustomButtons = <>
         OnCellClick = cxGrid1DBTableView1CellClick

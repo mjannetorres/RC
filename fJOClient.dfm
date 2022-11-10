@@ -16,7 +16,7 @@ object f_JOClient: Tf_JOClient
   OnCreate = FormCreate
   OnShow = FormShow
   PixelsPerInch = 96
-  TextHeight = 13
+  TextHeight = 14
   object Panel2: TPanel
     Left = 0
     Top = 0
@@ -32,7 +32,6 @@ object f_JOClient: Tf_JOClient
     ParentBackground = False
     TabOrder = 1
     StyleElements = []
-    ExplicitTop = 8
     object Label1: TLabel
       Left = 10
       Top = 10
@@ -58,7 +57,6 @@ object f_JOClient: Tf_JOClient
     Align = alBottom
     BevelOuter = bvNone
     TabOrder = 0
-    ExplicitTop = 253
     DesignSize = (
       370
       37)
@@ -233,7 +231,7 @@ object f_JOClient: Tf_JOClient
       Left = 75
       Top = 14
       Width = 280
-      Height = 21
+      Height = 22
       CharCase = ecUpperCase
       TabOrder = 0
       OnExit = ComboBoxSearchExit

@@ -4,7 +4,7 @@ object f_DateRange: Tf_DateRange
   BorderStyle = bsDialog
   Caption = 'Reports Date Range'
   ClientHeight = 128
-  ClientWidth = 303
+  ClientWidth = 313
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -18,18 +18,17 @@ object f_DateRange: Tf_DateRange
   object Panel1: TPanel
     Left = 0
     Top = 91
-    Width = 303
+    Width = 313
     Height = 37
     Align = alBottom
     BevelOuter = bvNone
     TabOrder = 0
-    ExplicitTop = 133
-    ExplicitWidth = 379
+    ExplicitWidth = 303
     DesignSize = (
-      303
+      313
       37)
     object Button1: TButton
-      Left = 111
+      Left = 126
       Top = 6
       Width = 75
       Height = 25
@@ -38,9 +37,10 @@ object f_DateRange: Tf_DateRange
       Default = True
       ModalResult = 1
       TabOrder = 0
+      ExplicitLeft = 116
     end
     object Button2: TButton
-      Left = 198
+      Left = 213
       Top = 6
       Width = 75
       Height = 25
@@ -49,12 +49,13 @@ object f_DateRange: Tf_DateRange
       Caption = 'Cancel'
       ModalResult = 2
       TabOrder = 1
+      ExplicitLeft = 203
     end
   end
   object Panel2: TPanel
     Left = 0
     Top = 0
-    Width = 303
+    Width = 313
     Height = 91
     Align = alClient
     BevelOuter = bvNone
@@ -66,9 +67,8 @@ object f_DateRange: Tf_DateRange
     ParentBackground = False
     TabOrder = 1
     StyleElements = []
-    ExplicitWidth = 379
-    ExplicitHeight = 121
-    object Label6: TLabel
+    ExplicitWidth = 303
+    object lbl_date_from: TLabel
       Left = 13
       Top = 22
       Width = 71
@@ -81,7 +81,7 @@ object f_DateRange: Tf_DateRange
       Font.Style = [fsBold]
       ParentFont = False
     end
-    object Label1: TLabel
+    object lbl_date_to: TLabel
       Left = 13
       Top = 47
       Width = 69
@@ -95,8 +95,8 @@ object f_DateRange: Tf_DateRange
       ParentFont = False
     end
     object date_1: TcxDateEdit
-      Left = 101
-      Top = 21
+      Left = 116
+      Top = 19
       ParentFont = False
       Properties.ImmediatePost = True
       Properties.SaveTime = False
@@ -121,7 +121,7 @@ object f_DateRange: Tf_DateRange
       Width = 172
     end
     object date_2: TcxDateEdit
-      Left = 101
+      Left = 116
       Top = 47
       ParentFont = False
       Properties.ImmediatePost = True

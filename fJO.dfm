@@ -14,6 +14,7 @@ object f_JO: Tf_JO
   OldCreateOrder = False
   Position = poMainFormCenter
   OnClose = FormClose
+  OnCreate = FormCreate
   OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 14
@@ -1098,6 +1099,7 @@ object f_JO: Tf_JO
             PropertiesClassName = 'TcxLookupComboBoxProperties'
             Properties.CharCase = ecUpperCase
             Properties.DropDownWidth = 360
+            Properties.HideSelection = False
             Properties.ImmediatePost = True
             Properties.KeyFieldNames = 'ID'
             Properties.ListColumns = <
@@ -1124,6 +1126,7 @@ object f_JO: Tf_JO
             HeaderAlignmentHorz = taCenter
             Options.Filtering = False
             Options.Sorting = False
+            Styles.OnGetContentStyle = cxGridDBTableView1ITEMIDStylesGetContentStyle
             Styles.Header = Header_style
             Width = 197
           end
@@ -1164,6 +1167,10 @@ object f_JO: Tf_JO
             Options.Sorting = False
             Styles.Header = Header_style
             Width = 102
+          end
+          object cxGridDBTableView3ID: TcxGridDBColumn
+            DataBinding.FieldName = 'ID'
+            Visible = False
           end
         end
         object cxGridLevel3: TcxGridLevel
