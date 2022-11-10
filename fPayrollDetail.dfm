@@ -2,7 +2,7 @@ object f_PayrollDetail: Tf_PayrollDetail
   Left = 0
   Top = 0
   BorderStyle = bsDialog
-  Caption = 'Payroll Detail'
+  Caption = 'Particulars'
   ClientHeight = 319
   ClientWidth = 825
   Color = clBtnFace
