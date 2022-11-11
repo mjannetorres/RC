@@ -1222,7 +1222,7 @@ begin
       if qry_dateconfigAUTONOW.Value then
       lbl_POS.Caption         := 'POS DAY : '+FormatDateTime('mmmm d, yyyy hh:nn:ss AM/PM', qry_POSDayDATE.Value)
       else
-      lbl_POS.Caption         := 'POS DAY : '+FormatDateTime('mmmm d, yyyy hh:nn:ss AM/PM', qry_dateconfigDATE.Value);
+      lbl_POS.Caption         := 'POS DAY : '+FormatDateTime('mmmm d, yyyy hh:nn:ss AM/PM', qry_dateconfigDATE.Value + Time);
     end
     else
     begin
@@ -1238,6 +1238,7 @@ end;
 procedure Tf_CashReg.PostExecute(Sender: TObject);
 var paid, paidamnt: Real;
     report: TfrxReport;
+    created_at : TDateTime;
 begin
   with dm_PM do
   begin
@@ -1245,6 +1246,8 @@ begin
     begin
        qry_dateconfig.Close;
        qry_dateconfig.Open();
+
+       created_at := qry_dateconfigDATE.Value + Time;
 
        if (not qry_dateconfigACTIVE.Value) and (not qry_dateconfigAUTONOW.Value) then
        DateConfigExecute(nil);
@@ -1263,7 +1266,7 @@ begin
             end
             else
             begin
-              qry_CashRegCREATEDDATETIME.Value  := qry_dateconfigDATE.Value;
+              qry_CashRegCREATEDDATETIME.Value  := created_at; //qry_dateconfigDATE.Value;
               qry_CashRegSALESDATE.Value        := qry_dateconfigDATE.Value;
             end;
 
@@ -1332,7 +1335,7 @@ begin
                 if qry_dateconfigAUTONOW.Value then
                 qry_JOPOSTEDDATETIME.Value  := Now
                 else
-                qry_JOPOSTEDDATETIME.Value  := qry_dateconfigDATE.Value;
+                qry_JOPOSTEDDATETIME.Value  := created_at;
                 qry_JOPAIDAMNT.Value        := paidamnt;
                 qry_JOBALAMNT.Value         := (qry_JONETAMNT.Value - paidamnt);
                 qry_JO.Post;
@@ -1373,7 +1376,7 @@ begin
               if qry_dateconfigAUTONOW.Value then
               qry_CashInDetailCREATEDDATETIME.Value := Now
               else
-              qry_CashInDetailCREATEDDATETIME.Value := qry_dateconfigDATE.Value;
+              qry_CashInDetailCREATEDDATETIME.Value := created_at;
               qry_CashInDetail.Post;
               qry_CashInDetail.ApplyUpdates();
             end
@@ -1385,7 +1388,7 @@ begin
               if qry_dateconfigAUTONOW.Value then
               qry_CashOutDetailCREATEDDATETIME.Value := Now
               else
-              qry_CashOutDetailCREATEDDATETIME.Value := qry_dateconfigDATE.Value;
+              qry_CashOutDetailCREATEDDATETIME.Value := created_at;
               qry_CashOutDetail.Post;
               qry_CashOutDetail.ApplyUpdates();
 
@@ -1875,7 +1878,7 @@ begin
     if dm_PM.qry_dateconfigAUTONOW.Value then
     lbl_POS.Caption := 'POS DAY : '+FormatDateTime('mmmm d, yyyy hh:nn:ss AM/PM', Now)
     else
-    lbl_POS.Caption := 'POS DAY : '+FormatDateTime('mmmm d, yyyy hh:nn:ss AM/PM', dm_PM.qry_dateconfigDATE.Value);
+    lbl_POS.Caption := 'POS DAY : '+FormatDateTime('mmmm d, yyyy hh:nn:ss AM/PM', dm_PM.qry_dateconfigDATE.Value + Time);
   end;
 end;
 

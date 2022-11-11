@@ -2747,7 +2747,6 @@ object f_CashReg: Tf_CashReg
           Down = False
           GroupIndex = 0
           AllowAllUp = False
-          ExplicitTop = 85
         end
         object btnCashIn: TscGPButton
           Left = 404
@@ -3094,8 +3093,6 @@ object f_CashReg: Tf_CashReg
             ParentBackground = False
             TabOrder = 0
             StyleElements = []
-            ExplicitLeft = 232
-            ExplicitTop = 9
             object cxLabel1: TcxLabel
               Left = 5
               Top = 9

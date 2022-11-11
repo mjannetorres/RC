@@ -169,6 +169,12 @@ type
     WorkLog: TAction;
     ARAgingSchedule: TAction;
     ARAgingSchedule1: TMenuItem;
+    RemittanceSummary: TAction;
+    RemittanceDetail: TAction;
+    SalariesandWages: TAction;
+    RemittanceSummary1: TMenuItem;
+    RemittanceDetail1: TMenuItem;
+    SalariesandWages1: TMenuItem;
     procedure MinButtonClick(Sender: TObject);
     procedure MaxButtonClick(Sender: TObject);
     procedure CloseButtonClick(Sender: TObject);
@@ -220,6 +226,9 @@ type
     procedure ClientsExecute(Sender: TObject);
     procedure WorkLogExecute(Sender: TObject);
     procedure ARAgingScheduleExecute(Sender: TObject);
+    procedure SalariesandWagesExecute(Sender: TObject);
+    procedure RemittanceDetailExecute(Sender: TObject);
+    procedure RemittanceSummaryExecute(Sender: TObject);
   private
     { Private declarations }
     procedure user_rights;
@@ -426,7 +435,12 @@ begin
               tb_CashFlowCREDIT.Value := 0;
 
               if brw_CashSumSOURCE.Value = 'JO' then
-              tb_CashFlowDEBIT.Value := brw_CashSumPAIDAMNT.Value
+              begin
+                if brw_CashSumPAYMENTTYPE.Value = 'FP' then
+                tb_CashFlowDEBIT.Value := brw_CashSumNETAMNT.Value
+                else
+                tb_CashFlowDEBIT.Value := brw_CashSumPAIDAMNT.Value
+              end
               else if (brw_CashSumSOURCE.Value = 'CASH') or (brw_CashSumSOURCE.Value = 'IN') then
               tb_CashFlowDEBIT.Value := brw_CashSumNETAMNT.Value
               else
@@ -1105,6 +1119,61 @@ begin
   end;
 end;
 
+procedure Tf_menu.RemittanceDetailExecute(Sender: TObject);
+begin
+  with dm_PM do
+  begin
+    f_DateRange := Tf_DateRange.Create(Self);
+    f_DateRange.date_1.Date := StartOfTheMonth(Now);
+    f_DateRange.date_2.Date := EndOfTheMonth(Now);
+
+    if f_DateRange.ShowModal = mrOk then
+    begin
+      brw_ViewCA.Close;
+      brw_ViewCA.SQL[4]  := 'WHERE HEADER.EXPENSETYPE = ''REMITTANCE'' AND (HEADER.SALESDATE BETWEEN :date1 and :date2) AND HEADER.SOURCE = ''OUT'' AND HEADER.CANCELLED = FALSE AND DETAIL.CANCELLED = FALSE';
+      brw_ViewCA.ParamByName('date1').Value  := FormatDateTime('yyyy-mm-dd', f_DateRange.date_1.Date);
+      brw_ViewCA.ParamByName('date2').Value := FormatDateTime('yyyy-mm-dd', f_DateRange.date_2.Date);
+      brw_ViewCA.Open();
+
+      f_Reports := Tf_Reports.Create(Self);
+
+      TfrxMemoView(f_Reports.rep_ExpenseDetail.FindObject('item')).Text  := 'REMITTANCE DETAIL REPORT';
+      TfrxMemoView(f_Reports.rep_ExpenseDetail.FindObject('period')).Text  := DateToStr(f_DateRange.date_1.Date) + ' - '+DateToStr(f_DateRange.date_2.Date);
+
+      f_Reports.rep_ExpenseDetail.ShowReport();
+
+    end;
+  end;
+end;
+
+procedure Tf_menu.RemittanceSummaryExecute(Sender: TObject);
+begin
+  with dm_PM do
+  begin
+
+    f_DateRange := Tf_DateRange.Create(Self);
+    f_DateRange.date_1.Date := StartOfTheMonth(Now);
+    f_DateRange.date_2.Date := EndOfTheMonth(Now);
+
+    if f_DateRange.ShowModal = mrOk then
+    begin
+      brw_CashSum.Close;
+      brw_CashSum.SQL[2]  := 'WHERE EXPENSETYPE = ''REMITTANCE'' AND (SALESDATE BETWEEN :date1 and :date2) AND SOURCE IN (''OUT'', ''DISBURSE'') AND CANCELLED = FALSE';
+      brw_CashSum.ParamByName('date1').Value  := FormatDateTime('yyyy-mm-dd', f_DateRange.date_1.Date);
+      brw_CashSum.ParamByName('date2').Value := FormatDateTime('yyyy-mm-dd', f_DateRange.date_2.Date);
+      brw_CashSum.Open();
+
+      f_Reports := Tf_Reports.Create(Self);
+
+      TfrxMemoView(f_Reports.rep_ExpenseSummary.FindObject('item')).Text  := 'REMITTANCE SUMMARY REPORT';
+      TfrxMemoView(f_Reports.rep_ExpenseSummary.FindObject('period')).Text  := DateToStr(f_DateRange.date_1.Date) + ' - '+DateToStr(f_DateRange.date_2.Date);
+
+      f_Reports.rep_ExpenseSummary.ShowReport();
+
+    end;
+  end;
+end;
+
 procedure Tf_menu.ReplenishmentDetailExecute(Sender: TObject);
 var totalcashin: Real;
 begin
@@ -1194,6 +1263,32 @@ begin
       TfrxMemoView(f_Reports.rep_IRSummary.FindObject('period')).Text  := DateToStr(f_DateRange.date_1.Date) + ' - '+DateToStr(f_DateRange.date_2.Date);
 
       f_Reports.rep_IRSummary.ShowReport();
+    end;
+  end;
+end;
+
+procedure Tf_menu.SalariesandWagesExecute(Sender: TObject);
+begin
+  with dm_PM do
+  begin
+    f_DateRange := Tf_DateRange.Create(Self);
+    f_DateRange.date_1.Date := StartOfTheMonth(Now);
+    f_DateRange.date_2.Date := EndOfTheMonth(Now);
+
+    if f_DateRange.ShowModal = mrOk then
+    begin
+      brw_Salaries.Close;
+      brw_Salaries.SQL[4] := 'WHERE EXP.CATEGORY = 1 AND (DETAIL.PAYDATEFROM BETWEEN :DATE1 AND :DATE2) AND HEADER.CANCELLED = FALSE AND DETAIL.CANCELLED = FALSE';
+      brw_Salaries.ParamByName('DATE1').Value  := FormatDateTime('yyyy-mm-dd', f_DateRange.date_1.Date);
+      brw_Salaries.ParamByName('DATE2').Value := FormatDateTime('yyyy-mm-dd', f_DateRange.date_2.Date);
+      brw_Salaries.Open();
+
+
+      f_Reports := Tf_Reports.Create(Self);
+
+      TfrxMemoView(f_Reports.rep_Salaries.FindObject('period')).Text      := DateToStr(f_DateRange.date_1.Date) + ' - '+DateToStr(f_DateRange.date_2.Date);
+
+      f_Reports.rep_Salaries.ShowReport();
     end;
   end;
 end;

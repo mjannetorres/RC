@@ -413,6 +413,7 @@ begin
             while not brw_CashSum.Eof do
             begin
               tb_CashFlow.Append;
+              tb_CashFlowID.Value           := brw_CashSumID.Value;
               tb_CashFlowPOSDAY.Value       := brw_OpenCashSumPOSDAY.Value;
               tb_CashFlowPOSDAYID.Value     := brw_OpenCashSumPOSDAYID.Value;
               tb_CashFlowOPENNING.Value     := brw_OpenCashSumAMNT.Value;
@@ -435,7 +436,12 @@ begin
               tb_CashFlowCREDIT.Value := 0;
 
               if brw_CashSumSOURCE.Value = 'JO' then
-              tb_CashFlowDEBIT.Value := brw_CashSumPAIDAMNT.Value
+              begin
+                if brw_CashSumPAYMENTTYPE.Value = 'FP' then
+                tb_CashFlowDEBIT.Value := brw_CashSumNETAMNT.Value
+                else
+                tb_CashFlowDEBIT.Value := brw_CashSumPAIDAMNT.Value
+              end
               else if (brw_CashSumSOURCE.Value = 'CASH') or (brw_CashSumSOURCE.Value = 'IN') then
               tb_CashFlowDEBIT.Value := brw_CashSumNETAMNT.Value
               else
@@ -450,7 +456,7 @@ begin
         end;
       end;
 
-      tb_CashFlow.IndexFieldNames := 'POSDAYID;TIME';
+      tb_CashFlow.IndexFieldNames := 'POSDAYID;ID;TIME';
       f_Reports := Tf_Reports.Create(Self);
       TfrxMemoView(f_Reports.rep_cashflow.FindObject('period')).Text  := DateToStr(f_DateRange.date_1.Date) + ' - '+DateToStr(f_DateRange.date_2.Date);
       TfrxMemoView(f_Reports.rep_cashflow.FindObject('grandtotal')).Text  := 'Ending Bal. '+FormatCurr('###,###,##0.00', balance);

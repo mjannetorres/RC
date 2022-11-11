@@ -5,7 +5,6 @@ object dm_PM: Tdm_PM
   object dbConn: TFDConnection
     Params.Strings = (
       'Database=PM'
-      'User_Name=root'
       'Port='
       'DriverID=MySQL')
     LoginPrompt = False
@@ -11185,6 +11184,9 @@ object dm_PM: Tdm_PM
       DisplayFormat = '###,###,##0.00'
       currency = True
     end
+    object tb_CashFlowID: TIntegerField
+      FieldName = 'ID'
+    end
   end
   object brw_MatRequest: TFDQuery
     OnCalcFields = brw_MatRequestCalcFields
@@ -13159,6 +13161,7 @@ object dm_PM: Tdm_PM
       FieldName = 'ID'
       Origin = 'ID'
       ProviderFlags = [pfInWhere, pfInKey]
+      ReadOnly = True
     end
     object brw_SalariesHEADERID: TIntegerField
       AutoGenerateValue = arDefault

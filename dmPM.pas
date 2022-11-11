@@ -2191,6 +2191,7 @@ type
     brw_SalariesCANCELLEDBYID: TIntegerField;
     brw_SalariesCANCELLEDDATETIME: TDateTimeField;
     brw_SalariesEXPENSETYPE: TIntegerField;
+    tb_CashFlowID: TIntegerField;
     procedure tb_JODetailCalcFields(DataSet: TDataSet);
     procedure brw_pmboardCalcFields(DataSet: TDataSet);
     procedure brw_EmpCalcFields(DataSet: TDataSet);
