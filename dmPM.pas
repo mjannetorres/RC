@@ -2192,6 +2192,13 @@ type
     brw_SalariesCANCELLEDDATETIME: TDateTimeField;
     brw_SalariesEXPENSETYPE: TIntegerField;
     tb_CashFlowID: TIntegerField;
+    tb_Payroll: TFDMemTable;
+    tb_PayrollEMPLOYEE: TStringField;
+    tb_PayrollWORKLOGS: TStringField;
+    tb_PayrollGROSS: TFloatField;
+    tb_PayrollCASHADV: TFloatField;
+    tb_PayrollNETAMNT: TFloatField;
+    brw_ComputePayWORKERID: TIntegerField;
     procedure tb_JODetailCalcFields(DataSet: TDataSet);
     procedure brw_pmboardCalcFields(DataSet: TDataSet);
     procedure brw_EmpCalcFields(DataSet: TDataSet);
@@ -2236,6 +2243,7 @@ type
     procedure brw_PendingCalcFields(DataSet: TDataSet);
     procedure tb_PaySlipCalcFields(DataSet: TDataSet);
     procedure brw_WorkLogsCalcFields(DataSet: TDataSet);
+    procedure tb_PayrollCalcFields(DataSet: TDataSet);
   private
     { Private declarations }
   public
@@ -2648,6 +2656,11 @@ end;
 procedure Tdm_PM.tb_PayParticularCalcFields(DataSet: TDataSet);
 begin
   tb_PayParticularAMNT.Value  := tb_PayParticularQTY.Value * tb_PayParticularPRICE.Value;
+end;
+
+procedure Tdm_PM.tb_PayrollCalcFields(DataSet: TDataSet);
+begin
+  tb_PayrollNETAMNT.Value := tb_PayrollGROSS.Value - tb_PayrollCASHADV.Value;
 end;
 
 procedure Tdm_PM.tb_PaySlipCalcFields(DataSet: TDataSet);

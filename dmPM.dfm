@@ -6,7 +6,10 @@ object dm_PM: Tdm_PM
     Params.Strings = (
       'Database=PM'
       'Port='
+      'User_Name=rcadmin'
+      'Password=rcadmin123'
       'DriverID=MySQL')
+    Connected = True
     LoginPrompt = False
     Left = 16
     Top = 40
@@ -12690,10 +12693,10 @@ object dm_PM: Tdm_PM
   object brw_ComputePay: TFDQuery
     Connection = dbConn
     SQL.Strings = (
-      'SELECT SUM(QTY * COST) AS AMNT, WORKER '
+      'SELECT SUM(QTY * COST) AS AMNT, WORKER, WORKERID'
       'FROM pm_worklogs'
       ''
-      'GROUP BY WORKER;')
+      'GROUP BY WORKER, WORKERID;')
     Left = 616
     Top = 720
     object brw_ComputePayAMNT: TFloatField
@@ -12708,6 +12711,11 @@ object dm_PM: Tdm_PM
       FieldName = 'WORKER'
       Origin = 'WORKER'
       Size = 50
+    end
+    object brw_ComputePayWORKERID: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'WORKERID'
+      Origin = 'WORKERID'
     end
   end
   object qry_GarCosting: TFDQuery
@@ -13261,6 +13269,42 @@ object dm_PM: Tdm_PM
       Origin = 'CATEGORY'
       ProviderFlags = []
       ReadOnly = True
+    end
+  end
+  object tb_Payroll: TFDMemTable
+    OnCalcFields = tb_PayrollCalcFields
+    FetchOptions.AssignedValues = [evMode]
+    FetchOptions.Mode = fmAll
+    ResourceOptions.AssignedValues = [rvSilentMode]
+    ResourceOptions.SilentMode = True
+    UpdateOptions.AssignedValues = [uvCheckRequired, uvAutoCommitUpdates]
+    UpdateOptions.CheckRequired = False
+    UpdateOptions.AutoCommitUpdates = True
+    Left = 240
+    Top = 632
+    object tb_PayrollEMPLOYEE: TStringField
+      FieldName = 'EMPLOYEE'
+    end
+    object tb_PayrollWORKLOGS: TStringField
+      FieldName = 'WORKLOGS'
+      Size = 500
+    end
+    object tb_PayrollGROSS: TFloatField
+      FieldName = 'GROSS'
+      DisplayFormat = '###,###,##0.00'
+      currency = True
+    end
+    object tb_PayrollCASHADV: TFloatField
+      FieldName = 'CASHADV'
+      DisplayFormat = '###,###,##0.00'
+      currency = True
+    end
+    object tb_PayrollNETAMNT: TFloatField
+      FieldKind = fkCalculated
+      FieldName = 'NETAMNT'
+      DisplayFormat = '###,###,##0.00'
+      currency = True
+      Calculated = True
     end
   end
 end

@@ -3054,10 +3054,386 @@ object f_CashReg: Tf_CashReg
             ShowCloseButton = True
             UseCustomOptions = False
           end>
-        TabIndex = 1
-        ActivePage = scGPPageControlPage1
+        TabIndex = 0
+        ActivePage = scGPPageControlPage3
         StorePaintBuffer = False
         FreeOnClose = False
+        object scGPPageControlPage1: TscGPPageControlPage
+          Left = 0
+          Top = 30
+          Width = 1070
+          Height = 207
+          HorzScrollBar.Tracking = True
+          VertScrollBar.Tracking = True
+          Align = alClient
+          BorderStyle = bsNone
+          Color = clWhite
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          ParentColor = False
+          ParentFont = False
+          TabOrder = 1
+          Visible = False
+          StyleElements = []
+          WallpaperIndex = -1
+          CustomBackgroundImageIndex = -1
+          FluentUIOpaque = False
+          StorePaintBuffer = False
+          BGStyle = scgppsForm
+          object Panel13: TPanel
+            Left = 0
+            Top = 0
+            Width = 1070
+            Height = 207
+            Align = alClient
+            BevelOuter = bvNone
+            Color = clWhite
+            Padding.Left = 10
+            Padding.Right = 10
+            ParentBackground = False
+            TabOrder = 0
+            StyleElements = []
+            object Panel18: TPanel
+              Left = 10
+              Top = 0
+              Width = 1050
+              Height = 41
+              Align = alTop
+              BevelOuter = bvNone
+              TabOrder = 0
+              object cxLabel15: TcxLabel
+                Left = 866
+                Top = 0
+                Align = alRight
+                Caption = '   BALANCE :    '
+                ParentFont = False
+                Style.BorderStyle = ebsNone
+                Style.Edges = [bLeft, bTop, bRight, bBottom]
+                Style.Font.Charset = ANSI_CHARSET
+                Style.Font.Color = 3614763
+                Style.Font.Height = -19
+                Style.Font.Name = 'Segoe UI Black'
+                Style.Font.Style = [fsBold]
+                Style.LookAndFeel.NativeStyle = False
+                Style.LookAndFeel.SkinName = ''
+                Style.IsFontAssigned = True
+                StyleDisabled.LookAndFeel.NativeStyle = False
+                StyleDisabled.LookAndFeel.SkinName = ''
+                StyleFocused.LookAndFeel.NativeStyle = False
+                StyleFocused.LookAndFeel.SkinName = ''
+                StyleHot.LookAndFeel.NativeStyle = False
+                StyleHot.LookAndFeel.SkinName = ''
+                Properties.Alignment.Horz = taLeftJustify
+                Properties.Alignment.Vert = taVCenter
+                Transparent = True
+                AnchorY = 21
+              end
+              object lblBalance: TcxLabel
+                Left = 1004
+                Top = 0
+                Align = alRight
+                Caption = '0.00'
+                ParentFont = False
+                Style.BorderStyle = ebsNone
+                Style.Edges = [bLeft, bTop, bRight, bBottom]
+                Style.Font.Charset = ANSI_CHARSET
+                Style.Font.Color = 3614763
+                Style.Font.Height = -19
+                Style.Font.Name = 'Tahoma'
+                Style.Font.Style = [fsBold, fsUnderline]
+                Style.LookAndFeel.NativeStyle = False
+                Style.LookAndFeel.SkinName = ''
+                Style.IsFontAssigned = True
+                StyleDisabled.LookAndFeel.NativeStyle = False
+                StyleDisabled.LookAndFeel.SkinName = ''
+                StyleFocused.LookAndFeel.NativeStyle = False
+                StyleFocused.LookAndFeel.SkinName = ''
+                StyleHot.LookAndFeel.NativeStyle = False
+                StyleHot.LookAndFeel.SkinName = ''
+                Properties.Alignment.Horz = taRightJustify
+                Properties.Alignment.Vert = taVCenter
+                Transparent = True
+                AnchorX = 1050
+                AnchorY = 21
+              end
+              object lblPaid: TcxLabel
+                Left = 321
+                Top = 0
+                Align = alLeft
+                Caption = '0.00'
+                ParentFont = False
+                Style.BorderStyle = ebsNone
+                Style.Edges = [bLeft, bTop, bRight, bBottom]
+                Style.Font.Charset = ANSI_CHARSET
+                Style.Font.Color = 3614763
+                Style.Font.Height = -19
+                Style.Font.Name = 'Tahoma'
+                Style.Font.Style = [fsBold, fsUnderline]
+                Style.LookAndFeel.NativeStyle = False
+                Style.LookAndFeel.SkinName = ''
+                Style.IsFontAssigned = True
+                StyleDisabled.LookAndFeel.NativeStyle = False
+                StyleDisabled.LookAndFeel.SkinName = ''
+                StyleFocused.LookAndFeel.NativeStyle = False
+                StyleFocused.LookAndFeel.SkinName = ''
+                StyleHot.LookAndFeel.NativeStyle = False
+                StyleHot.LookAndFeel.SkinName = ''
+                Properties.Alignment.Horz = taRightJustify
+                Properties.Alignment.Vert = taVCenter
+                Transparent = True
+                AnchorX = 367
+                AnchorY = 21
+              end
+              object lblPayable: TcxLabel
+                Left = 188
+                Top = 0
+                Align = alLeft
+                Caption = '0.00'
+                ParentFont = False
+                Style.BorderStyle = ebsNone
+                Style.Edges = [bLeft, bTop, bRight, bBottom]
+                Style.Font.Charset = ANSI_CHARSET
+                Style.Font.Color = 3614763
+                Style.Font.Height = -19
+                Style.Font.Name = 'Tahoma'
+                Style.Font.Style = [fsBold, fsUnderline]
+                Style.LookAndFeel.NativeStyle = False
+                Style.LookAndFeel.SkinName = ''
+                Style.IsFontAssigned = True
+                StyleDisabled.LookAndFeel.NativeStyle = False
+                StyleDisabled.LookAndFeel.SkinName = ''
+                StyleFocused.LookAndFeel.NativeStyle = False
+                StyleFocused.LookAndFeel.SkinName = ''
+                StyleHot.LookAndFeel.NativeStyle = False
+                StyleHot.LookAndFeel.SkinName = ''
+                Properties.Alignment.Horz = taRightJustify
+                Properties.Alignment.Vert = taVCenter
+                Transparent = True
+                AnchorX = 234
+                AnchorY = 21
+              end
+              object cxLabel20: TcxLabel
+                Left = 0
+                Top = 0
+                Align = alLeft
+                Caption = 'TOTAL PAYABLE :    '
+                ParentFont = False
+                Style.BorderStyle = ebsNone
+                Style.Edges = [bLeft, bTop, bRight, bBottom]
+                Style.Font.Charset = ANSI_CHARSET
+                Style.Font.Color = 3614763
+                Style.Font.Height = -19
+                Style.Font.Name = 'Segoe UI Black'
+                Style.Font.Style = [fsBold]
+                Style.LookAndFeel.NativeStyle = False
+                Style.LookAndFeel.SkinName = ''
+                Style.IsFontAssigned = True
+                StyleDisabled.LookAndFeel.NativeStyle = False
+                StyleDisabled.LookAndFeel.SkinName = ''
+                StyleFocused.LookAndFeel.NativeStyle = False
+                StyleFocused.LookAndFeel.SkinName = ''
+                StyleHot.LookAndFeel.NativeStyle = False
+                StyleHot.LookAndFeel.SkinName = ''
+                Properties.Alignment.Horz = taLeftJustify
+                Properties.Alignment.Vert = taVCenter
+                Transparent = True
+                AnchorY = 21
+              end
+              object cxLabel16: TcxLabel
+                Left = 234
+                Top = 0
+                Align = alLeft
+                Caption = '   PAID:   '
+                ParentFont = False
+                Style.BorderStyle = ebsNone
+                Style.Edges = [bLeft, bTop, bRight, bBottom]
+                Style.Font.Charset = ANSI_CHARSET
+                Style.Font.Color = 3614763
+                Style.Font.Height = -19
+                Style.Font.Name = 'Segoe UI Black'
+                Style.Font.Style = [fsBold]
+                Style.LookAndFeel.NativeStyle = False
+                Style.LookAndFeel.SkinName = ''
+                Style.IsFontAssigned = True
+                StyleDisabled.LookAndFeel.NativeStyle = False
+                StyleDisabled.LookAndFeel.SkinName = ''
+                StyleFocused.LookAndFeel.NativeStyle = False
+                StyleFocused.LookAndFeel.SkinName = ''
+                StyleHot.LookAndFeel.NativeStyle = False
+                StyleHot.LookAndFeel.SkinName = ''
+                Properties.Alignment.Horz = taLeftJustify
+                Properties.Alignment.Vert = taVCenter
+                Transparent = True
+                AnchorY = 21
+              end
+            end
+            object S: TcxGrid
+              Left = 10
+              Top = 41
+              Width = 1050
+              Height = 166
+              Align = alClient
+              Font.Charset = ANSI_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -13
+              Font.Name = 'Segoe UI'
+              Font.Style = []
+              ParentFont = False
+              TabOrder = 1
+              OnExit = cxGrid1Exit
+              LookAndFeel.Kind = lfUltraFlat
+              LookAndFeel.NativeStyle = True
+              LookAndFeel.SkinName = 'VisualStudio2013Blue'
+              object cxGridDBTableView1: TcxGridDBTableView
+                Navigator.Buttons.CustomButtons = <>
+                OnCellClick = cxGrid1DBTableView1CellClick
+                OnFocusedRecordChanged = cxGrid1DBTableView1FocusedRecordChanged
+                DataController.DataSource = ds_JO
+                DataController.Summary.DefaultGroupSummaryItems = <>
+                DataController.Summary.FooterSummaryItems = <
+                  item
+                    Format = '###,###,##0'
+                    Kind = skCount
+                    FieldName = 'ID'
+                    Column = cxGridDBTableView1ID
+                  end
+                  item
+                    Format = '###,###,##0.00'
+                    Kind = skSum
+                    FieldName = 'PAIDAMNT'
+                    Column = cxGridDBTableView1PAIDAMNT
+                  end
+                  item
+                    Format = '###,###,##0.00'
+                    Kind = skSum
+                    FieldName = 'CASHAMNT'
+                    Column = cxGridDBTableView1CASHAMNT
+                  end
+                  item
+                    Format = '###,###,##0.00'
+                    Kind = skSum
+                    FieldName = 'CARDAMNT'
+                    Column = cxGridDBTableView1CARDAMNT
+                  end
+                  item
+                    Format = '###,###,##0.00'
+                    Kind = skSum
+                    FieldName = 'CHECKAMNT'
+                    Column = cxGridDBTableView1CHECKAMNT
+                  end
+                  item
+                    Format = '###,###,##0.00'
+                    Kind = skSum
+                    FieldName = 'CHANGEAMNT'
+                    Column = cxGridDBTableView1CHANGEAMNT
+                  end>
+                DataController.Summary.SummaryGroups = <>
+                OptionsData.Deleting = False
+                OptionsSelection.CellSelect = False
+                OptionsSelection.HideFocusRectOnExit = False
+                OptionsSelection.UnselectFocusedRecordOnExit = False
+                OptionsView.FocusRect = False
+                OptionsView.NoDataToDisplayInfoText = 'No Data To Display'
+                OptionsView.ColumnAutoWidth = True
+                OptionsView.Footer = True
+                OptionsView.GroupByBox = False
+                OptionsView.Indicator = True
+                Styles.Header = jo_header
+                object cxGridDBTableView1ID: TcxGridDBColumn
+                  Caption = 'NO.'
+                  DataBinding.FieldName = 'ID'
+                  HeaderAlignmentHorz = taCenter
+                  Options.Editing = False
+                  Options.Filtering = False
+                  Options.Sorting = False
+                  Width = 40
+                end
+                object cxGridDBTableView1PAYTPE: TcxGridDBColumn
+                  Caption = 'PAY TPE'
+                  DataBinding.FieldName = 'PAYTPE'
+                  HeaderAlignmentHorz = taCenter
+                  Options.Editing = False
+                  Options.Filtering = False
+                  Options.Sorting = False
+                  Width = 65
+                end
+                object cxGridDBTableView1NETAMNT: TcxGridDBColumn
+                  Caption = 'PAYABLE'
+                  DataBinding.FieldName = 'NETAMNT'
+                  HeaderAlignmentHorz = taCenter
+                  Options.Editing = False
+                  Options.Filtering = False
+                  Options.Sorting = False
+                  Width = 72
+                end
+                object cxGridDBTableView1DISCOUNT: TcxGridDBColumn
+                  DataBinding.FieldName = 'DISCOUNT'
+                  HeaderAlignmentHorz = taCenter
+                  Options.Editing = False
+                  Options.Filtering = False
+                  Options.Sorting = False
+                  Width = 65
+                end
+                object cxGridDBTableView1CASHAMNT: TcxGridDBColumn
+                  Caption = 'CASH'
+                  DataBinding.FieldName = 'CASHAMNT'
+                  HeaderAlignmentHorz = taCenter
+                  Options.Editing = False
+                  Options.Filtering = False
+                  Options.Sorting = False
+                end
+                object cxGridDBTableView1CARDAMNT: TcxGridDBColumn
+                  Caption = 'CARD'
+                  DataBinding.FieldName = 'CARDAMNT'
+                  HeaderAlignmentHorz = taCenter
+                  Options.Editing = False
+                  Options.Filtering = False
+                  Options.Sorting = False
+                end
+                object cxGridDBTableView1CHECKAMNT: TcxGridDBColumn
+                  Caption = 'CHECK'
+                  DataBinding.FieldName = 'CHECKAMNT'
+                  HeaderAlignmentHorz = taCenter
+                  Options.Editing = False
+                  Options.Filtering = False
+                  Options.Sorting = False
+                end
+                object cxGridDBTableView1CHANGEAMNT: TcxGridDBColumn
+                  Caption = 'CHANGE'
+                  DataBinding.FieldName = 'CHANGEAMNT'
+                  HeaderAlignmentHorz = taCenter
+                  Options.Editing = False
+                  Options.Filtering = False
+                  Options.Sorting = False
+                end
+                object cxGridDBTableView1PAIDAMNT: TcxGridDBColumn
+                  Caption = 'TOTAL PAID'
+                  DataBinding.FieldName = 'PAIDAMNT'
+                  HeaderAlignmentHorz = taCenter
+                  Options.Editing = False
+                  Options.Filtering = False
+                  Options.Sorting = False
+                  Width = 62
+                end
+                object cxGridDBTableView1SALESDATE: TcxGridDBColumn
+                  Caption = 'SALES DATE'
+                  DataBinding.FieldName = 'SALESDATE'
+                  HeaderAlignmentHorz = taCenter
+                  Options.Editing = False
+                  Options.Filtering = False
+                  Options.Sorting = False
+                  Width = 81
+                end
+              end
+              object cxGridLevel1: TcxGridLevel
+                GridView = cxGridDBTableView1
+              end
+            end
+          end
+        end
         object scGPPageControlPage3: TscGPPageControlPage
           Left = 0
           Top = 30
@@ -3075,7 +3451,6 @@ object f_CashReg: Tf_CashReg
           ParentColor = False
           ParentFont = False
           TabOrder = 0
-          Visible = False
           StyleElements = []
           WallpaperIndex = -1
           CustomBackgroundImageIndex = -1
@@ -3450,381 +3825,6 @@ object f_CashReg: Tf_CashReg
               StyleHot.LookAndFeel.NativeStyle = False
               TabOrder = 9
               Width = 162
-            end
-          end
-        end
-        object scGPPageControlPage1: TscGPPageControlPage
-          Left = 0
-          Top = 30
-          Width = 1070
-          Height = 207
-          HorzScrollBar.Tracking = True
-          VertScrollBar.Tracking = True
-          Align = alClient
-          BorderStyle = bsNone
-          Color = clWhite
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -12
-          Font.Name = 'Tahoma'
-          Font.Style = []
-          ParentColor = False
-          ParentFont = False
-          TabOrder = 1
-          StyleElements = []
-          WallpaperIndex = -1
-          CustomBackgroundImageIndex = -1
-          FluentUIOpaque = False
-          StorePaintBuffer = False
-          BGStyle = scgppsForm
-          object Panel13: TPanel
-            Left = 0
-            Top = 0
-            Width = 1070
-            Height = 207
-            Align = alClient
-            BevelOuter = bvNone
-            Color = clWhite
-            Padding.Left = 10
-            Padding.Right = 10
-            ParentBackground = False
-            TabOrder = 0
-            StyleElements = []
-            object Panel18: TPanel
-              Left = 10
-              Top = 0
-              Width = 1050
-              Height = 41
-              Align = alTop
-              BevelOuter = bvNone
-              TabOrder = 0
-              object cxLabel15: TcxLabel
-                Left = 866
-                Top = 0
-                Align = alRight
-                Caption = '   BALANCE :    '
-                ParentFont = False
-                Style.BorderStyle = ebsNone
-                Style.Edges = [bLeft, bTop, bRight, bBottom]
-                Style.Font.Charset = ANSI_CHARSET
-                Style.Font.Color = 3614763
-                Style.Font.Height = -19
-                Style.Font.Name = 'Segoe UI Black'
-                Style.Font.Style = [fsBold]
-                Style.LookAndFeel.NativeStyle = False
-                Style.LookAndFeel.SkinName = ''
-                Style.IsFontAssigned = True
-                StyleDisabled.LookAndFeel.NativeStyle = False
-                StyleDisabled.LookAndFeel.SkinName = ''
-                StyleFocused.LookAndFeel.NativeStyle = False
-                StyleFocused.LookAndFeel.SkinName = ''
-                StyleHot.LookAndFeel.NativeStyle = False
-                StyleHot.LookAndFeel.SkinName = ''
-                Properties.Alignment.Horz = taLeftJustify
-                Properties.Alignment.Vert = taVCenter
-                Transparent = True
-                AnchorY = 21
-              end
-              object lblBalance: TcxLabel
-                Left = 1004
-                Top = 0
-                Align = alRight
-                Caption = '0.00'
-                ParentFont = False
-                Style.BorderStyle = ebsNone
-                Style.Edges = [bLeft, bTop, bRight, bBottom]
-                Style.Font.Charset = ANSI_CHARSET
-                Style.Font.Color = 3614763
-                Style.Font.Height = -19
-                Style.Font.Name = 'Tahoma'
-                Style.Font.Style = [fsBold, fsUnderline]
-                Style.LookAndFeel.NativeStyle = False
-                Style.LookAndFeel.SkinName = ''
-                Style.IsFontAssigned = True
-                StyleDisabled.LookAndFeel.NativeStyle = False
-                StyleDisabled.LookAndFeel.SkinName = ''
-                StyleFocused.LookAndFeel.NativeStyle = False
-                StyleFocused.LookAndFeel.SkinName = ''
-                StyleHot.LookAndFeel.NativeStyle = False
-                StyleHot.LookAndFeel.SkinName = ''
-                Properties.Alignment.Horz = taRightJustify
-                Properties.Alignment.Vert = taVCenter
-                Transparent = True
-                AnchorX = 1050
-                AnchorY = 21
-              end
-              object lblPaid: TcxLabel
-                Left = 321
-                Top = 0
-                Align = alLeft
-                Caption = '0.00'
-                ParentFont = False
-                Style.BorderStyle = ebsNone
-                Style.Edges = [bLeft, bTop, bRight, bBottom]
-                Style.Font.Charset = ANSI_CHARSET
-                Style.Font.Color = 3614763
-                Style.Font.Height = -19
-                Style.Font.Name = 'Tahoma'
-                Style.Font.Style = [fsBold, fsUnderline]
-                Style.LookAndFeel.NativeStyle = False
-                Style.LookAndFeel.SkinName = ''
-                Style.IsFontAssigned = True
-                StyleDisabled.LookAndFeel.NativeStyle = False
-                StyleDisabled.LookAndFeel.SkinName = ''
-                StyleFocused.LookAndFeel.NativeStyle = False
-                StyleFocused.LookAndFeel.SkinName = ''
-                StyleHot.LookAndFeel.NativeStyle = False
-                StyleHot.LookAndFeel.SkinName = ''
-                Properties.Alignment.Horz = taRightJustify
-                Properties.Alignment.Vert = taVCenter
-                Transparent = True
-                AnchorX = 367
-                AnchorY = 21
-              end
-              object lblPayable: TcxLabel
-                Left = 188
-                Top = 0
-                Align = alLeft
-                Caption = '0.00'
-                ParentFont = False
-                Style.BorderStyle = ebsNone
-                Style.Edges = [bLeft, bTop, bRight, bBottom]
-                Style.Font.Charset = ANSI_CHARSET
-                Style.Font.Color = 3614763
-                Style.Font.Height = -19
-                Style.Font.Name = 'Tahoma'
-                Style.Font.Style = [fsBold, fsUnderline]
-                Style.LookAndFeel.NativeStyle = False
-                Style.LookAndFeel.SkinName = ''
-                Style.IsFontAssigned = True
-                StyleDisabled.LookAndFeel.NativeStyle = False
-                StyleDisabled.LookAndFeel.SkinName = ''
-                StyleFocused.LookAndFeel.NativeStyle = False
-                StyleFocused.LookAndFeel.SkinName = ''
-                StyleHot.LookAndFeel.NativeStyle = False
-                StyleHot.LookAndFeel.SkinName = ''
-                Properties.Alignment.Horz = taRightJustify
-                Properties.Alignment.Vert = taVCenter
-                Transparent = True
-                AnchorX = 234
-                AnchorY = 21
-              end
-              object cxLabel20: TcxLabel
-                Left = 0
-                Top = 0
-                Align = alLeft
-                Caption = 'TOTAL PAYABLE :    '
-                ParentFont = False
-                Style.BorderStyle = ebsNone
-                Style.Edges = [bLeft, bTop, bRight, bBottom]
-                Style.Font.Charset = ANSI_CHARSET
-                Style.Font.Color = 3614763
-                Style.Font.Height = -19
-                Style.Font.Name = 'Segoe UI Black'
-                Style.Font.Style = [fsBold]
-                Style.LookAndFeel.NativeStyle = False
-                Style.LookAndFeel.SkinName = ''
-                Style.IsFontAssigned = True
-                StyleDisabled.LookAndFeel.NativeStyle = False
-                StyleDisabled.LookAndFeel.SkinName = ''
-                StyleFocused.LookAndFeel.NativeStyle = False
-                StyleFocused.LookAndFeel.SkinName = ''
-                StyleHot.LookAndFeel.NativeStyle = False
-                StyleHot.LookAndFeel.SkinName = ''
-                Properties.Alignment.Horz = taLeftJustify
-                Properties.Alignment.Vert = taVCenter
-                Transparent = True
-                AnchorY = 21
-              end
-              object cxLabel16: TcxLabel
-                Left = 234
-                Top = 0
-                Align = alLeft
-                Caption = '   PAID:   '
-                ParentFont = False
-                Style.BorderStyle = ebsNone
-                Style.Edges = [bLeft, bTop, bRight, bBottom]
-                Style.Font.Charset = ANSI_CHARSET
-                Style.Font.Color = 3614763
-                Style.Font.Height = -19
-                Style.Font.Name = 'Segoe UI Black'
-                Style.Font.Style = [fsBold]
-                Style.LookAndFeel.NativeStyle = False
-                Style.LookAndFeel.SkinName = ''
-                Style.IsFontAssigned = True
-                StyleDisabled.LookAndFeel.NativeStyle = False
-                StyleDisabled.LookAndFeel.SkinName = ''
-                StyleFocused.LookAndFeel.NativeStyle = False
-                StyleFocused.LookAndFeel.SkinName = ''
-                StyleHot.LookAndFeel.NativeStyle = False
-                StyleHot.LookAndFeel.SkinName = ''
-                Properties.Alignment.Horz = taLeftJustify
-                Properties.Alignment.Vert = taVCenter
-                Transparent = True
-                AnchorY = 21
-              end
-            end
-            object S: TcxGrid
-              Left = 10
-              Top = 41
-              Width = 1050
-              Height = 166
-              Align = alClient
-              Font.Charset = ANSI_CHARSET
-              Font.Color = clWindowText
-              Font.Height = -13
-              Font.Name = 'Segoe UI'
-              Font.Style = []
-              ParentFont = False
-              TabOrder = 1
-              OnExit = cxGrid1Exit
-              LookAndFeel.Kind = lfUltraFlat
-              LookAndFeel.NativeStyle = True
-              LookAndFeel.SkinName = 'VisualStudio2013Blue'
-              object cxGridDBTableView1: TcxGridDBTableView
-                Navigator.Buttons.CustomButtons = <>
-                OnCellClick = cxGrid1DBTableView1CellClick
-                OnFocusedRecordChanged = cxGrid1DBTableView1FocusedRecordChanged
-                DataController.DataSource = ds_JO
-                DataController.Summary.DefaultGroupSummaryItems = <>
-                DataController.Summary.FooterSummaryItems = <
-                  item
-                    Format = '###,###,##0'
-                    Kind = skCount
-                    FieldName = 'ID'
-                    Column = cxGridDBTableView1ID
-                  end
-                  item
-                    Format = '###,###,##0.00'
-                    Kind = skSum
-                    FieldName = 'PAIDAMNT'
-                    Column = cxGridDBTableView1PAIDAMNT
-                  end
-                  item
-                    Format = '###,###,##0.00'
-                    Kind = skSum
-                    FieldName = 'CASHAMNT'
-                    Column = cxGridDBTableView1CASHAMNT
-                  end
-                  item
-                    Format = '###,###,##0.00'
-                    Kind = skSum
-                    FieldName = 'CARDAMNT'
-                    Column = cxGridDBTableView1CARDAMNT
-                  end
-                  item
-                    Format = '###,###,##0.00'
-                    Kind = skSum
-                    FieldName = 'CHECKAMNT'
-                    Column = cxGridDBTableView1CHECKAMNT
-                  end
-                  item
-                    Format = '###,###,##0.00'
-                    Kind = skSum
-                    FieldName = 'CHANGEAMNT'
-                    Column = cxGridDBTableView1CHANGEAMNT
-                  end>
-                DataController.Summary.SummaryGroups = <>
-                OptionsData.Deleting = False
-                OptionsSelection.CellSelect = False
-                OptionsSelection.HideFocusRectOnExit = False
-                OptionsSelection.UnselectFocusedRecordOnExit = False
-                OptionsView.FocusRect = False
-                OptionsView.NoDataToDisplayInfoText = 'No Data To Display'
-                OptionsView.ColumnAutoWidth = True
-                OptionsView.Footer = True
-                OptionsView.GroupByBox = False
-                OptionsView.Indicator = True
-                Styles.Header = jo_header
-                object cxGridDBTableView1ID: TcxGridDBColumn
-                  Caption = 'NO.'
-                  DataBinding.FieldName = 'ID'
-                  HeaderAlignmentHorz = taCenter
-                  Options.Editing = False
-                  Options.Filtering = False
-                  Options.Sorting = False
-                  Width = 40
-                end
-                object cxGridDBTableView1PAYTPE: TcxGridDBColumn
-                  Caption = 'PAY TPE'
-                  DataBinding.FieldName = 'PAYTPE'
-                  HeaderAlignmentHorz = taCenter
-                  Options.Editing = False
-                  Options.Filtering = False
-                  Options.Sorting = False
-                  Width = 65
-                end
-                object cxGridDBTableView1NETAMNT: TcxGridDBColumn
-                  Caption = 'NET AMNT'
-                  DataBinding.FieldName = 'NETAMNT'
-                  HeaderAlignmentHorz = taCenter
-                  Options.Editing = False
-                  Options.Filtering = False
-                  Options.Sorting = False
-                  Width = 72
-                end
-                object cxGridDBTableView1DISCOUNT: TcxGridDBColumn
-                  DataBinding.FieldName = 'DISCOUNT'
-                  HeaderAlignmentHorz = taCenter
-                  Options.Editing = False
-                  Options.Filtering = False
-                  Options.Sorting = False
-                  Width = 65
-                end
-                object cxGridDBTableView1CASHAMNT: TcxGridDBColumn
-                  Caption = 'CASH'
-                  DataBinding.FieldName = 'CASHAMNT'
-                  HeaderAlignmentHorz = taCenter
-                  Options.Editing = False
-                  Options.Filtering = False
-                  Options.Sorting = False
-                end
-                object cxGridDBTableView1CARDAMNT: TcxGridDBColumn
-                  Caption = 'CARD'
-                  DataBinding.FieldName = 'CARDAMNT'
-                  HeaderAlignmentHorz = taCenter
-                  Options.Editing = False
-                  Options.Filtering = False
-                  Options.Sorting = False
-                end
-                object cxGridDBTableView1CHECKAMNT: TcxGridDBColumn
-                  Caption = 'CHECK'
-                  DataBinding.FieldName = 'CHECKAMNT'
-                  HeaderAlignmentHorz = taCenter
-                  Options.Editing = False
-                  Options.Filtering = False
-                  Options.Sorting = False
-                end
-                object cxGridDBTableView1CHANGEAMNT: TcxGridDBColumn
-                  Caption = 'CHANGE'
-                  DataBinding.FieldName = 'CHANGEAMNT'
-                  HeaderAlignmentHorz = taCenter
-                  Options.Editing = False
-                  Options.Filtering = False
-                  Options.Sorting = False
-                end
-                object cxGridDBTableView1PAIDAMNT: TcxGridDBColumn
-                  Caption = 'TOTAL PAID'
-                  DataBinding.FieldName = 'PAIDAMNT'
-                  HeaderAlignmentHorz = taCenter
-                  Options.Editing = False
-                  Options.Filtering = False
-                  Options.Sorting = False
-                  Width = 62
-                end
-                object cxGridDBTableView1SALESDATE: TcxGridDBColumn
-                  Caption = 'SALES DATE'
-                  DataBinding.FieldName = 'SALESDATE'
-                  HeaderAlignmentHorz = taCenter
-                  Options.Editing = False
-                  Options.Filtering = False
-                  Options.Sorting = False
-                  Width = 81
-                end
-              end
-              object cxGridLevel1: TcxGridLevel
-                GridView = cxGridDBTableView1
-              end
             end
           end
         end

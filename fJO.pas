@@ -102,6 +102,7 @@ type
     MenuItem1: TMenuItem;
     DeleteCost: TAction;
     cxGridDBTableView3ID: TcxGridDBColumn;
+    cxGridDBTableView3GARMENTID: TcxGridDBColumn;
     procedure chk_postedClick(Sender: TObject);
     procedure cxGridDBTableView1SHIRTIDPropertiesCloseUp(Sender: TObject);
     procedure CancelExecute(Sender: TObject);
@@ -126,10 +127,17 @@ type
     procedure cxGridDBTableView1ITEMIDStylesGetContentStyle(
       Sender: TcxCustomGridTableView; ARecord: TcxCustomGridRecord;
       AItem: TcxCustomGridTableItem; var AStyle: TcxStyle);
+    procedure cxGridDBTableView1QTYPropertiesValidate(Sender: TObject;
+      var DisplayValue: Variant; var ErrorText: TCaption; var Error: Boolean);
+    procedure cxGridDBTableView1FREEPropertiesValidate(Sender: TObject;
+      var DisplayValue: Variant; var ErrorText: TCaption; var Error: Boolean);
+    procedure cxGridDBTableView1COSTPropertiesValidate(Sender: TObject;
+      var DisplayValue: Variant; var ErrorText: TCaption; var Error: Boolean);
   private
     { Private declarations }
     ARedStyle: TcxStyle;
     posted: Boolean;
+    procedure compute_amnt_ui;
     procedure generate_costing;
     procedure readonly(flag: Boolean);
     function manageui: Boolean;
@@ -211,25 +219,27 @@ begin
 end;
 
 procedure Tf_JO.ComputeAmntExecute(Sender: TObject);
+begin
+  generate_costing;
+  compute_amnt_ui;
+end;
+
+procedure Tf_JO.compute_amnt_ui;
 var
   AValue: Variant;
 begin
-  generate_costing;
-
   dm_PM.tb_JODetail.Append;
   dm_PM.tb_JODetail.Delete;
 
   if (dm_PM.qry_JO.State = dsInsert) or (dm_PM.qry_JO.State = dsEdit) then
   begin
-    if not dm_PM.qry_JOPOSTED.Value then
-    begin
       AValue := cxGridDBTableView1.DataController.Summary.FooterSummaryValues[3];
       if AValue <> Null then
         dm_PM.qry_JOGROSSAMNT.Value   :=  StrToFloat(VarToStr(AValue))
       else
         dm_PM.qry_JOGROSSAMNT.Value   :=  0;
       dm_PM.qry_JONETAMNT.Value       :=  dm_PM.qry_JOGROSSAMNT.Value - dm_PM.qry_JODISCOUNT.Value;
-    end;
+
   end;
 
   if not dm_PM.qry_JOOVERRIDE.Value then
@@ -244,7 +254,6 @@ begin
     posted  := True;
     readonly(False);
   end;
-
 end;
 
 procedure Tf_JO.cxDBDateEdit2PropertiesValidate(Sender: TObject;
@@ -282,6 +291,18 @@ begin
     DisplayValue := 0;
     MessageDlg('Invalid qty!', mtError, [mbOK], 0);
   end;
+end;
+
+procedure Tf_JO.cxGridDBTableView1COSTPropertiesValidate(Sender: TObject;
+  var DisplayValue: Variant; var ErrorText: TCaption; var Error: Boolean);
+begin
+  compute_amnt_ui;
+end;
+
+procedure Tf_JO.cxGridDBTableView1FREEPropertiesValidate(Sender: TObject;
+  var DisplayValue: Variant; var ErrorText: TCaption; var Error: Boolean);
+begin
+  compute_amnt_ui;
 end;
 
 procedure Tf_JO.cxGridDBTableView1ITEMIDPropertiesCloseUp(Sender: TObject);
@@ -338,6 +359,12 @@ procedure Tf_JO.cxGridDBTableView1KeyDown(Sender: TObject; var Key: Word;
 begin
   if Key = VK_DOWN then
   ComputeAmntExecute(nil);
+end;
+
+procedure Tf_JO.cxGridDBTableView1QTYPropertiesValidate(Sender: TObject;
+  var DisplayValue: Variant; var ErrorText: TCaption; var Error: Boolean);
+begin
+  compute_amnt_ui;
 end;
 
 procedure Tf_JO.cxGridDBTableView1SHIRTIDPropertiesCloseUp(Sender: TObject);
@@ -429,6 +456,27 @@ begin
        qry_JODetailDELETEDDATETIME.Value  := Now;
        qry_JODetail.Post;
        qry_JODetail.ApplyUpdates();
+
+       qry_JoCost.Close;
+       qry_JoCost.SQL[2]  := 'WHERE GARMENTID = :GARMENTID AND CANCELLED = FALSE';
+       qry_JoCost.ParamByName('GARMENTID').Value   := tb_JODetailSHIRTID.Value;
+       qry_JoCost.Open();
+
+       if qry_JoCost.RecordCount > 0 then
+       begin
+         qry_JoCost.First;
+         while not qry_JoCost.Eof do
+         begin
+           qry_JoCost.Edit;
+           qry_JoCostCANCELLED.Value          := True;
+           qry_JoCostCANCELLEDBYID.Value      := userid;
+           qry_JoCostCANCELLEDDATETIME.Value  := Now;
+           qry_JoCost.Post;
+           qry_JoCost.ApplyUpdates();
+
+           qry_JoCost.Next;
+         end;
+       end;
      end;
    end;
    tb_JODetail.Delete;
@@ -510,6 +558,35 @@ begin
     //tb_JODetail.Post;
     //tb_JOClone.CopyRecord(tb_JODetail);
 
+    tb_InvReqDetail.Close;
+    tb_InvReqDetail.Open;
+
+    qry_JoCost.Close;
+    qry_JoCost.SQL[2]  := 'WHERE HEADERID = :ID AND CANCELLED = FALSE';
+    qry_JoCost.ParamByName('ID').Value := qry_JOID.Value;
+    qry_JoCost.Open();
+
+
+    if qry_JoCost.RecordCount > 0 then
+    begin
+      qry_JoCost.First;
+       while not qry_JoCost.Eof do
+       begin
+        tb_InvReqDetail.Append;
+        tb_InvReqDetailID.Value        := qry_JoCostID.Value;
+        tb_InvReqDetailGARMENTID.Value := qry_JoCostGARMENTID.Value;
+        tb_InvReqDetailITEMID.Value    := qry_JoCostITEMID.Value;
+        tb_InvReqDetailITEMDESC.Value  := qry_JoCostITEMDESC.Value;
+        tb_InvReqDetailUNIT.Value      := qry_JoCostUNIT.Value;
+        tb_InvReqDetailQTY.Value       := qry_JoCostQTY.Value;
+        tb_InvReqDetailCOST.Value      := qry_JoCostCOST.Value;
+        tb_InvReqDetail.Post;
+
+        qry_JoCost.Next;
+       end;
+       tb_InvReqDetail.First;
+    end;
+
     if tb_JODetail.RecordCount > 0 then
     begin
       tb_JODetail.First;
@@ -528,22 +605,17 @@ begin
             while not brw_GarCosting.Eof do
             begin
               if not tb_InvReqDetail.Locate('GARMENTID;ITEMID', VarArrayOf([tb_JODetailSHIRTID.Value, brw_GarCostingITEMID.Value])) then
-              begin
-                tb_InvReqDetail.Append;
-                tb_InvReqDetailITEMID.Value    := brw_GarCostingITEMID.Value;
-                tb_InvReqDetailITEMDESC.Value  := brw_GarCostingITEMDESC.Value;
-                tb_InvReqDetailGARMENTID.Value := tb_JODetailSHIRTID.Value;
-                tb_InvReqDetailQTY.Value       := brw_GarCostingQTY.Value * (tb_JODetailQTY.Value + tb_JODetailFREE.Value);
-                tb_InvReqDetailUNIT.Value      := brw_GarCostingUNIT.Value;
-                tb_InvReqDetailCOST.Value      := brw_GarCostingCOST.Value;
-                tb_InvReqDetail.Post;
-              end;
-//              else
-//              begin
-//                tb_InvReqDetail.Edit;
-//                tb_InvReqDetailQTY.Value       := tb_InvReqDetailQTY.Value + (brw_GarCostingQTY.Value * (tb_JODetailQTY.Value + tb_JODetailFREE.Value));
-//                tb_InvReqDetail.Post;
-//              end;
+                tb_InvReqDetail.Append
+              else
+                tb_InvReqDetail.Edit;
+
+              tb_InvReqDetailITEMID.Value    := brw_GarCostingITEMID.Value;
+              tb_InvReqDetailITEMDESC.Value  := brw_GarCostingITEMDESC.Value;
+              tb_InvReqDetailGARMENTID.Value := tb_JODetailSHIRTID.Value;
+              tb_InvReqDetailQTY.Value       := brw_GarCostingQTY.Value * (tb_JODetailQTY.Value + tb_JODetailFREE.Value);
+              tb_InvReqDetailUNIT.Value      := brw_GarCostingUNIT.Value;
+              tb_InvReqDetailCOST.Value      := brw_GarCostingCOST.Value;
+              tb_InvReqDetail.Post;
 
               brw_GarCosting.Next;
             end;

@@ -188,10 +188,10 @@ begin
     brw_JODetail.Close;
 
     if qry_WorkLogs.State = dsInsert then
-    brw_JODetail.SQL[3] := 'WHERE JO_DETAIL.ID = 0'
+    brw_JODetail.SQL[3] := 'WHERE JO_DETAIL.ID = 0 AND JO_DETAIL.CANCELLED = FALSE'
     else
     begin
-      brw_JODetail.SQL[3] := 'WHERE JO_DETAIL.HEADERID = :ID';
+      brw_JODetail.SQL[3] := 'WHERE JO_DETAIL.HEADERID = :ID AND JO_DETAIL.CANCELLED = FALSE';
       brw_JODetail.ParamByName('ID').Value := qry_WorkLogsJONO.Value;
     end;
 

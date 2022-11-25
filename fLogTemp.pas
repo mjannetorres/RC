@@ -83,13 +83,13 @@ begin
     begin
 
       qry_JO.Close;
-      qry_JO.SQL[2] := 'WHERE ID = :ID';
+      qry_JO.SQL[2] := 'WHERE JONO = :ID AND CANCELLED = FALSE';
       qry_JO.ParamByName('ID').Value  := DisplayValue;
       qry_JO.Open();
 
       brw_JODetail.Close;
-      brw_JODetail.SQL[3] := 'WHERE JO_DETAIL.HEADERID = :ID';
-      brw_JODetail.ParamByName('ID').Value  := DisplayValue;
+      brw_JODetail.SQL[3] := 'WHERE JO_DETAIL.HEADERID = :ID AND JO_DETAIL.CANCELLED = FALSE';
+      brw_JODetail.ParamByName('ID').Value  := qry_JOID.Value;
       brw_JODetail.Open();
 
       if qry_JO.RecordCount > 0 then

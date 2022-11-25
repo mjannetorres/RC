@@ -106,10 +106,10 @@ begin
      ComboBoxSearch.Items.Delete(ComboBoxSearch.Items.Count-1);
      ComboBoxSearch.Items.Insert(0,ComboBoxSearch.Text);
 
-     btnSave.Enabled := True;
-   end
-   else
-    btnSave.Enabled := False;
+   end;
+
+    btnSave.Enabled := (Trim(ComboBoxSearch.Text)<>'') and (ComboBoxSearch.Items.IndexOf(ComboBoxSearch.Text) = 0);
+
 end;
 
 end.

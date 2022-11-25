@@ -1196,10 +1196,7 @@ object f_Reports: Tf_Reports
       'EMAIL=EMAIL'
       'LOGO=LOGO'
       'CREATEDBYID=CREATEDBYID'
-      'CREATEDDATETIME=CREATEDDATETIME'
-      'CANCELLED=CANCELLED'
-      'DELETEDDATETIME=DELETEDDATETIME'
-      'DELETEDBYID=DELETEDBYID')
+      'CREATEDDATETIME=CREATEDDATETIME')
     DataSet = dm_PM.qry_company
     BCDToCurrency = False
     Left = 368
@@ -21282,7 +21279,7 @@ object f_Reports: Tf_Reports
         Frame.Typ = []
         Height = 158.740260000000000000
         Top = 18.897650000000000000
-        Width = 980.410082000000000000
+        Width = 980.410081999999900000
         object Memo1: TfrxMemoView
           AllowVectorExport = True
           Left = 3.779530000000000000
@@ -21362,8 +21359,8 @@ object f_Reports: Tf_Reports
         object Picture1: TfrxPictureView
           Align = baRight
           AllowVectorExport = True
-          Left = 802.772172000000000000
-          Top = 7.559060000000000000
+          Left = 802.772171999999900000
+          Top = 7.559059999999999000
           Width = 177.637910000000000000
           Height = 86.929190000000000000
           OnBeforePrint = 'Picture1OnBeforePrint'
@@ -21380,7 +21377,7 @@ object f_Reports: Tf_Reports
           Align = baLeft
           AllowVectorExport = True
           Top = 120.944960000000000000
-          Width = 200.315090000000000000
+          Width = 298.582870000000000000
           Height = 37.795300000000000000
           Font.Charset = ANSI_CHARSET
           Font.Color = clWhite
@@ -21391,7 +21388,7 @@ object f_Reports: Tf_Reports
           Fill.BackColor = clTeal
           HAlign = haCenter
           Memo.UTF8W = (
-            'PAYROLL REPORT')
+            'PAYROLL SUMMARY REPORT')
           ParentFont = False
           VAlign = vaCenter
         end
@@ -21418,55 +21415,18 @@ object f_Reports: Tf_Reports
       object MasterData2: TfrxMasterData
         FillType = ftBrush
         Frame.Typ = [ftRight]
-        Height = 37.795275590000000000
+        Height = 19.000000000000000000
         Top = 294.803340000000000000
-        Width = 980.410082000000000000
+        Width = 980.410081999999900000
         DataSet = ds_payreport
         DataSetName = 'ds_payreport'
         RowCount = 0
-        object Memo18: TfrxMemoView
-          Align = baLeft
-          AllowVectorExport = True
-          Top = 19.000000000000000000
-          Width = 52.913420000000000000
-          Height = 18.897650000000000000
-          Font.Charset = ANSI_CHARSET
-          Font.Color = clWhite
-          Font.Height = -13
-          Font.Name = 'Segoe UI Semibold'
-          Font.Style = [fsBold]
-          Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
-          Fill.BackColor = clTeal
-          HAlign = haCenter
-          Memo.UTF8W = (
-            'NO.')
-          ParentFont = False
-        end
-        object Memo20: TfrxMemoView
-          Align = baLeft
-          AllowVectorExport = True
-          Left = 52.913420000000000000
-          Top = 19.000000000000000000
-          Width = 75.212554490000000000
-          Height = 18.897650000000000000
-          Font.Charset = ANSI_CHARSET
-          Font.Color = clWhite
-          Font.Height = -13
-          Font.Name = 'Segoe UI Semibold'
-          Font.Style = [fsBold]
-          Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
-          Fill.BackColor = clTeal
-          HAlign = haCenter
-          Memo.UTF8W = (
-            '# OF EMP.')
-          ParentFont = False
-        end
         object Memo26: TfrxMemoView
           Align = baLeft
           AllowVectorExport = True
-          Left = 207.496067880000000000
-          Top = 19.000000000000000000
-          Width = 71.811033390000000000
+          Left = 230.551293390000000000
+          Top = 0.102350000000001000
+          Width = 355.275783390000000000
           Height = 18.897650000000000000
           Font.Charset = ANSI_CHARSET
           Font.Color = clWhite
@@ -21477,14 +21437,14 @@ object f_Reports: Tf_Reports
           Fill.BackColor = clTeal
           HAlign = haCenter
           Memo.UTF8W = (
-            'BASIC PAY')
+            'WORK LOGS')
           ParentFont = False
         end
         object Memo27: TfrxMemoView
           Align = baLeft
           AllowVectorExport = True
-          Left = 279.307101270000000000
-          Top = 19.000000000000000000
+          Left = 585.827076780000000000
+          Top = 0.102350000000001000
           Width = 71.433075750000000000
           Height = 18.897650000000000000
           Font.Charset = ANSI_CHARSET
@@ -21496,14 +21456,14 @@ object f_Reports: Tf_Reports
           Fill.BackColor = clTeal
           HAlign = haCenter
           Memo.UTF8W = (
-            'ALW.')
+            'GROSS AMNT')
           ParentFont = False
         end
         object Memo28: TfrxMemoView
           Align = baLeft
           AllowVectorExport = True
-          Left = 350.740177020000000000
-          Top = 19.000000000000000000
+          Left = 657.260152529999900000
+          Top = 0.102350000000001000
           Width = 75.212605750000000000
           Height = 18.897650000000000000
           Font.Charset = ANSI_CHARSET
@@ -21515,14 +21475,14 @@ object f_Reports: Tf_Reports
           Fill.BackColor = clTeal
           HAlign = haCenter
           Memo.UTF8W = (
-            'B. WAGE')
+            'CASH ADV.')
           ParentFont = False
         end
         object Memo29: TfrxMemoView
           Align = baLeft
           AllowVectorExport = True
-          Left = 425.952782770000000000
-          Top = 19.000000000000000000
+          Left = 732.472758279999900000
+          Top = 0.102350000000001000
           Width = 71.433117000000000000
           Height = 18.897650000000000000
           Font.Charset = ANSI_CHARSET
@@ -21534,163 +21494,13 @@ object f_Reports: Tf_Reports
           Fill.BackColor = clTeal
           HAlign = haCenter
           Memo.UTF8W = (
-            'LATE')
-          ParentFont = False
-        end
-        object Memo37: TfrxMemoView
-          Align = baLeft
-          AllowVectorExport = True
-          Left = 497.385899770000000000
-          Top = 19.000000000000000000
-          Width = 71.433117000000000000
-          Height = 18.897650000000000000
-          Font.Charset = ANSI_CHARSET
-          Font.Color = clWhite
-          Font.Height = -13
-          Font.Name = 'Segoe UI Semibold'
-          Font.Style = [fsBold]
-          Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
-          Fill.BackColor = clTeal
-          HAlign = haCenter
-          Memo.UTF8W = (
-            'ABSENCES')
-          ParentFont = False
-        end
-        object Memo38: TfrxMemoView
-          Align = baLeft
-          AllowVectorExport = True
-          Left = 636.472603770000000000
-          Top = 19.000000000000000000
-          Width = 63.874057000000000000
-          Height = 18.897650000000000000
-          Font.Charset = ANSI_CHARSET
-          Font.Color = clWhite
-          Font.Height = -13
-          Font.Name = 'Segoe UI Semibold'
-          Font.Style = [fsBold]
-          Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
-          Fill.BackColor = clTeal
-          HAlign = haCenter
-          Memo.UTF8W = (
-            'SSS')
-          ParentFont = False
-        end
-        object Memo39: TfrxMemoView
-          Align = baLeft
-          AllowVectorExport = True
-          Left = 700.346660770000000000
-          Top = 19.000000000000000000
-          Width = 75.212647000000000000
-          Height = 18.897650000000000000
-          Font.Charset = ANSI_CHARSET
-          Font.Color = clWhite
-          Font.Height = -13
-          Font.Name = 'Segoe UI Semibold'
-          Font.Style = [fsBold]
-          Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
-          Fill.BackColor = clTeal
-          HAlign = haCenter
-          Memo.UTF8W = (
-            'PAGIBIG'
-            '')
-          ParentFont = False
-        end
-        object Memo58: TfrxMemoView
-          Align = baLeft
-          AllowVectorExport = True
-          Width = 278.929048430000000000
-          Height = 18.897650000000000000
-          Font.Charset = ANSI_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Segoe UI Semibold'
-          Font.Style = [fsBold]
-          Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
-          Fill.BackColor = clWhite
-          HAlign = haCenter
-          Memo.UTF8W = (
-            'PAYROLL DETAIL')
-          ParentFont = False
-        end
-        object Memo59: TfrxMemoView
-          Align = baLeft
-          AllowVectorExport = True
-          Left = 278.929048430000000000
-          Width = 147.401587010000000000
-          Height = 18.897650000000000000
-          Font.Charset = ANSI_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Segoe UI Semibold'
-          Font.Style = [fsBold]
-          Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
-          Fill.BackColor = clWhite
-          HAlign = haCenter
-          Memo.UTF8W = (
-            'ADDITIONS')
-          ParentFont = False
-        end
-        object Memo60: TfrxMemoView
-          Align = baLeft
-          AllowVectorExport = True
-          Left = 426.330635440000000000
-          Width = 488.315038740000000000
-          Height = 18.897650000000000000
-          Font.Charset = ANSI_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Segoe UI Semibold'
-          Font.Style = [fsBold]
-          Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
-          Fill.BackColor = clWhite
-          HAlign = haCenter
-          Memo.UTF8W = (
-            'DEDUCTIONS')
-          ParentFont = False
-        end
-        object Memo61: TfrxMemoView
-          Align = baWidth
-          AllowVectorExport = True
-          Left = 914.645674180000000000
-          Width = 65.764407820000000000
-          Height = 18.897650000000000000
-          Font.Charset = ANSI_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Segoe UI Semibold'
-          Font.Style = [fsBold]
-          Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
-          Fill.BackColor = clWhite
-          HAlign = haCenter
-          Memo.UTF8W = (
-            'NET')
-          ParentFont = False
-        end
-        object Memo62: TfrxMemoView
-          Align = baLeft
-          AllowVectorExport = True
-          Left = 568.819016770000000000
-          Top = 18.897650000000000000
-          Width = 67.653587000000000000
-          Height = 18.897650000000000000
-          Font.Charset = ANSI_CHARSET
-          Font.Color = clWhite
-          Font.Height = -13
-          Font.Name = 'Segoe UI Semibold'
-          Font.Style = [fsBold]
-          Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
-          Fill.BackColor = clTeal
-          HAlign = haCenter
-          Memo.UTF8W = (
-            'CA')
+            'NET PAY')
           ParentFont = False
         end
         object Memo43: TfrxMemoView
           Align = baLeft
           AllowVectorExport = True
-          Left = 128.125974490000000000
-          Top = 18.897650000000000000
-          Width = 79.370093390000000000
+          Width = 230.551293390000000000
           Height = 18.897650000000000000
           Font.Charset = ANSI_CHARSET
           Font.Color = clWhite
@@ -21701,64 +21511,7 @@ object f_Reports: Tf_Reports
           Fill.BackColor = clTeal
           HAlign = haCenter
           Memo.UTF8W = (
-            'PAY DATE')
-          ParentFont = False
-        end
-        object Memo44: TfrxMemoView
-          Align = baLeft
-          AllowVectorExport = True
-          Left = 775.559307770000000000
-          Top = 18.897650000000000000
-          Width = 63.874057000000000000
-          Height = 18.897650000000000000
-          Font.Charset = ANSI_CHARSET
-          Font.Color = clWhite
-          Font.Height = -13
-          Font.Name = 'Segoe UI Semibold'
-          Font.Style = [fsBold]
-          Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
-          Fill.BackColor = clTeal
-          HAlign = haCenter
-          Memo.UTF8W = (
-            'PHIC')
-          ParentFont = False
-        end
-        object Memo42: TfrxMemoView
-          Align = baWidth
-          AllowVectorExport = True
-          Left = 914.646011770000000000
-          Top = 18.897650000000000000
-          Width = 65.764070230000000000
-          Height = 18.897650000000000000
-          Font.Charset = ANSI_CHARSET
-          Font.Color = clWhite
-          Font.Height = -13
-          Font.Name = 'Segoe UI Semibold'
-          Font.Style = [fsBold]
-          Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
-          Fill.BackColor = clTeal
-          HAlign = haCenter
-          Memo.UTF8W = (
-            'PAY')
-          ParentFont = False
-        end
-        object Memo40: TfrxMemoView
-          Align = baLeft
-          AllowVectorExport = True
-          Left = 839.433364770000000000
-          Top = 18.897650000000000000
-          Width = 75.212647000000000000
-          Height = 18.897650000000000000
-          Font.Charset = ANSI_CHARSET
-          Font.Color = clWhite
-          Font.Height = -13
-          Font.Name = 'Segoe UI Semibold'
-          Font.Style = [fsBold]
-          Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
-          Fill.BackColor = clTeal
-          HAlign = haCenter
-          Memo.UTF8W = (
-            'OTHERS')
+            'EMPLOYEE')
           ParentFont = False
         end
       end
@@ -21766,8 +21519,8 @@ object f_Reports: Tf_Reports
         FillType = ftBrush
         Frame.Typ = [ftRight]
         Height = 18.897637800000000000
-        Top = 355.275820000000000000
-        Width = 980.410082000000000000
+        Top = 336.378170000000000000
+        Width = 980.410081999999900000
         DataSet = ds_payreport
         DataSetName = 'ds_payreport'
         RowCount = 0
@@ -21775,10 +21528,10 @@ object f_Reports: Tf_Reports
         object Memo23: TfrxMemoView
           Align = baLeft
           AllowVectorExport = True
-          Width = 52.913420000000000000
+          Width = 230.551330000000000000
           Height = 18.897650000000000000
           StretchMode = smMaxHeight
-          DataField = 'ID'
+          DataField = 'EMPLOYEE'
           DataSet = ds_payreport
           DataSetName = 'ds_payreport'
           Font.Charset = ANSI_CHARSET
@@ -21789,18 +21542,18 @@ object f_Reports: Tf_Reports
           Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
           GapX = 3.000000000000000000
           Memo.UTF8W = (
-            '[ds_payreport."ID"]')
+            '[ds_payreport."EMPLOYEE"]')
           ParentFont = False
           VAlign = vaCenter
         end
         object Memo25: TfrxMemoView
           Align = baLeft
           AllowVectorExport = True
-          Left = 52.913420000000000000
-          Width = 75.212554490000000000
+          Left = 230.551330000000000000
+          Width = 354.897774490000000000
           Height = 18.897650000000000000
           StretchMode = smMaxHeight
-          DataField = 'EMPCOUNT'
+          DataField = 'WORKLOGS'
           DataSet = ds_payreport
           DataSetName = 'ds_payreport'
           Font.Charset = ANSI_CHARSET
@@ -21811,18 +21564,18 @@ object f_Reports: Tf_Reports
           Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
           GapX = 3.000000000000000000
           Memo.UTF8W = (
-            '[ds_payreport."EMPCOUNT"]')
+            '[ds_payreport."WORKLOGS"]')
           ParentFont = False
           VAlign = vaCenter
         end
         object Memo46: TfrxMemoView
           Align = baLeft
           AllowVectorExport = True
-          Left = 128.125974490000000000
-          Width = 79.370093390000000000
+          Left = 585.449104490000000000
+          Width = 71.811033390000000000
           Height = 18.897650000000000000
           StretchMode = smMaxHeight
-          DataField = 'PAYDATE'
+          DataField = 'GROSS'
           DataSet = ds_payreport
           DataSetName = 'ds_payreport'
           Font.Charset = ANSI_CHARSET
@@ -21834,18 +21587,18 @@ object f_Reports: Tf_Reports
           GapX = 5.000000000000000000
           HAlign = haRight
           Memo.UTF8W = (
-            '[ds_payreport."PAYDATE"]')
+            '[ds_payreport."GROSS"]')
           ParentFont = False
           VAlign = vaCenter
         end
         object Memo47: TfrxMemoView
           Align = baLeft
           AllowVectorExport = True
-          Left = 207.496067880000000000
-          Width = 71.433075750000000000
+          Left = 657.260137880000000000
+          Width = 75.212605750000000000
           Height = 18.897650000000000000
           StretchMode = smMaxHeight
-          DataField = 'BASICPAY'
+          DataField = 'CASHADV'
           DataSet = ds_payreport
           DataSetName = 'ds_payreport'
           Font.Charset = ANSI_CHARSET
@@ -21857,18 +21610,18 @@ object f_Reports: Tf_Reports
           GapX = 5.000000000000000000
           HAlign = haRight
           Memo.UTF8W = (
-            '[ds_payreport."BASICPAY"]')
+            '[ds_payreport."CASHADV"]')
           ParentFont = False
           VAlign = vaCenter
         end
         object Memo48: TfrxMemoView
           Align = baLeft
           AllowVectorExport = True
-          Left = 278.929143630000000000
+          Left = 732.472743630000000000
           Width = 71.433070870000000000
           Height = 18.897650000000000000
           StretchMode = smMaxHeight
-          DataField = 'ALLOWANCES'
+          DataField = 'NETAMNT'
           DataSet = ds_payreport
           DataSetName = 'ds_payreport'
           Font.Charset = ANSI_CHARSET
@@ -21880,215 +21633,7 @@ object f_Reports: Tf_Reports
           GapX = 5.000000000000000000
           HAlign = haRight
           Memo.UTF8W = (
-            '[ds_payreport."ALLOWANCES"]')
-          ParentFont = False
-          VAlign = vaCenter
-        end
-        object Memo49: TfrxMemoView
-          Align = baLeft
-          AllowVectorExport = True
-          Left = 350.362214500000000000
-          Width = 75.212598430000000000
-          Height = 18.897650000000000000
-          StretchMode = smMaxHeight
-          DataField = 'BACKWAGE'
-          DataSet = ds_payreport
-          DataSetName = 'ds_payreport'
-          Font.Charset = ANSI_CHARSET
-          Font.Color = clBlack
-          Font.Height = -12
-          Font.Name = 'Segoe UI'
-          Font.Style = []
-          Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
-          GapX = 5.000000000000000000
-          HAlign = haRight
-          Memo.UTF8W = (
-            '[ds_payreport."BACKWAGE"]')
-          ParentFont = False
-          VAlign = vaCenter
-        end
-        object Memo50: TfrxMemoView
-          Align = baLeft
-          AllowVectorExport = True
-          Left = 425.574812930000000000
-          Width = 71.433070870000000000
-          Height = 18.897650000000000000
-          StretchMode = smMaxHeight
-          DataField = 'LATE'
-          DataSet = ds_payreport
-          DataSetName = 'ds_payreport'
-          Font.Charset = ANSI_CHARSET
-          Font.Color = clBlack
-          Font.Height = -12
-          Font.Name = 'Segoe UI'
-          Font.Style = []
-          Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
-          GapX = 5.000000000000000000
-          HAlign = haRight
-          Memo.UTF8W = (
-            '[ds_payreport."LATE"]')
-          ParentFont = False
-          VAlign = vaCenter
-        end
-        object Memo51: TfrxMemoView
-          Align = baLeft
-          AllowVectorExport = True
-          Left = 568.440954670000000000
-          Width = 67.653543310000000000
-          Height = 18.897650000000000000
-          StretchMode = smMaxHeight
-          DataField = 'CA'
-          DataSet = ds_payreport
-          DataSetName = 'ds_payreport'
-          Font.Charset = ANSI_CHARSET
-          Font.Color = clBlack
-          Font.Height = -12
-          Font.Name = 'Segoe UI'
-          Font.Style = []
-          Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
-          GapX = 5.000000000000000000
-          HAlign = haRight
-          Memo.UTF8W = (
-            '[ds_payreport."CA"]')
-          ParentFont = False
-          VAlign = vaCenter
-        end
-        object Memo52: TfrxMemoView
-          Align = baLeft
-          AllowVectorExport = True
-          Left = 636.094497980000000000
-          Width = 63.874015750000000000
-          Height = 18.897650000000000000
-          StretchMode = smMaxHeight
-          DataField = 'SSS'
-          DataSet = ds_payreport
-          DataSetName = 'ds_payreport'
-          Font.Charset = ANSI_CHARSET
-          Font.Color = clBlack
-          Font.Height = -12
-          Font.Name = 'Segoe UI'
-          Font.Style = []
-          Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
-          GapX = 5.000000000000000000
-          HAlign = haRight
-          Memo.UTF8W = (
-            '[ds_payreport."SSS"]')
-          ParentFont = False
-          VAlign = vaCenter
-        end
-        object Memo53: TfrxMemoView
-          Align = baLeft
-          AllowVectorExport = True
-          Left = 699.968513730000000000
-          Width = 75.212598430000000000
-          Height = 18.897650000000000000
-          StretchMode = smMaxHeight
-          DataField = 'PAGIBIG'
-          DataSet = ds_payreport
-          DataSetName = 'ds_payreport'
-          Font.Charset = ANSI_CHARSET
-          Font.Color = clBlack
-          Font.Height = -12
-          Font.Name = 'Segoe UI'
-          Font.Style = []
-          Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
-          GapX = 5.000000000000000000
-          HAlign = haRight
-          Memo.UTF8W = (
-            '[ds_payreport."PAGIBIG"]')
-          ParentFont = False
-          VAlign = vaCenter
-        end
-        object Memo54: TfrxMemoView
-          Align = baLeft
-          AllowVectorExport = True
-          Left = 775.181112160000000000
-          Top = -0.220469999999977500
-          Width = 63.874015750000000000
-          Height = 18.897650000000000000
-          StretchMode = smMaxHeight
-          DataField = 'PHIC'
-          DataSet = ds_payreport
-          DataSetName = 'ds_payreport'
-          Font.Charset = ANSI_CHARSET
-          Font.Color = clBlack
-          Font.Height = -12
-          Font.Name = 'Segoe UI'
-          Font.Style = []
-          Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
-          GapX = 5.000000000000000000
-          HAlign = haRight
-          Memo.UTF8W = (
-            '[ds_payreport."PHIC"]')
-          ParentFont = False
-          VAlign = vaCenter
-        end
-        object Memo55: TfrxMemoView
-          Align = baLeft
-          AllowVectorExport = True
-          Left = 839.055127910000000000
-          Width = 75.212598430000000000
-          Height = 18.897650000000000000
-          StretchMode = smMaxHeight
-          DataField = 'OTHERS'
-          DataSet = ds_payreport
-          DataSetName = 'ds_payreport'
-          Font.Charset = ANSI_CHARSET
-          Font.Color = clBlack
-          Font.Height = -12
-          Font.Name = 'Segoe UI'
-          Font.Style = []
-          Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
-          GapX = 5.000000000000000000
-          HAlign = haRight
-          Memo.UTF8W = (
-            '[ds_payreport."OTHERS"]')
-          ParentFont = False
-          VAlign = vaCenter
-        end
-        object Memo63: TfrxMemoView
-          Align = baLeft
-          AllowVectorExport = True
-          Left = 497.007883800000000000
-          Width = 71.433070870000000000
-          Height = 18.897650000000000000
-          StretchMode = smMaxHeight
-          DataField = 'ABSENCES'
-          DataSet = ds_payreport
-          DataSetName = 'ds_payreport'
-          Font.Charset = ANSI_CHARSET
-          Font.Color = clBlack
-          Font.Height = -12
-          Font.Name = 'Segoe UI'
-          Font.Style = []
-          Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
-          GapX = 5.000000000000000000
-          HAlign = haRight
-          Memo.UTF8W = (
-            '[ds_payreport."ABSENCES"]')
-          ParentFont = False
-          VAlign = vaCenter
-        end
-        object Memo45: TfrxMemoView
-          Align = baWidth
-          AllowVectorExport = True
-          Left = 914.267726340000000000
-          Width = 66.142355660000000000
-          Height = 18.897650000000000000
-          StretchMode = smMaxHeight
-          DataField = 'NETPAY'
-          DataSet = ds_payreport
-          DataSetName = 'ds_payreport'
-          Font.Charset = ANSI_CHARSET
-          Font.Color = clBlack
-          Font.Height = -12
-          Font.Name = 'Segoe UI'
-          Font.Style = []
-          Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
-          GapX = 5.000000000000000000
-          HAlign = haRight
-          Memo.UTF8W = (
-            '[ds_payreport."NETPAY"]')
+            '[ds_payreport."NETAMNT"]')
           ParentFont = False
           VAlign = vaCenter
         end
@@ -22097,12 +21642,12 @@ object f_Reports: Tf_Reports
         FillType = ftBrush
         Frame.Typ = [ftLeft, ftRight, ftBottom]
         Height = 113.826840000000000000
-        Top = 396.850650000000000000
-        Width = 980.410082000000000000
+        Top = 377.953000000000000000
+        Width = 980.410081999999900000
         object Memo56: TfrxMemoView
           AllowVectorExport = True
-          Left = 778.583180000000000000
-          Top = 11.338590000000010000
+          Left = 600.945270000000000000
+          Top = 7.559059999999990000
           Width = 124.724490000000000000
           Height = 18.897650000000000000
           Font.Charset = ANSI_CHARSET
@@ -22117,10 +21662,9 @@ object f_Reports: Tf_Reports
           ParentFont = False
         end
         object Memo57: TfrxMemoView
-          Align = baRight
           AllowVectorExport = True
-          Left = 904.819482000000000000
-          Top = 11.338590000000000000
+          Left = 727.181572000000000000
+          Top = 7.559059999999990000
           Width = 75.590600000000000000
           Height = 18.897650000000000000
           DisplayFormat.FormatStr = '%2.2n'
@@ -22135,13 +21679,13 @@ object f_Reports: Tf_Reports
           GapX = 3.000000000000000000
           HAlign = haRight
           Memo.UTF8W = (
-            '[SUM(<ds_payreport."NETPAY">,DetailData1)]')
+            '[SUM(<ds_payreport."NETAMNT">,DetailData1)]')
           ParentFont = False
         end
         object Memo64: TfrxMemoView
           Align = baLeft
           AllowVectorExport = True
-          Top = 11.338590000000010000
+          Top = 11.338590000000000000
           Width = 52.913420000000000000
           Height = 18.897650000000000000
           AutoWidth = True
@@ -22159,7 +21703,7 @@ object f_Reports: Tf_Reports
           Align = baLeft
           AllowVectorExport = True
           Left = 52.913420000000000000
-          Top = 11.338590000000010000
+          Top = 11.338590000000000000
           Width = 52.913420000000000000
           Height = 18.897650000000000000
           AutoWidth = True
@@ -22178,8 +21722,8 @@ object f_Reports: Tf_Reports
         FillType = ftBrush
         Frame.Typ = []
         Height = 22.677180000000000000
-        Top = 570.709030000000000000
-        Width = 980.410082000000000000
+        Top = 551.811380000000000000
+        Width = 980.410081999999900000
         object Memo30: TfrxMemoView
           Align = baLeft
           AllowVectorExport = True
@@ -22236,7 +21780,7 @@ object f_Reports: Tf_Reports
         object SysMemo3: TfrxSysMemoView
           Align = baRight
           AllowVectorExport = True
-          Left = 825.449352000000000000
+          Left = 825.449351999999900000
           Width = 154.960730000000000000
           Height = 18.897650000000000000
           AutoWidth = True
@@ -22254,7 +21798,7 @@ object f_Reports: Tf_Reports
         object Memo31: TfrxMemoView
           Align = baRight
           AllowVectorExport = True
-          Left = 776.315462000000000000
+          Left = 776.315461999999900000
           Width = 49.133890000000000000
           Height = 18.897650000000000000
           StretchMode = smMaxHeight
@@ -22276,7 +21820,7 @@ object f_Reports: Tf_Reports
         Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
         Height = 34.236240000000000000
         Top = 238.110390000000000000
-        Width = 980.410082000000000000
+        Width = 980.410081999999900000
         object Memo5: TfrxMemoView
           Align = baLeft
           AllowVectorExport = True
@@ -22326,28 +21870,12 @@ object f_Reports: Tf_Reports
     UserName = 'ds_payreport'
     CloseDataSource = False
     FieldAliases.Strings = (
-      'ID=ID'
-      'EMPCOUNT=EMPCOUNT'
-      'BASICPAY=BASICPAY'
-      'ALLOWANCES=ALLOWANCES'
-      'BACKWAGE=BACKWAGE'
-      'LATE=LATE'
-      'OTHERS=OTHERS'
-      'SSS=SSS'
-      'PAGIBIG=PAGIBIG'
-      'PHIC=PHIC'
-      'NETPAY=NETPAY'
-      'CANCELLED=CANCELLED'
-      'CANCELLEDBYID=CANCELLEDBYID'
-      'CANCELLEDDATETIME=CANCELLEDDATETIME'
-      'CREATEDBYID=CREATEDBYID'
-      'CREATEDDATETIME=CREATEDDATETIME'
-      'POSTED=POSTED'
-      'POSTEDDATETIME=POSTEDDATETIME'
-      'ABSENCES=ABSENCES'
-      'PAYDATE=PAYDATE'
-      'CA=CA')
-    DataSet = dm_PM.brw_Payroll
+      'EMPLOYEE=EMPLOYEE'
+      'WORKLOGS=WORKLOGS'
+      'GROSS=GROSS'
+      'CASHADV=CASHADV'
+      'NETAMNT=NETAMNT')
+    DataSet = dm_PM.tb_Payroll
     BCDToCurrency = False
     Left = 280
     Top = 248
@@ -35571,7 +35099,7 @@ object f_Reports: Tf_Reports
       ''
       'end.')
     Left = 80
-    Top = 456
+    Top = 448
     Datasets = <
       item
         DataSet = ds_Comp
@@ -35860,8 +35388,8 @@ object f_Reports: Tf_Reports
         object Memo36: TfrxMemoView
           Align = baWidth
           AllowVectorExport = True
-          Left = 559.370217869999900000
-          Width = 181.039709130000100000
+          Left = 559.370217870000000000
+          Width = 181.039709130000000000
           Height = 18.897650000000000000
           Font.Charset = ANSI_CHARSET
           Font.Color = clWhite
@@ -36000,7 +35528,7 @@ object f_Reports: Tf_Reports
         object Memo38: TfrxMemoView
           Align = baLeft
           AllowVectorExport = True
-          Left = 393.071027240000100000
+          Left = 393.071027240000000000
           Width = 75.590556060000000000
           Height = 18.897650000000000000
           StretchMode = smMaxHeight
@@ -36024,7 +35552,7 @@ object f_Reports: Tf_Reports
         object Memo39: TfrxMemoView
           Align = baWidth
           AllowVectorExport = True
-          Left = 559.370171480000100000
+          Left = 559.370171480000000000
           Width = 181.039755520000000000
           Height = 18.897650000000000000
           StretchMode = smMaxHeight
@@ -36210,7 +35738,7 @@ object f_Reports: Tf_Reports
         object Memo31: TfrxMemoView
           Align = baRight
           AllowVectorExport = True
-          Left = 536.315307000000100000
+          Left = 536.315307000000000000
           Width = 49.133890000000000000
           Height = 18.897650000000000000
           StretchMode = smMaxHeight

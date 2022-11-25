@@ -130,8 +130,6 @@ type
     SalesSummary1: TMenuItem;
     ExpenseSummary: TMenuItem;
     PayrollSummary: TAction;
-    PopupMenu5: TPopupMenu;
-    PayrollSummary1: TMenuItem;
     scGPToolGroupPanel14: TscGPToolGroupPanel;
     scGPButton2: TscGPButton;
     CPRSummary: TAction;
@@ -143,7 +141,7 @@ type
     RRSummary1: TMenuItem;
     JODetail: TAction;
     JobOrderReportDetail1: TMenuItem;
-    SalesDetail: TAction;
+    pay: TAction;
     SalesDetail1: TMenuItem;
     ExpenseDetail: TAction;
     ExpenseCashoutDetail1: TMenuItem;
@@ -175,6 +173,9 @@ type
     RemittanceSummary1: TMenuItem;
     RemittanceDetail1: TMenuItem;
     SalariesandWages1: TMenuItem;
+    CashAdvances: TAction;
+    CashAdvances1: TMenuItem;
+    PayrollSummary2: TMenuItem;
     procedure MinButtonClick(Sender: TObject);
     procedure MaxButtonClick(Sender: TObject);
     procedure CloseButtonClick(Sender: TObject);
@@ -210,11 +211,10 @@ type
     procedure JOSummaryExecute(Sender: TObject);
     procedure SalesSummaryExecute(Sender: TObject);
     procedure ExpenseSummaryClick(Sender: TObject);
-    procedure PayrollSummaryExecute(Sender: TObject);
     procedure CPRSummaryExecute(Sender: TObject);
     procedure RRSummaryExecute(Sender: TObject);
     procedure JODetailExecute(Sender: TObject);
-    procedure SalesDetailExecute(Sender: TObject);
+    procedure payExecute(Sender: TObject);
     procedure ExpenseDetailExecute(Sender: TObject);
     procedure CashFlowExecute(Sender: TObject);
     procedure MatReqDetailExecute(Sender: TObject);
@@ -229,6 +229,8 @@ type
     procedure SalariesandWagesExecute(Sender: TObject);
     procedure RemittanceDetailExecute(Sender: TObject);
     procedure RemittanceSummaryExecute(Sender: TObject);
+    procedure CashAdvancesExecute(Sender: TObject);
+    procedure PayrollSummaryExecute(Sender: TObject);
   private
     { Private declarations }
     procedure user_rights;
@@ -371,6 +373,32 @@ begin
 
 end;
 
+procedure Tf_menu.CashAdvancesExecute(Sender: TObject);
+begin
+  with dm_PM do
+  begin
+    f_DateRange := Tf_DateRange.Create(Self);
+    f_DateRange.date_1.Date := StartOfTheMonth(Now);
+    f_DateRange.date_2.Date := EndOfTheMonth(Now);
+
+    if f_DateRange.ShowModal = mrOk then
+    begin
+      brw_Salaries.Close;
+      brw_Salaries.SQL[4] := 'WHERE EXP.CATEGORY = 2 AND (DETAIL.REFDATE BETWEEN :DATE1 AND :DATE2) AND HEADER.CANCELLED = FALSE AND DETAIL.CANCELLED = FALSE';
+      brw_Salaries.ParamByName('DATE1').Value  := FormatDateTime('yyyy-mm-dd', f_DateRange.date_1.Date);
+      brw_Salaries.ParamByName('DATE2').Value := FormatDateTime('yyyy-mm-dd', f_DateRange.date_2.Date);
+      brw_Salaries.Open();
+
+      f_Reports := Tf_Reports.Create(Self);
+
+      TfrxMemoView(f_Reports.rep_Salaries.FindObject('item')).Text        := 'CASH ADVANCES';
+      TfrxMemoView(f_Reports.rep_Salaries.FindObject('period')).Text      := DateToStr(f_DateRange.date_1.Date) + ' - '+DateToStr(f_DateRange.date_2.Date);
+
+      f_Reports.rep_Salaries.ShowReport();
+    end;
+  end;
+end;
+
 procedure Tf_menu.CashFlowExecute(Sender: TObject);
 var balance: Real;
 begin
@@ -432,7 +460,7 @@ begin
               else
               tb_CashFlowOPERATIONS.Value   := brw_CashSumEXPENSETYPE.AsString + ' (OR No. '+brw_CashSumID.AsString+')';
 
-              tb_CashFlowDEBIT.Value := 0;
+              tb_CashFlowDEBIT.Value  := 0;
               tb_CashFlowCREDIT.Value := 0;
 
               if brw_CashSumSOURCE.Value = 'JO' then
@@ -867,6 +895,7 @@ begin
 end;
 
 procedure Tf_menu.PayrollSummaryExecute(Sender: TObject);
+var date1, date2 : TDateTime;
 begin
   with dm_PM do
   begin
@@ -876,11 +905,43 @@ begin
 
     if f_DateRange.ShowModal = mrOk then
     begin
-      brw_Payroll.Close;
-      brw_Payroll.SQL[2]  := 'WHERE (PAYDATE BETWEEN :date1 AND :date2) AND CANCELLED = FALSE';
-      brw_Payroll.ParamByName('date1').Value  := FormatDateTime('yyyy-mm-dd', f_DateRange.date_1.Date);
-      brw_Payroll.ParamByName('date2').Value  :=FormatDateTime('yyyy-mm-dd', f_DateRange.date_2.Date);
-      brw_Payroll.Open();
+      tb_Payroll.Close;
+      tb_Payroll.Open;
+
+      date1   :=  StartOfTheDay(f_DateRange.date_1.Date);
+      date2   :=  EndOfTheDay(f_DateRange.date_2.Date);
+
+      brw_ComputePay.Close;
+      brw_ComputePay.SQL[2]  := 'WHERE (CREATEDDATETIME BETWEEN :DATE1 AND :DATE2) AND CANCELLED = FALSE';
+      brw_ComputePay.ParamByName('DATE1').Value    := date1;
+      brw_ComputePay.ParamByName('DATE2').Value    := date2;
+      brw_ComputePay.Open();
+
+      if brw_ComputePay.RecordCount > 0 then
+      begin
+        brw_ComputePay.First;
+
+        while not brw_ComputePay.Eof do
+        begin
+          tb_Payroll.Append;
+          tb_PayrollEMPLOYEE.Value    := brw_ComputePayWORKER.Value;
+          tb_PayrollGROSS.Value       := brw_ComputePayAMNT.Value;
+
+          brw_CompExpense.Close;
+          brw_CompExpense.SQL[4]  := 'WHERE (DETAIL.REFDATE BETWEEN :date1 and :date2) AND DETAIL.EMPID = :EMPID AND EXP.CATEGORY = 2 AND HEADER.CANCELLED = FALSE AND DETAIL.CANCELLED = FALSE';
+          brw_CompExpense.ParamByName('EMPID').Value   := brw_ComputePayWORKERID.Value;
+          brw_CompExpense.ParamByName('date1').Value   := date1;
+          brw_CompExpense.ParamByName('date2').Value   := date2;
+          brw_CompExpense.Open();
+
+          tb_PayrollCASHADV.Value     := brw_CompExpenseAMOUNT.Value;
+
+          tb_Payroll.Post;
+
+          brw_ComputePay.Next;
+        end;
+
+      end;
 
       f_Reports := Tf_Reports.Create(Self);
       TfrxMemoView(f_Reports.rep_PayrollSummary.FindObject('period')).Text  := DateToStr(f_DateRange.date_1.Date) + ' - '+DateToStr(f_DateRange.date_2.Date);
@@ -1294,7 +1355,7 @@ begin
   end;
 end;
 
-procedure Tf_menu.SalesDetailExecute(Sender: TObject);
+procedure Tf_menu.payExecute(Sender: TObject);
 var totalcash, totaljo, totalcashin: Real;
 begin
   with dm_PM do

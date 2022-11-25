@@ -85,6 +85,9 @@ type
     cxGrid1DBTableView1BALAMNT: TcxGridDBColumn;
     cxGrid1Level1: TcxGridLevel;
     cxGrid1DBTableView1NETAMNT: TcxGridDBColumn;
+    cxGrid1DBTableView1REMARKS: TcxGridDBColumn;
+    cxStyleRepository2: TcxStyleRepository;
+    cxStyle1: TcxStyle;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure EditExecute(Sender: TObject);
     procedure DeleteExecute(Sender: TObject);

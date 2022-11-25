@@ -238,7 +238,6 @@ begin
       if (dm_PM.brw_ExpenseTypeCATEGORY.Value = 1) and ((dm_PM.qry_CashOutDetailPAYDATETO.IsNull) or (dm_PM.qry_CashOutDetailPAYDATETO.AsString = '')) then
       date_payto.Style.BorderColor  := clRed;
 
-
       if ((dm_PM.brw_ExpenseTypeCATEGORY.Value = 1) or (dm_PM.brw_ExpenseTypeCATEGORY.Value = 2)) and ((dm_PM.qry_CashOutDetailEMPID.Value = 0) or (dm_PM.qry_CashOutDetailEMPID.IsNull)) then
       cmb_emp.Style.BorderColor     := clRed;
 
@@ -324,10 +323,8 @@ begin
       f_PayrollDetail.cxLabel1.Caption  := empname;
       f_PayrollDetail.ShowModal;
 
-
     end;
   end;
 end;
-
 
 end.
