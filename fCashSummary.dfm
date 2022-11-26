@@ -914,12 +914,19 @@ object f_CashSummary: Tf_CashSummary
       Caption = 'Reprint - Cash Sales Summary'
       OnExecute = ReprintExecute
     end
+    object ReprintPayslip: TAction
+      Caption = 'Reprint - Payslip'
+      OnExecute = ReprintPayslipExecute
+    end
   end
   object PopupMenu1: TPopupMenu
-    Left = 504
-    Top = 216
+    Left = 680
+    Top = 152
     object Void1: TMenuItem
       Action = Void
+    end
+    object ReprintPayslip1: TMenuItem
+      Action = ReprintPayslip
     end
   end
   object frxReport1: TfrxReport
@@ -966,6 +973,9 @@ object f_CashSummary: Tf_CashSummary
     end
     object ReprintCashSalesSummary1: TMenuItem
       Action = Reprint
+    end
+    object ReprintPayslip2: TMenuItem
+      Action = ReprintPayslip
     end
   end
 end

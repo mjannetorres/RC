@@ -1,4 +1,4 @@
-unit fCashOut;
+﻿unit fCashOut;
 
 interface
 
@@ -23,7 +23,7 @@ uses
   dxSkinXmas2008Blue, Data.DB, cxDBEdit, cxTextEdit, cxMemo, Vcl.StdCtrls,
   Vcl.ExtCtrls, Vcl.ComCtrls, cxMaskEdit, cxDropDownEdit, cxLookupEdit,
   cxDBLookupEdit, cxDBLookupComboBox, cxCalendar, System.Actions, Vcl.ActnList,
-  cxButtonEdit, sGroupBox;
+  cxButtonEdit, sGroupBox, cxCurrencyEdit;
 
 type
   Tf_CashOut = class(TForm)
@@ -60,13 +60,14 @@ type
     ViewParticulars: TAction;
     sGroupBox1: TsGroupBox;
     Label9: TLabel;
-    txt_ca: TcxDBButtonEdit;
     Label10: TLabel;
     txt_balance: TcxDBButtonEdit;
     Label11: TLabel;
     txt_actual: TcxDBButtonEdit;
     Label12: TLabel;
-    txt_credit: TcxDBButtonEdit;
+    txt_credit: TcxDBTextEdit;
+    txt_ca: TcxDBCurrencyEdit;
+    ViewForwardedBalance: TAction;
     procedure FormShow(Sender: TObject);
     procedure cmb_exptypePropertiesCloseUp(Sender: TObject);
     procedure cmb_empPropertiesCloseUp(Sender: TObject);
@@ -77,6 +78,7 @@ type
     procedure txt_caPropertiesValidate(Sender: TObject;
       var DisplayValue: Variant; var ErrorText: TCaption; var Error: Boolean);
     procedure txt_amntExit(Sender: TObject);
+    procedure ViewForwardedBalanceExecute(Sender: TObject);
   private
     { Private declarations }
     cash_adv : Real;
@@ -94,7 +96,7 @@ implementation
 
 {$R *.dfm}
 
-uses dmPM, DateUtils, fViewCA, fPayrollDetail;
+uses dmPM, DateUtils, fViewCA, fPayrollDetail, fViewBalance;
 
 procedure Tf_CashOut.cmb_empPropertiesCloseUp(Sender: TObject);
 begin
@@ -143,13 +145,21 @@ begin
               brw_CompExpense.Open();
 
               qry_CashOutDetailCASHADVACTUAL.Value    :=  brw_CompExpenseAMOUNT.Value;
-              qry_CashOutDetailCASHADVANCES.Value     :=  brw_CompExpenseAMOUNT.Value + qry_CashOutDetailCASHADVBALANCE.Value;
 
-              qry_CashOutDetailCASHADVCREDIT.Value    :=  qry_CashOutDetailCASHADVANCES.Value - qry_CashOutDetailCASHADVACTUAL.Value;
+              // GET CASH ADV FORWARDED BALANCE
+              brw_CompExpense.Close;
+              brw_CompExpense.SQL[4]  := 'WHERE DETAIL.EMPID = :EMPID AND EXP.CATEGORY = 1 AND HEADER.CANCELLED = FALSE AND DETAIL.CANCELLED = FALSE';
+              brw_CompExpense.ParamByName('EMPID').Value   := qry_CashOutDetailEMPID.Value;
+              brw_CompExpense.Open();
 
-              cash_adv  := qry_CashOutDetailCASHADVANCES.Value;
+              qry_CashOutDetailCASHADVBALANCE.Value   := brw_CompExpenseACTUAL.Value - brw_CompExpenseCASHADV.Value;
 
-              qry_CashOutDetailAMOUNT.Value := (qry_CashOutDetailGROSS.Value - (qry_CashOutDetailCASHADVANCES.Value));
+              qry_CashOutDetailCASHADVCREDIT.Value := (qry_CashOutDetailCASHADVACTUAL.Value + qry_CashOutDetailCASHADVBALANCE.Value) - qry_CashOutDetailCASHADVANCES.Value;
+
+              cash_adv  := qry_CashOutDetailCASHADVACTUAL.Value + qry_CashOutDetailCASHADVBALANCE.Value;
+
+              qry_CashOutDetailAMOUNT.Value  :=  (qry_CashOutDetailGROSS.Value - (qry_CashOutDetailCASHADVANCES.Value));
+
            end;
         end;
       end;
@@ -281,6 +291,7 @@ end;
 
 procedure Tf_CashOut.txt_amntExit(Sender: TObject);
 begin
+  compute_payroll;
   manageui;
 end;
 
@@ -289,8 +300,11 @@ procedure Tf_CashOut.txt_caPropertiesValidate(Sender: TObject;
 begin
   with dm_PM do
   begin
-    if DisplayValue > qry_CashOutDetailCASHADVANCES.Value then
-    MessageDlg('Amount entered cannot exceed to current Cash Advance balance ('+FloatToStr(cash_adv)+')', mtError, [mbOK], 0);
+    if DisplayValue > (qry_CashOutDetailCASHADVACTUAL.Value + qry_CashOutDetailCASHADVBALANCE.Value) then
+    begin
+      MessageDlg('Amount entered cannot exceed to current balance ('+FloatToStr(cash_adv)+')', mtError, [mbOK], 0);
+      DisplayValue  := 0;
+    end;
   end;
 end;
 
@@ -317,6 +331,28 @@ begin
       f_ViewCA   := Tf_ViewCA.Create(Self);
       f_ViewCA.cxLabel1.Caption  := qry_CashOutDetailPAYEE.AsString;
       f_ViewCA.ShowModal;
+    end;
+  end;
+end;
+
+procedure Tf_CashOut.ViewForwardedBalanceExecute(Sender: TObject);
+begin
+  with dm_PM do
+  begin
+    if qry_CashOutDetailEMPID.Value > 0 then
+    begin
+
+      brw_ForwardedBal.Close;
+      brw_ForwardedBal.SQL[4]  := 'WHERE DETAIL.CASHADVCREDIT > 0 AND EXP.CATEGORY = 1 AND DETAIL.EMPID = :EMPID AND HEADER.CANCELLED = FALSE AND DETAIL.CANCELLED = FALSE';
+      brw_ForwardedBal.ParamByName('EMPID').Value   := qry_CashOutDetailEMPID.Value;
+      brw_ForwardedBal.Open();
+
+      brw_ForwardedBal.First;
+
+      f_ViewBalance   := Tf_ViewBalance.Create(Self);
+      f_ViewBalance.cxLabel1.Caption    := qry_CashOutDetailPAYEE.AsString;
+      f_ViewBalance.lblBalance.Caption  := 'Forwarded Balance : ₱' + FormatCurr('###,###,##0.00', qry_CashOutDetailCASHADVBALANCE.Value);
+      f_ViewBalance.ShowModal;
     end;
   end;
 end;

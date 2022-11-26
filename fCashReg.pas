@@ -280,7 +280,7 @@ implementation
 
 uses dmPM, fCustNew, fCashRegTemp, fCashDisc, fSelectPayment, fCashSummary,
   fCustTemp, fReports, fCashFund, fVoid, fCashDisburse, fCashIn, fCashOut,
-  fDateConfig;
+  fDateConfig, DateUtils;
 
 procedure Tf_CashReg.AddItemExecute(Sender: TObject);
 begin
@@ -1397,16 +1397,18 @@ begin
               begin
                 if brw_ExpenseTypeCATEGORY.Value = 1 then
                 begin
-                  qry_PayDetail.Close;
-                  qry_PayDetail.SQL[2]  := 'WHERE HEADERID = :HEADERID AND EMPID = :EMPID AND CANCELLED = FALSE';
-                  qry_PayDetail.ParamByName('HEADERID').Value := qry_CashOutDetailPAYREFID.Value;
-                  qry_PayDetail.ParamByName('EMPID').Value    := qry_CashOutDetailEMPID.Value;
-                  qry_PayDetail.Open();
+                  brw_WorkLogs.Close;
+                  brw_WorkLogs.SQL[3] := 'WHERE PM_WORKLOGS.WORKERID = :EMPID AND (PM_WORKLOGS.CREATEDDATETIME BETWEEN :DATE1 AND :DATE2) AND PM_WORKLOGS.CANCELLED = FALSE';
+                  brw_WorkLogs.ParamByName('EMPID').Value      := qry_CashOutDetailEMPID.Value;
+                  brw_WorkLogs.ParamByName('DATE1').Value      := StartOfTheDay(qry_CashOutDetailPAYDATEFROM.Value);
+                  brw_WorkLogs.ParamByName('DATE2').Value      := EndOfTheDay(qry_CashOutDetailPAYDATETO.Value);
+                  brw_WorkLogs.Open();
 
-                  qry_PayDetail.Edit;
-                  qry_PayDetailPAIDAMNT.Value := qry_CashOutDetailAMOUNT.Value;
-                  qry_PayDetail.Post;
-                  qry_PayDetail.ApplyUpdates();
+                  f_Reports := Tf_Reports.Create(Self);
+                  TfrxMemoView(f_Reports.rep_PaySlip.FindObject('mem_days')).Text  := VarToStr(DaysBetween(StartOfTheDay(qry_CashOutDetailPAYDATEFROM.Value), EndOfTheDay(qry_CashOutDetailPAYDATETO.Value)));
+                  TfrxMemoView(f_Reports.rep_PaySlip.FindObject('mem_count')).Text  := IntToStr(brw_WorkLogs.RecordCount) + ' NO. OF ITEM(S)';
+                  f_Reports.rep_PaySlip.ShowReport();
+                  //preview_payslip(qry_CashOutDetailEMPID.Value, qry_CashOutDetailPAYDATEFROM.Value, qry_CashOutDetailPAYDATETO.Value);
                 end;
               end;
               brw_ExpenseType.EnableControls;

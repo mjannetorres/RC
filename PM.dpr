@@ -79,7 +79,8 @@ uses
   fClients in 'fClients.pas' {f_Clients},
   fClientsTemp in 'fClientsTemp.pas' {f_ClientsTemp},
   fLogin1 in 'fLogin1.pas' {f_Login1},
-  fWorkLog in 'fWorkLog.pas' {f_WorkLog};
+  fWorkLog in 'fWorkLog.pas' {f_WorkLog},
+  fViewBalance in 'fViewBalance.pas' {f_ViewBalance};
 
 {$R *.res}
 
@@ -89,7 +90,6 @@ begin
   TStyleManager.TrySetStyle('TabletDark');
   Application.CreateForm(Tdm_PM, dm_PM);
   Application.CreateForm(Tf_menu, f_menu);
-  Application.CreateForm(Tf_ClientsTemp, f_ClientsTemp);
   Application.CreateForm(Tf_Login1, f_Login1);
   Application.Run;
 end.

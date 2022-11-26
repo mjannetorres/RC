@@ -2210,6 +2210,35 @@ type
     qry_CashOutDetailCASHADVBALANCE: TSingleField;
     qry_CashOutDetailCASHADVCREDIT: TSingleField;
     qry_CashOutDetailCASHADVACTUAL: TSingleField;
+    brw_CompExpenseACTUAL: TFloatField;
+    brw_CompExpenseCASHADV: TFloatField;
+    brw_ForwardedBal: TFDQuery;
+    brw_ForwardedBalID: TFDAutoIncField;
+    brw_ForwardedBalHEADERID: TIntegerField;
+    brw_ForwardedBalCATEGORY: TStringField;
+    brw_ForwardedBalCATEGORYID: TIntegerField;
+    brw_ForwardedBalPAYREFID: TIntegerField;
+    brw_ForwardedBalEMPID: TIntegerField;
+    brw_ForwardedBalPAYEE: TStringField;
+    brw_ForwardedBalREMARKS: TStringField;
+    brw_ForwardedBalAMOUNT: TSingleField;
+    brw_ForwardedBalREFDATE: TDateField;
+    brw_ForwardedBalCREATEDBY: TIntegerField;
+    brw_ForwardedBalCREATEDDATETIME: TDateTimeField;
+    brw_ForwardedBalCANCELLED: TBooleanField;
+    brw_ForwardedBalCANCELLEDBYID: TIntegerField;
+    brw_ForwardedBalCANCELLEDDATETIME: TDateTimeField;
+    brw_ForwardedBalPAYDATEFROM: TDateField;
+    brw_ForwardedBalPAYDATETO: TDateField;
+    brw_ForwardedBalGROSS: TSingleField;
+    brw_ForwardedBalCASHADVANCES: TSingleField;
+    brw_ForwardedBalCASHADVCREDIT: TSingleField;
+    brw_ForwardedBalCASHADVBALANCE: TSingleField;
+    brw_ForwardedBalCASHADVACTUAL: TSingleField;
+    brw_ForwardedBalCALC_CASHADV: TFloatField;
+    brw_SalariesCASHADVCREDIT: TSingleField;
+    brw_SalariesCASHADVBALANCE: TSingleField;
+    brw_SalariesCASHADVACTUAL: TSingleField;
     procedure tb_JODetailCalcFields(DataSet: TDataSet);
     procedure brw_pmboardCalcFields(DataSet: TDataSet);
     procedure brw_EmpCalcFields(DataSet: TDataSet);
@@ -2255,6 +2284,7 @@ type
     procedure tb_PaySlipCalcFields(DataSet: TDataSet);
     procedure brw_WorkLogsCalcFields(DataSet: TDataSet);
     procedure tb_PayrollCalcFields(DataSet: TDataSet);
+    procedure brw_ForwardedBalCalcFields(DataSet: TDataSet);
   private
     { Private declarations }
   public
@@ -2341,6 +2371,14 @@ end;
 procedure Tdm_PM.brw_EmpCalcFields(DataSet: TDataSet);
 begin
   brw_EmpEMPNAME.Value  := brw_EmpLASTNAME.AsString + ', '+brw_EmpFIRSTNAME.AsString + ' '+brw_EmpMIDDLENAME.AsString;
+end;
+
+procedure Tdm_PM.brw_ForwardedBalCalcFields(DataSet: TDataSet);
+begin
+  if brw_ForwardedBalCASHADVANCES.Value > 0    then
+  brw_ForwardedBalCALC_CASHADV.Value    :=  brw_ForwardedBalCASHADVANCES.Value
+  else
+  brw_ForwardedBalCALC_CASHADV.Value    :=  0
 end;
 
 procedure Tdm_PM.brw_InvDetailCalcFields(DataSet: TDataSet);

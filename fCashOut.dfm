@@ -24,8 +24,6 @@ object f_CashOut: Tf_CashOut
     Align = alBottom
     BevelOuter = bvNone
     TabOrder = 4
-    ExplicitTop = 383
-    ExplicitWidth = 442
     DesignSize = (
       451
       37)
@@ -39,7 +37,6 @@ object f_CashOut: Tf_CashOut
       Default = True
       ModalResult = 1
       TabOrder = 0
-      ExplicitLeft = 257
     end
     object Button2: TButton
       Left = 353
@@ -51,7 +48,6 @@ object f_CashOut: Tf_CashOut
       Caption = 'Cancel'
       ModalResult = 2
       TabOrder = 1
-      ExplicitLeft = 344
     end
   end
   object Panel2: TPanel
@@ -65,7 +61,6 @@ object f_CashOut: Tf_CashOut
     Padding.Left = 10
     ParentBackground = False
     TabOrder = 5
-    ExplicitWidth = 442
     object Label3: TLabel
       Left = 10
       Top = 0
@@ -101,7 +96,6 @@ object f_CashOut: Tf_CashOut
     ParentBackground = False
     TabOrder = 0
     StyleElements = []
-    ExplicitWidth = 442
     object Label5: TLabel
       Left = 15
       Top = 16
@@ -174,7 +168,6 @@ object f_CashOut: Tf_CashOut
     ParentBackground = False
     TabOrder = 1
     StyleElements = []
-    ExplicitWidth = 442
     object Label1: TLabel
       Left = 15
       Top = 6
@@ -272,7 +265,6 @@ object f_CashOut: Tf_CashOut
     ParentBackground = False
     TabOrder = 2
     StyleElements = []
-    ExplicitWidth = 442
     object Label6: TLabel
       Left = 15
       Top = 11
@@ -452,16 +444,22 @@ object f_CashOut: Tf_CashOut
       Width = 431
       Height = 163
       Caption = 'Cash Advances'
+      Color = clWhite
       Font.Charset = ANSI_CHARSET
       Font.Color = 6570553
       Font.Height = -13
       Font.Name = 'Segoe UI'
       Font.Style = [fsBold]
+      ParentBackground = False
+      ParentColor = False
       ParentFont = False
       TabOrder = 3
+      StyleElements = []
       CaptionLayout = clTopCenter
       CaptionMargin.Left = 0
       CaptionMargin.Right = 0
+      SkinData.CustomColor = True
+      SkinData.CustomFont = True
       object Label9: TLabel
         Left = 12
         Top = 28
@@ -499,9 +497,9 @@ object f_CashOut: Tf_CashOut
       object Label11: TLabel
         Left = 12
         Top = 97
-        Width = 58
+        Width = 71
         Height = 17
-        Caption = 'Amount :'
+        Caption = 'To Deduct :'
         Color = clWhite
         Font.Charset = ANSI_CHARSET
         Font.Color = clRed
@@ -516,9 +514,9 @@ object f_CashOut: Tf_CashOut
       object Label12: TLabel
         Left = 12
         Top = 129
-        Width = 45
+        Width = 55
         Height = 17
-        Caption = 'Credit :'
+        Caption = 'Balance :'
         Color = clWhite
         Font.Charset = ANSI_CHARSET
         Font.Color = clRed
@@ -530,34 +528,6 @@ object f_CashOut: Tf_CashOut
         Layout = tlCenter
         StyleElements = []
       end
-      object txt_ca: TcxDBButtonEdit
-        Left = 145
-        Top = 92
-        DataBinding.DataField = 'CASHADVANCES'
-        DataBinding.DataSource = ds_cash
-        ParentFont = False
-        Properties.Alignment.Horz = taRightJustify
-        Properties.Buttons = <>
-        Properties.CharCase = ecUpperCase
-        Properties.ReadOnly = False
-        Properties.OnValidate = txt_caPropertiesValidate
-        Style.BorderColor = 1184274
-        Style.BorderStyle = ebsThick
-        Style.Font.Charset = ANSI_CHARSET
-        Style.Font.Color = clWindowText
-        Style.Font.Height = -16
-        Style.Font.Name = 'Segoe UI'
-        Style.Font.Style = []
-        Style.LookAndFeel.NativeStyle = False
-        Style.TextColor = clRed
-        Style.IsFontAssigned = True
-        StyleDisabled.LookAndFeel.NativeStyle = False
-        StyleFocused.LookAndFeel.NativeStyle = False
-        StyleHot.LookAndFeel.NativeStyle = False
-        TabOrder = 2
-        OnExit = txt_amntExit
-        Width = 270
-      end
       object txt_balance: TcxDBButtonEdit
         Left = 145
         Top = 57
@@ -567,7 +537,7 @@ object f_CashOut: Tf_CashOut
         Properties.Alignment.Horz = taRightJustify
         Properties.Buttons = <
           item
-            Action = ViewCA
+            Action = ViewForwardedBalance
             Default = True
             Glyph.Data = {
               36040000424D3604000000000000360000002800000010000000100000000100
@@ -694,21 +664,20 @@ object f_CashOut: Tf_CashOut
         OnExit = txt_amntExit
         Width = 270
       end
-      object txt_credit: TcxDBButtonEdit
+      object txt_credit: TcxDBTextEdit
         Left = 145
         Top = 127
         DataBinding.DataField = 'CASHADVCREDIT'
         DataBinding.DataSource = ds_cash
         ParentFont = False
         Properties.Alignment.Horz = taRightJustify
-        Properties.Buttons = <>
         Properties.CharCase = ecUpperCase
         Properties.ReadOnly = True
         Style.BorderColor = 1184274
         Style.BorderStyle = ebsThick
         Style.Color = 6570553
         Style.Font.Charset = ANSI_CHARSET
-        Style.Font.Color = clWindowText
+        Style.Font.Color = clWhite
         Style.Font.Height = -16
         Style.Font.Name = 'Segoe UI'
         Style.Font.Style = []
@@ -721,6 +690,38 @@ object f_CashOut: Tf_CashOut
         TabOrder = 3
         OnExit = txt_amntExit
         Width = 270
+      end
+      object txt_ca: TcxDBCurrencyEdit
+        Left = 145
+        Top = 92
+        DataBinding.DataField = 'CASHADVANCES'
+        DataBinding.DataSource = ds_cash
+        ParentFont = False
+        Properties.Alignment.Horz = taRightJustify
+        Properties.DisplayFormat = #8369',0.00;('#8369',0.00)'
+        Properties.EditFormat = '###,###,##0.00'
+        Properties.Nullstring = '0.00'
+        Properties.UseNullString = True
+        Properties.UseThousandSeparator = True
+        Properties.OnValidate = txt_caPropertiesValidate
+        Style.BorderColor = 1184274
+        Style.BorderStyle = ebsThick
+        Style.Color = clWhite
+        Style.Font.Charset = ANSI_CHARSET
+        Style.Font.Color = 6570553
+        Style.Font.Height = -16
+        Style.Font.Name = 'Segoe UI Semibold'
+        Style.Font.Style = [fsBold]
+        Style.LookAndFeel.NativeStyle = False
+        Style.TextColor = clRed
+        Style.TransparentBorder = True
+        Style.IsFontAssigned = True
+        StyleDisabled.LookAndFeel.NativeStyle = False
+        StyleFocused.LookAndFeel.NativeStyle = False
+        StyleHot.LookAndFeel.NativeStyle = False
+        TabOrder = 2
+        OnExit = txt_amntExit
+        Width = 269
       end
     end
   end
@@ -735,9 +736,6 @@ object f_CashOut: Tf_CashOut
     ParentBackground = False
     TabOrder = 3
     StyleElements = []
-    ExplicitTop = 361
-    ExplicitWidth = 442
-    ExplicitHeight = 152
     object Label4: TLabel
       Left = 15
       Top = 6
@@ -793,6 +791,7 @@ object f_CashOut: Tf_CashOut
       StyleFocused.LookAndFeel.NativeStyle = False
       StyleHot.LookAndFeel.NativeStyle = False
       TabOrder = 1
+      OnExit = txt_amntExit
       Height = 61
       Width = 270
     end
@@ -852,6 +851,10 @@ object f_CashOut: Tf_CashOut
     object ViewParticulars: TAction
       Caption = 'View Particulars'
       OnExecute = ViewParticularsExecute
+    end
+    object ViewForwardedBalance: TAction
+      Caption = 'View Forwarded Balance'
+      OnExecute = ViewForwardedBalanceExecute
     end
   end
 end
