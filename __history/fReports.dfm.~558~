@@ -35413,7 +35413,7 @@ object f_Reports: Tf_Reports
         FillType = ftBrush
         Frame.Typ = []
         Height = 22.677180000000000000
-        Top = 627.401980000000000000
+        Top = 638.740570000000000000
         Width = 740.409927000000000000
         object Memo30: TfrxMemoView
           Align = baLeft
@@ -35509,14 +35509,14 @@ object f_Reports: Tf_Reports
       object ReportSummary1: TfrxReportSummary
         FillType = ftBrush
         Frame.Typ = [ftTop]
-        Height = 34.015770000000000000
-        Top = 570.709030000000000000
+        Height = 34.015770000000010000
+        Top = 582.047620000000000000
         Width = 740.409927000000000000
         object grandtotal: TfrxMemoView
           Align = baRight
           AllowVectorExport = True
           Left = 449.386117000000000000
-          Top = 2.220469999999980000
+          Top = 2.220469999999978000
           Width = 291.023810000000000000
           Height = 22.677180000000000000
           StretchMode = smMaxHeight
@@ -35788,15 +35788,16 @@ object f_Reports: Tf_Reports
       object GroupFooter5: TfrxGroupFooter
         FillType = ftBrush
         Frame.Typ = [ftLeft, ftRight, ftBottom]
-        Height = 68.031540000000010000
+        Height = 79.370130000000000000
         Top = 442.205010000000000000
         Width = 740.409927000000000000
         object Memo36: TfrxMemoView
           Align = baRight
           AllowVectorExport = True
-          Left = 653.858690000000000000
-          Width = 86.551237000000000000
+          Left = 676.535870000000000000
+          Width = 63.874057000000000000
           Height = 18.897650000000000000
+          StretchMode = smMaxHeight
           DataSet = ds_payreport
           DataSetName = 'ds_payreport'
           DisplayFormat.FormatStr = '%2.2n'
@@ -35815,10 +35816,12 @@ object f_Reports: Tf_Reports
           VAlign = vaCenter
         end
         object Memo37: TfrxMemoView
+          Align = baRight
           AllowVectorExport = True
-          Left = 567.307453000000000000
+          Left = 593.764163000000000000
           Width = 82.771707000000000000
           Height = 18.897650000000000000
+          StretchMode = smMaxHeight
           DataSet = ds_payreport
           DataSetName = 'ds_payreport'
           DisplayFormat.FormatStr = '%2.2n'
@@ -35830,7 +35833,6 @@ object f_Reports: Tf_Reports
           Font.Style = [fsBold]
           Frame.Typ = []
           GapX = 5.000000000000000000
-          HAlign = haRight
           Memo.UTF8W = (
             'TOTAL :')
           ParentFont = False
@@ -35839,10 +35841,11 @@ object f_Reports: Tf_Reports
         object Memo38: TfrxMemoView
           Align = baRight
           AllowVectorExport = True
-          Left = 653.858690000000000000
-          Top = 22.456709999999990000
-          Width = 86.551237000000000000
+          Left = 676.535870000000000000
+          Top = 26.456710000000040000
+          Width = 63.874057000000000000
           Height = 18.897650000000000000
+          StretchMode = smMaxHeight
           DataSet = ds_payreport
           DataSetName = 'ds_payreport'
           DisplayFormat.FormatStr = '%2.2n'
@@ -35861,11 +35864,13 @@ object f_Reports: Tf_Reports
           VAlign = vaCenter
         end
         object Memo39: TfrxMemoView
+          Align = baRight
           AllowVectorExport = True
-          Left = 567.307453000000000000
-          Top = 22.456709999999990000
+          Left = 593.764163000000000000
+          Top = 26.456710000000040000
           Width = 82.771707000000000000
           Height = 18.897650000000000000
+          StretchMode = smMaxHeight
           DataSet = ds_payreport
           DataSetName = 'ds_payreport'
           DisplayFormat.FormatStr = '%2.2n'
@@ -35877,7 +35882,6 @@ object f_Reports: Tf_Reports
           Font.Style = [fsBold]
           Frame.Typ = []
           GapX = 5.000000000000000000
-          HAlign = haRight
           Memo.UTF8W = (
             'CASH ADV. :')
           ParentFont = False
@@ -35886,33 +35890,11 @@ object f_Reports: Tf_Reports
         object Memo40: TfrxMemoView
           Align = baRight
           AllowVectorExport = True
-          Left = 653.858690000000000000
-          Top = 45.692949999999990000
-          Width = 86.551237000000000000
+          Left = 676.535870000000000000
+          Top = 52.692949999999990000
+          Width = 63.874057000000000000
           Height = 18.897650000000000000
-          DataSet = ds_payreport
-          DataSetName = 'ds_payreport'
-          DisplayFormat.FormatStr = '%2.2n'
-          DisplayFormat.Kind = fkNumeric
-          Font.Charset = ANSI_CHARSET
-          Font.Color = clBlack
-          Font.Height = -12
-          Font.Name = 'Segoe UI'
-          Font.Style = [fsBold]
-          Frame.Typ = [ftBottom]
-          GapX = 5.000000000000000000
-          HAlign = haRight
-          Memo.UTF8W = (
-            '[ds_payreport."NETAMNT"]')
-          ParentFont = False
-          VAlign = vaCenter
-        end
-        object Memo41: TfrxMemoView
-          AllowVectorExport = True
-          Left = 552.189333000000100000
-          Top = 45.692949999999990000
-          Width = 97.889827000000000000
-          Height = 18.897650000000000000
+          StretchMode = smMaxHeight
           DataSet = ds_payreport
           DataSetName = 'ds_payreport'
           DisplayFormat.FormatStr = '%2.2n'
@@ -35926,7 +35908,31 @@ object f_Reports: Tf_Reports
           GapX = 5.000000000000000000
           HAlign = haRight
           Memo.UTF8W = (
-            'NET PAYABLE :')
+            '[ds_payreport."NETAMNT"]')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object Memo41: TfrxMemoView
+          Align = baRight
+          AllowVectorExport = True
+          Left = 593.764163000000000000
+          Top = 52.692949999999990000
+          Width = 82.771707000000000000
+          Height = 18.897650000000000000
+          StretchMode = smMaxHeight
+          DataSet = ds_payreport
+          DataSetName = 'ds_payreport'
+          DisplayFormat.FormatStr = '%2.2n'
+          DisplayFormat.Kind = fkNumeric
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -12
+          Font.Name = 'Segoe UI'
+          Font.Style = [fsBold]
+          Frame.Typ = []
+          GapX = 5.000000000000000000
+          Memo.UTF8W = (
+            'NET PAY :')
           ParentFont = False
           VAlign = vaCenter
         end

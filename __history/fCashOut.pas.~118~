@@ -23,7 +23,7 @@ uses
   dxSkinXmas2008Blue, Data.DB, cxDBEdit, cxTextEdit, cxMemo, Vcl.StdCtrls,
   Vcl.ExtCtrls, Vcl.ComCtrls, cxMaskEdit, cxDropDownEdit, cxLookupEdit,
   cxDBLookupEdit, cxDBLookupComboBox, cxCalendar, System.Actions, Vcl.ActnList,
-  cxButtonEdit, sGroupBox;
+  cxButtonEdit;
 
 type
   Tf_CashOut = class(TForm)
@@ -54,19 +54,12 @@ type
     date_payto: TcxDBDateEdit;
     Label7: TLabel;
     Label8: TLabel;
+    Label9: TLabel;
+    txt_ca: TcxDBButtonEdit;
     ActionList1: TActionList;
     ViewCA: TAction;
     txt_gross: TcxDBButtonEdit;
     ViewParticulars: TAction;
-    sGroupBox1: TsGroupBox;
-    Label9: TLabel;
-    txt_ca: TcxDBButtonEdit;
-    Label10: TLabel;
-    txt_balance: TcxDBButtonEdit;
-    Label11: TLabel;
-    txt_actual: TcxDBButtonEdit;
-    Label12: TLabel;
-    txt_credit: TcxDBButtonEdit;
     procedure FormShow(Sender: TObject);
     procedure cmb_exptypePropertiesCloseUp(Sender: TObject);
     procedure cmb_empPropertiesCloseUp(Sender: TObject);
@@ -79,7 +72,6 @@ type
     procedure txt_amntExit(Sender: TObject);
   private
     { Private declarations }
-    cash_adv : Real;
     procedure exp_type_ui;
     procedure compute_payroll;
     procedure manageui;
@@ -142,14 +134,9 @@ begin
               brw_CompExpense.ParamByName('date2').Value   := date2;
               brw_CompExpense.Open();
 
-              qry_CashOutDetailCASHADVACTUAL.Value    :=  brw_CompExpenseAMOUNT.Value;
-              qry_CashOutDetailCASHADVANCES.Value     :=  brw_CompExpenseAMOUNT.Value + qry_CashOutDetailCASHADVBALANCE.Value;
+              qry_CashOutDetailCASHADVANCES.Value :=  brw_CompExpenseAMOUNT.Value;
 
-              qry_CashOutDetailCASHADVCREDIT.Value    :=  qry_CashOutDetailCASHADVANCES.Value - qry_CashOutDetailCASHADVACTUAL.Value;
-
-              cash_adv  := qry_CashOutDetailCASHADVANCES.Value;
-
-              qry_CashOutDetailAMOUNT.Value := (qry_CashOutDetailGROSS.Value - (qry_CashOutDetailCASHADVANCES.Value));
+              qry_CashOutDetailAMOUNT.Value := (qry_CashOutDetailGROSS.Value - qry_CashOutDetailCASHADVANCES.Value);
            end;
         end;
       end;
@@ -289,8 +276,7 @@ procedure Tf_CashOut.txt_caPropertiesValidate(Sender: TObject;
 begin
   with dm_PM do
   begin
-    if DisplayValue > qry_CashOutDetailCASHADVANCES.Value then
-    MessageDlg('Amount entered cannot exceed to current Cash Advance balance ('+FloatToStr(cash_adv)+')', mtError, [mbOK], 0);
+    ShowMessage(DisplayValue + #13#10 + qry_CashOutDetailCASHADVANCES.AsString);
   end;
 end;
 

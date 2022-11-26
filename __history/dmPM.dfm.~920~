@@ -9658,13 +9658,6 @@ object dm_PM: Tdm_PM
       DisplayFormat = '###,###,##0.00'
       currency = True
     end
-    object qry_CashOutDetailCASHADVACTUAL: TSingleField
-      AutoGenerateValue = arDefault
-      FieldName = 'CASHADVACTUAL'
-      Origin = 'CASHADVACTUAL'
-      DisplayFormat = '###,###,##0.00'
-      currency = True
-    end
   end
   object brw_CashSum: TFDQuery
     OnCalcFields = brw_CashSumCalcFields

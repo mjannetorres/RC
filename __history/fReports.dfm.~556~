@@ -35413,7 +35413,7 @@ object f_Reports: Tf_Reports
         FillType = ftBrush
         Frame.Typ = []
         Height = 22.677180000000000000
-        Top = 627.401980000000000000
+        Top = 634.961040000000000000
         Width = 740.409927000000000000
         object Memo30: TfrxMemoView
           Align = baLeft
@@ -35510,7 +35510,7 @@ object f_Reports: Tf_Reports
         FillType = ftBrush
         Frame.Typ = [ftTop]
         Height = 34.015770000000000000
-        Top = 570.709030000000000000
+        Top = 578.268090000000000000
         Width = 740.409927000000000000
         object grandtotal: TfrxMemoView
           Align = baRight
@@ -35565,7 +35565,7 @@ object f_Reports: Tf_Reports
         FillType = ftBrush
         Frame.Typ = []
         Height = 20.677180000000000000
-        Top = 396.850650000000000000
+        Top = 449.764070000000000000
         Width = 740.409927000000000000
         DataSet = ds_payreport
         DataSetName = 'ds_payreport'
@@ -35756,7 +35756,7 @@ object f_Reports: Tf_Reports
         FillType = ftBrush
         Fill.BackColor = clTeal
         Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
-        Height = 26.456710000000000000
+        Height = 79.370130000000000000
         Top = 306.141930000000000000
         Width = 740.409927000000000000
         Child = rep_payrollSummary.Child1
@@ -35784,72 +35784,62 @@ object f_Reports: Tf_Reports
           ParentFont = False
           VAlign = vaCenter
         end
-      end
-      object GroupFooter5: TfrxGroupFooter
-        FillType = ftBrush
-        Frame.Typ = [ftLeft, ftRight, ftBottom]
-        Height = 68.031540000000010000
-        Top = 442.205010000000000000
-        Width = 740.409927000000000000
-        object Memo36: TfrxMemoView
+        object Memo6: TfrxMemoView
           Align = baRight
           AllowVectorExport = True
-          Left = 653.858690000000000000
-          Width = 86.551237000000000000
-          Height = 18.897650000000000000
+          Left = 630.803557000000100000
+          Width = 109.606370000000000000
+          Height = 22.677180000000000000
+          AutoWidth = True
+          DataField = 'GROSS'
           DataSet = ds_payreport
           DataSetName = 'ds_payreport'
-          DisplayFormat.FormatStr = '%2.2n'
-          DisplayFormat.Kind = fkNumeric
           Font.Charset = ANSI_CHARSET
-          Font.Color = clBlack
-          Font.Height = -12
+          Font.Color = clWhite
+          Font.Height = -15
           Font.Name = 'Segoe UI'
           Font.Style = [fsBold]
           Frame.Typ = []
           GapX = 5.000000000000000000
           HAlign = haRight
           Memo.UTF8W = (
-            '[SUM(<ds_payreport."TOTAL">,MasterData3)]')
+            '[ds_payreport."GROSS"]')
           ParentFont = False
           VAlign = vaCenter
         end
-        object Memo37: TfrxMemoView
+        object Memo7: TfrxMemoView
           AllowVectorExport = True
-          Left = 567.307453000000000000
-          Width = 82.771707000000000000
-          Height = 18.897650000000000000
-          DataSet = ds_payreport
-          DataSetName = 'ds_payreport'
-          DisplayFormat.FormatStr = '%2.2n'
-          DisplayFormat.Kind = fkNumeric
+          Left = 521.197187000000000000
+          Width = 109.606370000000000000
+          Height = 22.677180000000000000
+          AutoWidth = True
           Font.Charset = ANSI_CHARSET
-          Font.Color = clBlack
-          Font.Height = -12
+          Font.Color = clWhite
+          Font.Height = -15
           Font.Name = 'Segoe UI'
           Font.Style = [fsBold]
           Frame.Typ = []
           GapX = 5.000000000000000000
           HAlign = haRight
           Memo.UTF8W = (
-            'TOTAL :')
+            'GROSS :')
           ParentFont = False
           VAlign = vaCenter
         end
-        object Memo38: TfrxMemoView
+        object Memo8: TfrxMemoView
           Align = baRight
           AllowVectorExport = True
-          Left = 653.858690000000000000
-          Top = 22.456709999999990000
-          Width = 86.551237000000000000
-          Height = 18.897650000000000000
+          Left = 630.803557000000100000
+          Top = 26.456710000000000000
+          Width = 109.606370000000000000
+          Height = 22.677180000000000000
+          AutoWidth = True
+          DataField = 'CASHADV'
           DataSet = ds_payreport
           DataSetName = 'ds_payreport'
-          DisplayFormat.FormatStr = '%2.2n'
-          DisplayFormat.Kind = fkNumeric
           Font.Charset = ANSI_CHARSET
-          Font.Color = clBlack
-          Font.Height = -12
+          Font.Color = clWhite
+          Font.Height = -15
           Font.Name = 'Segoe UI'
           Font.Style = [fsBold]
           Frame.Typ = []
@@ -35860,19 +35850,16 @@ object f_Reports: Tf_Reports
           ParentFont = False
           VAlign = vaCenter
         end
-        object Memo39: TfrxMemoView
+        object Memo9: TfrxMemoView
           AllowVectorExport = True
-          Left = 567.307453000000000000
-          Top = 22.456709999999990000
-          Width = 82.771707000000000000
-          Height = 18.897650000000000000
-          DataSet = ds_payreport
-          DataSetName = 'ds_payreport'
-          DisplayFormat.FormatStr = '%2.2n'
-          DisplayFormat.Kind = fkNumeric
+          Left = 521.197187000000000000
+          Top = 26.456709999999990000
+          Width = 109.606370000000000000
+          Height = 22.677180000000000000
+          AutoWidth = True
           Font.Charset = ANSI_CHARSET
-          Font.Color = clBlack
-          Font.Height = -12
+          Font.Color = clWhite
+          Font.Height = -15
           Font.Name = 'Segoe UI'
           Font.Style = [fsBold]
           Frame.Typ = []
@@ -35883,23 +35870,23 @@ object f_Reports: Tf_Reports
           ParentFont = False
           VAlign = vaCenter
         end
-        object Memo40: TfrxMemoView
+        object Memo10: TfrxMemoView
           Align = baRight
           AllowVectorExport = True
-          Left = 653.858690000000000000
-          Top = 45.692949999999990000
-          Width = 86.551237000000000000
-          Height = 18.897650000000000000
+          Left = 630.803557000000100000
+          Top = 52.913420000000000000
+          Width = 109.606370000000000000
+          Height = 22.677180000000000000
+          AutoWidth = True
+          DataField = 'NETAMNT'
           DataSet = ds_payreport
           DataSetName = 'ds_payreport'
-          DisplayFormat.FormatStr = '%2.2n'
-          DisplayFormat.Kind = fkNumeric
           Font.Charset = ANSI_CHARSET
-          Font.Color = clBlack
-          Font.Height = -12
+          Font.Color = clWhite
+          Font.Height = -15
           Font.Name = 'Segoe UI'
           Font.Style = [fsBold]
-          Frame.Typ = [ftBottom]
+          Frame.Typ = []
           GapX = 5.000000000000000000
           HAlign = haRight
           Memo.UTF8W = (
@@ -35907,12 +35894,41 @@ object f_Reports: Tf_Reports
           ParentFont = False
           VAlign = vaCenter
         end
-        object Memo41: TfrxMemoView
+        object Memo11: TfrxMemoView
           AllowVectorExport = True
-          Left = 552.189333000000100000
-          Top = 45.692949999999990000
-          Width = 97.889827000000000000
+          Left = 521.197187000000000000
+          Top = 52.913420000000000000
+          Width = 109.606370000000000000
+          Height = 22.677180000000000000
+          AutoWidth = True
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWhite
+          Font.Height = -15
+          Font.Name = 'Segoe UI'
+          Font.Style = [fsBold]
+          Frame.Typ = []
+          GapX = 5.000000000000000000
+          HAlign = haRight
+          Memo.UTF8W = (
+            'NET PAY :')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+      end
+      object GroupFooter5: TfrxGroupFooter
+        FillType = ftBrush
+        Frame.Typ = [ftLeft, ftRight, ftBottom]
+        Height = 22.677180000000000000
+        Top = 495.118430000000000000
+        Visible = False
+        Width = 740.409927000000000000
+        object Memo36: TfrxMemoView
+          Align = baRight
+          AllowVectorExport = True
+          Left = 676.535870000000000000
+          Width = 63.874057000000000000
           Height = 18.897650000000000000
+          StretchMode = smMaxHeight
           DataSet = ds_payreport
           DataSetName = 'ds_payreport'
           DisplayFormat.FormatStr = '%2.2n'
@@ -35920,13 +35936,36 @@ object f_Reports: Tf_Reports
           Font.Charset = ANSI_CHARSET
           Font.Color = clBlack
           Font.Height = -12
-          Font.Name = 'Segoe UI'
+          Font.Name = 'Segoe UI Semibold'
           Font.Style = [fsBold]
           Frame.Typ = []
           GapX = 5.000000000000000000
           HAlign = haRight
           Memo.UTF8W = (
-            'NET PAYABLE :')
+            '[SUM(<ds_payreport."TOTAL">,MasterData3)]')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object Memo37: TfrxMemoView
+          Align = baRight
+          AllowVectorExport = True
+          Left = 612.661813000000000000
+          Width = 63.874057000000000000
+          Height = 18.897650000000000000
+          StretchMode = smMaxHeight
+          DataSet = ds_payreport
+          DataSetName = 'ds_payreport'
+          DisplayFormat.FormatStr = '%2.2n'
+          DisplayFormat.Kind = fkNumeric
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -12
+          Font.Name = 'Segoe UI Semibold'
+          Font.Style = [fsBold]
+          Frame.Typ = []
+          GapX = 5.000000000000000000
+          Memo.UTF8W = (
+            'TOTAL :')
           ParentFont = False
           VAlign = vaCenter
         end
@@ -35985,7 +36024,7 @@ object f_Reports: Tf_Reports
         Fill.BackColor = clTeal
         Frame.Typ = []
         Height = 18.897650000000000000
-        Top = 355.275820000000000000
+        Top = 408.189240000000000000
         Width = 740.409927000000000000
         ToNRows = 0
         ToNRowsMode = rmCount

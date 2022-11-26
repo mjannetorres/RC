@@ -2207,9 +2207,8 @@ type
     tb_PayrollCOST: TFloatField;
     tb_PayrollTOTAL: TFloatField;
     tb_PayrollCLIENT: TStringField;
-    qry_CashOutDetailCASHADVBALANCE: TSingleField;
-    qry_CashOutDetailCASHADVCREDIT: TSingleField;
     qry_CashOutDetailCASHADVACTUAL: TSingleField;
+    qry_CashOutDetailCASHADVBALANCE: TSingleField;
     procedure tb_JODetailCalcFields(DataSet: TDataSet);
     procedure brw_pmboardCalcFields(DataSet: TDataSet);
     procedure brw_EmpCalcFields(DataSet: TDataSet);

@@ -2194,22 +2194,11 @@ type
     tb_CashFlowID: TIntegerField;
     tb_Payroll: TFDMemTable;
     tb_PayrollEMPLOYEE: TStringField;
+    tb_PayrollWORKLOGS: TStringField;
     tb_PayrollGROSS: TFloatField;
     tb_PayrollCASHADV: TFloatField;
     tb_PayrollNETAMNT: TFloatField;
     brw_ComputePayWORKERID: TIntegerField;
-    tb_PayrollWORKERID: TIntegerField;
-    tb_PayrollLOGDATE: TDateField;
-    tb_PayrollDESCRIPTION: TStringField;
-    tb_PayrollJONO: TIntegerField;
-    tb_PayrollROLE: TStringField;
-    tb_PayrollQTY: TFloatField;
-    tb_PayrollCOST: TFloatField;
-    tb_PayrollTOTAL: TFloatField;
-    tb_PayrollCLIENT: TStringField;
-    qry_CashOutDetailCASHADVBALANCE: TSingleField;
-    qry_CashOutDetailCASHADVCREDIT: TSingleField;
-    qry_CashOutDetailCASHADVACTUAL: TSingleField;
     procedure tb_JODetailCalcFields(DataSet: TDataSet);
     procedure brw_pmboardCalcFields(DataSet: TDataSet);
     procedure brw_EmpCalcFields(DataSet: TDataSet);
@@ -2672,7 +2661,6 @@ end;
 procedure Tdm_PM.tb_PayrollCalcFields(DataSet: TDataSet);
 begin
   tb_PayrollNETAMNT.Value := tb_PayrollGROSS.Value - tb_PayrollCASHADV.Value;
-  tb_PayrollTOTAL.Value   := tb_PayrollQTY.Value * tb_PayrollCOST.Value;
 end;
 
 procedure Tdm_PM.tb_PaySlipCalcFields(DataSet: TDataSet);

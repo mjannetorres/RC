@@ -71,6 +71,7 @@ type
     rep_ExpenseSummary: TfrxReport;
     ds_invitems: TfrxDBDataset;
     rep_invitems: TfrxReport;
+    rep_PayrollSummary: TfrxReport;
     ds_payreport: TfrxDBDataset;
     ds_CPRSummary: TfrxDBDataset;
     rep_CPRSummary: TfrxReport;
@@ -103,7 +104,6 @@ type
     rep_ARAging: TfrxReport;
     ds_Salaries: TfrxDBDataset;
     rep_Salaries: TfrxReport;
-    rep_payrollSummary: TfrxReport;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
     { Private declarations }

@@ -917,18 +917,15 @@ begin
       brw_ComputePay.ParamByName('DATE2').Value    := date2;
       brw_ComputePay.Open();
 
-      brw_WorkLogs.Close;
-      brw_WorkLogs.SQL[3] := 'WHERE (PM_WORKLOGS.CREATEDDATETIME BETWEEN :DATE1 AND :DATE2) AND PM_WORKLOGS.CANCELLED = FALSE';
-      brw_WorkLogs.ParamByName('DATE1').Value      := date1;
-      brw_WorkLogs.ParamByName('DATE2').Value      := date2;
-      brw_WorkLogs.Open();
-
       if brw_ComputePay.RecordCount > 0 then
       begin
         brw_ComputePay.First;
 
         while not brw_ComputePay.Eof do
         begin
+          tb_Payroll.Append;
+          tb_PayrollEMPLOYEE.Value    := brw_ComputePayWORKER.Value;
+          tb_PayrollGROSS.Value       := brw_ComputePayAMNT.Value;
 
           brw_CompExpense.Close;
           brw_CompExpense.SQL[4]  := 'WHERE (DETAIL.REFDATE BETWEEN :date1 and :date2) AND DETAIL.EMPID = :EMPID AND EXP.CATEGORY = 2 AND HEADER.CANCELLED = FALSE AND DETAIL.CANCELLED = FALSE';
@@ -937,30 +934,10 @@ begin
           brw_CompExpense.ParamByName('date2').Value   := date2;
           brw_CompExpense.Open();
 
-          brw_WorkLogs.Filtered := False;
-          brw_WorkLogs.Filter   := 'WORKERID = ' + brw_ComputePayWORKERID.AsString;
-          brw_WorkLogs.Filtered := True;
+          tb_PayrollWORKLOGS.Value    := 'TEST';
+          tb_PayrollCASHADV.Value     := brw_CompExpenseAMOUNT.Value;
 
-          brw_WorkLogs.First;
-
-          while not brw_WorkLogs.Eof do
-          begin
-            tb_Payroll.Append;
-            tb_PayrollEMPLOYEE.Value    := brw_ComputePayWORKER.Value;
-            tb_PayrollGROSS.Value       := brw_ComputePayAMNT.Value;
-            tb_PayrollCASHADV.Value     := brw_CompExpenseAMOUNT.Value;
-            tb_PayrollWORKERID.Value    := brw_ComputePayWORKERID.Value;
-            tb_PayrollLOGDATE.Value     := brw_WorkLogsCREATEDDATETIME.Value;
-            tb_PayrollDESCRIPTION.Value := brw_WorkLogsDESCRIPTION.Value;
-            tb_PayrollJONO.Value        := brw_WorkLogsJONO.Value;
-            tb_PayrollROLE.Value        := brw_WorkLogsROLE.Value;
-            tb_PayrollQTY.Value         := brw_WorkLogsQTY.Value;
-            tb_PayrollCOST.Value        := brw_WorkLogsCOST.Value;
-            tb_PayrollCLIENT.Value      := brw_WorkLogsCLIENT.Value;
-            tb_Payroll.Post;
-
-            brw_WorkLogs.Next;
-          end;
+          tb_Payroll.Post;
 
           brw_ComputePay.Next;
         end;

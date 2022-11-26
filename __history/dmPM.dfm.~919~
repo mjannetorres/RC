@@ -9644,24 +9644,17 @@ object dm_PM: Tdm_PM
       DisplayFormat = '###,###,##0.00'
       currency = True
     end
-    object qry_CashOutDetailCASHADVBALANCE: TSingleField
-      AutoGenerateValue = arDefault
-      FieldName = 'CASHADVBALANCE'
-      Origin = 'CASHADVBALANCE'
-      DisplayFormat = '###,###,##0.00'
-      currency = True
-    end
-    object qry_CashOutDetailCASHADVCREDIT: TSingleField
-      AutoGenerateValue = arDefault
-      FieldName = 'CASHADVCREDIT'
-      Origin = 'CASHADVCREDIT'
-      DisplayFormat = '###,###,##0.00'
-      currency = True
-    end
     object qry_CashOutDetailCASHADVACTUAL: TSingleField
       AutoGenerateValue = arDefault
       FieldName = 'CASHADVACTUAL'
       Origin = 'CASHADVACTUAL'
+      DisplayFormat = '###,###,##0.00'
+      currency = True
+    end
+    object qry_CashOutDetailCASHADVBALANCE: TSingleField
+      AutoGenerateValue = arDefault
+      FieldName = 'CASHADVBALANCE'
+      Origin = 'CASHADVBALANCE'
       DisplayFormat = '###,###,##0.00'
       currency = True
     end

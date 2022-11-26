@@ -142,10 +142,7 @@ begin
               brw_CompExpense.ParamByName('date2').Value   := date2;
               brw_CompExpense.Open();
 
-              qry_CashOutDetailCASHADVACTUAL.Value    :=  brw_CompExpenseAMOUNT.Value;
               qry_CashOutDetailCASHADVANCES.Value     :=  brw_CompExpenseAMOUNT.Value + qry_CashOutDetailCASHADVBALANCE.Value;
-
-              qry_CashOutDetailCASHADVCREDIT.Value    :=  qry_CashOutDetailCASHADVANCES.Value - qry_CashOutDetailCASHADVACTUAL.Value;
 
               cash_adv  := qry_CashOutDetailCASHADVANCES.Value;
 

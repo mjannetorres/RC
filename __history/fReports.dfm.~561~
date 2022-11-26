@@ -35830,7 +35830,6 @@ object f_Reports: Tf_Reports
           Font.Style = [fsBold]
           Frame.Typ = []
           GapX = 5.000000000000000000
-          HAlign = haRight
           Memo.UTF8W = (
             'TOTAL :')
           ParentFont = False
@@ -35877,7 +35876,6 @@ object f_Reports: Tf_Reports
           Font.Style = [fsBold]
           Frame.Typ = []
           GapX = 5.000000000000000000
-          HAlign = haRight
           Memo.UTF8W = (
             'CASH ADV. :')
           ParentFont = False
@@ -35900,6 +35898,7 @@ object f_Reports: Tf_Reports
           Font.Name = 'Segoe UI'
           Font.Style = [fsBold]
           Frame.Typ = [ftBottom]
+          Frame.BottomLine.Style = fsDouble
           GapX = 5.000000000000000000
           HAlign = haRight
           Memo.UTF8W = (
@@ -35909,9 +35908,9 @@ object f_Reports: Tf_Reports
         end
         object Memo41: TfrxMemoView
           AllowVectorExport = True
-          Left = 552.189333000000100000
+          Left = 567.307453000000000000
           Top = 45.692949999999990000
-          Width = 97.889827000000000000
+          Width = 82.771707000000000000
           Height = 18.897650000000000000
           DataSet = ds_payreport
           DataSetName = 'ds_payreport'
@@ -35924,9 +35923,8 @@ object f_Reports: Tf_Reports
           Font.Style = [fsBold]
           Frame.Typ = []
           GapX = 5.000000000000000000
-          HAlign = haRight
           Memo.UTF8W = (
-            'NET PAYABLE :')
+            'NET PAY :')
           ParentFont = False
           VAlign = vaCenter
         end

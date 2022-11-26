@@ -531,7 +531,7 @@ object f_CashOut: Tf_CashOut
         StyleElements = []
       end
       object txt_ca: TcxDBButtonEdit
-        Left = 145
+        Left = 142
         Top = 92
         DataBinding.DataField = 'CASHADVANCES'
         DataBinding.DataSource = ds_cash
@@ -556,10 +556,10 @@ object f_CashOut: Tf_CashOut
         StyleHot.LookAndFeel.NativeStyle = False
         TabOrder = 2
         OnExit = txt_amntExit
-        Width = 270
+        Width = 273
       end
       object txt_balance: TcxDBButtonEdit
-        Left = 145
+        Left = 142
         Top = 57
         DataBinding.DataField = 'CASHADVBALANCE'
         DataBinding.DataSource = ds_cash
@@ -624,10 +624,10 @@ object f_CashOut: Tf_CashOut
         StyleHot.LookAndFeel.NativeStyle = False
         TabOrder = 1
         OnExit = txt_amntExit
-        Width = 270
+        Width = 273
       end
       object txt_actual: TcxDBButtonEdit
-        Left = 145
+        Left = 142
         Top = 22
         DataBinding.DataField = 'CASHADVACTUAL'
         DataBinding.DataSource = ds_cash
@@ -692,10 +692,10 @@ object f_CashOut: Tf_CashOut
         StyleHot.LookAndFeel.NativeStyle = False
         TabOrder = 0
         OnExit = txt_amntExit
-        Width = 270
+        Width = 273
       end
       object txt_credit: TcxDBButtonEdit
-        Left = 145
+        Left = 142
         Top = 127
         DataBinding.DataField = 'CASHADVCREDIT'
         DataBinding.DataSource = ds_cash
@@ -720,7 +720,7 @@ object f_CashOut: Tf_CashOut
         StyleHot.LookAndFeel.NativeStyle = False
         TabOrder = 3
         OnExit = txt_amntExit
-        Width = 270
+        Width = 273
       end
     end
   end

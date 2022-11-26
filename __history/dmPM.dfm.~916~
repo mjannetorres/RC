@@ -2365,7 +2365,6 @@ object dm_PM: Tdm_PM
     end
   end
   object qry_company: TFDQuery
-    Active = True
     CachedUpdates = True
     Connection = dbConn
     SQL.Strings = (
@@ -9644,27 +9643,6 @@ object dm_PM: Tdm_PM
       DisplayFormat = '###,###,##0.00'
       currency = True
     end
-    object qry_CashOutDetailCASHADVBALANCE: TSingleField
-      AutoGenerateValue = arDefault
-      FieldName = 'CASHADVBALANCE'
-      Origin = 'CASHADVBALANCE'
-      DisplayFormat = '###,###,##0.00'
-      currency = True
-    end
-    object qry_CashOutDetailCASHADVCREDIT: TSingleField
-      AutoGenerateValue = arDefault
-      FieldName = 'CASHADVCREDIT'
-      Origin = 'CASHADVCREDIT'
-      DisplayFormat = '###,###,##0.00'
-      currency = True
-    end
-    object qry_CashOutDetailCASHADVACTUAL: TSingleField
-      AutoGenerateValue = arDefault
-      FieldName = 'CASHADVACTUAL'
-      Origin = 'CASHADVACTUAL'
-      DisplayFormat = '###,###,##0.00'
-      currency = True
-    end
   end
   object brw_CashSum: TFDQuery
     OnCalcFields = brw_CashSumCalcFields
@@ -10978,7 +10956,6 @@ object dm_PM: Tdm_PM
     end
   end
   object brw_SalesCashIn: TFDQuery
-    Active = True
     OnCalcFields = brw_SalesCashInCalcFields
     Connection = dbConn
     SQL.Strings = (
@@ -13295,7 +13272,6 @@ object dm_PM: Tdm_PM
     end
   end
   object tb_Payroll: TFDMemTable
-    Active = True
     OnCalcFields = tb_PayrollCalcFields
     FetchOptions.AssignedValues = [evMode]
     FetchOptions.Mode = fmAll
@@ -13308,6 +13284,10 @@ object dm_PM: Tdm_PM
     Top = 632
     object tb_PayrollEMPLOYEE: TStringField
       FieldName = 'EMPLOYEE'
+    end
+    object tb_PayrollWORKLOGS: TStringField
+      FieldName = 'WORKLOGS'
+      Size = 500
     end
     object tb_PayrollGROSS: TFloatField
       FieldName = 'GROSS'
@@ -13325,37 +13305,6 @@ object dm_PM: Tdm_PM
       DisplayFormat = '###,###,##0.00'
       currency = True
       Calculated = True
-    end
-    object tb_PayrollWORKERID: TIntegerField
-      FieldName = 'WORKERID'
-    end
-    object tb_PayrollLOGDATE: TDateField
-      FieldName = 'LOGDATE'
-    end
-    object tb_PayrollDESCRIPTION: TStringField
-      FieldName = 'DESCRIPTION'
-      Size = 50
-    end
-    object tb_PayrollJONO: TIntegerField
-      FieldName = 'JONO'
-    end
-    object tb_PayrollROLE: TStringField
-      FieldName = 'ROLE'
-    end
-    object tb_PayrollQTY: TFloatField
-      FieldName = 'QTY'
-    end
-    object tb_PayrollCOST: TFloatField
-      FieldName = 'COST'
-    end
-    object tb_PayrollTOTAL: TFloatField
-      FieldKind = fkCalculated
-      FieldName = 'TOTAL'
-      Calculated = True
-    end
-    object tb_PayrollCLIENT: TStringField
-      FieldName = 'CLIENT'
-      Size = 50
     end
   end
 end

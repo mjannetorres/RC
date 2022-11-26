@@ -484,6 +484,8 @@ object f_menu: Tf_menu
     ActivePage = scGPToolPagerPage2
     FreeOnClose = False
     StorePaintBuffer = True
+    ExplicitLeft = 7
+    ExplicitTop = 47
     object scGPToolPagerPage6: TscGPToolPagerPage
       Left = 0
       Top = 35

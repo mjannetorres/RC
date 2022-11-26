@@ -923,6 +923,8 @@ begin
       brw_WorkLogs.ParamByName('DATE2').Value      := date2;
       brw_WorkLogs.Open();
 
+      brw_WorkLogs.DisableControls;
+
       if brw_ComputePay.RecordCount > 0 then
       begin
         brw_ComputePay.First;
@@ -966,6 +968,8 @@ begin
         end;
 
       end;
+
+      brw_WorkLogs.EnableControls;
 
       f_Reports := Tf_Reports.Create(Self);
       TfrxMemoView(f_Reports.rep_PayrollSummary.FindObject('period')).Text  := DateToStr(f_DateRange.date_1.Date) + ' - '+DateToStr(f_DateRange.date_2.Date);
