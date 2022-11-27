@@ -99,6 +99,9 @@ type
     Reprint: TAction;
     ReprintCashSalesSummary1: TMenuItem;
     cxButton1: TcxButton;
+    ReprintPayslip: TAction;
+    ReprintPayslip1: TMenuItem;
+    ReprintPayslip2: TMenuItem;
     procedure FormShow(Sender: TObject);
     procedure txt_searchRightButtonClick(Sender: TObject);
     procedure txt_searchKeyPress(Sender: TObject; var Key: Char);
@@ -108,6 +111,7 @@ type
     procedure OpenOverrideExecute(Sender: TObject);
     procedure ReprintExecute(Sender: TObject);
     procedure scGPPageControl1ChangePage(Sender: TObject);
+    procedure ReprintPayslipExecute(Sender: TObject);
   private
     { Private declarations }
     procedure user_rights;
@@ -123,7 +127,7 @@ implementation
 
 {$R *.dfm}
 
-uses dmPM, fReports, fCashFund, fCashReg;
+uses dmPM, fReports, fCashFund, fCashReg, DateUtils;
 
 { Tf_CashSummary }
 
@@ -323,7 +327,6 @@ begin
 
     f_Reports := Tf_Reports.Create(Self);
 
-
     TfrxMemoView(f_Reports.rep_cashsales.FindObject('cash')).Text := Trim(FormatCurr('###,###,##0.00', cash));
     TfrxMemoView(f_Reports.rep_cashsales.FindObject('card')).Text := Trim(FormatCurr('###,###,##0.00', card));
     TfrxMemoView(f_Reports.rep_cashsales.FindObject('check')).Text := Trim(FormatCurr('###,###,##0.00', check));
@@ -340,6 +343,49 @@ end;
 procedure Tf_CashSummary.ReprintExecute(Sender: TObject);
 begin
   f_cashreg.preview_cash_summary(dm_PM.brw_POSDayID.Value, True);
+end;
+
+procedure Tf_CashSummary.ReprintPayslipExecute(Sender: TObject);
+begin
+  with dm_PM do
+  begin
+    qry_CashOutDetail.Close;
+    qry_CashOutDetail.SQL[2] := 'WHERE HEADERID = :ID AND CANCELLED = FALSE';
+    qry_CashOutDetail.ParamByName('ID').Value := brw_CashSumID.Value;
+    qry_CashOutDetail.Open();
+
+    if qry_CashOutDetail.RecordCount > 0 then
+    begin
+      brw_ExpenseType.Close;
+      brw_ExpenseType.SQL[2]  := 'WHERE CANCELLED = FALSE';
+      brw_ExpenseType.Open();
+
+      brw_ExpenseType.DisableControls;
+      if brw_ExpenseType.Locate('ID', qry_CashOutDetailCATEGORYID.Value, []) then
+      begin
+        if brw_ExpenseTypeCATEGORY.Value = 1 then
+        begin
+          brw_WorkLogs.Close;
+          brw_WorkLogs.SQL[3] := 'WHERE PM_WORKLOGS.WORKERID = :EMPID AND (PM_WORKLOGS.CREATEDDATETIME BETWEEN :DATE1 AND :DATE2) AND PM_WORKLOGS.CANCELLED = FALSE';
+          brw_WorkLogs.ParamByName('EMPID').Value      := qry_CashOutDetailEMPID.Value;
+          brw_WorkLogs.ParamByName('DATE1').Value      := StartOfTheDay(qry_CashOutDetailPAYDATEFROM.Value);
+          brw_WorkLogs.ParamByName('DATE2').Value      := EndOfTheDay(qry_CashOutDetailPAYDATETO.Value);
+          brw_WorkLogs.Open();
+
+          f_Reports := Tf_Reports.Create(Self);
+          TfrxMemoView(f_Reports.rep_PaySlip.FindObject('mem_days')).Text  := VarToStr(DaysBetween(StartOfTheDay(qry_CashOutDetailPAYDATEFROM.Value), EndOfTheDay(qry_CashOutDetailPAYDATETO.Value)));
+          TfrxMemoView(f_Reports.rep_PaySlip.FindObject('mem_count')).Text  := IntToStr(brw_WorkLogs.RecordCount) + ' NO. OF ITEM(S)';
+          f_Reports.rep_PaySlip.ShowReport();
+          //f_CashReg.preview_payslip(qry_CashOutDetailEMPID.Value, qry_CashOutDetailPAYDATEFROM.Value, qry_CashOutDetailPAYDATETO.Value);
+        end
+        else
+          MessageDlg('Cannot preview payslip on the record selected.', mtInformation, [mbOK], 0);
+      end;
+      brw_ExpenseType.EnableControls;
+    end
+    else
+      MessageDlg('Cannot preview voided payroll entry', mtInformation, [mbOK], 0);
+  end;
 end;
 
 procedure Tf_CashSummary.scGPPageControl1ChangePage(Sender: TObject);

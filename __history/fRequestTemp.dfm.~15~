@@ -8,13 +8,15 @@ object f_RequestTemp: Tf_RequestTemp
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -11
+  Font.Height = -12
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
   Position = poMainFormCenter
+  OnClose = FormClose
+  OnShow = FormShow
   PixelsPerInch = 96
-  TextHeight = 13
+  TextHeight = 14
   object Panel2: TPanel
     Left = 0
     Top = 430
@@ -23,8 +25,6 @@ object f_RequestTemp: Tf_RequestTemp
     Align = alBottom
     BevelOuter = bvNone
     TabOrder = 0
-    ExplicitTop = 420
-    ExplicitWidth = 847
     DesignSize = (
       857
       41)
@@ -38,7 +38,6 @@ object f_RequestTemp: Tf_RequestTemp
       Default = True
       ModalResult = 1
       TabOrder = 0
-      ExplicitLeft = 676
     end
     object btnCancel: TButton
       Left = 767
@@ -50,7 +49,6 @@ object f_RequestTemp: Tf_RequestTemp
       Caption = '&Cancel'
       ModalResult = 2
       TabOrder = 1
-      ExplicitLeft = 757
     end
     object btnPrint: TButton
       Left = 19
@@ -61,7 +59,6 @@ object f_RequestTemp: Tf_RequestTemp
       Anchors = [akTop, akRight]
       Default = True
       TabOrder = 2
-      ExplicitLeft = 9
     end
   end
   object Panel3: TPanel
@@ -75,7 +72,7 @@ object f_RequestTemp: Tf_RequestTemp
     Color = clTeal
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clBlack
-    Font.Height = -11
+    Font.Height = -12
     Font.Name = 'Tahoma'
     Font.Style = []
     Padding.Left = 10
@@ -86,7 +83,6 @@ object f_RequestTemp: Tf_RequestTemp
     ParentFont = False
     TabOrder = 1
     StyleElements = [seFont, seBorder]
-    ExplicitWidth = 847
     DesignSize = (
       857
       145)
@@ -179,7 +175,7 @@ object f_RequestTemp: Tf_RequestTemp
       Style.Edges = [bLeft, bTop, bRight, bBottom]
       Style.Font.Charset = DEFAULT_CHARSET
       Style.Font.Color = clWhite
-      Style.Font.Height = -11
+      Style.Font.Height = -12
       Style.Font.Name = 'Tahoma'
       Style.Font.Style = []
       Style.LookAndFeel.Kind = lfUltraFlat
@@ -201,7 +197,7 @@ object f_RequestTemp: Tf_RequestTemp
       StyleHot.LookAndFeel.NativeStyle = False
       StyleHot.LookAndFeel.SkinName = ''
       TabOrder = 1
-      ExplicitLeft = 738
+      OnExit = UIExecute
       Width = 94
     end
     object date_posted: TcxDBDateEdit
@@ -222,7 +218,7 @@ object f_RequestTemp: Tf_RequestTemp
       Style.Edges = [bLeft, bTop, bRight, bBottom]
       Style.Font.Charset = DEFAULT_CHARSET
       Style.Font.Color = clWhite
-      Style.Font.Height = -11
+      Style.Font.Height = -12
       Style.Font.Name = 'Tahoma'
       Style.Font.Style = []
       Style.LookAndFeel.Kind = lfUltraFlat
@@ -243,7 +239,7 @@ object f_RequestTemp: Tf_RequestTemp
       StyleHot.LookAndFeel.NativeStyle = False
       StyleHot.LookAndFeel.SkinName = ''
       TabOrder = 2
-      ExplicitLeft = 738
+      OnExit = UIExecute
       Width = 94
     end
     object cxDBLabel1: TcxDBLabel
@@ -277,7 +273,7 @@ object f_RequestTemp: Tf_RequestTemp
       Style.Color = 6570553
       Style.Font.Charset = DEFAULT_CHARSET
       Style.Font.Color = clWhite
-      Style.Font.Height = -11
+      Style.Font.Height = -12
       Style.Font.Name = 'Tahoma'
       Style.Font.Style = []
       Style.LookAndFeel.NativeStyle = False
@@ -286,12 +282,13 @@ object f_RequestTemp: Tf_RequestTemp
       StyleFocused.LookAndFeel.NativeStyle = False
       StyleHot.LookAndFeel.NativeStyle = False
       TabOrder = 0
+      OnExit = UIExecute
       Height = 95
       Width = 245
     end
     object chk_posted: TcxDBCheckBox
-      Left = 676
-      Top = 80
+      Left = 671
+      Top = 79
       Anchors = [akTop, akRight]
       AutoSize = False
       Caption = 'Posted'
@@ -314,7 +311,8 @@ object f_RequestTemp: Tf_RequestTemp
       Style.TransparentBorder = True
       Style.IsFontAssigned = True
       TabOrder = 4
-      ExplicitLeft = 666
+      OnClick = chk_postedClick
+      OnExit = UIExecute
       Height = 25
       Width = 71
     end
@@ -366,22 +364,19 @@ object f_RequestTemp: Tf_RequestTemp
       Properties.KeyFieldNames = 'JONO'
       Properties.ListColumns = <
         item
-          Caption = 'JO NO.'
-          HeaderAlignment = taCenter
           FieldName = 'JONO'
         end
         item
-          Caption = 'DATE EXPORTED'
-          HeaderAlignment = taCenter
-          FieldName = 'EXPORTEDDATETIME'
+          FieldName = 'LOGDATE'
         end>
+      Properties.ListOptions.ShowHeader = False
       Properties.ListSource = ds_JO
       Style.BorderColor = 1184274
       Style.BorderStyle = ebsThick
       Style.Color = 6570553
       Style.Font.Charset = DEFAULT_CHARSET
       Style.Font.Color = clWhite
-      Style.Font.Height = -11
+      Style.Font.Height = -12
       Style.Font.Name = 'Tahoma'
       Style.Font.Style = []
       Style.LookAndFeel.NativeStyle = False
@@ -392,7 +387,7 @@ object f_RequestTemp: Tf_RequestTemp
       StyleFocused.LookAndFeel.NativeStyle = False
       StyleHot.LookAndFeel.NativeStyle = False
       TabOrder = 5
-      ExplicitLeft = 738
+      OnExit = UIExecute
       Width = 94
     end
     object rad_source: TcxDBImageComboBox
@@ -437,7 +432,7 @@ object f_RequestTemp: Tf_RequestTemp
       Style.Color = 6570553
       Style.Font.Charset = DEFAULT_CHARSET
       Style.Font.Color = clWhite
-      Style.Font.Height = -11
+      Style.Font.Height = -12
       Style.Font.Name = 'Tahoma'
       Style.Font.Style = []
       Style.LookAndFeel.NativeStyle = False
@@ -448,6 +443,7 @@ object f_RequestTemp: Tf_RequestTemp
       StyleFocused.LookAndFeel.NativeStyle = False
       StyleHot.LookAndFeel.NativeStyle = False
       TabOrder = 6
+      OnExit = rad_sourceExit
       Width = 245
     end
   end
@@ -461,16 +457,16 @@ object f_RequestTemp: Tf_RequestTemp
     BevelOuter = bvNone
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
-    Font.Height = -11
+    Font.Height = -12
     Font.Name = 'Tahoma'
     Font.Style = []
     ParentFont = False
     TabOrder = 2
+    OnExit = grid_jodetailExit
     LookAndFeel.Kind = lfUltraFlat
     LookAndFeel.NativeStyle = False
     LookAndFeel.SkinName = 'VisualStudio2013Light'
-    ExplicitWidth = 847
-    ExplicitHeight = 275
+    ExplicitTop = 147
     object cxGridDBTableView1: TcxGridDBTableView
       PopupMenu = PopupMenu1
       Navigator.Buttons.CustomButtons = <>
@@ -522,6 +518,7 @@ object f_RequestTemp: Tf_RequestTemp
           end>
         Properties.ListFieldIndex = 1
         Properties.ListSource = ds_items
+        Properties.OnCloseUp = cxGridDBTableView1ITEMIDPropertiesCloseUp
         HeaderAlignmentHorz = taCenter
         Options.Filtering = False
         Options.Sorting = False
@@ -542,6 +539,7 @@ object f_RequestTemp: Tf_RequestTemp
         DataBinding.FieldName = 'QTY'
         PropertiesClassName = 'TcxTextEditProperties'
         Properties.ValidateOnEnter = True
+        Properties.OnValidate = cxGridDBTableView1QTYPropertiesValidate
         HeaderAlignmentHorz = taCenter
         Options.Filtering = False
         Options.Sorting = False
@@ -611,7 +609,7 @@ object f_RequestTemp: Tf_RequestTemp
       Color = clTeal
       Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText
-      Font.Height = -11
+      Font.Height = -12
       Font.Name = 'Segoe UI'
       Font.Style = [fsBold]
       TextColor = 6570553
@@ -649,7 +647,7 @@ object f_RequestTemp: Tf_RequestTemp
     Top = 192
   end
   object ds_JO: TDataSource
-    DataSet = dm_PM.brw_PMHeader
+    DataSet = dm_PM.brw_MRJO
     Left = 368
     Top = 192
   end

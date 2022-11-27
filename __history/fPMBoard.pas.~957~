@@ -80,12 +80,14 @@ type
     cxGrid1DBTableView1LOGDATE: TcxGridDBColumn;
     cxGrid1DBTableView1DUEDATE: TcxGridDBColumn;
     cxGrid1DBTableView1POSTED: TcxGridDBColumn;
-    cxGrid1DBTableView1LAYOUT: TcxGridDBColumn;
-    cxGrid1DBTableView1RELEASED: TcxGridDBColumn;
     cxGrid1DBTableView1CLOSED: TcxGridDBColumn;
     cxGrid1DBTableView1PAIDAMNT: TcxGridDBColumn;
     cxGrid1DBTableView1BALAMNT: TcxGridDBColumn;
     cxGrid1Level1: TcxGridLevel;
+    cxGrid1DBTableView1NETAMNT: TcxGridDBColumn;
+    cxGrid1DBTableView1REMARKS: TcxGridDBColumn;
+    cxStyleRepository2: TcxStyleRepository;
+    cxStyle1: TcxStyle;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure EditExecute(Sender: TObject);
     procedure DeleteExecute(Sender: TObject);
@@ -161,7 +163,7 @@ procedure Tf_PMBoard.OverridebyExecute(Sender: TObject);
 begin
   with dm_PM do
   begin
-    if brw_JOPOSTED.Value or brw_JOLAYOUT.Value then
+    if brw_JOPOSTED.Value and brw_JOBALAMNT.Value > 0 then
     begin
       brw_CashReg.Close;
       brw_CashReg.SQL[2]  := 'WHERE REFID = :ID AND SOURCE = ''JO'' AND CANCELLED = FALSE';
@@ -200,7 +202,9 @@ begin
           EditExecute(nil);
         end;
       end;
-    end;
+    end
+    else
+      MessageDlg('Order is already paid in full! Cannot override this record', mtInformation, [mbOK], 0);
   end;
 end;
 
@@ -293,7 +297,7 @@ begin
 
 
               del_JOCost.Close;
-              del_JOCost.SQL[1] := 'SET CANCELLED = FALSE,';
+              del_JOCost.SQL[1] := 'SET CANCELLED = TRUE,';
               del_JOCost.SQL[2] := 'CANCELLEDBYID = '+IntToStr(dm_PM.userid)+',';
               del_JOCost.SQL[3] := 'CANCELLEDDATETIME = '''+FormatDateTime('yyyy-mm-dd hh:nn:ss', Now)+'''';
               del_JOCost.SQL[4] := 'WHERE HEADERID = '+qry_JOID.AsString;
@@ -361,7 +365,6 @@ begin
 
       tb_JODetail.First;
 
-
       tb_InvReqDetail.Close;
       tb_InvReqDetail.Open;
 
@@ -370,6 +373,7 @@ begin
       qry_JoCost.ParamByName('ID').Value := qry_JOID.Value;
       qry_JoCost.Open();
 
+
       if qry_JoCost.RecordCount > 0 then
       begin
         qry_JoCost.First;
@@ -377,6 +381,7 @@ begin
          begin
           tb_InvReqDetail.Append;
           tb_InvReqDetailID.Value        := qry_JoCostID.Value;
+          tb_InvReqDetailGARMENTID.Value := qry_JoCostGARMENTID.Value;
           tb_InvReqDetailITEMID.Value    := qry_JoCostITEMID.Value;
           tb_InvReqDetailITEMDESC.Value  := qry_JoCostITEMDESC.Value;
           tb_InvReqDetailUNIT.Value      := qry_JoCostUNIT.Value;
@@ -457,6 +462,7 @@ begin
           qry_JoCost.Edit;
 
           qry_JoCostHEADERID.Value         := qry_JOID.Value;
+          qry_JoCostGARMENTID.Value        := tb_InvReqDetailGARMENTID.Value;
           qry_JoCostITEMID.Value           := tb_InvReqDetailITEMID.Value;
           qry_JoCostITEMDESC.Value         := tb_InvReqDetailITEMDESC.Value;
           qry_JoCostCOST.Value             := tb_InvReqDetailCOST.Value;
@@ -832,6 +838,7 @@ begin
         qry_JoCost.Append;
         qry_JoCostHEADERID.Value         := qry_JOID.Value;
         qry_JoCostITEMID.Value           := tb_InvReqDetailITEMID.Value;
+        qry_JoCostGARMENTID.Value        := tb_InvReqDetailGARMENTID.Value;
         qry_JoCostITEMDESC.Value         := tb_InvReqDetailITEMDESC.Value;
         qry_JoCostCOST.Value             := tb_InvReqDetailCOST.Value;
         qry_JoCostTOTALCOST.Value        := tb_InvReqDetailTOTALCOST.Value;

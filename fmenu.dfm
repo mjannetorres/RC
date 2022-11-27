@@ -5425,7 +5425,7 @@ object f_menu: Tf_menu
       AutoSize = False
       Alignment = taCenter
       ShowEllipsis = True
-      Caption = 'RC Digital Prints and Garments v1.2  Build 112220221400'
+      Caption = 'RC Digital Prints and Garments v1.2  Build 112720221100'
     end
   end
   object sWebBrowser1: TsWebBrowser

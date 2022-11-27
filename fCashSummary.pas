@@ -513,6 +513,18 @@ begin
             qry_JOBALAMNT.Value         := (brw_JOBalanceNETAMNT.Value - paidamnt);
             qry_JO.Post;
             qry_JO.ApplyUpdates();
+          end
+          else if qry_CashRegSOURCE.Value = 'OUT' then
+          begin
+            del_CashoutDetail.Close;
+            del_CashoutDetail.SQL[2] := 'WHERE HEADERID = '+qry_CashRegID.AsString;
+            del_CashoutDetail.ExecSQL;
+          end
+          else if qry_CashRegSOURCE.Value = 'IN' then
+          begin
+            del_CashInDetail.Close;
+            del_CashInDetail.SQL[2] := 'WHERE HEADERID = '+qry_CashRegID.AsString;
+            del_CashInDetail.ExecSQL;
           end;
 
           search;

@@ -2239,6 +2239,8 @@ type
     brw_SalariesCASHADVCREDIT: TSingleField;
     brw_SalariesCASHADVBALANCE: TSingleField;
     brw_SalariesCASHADVACTUAL: TSingleField;
+    del_CashoutDetail: TFDQuery;
+    del_CashInDetail: TFDQuery;
     procedure tb_JODetailCalcFields(DataSet: TDataSet);
     procedure brw_pmboardCalcFields(DataSet: TDataSet);
     procedure brw_EmpCalcFields(DataSet: TDataSet);

@@ -250,17 +250,16 @@ object f_PMBoard: Tf_PMBoard
       Align = alClient
       BevelInner = bvNone
       BevelOuter = bvNone
-      Font.Charset = DEFAULT_CHARSET
+      Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText
       Font.Height = -15
-      Font.Name = 'Tahoma'
+      Font.Name = 'Segoe UI'
       Font.Style = []
       ParentFont = False
       TabOrder = 2
       LookAndFeel.Kind = lfUltraFlat
       LookAndFeel.NativeStyle = False
       LookAndFeel.SkinName = 'VisualStudio2013Light'
-      ExplicitTop = 104
       object cxGrid1DBTableView1: TcxGridDBTableView
         OnDblClick = EditExecute
         Navigator.Buttons.CustomButtons = <>
@@ -819,10 +818,10 @@ object f_PMBoard: Tf_PMBoard
     PixelsPerInch = 96
     object cxStyle1: TcxStyle
       AssignedValues = [svFont]
-      Font.Charset = DEFAULT_CHARSET
+      Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText
       Font.Height = -13
-      Font.Name = 'Tahoma'
+      Font.Name = 'Segoe UI'
       Font.Style = [fsBold]
     end
   end

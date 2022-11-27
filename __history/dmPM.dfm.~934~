@@ -1,6 +1,6 @@
 object dm_PM: Tdm_PM
   OldCreateOrder = False
-  Height = 816
+  Height = 834
   Width = 841
   object dbConn: TFDConnection
     Params.Strings = (
@@ -9,7 +9,6 @@ object dm_PM: Tdm_PM
       'User_Name=rcadmin'
       'Password=rcadmin123'
       'DriverID=MySQL')
-    Connected = True
     LoginPrompt = False
     Left = 16
     Top = 40
@@ -2365,7 +2364,6 @@ object dm_PM: Tdm_PM
     end
   end
   object qry_company: TFDQuery
-    Active = True
     CachedUpdates = True
     Connection = dbConn
     SQL.Strings = (
@@ -9531,7 +9529,6 @@ object dm_PM: Tdm_PM
     end
   end
   object qry_CashOutDetail: TFDQuery
-    OnCalcFields = qry_CashOutDetailCalcFields
     CachedUpdates = True
     Connection = dbConn
     SQL.Strings = (
@@ -9665,18 +9662,6 @@ object dm_PM: Tdm_PM
       Origin = 'CASHADVACTUAL'
       DisplayFormat = '###,###,##0.00'
       currency = True
-    end
-    object qry_CashOutDetailCREDIT: TFloatField
-      FieldKind = fkCalculated
-      FieldName = 'CREDIT'
-      DisplayFormat = '###,###,##0.00'
-      currency = True
-      Calculated = True
-    end
-    object qry_CashOutDetailCALNETAMNT: TFloatField
-      FieldKind = fkCalculated
-      FieldName = 'CALNETAMNT'
-      Calculated = True
     end
   end
   object brw_CashSum: TFDQuery
@@ -11007,7 +10992,6 @@ object dm_PM: Tdm_PM
     end
   end
   object brw_SalesCashIn: TFDQuery
-    Active = True
     OnCalcFields = brw_SalesCashInCalcFields
     Connection = dbConn
     SQL.Strings = (
@@ -13322,6 +13306,21 @@ object dm_PM: Tdm_PM
       ProviderFlags = []
       ReadOnly = True
     end
+    object brw_SalariesCASHADVCREDIT: TSingleField
+      AutoGenerateValue = arDefault
+      FieldName = 'CASHADVCREDIT'
+      Origin = 'CASHADVCREDIT'
+    end
+    object brw_SalariesCASHADVBALANCE: TSingleField
+      AutoGenerateValue = arDefault
+      FieldName = 'CASHADVBALANCE'
+      Origin = 'CASHADVBALANCE'
+    end
+    object brw_SalariesCASHADVACTUAL: TSingleField
+      AutoGenerateValue = arDefault
+      FieldName = 'CASHADVACTUAL'
+      Origin = 'CASHADVACTUAL'
+    end
   end
   object tb_Payroll: TFDMemTable
     Active = True
@@ -13385,6 +13384,150 @@ object dm_PM: Tdm_PM
     object tb_PayrollCLIENT: TStringField
       FieldName = 'CLIENT'
       Size = 50
+    end
+  end
+  object brw_ForwardedBal: TFDQuery
+    OnCalcFields = brw_ForwardedBalCalcFields
+    Connection = dbConn
+    SQL.Strings = (
+      'SELECT DETAIL.*'
+      'FROM CASH_OUTDETAIL DETAIL'
+      'INNER JOIN EXPENSE_TYPE EXP ON EXP.ID = DETAIL.CATEGORYID  '
+      'INNER JOIN CASH_HEADER HEADER ON HEADER.ID = DETAIL.HEADERID'
+      ''
+      'ORDER BY DETAIL.ID DESC;')
+    Left = 616
+    Top = 768
+    object brw_ForwardedBalID: TFDAutoIncField
+      FieldName = 'ID'
+      Origin = 'ID'
+      ProviderFlags = [pfInWhere, pfInKey]
+    end
+    object brw_ForwardedBalHEADERID: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'HEADERID'
+      Origin = 'HEADERID'
+    end
+    object brw_ForwardedBalCATEGORY: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'CATEGORY'
+      Origin = 'CATEGORY'
+      Size = 50
+    end
+    object brw_ForwardedBalCATEGORYID: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'CATEGORYID'
+      Origin = 'CATEGORYID'
+    end
+    object brw_ForwardedBalPAYREFID: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'PAYREFID'
+      Origin = 'PAYREFID'
+    end
+    object brw_ForwardedBalEMPID: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'EMPID'
+      Origin = 'EMPID'
+    end
+    object brw_ForwardedBalPAYEE: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'PAYEE'
+      Origin = 'PAYEE'
+    end
+    object brw_ForwardedBalREMARKS: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'REMARKS'
+      Origin = 'REMARKS'
+      Size = 500
+    end
+    object brw_ForwardedBalAMOUNT: TSingleField
+      AutoGenerateValue = arDefault
+      FieldName = 'AMOUNT'
+      Origin = 'AMOUNT'
+      DisplayFormat = '###,###,##0.00'
+      currency = True
+    end
+    object brw_ForwardedBalREFDATE: TDateField
+      AutoGenerateValue = arDefault
+      FieldName = 'REFDATE'
+      Origin = 'REFDATE'
+    end
+    object brw_ForwardedBalCREATEDBY: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'CREATEDBY'
+      Origin = 'CREATEDBY'
+    end
+    object brw_ForwardedBalCREATEDDATETIME: TDateTimeField
+      AutoGenerateValue = arDefault
+      FieldName = 'CREATEDDATETIME'
+      Origin = 'CREATEDDATETIME'
+    end
+    object brw_ForwardedBalCANCELLED: TBooleanField
+      AutoGenerateValue = arDefault
+      FieldName = 'CANCELLED'
+      Origin = 'CANCELLED'
+    end
+    object brw_ForwardedBalCANCELLEDBYID: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'CANCELLEDBYID'
+      Origin = 'CANCELLEDBYID'
+    end
+    object brw_ForwardedBalCANCELLEDDATETIME: TDateTimeField
+      AutoGenerateValue = arDefault
+      FieldName = 'CANCELLEDDATETIME'
+      Origin = 'CANCELLEDDATETIME'
+    end
+    object brw_ForwardedBalPAYDATEFROM: TDateField
+      AutoGenerateValue = arDefault
+      FieldName = 'PAYDATEFROM'
+      Origin = 'PAYDATEFROM'
+    end
+    object brw_ForwardedBalPAYDATETO: TDateField
+      AutoGenerateValue = arDefault
+      FieldName = 'PAYDATETO'
+      Origin = 'PAYDATETO'
+    end
+    object brw_ForwardedBalGROSS: TSingleField
+      AutoGenerateValue = arDefault
+      FieldName = 'GROSS'
+      Origin = 'GROSS'
+      DisplayFormat = '###,###,##0.00'
+      currency = True
+    end
+    object brw_ForwardedBalCASHADVANCES: TSingleField
+      AutoGenerateValue = arDefault
+      FieldName = 'CASHADVANCES'
+      Origin = 'CASHADVANCES'
+      DisplayFormat = '###,###,##0.00'
+      currency = True
+    end
+    object brw_ForwardedBalCASHADVCREDIT: TSingleField
+      AutoGenerateValue = arDefault
+      FieldName = 'CASHADVCREDIT'
+      Origin = 'CASHADVCREDIT'
+      DisplayFormat = '###,###,##0.00'
+      currency = True
+    end
+    object brw_ForwardedBalCASHADVBALANCE: TSingleField
+      AutoGenerateValue = arDefault
+      FieldName = 'CASHADVBALANCE'
+      Origin = 'CASHADVBALANCE'
+      DisplayFormat = '###,###,##0.00'
+      currency = True
+    end
+    object brw_ForwardedBalCASHADVACTUAL: TSingleField
+      AutoGenerateValue = arDefault
+      FieldName = 'CASHADVACTUAL'
+      Origin = 'CASHADVACTUAL'
+      DisplayFormat = '###,###,##0.00'
+      currency = True
+    end
+    object brw_ForwardedBalCALC_CASHADV: TFloatField
+      FieldKind = fkCalculated
+      FieldName = 'CALC_CASHADV'
+      DisplayFormat = '###,###,##0.00'
+      currency = True
+      Calculated = True
     end
   end
 end

@@ -13402,6 +13402,7 @@ object dm_PM: Tdm_PM
       FieldName = 'ID'
       Origin = 'ID'
       ProviderFlags = [pfInWhere, pfInKey]
+      ReadOnly = True
     end
     object brw_ForwardedBalHEADERID: TIntegerField
       AutoGenerateValue = arDefault
@@ -13529,5 +13530,25 @@ object dm_PM: Tdm_PM
       currency = True
       Calculated = True
     end
+  end
+  object del_CashoutDetail: TFDQuery
+    Connection = dbConn
+    SQL.Strings = (
+      'UPDATE CASH_OUTDETAIL'
+      'SET CANCELLED = TRUE'
+      'WHERE ID = 0'
+      ';')
+    Left = 56
+    Top = 544
+  end
+  object del_CashInDetail: TFDQuery
+    Connection = dbConn
+    SQL.Strings = (
+      'UPDATE CASH_INDETAIL'
+      'SET CANCELLED = TRUE'
+      'WHERE ID = 0'
+      ';')
+    Left = 56
+    Top = 592
   end
 end

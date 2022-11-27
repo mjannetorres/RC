@@ -163,7 +163,7 @@ procedure Tf_PMBoard.OverridebyExecute(Sender: TObject);
 begin
   with dm_PM do
   begin
-    if brw_JOPOSTED.Value or brw_JOLAYOUT.Value then
+    if brw_JOPOSTED.Value and (brw_JOBALAMNT.Value > 0) then
     begin
       brw_CashReg.Close;
       brw_CashReg.SQL[2]  := 'WHERE REFID = :ID AND SOURCE = ''JO'' AND CANCELLED = FALSE';
@@ -202,7 +202,9 @@ begin
           EditExecute(nil);
         end;
       end;
-    end;
+    end
+    else
+      MessageDlg('Order is already paid in full! Cannot override this record', mtInformation, [mbOK], 0);
   end;
 end;
 

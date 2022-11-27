@@ -80,12 +80,14 @@ type
     cxGrid1DBTableView1LOGDATE: TcxGridDBColumn;
     cxGrid1DBTableView1DUEDATE: TcxGridDBColumn;
     cxGrid1DBTableView1POSTED: TcxGridDBColumn;
-    cxGrid1DBTableView1LAYOUT: TcxGridDBColumn;
-    cxGrid1DBTableView1RELEASED: TcxGridDBColumn;
     cxGrid1DBTableView1CLOSED: TcxGridDBColumn;
     cxGrid1DBTableView1PAIDAMNT: TcxGridDBColumn;
     cxGrid1DBTableView1BALAMNT: TcxGridDBColumn;
     cxGrid1Level1: TcxGridLevel;
+    cxGrid1DBTableView1NETAMNT: TcxGridDBColumn;
+    cxGrid1DBTableView1REMARKS: TcxGridDBColumn;
+    cxStyleRepository2: TcxStyleRepository;
+    cxStyle1: TcxStyle;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure EditExecute(Sender: TObject);
     procedure DeleteExecute(Sender: TObject);
@@ -361,7 +363,6 @@ begin
 
       tb_JODetail.First;
 
-
       tb_InvReqDetail.Close;
       tb_InvReqDetail.Open;
 
@@ -370,6 +371,7 @@ begin
       qry_JoCost.ParamByName('ID').Value := qry_JOID.Value;
       qry_JoCost.Open();
 
+
       if qry_JoCost.RecordCount > 0 then
       begin
         qry_JoCost.First;
@@ -377,6 +379,7 @@ begin
          begin
           tb_InvReqDetail.Append;
           tb_InvReqDetailID.Value        := qry_JoCostID.Value;
+          tb_InvReqDetailGARMENTID.Value := qry_JoCostGARMENTID.Value;
           tb_InvReqDetailITEMID.Value    := qry_JoCostITEMID.Value;
           tb_InvReqDetailITEMDESC.Value  := qry_JoCostITEMDESC.Value;
           tb_InvReqDetailUNIT.Value      := qry_JoCostUNIT.Value;
@@ -457,6 +460,7 @@ begin
           qry_JoCost.Edit;
 
           qry_JoCostHEADERID.Value         := qry_JOID.Value;
+          qry_JoCostGARMENTID.Value        := tb_InvReqDetailGARMENTID.Value;
           qry_JoCostITEMID.Value           := tb_InvReqDetailITEMID.Value;
           qry_JoCostITEMDESC.Value         := tb_InvReqDetailITEMDESC.Value;
           qry_JoCostCOST.Value             := tb_InvReqDetailCOST.Value;
@@ -832,6 +836,7 @@ begin
         qry_JoCost.Append;
         qry_JoCostHEADERID.Value         := qry_JOID.Value;
         qry_JoCostITEMID.Value           := tb_InvReqDetailITEMID.Value;
+        qry_JoCostGARMENTID.Value        := tb_InvReqDetailGARMENTID.Value;
         qry_JoCostITEMDESC.Value         := tb_InvReqDetailITEMDESC.Value;
         qry_JoCostCOST.Value             := tb_InvReqDetailCOST.Value;
         qry_JoCostTOTALCOST.Value        := tb_InvReqDetailTOTALCOST.Value;
