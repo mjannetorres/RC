@@ -15,7 +15,7 @@ object f_ExpenseTemp: Tf_ExpenseTemp
   Position = poMainFormCenter
   OnShow = FormShow
   PixelsPerInch = 96
-  TextHeight = 13
+  TextHeight = 14
   object Panel2: TPanel
     Left = 0
     Top = 460
@@ -569,7 +569,7 @@ object f_ExpenseTemp: Tf_ExpenseTemp
     BevelOuter = bvNone
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
-    Font.Height = -12
+    Font.Height = -15
     Font.Name = 'Tahoma'
     Font.Style = []
     ParentFont = False
@@ -693,7 +693,7 @@ object f_ExpenseTemp: Tf_ExpenseTemp
       Color = clTeal
       Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText
-      Font.Height = -12
+      Font.Height = -13
       Font.Name = 'Segoe UI'
       Font.Style = [fsBold]
       TextColor = 6570553

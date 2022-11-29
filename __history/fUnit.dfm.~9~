@@ -1,7 +1,7 @@
-object f_Fabric: Tf_Fabric
+object f_Unit: Tf_Unit
   Left = 0
   Top = 0
-  Caption = 'List of Fabrics'
+  Caption = 'Unit'
   ClientHeight = 481
   ClientWidth = 847
   Color = clBtnFace
@@ -14,7 +14,7 @@ object f_Fabric: Tf_Fabric
   OldCreateOrder = False
   Visible = True
   WindowState = wsMaximized
-  OnCreate = FormCreate
+  OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 14
   object Splitter1: TSplitter
@@ -106,7 +106,7 @@ object f_Fabric: Tf_Fabric
     object cxGrid1DBTableView1: TcxGridDBTableView
       OnDblClick = EditExecute
       Navigator.Buttons.CustomButtons = <>
-      DataController.DataSource = ds_fabric
+      DataController.DataSource = ds_units
       DataController.Summary.DefaultGroupSummaryItems = <>
       DataController.Summary.FooterSummaryItems = <
         item
@@ -129,7 +129,6 @@ object f_Fabric: Tf_Fabric
         Options.Editing = False
         Options.Filtering = False
         Options.Sorting = False
-        Width = 213
       end
     end
     object cxGrid1Level1: TcxGridLevel
@@ -158,9 +157,9 @@ object f_Fabric: Tf_Fabric
       AlignWithMargins = True
       Left = 13
       Top = 24
-      Width = 80
+      Width = 59
       Height = 25
-      Caption = 'FABRICS'
+      Caption = 'UNITS'
       Color = clWhite
       Font.Charset = ANSI_CHARSET
       Font.Color = clWhite
@@ -259,8 +258,8 @@ object f_Fabric: Tf_Fabric
       8000800000008000800080800000C0C0C000808080000000FF0000FF000000FF
       FF00FF000000FF00FF00FFFF0000FFFFFF0000000000}
   end
-  object ds_fabric: TDataSource
-    DataSet = dm_PM.brw_Fabrics
+  object ds_units: TDataSource
+    DataSet = dm_PM.brw_Unit
     Left = 469
     Top = 192
   end
@@ -279,13 +278,8 @@ object f_Fabric: Tf_Fabric
       TextColor = 6570553
     end
     object select_style: TcxStyle
-      AssignedValues = [svColor, svFont, svTextColor]
+      AssignedValues = [svColor, svTextColor]
       Color = clTeal
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -15
-      Font.Name = 'Tahoma'
-      Font.Style = []
       TextColor = clWhite
     end
   end

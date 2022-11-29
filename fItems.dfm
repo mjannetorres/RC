@@ -130,7 +130,7 @@ object f_Items: Tf_Items
     Align = alClient
     Font.Charset = ANSI_CHARSET
     Font.Color = clWindowText
-    Font.Height = -12
+    Font.Height = -15
     Font.Name = 'Segoe UI'
     Font.Style = []
     ParentFont = False
@@ -594,7 +594,7 @@ object f_Items: Tf_Items
       Color = clWhite
       Font.Charset = ANSI_CHARSET
       Font.Color = clWhite
-      Font.Height = -12
+      Font.Height = -13
       Font.Name = 'Segoe UI'
       Font.Style = [fsBold]
       TextColor = 6570553
@@ -604,7 +604,7 @@ object f_Items: Tf_Items
       Color = clTeal
       Font.Charset = ANSI_CHARSET
       Font.Color = clWhite
-      Font.Height = -12
+      Font.Height = -15
       Font.Name = 'Segoe UI'
       Font.Style = [fsBold]
       TextColor = clWhite

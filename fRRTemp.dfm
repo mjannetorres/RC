@@ -15,7 +15,7 @@ object f_RRTemp: Tf_RRTemp
   Position = poMainFormCenter
   OnShow = FormShow
   PixelsPerInch = 96
-  TextHeight = 13
+  TextHeight = 14
   object Panel2: TPanel
     Left = 0
     Top = 440
@@ -618,7 +618,7 @@ object f_RRTemp: Tf_RRTemp
     BevelOuter = bvNone
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
-    Font.Height = -12
+    Font.Height = -15
     Font.Name = 'Tahoma'
     Font.Style = []
     ParentFont = False
@@ -770,7 +770,7 @@ object f_RRTemp: Tf_RRTemp
       Color = clTeal
       Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText
-      Font.Height = -12
+      Font.Height = -13
       Font.Name = 'Segoe UI'
       Font.Style = [fsBold]
       TextColor = 6570553

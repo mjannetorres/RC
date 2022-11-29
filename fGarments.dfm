@@ -197,7 +197,7 @@ object f_Garments: Tf_Garments
     Align = alClient
     Font.Charset = ANSI_CHARSET
     Font.Color = clWindowText
-    Font.Height = -12
+    Font.Height = -15
     Font.Name = 'Segoe UI'
     Font.Style = []
     ParentFont = False
@@ -332,6 +332,7 @@ object f_Garments: Tf_Garments
         end>
       DataController.Summary.SummaryGroups = <>
       OptionsSelection.CellSelect = False
+      OptionsView.NoDataToDisplayInfoText = 'No data to preview'
       OptionsView.ColumnAutoWidth = True
       OptionsView.Footer = True
       OptionsView.GroupByBox = False
@@ -532,14 +533,19 @@ object f_Garments: Tf_Garments
       Color = clWhite
       Font.Charset = ANSI_CHARSET
       Font.Color = clWhite
-      Font.Height = -12
+      Font.Height = -13
       Font.Name = 'Segoe UI'
       Font.Style = [fsBold]
       TextColor = 6570553
     end
     object select_style: TcxStyle
-      AssignedValues = [svColor, svTextColor]
+      AssignedValues = [svColor, svFont, svTextColor]
       Color = clTeal
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -15
+      Font.Name = 'Tahoma'
+      Font.Style = []
       TextColor = clWhite
     end
   end

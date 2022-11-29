@@ -16,7 +16,7 @@ object f_POTemp: Tf_POTemp
   OnClose = FormClose
   OnShow = FormShow
   PixelsPerInch = 96
-  TextHeight = 14
+  TextHeight = 13
   object Panel2: TPanel
     Left = 0
     Top = 430
@@ -347,7 +347,7 @@ object f_POTemp: Tf_POTemp
     BevelOuter = bvNone
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
-    Font.Height = -15
+    Font.Height = -12
     Font.Name = 'Tahoma'
     Font.Style = []
     ParentFont = False
@@ -496,7 +496,7 @@ object f_POTemp: Tf_POTemp
       Color = clTeal
       Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText
-      Font.Height = -13
+      Font.Height = -12
       Font.Name = 'Segoe UI'
       Font.Style = [fsBold]
       TextColor = 6570553

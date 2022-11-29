@@ -1,9 +1,9 @@
-object f_Expense: Tf_Expense
+object f_MatRequest: Tf_MatRequest
   Left = 0
   Top = 0
-  Caption = 'Expense'
-  ClientHeight = 424
-  ClientWidth = 1003
+  Caption = 'Material Request'
+  ClientHeight = 481
+  ClientWidth = 847
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -11,30 +11,31 @@ object f_Expense: Tf_Expense
   Font.Name = 'Tahoma'
   Font.Style = []
   FormStyle = fsMDIChild
+  Padding.Top = 10
   OldCreateOrder = False
   Position = poMainFormCenter
   Visible = True
   WindowState = wsMaximized
-  OnCreate = FormCreate
+  OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 14
   object Splitter1: TSplitter
     Left = 0
-    Top = 101
-    Width = 1003
+    Top = 111
+    Width = 847
     Height = 3
     Cursor = crVSplit
     Align = alTop
     Color = clWhite
     ParentColor = False
     StyleElements = []
-    ExplicitTop = 104
-    ExplicitWidth = 942
+    ExplicitLeft = 7
+    ExplicitWidth = 827
   end
   object Panel3: TPanel
     Left = 0
-    Top = 0
-    Width = 1003
+    Top = 10
+    Width = 847
     Height = 71
     Align = alTop
     BevelOuter = bvNone
@@ -46,16 +47,17 @@ object f_Expense: Tf_Expense
     ParentBackground = False
     TabOrder = 0
     StyleElements = [seFont, seBorder]
+    ExplicitTop = 13
     DesignSize = (
-      1003
+      847
       71)
     object Label1: TLabel
       AlignWithMargins = True
-      Left = 20
-      Top = 20
-      Width = 193
+      Left = 13
+      Top = 24
+      Width = 248
       Height = 25
-      Caption = 'EXPENSES/DEPOSITS'
+      Caption = 'CASH PURCHASE REQUEST'
       Color = clWhite
       Font.Charset = ANSI_CHARSET
       Font.Color = clWhite
@@ -68,7 +70,7 @@ object f_Expense: Tf_Expense
       StyleElements = []
     end
     object Label2: TLabel
-      Left = 860
+      Left = 704
       Top = 43
       Width = 32
       Height = 17
@@ -86,7 +88,7 @@ object f_Expense: Tf_Expense
       ExplicitLeft = 684
     end
     object Label3: TLabel
-      Left = 601
+      Left = 445
       Top = 44
       Width = 40
       Height = 17
@@ -101,10 +103,9 @@ object f_Expense: Tf_Expense
       ParentColor = False
       ParentFont = False
       StyleElements = []
-      ExplicitLeft = 445
     end
     object cmb_filter: TComboBox
-      Left = 899
+      Left = 743
       Top = 41
       Width = 89
       Height = 23
@@ -118,12 +119,12 @@ object f_Expense: Tf_Expense
       ParentFont = False
       TabOrder = 0
       Items.Strings = (
-        'NO.'
-        'PAYEE'
-        'CHECK NO.')
+        'MR NO.'
+        'JO NO.'
+        'REQUESTED BY')
     end
     object date_1: TDateTimePicker
-      Left = 658
+      Left = 502
       Top = 41
       Width = 93
       Height = 21
@@ -133,7 +134,7 @@ object f_Expense: Tf_Expense
       TabOrder = 1
     end
     object date_2: TDateTimePicker
-      Left = 757
+      Left = 601
       Top = 41
       Width = 93
       Height = 21
@@ -143,7 +144,7 @@ object f_Expense: Tf_Expense
       TabOrder = 2
     end
     object txt_search: TButtonedEdit
-      Left = 601
+      Left = 445
       Top = 13
       Width = 387
       Height = 25
@@ -174,8 +175,8 @@ object f_Expense: Tf_Expense
   end
   object scToolBar2: TscToolBar
     Left = 0
-    Top = 71
-    Width = 1003
+    Top = 81
+    Width = 847
     Height = 30
     Margins.Left = 0
     Margins.Top = 0
@@ -236,147 +237,171 @@ object f_Expense: Tf_Expense
       ImageIndex = 3
     end
   end
-  object s: TcxGrid
+  object cxGrid1: TcxGrid
     Left = 0
-    Top = 104
-    Width = 1003
-    Height = 320
+    Top = 114
+    Width = 847
+    Height = 367
     Align = alClient
     Font.Charset = ANSI_CHARSET
     Font.Color = clWindowText
-    Font.Height = -15
+    Font.Height = -12
     Font.Name = 'Segoe UI'
     Font.Style = []
     ParentFont = False
     TabOrder = 2
     LookAndFeel.NativeStyle = False
     LookAndFeel.SkinName = 'VisualStudio2013Light'
-    object sDBTableView1: TcxGridDBTableView
+    object cxGrid1DBTableView1: TcxGridDBTableView
       OnDblClick = EditExecute
       Navigator.Buttons.CustomButtons = <>
-      OnCellClick = sDBTableView1CellClick
-      DataController.DataSource = ds_Expense
+      OnCellClick = cxGrid1DBTableView1CellClick
+      DataController.DataSource = ds_MR
       DataController.Summary.DefaultGroupSummaryItems = <>
       DataController.Summary.FooterSummaryItems = <
         item
           Format = '###,###,##0'
           Kind = skCount
           FieldName = 'ID'
-          Column = sDBTableView1ID
+          Column = cxGrid1DBTableView1ID
         end
         item
           Format = '###,###,##0.00'
           Kind = skSum
-          FieldName = 'NETAMNT'
-          Column = sDBTableView1NETAMOUNT
+          FieldName = 'TOTALCOST'
+          Column = cxGrid1DBTableView1TOTALCOST
         end>
       DataController.Summary.SummaryGroups = <>
       OptionsSelection.CellSelect = False
       OptionsView.NoDataToDisplayInfoText = 'No Data To Display'
-      OptionsView.CellAutoHeight = True
       OptionsView.ColumnAutoWidth = True
       OptionsView.Footer = True
       OptionsView.GroupByBox = False
       Styles.Selection = select_style
       Styles.Header = header_style
-      object sDBTableView1ID: TcxGridDBColumn
-        Caption = 'NO.'
+      object cxGrid1DBTableView1ID: TcxGridDBColumn
+        Caption = 'MR NO.'
         DataBinding.FieldName = 'ID'
         HeaderAlignmentHorz = taCenter
         Options.Editing = False
         Options.Filtering = False
         Options.Sorting = False
-        Width = 54
+        Width = 59
       end
-      object sDBTableView1PAYEE: TcxGridDBColumn
-        DataBinding.FieldName = 'PAYEE'
+      object cxGrid1DBTableView1JONO: TcxGridDBColumn
+        Caption = 'JO NO.'
+        DataBinding.FieldName = 'JONO'
         HeaderAlignmentHorz = taCenter
         Options.Editing = False
         Options.Filtering = False
         Options.Sorting = False
-        Width = 155
+        Width = 48
       end
-      object sDBTableView1NOTES: TcxGridDBColumn
-        DataBinding.FieldName = 'NOTES'
-        HeaderAlignmentHorz = taCenter
-        Options.Editing = False
-        Options.Filtering = False
-        Options.Sorting = False
-        Width = 146
-      end
-      object sDBTableView1BANK: TcxGridDBColumn
-        DataBinding.FieldName = 'BANK'
-        HeaderAlignmentHorz = taCenter
-        Options.Editing = False
-        Options.Filtering = False
-        Options.Sorting = False
-        Width = 136
-      end
-      object sDBTableView1PAYMENTMODE: TcxGridDBColumn
-        Caption = 'MODE'
-        DataBinding.FieldName = 'PAYMENTMODE'
+      object cxGrid1DBTableView1SOURCE: TcxGridDBColumn
+        DataBinding.FieldName = 'SOURCE'
+        PropertiesClassName = 'TcxImageComboBoxProperties'
+        Properties.ImmediatePost = True
+        Properties.Items = <
+          item
+            Description = 'LAYOUT/DESIGN'
+            ImageIndex = 0
+            Value = 'D'
+          end
+          item
+            Description = 'PRINTING'
+            Value = 'P'
+          end
+          item
+            Description = 'FIRST CUTTING'
+            Value = 'F'
+          end
+          item
+            Description = 'HEAT PRESS'
+            Value = 'H'
+          end
+          item
+            Description = 'FINAL CUTTING'
+            Value = 'L'
+          end
+          item
+            Description = 'SEWING'
+            Value = 'S'
+          end
+          item
+            Description = 'OTHERS'
+            Value = 'O'
+          end>
         HeaderAlignmentHorz = taCenter
         Options.Editing = False
         Options.Filtering = False
         Options.Sorting = False
         Width = 90
       end
-      object sDBTableView1CHECKNO: TcxGridDBColumn
-        Caption = 'CHECK NO.'
-        DataBinding.FieldName = 'CHECKNO'
+      object cxGrid1DBTableView1NOTE: TcxGridDBColumn
+        Caption = 'NOTES'
+        DataBinding.FieldName = 'NOTE'
         HeaderAlignmentHorz = taCenter
         Options.Editing = False
         Options.Filtering = False
         Options.Sorting = False
-        Width = 63
+        Width = 168
       end
-      object sDBTableView1CHECKDATE: TcxGridDBColumn
-        Caption = 'CHECK DATE'
-        DataBinding.FieldName = 'CHECKDATE'
+      object cxGrid1DBTableView1EMPNAME: TcxGridDBColumn
+        Caption = 'REQUESTED BY'
+        DataBinding.FieldName = 'EMPNAME'
         HeaderAlignmentHorz = taCenter
         Options.Editing = False
         Options.Filtering = False
         Options.Sorting = False
-        Width = 75
+        Width = 122
       end
-      object sDBTableView1NETAMOUNT: TcxGridDBColumn
-        Caption = 'NET AMNT.'
-        DataBinding.FieldName = 'NETAMOUNT'
+      object cxGrid1DBTableView1TOTALCOST: TcxGridDBColumn
+        Caption = 'TOTAL COST'
+        DataBinding.FieldName = 'TOTALCOST'
         HeaderAlignmentHorz = taCenter
         Options.Editing = False
         Options.Filtering = False
         Options.Sorting = False
-        Width = 74
+        Width = 78
       end
-      object sDBTableView1EXPENSEDATE: TcxGridDBColumn
-        Caption = 'DATE'
-        DataBinding.FieldName = 'EXPENSEDATE'
+      object cxGrid1DBTableView1REQDATETIME: TcxGridDBColumn
+        Caption = 'REQ. DATE'
+        DataBinding.FieldName = 'REQDATETIME'
         HeaderAlignmentHorz = taCenter
         Options.Editing = False
         Options.Filtering = False
         Options.Sorting = False
-        Width = 75
+        Styles.Header = header_style
+        Width = 68
       end
-      object sDBTableView1POSTED: TcxGridDBColumn
+      object cxGrid1DBTableView1POSTED: TcxGridDBColumn
         DataBinding.FieldName = 'POSTED'
         HeaderAlignmentHorz = taCenter
         Options.Editing = False
         Options.Filtering = False
         Options.Sorting = False
-        Width = 51
+        Width = 62
       end
-      object sDBTableView1POSTEDDATETIME: TcxGridDBColumn
+      object cxGrid1DBTableView1POSTEDDATETIME: TcxGridDBColumn
         Caption = 'POSTED DATE'
         DataBinding.FieldName = 'POSTEDDATETIME'
         HeaderAlignmentHorz = taCenter
         Options.Editing = False
         Options.Filtering = False
         Options.Sorting = False
-        Width = 82
+        Width = 76
+      end
+      object cxGrid1DBTableView1PAID: TcxGridDBColumn
+        DataBinding.FieldName = 'REIMBURSED'
+        HeaderAlignmentHorz = taCenter
+        Options.Editing = False
+        Options.Filtering = False
+        Options.Sorting = False
+        Width = 74
       end
     end
-    object sLevel1: TcxGridLevel
-      GridView = sDBTableView1
+    object cxGrid1Level1: TcxGridLevel
+      GridView = cxGrid1DBTableView1
     end
   end
   object ActionList1: TActionList
@@ -440,8 +465,8 @@ object f_Expense: Tf_Expense
       8000800000008000800080800000C0C0C000808080000000FF0000FF000000FF
       FF00FF000000FF00FF00FFFF0000FFFFFF0000000000}
   end
-  object ds_Expense: TDataSource
-    DataSet = dm_PM.brw_Expense
+  object ds_MR: TDataSource
+    DataSet = dm_PM.brw_MR
     Left = 469
     Top = 192
   end
@@ -454,19 +479,14 @@ object f_Expense: Tf_Expense
       Color = clWhite
       Font.Charset = ANSI_CHARSET
       Font.Color = clWhite
-      Font.Height = -13
+      Font.Height = -12
       Font.Name = 'Segoe UI'
       Font.Style = [fsBold]
       TextColor = 6570553
     end
     object select_style: TcxStyle
-      AssignedValues = [svColor, svFont, svTextColor]
+      AssignedValues = [svColor, svTextColor]
       Color = clTeal
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -15
-      Font.Name = 'Tahoma'
-      Font.Style = []
       TextColor = clWhite
     end
   end

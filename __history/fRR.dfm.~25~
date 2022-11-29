@@ -1,9 +1,9 @@
-object f_Expense: Tf_Expense
+object f_RR: Tf_RR
   Left = 0
   Top = 0
-  Caption = 'Expense'
-  ClientHeight = 424
-  ClientWidth = 1003
+  Caption = 'Receiving Report'
+  ClientHeight = 481
+  ClientWidth = 968
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -12,29 +12,29 @@ object f_Expense: Tf_Expense
   Font.Style = []
   FormStyle = fsMDIChild
   OldCreateOrder = False
-  Position = poMainFormCenter
   Visible = True
   WindowState = wsMaximized
   OnCreate = FormCreate
   PixelsPerInch = 96
-  TextHeight = 14
+  TextHeight = 13
   object Splitter1: TSplitter
     Left = 0
     Top = 101
-    Width = 1003
+    Width = 968
     Height = 3
     Cursor = crVSplit
     Align = alTop
     Color = clWhite
     ParentColor = False
     StyleElements = []
-    ExplicitTop = 104
-    ExplicitWidth = 942
+    ExplicitLeft = 7
+    ExplicitTop = 111
+    ExplicitWidth = 827
   end
   object Panel3: TPanel
     Left = 0
     Top = 0
-    Width = 1003
+    Width = 968
     Height = 71
     Align = alTop
     BevelOuter = bvNone
@@ -47,15 +47,15 @@ object f_Expense: Tf_Expense
     TabOrder = 0
     StyleElements = [seFont, seBorder]
     DesignSize = (
-      1003
+      968
       71)
     object Label1: TLabel
       AlignWithMargins = True
-      Left = 20
-      Top = 20
-      Width = 193
+      Left = 13
+      Top = 24
+      Width = 181
       Height = 25
-      Caption = 'EXPENSES/DEPOSITS'
+      Caption = 'RECEIVING REPORT'
       Color = clWhite
       Font.Charset = ANSI_CHARSET
       Font.Color = clWhite
@@ -68,7 +68,7 @@ object f_Expense: Tf_Expense
       StyleElements = []
     end
     object Label2: TLabel
-      Left = 860
+      Left = 825
       Top = 43
       Width = 32
       Height = 17
@@ -86,7 +86,7 @@ object f_Expense: Tf_Expense
       ExplicitLeft = 684
     end
     object Label3: TLabel
-      Left = 601
+      Left = 566
       Top = 44
       Width = 40
       Height = 17
@@ -104,10 +104,10 @@ object f_Expense: Tf_Expense
       ExplicitLeft = 445
     end
     object cmb_filter: TComboBox
-      Left = 899
+      Left = 864
       Top = 41
       Width = 89
-      Height = 23
+      Height = 21
       Style = csDropDownList
       Anchors = [akTop, akRight]
       Font.Charset = ANSI_CHARSET
@@ -118,12 +118,12 @@ object f_Expense: Tf_Expense
       ParentFont = False
       TabOrder = 0
       Items.Strings = (
-        'NO.'
-        'PAYEE'
-        'CHECK NO.')
+        'RR NO.'
+        'REF NO.'
+        'VENDOR')
     end
     object date_1: TDateTimePicker
-      Left = 658
+      Left = 623
       Top = 41
       Width = 93
       Height = 21
@@ -133,7 +133,7 @@ object f_Expense: Tf_Expense
       TabOrder = 1
     end
     object date_2: TDateTimePicker
-      Left = 757
+      Left = 722
       Top = 41
       Width = 93
       Height = 21
@@ -143,7 +143,7 @@ object f_Expense: Tf_Expense
       TabOrder = 2
     end
     object txt_search: TButtonedEdit
-      Left = 601
+      Left = 566
       Top = 13
       Width = 387
       Height = 25
@@ -175,7 +175,7 @@ object f_Expense: Tf_Expense
   object scToolBar2: TscToolBar
     Left = 0
     Top = 71
-    Width = 1003
+    Width = 968
     Height = 30
     Margins.Left = 0
     Margins.Top = 0
@@ -239,12 +239,12 @@ object f_Expense: Tf_Expense
   object s: TcxGrid
     Left = 0
     Top = 104
-    Width = 1003
-    Height = 320
+    Width = 968
+    Height = 377
     Align = alClient
     Font.Charset = ANSI_CHARSET
     Font.Color = clWindowText
-    Font.Height = -15
+    Font.Height = -12
     Font.Name = 'Segoe UI'
     Font.Style = []
     ParentFont = False
@@ -255,7 +255,7 @@ object f_Expense: Tf_Expense
       OnDblClick = EditExecute
       Navigator.Buttons.CustomButtons = <>
       OnCellClick = sDBTableView1CellClick
-      DataController.DataSource = ds_Expense
+      DataController.DataSource = ds_RR
       DataController.Summary.DefaultGroupSummaryItems = <>
       DataController.Summary.FooterSummaryItems = <
         item
@@ -267,8 +267,20 @@ object f_Expense: Tf_Expense
         item
           Format = '###,###,##0.00'
           Kind = skSum
-          FieldName = 'NETAMNT'
-          Column = sDBTableView1NETAMOUNT
+          FieldName = 'NETAMOUNT'
+          Column = sDBTableView1NETAMNT
+        end
+        item
+          Format = '###,###,##0.00'
+          Kind = skSum
+          FieldName = 'DISCOUNT'
+          Column = sDBTableView1DISCOUNT
+        end
+        item
+          Format = '###,###,##0.00'
+          Kind = skSum
+          FieldName = 'GROSS'
+          Column = sDBTableView1GROSS
         end>
       DataController.Summary.SummaryGroups = <>
       OptionsSelection.CellSelect = False
@@ -280,21 +292,47 @@ object f_Expense: Tf_Expense
       Styles.Selection = select_style
       Styles.Header = header_style
       object sDBTableView1ID: TcxGridDBColumn
-        Caption = 'NO.'
+        Caption = 'RR NO.'
         DataBinding.FieldName = 'ID'
         HeaderAlignmentHorz = taCenter
         Options.Editing = False
         Options.Filtering = False
         Options.Sorting = False
-        Width = 54
+        Width = 33
       end
-      object sDBTableView1PAYEE: TcxGridDBColumn
-        DataBinding.FieldName = 'PAYEE'
+      object sDBTableView1POID: TcxGridDBColumn
+        Caption = 'REF NO.'
+        DataBinding.FieldName = 'REFID'
         HeaderAlignmentHorz = taCenter
         Options.Editing = False
         Options.Filtering = False
         Options.Sorting = False
-        Width = 155
+        Width = 58
+      end
+      object sDBTableView1INVOICE: TcxGridDBColumn
+        Caption = 'INVOICE / OR'
+        DataBinding.FieldName = 'INVOICE'
+        HeaderAlignmentHorz = taCenter
+        Options.Editing = False
+        Options.Filtering = False
+        Options.Sorting = False
+        Width = 70
+      end
+      object sDBTableView1POTYPE: TcxGridDBColumn
+        DataBinding.FieldName = 'SOURCE'
+        HeaderAlignmentHorz = taCenter
+        Options.Editing = False
+        Options.Filtering = False
+        Options.Sorting = False
+        Width = 61
+      end
+      object sDBTableView1VENDOR: TcxGridDBColumn
+        DataBinding.FieldName = 'VENDOR'
+        HeaderAlignmentHorz = taCenter
+        Options.Editing = False
+        Options.Filtering = False
+        Options.Sorting = False
+        Width = 176
       end
       object sDBTableView1NOTES: TcxGridDBColumn
         DataBinding.FieldName = 'NOTES'
@@ -302,55 +340,45 @@ object f_Expense: Tf_Expense
         Options.Editing = False
         Options.Filtering = False
         Options.Sorting = False
-        Width = 146
+        Width = 106
       end
-      object sDBTableView1BANK: TcxGridDBColumn
-        DataBinding.FieldName = 'BANK'
+      object sDBTableView1GROSS: TcxGridDBColumn
+        DataBinding.FieldName = 'GROSS'
         HeaderAlignmentHorz = taCenter
         Options.Editing = False
         Options.Filtering = False
         Options.Sorting = False
-        Width = 136
+        Width = 91
       end
-      object sDBTableView1PAYMENTMODE: TcxGridDBColumn
-        Caption = 'MODE'
-        DataBinding.FieldName = 'PAYMENTMODE'
+      object sDBTableView1DISCOUNT: TcxGridDBColumn
+        DataBinding.FieldName = 'DISCOUNT'
         HeaderAlignmentHorz = taCenter
         Options.Editing = False
         Options.Filtering = False
         Options.Sorting = False
-        Width = 90
+        Width = 65
       end
-      object sDBTableView1CHECKNO: TcxGridDBColumn
-        Caption = 'CHECK NO.'
-        DataBinding.FieldName = 'CHECKNO'
+      object sDBTableView1NETAMNT: TcxGridDBColumn
+        Caption = 'NET AMNT'
+        DataBinding.FieldName = 'NETAMNT'
         HeaderAlignmentHorz = taCenter
         Options.Editing = False
         Options.Filtering = False
         Options.Sorting = False
-        Width = 63
+        Width = 66
       end
-      object sDBTableView1CHECKDATE: TcxGridDBColumn
-        Caption = 'CHECK DATE'
-        DataBinding.FieldName = 'CHECKDATE'
+      object sDBTableView1IRDATE: TcxGridDBColumn
+        Caption = 'DATE RCVD'
+        DataBinding.FieldName = 'IRDATE'
         HeaderAlignmentHorz = taCenter
         Options.Editing = False
         Options.Filtering = False
         Options.Sorting = False
-        Width = 75
+        Width = 67
       end
-      object sDBTableView1NETAMOUNT: TcxGridDBColumn
-        Caption = 'NET AMNT.'
-        DataBinding.FieldName = 'NETAMOUNT'
-        HeaderAlignmentHorz = taCenter
-        Options.Editing = False
-        Options.Filtering = False
-        Options.Sorting = False
-        Width = 74
-      end
-      object sDBTableView1EXPENSEDATE: TcxGridDBColumn
-        Caption = 'DATE'
-        DataBinding.FieldName = 'EXPENSEDATE'
+      object sDBTableView1POSTEDDATETIME: TcxGridDBColumn
+        Caption = 'POSTED DATE'
+        DataBinding.FieldName = 'POSTEDDATETIME'
         HeaderAlignmentHorz = taCenter
         Options.Editing = False
         Options.Filtering = False
@@ -363,16 +391,15 @@ object f_Expense: Tf_Expense
         Options.Editing = False
         Options.Filtering = False
         Options.Sorting = False
-        Width = 51
+        Width = 48
       end
-      object sDBTableView1POSTEDDATETIME: TcxGridDBColumn
-        Caption = 'POSTED DATE'
-        DataBinding.FieldName = 'POSTEDDATETIME'
+      object sDBTableView1CLOSED: TcxGridDBColumn
+        DataBinding.FieldName = 'CLOSED'
         HeaderAlignmentHorz = taCenter
         Options.Editing = False
         Options.Filtering = False
         Options.Sorting = False
-        Width = 82
+        Width = 50
       end
     end
     object sLevel1: TcxGridLevel
@@ -440,8 +467,8 @@ object f_Expense: Tf_Expense
       8000800000008000800080800000C0C0C000808080000000FF0000FF000000FF
       FF00FF000000FF00FF00FFFF0000FFFFFF0000000000}
   end
-  object ds_Expense: TDataSource
-    DataSet = dm_PM.brw_Expense
+  object ds_RR: TDataSource
+    DataSet = dm_PM.brw_RR
     Left = 469
     Top = 192
   end
@@ -454,19 +481,14 @@ object f_Expense: Tf_Expense
       Color = clWhite
       Font.Charset = ANSI_CHARSET
       Font.Color = clWhite
-      Font.Height = -13
+      Font.Height = -12
       Font.Name = 'Segoe UI'
       Font.Style = [fsBold]
       TextColor = 6570553
     end
     object select_style: TcxStyle
-      AssignedValues = [svColor, svFont, svTextColor]
+      AssignedValues = [svColor, svTextColor]
       Color = clTeal
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -15
-      Font.Name = 'Tahoma'
-      Font.Style = []
       TextColor = clWhite
     end
   end

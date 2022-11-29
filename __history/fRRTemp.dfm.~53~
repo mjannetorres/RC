@@ -1,10 +1,10 @@
-object f_POTemp: Tf_POTemp
+object f_RRTemp: Tf_RRTemp
   Left = 0
   Top = 0
   BorderStyle = bsDialog
-  Caption = 'Purchase Order'
-  ClientHeight = 471
-  ClientWidth = 857
+  Caption = 'Receiving Report'
+  ClientHeight = 481
+  ClientWidth = 861
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -13,23 +13,22 @@ object f_POTemp: Tf_POTemp
   Font.Style = []
   OldCreateOrder = False
   Position = poMainFormCenter
-  OnClose = FormClose
   OnShow = FormShow
   PixelsPerInch = 96
-  TextHeight = 14
+  TextHeight = 13
   object Panel2: TPanel
     Left = 0
-    Top = 430
-    Width = 857
+    Top = 440
+    Width = 861
     Height = 41
     Align = alBottom
     BevelOuter = bvNone
     TabOrder = 0
     DesignSize = (
-      857
+      861
       41)
     object btnSave: TButton
-      Left = 686
+      Left = 690
       Top = 8
       Width = 75
       Height = 25
@@ -40,7 +39,7 @@ object f_POTemp: Tf_POTemp
       TabOrder = 0
     end
     object btnCancel: TButton
-      Left = 767
+      Left = 771
       Top = 8
       Width = 75
       Height = 25
@@ -51,7 +50,7 @@ object f_POTemp: Tf_POTemp
       TabOrder = 1
     end
     object btnPrint: TButton
-      Left = 19
+      Left = 15
       Top = 8
       Width = 75
       Height = 25
@@ -64,8 +63,8 @@ object f_POTemp: Tf_POTemp
   object Panel3: TPanel
     Left = 0
     Top = 0
-    Width = 857
-    Height = 157
+    Width = 861
+    Height = 185
     Align = alTop
     Anchors = [akTop, akRight]
     BevelOuter = bvNone
@@ -84,15 +83,15 @@ object f_POTemp: Tf_POTemp
     TabOrder = 1
     StyleElements = [seFont, seBorder]
     DesignSize = (
-      857
-      157)
+      861
+      185)
     object Label1: TLabel
-      Left = 698
+      Left = 702
       Top = 9
-      Width = 46
+      Width = 45
       Height = 17
       Anchors = [akTop, akRight]
-      Caption = 'PO No.'
+      Caption = 'RR No.'
       Font.Charset = ANSI_CHARSET
       Font.Color = clWhite
       Font.Height = -13
@@ -101,7 +100,7 @@ object f_POTemp: Tf_POTemp
       ParentFont = False
     end
     object Label4: TLabel
-      Left = 715
+      Left = 719
       Top = 34
       Width = 28
       Height = 17
@@ -114,10 +113,11 @@ object f_POTemp: Tf_POTemp
       Font.Name = 'Segoe UI Semibold'
       Font.Style = [fsBold]
       ParentFont = False
+      ExplicitLeft = 715
     end
     object Label6: TLabel
       Left = 15
-      Top = 34
+      Top = 59
       Width = 36
       Height = 17
       Caption = 'Notes'
@@ -130,7 +130,7 @@ object f_POTemp: Tf_POTemp
     end
     object Label2: TLabel
       Left = 15
-      Top = 9
+      Top = 34
       Width = 43
       Height = 17
       Anchors = [akTop, akRight]
@@ -142,12 +142,92 @@ object f_POTemp: Tf_POTemp
       Font.Style = [fsBold]
       ParentFont = False
     end
+    object Label3: TLabel
+      Left = 15
+      Top = 10
+      Width = 41
+      Height = 17
+      Anchors = [akTop, akRight]
+      Caption = 'Source'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWhite
+      Font.Height = -13
+      Font.Name = 'Segoe UI Semibold'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object Label5: TLabel
+      Left = 175
+      Top = 10
+      Width = 48
+      Height = 17
+      Anchors = [akTop, akRight]
+      Caption = 'Ref No. '
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWhite
+      Font.Height = -13
+      Font.Name = 'Segoe UI Semibold'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object Label7: TLabel
+      Left = 359
+      Top = 10
+      Width = 43
+      Height = 17
+      Caption = 'Invoice'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWhite
+      Font.Height = -13
+      Font.Name = 'Segoe UI Semibold'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object Label8: TLabel
+      Left = 359
+      Top = 37
+      Width = 88
+      Height = 17
+      Caption = 'Gross Amount'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWhite
+      Font.Height = -13
+      Font.Name = 'Segoe UI Semibold'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object Label9: TLabel
+      Left = 359
+      Top = 64
+      Width = 53
+      Height = 17
+      Caption = 'Discount'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWhite
+      Font.Height = -13
+      Font.Name = 'Segoe UI Semibold'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object Label10: TLabel
+      Left = 359
+      Top = 91
+      Width = 76
+      Height = 17
+      Caption = 'Net Amount'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWhite
+      Font.Height = -13
+      Font.Name = 'Segoe UI Semibold'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
     object date_date: TcxDBDateEdit
-      Left = 748
+      Left = 752
       Top = 32
       Anchors = [akTop, akRight]
-      DataBinding.DataField = 'PODATE'
-      DataBinding.DataSource = ds_PO
+      DataBinding.DataField = 'IRDATE'
+      DataBinding.DataSource = ds_RR
       ParentFont = False
       Properties.DisplayFormat = 'mm/dd/yyyy'
       Properties.EditFormat = 'mm/dd/yyyy'
@@ -181,16 +261,16 @@ object f_POTemp: Tf_POTemp
       StyleHot.LookAndFeel.Kind = lfUltraFlat
       StyleHot.LookAndFeel.NativeStyle = False
       StyleHot.LookAndFeel.SkinName = ''
-      TabOrder = 2
+      TabOrder = 8
       OnExit = UIExecute
       Width = 94
     end
     object date_posted: TcxDBDateEdit
-      Left = 748
+      Left = 752
       Top = 58
       Anchors = [akTop, akRight]
       DataBinding.DataField = 'POSTEDDATETIME'
-      DataBinding.DataSource = ds_PO
+      DataBinding.DataSource = ds_RR
       ParentFont = False
       Properties.DisplayFormat = 'mm/dd/yyyy'
       Properties.EditFormat = 'mm/dd/yyyy'
@@ -223,17 +303,17 @@ object f_POTemp: Tf_POTemp
       StyleHot.LookAndFeel.Kind = lfUltraFlat
       StyleHot.LookAndFeel.NativeStyle = False
       StyleHot.LookAndFeel.SkinName = ''
-      TabOrder = 4
+      TabOrder = 10
       OnExit = UIExecute
       Width = 94
     end
     object cxDBLabel1: TcxDBLabel
-      Left = 755
+      Left = 759
       Top = 4
       Anchors = [akTop, akRight]
       AutoSize = True
       DataBinding.DataField = 'ID'
-      DataBinding.DataSource = ds_PO
+      DataBinding.DataSource = ds_RR
       ParentColor = False
       ParentFont = False
       Properties.Alignment.Horz = taRightJustify
@@ -244,13 +324,13 @@ object f_POTemp: Tf_POTemp
       Style.Font.Style = [fsBold]
       Style.IsFontAssigned = True
       Transparent = True
-      AnchorX = 842
+      AnchorX = 846
     end
     object txt_notes: TcxDBMemo
       Left = 71
-      Top = 34
+      Top = 61
       DataBinding.DataField = 'NOTES'
-      DataBinding.DataSource = ds_PO
+      DataBinding.DataSource = ds_RR
       ParentFont = False
       Properties.CharCase = ecUpperCase
       Style.BorderColor = 1184274
@@ -266,19 +346,19 @@ object f_POTemp: Tf_POTemp
       StyleDisabled.LookAndFeel.NativeStyle = False
       StyleFocused.LookAndFeel.NativeStyle = False
       StyleHot.LookAndFeel.NativeStyle = False
-      TabOrder = 1
+      TabOrder = 3
       OnExit = UIExecute
       Height = 95
-      Width = 303
+      Width = 263
     end
     object chk_posted: TcxDBCheckBox
-      Left = 676
+      Left = 680
       Top = 56
       Anchors = [akTop, akRight]
       AutoSize = False
       Caption = 'Posted'
       DataBinding.DataField = 'POSTED'
-      DataBinding.DataSource = ds_PO
+      DataBinding.DataSource = ds_RR
       ParentBackground = False
       ParentFont = False
       Properties.Alignment = taRightJustify
@@ -295,7 +375,7 @@ object f_POTemp: Tf_POTemp
       Style.TextColor = clWhite
       Style.TransparentBorder = True
       Style.IsFontAssigned = True
-      TabOrder = 3
+      TabOrder = 9
       OnClick = chk_postedClick
       OnExit = UIExecute
       Height = 25
@@ -303,9 +383,9 @@ object f_POTemp: Tf_POTemp
     end
     object cmb_vendor: TcxDBLookupComboBox
       Left = 71
-      Top = 9
+      Top = 34
       DataBinding.DataField = 'VENDORID'
-      DataBinding.DataSource = ds_PO
+      DataBinding.DataSource = ds_RR
       ParentFont = False
       Properties.Alignment.Horz = taLeftJustify
       Properties.CharCase = ecUpperCase
@@ -332,22 +412,213 @@ object f_POTemp: Tf_POTemp
       StyleDisabled.LookAndFeel.NativeStyle = False
       StyleFocused.LookAndFeel.NativeStyle = False
       StyleHot.LookAndFeel.NativeStyle = False
-      TabOrder = 0
+      TabOrder = 2
       OnExit = UIExecute
-      Width = 303
+      Width = 263
+    end
+    object rad_source: TcxDBRadioGroup
+      Left = 71
+      Top = 7
+      Alignment = alCenterCenter
+      Caption = 'SOURCE'
+      DataBinding.DataField = 'SOURCE'
+      DataBinding.DataSource = ds_RR
+      ParentBackground = False
+      ParentColor = False
+      ParentFont = False
+      Properties.Columns = 2
+      Properties.DefaultValue = 'O'
+      Properties.ImmediatePost = True
+      Properties.Items = <
+        item
+          Caption = 'CPR'
+          Value = 'CPR'
+        end
+        item
+          Caption = 'PO'
+          Value = 'PO'
+        end>
+      Properties.WordWrap = True
+      Properties.OnChange = rad_sourcePropertiesChange
+      Style.BorderColor = 1184274
+      Style.BorderStyle = ebsThick
+      Style.Color = 6570553
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clBlack
+      Style.Font.Height = -12
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.LookAndFeel.NativeStyle = False
+      Style.Shadow = False
+      Style.TextColor = clWhite
+      Style.TransparentBorder = True
+      Style.IsFontAssigned = True
+      StyleDisabled.LookAndFeel.NativeStyle = False
+      StyleFocused.LookAndFeel.NativeStyle = False
+      StyleHot.LookAndFeel.NativeStyle = False
+      TabOrder = 0
+      OnExit = rad_sourceExit
+      Height = 21
+      Width = 100
+    end
+    object cmb_refno: TcxDBLookupComboBox
+      Left = 229
+      Top = 7
+      DataBinding.DataField = 'REFID'
+      DataBinding.DataSource = ds_RR
+      ParentFont = False
+      Properties.Alignment.Horz = taLeftJustify
+      Properties.CharCase = ecUpperCase
+      Properties.ImmediatePost = True
+      Properties.KeyFieldNames = 'ID'
+      Properties.ListColumns = <
+        item
+          FieldName = 'ID'
+        end
+        item
+          Caption = 'POSTED DATE'
+          FieldName = 'POSTEDDATETIME'
+        end>
+      Properties.ListOptions.ShowHeader = False
+      Properties.ListSource = ds_MR
+      Properties.OnCloseUp = cmb_refnoPropertiesCloseUp
+      Style.BorderColor = 1184274
+      Style.BorderStyle = ebsThick
+      Style.Color = 6570553
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWhite
+      Style.Font.Height = -12
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.LookAndFeel.NativeStyle = False
+      Style.ButtonStyle = btsUltraFlat
+      Style.ButtonTransparency = ebtAlways
+      Style.IsFontAssigned = True
+      StyleDisabled.LookAndFeel.NativeStyle = False
+      StyleFocused.LookAndFeel.NativeStyle = False
+      StyleHot.LookAndFeel.NativeStyle = False
+      TabOrder = 1
+      OnExit = UIExecute
+      Width = 105
+    end
+    object txt_invoice: TcxDBTextEdit
+      Left = 453
+      Top = 7
+      DataBinding.DataField = 'INVOICE'
+      DataBinding.DataSource = ds_RR
+      ParentFont = False
+      ParentShowHint = False
+      Properties.CharCase = ecUpperCase
+      ShowHint = False
+      Style.BorderColor = 1184274
+      Style.BorderStyle = ebsThick
+      Style.Color = 6570553
+      Style.Font.Charset = ANSI_CHARSET
+      Style.Font.Color = clWhite
+      Style.Font.Height = -12
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.LookAndFeel.NativeStyle = False
+      Style.IsFontAssigned = True
+      StyleDisabled.LookAndFeel.NativeStyle = False
+      StyleFocused.LookAndFeel.NativeStyle = False
+      StyleHot.LookAndFeel.NativeStyle = False
+      TabOrder = 4
+      OnExit = UIExecute
+      Width = 104
+    end
+    object txt_Gross: TcxDBTextEdit
+      Left = 453
+      Top = 34
+      DataBinding.DataField = 'GROSS'
+      DataBinding.DataSource = ds_RR
+      ParentFont = False
+      ParentShowHint = False
+      Properties.CharCase = ecUpperCase
+      Properties.ReadOnly = True
+      ShowHint = False
+      Style.BorderColor = 1184274
+      Style.BorderStyle = ebsThick
+      Style.Color = 6570553
+      Style.Font.Charset = ANSI_CHARSET
+      Style.Font.Color = clWhite
+      Style.Font.Height = -12
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.LookAndFeel.NativeStyle = False
+      Style.IsFontAssigned = True
+      StyleDisabled.LookAndFeel.NativeStyle = False
+      StyleFocused.LookAndFeel.NativeStyle = False
+      StyleHot.LookAndFeel.NativeStyle = False
+      TabOrder = 5
+      OnExit = UIExecute
+      Width = 104
+    end
+    object txt_discount: TcxDBTextEdit
+      Left = 453
+      Top = 61
+      DataBinding.DataField = 'DISCOUNT'
+      DataBinding.DataSource = ds_RR
+      ParentFont = False
+      ParentShowHint = False
+      Properties.CharCase = ecUpperCase
+      ShowHint = False
+      Style.BorderColor = 1184274
+      Style.BorderStyle = ebsThick
+      Style.Color = 6570553
+      Style.Font.Charset = ANSI_CHARSET
+      Style.Font.Color = clWhite
+      Style.Font.Height = -12
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.LookAndFeel.NativeStyle = False
+      Style.IsFontAssigned = True
+      StyleDisabled.LookAndFeel.NativeStyle = False
+      StyleFocused.LookAndFeel.NativeStyle = False
+      StyleHot.LookAndFeel.NativeStyle = False
+      TabOrder = 6
+      OnExit = UIExecute
+      Width = 104
+    end
+    object txt_netamount: TcxDBTextEdit
+      Left = 453
+      Top = 88
+      DataBinding.DataField = 'NETAMNT'
+      DataBinding.DataSource = ds_RR
+      ParentFont = False
+      ParentShowHint = False
+      Properties.CharCase = ecUpperCase
+      Properties.ReadOnly = True
+      ShowHint = False
+      Style.BorderColor = 1184274
+      Style.BorderStyle = ebsThick
+      Style.Color = 6570553
+      Style.Font.Charset = ANSI_CHARSET
+      Style.Font.Color = clWhite
+      Style.Font.Height = -12
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.LookAndFeel.NativeStyle = False
+      Style.IsFontAssigned = True
+      StyleDisabled.LookAndFeel.NativeStyle = False
+      StyleFocused.LookAndFeel.NativeStyle = False
+      StyleHot.LookAndFeel.NativeStyle = False
+      TabOrder = 7
+      OnExit = UIExecute
+      Width = 104
     end
   end
   object grid_jodetail: TcxGrid
     Left = 0
-    Top = 157
-    Width = 857
-    Height = 273
+    Top = 185
+    Width = 861
+    Height = 255
     Align = alClient
     BevelInner = bvNone
     BevelOuter = bvNone
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
-    Font.Height = -15
+    Font.Height = -12
     Font.Name = 'Tahoma'
     Font.Style = []
     ParentFont = False
@@ -375,33 +646,19 @@ object f_POTemp: Tf_POTemp
           Column = cxGridDBTableView1AMOUNT
         end>
       DataController.Summary.SummaryGroups = <>
-      OptionsData.Appending = True
       OptionsData.Deleting = False
+      OptionsData.Inserting = False
       OptionsView.NoDataToDisplayInfoText = 'No Data To Display'
       OptionsView.CellAutoHeight = True
+      OptionsView.ColumnAutoWidth = True
       OptionsView.Footer = True
       OptionsView.GroupByBox = False
       Styles.Header = Header_style
       object cxGridDBTableView1ITEMID: TcxGridDBColumn
         Caption = 'ITEM DESCRIPTION'
-        DataBinding.FieldName = 'ITEMID'
-        PropertiesClassName = 'TcxLookupComboBoxProperties'
-        Properties.DropDownWidth = 300
-        Properties.ImmediatePost = True
-        Properties.KeyFieldNames = 'ID'
-        Properties.ListColumns = <
-          item
-            MinWidth = 100
-            Width = 200
-            FieldName = 'CODE'
-          end
-          item
-            FieldName = 'DESCRIPTION'
-          end>
-        Properties.ListFieldIndex = 1
-        Properties.ListSource = ds_items
-        Properties.OnCloseUp = cxGridDBTableView1ITEMIDPropertiesCloseUp
+        DataBinding.FieldName = 'DESCRIPTION'
         HeaderAlignmentHorz = taCenter
+        Options.Editing = False
         Options.Filtering = False
         Options.Sorting = False
         Width = 195
@@ -423,6 +680,23 @@ object f_POTemp: Tf_POTemp
         Options.Sorting = False
         Width = 98
       end
+      object cxGridDBTableView1REQQTY: TcxGridDBColumn
+        Caption = 'CPR/PO QTY.'
+        DataBinding.FieldName = 'REQQTY'
+        HeaderAlignmentHorz = taCenter
+        Options.Editing = False
+        Options.Filtering = False
+        Options.Sorting = False
+        Width = 72
+      end
+      object cxGridDBTableView1RCVDQTY: TcxGridDBColumn
+        Caption = 'RCVD'
+        DataBinding.FieldName = 'RCVDQTY'
+        HeaderAlignmentHorz = taCenter
+        Options.Editing = False
+        Options.Filtering = False
+        Options.Sorting = False
+      end
       object cxGridDBTableView1QTY: TcxGridDBColumn
         DataBinding.FieldName = 'QTY'
         PropertiesClassName = 'TcxTextEditProperties'
@@ -431,7 +705,7 @@ object f_POTemp: Tf_POTemp
         HeaderAlignmentHorz = taCenter
         Options.Filtering = False
         Options.Sorting = False
-        Width = 82
+        Width = 56
       end
       object cxGridDBTableView1COST: TcxGridDBColumn
         DataBinding.FieldName = 'COST'
@@ -439,7 +713,7 @@ object f_POTemp: Tf_POTemp
         Options.Editing = False
         Options.Filtering = False
         Options.Sorting = False
-        Width = 106
+        Width = 75
       end
       object cxGridDBTableView1AMOUNT: TcxGridDBColumn
         DataBinding.FieldName = 'AMOUNT'
@@ -462,14 +736,14 @@ object f_POTemp: Tf_POTemp
       GridView = cxGridDBTableView1
     end
   end
-  object ds_PO: TDataSource
-    DataSet = dm_PM.qry_PO
+  object ds_RR: TDataSource
+    DataSet = dm_PM.qry_RR
     Left = 224
-    Top = 192
+    Top = 223
   end
   object ActionList1: TActionList
     Left = 416
-    Top = 192
+    Top = 223
     object UI: TAction
       Caption = 'UI'
       OnExecute = UIExecute
@@ -489,14 +763,14 @@ object f_POTemp: Tf_POTemp
   end
   object cxStyleRepository1: TcxStyleRepository
     Left = 184
-    Top = 192
+    Top = 223
     PixelsPerInch = 96
     object Header_style: TcxStyle
       AssignedValues = [svColor, svFont, svTextColor]
       Color = clTeal
       Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText
-      Font.Height = -13
+      Font.Height = -12
       Font.Name = 'Segoe UI'
       Font.Style = [fsBold]
       TextColor = 6570553
@@ -518,24 +792,24 @@ object f_POTemp: Tf_POTemp
       ''
       'end.')
     Left = 496
-    Top = 192
+    Top = 223
     Datasets = <>
     Variables = <>
     Style = <>
   end
   object ds_details: TDataSource
-    DataSet = dm_PM.tb_PODetail
+    DataSet = dm_PM.tb_RRDetail
     Left = 312
-    Top = 192
+    Top = 223
   end
   object ds_items: TDataSource
     DataSet = dm_PM.brw_items
     Left = 264
-    Top = 192
+    Top = 223
   end
   object PopupMenu1: TPopupMenu
     Left = 544
-    Top = 192
+    Top = 223
     object Delete1: TMenuItem
       Action = Delete
     end
@@ -546,11 +820,16 @@ object f_POTemp: Tf_POTemp
   object ds_vendor: TDataSource
     DataSet = dm_PM.brw_Vendor
     Left = 344
-    Top = 192
+    Top = 223
   end
   object ds_MR: TDataSource
     DataSet = dm_PM.brw_MR
     Left = 384
-    Top = 192
+    Top = 223
+  end
+  object ds_PO: TDataSource
+    DataSet = dm_PM.brw_PO
+    Left = 384
+    Top = 271
   end
 end

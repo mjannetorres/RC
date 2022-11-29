@@ -474,8 +474,13 @@ object f_Request: Tf_Request
       TextColor = 6570553
     end
     object select_style: TcxStyle
-      AssignedValues = [svColor, svTextColor]
+      AssignedValues = [svColor, svFont, svTextColor]
       Color = clTeal
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -15
+      Font.Name = 'Tahoma'
+      Font.Style = []
       TextColor = clWhite
     end
   end
