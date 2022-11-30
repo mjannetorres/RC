@@ -11151,8 +11151,7 @@ object f_Reports: Tf_Reports
       Frame.Typ = []
       MirrorMode = []
       VGuides.Strings = (
-        '313.70099'
-        '257.00804')
+        '313.70099')
       object MasterData1: TfrxMasterData
         FillType = ftBrush
         Frame.Typ = []
@@ -11859,6 +11858,7 @@ object f_Reports: Tf_Reports
           Top = 7.559060000000000000
           Width = 177.637910000000000000
           Height = 86.929190000000000000
+          OnBeforePrint = 'Picture1OnBeforePrint'
           Center = True
           DataField = 'LOGO'
           DataSet = ds_Comp
@@ -13239,7 +13239,7 @@ object f_Reports: Tf_Reports
         object mem_count: TfrxMemoView
           Align = baLeft
           AllowVectorExport = True
-          Top = 3.779527560000000000
+          Top = 3.779527560000020000
           Width = 75.590551180000000000
           Height = 18.897650000000000000
           StretchMode = smActualHeight

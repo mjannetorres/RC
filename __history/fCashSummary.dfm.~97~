@@ -1,0 +1,981 @@
+object f_CashSummary: Tf_CashSummary
+  Left = 0
+  Top = 0
+  BorderStyle = bsDialog
+  ClientHeight = 374
+  ClientWidth = 986
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -12
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  Position = poMainFormCenter
+  OnShow = FormShow
+  PixelsPerInch = 96
+  TextHeight = 14
+  object Panel2: TPanel
+    Left = 0
+    Top = 333
+    Width = 986
+    Height = 41
+    Align = alBottom
+    BevelOuter = bvNone
+    TabOrder = 0
+    DesignSize = (
+      986
+      41)
+    object btnClose: TButton
+      Left = 895
+      Top = 6
+      Width = 75
+      Height = 25
+      Anchors = [akTop, akRight]
+      Caption = 'Close'
+      Default = True
+      ModalResult = 2
+      TabOrder = 0
+    end
+    object cxButton1: TcxButton
+      Left = 13
+      Top = 6
+      Width = 84
+      Height = 25
+      Caption = 'Print'
+      DropDownMenu = PopupMenu3
+      Kind = cxbkDropDownButton
+      LookAndFeel.NativeStyle = True
+      LookAndFeel.SkinName = ''
+      TabOrder = 1
+    end
+  end
+  object Panel1: TPanel
+    Left = 0
+    Top = 0
+    Width = 986
+    Height = 73
+    Align = alTop
+    BevelOuter = bvNone
+    Color = clTeal
+    ParentBackground = False
+    TabOrder = 1
+    StyleElements = []
+    DesignSize = (
+      986
+      73)
+    object Label3: TLabel
+      Left = 547
+      Top = 13
+      Width = 48
+      Height = 17
+      Anchors = [akTop, akRight]
+      Caption = 'Search :'
+      Color = clWhite
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWhite
+      Font.Height = -13
+      Font.Name = 'Segoe UI'
+      Font.Style = [fsBold]
+      ParentColor = False
+      ParentFont = False
+      StyleElements = []
+      ExplicitLeft = 434
+    end
+    object Label1: TLabel
+      Left = 810
+      Top = 42
+      Width = 40
+      Height = 17
+      Anchors = [akTop, akRight]
+      Caption = 'Filter :'
+      Color = clWhite
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWhite
+      Font.Height = -13
+      Font.Name = 'Segoe UI'
+      Font.Style = [fsBold]
+      ParentColor = False
+      ParentFont = False
+      StyleElements = []
+      ExplicitLeft = 697
+    end
+    object Label2: TLabel
+      Left = 547
+      Top = 42
+      Width = 48
+      Height = 17
+      Anchors = [akTop, akRight]
+      Caption = 'Period :'
+      Color = clWhite
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWhite
+      Font.Height = -13
+      Font.Name = 'Segoe UI'
+      Font.Style = [fsBold]
+      ParentColor = False
+      ParentFont = False
+      StyleElements = []
+      ExplicitLeft = 434
+    end
+    object Label4: TLabel
+      AlignWithMargins = True
+      Left = 13
+      Top = 24
+      Width = 208
+      Height = 25
+      Caption = 'CASH TRANSACTIONS'
+      Color = clWhite
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWhite
+      Font.Height = -19
+      Font.Name = 'Segoe UI Black'
+      Font.Style = [fsBold]
+      ParentColor = False
+      ParentFont = False
+      Layout = tlCenter
+      StyleElements = []
+    end
+    object txt_search: TButtonedEdit
+      Left = 612
+      Top = 9
+      Width = 358
+      Height = 25
+      Anchors = [akTop, akRight]
+      CharCase = ecUpperCase
+      Color = clWhite
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'Segoe UI Semibold'
+      Font.Style = [fsBold]
+      Images = sCharImageList1
+      LeftButton.HotImageIndex = 0
+      LeftButton.ImageIndex = 0
+      LeftButton.PressedImageIndex = 0
+      ParentFont = False
+      RightButton.DisabledImageIndex = 0
+      RightButton.HotImageIndex = 0
+      RightButton.ImageIndex = 0
+      RightButton.PressedImageIndex = 0
+      RightButton.Visible = True
+      TabOrder = 0
+      TextHint = 'Search ...'
+      StyleElements = []
+      OnKeyPress = txt_searchKeyPress
+      OnRightButtonClick = txt_searchRightButtonClick
+    end
+    object date_1: TDateTimePicker
+      Left = 612
+      Top = 40
+      Width = 93
+      Height = 21
+      Anchors = [akTop, akRight]
+      Date = 44189.551065162040000000
+      Time = 44189.551065162040000000
+      TabOrder = 1
+    end
+    object date_2: TDateTimePicker
+      Left = 707
+      Top = 40
+      Width = 93
+      Height = 21
+      Anchors = [akTop, akRight]
+      Date = 44189.551065162040000000
+      Time = 44189.551065162040000000
+      TabOrder = 2
+    end
+    object cmb_Filter: TcxComboBox
+      Left = 856
+      Top = 40
+      Anchors = [akTop, akRight]
+      ParentFont = False
+      Properties.ImmediatePost = True
+      Properties.Items.Strings = (
+        'ORNO'
+        'CUSTOMER')
+      Style.BorderColor = 1184274
+      Style.BorderStyle = ebsThick
+      Style.Color = 6570553
+      Style.Font.Charset = ANSI_CHARSET
+      Style.Font.Color = clWindowText
+      Style.Font.Height = -12
+      Style.Font.Name = 'Segoe UI Semibold'
+      Style.Font.Style = [fsBold]
+      Style.LookAndFeel.NativeStyle = False
+      Style.LookAndFeel.SkinName = 'Blueprint'
+      Style.ButtonStyle = btsSimple
+      Style.ButtonTransparency = ebtAlways
+      Style.IsFontAssigned = True
+      StyleDisabled.LookAndFeel.NativeStyle = False
+      StyleDisabled.LookAndFeel.SkinName = 'Blueprint'
+      StyleFocused.LookAndFeel.NativeStyle = False
+      StyleFocused.LookAndFeel.SkinName = 'Blueprint'
+      StyleHot.LookAndFeel.NativeStyle = False
+      StyleHot.LookAndFeel.SkinName = 'Blueprint'
+      TabOrder = 3
+      Width = 114
+    end
+  end
+  object scGPPageControl1: TscGPPageControl
+    Left = 0
+    Top = 73
+    Width = 986
+    Height = 260
+    Align = alClient
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -13
+    Font.Name = 'Segoe Print'
+    Font.Style = [fsBold]
+    ParentFont = False
+    FluentUIOpaque = False
+    TabOrder = 2
+    StyleElements = []
+    Color = 6570553
+    DrawTextMode = scdtmGDI
+    TabsBGFillColor = clWhite
+    TabsBGFillColorAlpha = 255
+    TransparentBackground = False
+    FrameWidth = 0
+    FrameScaleWidth = False
+    FrameColor = clWhite
+    FrameColorAlpha = 0
+    BorderStyle = scgpbsLine
+    MouseWheelSupport = True
+    ShowFocusRect = True
+    ShowInActiveTab = True
+    ShowCloseButtons = False
+    TabsLeftOffset = 0
+    TabsRightOffset = 15
+    TabsTopOffset = 0
+    TabGlowEffect.Enabled = False
+    TabGlowEffect.Color = clHighlight
+    TabGlowEffect.AlphaValue = 255
+    TabGlowEffect.GlowSize = 7
+    TabGlowEffect.Offset = 0
+    TabGlowEffect.Intensive = True
+    TabGlowEffect.StyleColors = True
+    TabGlowEffect.HotColor = clNone
+    TabGlowEffect.PressedColor = clNone
+    TabGlowEffect.FocusedColor = clNone
+    TabGlowEffect.PressedGlowSize = 7
+    TabGlowEffect.PressedAlphaValue = 255
+    TabGlowEffect.States = [scsFocused]
+    TabOptions.NormalColor = 6570553
+    TabOptions.ActiveColor = clTeal
+    TabOptions.MouseInColor = 6570553
+    TabOptions.FocusedColor = clTeal
+    TabOptions.NormalColorAlpha = 255
+    TabOptions.ActiveColorAlpha = 230
+    TabOptions.MouseInColorAlpha = 255
+    TabOptions.FocusedColorAlpha = 255
+    TabOptions.FrameNormalColor = clTeal
+    TabOptions.FrameActiveColor = clTeal
+    TabOptions.FrameMouseInColor = clTeal
+    TabOptions.FrameFocusedColor = clTeal
+    TabOptions.FrameWidth = 1
+    TabOptions.FrameNormalColorAlpha = 50
+    TabOptions.FrameActiveColorAlpha = 80
+    TabOptions.FrameMouseInColorAlpha = 60
+    TabOptions.FrameFocusedColorAlpha = 80
+    TabOptions.FontNormalColor = clWhite
+    TabOptions.FontActiveColor = clWhite
+    TabOptions.FontMouseInColor = clWhite
+    TabOptions.FontFocusedColor = clWhite
+    TabOptions.TabStyle = gptsShape
+    TabOptions.ShapeFillGradientAngle = 90
+    TabOptions.GradientColorOffset = 30
+    TabOptions.ShapeCornerRadius = 5
+    TabOptions.StyleColors = True
+    TabSpacing = 10
+    TabMargin = 10
+    ScrollButtonWidth = 20
+    TabHeight = 30
+    Tabs = <
+      item
+        Page = scGPPageControlPage3
+        Visible = True
+        Enabled = True
+        ImageIndex = -1
+        Caption = 'Cash Sales'
+        CustomOptions.NormalColor = clBtnShadow
+        CustomOptions.ActiveColor = clBtnFace
+        CustomOptions.MouseInColor = clBtnShadow
+        CustomOptions.FocusedColor = clBtnFace
+        CustomOptions.NormalColorAlpha = 70
+        CustomOptions.ActiveColorAlpha = 230
+        CustomOptions.MouseInColorAlpha = 40
+        CustomOptions.FocusedColorAlpha = 255
+        CustomOptions.FrameNormalColor = clBtnText
+        CustomOptions.FrameActiveColor = clBtnText
+        CustomOptions.FrameMouseInColor = clBtnText
+        CustomOptions.FrameFocusedColor = clBtnText
+        CustomOptions.FrameWidth = 2
+        CustomOptions.FrameNormalColorAlpha = 50
+        CustomOptions.FrameActiveColorAlpha = 80
+        CustomOptions.FrameMouseInColorAlpha = 60
+        CustomOptions.FrameFocusedColorAlpha = 80
+        CustomOptions.FontNormalColor = clBtnText
+        CustomOptions.FontActiveColor = clBtnText
+        CustomOptions.FontMouseInColor = clBtnText
+        CustomOptions.FontFocusedColor = clBtnText
+        CustomOptions.TabStyle = gptsShape
+        CustomOptions.ShapeFillGradientAngle = 90
+        CustomOptions.GradientColorOffset = 30
+        CustomOptions.ShapeCornerRadius = 5
+        CustomOptions.StyleColors = True
+        CustomGlowEffect.Enabled = False
+        CustomGlowEffect.Color = clHighlight
+        CustomGlowEffect.AlphaValue = 255
+        CustomGlowEffect.GlowSize = 7
+        CustomGlowEffect.Offset = 0
+        CustomGlowEffect.Intensive = True
+        CustomGlowEffect.StyleColors = True
+        CustomGlowEffect.HotColor = clNone
+        CustomGlowEffect.PressedColor = clNone
+        CustomGlowEffect.FocusedColor = clNone
+        CustomGlowEffect.PressedGlowSize = 7
+        CustomGlowEffect.PressedAlphaValue = 255
+        CustomGlowEffect.States = [scsFocused]
+        CustomFrameColor = clNone
+        CustomFrameColorAlpha = 255
+        ShowCloseButton = True
+        UseCustomOptions = False
+      end
+      item
+        Page = scGPPageControlPage1
+        Visible = True
+        Enabled = True
+        ImageIndex = -1
+        Caption = 'POS - Cash Count'
+        CustomOptions.NormalColor = clBtnShadow
+        CustomOptions.ActiveColor = clBtnFace
+        CustomOptions.MouseInColor = clBtnShadow
+        CustomOptions.FocusedColor = clBtnFace
+        CustomOptions.NormalColorAlpha = 70
+        CustomOptions.ActiveColorAlpha = 230
+        CustomOptions.MouseInColorAlpha = 40
+        CustomOptions.FocusedColorAlpha = 255
+        CustomOptions.FrameNormalColor = clBtnText
+        CustomOptions.FrameActiveColor = clBtnText
+        CustomOptions.FrameMouseInColor = clBtnText
+        CustomOptions.FrameFocusedColor = clBtnText
+        CustomOptions.FrameWidth = 2
+        CustomOptions.FrameNormalColorAlpha = 50
+        CustomOptions.FrameActiveColorAlpha = 80
+        CustomOptions.FrameMouseInColorAlpha = 60
+        CustomOptions.FrameFocusedColorAlpha = 80
+        CustomOptions.FontNormalColor = clBtnText
+        CustomOptions.FontActiveColor = clBtnText
+        CustomOptions.FontMouseInColor = clBtnText
+        CustomOptions.FontFocusedColor = clBtnText
+        CustomOptions.TabStyle = gptsShape
+        CustomOptions.ShapeFillGradientAngle = 90
+        CustomOptions.GradientColorOffset = 30
+        CustomOptions.ShapeCornerRadius = 5
+        CustomOptions.StyleColors = True
+        CustomGlowEffect.Enabled = False
+        CustomGlowEffect.Color = clHighlight
+        CustomGlowEffect.AlphaValue = 255
+        CustomGlowEffect.GlowSize = 7
+        CustomGlowEffect.Offset = 0
+        CustomGlowEffect.Intensive = True
+        CustomGlowEffect.StyleColors = True
+        CustomGlowEffect.HotColor = clNone
+        CustomGlowEffect.PressedColor = clNone
+        CustomGlowEffect.FocusedColor = clNone
+        CustomGlowEffect.PressedGlowSize = 7
+        CustomGlowEffect.PressedAlphaValue = 255
+        CustomGlowEffect.States = [scsFocused]
+        CustomFrameColor = clNone
+        CustomFrameColorAlpha = 255
+        ShowCloseButton = True
+        UseCustomOptions = False
+      end>
+    TabIndex = 0
+    ActivePage = scGPPageControlPage3
+    StorePaintBuffer = False
+    FreeOnClose = False
+    OnChangePage = scGPPageControl1ChangePage
+    object scGPPageControlPage1: TscGPPageControlPage
+      Left = 0
+      Top = 30
+      Width = 986
+      Height = 230
+      HorzScrollBar.Tracking = True
+      VertScrollBar.Tracking = True
+      BorderStyle = bsNone
+      Color = clBtnFace
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentColor = False
+      ParentFont = False
+      TabOrder = 1
+      Visible = False
+      WallpaperIndex = -1
+      CustomBackgroundImageIndex = -1
+      FluentUIOpaque = False
+      StorePaintBuffer = False
+      BGStyle = scgppsForm
+      object cxGrid1: TcxGrid
+        Left = 0
+        Top = 0
+        Width = 986
+        Height = 230
+        Align = alClient
+        BevelInner = bvNone
+        BevelOuter = bvNone
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -12
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ParentFont = False
+        TabOrder = 0
+        LookAndFeel.Kind = lfUltraFlat
+        LookAndFeel.NativeStyle = False
+        LookAndFeel.SkinName = 'VisualStudio2013Light'
+        object cxGridDBTableView2: TcxGridDBTableView
+          PopupMenu = PopupMenu1
+          Navigator.Buttons.CustomButtons = <>
+          DataController.DataSource = ds_Open
+          DataController.Summary.DefaultGroupSummaryItems = <>
+          DataController.Summary.FooterSummaryItems = <
+            item
+              Format = '###,###,##0'
+              Kind = skCount
+              FieldName = 'ID'
+              Column = cxGridDBTableView2ID
+            end>
+          DataController.Summary.SummaryGroups = <>
+          OptionsData.Appending = True
+          OptionsSelection.CellSelect = False
+          OptionsView.FocusRect = False
+          OptionsView.NoDataToDisplayInfoText = 'No Data To Display'
+          OptionsView.CellAutoHeight = True
+          OptionsView.ColumnAutoWidth = True
+          OptionsView.Footer = True
+          OptionsView.GroupByBox = False
+          Styles.Selection = select_style
+          Styles.Header = Header_style
+          object cxGridDBTableView2ID: TcxGridDBColumn
+            Caption = 'REF NO.'
+            DataBinding.FieldName = 'ID'
+            HeaderAlignmentHorz = taCenter
+            Options.Editing = False
+            Options.Filtering = False
+            Options.Sorting = False
+            Width = 96
+          end
+          object cxGridDBTableView2DATE: TcxGridDBColumn
+            DataBinding.FieldName = 'DATE'
+            HeaderAlignmentHorz = taCenter
+            Options.Editing = False
+            Options.Filtering = False
+            Options.Sorting = False
+            Width = 97
+          end
+          object cxGridDBTableView2DATEOPENED: TcxGridDBColumn
+            Caption = 'DATETIME ENDED'
+            DataBinding.FieldName = 'DATEENDED'
+            HeaderAlignmentHorz = taCenter
+            Options.Editing = False
+            Options.Filtering = False
+            Options.Sorting = False
+            Width = 169
+          end
+          object cxGridDBTableView2OPENED_CASHIER: TcxGridDBColumn
+            Caption = 'CASHIER'
+            DataBinding.FieldName = 'OPENED_CASHIER'
+            HeaderAlignmentHorz = taCenter
+            Options.Editing = False
+            Options.Filtering = False
+            Options.Sorting = False
+            Width = 380
+          end
+          object cxGridDBTableView2ISACTIVE: TcxGridDBColumn
+            Caption = 'ACTIVE'
+            DataBinding.FieldName = 'ISACTIVE'
+            HeaderAlignmentHorz = taCenter
+            Options.Editing = False
+            Options.Filtering = False
+            Options.Sorting = False
+            Width = 129
+          end
+        end
+        object cxGrid1DBBandedTableView1: TcxGridDBBandedTableView
+          PopupMenu = PopupMenu2
+          Navigator.Buttons.CustomButtons = <>
+          DataController.DataSource = ds_Open
+          DataController.Summary.DefaultGroupSummaryItems = <>
+          DataController.Summary.FooterSummaryItems = <
+            item
+              Format = '###,###,##0'
+              Kind = skCount
+              FieldName = 'ID'
+              Column = cxGrid1DBBandedTableView1ID
+            end>
+          DataController.Summary.SummaryGroups = <>
+          OptionsSelection.CellSelect = False
+          OptionsView.NoDataToDisplayInfoText = 'No Data to Display'
+          OptionsView.ColumnAutoWidth = True
+          OptionsView.Footer = True
+          OptionsView.GroupByBox = False
+          OptionsView.Indicator = True
+          Styles.Selection = select_style
+          Styles.Header = Header_style
+          Styles.BandHeader = Header_style
+          Bands = <
+            item
+              Width = 240
+            end
+            item
+              Caption = 'OPENING'
+              Width = 315
+            end
+            item
+              Caption = 'CLOSING'
+              Width = 318
+            end>
+          object cxGrid1DBBandedTableView1ID: TcxGridDBBandedColumn
+            Caption = 'REF NO.'
+            DataBinding.FieldName = 'ID'
+            HeaderAlignmentHorz = taCenter
+            Options.Editing = False
+            Options.Filtering = False
+            Options.Sorting = False
+            Width = 48
+            Position.BandIndex = 0
+            Position.ColIndex = 0
+            Position.RowIndex = 0
+          end
+          object cxGrid1DBBandedTableView1DATE: TcxGridDBBandedColumn
+            DataBinding.FieldName = 'DATE'
+            HeaderAlignmentHorz = taCenter
+            Options.Editing = False
+            Options.Filtering = False
+            Options.Sorting = False
+            Width = 108
+            Position.BandIndex = 0
+            Position.ColIndex = 1
+            Position.RowIndex = 0
+          end
+          object cxGrid1DBBandedTableView1DATEOPENED: TcxGridDBBandedColumn
+            Caption = 'OPENED'
+            DataBinding.FieldName = 'DATEOPENED'
+            HeaderAlignmentHorz = taCenter
+            Options.Editing = False
+            Options.Filtering = False
+            Options.Sorting = False
+            Position.BandIndex = 1
+            Position.ColIndex = 0
+            Position.RowIndex = 0
+          end
+          object cxGrid1DBBandedTableView1OPENED_CASHIER: TcxGridDBBandedColumn
+            Caption = 'CASHIER'
+            DataBinding.FieldName = 'OPENED_CASHIER'
+            HeaderAlignmentHorz = taCenter
+            Options.Editing = False
+            Options.Filtering = False
+            Options.Sorting = False
+            Position.BandIndex = 1
+            Position.ColIndex = 1
+            Position.RowIndex = 0
+          end
+          object cxGrid1DBBandedTableView1DATEENDED: TcxGridDBBandedColumn
+            Caption = 'CLOSED'
+            DataBinding.FieldName = 'DATEENDED'
+            HeaderAlignmentHorz = taCenter
+            Options.Editing = False
+            Options.Filtering = False
+            Options.Sorting = False
+            Position.BandIndex = 2
+            Position.ColIndex = 0
+            Position.RowIndex = 0
+          end
+          object cxGrid1DBBandedTableView1CLOSED_CASHIER: TcxGridDBBandedColumn
+            Caption = 'CASHIER'
+            DataBinding.FieldName = 'CLOSED_CASHIER'
+            HeaderAlignmentHorz = taCenter
+            Options.Editing = False
+            Options.Filtering = False
+            Options.Sorting = False
+            Position.BandIndex = 2
+            Position.ColIndex = 1
+            Position.RowIndex = 0
+          end
+          object cxGrid1DBBandedTableView1ISACTIVE: TcxGridDBBandedColumn
+            Caption = 'ACTIVE'
+            DataBinding.FieldName = 'ISACTIVE'
+            HeaderAlignmentHorz = taCenter
+            Options.Editing = False
+            Options.Filtering = False
+            Options.Sorting = False
+            Width = 84
+            Position.BandIndex = 0
+            Position.ColIndex = 2
+            Position.RowIndex = 0
+          end
+        end
+        object cxGridLevel2: TcxGridLevel
+          GridView = cxGrid1DBBandedTableView1
+        end
+      end
+    end
+    object scGPPageControlPage3: TscGPPageControlPage
+      Left = 0
+      Top = 30
+      Width = 986
+      Height = 230
+      HorzScrollBar.Tracking = True
+      VertScrollBar.Tracking = True
+      BorderStyle = bsNone
+      Color = clBtnFace
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentColor = False
+      ParentFont = False
+      TabOrder = 0
+      WallpaperIndex = -1
+      CustomBackgroundImageIndex = -1
+      FluentUIOpaque = False
+      StorePaintBuffer = False
+      BGStyle = scgppsForm
+      object grid_jodetail: TcxGrid
+        Left = 0
+        Top = 0
+        Width = 986
+        Height = 230
+        Align = alClient
+        BevelInner = bvNone
+        BevelOuter = bvNone
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -12
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ParentFont = False
+        TabOrder = 0
+        LookAndFeel.Kind = lfUltraFlat
+        LookAndFeel.NativeStyle = False
+        LookAndFeel.SkinName = 'VisualStudio2013Light'
+        object cxGridDBTableView1: TcxGridDBTableView
+          PopupMenu = PopupMenu1
+          Navigator.Buttons.CustomButtons = <>
+          DataController.DataSource = ds_jo
+          DataController.Summary.DefaultGroupSummaryItems = <>
+          DataController.Summary.FooterSummaryItems = <
+            item
+              Format = '###,###,##0'
+              Kind = skCount
+              FieldName = 'ID'
+              Column = cxGridDBTableView1ID
+            end
+            item
+              Format = '###,###,##0.00'
+              Kind = skSum
+              FieldName = 'NETCALC'
+              Column = cxGridDBTableView1NETAMNT
+            end
+            item
+              Format = '###,###,##0.00'
+              Kind = skSum
+              FieldName = 'CASHCALC'
+              Column = cxGridDBTableView1CASHAMNT
+            end
+            item
+              Format = '###,###,##0.00'
+              Kind = skSum
+              FieldName = 'CARDCALC'
+              Column = cxGridDBTableView1CARDAMNT
+            end
+            item
+              Format = '###,###,##0.00'
+              Kind = skSum
+              FieldName = 'CHECKCALC'
+              Column = cxGridDBTableView1CHECKAMNT
+            end
+            item
+              Format = '###,###,##0.00'
+              Kind = skSum
+              FieldName = 'CHANGEAMNT'
+              Column = cxGridDBTableView1CHANGE
+            end>
+          DataController.Summary.SummaryGroups = <>
+          OptionsData.Appending = True
+          OptionsSelection.CellSelect = False
+          OptionsView.FocusRect = False
+          OptionsView.NoDataToDisplayInfoText = 'No Data To Display'
+          OptionsView.CellAutoHeight = True
+          OptionsView.ColumnAutoWidth = True
+          OptionsView.Footer = True
+          OptionsView.GroupByBox = False
+          OptionsView.Indicator = True
+          Styles.Selection = select_style
+          Styles.Header = Header_style
+          object cxGridDBTableView1ID: TcxGridDBColumn
+            Caption = 'NO.'
+            DataBinding.FieldName = 'ID'
+            HeaderAlignmentHorz = taCenter
+            Options.Editing = False
+            Options.Filtering = False
+            Options.Sorting = False
+            Width = 52
+          end
+          object cxGridDBTableView1CUSTOMER: TcxGridDBColumn
+            Caption = 'CUSTOMER/PAYEE'
+            DataBinding.FieldName = 'CUSTOMER'
+            HeaderAlignmentHorz = taCenter
+            Options.Editing = False
+            Options.Filtering = False
+            Options.Sorting = False
+            Width = 178
+          end
+          object cxGridDBTableView1PAYMENTTYPE: TcxGridDBColumn
+            Caption = 'TYPE'
+            DataBinding.FieldName = 'PAYMENTTYPE'
+            PropertiesClassName = 'TcxImageComboBoxProperties'
+            Properties.Items = <
+              item
+                Description = 'FULL PAYMENT'
+                ImageIndex = 0
+                Value = 'FP'
+              end
+              item
+                Description = 'DEPOSIT'
+                Value = 'D'
+              end>
+            HeaderAlignmentHorz = taCenter
+            Options.Editing = False
+            Options.Filtering = False
+            Options.Sorting = False
+            Width = 111
+          end
+          object cxGridDBTableView1SOURCE: TcxGridDBColumn
+            Caption = 'SOURCE'
+            DataBinding.FieldName = 'SOURCECALC'
+            HeaderAlignmentHorz = taCenter
+            Options.Editing = False
+            Options.Filtering = False
+            Options.Sorting = False
+            Width = 140
+          end
+          object cxGridDBTableView1REFID: TcxGridDBColumn
+            Caption = 'REF NO.'
+            DataBinding.FieldName = 'REFID'
+            HeaderAlignmentHorz = taCenter
+            Options.Editing = False
+            Options.Filtering = False
+            Options.Sorting = False
+            Width = 52
+          end
+          object cxGridDBTableView1NETAMNT: TcxGridDBColumn
+            Caption = 'NET AMNT.'
+            DataBinding.FieldName = 'NETCALC'
+            HeaderAlignmentHorz = taCenter
+            Options.Editing = False
+            Options.Filtering = False
+            Options.Sorting = False
+            Width = 68
+          end
+          object cxGridDBTableView1CASHAMNT: TcxGridDBColumn
+            Caption = 'CASH'
+            DataBinding.FieldName = 'CASHCALC'
+            HeaderAlignmentHorz = taCenter
+            Options.Editing = False
+            Options.Filtering = False
+            Options.Sorting = False
+            Width = 63
+          end
+          object cxGridDBTableView1CARDAMNT: TcxGridDBColumn
+            Caption = 'CARD'
+            DataBinding.FieldName = 'CARDCALC'
+            HeaderAlignmentHorz = taCenter
+            Options.Editing = False
+            Options.Filtering = False
+            Options.Sorting = False
+            Width = 65
+          end
+          object cxGridDBTableView1CHECKAMNT: TcxGridDBColumn
+            Caption = 'CHECK'
+            DataBinding.FieldName = 'CHECKCALC'
+            HeaderAlignmentHorz = taCenter
+            Options.Editing = False
+            Options.Filtering = False
+            Options.Sorting = False
+            Width = 63
+          end
+          object cxGridDBTableView1CHANGE: TcxGridDBColumn
+            Caption = 'CHANGE'
+            DataBinding.FieldName = 'CHANGEAMNT'
+            HeaderAlignmentHorz = taCenter
+            Options.Editing = False
+            Options.Filtering = False
+            Options.Sorting = False
+            Width = 61
+          end
+          object cxGridDBTableView1SALESDATE: TcxGridDBColumn
+            Caption = 'SALES DATE'
+            DataBinding.FieldName = 'SALESDATE'
+            HeaderAlignmentHorz = taCenter
+            Options.Editing = False
+            Options.Filtering = False
+            Options.Sorting = False
+            Width = 76
+          end
+          object cxGridDBTableView1CANCELLED: TcxGridDBColumn
+            Caption = 'VOIDED'
+            DataBinding.FieldName = 'CANCELLED'
+            HeaderAlignmentHorz = taCenter
+            Options.Editing = False
+            Options.Sorting = False
+            Width = 43
+          end
+        end
+        object cxGridLevel1: TcxGridLevel
+          GridView = cxGridDBTableView1
+        end
+      end
+    end
+  end
+  object cxStyleRepository1: TcxStyleRepository
+    Left = 424
+    Top = 152
+    PixelsPerInch = 96
+    object Header_style: TcxStyle
+      AssignedValues = [svColor, svFont, svTextColor]
+      Color = clTeal
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = 'Segoe UI'
+      Font.Style = [fsBold]
+      TextColor = 6570553
+    end
+    object select_style: TcxStyle
+      AssignedValues = [svColor, svTextColor]
+      Color = clTeal
+      TextColor = clWhite
+    end
+  end
+  object ds_jo: TDataSource
+    DataSet = dm_PM.brw_CashSum
+    Left = 384
+    Top = 152
+  end
+  object sCharImageList1: TsCharImageList
+    EmbeddedFonts = <
+      item
+        FontName = 'FontAwesome'
+        FontData = {}
+      end>
+    Items = <
+      item
+        ScalingFactor = 0.740000000000000000
+        OffsetY = 1
+        Char = 61442
+      end>
+    Left = 344
+    Top = 152
+    Bitmap = {
+      494C010100000800080001000100FFFFFFFF0400FFFFFFFFFFFFFFFF424D7600
+      0000000000007600000028000000040000000100000001000400000000000400
+      0000000000000000000000000000000000000000000000008000008000000080
+      8000800000008000800080800000C0C0C000808080000000FF0000FF000000FF
+      FF00FF000000FF00FF00FFFF0000FFFFFF0000000000}
+  end
+  object ActionList1: TActionList
+    Left = 304
+    Top = 151
+    object Void: TAction
+      Caption = 'Void'
+      OnExecute = VoidExecute
+    end
+    object Print: TAction
+      Caption = 'Print'
+      OnExecute = PrintExecute
+    end
+    object OpenOverride: TAction
+      Caption = 'Override - Opening Drawer'
+      OnExecute = OpenOverrideExecute
+    end
+    object ClosingOverride: TAction
+      Caption = 'Override - Closing Drawer'
+      OnExecute = ClosingOverrideExecute
+    end
+    object Reprint: TAction
+      Caption = 'Reprint - Cash Sales Summary'
+      OnExecute = ReprintExecute
+    end
+    object ReprintPayslip: TAction
+      Caption = 'Reprint - Payslip'
+      OnExecute = ReprintPayslipExecute
+    end
+  end
+  object PopupMenu1: TPopupMenu
+    Left = 680
+    Top = 152
+    object Void1: TMenuItem
+      Action = Void
+    end
+    object ReprintPayslip1: TMenuItem
+      Action = ReprintPayslip
+    end
+  end
+  object frxReport1: TfrxReport
+    Version = '6.6'
+    DotMatrixReport = False
+    IniFile = '\Software\Fast Reports'
+    PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick, pbCopy, pbSelection]
+    PreviewOptions.Zoom = 1.000000000000000000
+    PrintOptions.Printer = 'Default'
+    PrintOptions.PrintOnSheet = 0
+    ReportOptions.CreateDate = 44196.578938483800000000
+    ReportOptions.LastChange = 44196.578938483800000000
+    ScriptLanguage = 'PascalScript'
+    ScriptText.Strings = (
+      'begin'
+      ''
+      'end.')
+    Left = 504
+    Top = 152
+    Datasets = <>
+    Variables = <>
+    Style = <>
+  end
+  object ds_Open: TDataSource
+    DataSet = dm_PM.brw_POSDay
+    Left = 540
+    Top = 152
+  end
+  object PopupMenu2: TPopupMenu
+    Left = 592
+    Top = 151
+    object OpeningDrawerOverride1: TMenuItem
+      Action = OpenOverride
+    end
+    object ClosingDrawerOverride1: TMenuItem
+      Action = ClosingOverride
+    end
+  end
+  object PopupMenu3: TPopupMenu
+    Left = 640
+    Top = 151
+    object Print1: TMenuItem
+      Action = Print
+    end
+    object ReprintCashSalesSummary1: TMenuItem
+      Action = Reprint
+    end
+    object ReprintPayslip2: TMenuItem
+      Action = ReprintPayslip
+    end
+  end
+end

@@ -914,8 +914,8 @@ begin
 
       brw_ComputePay.Close;
       brw_ComputePay.SQL[2]  := 'WHERE (CREATEDDATETIME BETWEEN :DATE1 AND :DATE2) AND CANCELLED = FALSE';
-      brw_ComputePay.ParamByName('DATE1').Value    := FormatDateTime('yyyy-mm-dd hh:nn', date1);
-      brw_ComputePay.ParamByName('DATE2').Value    := FormatDateTime('yyyy-mm-dd hh:nn', date2);
+      brw_ComputePay.ParamByName('DATE1').Value    := date1;
+      brw_ComputePay.ParamByName('DATE2').Value    := date2;
       brw_ComputePay.Open();
 
 
@@ -929,19 +929,17 @@ begin
           brw_CompExpense.Close;
           brw_CompExpense.SQL[4]  := 'WHERE (DETAIL.REFDATE BETWEEN :date1 and :date2) AND DETAIL.EMPID = :EMPID AND EXP.CATEGORY = 2 AND HEADER.CANCELLED = FALSE AND DETAIL.CANCELLED = FALSE';
           brw_CompExpense.ParamByName('EMPID').Value   := brw_ComputePayWORKERID.Value;
-          brw_CompExpense.ParamByName('date1').Value   := FormatDateTime('yyyy-mm-dd', date1);
-          brw_CompExpense.ParamByName('date2').Value   := FormatDateTime('yyyy-mm-dd', date2);
+          brw_CompExpense.ParamByName('date1').Value   := date1;
+          brw_CompExpense.ParamByName('date2').Value   := date2;
           brw_CompExpense.Open();
 
           brw_WorkLogs.Close;
           brw_WorkLogs.SQL[3] := 'WHERE PM_WORKLOGS.WORKERID = :WORKERID AND (PM_WORKLOGS.CREATEDDATETIME BETWEEN :DATE1 AND :DATE2) AND PM_WORKLOGS.CANCELLED = FALSE';
           brw_WorkLogs.ParamByName('WORKERID').Value   := brw_ComputePayWORKERID.Value;
-          brw_WorkLogs.ParamByName('DATE1').Value      := FormatDateTime('yyyy-mm-dd hh:nn', date1);
-          brw_WorkLogs.ParamByName('DATE2').Value      := FormatDateTime('yyyy-mm-dd hh:nn', date2);
+          brw_WorkLogs.ParamByName('DATE1').Value      := date1;
+          brw_WorkLogs.ParamByName('DATE2').Value      := date2;
           brw_WorkLogs.Open();
 
-//          ShowMessage(brw_WorkLogs.SQL.Text);
-//          ShowMessage(brw_ComputePayWORKERID.AsString);
 
           brw_WorkLogs.First;
 

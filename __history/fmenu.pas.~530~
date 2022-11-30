@@ -940,8 +940,8 @@ begin
           brw_WorkLogs.ParamByName('DATE2').Value      := FormatDateTime('yyyy-mm-dd hh:nn', date2);
           brw_WorkLogs.Open();
 
-//          ShowMessage(brw_WorkLogs.SQL.Text);
-//          ShowMessage(brw_ComputePayWORKERID.AsString);
+          ShowMessage(brw_WorkLogs.SQL.Text);
+          ShowMessage(brw_ComputePayWORKERID.AsString);
 
           brw_WorkLogs.First;
 

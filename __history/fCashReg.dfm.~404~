@@ -3083,13 +3083,11 @@ object f_CashReg: Tf_CashReg
           FluentUIOpaque = False
           StorePaintBuffer = False
           BGStyle = scgppsForm
-          ExplicitTop = 0
-          ExplicitHeight = 237
           object Panel13: TPanel
             Left = 0
             Top = 0
             Width = 1070
-            Height = 237
+            Height = 207
             Align = alClient
             BevelOuter = bvNone
             Color = clWhite
@@ -3131,7 +3129,6 @@ object f_CashReg: Tf_CashReg
                 Properties.Alignment.Horz = taLeftJustify
                 Properties.Alignment.Vert = taVCenter
                 Transparent = True
-                ExplicitLeft = 808
                 AnchorY = 21
               end
               object lblBalance: TcxLabel

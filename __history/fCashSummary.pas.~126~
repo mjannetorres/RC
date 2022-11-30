@@ -368,11 +368,9 @@ begin
           brw_WorkLogs.Close;
           brw_WorkLogs.SQL[3] := 'WHERE PM_WORKLOGS.WORKERID = :EMPID AND (PM_WORKLOGS.CREATEDDATETIME BETWEEN :DATE1 AND :DATE2) AND PM_WORKLOGS.CANCELLED = FALSE';
           brw_WorkLogs.ParamByName('EMPID').Value      := qry_CashOutDetailEMPID.Value;
-          brw_WorkLogs.ParamByName('DATE1').Value      := FormatDateTime('yyyy-mm-dd hh:nn', StartOfTheDay(qry_CashOutDetailPAYDATEFROM.Value));
-          brw_WorkLogs.ParamByName('DATE2').Value      := FormatDateTime('yyyy-mm-dd hh:nn', EndOfTheDay(qry_CashOutDetailPAYDATETO.Value));
+          brw_WorkLogs.ParamByName('DATE1').Value      := StartOfTheDay(qry_CashOutDetailPAYDATEFROM.Value);
+          brw_WorkLogs.ParamByName('DATE2').Value      := EndOfTheDay(qry_CashOutDetailPAYDATETO.Value);
           brw_WorkLogs.Open();
-
-         // ShowMessage(IntToStr(brw_WorkLogs.RecordCount));
 
           f_Reports := Tf_Reports.Create(Self);
           TfrxMemoView(f_Reports.rep_PaySlip.FindObject('mem_days')).Text  := VarToStr(DaysBetween(StartOfTheDay(qry_CashOutDetailPAYDATEFROM.Value), EndOfTheDay(qry_CashOutDetailPAYDATETO.Value)));
