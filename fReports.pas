@@ -104,6 +104,9 @@ type
     ds_Salaries: TfrxDBDataset;
     rep_Salaries: TfrxReport;
     rep_payrollSummary: TfrxReport;
+    rep_RFQ: TfrxReport;
+    ds_RFQ: TfrxDBDataset;
+    ds_RFQDetail: TfrxDBDataset;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
     { Private declarations }

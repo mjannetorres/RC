@@ -37337,4 +37337,983 @@ object f_Reports: Tf_Reports
       end
     end
   end
+  object rep_RFQ: TfrxReport
+    Version = '6.6'
+    DotMatrixReport = False
+    IniFile = '\Software\Fast Reports'
+    PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick, pbCopy, pbSelection]
+    PreviewOptions.Zoom = 1.000000000000000000
+    PrintOptions.Printer = 'Default'
+    PrintOptions.PrintOnSheet = 0
+    ReportOptions.CreateDate = 44196.469038321800000000
+    ReportOptions.LastChange = 44200.964559965300000000
+    ScriptLanguage = 'PascalScript'
+    ScriptText.Strings = (
+      'procedure Picture1OnBeforePrint(Sender: TfrxComponent);'
+      'begin'
+      
+        '   TfrxPictureView(Sender).Picture.LoadFromFile(<ds_Comp."LOGO">' +
+        ');      '
+      'end;'
+      ''
+      'begin'
+      ''
+      'end.')
+    Left = 128
+    Top = 448
+    Datasets = <
+      item
+        DataSet = ds_Comp
+        DataSetName = 'ds_Comp'
+      end
+      item
+        DataSet = ds_Emp1
+        DataSetName = 'ds_Emp1'
+      end
+      item
+        DataSet = ds_RFQ
+        DataSetName = 'ds_RFQ'
+      end
+      item
+        DataSet = ds_RFQDetail
+        DataSetName = 'ds_RFQDetail'
+      end>
+    Variables = <>
+    Style = <>
+    object Data: TfrxDataPage
+      Height = 1000.000000000000000000
+      Width = 1000.000000000000000000
+    end
+    object Page1: TfrxReportPage
+      PaperWidth = 215.900000000000000000
+      PaperHeight = 279.400000000000000000
+      PaperSize = 1
+      LeftMargin = 10.000000000000000000
+      RightMargin = 10.000000000000000000
+      TopMargin = 10.000000000000000000
+      BottomMargin = 10.000000000000000000
+      Frame.Typ = []
+      MirrorMode = []
+      object PageHeader1: TfrxPageHeader
+        FillType = ftBrush
+        Frame.Typ = []
+        Height = 128.504020000000000000
+        Top = 18.897650000000000000
+        Width = 740.409927000000000000
+        Child = rep_RFQ.Child1
+        object Memo1: TfrxMemoView
+          AllowVectorExport = True
+          Left = 3.779530000000000000
+          Top = 7.559060000000000000
+          Width = 287.244280000000000000
+          Height = 18.897650000000000000
+          DataField = 'NAME'
+          DataSet = ds_Comp
+          DataSetName = 'ds_Comp'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -15
+          Font.Name = 'Segoe UI Black'
+          Font.Style = [fsBold]
+          Frame.Typ = []
+          Memo.UTF8W = (
+            '[ds_Comp."NAME"]')
+          ParentFont = False
+        end
+        object Memo2: TfrxMemoView
+          AllowVectorExport = True
+          Left = 3.779530000000000000
+          Top = 30.236240000000000000
+          Width = 287.244280000000000000
+          Height = 15.118120000000000000
+          DataField = 'ADDRESS1'
+          DataSet = ds_Comp
+          DataSetName = 'ds_Comp'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -12
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          Frame.Typ = []
+          Memo.UTF8W = (
+            '[ds_Comp."ADDRESS1"]')
+          ParentFont = False
+        end
+        object Memo3: TfrxMemoView
+          AllowVectorExport = True
+          Left = 3.779530000000000000
+          Top = 47.913420000000000000
+          Width = 287.244280000000000000
+          Height = 15.118120000000000000
+          DataField = 'ADDRESS2'
+          DataSet = ds_Comp
+          DataSetName = 'ds_Comp'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -12
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          Frame.Typ = []
+          Memo.UTF8W = (
+            '[ds_Comp."ADDRESS2"]')
+          ParentFont = False
+        end
+        object Memo4: TfrxMemoView
+          AllowVectorExport = True
+          Left = 3.779530000000000000
+          Top = 66.590600000000000000
+          Width = 287.244280000000000000
+          Height = 15.118120000000000000
+          DataField = 'CONTACTNO'
+          DataSet = ds_Comp
+          DataSetName = 'ds_Comp'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -12
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          Frame.Typ = []
+          Memo.UTF8W = (
+            '[ds_Comp."CONTACTNO"]')
+          ParentFont = False
+        end
+        object Picture1: TfrxPictureView
+          Align = baRight
+          AllowVectorExport = True
+          Left = 562.772017000000000000
+          Top = 7.559060000000000000
+          Width = 177.637910000000000000
+          Height = 86.929190000000000000
+          OnBeforePrint = 'Picture1OnBeforePrint'
+          Center = True
+          DataField = 'LOGO'
+          DataSet = ds_Comp
+          DataSetName = 'ds_Comp'
+          Frame.Typ = []
+          HightQuality = False
+          Transparent = False
+          TransparentColor = clWhite
+        end
+        object Memo50: TfrxMemoView
+          AllowVectorExport = True
+          Left = 3.779530000000000000
+          Top = 84.149660000000000000
+          Width = 287.244280000000000000
+          Height = 15.118120000000000000
+          DataField = 'EMAIL'
+          DataSet = ds_Comp
+          DataSetName = 'ds_Comp'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -12
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          Frame.Typ = []
+          Memo.UTF8W = (
+            '[ds_Comp."EMAIL"]')
+          ParentFont = False
+        end
+      end
+      object MasterData1: TfrxMasterData
+        FillType = ftBrush
+        Frame.Typ = []
+        Height = 30.236240000000000000
+        Top = 291.023810000000000000
+        Width = 740.409927000000000000
+        DataSet = ds_RFQ
+        DataSetName = 'ds_RFQ'
+        RowCount = 0
+        Stretched = True
+        object Memo5: TfrxMemoView
+          Align = baRight
+          AllowVectorExport = True
+          Left = 559.370564240000000000
+          Width = 181.039362760000000000
+          Height = 30.236240000000000000
+          DataSet = ds_RFQ
+          DataSetName = 'ds_RFQ'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWhite
+          Font.Height = -17
+          Font.Name = 'Segoe UI Black'
+          Font.Style = [fsBold]
+          Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
+          Fill.BackColor = clTeal
+          GapX = 3.000000000000000000
+          HAlign = haCenter
+          Memo.UTF8W = (
+            'QUOTATION NO. [ds_RFQ."ID"]')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+      end
+      object MasterData2: TfrxMasterData
+        FillType = ftBrush
+        Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
+        Height = 151.181200000000000000
+        Top = 343.937230000000000000
+        Width = 740.409927000000000000
+        DataSet = ds_RFQ
+        DataSetName = 'ds_RFQ'
+        RowCount = 0
+        Stretched = True
+        object Memo6: TfrxMemoView
+          AllowVectorExport = True
+          Left = 4.000000000000000000
+          Top = 1.889763780000010000
+          Width = 94.488250000000000000
+          Height = 18.897650000000000000
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Segoe UI Semibold'
+          Font.Style = [fsBold]
+          Frame.Typ = []
+          Memo.UTF8W = (
+            'CLIENT')
+          ParentFont = False
+        end
+        object Memo7: TfrxMemoView
+          AllowVectorExport = True
+          Left = 3.779530000000000000
+          Top = 22.299212600000000000
+          Width = 94.488250000000000000
+          Height = 18.897650000000000000
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Segoe UI Semibold'
+          Font.Style = [fsBold]
+          Frame.Typ = []
+          Memo.UTF8W = (
+            'CONTACT NO.')
+          ParentFont = False
+        end
+        object Memo8: TfrxMemoView
+          AllowVectorExport = True
+          Left = 3.779530000000000000
+          Top = 42.708661420000000000
+          Width = 94.488250000000000000
+          Height = 18.897650000000000000
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Segoe UI Semibold'
+          Font.Style = [fsBold]
+          Frame.Typ = []
+          Memo.UTF8W = (
+            'EMAIL')
+          ParentFont = False
+        end
+        object Memo9: TfrxMemoView
+          AllowVectorExport = True
+          Left = 3.779530000000000000
+          Top = 90.251968500000000000
+          Width = 94.488250000000000000
+          Height = 18.897650000000000000
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Segoe UI Semibold'
+          Font.Style = [fsBold]
+          Frame.Typ = []
+          Memo.UTF8W = (
+            'NOTES')
+          ParentFont = False
+        end
+        object Memo11: TfrxMemoView
+          AllowVectorExport = True
+          Left = 646.079160000000000000
+          Top = 1.889763780000010000
+          Width = 94.488250000000000000
+          Height = 18.897650000000000000
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Segoe UI Semibold'
+          Font.Style = [fsBold]
+          Frame.Typ = []
+          HAlign = haCenter
+          Memo.UTF8W = (
+            'DATE')
+          ParentFont = False
+        end
+        object ds_ClientNAME: TfrxMemoView
+          IndexTag = 1
+          AllowVectorExport = True
+          Left = 102.047244094488000000
+          Top = 1.889763780000010000
+          Width = 540.472790000000000000
+          Height = 18.897650000000000000
+          DataField = 'CLIENT'
+          DataSet = ds_RFQ
+          DataSetName = 'ds_RFQ'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          Frame.Typ = []
+          Memo.UTF8W = (
+            '[ds_RFQ."CLIENT"]')
+          ParentFont = False
+        end
+        object Memo12: TfrxMemoView
+          IndexTag = 1
+          AllowVectorExport = True
+          Left = 102.047310000000000000
+          Top = 22.299212600000000000
+          Width = 540.472790000000000000
+          Height = 18.897650000000000000
+          DataField = 'CONTACTNO'
+          DataSet = ds_RFQ
+          DataSetName = 'ds_RFQ'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          Frame.Typ = []
+          Memo.UTF8W = (
+            '[ds_RFQ."CONTACTNO"]')
+          ParentFont = False
+        end
+        object Memo13: TfrxMemoView
+          IndexTag = 1
+          AllowVectorExport = True
+          Left = 102.047310000000000000
+          Top = 42.708661420000000000
+          Width = 540.472790000000000000
+          Height = 18.897650000000000000
+          DataField = 'EMAIL'
+          DataSet = ds_RFQ
+          DataSetName = 'ds_RFQ'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          Frame.Typ = []
+          Memo.UTF8W = (
+            '[ds_RFQ."EMAIL"]')
+          ParentFont = False
+        end
+        object Memo15: TfrxMemoView
+          AllowVectorExport = True
+          Left = 646.299630000000000000
+          Top = 22.299212600000000000
+          Width = 94.488250000000000000
+          Height = 41.574830000000000000
+          DataSet = ds_RFQ
+          DataSetName = 'ds_RFQ'
+          DisplayFormat.FormatStr = 'mm/dd/yyyy'
+          DisplayFormat.Kind = fkDateTime
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          Frame.Typ = []
+          HAlign = haCenter
+          Memo.UTF8W = (
+            '[ds_RFQ."CREATEDDATETIME"]')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object Memo16: TfrxMemoView
+          IndexTag = 1
+          AllowVectorExport = True
+          Left = 102.047310000000000000
+          Top = 90.251968500000000000
+          Width = 638.740570000000000000
+          Height = 52.913420000000000000
+          DataField = 'REMARKS'
+          DataSet = ds_RFQ
+          DataSetName = 'ds_RFQ'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          Frame.Typ = []
+          Memo.UTF8W = (
+            '[ds_RFQ."REMARKS"]')
+          ParentFont = False
+        end
+        object Line3: TfrxLineView
+          AllowVectorExport = True
+          Left = 100.047310000000000000
+          Height = 151.181200000000000000
+          Color = clBlack
+          Frame.Typ = [ftLeft]
+        end
+        object Line5: TfrxLineView
+          AllowVectorExport = True
+          Top = 20.897650000000000000
+          Width = 740.409448820000000000
+          Color = clBlack
+          Frame.Typ = [ftTop]
+        end
+        object Line6: TfrxLineView
+          AllowVectorExport = True
+          Top = 43.574830000000000000
+          Width = 646.299630000000000000
+          Color = clBlack
+          Frame.Typ = [ftTop]
+        end
+        object Line7: TfrxLineView
+          AllowVectorExport = True
+          Top = 64.252010000000000000
+          Width = 740.409448820000000000
+          Color = clBlack
+          Frame.Typ = [ftTop]
+        end
+        object Line8: TfrxLineView
+          AllowVectorExport = True
+          Left = 646.299630000000000000
+          Height = 64.252010000000000000
+          Color = clBlack
+          Frame.Typ = [ftLeft]
+        end
+        object Line11: TfrxLineView
+          AllowVectorExport = True
+          Top = 86.929190000000000000
+          Width = 740.409448820000000000
+          Color = clBlack
+          Frame.Typ = [ftTop]
+        end
+        object Memo46: TfrxMemoView
+          AllowVectorExport = True
+          Left = 3.779530000000000000
+          Top = 66.031540000000000000
+          Width = 94.488250000000000000
+          Height = 18.897650000000000000
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Segoe UI Semibold'
+          Font.Style = [fsBold]
+          Frame.Typ = []
+          Memo.UTF8W = (
+            'ADDRESS')
+          ParentFont = False
+        end
+        object Memo49: TfrxMemoView
+          IndexTag = 1
+          AllowVectorExport = True
+          Left = 102.047310000000000000
+          Top = 64.252010000000000000
+          Width = 634.961040000000000000
+          Height = 18.897650000000000000
+          DataField = 'ADDRESS'
+          DataSet = ds_RFQ
+          DataSetName = 'ds_RFQ'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          Frame.Typ = []
+          Memo.UTF8W = (
+            '[ds_RFQ."ADDRESS"]')
+          ParentFont = False
+        end
+      end
+      object MasterData3: TfrxMasterData
+        FillType = ftBrush
+        Fill.BackColor = clTeal
+        Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
+        Height = 22.677165350000000000
+        Top = 517.795610000000000000
+        Width = 740.409927000000000000
+        DataSet = ds_RFQDetail
+        DataSetName = 'ds_RFQDetail'
+        RowCount = 0
+        Stretched = True
+        object Memo17: TfrxMemoView
+          Align = baLeft
+          AllowVectorExport = True
+          Width = 219.212740000000000000
+          Height = 18.897650000000000000
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWhite
+          Font.Height = -13
+          Font.Name = 'Segoe UI Semibold'
+          Font.Style = [fsBold]
+          Frame.Typ = [ftRight]
+          HAlign = haCenter
+          Memo.UTF8W = (
+            'DESCRIPTION')
+          ParentFont = False
+        end
+        object Memo18: TfrxMemoView
+          Align = baLeft
+          AllowVectorExport = True
+          Left = 219.212740000000000000
+          Width = 173.858380000000000000
+          Height = 18.897650000000000000
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWhite
+          Font.Height = -13
+          Font.Name = 'Segoe UI Semibold'
+          Font.Style = [fsBold]
+          Frame.Typ = [ftRight]
+          HAlign = haCenter
+          Memo.UTF8W = (
+            'FABRIC')
+          ParentFont = False
+        end
+        object Memo21: TfrxMemoView
+          Align = baLeft
+          AllowVectorExport = True
+          Left = 393.071120000000000000
+          Width = 60.472480000000000000
+          Height = 18.897650000000000000
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWhite
+          Font.Height = -13
+          Font.Name = 'Segoe UI Semibold'
+          Font.Style = [fsBold]
+          Frame.Typ = [ftLeft, ftRight]
+          HAlign = haCenter
+          Memo.UTF8W = (
+            'UNIT')
+          ParentFont = False
+        end
+        object Memo22: TfrxMemoView
+          Align = baLeft
+          AllowVectorExport = True
+          Left = 453.543600000000000000
+          Width = 37.795300000000000000
+          Height = 18.897650000000000000
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWhite
+          Font.Height = -13
+          Font.Name = 'Segoe UI Semibold'
+          Font.Style = [fsBold]
+          Frame.Typ = [ftLeft, ftRight, ftTop]
+          Fill.BackColor = clTeal
+          HAlign = haCenter
+          Memo.UTF8W = (
+            'QTY')
+          ParentFont = False
+        end
+        object Memo24: TfrxMemoView
+          Align = baLeft
+          AllowVectorExport = True
+          Left = 491.338900000000000000
+          Width = 75.590600000000000000
+          Height = 18.897650000000000000
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWhite
+          Font.Height = -13
+          Font.Name = 'Segoe UI Semibold'
+          Font.Style = [fsBold]
+          Frame.Typ = []
+          HAlign = haCenter
+          Memo.UTF8W = (
+            'PRICE')
+          ParentFont = False
+        end
+        object Memo25: TfrxMemoView
+          Align = baLeft
+          AllowVectorExport = True
+          Left = 566.929500000000100000
+          Width = 79.370130000000000000
+          Height = 18.897650000000000000
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWhite
+          Font.Height = -13
+          Font.Name = 'Segoe UI Semibold'
+          Font.Style = [fsBold]
+          Frame.Typ = [ftLeft]
+          HAlign = haCenter
+          Memo.UTF8W = (
+            'TOTAL')
+          ParentFont = False
+        end
+        object Memo34: TfrxMemoView
+          Align = baRight
+          AllowVectorExport = True
+          Left = 645.921677000000000000
+          Width = 94.488250000000000000
+          Height = 18.897650000000000000
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWhite
+          Font.Height = -13
+          Font.Name = 'Segoe UI Semibold'
+          Font.Style = [fsBold]
+          Frame.Typ = [ftLeft]
+          HAlign = haCenter
+          Memo.UTF8W = (
+            'REMARKS')
+          ParentFont = False
+        end
+      end
+      object DetailData1: TfrxDetailData
+        FillType = ftBrush
+        Frame.Typ = [ftLeft, ftRight, ftBottom]
+        Height = 22.677180000000000000
+        Top = 563.149970000000100000
+        Width = 740.409927000000000000
+        DataSet = ds_RFQDetail
+        DataSetName = 'ds_RFQDetail'
+        RowCount = 0
+        Stretched = True
+        object ds_JODetailsDESCRIPTION: TfrxMemoView
+          IndexTag = 1
+          Align = baLeft
+          AllowVectorExport = True
+          Width = 219.212627720000000000
+          Height = 18.897650000000000000
+          StretchMode = smMaxHeight
+          DataField = 'DESCRIPTION'
+          DataSet = ds_RFQDetail
+          DataSetName = 'ds_RFQDetail'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -12
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          Frame.Typ = [ftRight]
+          Memo.UTF8W = (
+            '[ds_RFQDetail."DESCRIPTION"]')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object Memo26: TfrxMemoView
+          IndexTag = 1
+          Align = baLeft
+          AllowVectorExport = True
+          Left = 219.212627720000000000
+          Width = 173.858297010000000000
+          Height = 18.897650000000000000
+          StretchMode = smMaxHeight
+          DataField = 'FABRIC'
+          DataSet = ds_RFQDetail
+          DataSetName = 'ds_RFQDetail'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -12
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          Frame.Typ = [ftRight]
+          Memo.UTF8W = (
+            '[ds_RFQDetail."FABRIC"]')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object Memo29: TfrxMemoView
+          IndexTag = 1
+          Align = baLeft
+          AllowVectorExport = True
+          Left = 393.070924730000000000
+          Width = 60.472440940000000000
+          Height = 18.897650000000000000
+          StretchMode = smMaxHeight
+          DataField = 'UNIT'
+          DataSet = ds_RFQDetail
+          DataSetName = 'ds_RFQDetail'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -12
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          Frame.Typ = [ftRight]
+          GapX = 5.000000000000000000
+          Memo.UTF8W = (
+            '[ds_RFQDetail."UNIT"]')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object Memo30: TfrxMemoView
+          IndexTag = 1
+          Align = baLeft
+          AllowVectorExport = True
+          Left = 453.543365670000000000
+          Width = 37.795275590000000000
+          Height = 18.897650000000000000
+          StretchMode = smMaxHeight
+          DataField = 'QTY'
+          DataSet = ds_RFQDetail
+          DataSetName = 'ds_RFQDetail'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -12
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          Frame.Typ = [ftRight]
+          GapX = 5.000000000000000000
+          HAlign = haCenter
+          Memo.UTF8W = (
+            '[ds_RFQDetail."QTY"]')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object Memo32: TfrxMemoView
+          IndexTag = 1
+          Align = baLeft
+          AllowVectorExport = True
+          Left = 491.338641260000000000
+          Width = 75.590575590000000000
+          Height = 18.897650000000000000
+          StretchMode = smMaxHeight
+          DataField = 'COST'
+          DataSet = ds_RFQDetail
+          DataSetName = 'ds_RFQDetail'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -12
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          Frame.Typ = []
+          GapX = 5.000000000000000000
+          HAlign = haRight
+          Memo.UTF8W = (
+            '[ds_RFQDetail."COST"]')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object Memo33: TfrxMemoView
+          IndexTag = 1
+          Align = baLeft
+          AllowVectorExport = True
+          Left = 566.929216850000000000
+          Width = 79.370105590000000000
+          Height = 18.897650000000000000
+          StretchMode = smMaxHeight
+          DataField = 'TOTAL'
+          DataSet = ds_RFQDetail
+          DataSetName = 'ds_RFQDetail'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -12
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          Frame.Typ = [ftLeft]
+          GapX = 5.000000000000000000
+          HAlign = haRight
+          Memo.UTF8W = (
+            '[ds_RFQDetail."TOTAL"]')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object Memo37: TfrxMemoView
+          IndexTag = 1
+          Align = baWidth
+          AllowVectorExport = True
+          Left = 646.299322440000000000
+          Width = 94.110604560000060000
+          Height = 18.897650000000000000
+          StretchMode = smMaxHeight
+          DataField = 'REMARKS'
+          DataSet = ds_RFQDetail
+          DataSetName = 'ds_RFQDetail'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -12
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          Frame.Typ = [ftLeft]
+          GapX = 5.000000000000000000
+          Memo.UTF8W = (
+            '[ds_RFQDetail."REMARKS"]')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+      end
+      object Footer1: TfrxFooter
+        FillType = ftBrush
+        Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
+        Height = 154.960730000000000000
+        Top = 608.504330000000000000
+        Width = 740.409927000000000000
+        object Memo36: TfrxMemoView
+          AllowVectorExport = True
+          Left = 448.882190000000000000
+          Top = 5.881880000000020000
+          Width = 109.606370000000000000
+          Height = 18.897650000000000000
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Segoe UI Semibold'
+          Font.Style = [fsBold]
+          Frame.Typ = []
+          HAlign = haRight
+          Memo.UTF8W = (
+            'GRAND TOTAL :')
+          ParentFont = False
+        end
+        object Memo39: TfrxMemoView
+          AllowVectorExport = True
+          Left = 566.551603140000000000
+          Top = 4.102350000000000000
+          Width = 79.370073860000000000
+          Height = 18.897650000000000000
+          DataSet = ds_RFQ
+          DataSetName = 'ds_RFQ'
+          DisplayFormat.FormatStr = '%2.2n'
+          DisplayFormat.Kind = fkNumeric
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Segoe UI Semibold'
+          Font.Style = [fsBold]
+          Frame.Style = fsDouble
+          Frame.Typ = [ftBottom]
+          HAlign = haRight
+          Memo.UTF8W = (
+            '[SUM(<ds_RFQDetail."TOTAL">,DetailData1)]')
+          ParentFont = False
+        end
+        object Memo43: TfrxMemoView
+          AllowVectorExport = True
+          Left = 22.031540000000000000
+          Top = 54.677180000000000000
+          Width = 272.126160000000000000
+          Height = 18.897650000000000000
+          DataField = 'EMPNAME'
+          DataSet = ds_Emp1
+          DataSetName = 'ds_Emp1'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -12
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          Frame.Typ = [ftBottom]
+          HAlign = haCenter
+          Memo.UTF8W = (
+            '[ds_Emp1."EMPNAME"]')
+          ParentFont = False
+        end
+        object Memo45: TfrxMemoView
+          AllowVectorExport = True
+          Left = 321.260050000000000000
+          Top = 54.677180000000000000
+          Width = 132.283550000000000000
+          Height = 18.897650000000000000
+          DataSet = ds_RFQ
+          DataSetName = 'ds_RFQ'
+          DisplayFormat.FormatStr = 'mm/dd/yyyy'
+          DisplayFormat.Kind = fkDateTime
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -12
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          Frame.Typ = [ftBottom]
+          HAlign = haCenter
+          Memo.UTF8W = (
+            '[ds_RFQ."CREATEDDATETIME"]')
+          ParentFont = False
+        end
+        object Memo42: TfrxMemoView
+          AllowVectorExport = True
+          Left = 321.260050000000000000
+          Top = 75.590565830000100000
+          Width = 132.283550000000000000
+          Height = 18.897650000000000000
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Segoe UI Semibold'
+          Font.Style = [fsBold]
+          Frame.Typ = []
+          HAlign = haCenter
+          Memo.UTF8W = (
+            'DATE')
+          ParentFont = False
+        end
+        object Memo40: TfrxMemoView
+          AllowVectorExport = True
+          Left = 18.252010000000000000
+          Top = 75.590565830000100000
+          Width = 275.905690000000000000
+          Height = 18.897650000000000000
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Segoe UI Semibold'
+          Font.Style = [fsBold]
+          Frame.Typ = []
+          HAlign = haCenter
+          Memo.UTF8W = (
+            'PREPARED BY')
+          ParentFont = False
+        end
+      end
+      object Child1: TfrxChild
+        FillType = ftBrush
+        Frame.Typ = []
+        Height = 60.472480000000000000
+        Top = 170.078850000000000000
+        Width = 740.409927000000000000
+        ToNRows = 0
+        ToNRowsMode = rmCount
+        object Memo44: TfrxMemoView
+          Align = baWidth
+          AllowVectorExport = True
+          Top = 11.338590000000000000
+          Width = 740.409927000000000000
+          Height = 22.677180000000000000
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -17
+          Font.Name = 'Segoe UI Black'
+          Font.Style = [fsBold]
+          Frame.Typ = []
+          GapX = 3.000000000000000000
+          HAlign = haCenter
+          Memo.UTF8W = (
+            'REQUEST FOR QUOTATION')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+      end
+    end
+  end
+  object ds_RFQ: TfrxDBDataset
+    UserName = 'ds_RFQ'
+    CloseDataSource = False
+    FieldAliases.Strings = (
+      'ID=ID'
+      'CLIENT=CLIENT'
+      'CONTACTNO=CONTACTNO'
+      'EMAIL=EMAIL'
+      'ADDRESS=ADDRESS'
+      'REMARKS=REMARKS'
+      'TOTAL=TOTAL'
+      'SUMMARY=SUMMARY'
+      'CREATEDBYID=CREATEDBYID'
+      'CREATEDDATETIME=CREATEDDATETIME'
+      'UPDATEDBYID=UPDATEDBYID'
+      'UPDATEDDATETIME=UPDATEDDATETIME'
+      'CANCELLED=CANCELLED'
+      'CANCELLEDBYID=CANCELLEDBYID'
+      'CANCELLEDDATETIME=CANCELLEDDATETIME')
+    DataSet = dm_PM.qry_RFQ
+    BCDToCurrency = False
+    Left = 496
+    Top = 392
+  end
+  object ds_RFQDetail: TfrxDBDataset
+    UserName = 'ds_RFQDetail'
+    CloseDataSource = False
+    FieldAliases.Strings = (
+      'ITEMID=ITEMID'
+      'DESCRIPTION=DESCRIPTION'
+      'FABRICID=FABRICID'
+      'FABRIC=FABRIC'
+      'UNIT=UNIT'
+      'QTY=QTY'
+      'COST=COST'
+      'REMARKS=REMARKS'
+      'TOTAL=TOTAL'
+      'ID=ID')
+    DataSet = dm_PM.tb_RFQDetail
+    BCDToCurrency = False
+    Left = 544
+    Top = 392
+  end
 end

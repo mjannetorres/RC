@@ -42,13 +42,20 @@ object f_PMBoard: Tf_PMBoard
       Align = alTop
       BevelOuter = bvNone
       Color = clTeal
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWhite
+      Font.Height = -12
+      Font.Name = 'Segoe UI'
+      Font.Style = []
       Padding.Left = 10
       Padding.Top = 5
       Padding.Right = 10
       Padding.Bottom = 5
       ParentBackground = False
+      ParentFont = False
       TabOrder = 0
       StyleElements = [seFont, seBorder]
+      ExplicitTop = -3
       DesignSize = (
         1370
         71)
@@ -126,7 +133,7 @@ object f_PMBoard: Tf_PMBoard
         Left = 1030
         Top = 41
         Width = 93
-        Height = 21
+        Height = 23
         Anchors = [akTop, akRight]
         Date = 44189.551065162040000000
         Time = 44189.551065162040000000
@@ -136,7 +143,7 @@ object f_PMBoard: Tf_PMBoard
         Left = 1129
         Top = 41
         Width = 93
-        Height = 21
+        Height = 23
         Anchors = [akTop, akRight]
         Date = 44189.551065162040000000
         Time = 44189.551065162040000000
@@ -183,7 +190,7 @@ object f_PMBoard: Tf_PMBoard
       Margins.Bottom = 0
       AutoSize = True
       ButtonHeight = 30
-      ButtonWidth = 82
+      ButtonWidth = 88
       Caption = 'scToolBar1'
       Color = clWhite
       Customizable = True
@@ -241,6 +248,12 @@ object f_PMBoard: Tf_PMBoard
         AutoSize = True
         ImageIndex = 20
       end
+      object ToolButton1: TToolButton
+        Left = 352
+        Top = 0
+        Action = SetStatus
+        ImageIndex = 22
+      end
     end
     object cxGrid1: TcxGrid
       Left = 0
@@ -260,6 +273,7 @@ object f_PMBoard: Tf_PMBoard
       LookAndFeel.Kind = lfUltraFlat
       LookAndFeel.NativeStyle = False
       LookAndFeel.SkinName = 'VisualStudio2013Light'
+      ExplicitTop = 104
       object cxGrid1DBTableView1: TcxGridDBTableView
         OnDblClick = EditExecute
         Navigator.Buttons.CustomButtons = <>
@@ -308,8 +322,9 @@ object f_PMBoard: Tf_PMBoard
           Options.Editing = False
           Options.Filtering = False
           Options.Sorting = False
+          Styles.OnGetContentStyle = cxGrid1DBTableView1JONOStylesGetContentStyle
           Styles.Header = cxStyle1
-          Width = 39
+          Width = 49
         end
         object cxGrid1DBTableView1CLIENT: TcxGridDBColumn
           DataBinding.FieldName = 'CLIENT'
@@ -317,8 +332,9 @@ object f_PMBoard: Tf_PMBoard
           Options.Editing = False
           Options.Filtering = False
           Options.Sorting = False
+          Styles.OnGetContentStyle = cxGrid1DBTableView1JONOStylesGetContentStyle
           Styles.Header = cxStyle1
-          Width = 198
+          Width = 197
         end
         object cxGrid1DBTableView1DESCRIPTION: TcxGridDBColumn
           Caption = 'PARTICULARS'
@@ -327,8 +343,9 @@ object f_PMBoard: Tf_PMBoard
           Options.Editing = False
           Options.Filtering = False
           Options.Sorting = False
+          Styles.OnGetContentStyle = cxGrid1DBTableView1JONOStylesGetContentStyle
           Styles.Header = cxStyle1
-          Width = 271
+          Width = 268
         end
         object cxGrid1DBTableView1REMARKS: TcxGridDBColumn
           Caption = 'NOTES'
@@ -337,8 +354,9 @@ object f_PMBoard: Tf_PMBoard
           Options.Editing = False
           Options.Filtering = False
           Options.Sorting = False
+          Styles.OnGetContentStyle = cxGrid1DBTableView1JONOStylesGetContentStyle
           Styles.Header = cxStyle1
-          Width = 164
+          Width = 163
         end
         object cxGrid1DBTableView1LOGDATE: TcxGridDBColumn
           Caption = 'DATE'
@@ -347,8 +365,9 @@ object f_PMBoard: Tf_PMBoard
           Options.Editing = False
           Options.Filtering = False
           Options.Sorting = False
+          Styles.OnGetContentStyle = cxGrid1DBTableView1JONOStylesGetContentStyle
           Styles.Header = cxStyle1
-          Width = 125
+          Width = 124
         end
         object cxGrid1DBTableView1DUEDATE: TcxGridDBColumn
           Caption = 'DUE DATE'
@@ -357,8 +376,9 @@ object f_PMBoard: Tf_PMBoard
           Options.Editing = False
           Options.Filtering = False
           Options.Sorting = False
+          Styles.OnGetContentStyle = cxGrid1DBTableView1JONOStylesGetContentStyle
           Styles.Header = cxStyle1
-          Width = 118
+          Width = 117
         end
         object cxGrid1DBTableView1POSTED: TcxGridDBColumn
           DataBinding.FieldName = 'POSTED'
@@ -366,6 +386,7 @@ object f_PMBoard: Tf_PMBoard
           Options.Editing = False
           Options.Filtering = False
           Options.Sorting = False
+          Styles.OnGetContentStyle = cxGrid1DBTableView1JONOStylesGetContentStyle
           Styles.Header = cxStyle1
           Width = 107
         end
@@ -386,8 +407,9 @@ object f_PMBoard: Tf_PMBoard
           Options.Editing = False
           Options.Filtering = False
           Options.Sorting = False
+          Styles.OnGetContentStyle = cxGrid1DBTableView1JONOStylesGetContentStyle
           Styles.Header = cxStyle1
-          Width = 131
+          Width = 130
         end
         object cxGrid1DBTableView1PAIDAMNT: TcxGridDBColumn
           Caption = 'PAID'
@@ -396,8 +418,9 @@ object f_PMBoard: Tf_PMBoard
           Options.Editing = False
           Options.Filtering = False
           Options.Sorting = False
+          Styles.OnGetContentStyle = cxGrid1DBTableView1JONOStylesGetContentStyle
           Styles.Header = cxStyle1
-          Width = 108
+          Width = 107
         end
         object cxGrid1DBTableView1BALAMNT: TcxGridDBColumn
           Caption = 'BALANCE'
@@ -406,8 +429,13 @@ object f_PMBoard: Tf_PMBoard
           Options.Editing = False
           Options.Filtering = False
           Options.Sorting = False
+          Styles.OnGetContentStyle = cxGrid1DBTableView1JONOStylesGetContentStyle
           Styles.Header = cxStyle1
-          Width = 107
+          Width = 106
+        end
+        object cxGrid1DBTableView1STATUS: TcxGridDBColumn
+          DataBinding.FieldName = 'STATUS'
+          Visible = False
         end
       end
       object cxGrid1Level1: TcxGridLevel
@@ -467,6 +495,10 @@ object f_PMBoard: Tf_PMBoard
     object Overrideby: TAction
       Caption = 'Override'
       OnExecute = OverridebyExecute
+    end
+    object SetStatus: TAction
+      Caption = 'Set Status'
+      OnExecute = SetStatusExecute
     end
   end
   object cxImageList1: TcxImageList
@@ -764,6 +796,12 @@ object f_PMBoard: Tf_PMBoard
         OffsetY = 5
         Char = 61453
         Color = clTeal
+      end
+      item
+        ScalingFactor = 0.740000000000000000
+        OffsetY = 5
+        Char = 61529
+        Color = clTeal
       end>
     BlendingMode = bmAlways
     Left = 424
@@ -777,17 +815,17 @@ object f_PMBoard: Tf_PMBoard
   end
   object ds_sprint: TDataSource
     DataSet = dm_PM.brw_pmboard
-    Left = 737
-    Top = 112
+    Left = 625
+    Top = 176
   end
   object ds_logs: TDataSource
     DataSet = dm_PM.brw_Logs
-    Left = 930
-    Top = 399
+    Left = 586
+    Top = 175
   end
   object PopupMenu1: TPopupMenu
-    Left = 769
-    Top = 112
+    Left = 697
+    Top = 256
     object ReassignWorker1: TMenuItem
       Caption = 'Reassign Worker'
     end
@@ -801,12 +839,12 @@ object f_PMBoard: Tf_PMBoard
   end
   object ds_pending: TDataSource
     DataSet = dm_PM.brw_Pending
-    Left = 817
-    Top = 112
+    Left = 665
+    Top = 176
   end
   object PopupMenu2: TPopupMenu
-    Left = 873
-    Top = 112
+    Left = 737
+    Top = 256
     object CreateLayout1: TMenuItem
       Caption = 'Create Layout'
     end

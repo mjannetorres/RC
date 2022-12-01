@@ -1,0 +1,201 @@
+unit fRFQDetail;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, cxGraphics, cxControls, cxLookAndFeels,
+  cxLookAndFeelPainters, cxContainer, cxEdit, dxSkinsCore, dxSkinBlack,
+  dxSkinBlue, dxSkinBlueprint, dxSkinCaramel, dxSkinCoffee, dxSkinDarkRoom,
+  dxSkinDarkSide, dxSkinDevExpressDarkStyle, dxSkinDevExpressStyle, dxSkinFoggy,
+  dxSkinGlassOceans, dxSkinHighContrast, dxSkiniMaginary, dxSkinLilian,
+  dxSkinLiquidSky, dxSkinLondonLiquidSky, dxSkinMcSkin, dxSkinMetropolis,
+  dxSkinMetropolisDark, dxSkinMoneyTwins, dxSkinOffice2007Black,
+  dxSkinOffice2007Blue, dxSkinOffice2007Green, dxSkinOffice2007Pink,
+  dxSkinOffice2007Silver, dxSkinOffice2010Black, dxSkinOffice2010Blue,
+  dxSkinOffice2010Silver, dxSkinOffice2013DarkGray, dxSkinOffice2013LightGray,
+  dxSkinOffice2013White, dxSkinOffice2016Colorful, dxSkinOffice2016Dark,
+  dxSkinPumpkin, dxSkinSeven, dxSkinSevenClassic, dxSkinSharp, dxSkinSharpPlus,
+  dxSkinSilver, dxSkinSpringTime, dxSkinStardust, dxSkinSummer2008,
+  dxSkinTheAsphaltWorld, dxSkinsDefaultPainters, dxSkinValentine,
+  dxSkinVisualStudio2013Blue, dxSkinVisualStudio2013Dark,
+  dxSkinVisualStudio2013Light, dxSkinVS2010, dxSkinWhiteprint,
+  dxSkinXmas2008Blue, cxStyles, dxSkinscxPCPainter, cxCustomData, cxFilter,
+  cxData, cxDataStorage, cxNavigator, Data.DB, cxDBData, cxDBLookupComboBox,
+  cxTextEdit, Vcl.Menus, cxClasses, System.Actions, Vcl.ActnList, cxGridLevel,
+  cxGridCustomTableView, cxGridTableView, cxGridDBTableView, cxGridCustomView,
+  cxGrid, scControls, scGPPagers, cxDropDownEdit, cxLookupEdit, cxDBLookupEdit,
+  cxMemo, cxDBEdit, scGPFontControls, cxLabel, cxDBLabel, cxMaskEdit,
+  cxCalendar, Vcl.StdCtrls, Vcl.ExtCtrls;
+
+type
+  Tf_RFQTemp = class(TForm)
+    Panel1: TPanel;
+    btnSave: TButton;
+    btnCancel: TButton;
+    Panel3: TPanel;
+    Label3: TLabel;
+    Label1: TLabel;
+    Label5: TLabel;
+    Label6: TLabel;
+    cxDBDateEdit1: TcxDBDateEdit;
+    cxDBLabel1: TcxDBLabel;
+    cxDBMemo1: TcxDBMemo;
+    scGPPageControl1: TscGPPageControl;
+    scGPPageControlPage1: TscGPPageControlPage;
+    grid_jodetail: TcxGrid;
+    cxGridDBTableView1: TcxGridDBTableView;
+    cxGridDBTableView1SHIRTID: TcxGridDBColumn;
+    cxGridDBTableView1FABRICID: TcxGridDBColumn;
+    cxGridDBTableView1REMARKS: TcxGridDBColumn;
+    cxGridLevel1: TcxGridLevel;
+    ds_RFQ: TDataSource;
+    ds_RFQDetail: TDataSource;
+    ds_garment: TDataSource;
+    ds_farbric: TDataSource;
+    ActionList1: TActionList;
+    Delete: TAction;
+    AddClient: TAction;
+    cxStyleRepository1: TcxStyleRepository;
+    Header_style: TcxStyle;
+    PopupMenu1: TPopupMenu;
+    Delete1: TMenuItem;
+    cxDBTextEdit1: TcxDBTextEdit;
+    cxDBTextEdit2: TcxDBTextEdit;
+    cxDBTextEdit3: TcxDBTextEdit;
+    cxDBMemo2: TcxDBMemo;
+    Label2: TLabel;
+    Label4: TLabel;
+    Label7: TLabel;
+    cxGridDBTableView1UNIT: TcxGridDBColumn;
+    cxGridDBTableView1QTY: TcxGridDBColumn;
+    cxGridDBTableView1COST: TcxGridDBColumn;
+    cxGridDBTableView1TOTAL: TcxGridDBColumn;
+    btnPrint: TButton;
+    Print: TAction;
+    procedure FormShow(Sender: TObject);
+    procedure cxDBTextEdit1Exit(Sender: TObject);
+    procedure cxGridDBTableView1SHIRTIDPropertiesCloseUp(Sender: TObject);
+    procedure PrintExecute(Sender: TObject);
+    procedure DeleteExecute(Sender: TObject);
+  private
+    { Private declarations }
+    function manageui: Boolean;
+  public
+    { Public declarations }
+  end;
+
+var
+  f_RFQTemp: Tf_RFQTemp;
+
+implementation
+
+{$R *.dfm}
+
+uses dmPM;
+
+procedure Tf_RFQTemp.cxDBTextEdit1Exit(Sender: TObject);
+begin
+  manageui;
+end;
+
+procedure Tf_RFQTemp.cxGridDBTableView1SHIRTIDPropertiesCloseUp(
+  Sender: TObject);
+var detailid: Integer;
+begin
+  with dm_PM do
+  begin
+    detailid  := tb_RFQDetailITEMID.Value;
+
+    tb_RFQDetail.DisableControls;
+    tb_RFQDetail.Filtered := False;
+    tb_RFQDetail.Filter   := 'ITEMID = '+IntToStr(detailid);
+    tb_RFQDetail.Filtered := True;
+
+    if tb_RFQDetail.RecordCount > 1 then
+    begin
+      tb_RFQDetail.Last;
+      tb_RFQDetail.Delete;
+      MessageDlg('Item already on the list!', mtInformation, [mbOK], 0);
+      tb_RFQDetail.Filtered := False;
+      tb_RFQDetail.EnableControls;
+      Exit;
+    end
+    else
+    begin
+      tb_RFQDetail.Filtered := False;
+      tb_RFQDetail.EnableControls;
+    end;
+
+    if brw_GarmentDesc.Locate('ID', tb_RFQDetailITEMID.Value, []) then
+    begin
+      tb_RFQDetail.Edit;
+      tb_RFQDetailDESCRIPTION.Value:= brw_GarmentDescDESCRIPTION.AsString;
+      tb_RFQDetailFABRICID.Value   := brw_GarmentDescFABRICID.Value;
+      tb_RFQDetailFABRIC.Value     := brw_GarmentDescFABRIC.Value;
+      tb_RFQDetailUNIT.Value       := brw_GarmentDescUNIT.Value;
+      tb_RFQDetailQTY.Value        := 0;
+      tb_RFQDetailCOST.Value       := brw_GarmentDescPRICE.Value;
+      tb_RFQDetail.Post;
+    end;
+
+    manageui;
+  end;
+end;
+
+procedure Tf_RFQTemp.DeleteExecute(Sender: TObject);
+begin
+  with dm_PM do
+  begin
+     if not tb_RFQDetailID.IsNull then
+     begin
+       qry_RFQDetail.Close;
+       qry_RFQDetail.SQL[2]  := 'WHERE ID = :ID';
+       qry_RFQDetail.ParamByName('ID').Value := tb_RFQDetailID.Value;
+       qry_RFQDetail.Open();
+
+       if qry_RFQDetail.RecordCount > 0 then
+       begin
+         qry_RFQDetail.Edit;
+         qry_RFQDetailCANCELLED.Value          := True;
+         qry_RFQDetailCANCELLEDBYID.Value      := userid;
+         qry_RFQDetailCANCELLEDDATETIME.Value  := Now;
+         qry_RFQDetail.Post;
+         qry_RFQDetail.ApplyUpdates();
+       end;
+     end;
+   tb_RFQDetail.Delete;
+   manageui;
+  end;
+end;
+
+procedure Tf_RFQTemp.FormShow(Sender: TObject);
+begin
+  cxDBTextEdit1.SetFocus;
+  manageui;
+end;
+
+function Tf_RFQTemp.manageui: Boolean;
+begin
+  with dm_PM do
+  begin
+    cxDBTextEdit1.Style.BorderColor := $00121212;
+    if (qry_RFQCLIENT.IsNull) or (Trim(qry_RFQCLIENT.Value) = '') then
+    cxDBTextEdit1.Style.BorderColor := clRed;
+
+
+    if (qry_RFQCLIENT.IsNull) or (tb_LayoutDetail.RecordCount = 0)  then
+    btnSave.Enabled := False
+    else
+    btnSave.Enabled := True;
+
+    Result  := btnSave.Enabled;
+  end;
+end;
+
+procedure Tf_RFQTemp.PrintExecute(Sender: TObject);
+begin
+  //
+end;
+
+end.

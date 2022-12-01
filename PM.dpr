@@ -80,7 +80,12 @@ uses
   fClientsTemp in 'fClientsTemp.pas' {f_ClientsTemp},
   fLogin1 in 'fLogin1.pas' {f_Login1},
   fWorkLog in 'fWorkLog.pas' {f_WorkLog},
-  fViewBalance in 'fViewBalance.pas' {f_ViewBalance};
+  fViewBalance in 'fViewBalance.pas' {f_ViewBalance},
+  fLayout in 'fLayout.pas' {f_Layout},
+  fLayoutTemp in 'fLayoutTemp.pas' {f_layoutTemp},
+  fRFQ in 'fRFQ.pas' {f_RFQ},
+  fRFQDetail in 'fRFQDetail.pas' {f_RFQTemp},
+  FJOStatus in 'FJOStatus.pas' {f_JOStatus};
 
 {$R *.res}
 
@@ -91,5 +96,6 @@ begin
   Application.CreateForm(Tdm_PM, dm_PM);
   Application.CreateForm(Tf_menu, f_menu);
   Application.CreateForm(Tf_Login1, f_Login1);
+  Application.CreateForm(Tf_JOStatus, f_JOStatus);
   Application.Run;
 end.

@@ -88,6 +88,9 @@ type
     cxGrid1DBTableView1REMARKS: TcxGridDBColumn;
     cxStyleRepository2: TcxStyleRepository;
     cxStyle1: TcxStyle;
+    cxGrid1DBTableView1STATUS: TcxGridDBColumn;
+    SetStatus: TAction;
+    ToolButton1: TToolButton;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure EditExecute(Sender: TObject);
     procedure DeleteExecute(Sender: TObject);
@@ -105,9 +108,13 @@ type
     procedure EditOPSheetExecute(Sender: TObject);
     procedure CancelLayoutExecute(Sender: TObject);
     procedure Timer1Timer(Sender: TObject);
+    procedure cxGrid1DBTableView1JONOStylesGetContentStyle(
+      Sender: TcxCustomGridTableView; ARecord: TcxCustomGridRecord;
+      AItem: TcxCustomGridTableItem; var AStyle: TcxStyle);
+    procedure SetStatusExecute(Sender: TObject);
   private
     { Private declarations }
-    ARedStyle,AYellowStyle: TcxStyle;
+    ARedStyle, AVioletSyle, ABlueStyle, AGreenStyle, AYellowStyle, AOrangeStyle, AVermillionStyle, APinkStyle, ANoneStyle: TcxStyle;
     procedure user_rights;
     procedure notif;
   public
@@ -123,7 +130,7 @@ implementation
 {$R *.dfm}
 
 uses dmPM, fJO, DateUtils, fOPSheet, fLogTemp, fmenu, fMatRequest, fPassword,
-  fPBReassign, fEnterJO, fEditOPSheet;
+  fPBReassign, fEnterJO, fEditOPSheet, FJOStatus;
 
 procedure Tf_PMBoard.txt_searchKeyPress(Sender: TObject; var Key: Char);
 begin
@@ -258,6 +265,33 @@ procedure Tf_PMBoard.cxGrid1DBTableView1CellClick(
   AButton: TMouseButton; AShift: TShiftState; var AHandled: Boolean);
 begin
   btnOverride.Visible   := (dm_PM.brw_JOPOSTED.Value or dm_PM.brw_JOLAYOUT.Value) and dm_PM.brw_Rights.Locate('POLICYID;SELECT;ROLEID',VarArrayOf([5, True, dm_PM.roleid]), [])
+end;
+
+procedure Tf_PMBoard.cxGrid1DBTableView1JONOStylesGetContentStyle(
+  Sender: TcxCustomGridTableView; ARecord: TcxCustomGridRecord;
+  AItem: TcxCustomGridTableItem; var AStyle: TcxStyle);
+  var layout : string;
+begin
+  layout := '';
+  if ARecord.Values[cxGrid1DBTableView1STATUS.Index] <> Null then
+  layout  := ARecord.Values[cxGrid1DBTableView1STATUS.Index];
+
+  if layout = 'L' then
+  AStyle  :=  AVioletSyle
+  else if layout = 'P' then
+  AStyle  := ABlueStyle
+  else if layout = 'B' then
+  AStyle  := AGreenStyle
+  else if layout = 'H' then
+  AStyle  := AYellowStyle
+  else if layout = 'C' then
+  AStyle  := AOrangeStyle
+  else if layout = 'S' then
+  AStyle  := AVermillionStyle
+  else if layout = 'Z' then
+  AStyle  := APinkStyle
+  else
+  AStyle  := ANoneStyle;
 end;
 
 procedure Tf_PMBoard.DeleteExecute(Sender: TObject);
@@ -727,10 +761,32 @@ end;
 procedure Tf_PMBoard.FormCreate(Sender: TObject);
 begin
   ARedStyle            := TcxStyle.Create(Self);
-  ARedStyle.Color      := clRed;
+  ARedStyle.Color      := $008080FF;
+
+  AVioletSyle          := TcxStyle.Create(Self);
+  AVioletSyle.Color    := $0080FF80;
+
+  ABlueStyle           := TcxStyle.Create(Self);
+  ABlueStyle.Color     := clAqua;
+
+  AGreenStyle          := TcxStyle.Create(Self);
+  AGreenStyle.Color    := $00FF8000;
 
   AYellowStyle         := TcxStyle.Create(Self);
-  AYellowStyle.Color   := clYellow;
+  AYellowStyle.Color   := $0080FFFF;
+
+  AOrangeStyle         := TcxStyle.Create(Self);
+  AOrangeStyle.Color   := $00C080FF;
+
+  AVermillionStyle     := TcxStyle.Create(Self);
+  AVermillionStyle.Color  := $000080FF;
+
+  APinkStyle           := TcxStyle.Create(Self);
+  APinkStyle.Color     := $008000FF;
+
+  ANoneStyle           := TcxStyle.Create(Self);
+  ANoneStyle.Color     := clWhite;
+
 
   date_1.Date := StartOfTheMonth(Date);
   date_2.Date := Now;
@@ -948,6 +1004,31 @@ begin
       end;
     end;
     brw_JO.Open();
+  end;
+end;
+
+procedure Tf_PMBoard.SetStatusExecute(Sender: TObject);
+begin
+  with dm_PM do
+  begin
+    if brw_JO.RecordCount > 0 then
+    begin
+
+      qry_JO.Close;
+      qry_JO.SQL[2] := 'WHERE ID = '+brw_JOID.AsString;
+      qry_JO.Open();
+
+      qry_JO.Edit;
+      f_JOStatus  := Tf_JOStatus.Create(Self);
+      f_JOStatus.Caption  := 'Set Status';
+      if f_JOStatus.ShowModal = mrOk then
+      begin
+        qry_JO.Post;
+        qry_JO.ApplyUpdates();
+
+        search;
+      end;
+    end;
   end;
 end;
 

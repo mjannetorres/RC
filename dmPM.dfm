@@ -9,6 +9,7 @@ object dm_PM: Tdm_PM
       'User_Name=rcadmin'
       'Password=rcadmin123'
       'DriverID=MySQL')
+    Connected = True
     LoginPrompt = False
     Left = 16
     Top = 40
@@ -165,6 +166,13 @@ object dm_PM: Tdm_PM
       FieldName = 'LAYOUT'
       Origin = 'LAYOUT'
     end
+    object brw_JOSTATUS: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'STATUS'
+      Origin = '`STATUS`'
+      FixedChar = True
+      Size = 1
+    end
   end
   object qry_JO: TFDQuery
     CachedUpdates = True
@@ -311,6 +319,13 @@ object dm_PM: Tdm_PM
       AutoGenerateValue = arDefault
       FieldName = 'OVERRIDEBY'
       Origin = 'OVERRIDEBY'
+    end
+    object qry_JOSTATUS: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'STATUS'
+      Origin = '`STATUS`'
+      FixedChar = True
+      Size = 1
     end
   end
   object brw_Client: TFDQuery
@@ -2364,6 +2379,7 @@ object dm_PM: Tdm_PM
     end
   end
   object qry_company: TFDQuery
+    Active = True
     CachedUpdates = True
     Connection = dbConn
     SQL.Strings = (
@@ -3175,6 +3191,7 @@ object dm_PM: Tdm_PM
     Top = 120
   end
   object brw_Emp1: TFDQuery
+    Active = True
     OnCalcFields = brw_Emp1CalcFields
     Connection = dbConn
     SQL.Strings = (
@@ -13550,5 +13567,654 @@ object dm_PM: Tdm_PM
       ';')
     Left = 56
     Top = 592
+  end
+  object brw_Layout: TFDQuery
+    Connection = dbConn
+    SQL.Strings = (
+      'SELECT LO_HEADER.*, JO_CLIENTS.NAME AS CLIENT'
+      'FROM LO_HEADER'
+      'INNER JOIN JO_CLIENTS ON JO_CLIENTS.ID = LO_HEADER.CLIENTID'
+      ''
+      'ORDER BY LO_HEADER.ID DESC;')
+    Left = 672
+    Top = 768
+    object brw_LayoutID: TFDAutoIncField
+      FieldName = 'ID'
+      Origin = 'ID'
+      ProviderFlags = [pfInWhere, pfInKey]
+    end
+    object brw_LayoutCLIENTID: TIntegerField
+      FieldName = 'CLIENTID'
+      Origin = 'CLIENTID'
+      Required = True
+    end
+    object brw_LayoutPARTICULARS: TStringField
+      FieldName = 'PARTICULARS'
+      Origin = 'PARTICULARS'
+      Required = True
+      Size = 250
+    end
+    object brw_LayoutNOTES: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'NOTES'
+      Origin = 'NOTES'
+      Size = 250
+    end
+    object brw_LayoutORDERED: TBooleanField
+      FieldName = 'ORDERED'
+      Origin = 'ORDERED'
+      Required = True
+    end
+    object brw_LayoutJONO: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'JONO'
+      Origin = 'JONO'
+    end
+    object brw_LayoutCREATEDBYID: TIntegerField
+      FieldName = 'CREATEDBYID'
+      Origin = 'CREATEDBYID'
+      Required = True
+    end
+    object brw_LayoutCREATEDDATETIME: TDateTimeField
+      FieldName = 'CREATEDDATETIME'
+      Origin = 'CREATEDDATETIME'
+      Required = True
+    end
+    object brw_LayoutUPDATEDBYID: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'UPDATEDBYID'
+      Origin = 'UPDATEDBYID'
+    end
+    object brw_LayoutUPDATEDDATETIME: TDateTimeField
+      AutoGenerateValue = arDefault
+      FieldName = 'UPDATEDDATETIME'
+      Origin = 'UPDATEDDATETIME'
+    end
+    object brw_LayoutCANCELLED: TBooleanField
+      FieldName = 'CANCELLED'
+      Origin = 'CANCELLED'
+      Required = True
+    end
+    object brw_LayoutCANCELLEDBYID: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'CANCELLEDBYID'
+      Origin = 'CANCELLEDBYID'
+    end
+    object brw_LayoutCANCELLEDDATETIME: TDateTimeField
+      AutoGenerateValue = arDefault
+      FieldName = 'CANCELLEDDATETIME'
+      Origin = 'CANCELLEDDATETIME'
+    end
+    object brw_LayoutCLIENT: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'CLIENT'
+      Origin = '`NAME`'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 100
+    end
+  end
+  object tb_LayoutDetail: TFDMemTable
+    FetchOptions.AssignedValues = [evMode]
+    FetchOptions.Mode = fmAll
+    ResourceOptions.AssignedValues = [rvSilentMode]
+    ResourceOptions.SilentMode = True
+    UpdateOptions.AssignedValues = [uvCheckRequired, uvAutoCommitUpdates]
+    UpdateOptions.CheckRequired = False
+    UpdateOptions.AutoCommitUpdates = True
+    Left = 184
+    Top = 680
+    object tb_LayoutDetailID: TIntegerField
+      FieldName = 'ID'
+    end
+    object tb_LayoutDetailDESCRIPTION: TStringField
+      FieldName = 'DESCRIPTION'
+      Size = 50
+    end
+    object tb_LayoutDetailHEADERID: TIntegerField
+      FieldName = 'HEADERID'
+    end
+    object tb_LayoutDetailFABRICID: TIntegerField
+      FieldName = 'FABRICID'
+    end
+    object tb_LayoutDetailREMARKS: TStringField
+      FieldName = 'REMARKS'
+      Size = 100
+    end
+    object tb_LayoutDetailITEMID: TIntegerField
+      FieldName = 'ITEMID'
+    end
+    object tb_LayoutDetailFABRIC: TStringField
+      FieldName = 'FABRIC'
+    end
+  end
+  object qry_Layout: TFDQuery
+    CachedUpdates = True
+    Connection = dbConn
+    SQL.Strings = (
+      'SELECT *'
+      'FROM LO_HEADER'
+      ''
+      ';')
+    Left = 416
+    Top = 584
+    object qry_LayoutID: TFDAutoIncField
+      FieldName = 'ID'
+      Origin = 'ID'
+      ProviderFlags = [pfInWhere, pfInKey]
+    end
+    object qry_LayoutCLIENTID: TIntegerField
+      FieldName = 'CLIENTID'
+      Origin = 'CLIENTID'
+      Required = True
+    end
+    object qry_LayoutPARTICULARS: TStringField
+      FieldName = 'PARTICULARS'
+      Origin = 'PARTICULARS'
+      Required = True
+      Size = 250
+    end
+    object qry_LayoutNOTES: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'NOTES'
+      Origin = 'NOTES'
+      Size = 250
+    end
+    object qry_LayoutORDERED: TBooleanField
+      FieldName = 'ORDERED'
+      Origin = 'ORDERED'
+      Required = True
+    end
+    object qry_LayoutJONO: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'JONO'
+      Origin = 'JONO'
+    end
+    object qry_LayoutCREATEDBYID: TIntegerField
+      FieldName = 'CREATEDBYID'
+      Origin = 'CREATEDBYID'
+      Required = True
+    end
+    object qry_LayoutCREATEDDATETIME: TDateTimeField
+      FieldName = 'CREATEDDATETIME'
+      Origin = 'CREATEDDATETIME'
+      Required = True
+    end
+    object qry_LayoutUPDATEDBYID: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'UPDATEDBYID'
+      Origin = 'UPDATEDBYID'
+    end
+    object qry_LayoutCANCELLED: TBooleanField
+      FieldName = 'CANCELLED'
+      Origin = 'CANCELLED'
+      Required = True
+    end
+    object qry_LayoutCANCELLEDBYID: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'CANCELLEDBYID'
+      Origin = 'CANCELLEDBYID'
+    end
+    object qry_LayoutCANCELLEDDATETIME: TDateTimeField
+      AutoGenerateValue = arDefault
+      FieldName = 'CANCELLEDDATETIME'
+      Origin = 'CANCELLEDDATETIME'
+    end
+    object qry_LayoutUPDATEDDATETIME: TDateTimeField
+      AutoGenerateValue = arDefault
+      FieldName = 'UPDATEDDATETIME'
+      Origin = 'UPDATEDDATETIME'
+    end
+  end
+  object qry_LayoutDetail: TFDQuery
+    CachedUpdates = True
+    Connection = dbConn
+    SQL.Strings = (
+      'SELECT *'
+      'FROM LO_DETAIL'
+      ''
+      ';')
+    Left = 456
+    Top = 584
+    object qry_LayoutDetailID: TFDAutoIncField
+      FieldName = 'ID'
+      Origin = 'ID'
+      ProviderFlags = [pfInWhere, pfInKey]
+    end
+    object qry_LayoutDetailHEADERID: TIntegerField
+      FieldName = 'HEADERID'
+      Origin = 'HEADERID'
+      Required = True
+    end
+    object qry_LayoutDetailITEMID: TIntegerField
+      FieldName = 'ITEMID'
+      Origin = 'ITEMID'
+      Required = True
+    end
+    object qry_LayoutDetailDESCRIPTION: TStringField
+      FieldName = 'DESCRIPTION'
+      Origin = 'DESCRIPTION'
+      Required = True
+      Size = 50
+    end
+    object qry_LayoutDetailFABRICID: TIntegerField
+      FieldName = 'FABRICID'
+      Origin = 'FABRICID'
+      Required = True
+    end
+    object qry_LayoutDetailREMARKS: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'REMARKS'
+      Origin = 'REMARKS'
+      Size = 100
+    end
+    object qry_LayoutDetailCANCELLED: TBooleanField
+      FieldName = 'CANCELLED'
+      Origin = 'CANCELLED'
+      Required = True
+    end
+    object qry_LayoutDetailCANCELLEDBYID: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'CANCELLEDBYID'
+      Origin = 'CANCELLEDBYID'
+    end
+    object qry_LayoutDetailCANCELLEDDATETIME: TDateTimeField
+      AutoGenerateValue = arDefault
+      FieldName = 'CANCELLEDDATETIME'
+      Origin = 'CANCELLEDDATETIME'
+    end
+    object qry_LayoutDetailFABRIC: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'FABRIC'
+      Origin = 'FABRIC'
+    end
+  end
+  object upd_lo: TFDQuery
+    Connection = dbConn
+    SQL.Strings = (
+      'UPDATE LO_HEADER'
+      'SET PARTICULARS = '#39'test'#39
+      'WHERE ID = 8'
+      ';')
+    Left = 16
+    Top = 312
+  end
+  object del_LoDetails: TFDQuery
+    Connection = dbConn
+    SQL.Strings = (
+      'UPDATE LO_DETAIL'
+      'SET CANCELLED = TRUE'
+      ''
+      ''
+      'WHERE ID = 0'
+      ';')
+    Left = 48
+    Top = 640
+  end
+  object brw_RFQ: TFDQuery
+    Connection = dbConn
+    SQL.Strings = (
+      'SELECT *'
+      'FROM RFQ_HEADER'
+      ''
+      'ORDER BY CREATEDDATETIME DESC;')
+    Left = 720
+    Top = 768
+    object brw_RFQID: TFDAutoIncField
+      FieldName = 'ID'
+      Origin = 'ID'
+      ProviderFlags = [pfInWhere, pfInKey]
+    end
+    object brw_RFQCLIENT: TStringField
+      FieldName = 'CLIENT'
+      Origin = 'CLIENT'
+      Required = True
+      Size = 50
+    end
+    object brw_RFQCONTACTNO: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'CONTACTNO'
+      Origin = 'CONTACTNO'
+      Size = 30
+    end
+    object brw_RFQEMAIL: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'EMAIL'
+      Origin = 'EMAIL'
+      Size = 30
+    end
+    object brw_RFQADDRESS: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'ADDRESS'
+      Origin = 'ADDRESS'
+      Size = 100
+    end
+    object brw_RFQREMARKS: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'REMARKS'
+      Origin = 'REMARKS'
+      Size = 255
+    end
+    object brw_RFQCREATEDBYID: TIntegerField
+      FieldName = 'CREATEDBYID'
+      Origin = 'CREATEDBYID'
+      Required = True
+    end
+    object brw_RFQCREATEDDATETIME: TDateTimeField
+      FieldName = 'CREATEDDATETIME'
+      Origin = 'CREATEDDATETIME'
+      Required = True
+    end
+    object brw_RFQUPDATEDBYID: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'UPDATEDBYID'
+      Origin = 'UPDATEDBYID'
+    end
+    object brw_RFQUPDATEDDATETIME: TDateTimeField
+      AutoGenerateValue = arDefault
+      FieldName = 'UPDATEDDATETIME'
+      Origin = 'UPDATEDDATETIME'
+    end
+    object brw_RFQCANCELLED: TBooleanField
+      FieldName = 'CANCELLED'
+      Origin = 'CANCELLED'
+      Required = True
+    end
+    object brw_RFQCANCELLEDBYID: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'CANCELLEDBYID'
+      Origin = 'CANCELLEDBYID'
+    end
+    object brw_RFQCANCELLEDDATETIME: TDateTimeField
+      AutoGenerateValue = arDefault
+      FieldName = 'CANCELLEDDATETIME'
+      Origin = 'CANCELLEDDATETIME'
+    end
+    object brw_RFQSUMMARY: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'SUMMARY'
+      Origin = 'SUMMARY'
+      Size = 500
+    end
+    object brw_RFQTOTAL: TSingleField
+      AutoGenerateValue = arDefault
+      FieldName = 'TOTAL'
+      Origin = 'TOTAL'
+      DisplayFormat = '###,###,##0.00'
+      currency = True
+    end
+  end
+  object qry_RFQ: TFDQuery
+    Active = True
+    CachedUpdates = True
+    Connection = dbConn
+    SQL.Strings = (
+      'SELECT *'
+      'FROM RFQ_HEADER'
+      ''
+      ';')
+    Left = 320
+    Top = 640
+    object qry_RFQID: TFDAutoIncField
+      FieldName = 'ID'
+      Origin = 'ID'
+      ProviderFlags = [pfInWhere, pfInKey]
+    end
+    object qry_RFQCLIENT: TStringField
+      FieldName = 'CLIENT'
+      Origin = 'CLIENT'
+      Required = True
+      Size = 50
+    end
+    object qry_RFQCONTACTNO: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'CONTACTNO'
+      Origin = 'CONTACTNO'
+      Size = 30
+    end
+    object qry_RFQEMAIL: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'EMAIL'
+      Origin = 'EMAIL'
+      Size = 30
+    end
+    object qry_RFQADDRESS: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'ADDRESS'
+      Origin = 'ADDRESS'
+      Size = 100
+    end
+    object qry_RFQREMARKS: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'REMARKS'
+      Origin = 'REMARKS'
+      Size = 255
+    end
+    object qry_RFQTOTAL: TSingleField
+      AutoGenerateValue = arDefault
+      FieldName = 'TOTAL'
+      Origin = 'TOTAL'
+    end
+    object qry_RFQSUMMARY: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'SUMMARY'
+      Origin = 'SUMMARY'
+      Size = 500
+    end
+    object qry_RFQCREATEDBYID: TIntegerField
+      FieldName = 'CREATEDBYID'
+      Origin = 'CREATEDBYID'
+      Required = True
+    end
+    object qry_RFQCREATEDDATETIME: TDateTimeField
+      FieldName = 'CREATEDDATETIME'
+      Origin = 'CREATEDDATETIME'
+      Required = True
+    end
+    object qry_RFQUPDATEDBYID: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'UPDATEDBYID'
+      Origin = 'UPDATEDBYID'
+    end
+    object qry_RFQUPDATEDDATETIME: TDateTimeField
+      AutoGenerateValue = arDefault
+      FieldName = 'UPDATEDDATETIME'
+      Origin = 'UPDATEDDATETIME'
+    end
+    object qry_RFQCANCELLED: TBooleanField
+      FieldName = 'CANCELLED'
+      Origin = 'CANCELLED'
+      Required = True
+    end
+    object qry_RFQCANCELLEDBYID: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'CANCELLEDBYID'
+      Origin = 'CANCELLEDBYID'
+    end
+    object qry_RFQCANCELLEDDATETIME: TDateTimeField
+      AutoGenerateValue = arDefault
+      FieldName = 'CANCELLEDDATETIME'
+      Origin = 'CANCELLEDDATETIME'
+    end
+  end
+  object qry_RFQDetail: TFDQuery
+    Active = True
+    CachedUpdates = True
+    Connection = dbConn
+    SQL.Strings = (
+      'SELECT *'
+      'FROM RFQ_DETAIL'
+      ''
+      ';')
+    Left = 368
+    Top = 640
+    object qry_RFQDetailID: TFDAutoIncField
+      FieldName = 'ID'
+      Origin = 'ID'
+      ProviderFlags = [pfInWhere, pfInKey]
+    end
+    object qry_RFQDetailHEADERID: TIntegerField
+      FieldName = 'HEADERID'
+      Origin = 'HEADERID'
+      Required = True
+    end
+    object qry_RFQDetailITEMID: TIntegerField
+      FieldName = 'ITEMID'
+      Origin = 'ITEMID'
+      Required = True
+    end
+    object qry_RFQDetailDESCRIPTION: TStringField
+      FieldName = 'DESCRIPTION'
+      Origin = 'DESCRIPTION'
+      Required = True
+      Size = 100
+    end
+    object qry_RFQDetailFABRICID: TIntegerField
+      FieldName = 'FABRICID'
+      Origin = 'FABRICID'
+      Required = True
+    end
+    object qry_RFQDetailFABRIC: TStringField
+      FieldName = 'FABRIC'
+      Origin = 'FABRIC'
+      Required = True
+      Size = 100
+    end
+    object qry_RFQDetailUNIT: TStringField
+      FieldName = 'UNIT'
+      Origin = 'UNIT'
+      Required = True
+    end
+    object qry_RFQDetailQTY: TSingleField
+      FieldName = 'QTY'
+      Origin = 'QTY'
+      Required = True
+    end
+    object qry_RFQDetailCOST: TSingleField
+      FieldName = 'COST'
+      Origin = 'COST'
+      Required = True
+      DisplayFormat = '###,###,##0.00'
+      currency = True
+    end
+    object qry_RFQDetailTOTAL: TSingleField
+      FieldName = 'TOTAL'
+      Origin = 'TOTAL'
+      Required = True
+      DisplayFormat = '###,###,##0.00'
+      currency = True
+    end
+    object qry_RFQDetailREMARKS: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'REMARKS'
+      Origin = 'REMARKS'
+      Size = 100
+    end
+    object qry_RFQDetailCANCELLED: TBooleanField
+      FieldName = 'CANCELLED'
+      Origin = 'CANCELLED'
+      Required = True
+    end
+    object qry_RFQDetailCANCELLEDBYID: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'CANCELLEDBYID'
+      Origin = 'CANCELLEDBYID'
+    end
+    object qry_RFQDetailCANCELLEDDATETIME: TDateTimeField
+      AutoGenerateValue = arDefault
+      FieldName = 'CANCELLEDDATETIME'
+      Origin = 'CANCELLEDDATETIME'
+    end
+  end
+  object tb_RFQDetail: TFDMemTable
+    Active = True
+    OnCalcFields = tb_RFQDetailCalcFields
+    FetchOptions.AssignedValues = [evMode]
+    FetchOptions.Mode = fmAll
+    ResourceOptions.AssignedValues = [rvSilentMode]
+    ResourceOptions.SilentMode = True
+    UpdateOptions.AssignedValues = [uvCheckRequired, uvAutoCommitUpdates]
+    UpdateOptions.CheckRequired = False
+    UpdateOptions.AutoCommitUpdates = True
+    Left = 240
+    Top = 680
+    object tb_RFQDetailITEMID: TIntegerField
+      FieldName = 'ITEMID'
+      Origin = 'ITEMID'
+      Required = True
+    end
+    object tb_RFQDetailDESCRIPTION: TStringField
+      FieldName = 'DESCRIPTION'
+      Origin = 'DESCRIPTION'
+      Required = True
+      Size = 100
+    end
+    object tb_RFQDetailFABRICID: TIntegerField
+      FieldName = 'FABRICID'
+      Origin = 'FABRICID'
+      Required = True
+    end
+    object tb_RFQDetailFABRIC: TStringField
+      FieldName = 'FABRIC'
+      Origin = 'FABRIC'
+      Required = True
+      Size = 100
+    end
+    object tb_RFQDetailUNIT: TStringField
+      FieldName = 'UNIT'
+      Origin = 'UNIT'
+      Required = True
+    end
+    object tb_RFQDetailQTY: TSingleField
+      FieldName = 'QTY'
+      Origin = 'QTY'
+      Required = True
+    end
+    object tb_RFQDetailCOST: TSingleField
+      FieldName = 'COST'
+      Origin = 'COST'
+      Required = True
+      DisplayFormat = '###,###,##0.00'
+      currency = True
+    end
+    object tb_RFQDetailREMARKS: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'REMARKS'
+      Origin = 'REMARKS'
+      Size = 100
+    end
+    object tb_RFQDetailTOTAL: TFloatField
+      FieldKind = fkCalculated
+      FieldName = 'TOTAL'
+      DisplayFormat = '###,###,##0.00'
+      currency = True
+      Calculated = True
+    end
+    object tb_RFQDetailID: TIntegerField
+      FieldName = 'ID'
+    end
+  end
+  object upd_RFQ: TFDQuery
+    Connection = dbConn
+    SQL.Strings = (
+      'UPDATE RFQ_HEADER'
+      'SET SUMMARY = '#39'test'#39','
+      'TOTAL = 0'
+      'WHERE ID = 8'
+      ';')
+    Left = 16
+    Top = 360
+  end
+  object del_RFQDetail: TFDQuery
+    Connection = dbConn
+    SQL.Strings = (
+      'UPDATE RFQ_DETAIL'
+      'SET CANCELLED = TRUE'
+      ''
+      ''
+      'WHERE ID = 0'
+      ';')
+    Left = 40
+    Top = 688
   end
 end
