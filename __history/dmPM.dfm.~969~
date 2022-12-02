@@ -166,6 +166,13 @@ object dm_PM: Tdm_PM
       FieldName = 'LAYOUT'
       Origin = 'LAYOUT'
     end
+    object brw_JOSTATUS: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'STATUS'
+      Origin = '`STATUS`'
+      FixedChar = True
+      Size = 1
+    end
   end
   object qry_JO: TFDQuery
     CachedUpdates = True
@@ -312,6 +319,13 @@ object dm_PM: Tdm_PM
       AutoGenerateValue = arDefault
       FieldName = 'OVERRIDEBY'
       Origin = 'OVERRIDEBY'
+    end
+    object qry_JOSTATUS: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'STATUS'
+      Origin = '`STATUS`'
+      FixedChar = True
+      Size = 1
     end
   end
   object brw_Client: TFDQuery
@@ -2365,6 +2379,7 @@ object dm_PM: Tdm_PM
     end
   end
   object qry_company: TFDQuery
+    Active = True
     CachedUpdates = True
     Connection = dbConn
     SQL.Strings = (
@@ -3176,6 +3191,7 @@ object dm_PM: Tdm_PM
     Top = 120
   end
   object brw_Emp1: TFDQuery
+    Active = True
     OnCalcFields = brw_Emp1CalcFields
     Connection = dbConn
     SQL.Strings = (
@@ -13929,6 +13945,8 @@ object dm_PM: Tdm_PM
     end
   end
   object qry_RFQ: TFDQuery
+    Active = True
+    CachedUpdates = True
     Connection = dbConn
     SQL.Strings = (
       'SELECT *'
@@ -14020,6 +14038,8 @@ object dm_PM: Tdm_PM
     end
   end
   object qry_RFQDetail: TFDQuery
+    Active = True
+    CachedUpdates = True
     Connection = dbConn
     SQL.Strings = (
       'SELECT *'
@@ -14105,5 +14125,96 @@ object dm_PM: Tdm_PM
       FieldName = 'CANCELLEDDATETIME'
       Origin = 'CANCELLEDDATETIME'
     end
+  end
+  object tb_RFQDetail: TFDMemTable
+    Active = True
+    OnCalcFields = tb_RFQDetailCalcFields
+    FetchOptions.AssignedValues = [evMode]
+    FetchOptions.Mode = fmAll
+    ResourceOptions.AssignedValues = [rvSilentMode]
+    ResourceOptions.SilentMode = True
+    UpdateOptions.AssignedValues = [uvCheckRequired, uvAutoCommitUpdates]
+    UpdateOptions.CheckRequired = False
+    UpdateOptions.AutoCommitUpdates = True
+    Left = 240
+    Top = 680
+    object tb_RFQDetailITEMID: TIntegerField
+      FieldName = 'ITEMID'
+      Origin = 'ITEMID'
+      Required = True
+    end
+    object tb_RFQDetailDESCRIPTION: TStringField
+      FieldName = 'DESCRIPTION'
+      Origin = 'DESCRIPTION'
+      Required = True
+      Size = 100
+    end
+    object tb_RFQDetailFABRICID: TIntegerField
+      FieldName = 'FABRICID'
+      Origin = 'FABRICID'
+      Required = True
+    end
+    object tb_RFQDetailFABRIC: TStringField
+      FieldName = 'FABRIC'
+      Origin = 'FABRIC'
+      Required = True
+      Size = 100
+    end
+    object tb_RFQDetailUNIT: TStringField
+      FieldName = 'UNIT'
+      Origin = 'UNIT'
+      Required = True
+    end
+    object tb_RFQDetailQTY: TSingleField
+      FieldName = 'QTY'
+      Origin = 'QTY'
+      Required = True
+    end
+    object tb_RFQDetailCOST: TSingleField
+      FieldName = 'COST'
+      Origin = 'COST'
+      Required = True
+      DisplayFormat = '###,###,##0.00'
+      currency = True
+    end
+    object tb_RFQDetailREMARKS: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'REMARKS'
+      Origin = 'REMARKS'
+      Size = 100
+    end
+    object tb_RFQDetailTOTAL: TFloatField
+      FieldKind = fkCalculated
+      FieldName = 'TOTAL'
+      DisplayFormat = '###,###,##0.00'
+      currency = True
+      Calculated = True
+    end
+    object tb_RFQDetailID: TIntegerField
+      FieldName = 'ID'
+    end
+  end
+  object upd_RFQ: TFDQuery
+    Connection = dbConn
+    SQL.Strings = (
+      'UPDATE RFQ_HEADER'
+      'SET SUMMARY = '#39'test'#39','
+      'TOTAL = 0'
+      'WHERE ID = 8'
+      ';')
+    Left = 16
+    Top = 360
+  end
+  object del_RFQDetail: TFDQuery
+    Connection = dbConn
+    SQL.Strings = (
+      'UPDATE RFQ_DETAIL'
+      'SET CANCELLED = TRUE'
+      ''
+      ''
+      'WHERE ID = 0'
+      ';')
+    Left = 40
+    Top = 688
   end
 end

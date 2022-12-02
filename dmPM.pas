@@ -2253,8 +2253,6 @@ type
     qry_LayoutCLIENTID: TIntegerField;
     qry_LayoutPARTICULARS: TStringField;
     qry_LayoutNOTES: TStringField;
-    qry_LayoutORDERED: TBooleanField;
-    qry_LayoutJONO: TIntegerField;
     qry_LayoutCREATEDBYID: TIntegerField;
     qry_LayoutCREATEDDATETIME: TDateTimeField;
     qry_LayoutUPDATEDBYID: TIntegerField;
@@ -2281,8 +2279,6 @@ type
     brw_LayoutCLIENTID: TIntegerField;
     brw_LayoutPARTICULARS: TStringField;
     brw_LayoutNOTES: TStringField;
-    brw_LayoutORDERED: TBooleanField;
-    brw_LayoutJONO: TIntegerField;
     brw_LayoutCREATEDBYID: TIntegerField;
     brw_LayoutCREATEDDATETIME: TDateTimeField;
     brw_LayoutUPDATEDBYID: TIntegerField;

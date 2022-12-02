@@ -166,6 +166,13 @@ object dm_PM: Tdm_PM
       FieldName = 'LAYOUT'
       Origin = 'LAYOUT'
     end
+    object brw_JOSTATUS: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'STATUS'
+      Origin = '`STATUS`'
+      FixedChar = True
+      Size = 1
+    end
   end
   object qry_JO: TFDQuery
     CachedUpdates = True
@@ -312,6 +319,13 @@ object dm_PM: Tdm_PM
       AutoGenerateValue = arDefault
       FieldName = 'OVERRIDEBY'
       Origin = 'OVERRIDEBY'
+    end
+    object qry_JOSTATUS: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'STATUS'
+      Origin = '`STATUS`'
+      FixedChar = True
+      Size = 1
     end
   end
   object brw_Client: TFDQuery
@@ -2365,6 +2379,7 @@ object dm_PM: Tdm_PM
     end
   end
   object qry_company: TFDQuery
+    Active = True
     CachedUpdates = True
     Connection = dbConn
     SQL.Strings = (
@@ -3176,6 +3191,7 @@ object dm_PM: Tdm_PM
     Top = 120
   end
   object brw_Emp1: TFDQuery
+    Active = True
     OnCalcFields = brw_Emp1CalcFields
     Connection = dbConn
     SQL.Strings = (
@@ -13566,6 +13582,7 @@ object dm_PM: Tdm_PM
       FieldName = 'ID'
       Origin = 'ID'
       ProviderFlags = [pfInWhere, pfInKey]
+      ReadOnly = True
     end
     object brw_LayoutCLIENTID: TIntegerField
       FieldName = 'CLIENTID'
@@ -13583,16 +13600,6 @@ object dm_PM: Tdm_PM
       FieldName = 'NOTES'
       Origin = 'NOTES'
       Size = 250
-    end
-    object brw_LayoutORDERED: TBooleanField
-      FieldName = 'ORDERED'
-      Origin = 'ORDERED'
-      Required = True
-    end
-    object brw_LayoutJONO: TIntegerField
-      AutoGenerateValue = arDefault
-      FieldName = 'JONO'
-      Origin = 'JONO'
     end
     object brw_LayoutCREATEDBYID: TIntegerField
       FieldName = 'CREATEDBYID'
@@ -13686,6 +13693,7 @@ object dm_PM: Tdm_PM
       FieldName = 'ID'
       Origin = 'ID'
       ProviderFlags = [pfInWhere, pfInKey]
+      ReadOnly = True
     end
     object qry_LayoutCLIENTID: TIntegerField
       FieldName = 'CLIENTID'
@@ -13703,16 +13711,6 @@ object dm_PM: Tdm_PM
       FieldName = 'NOTES'
       Origin = 'NOTES'
       Size = 250
-    end
-    object qry_LayoutORDERED: TBooleanField
-      FieldName = 'ORDERED'
-      Origin = 'ORDERED'
-      Required = True
-    end
-    object qry_LayoutJONO: TIntegerField
-      AutoGenerateValue = arDefault
-      FieldName = 'JONO'
-      Origin = 'JONO'
     end
     object qry_LayoutCREATEDBYID: TIntegerField
       FieldName = 'CREATEDBYID'
@@ -13764,6 +13762,7 @@ object dm_PM: Tdm_PM
       FieldName = 'ID'
       Origin = 'ID'
       ProviderFlags = [pfInWhere, pfInKey]
+      ReadOnly = True
     end
     object qry_LayoutDetailHEADERID: TIntegerField
       FieldName = 'HEADERID'
@@ -13848,6 +13847,7 @@ object dm_PM: Tdm_PM
       FieldName = 'ID'
       Origin = 'ID'
       ProviderFlags = [pfInWhere, pfInKey]
+      ReadOnly = True
     end
     object brw_RFQCLIENT: TStringField
       FieldName = 'CLIENT'
@@ -13929,6 +13929,8 @@ object dm_PM: Tdm_PM
     end
   end
   object qry_RFQ: TFDQuery
+    Active = True
+    CachedUpdates = True
     Connection = dbConn
     SQL.Strings = (
       'SELECT *'
@@ -13941,6 +13943,7 @@ object dm_PM: Tdm_PM
       FieldName = 'ID'
       Origin = 'ID'
       ProviderFlags = [pfInWhere, pfInKey]
+      ReadOnly = True
     end
     object qry_RFQCLIENT: TStringField
       FieldName = 'CLIENT'
@@ -14020,6 +14023,8 @@ object dm_PM: Tdm_PM
     end
   end
   object qry_RFQDetail: TFDQuery
+    Active = True
+    CachedUpdates = True
     Connection = dbConn
     SQL.Strings = (
       'SELECT *'
@@ -14032,6 +14037,7 @@ object dm_PM: Tdm_PM
       FieldName = 'ID'
       Origin = 'ID'
       ProviderFlags = [pfInWhere, pfInKey]
+      ReadOnly = True
     end
     object qry_RFQDetailHEADERID: TIntegerField
       FieldName = 'HEADERID'
@@ -14107,6 +14113,8 @@ object dm_PM: Tdm_PM
     end
   end
   object tb_RFQDetail: TFDMemTable
+    Active = True
+    OnCalcFields = tb_RFQDetailCalcFields
     FetchOptions.AssignedValues = [evMode]
     FetchOptions.Mode = fmAll
     ResourceOptions.AssignedValues = [rvSilentMode]
@@ -14116,12 +14124,6 @@ object dm_PM: Tdm_PM
     UpdateOptions.AutoCommitUpdates = True
     Left = 240
     Top = 680
-    object tb_RFQDetailID: TFDAutoIncField
-      FieldName = 'ID'
-      Origin = 'ID'
-      ProviderFlags = [pfInWhere, pfInKey]
-      ReadOnly = True
-    end
     object tb_RFQDetailITEMID: TIntegerField
       FieldName = 'ITEMID'
       Origin = 'ITEMID'
@@ -14161,18 +14163,44 @@ object dm_PM: Tdm_PM
       DisplayFormat = '###,###,##0.00'
       currency = True
     end
-    object tb_RFQDetailTOTAL: TSingleField
-      FieldName = 'TOTAL'
-      Origin = 'TOTAL'
-      Required = True
-      DisplayFormat = '###,###,##0.00'
-      currency = True
-    end
     object tb_RFQDetailREMARKS: TStringField
       AutoGenerateValue = arDefault
       FieldName = 'REMARKS'
       Origin = 'REMARKS'
       Size = 100
     end
+    object tb_RFQDetailTOTAL: TFloatField
+      FieldKind = fkCalculated
+      FieldName = 'TOTAL'
+      DisplayFormat = '###,###,##0.00'
+      currency = True
+      Calculated = True
+    end
+    object tb_RFQDetailID: TIntegerField
+      FieldName = 'ID'
+    end
+  end
+  object upd_RFQ: TFDQuery
+    Connection = dbConn
+    SQL.Strings = (
+      'UPDATE RFQ_HEADER'
+      'SET SUMMARY = '#39'test'#39','
+      'TOTAL = 0'
+      'WHERE ID = 8'
+      ';')
+    Left = 16
+    Top = 360
+  end
+  object del_RFQDetail: TFDQuery
+    Connection = dbConn
+    SQL.Strings = (
+      'UPDATE RFQ_DETAIL'
+      'SET CANCELLED = TRUE'
+      ''
+      ''
+      'WHERE ID = 0'
+      ';')
+    Left = 40
+    Top = 688
   end
 end

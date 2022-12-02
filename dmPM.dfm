@@ -9,7 +9,6 @@ object dm_PM: Tdm_PM
       'User_Name=rcadmin'
       'Password=rcadmin123'
       'DriverID=MySQL')
-    Connected = True
     LoginPrompt = False
     Left = 16
     Top = 40
@@ -2379,7 +2378,6 @@ object dm_PM: Tdm_PM
     end
   end
   object qry_company: TFDQuery
-    Active = True
     CachedUpdates = True
     Connection = dbConn
     SQL.Strings = (
@@ -3191,7 +3189,6 @@ object dm_PM: Tdm_PM
     Top = 120
   end
   object brw_Emp1: TFDQuery
-    Active = True
     OnCalcFields = brw_Emp1CalcFields
     Connection = dbConn
     SQL.Strings = (
@@ -13582,6 +13579,7 @@ object dm_PM: Tdm_PM
       FieldName = 'ID'
       Origin = 'ID'
       ProviderFlags = [pfInWhere, pfInKey]
+      ReadOnly = True
     end
     object brw_LayoutCLIENTID: TIntegerField
       FieldName = 'CLIENTID'
@@ -13599,16 +13597,6 @@ object dm_PM: Tdm_PM
       FieldName = 'NOTES'
       Origin = 'NOTES'
       Size = 250
-    end
-    object brw_LayoutORDERED: TBooleanField
-      FieldName = 'ORDERED'
-      Origin = 'ORDERED'
-      Required = True
-    end
-    object brw_LayoutJONO: TIntegerField
-      AutoGenerateValue = arDefault
-      FieldName = 'JONO'
-      Origin = 'JONO'
     end
     object brw_LayoutCREATEDBYID: TIntegerField
       FieldName = 'CREATEDBYID'
@@ -13702,6 +13690,7 @@ object dm_PM: Tdm_PM
       FieldName = 'ID'
       Origin = 'ID'
       ProviderFlags = [pfInWhere, pfInKey]
+      ReadOnly = True
     end
     object qry_LayoutCLIENTID: TIntegerField
       FieldName = 'CLIENTID'
@@ -13719,16 +13708,6 @@ object dm_PM: Tdm_PM
       FieldName = 'NOTES'
       Origin = 'NOTES'
       Size = 250
-    end
-    object qry_LayoutORDERED: TBooleanField
-      FieldName = 'ORDERED'
-      Origin = 'ORDERED'
-      Required = True
-    end
-    object qry_LayoutJONO: TIntegerField
-      AutoGenerateValue = arDefault
-      FieldName = 'JONO'
-      Origin = 'JONO'
     end
     object qry_LayoutCREATEDBYID: TIntegerField
       FieldName = 'CREATEDBYID'
@@ -13780,6 +13759,7 @@ object dm_PM: Tdm_PM
       FieldName = 'ID'
       Origin = 'ID'
       ProviderFlags = [pfInWhere, pfInKey]
+      ReadOnly = True
     end
     object qry_LayoutDetailHEADERID: TIntegerField
       FieldName = 'HEADERID'
@@ -13864,6 +13844,7 @@ object dm_PM: Tdm_PM
       FieldName = 'ID'
       Origin = 'ID'
       ProviderFlags = [pfInWhere, pfInKey]
+      ReadOnly = True
     end
     object brw_RFQCLIENT: TStringField
       FieldName = 'CLIENT'
@@ -13945,7 +13926,6 @@ object dm_PM: Tdm_PM
     end
   end
   object qry_RFQ: TFDQuery
-    Active = True
     CachedUpdates = True
     Connection = dbConn
     SQL.Strings = (
@@ -13959,6 +13939,7 @@ object dm_PM: Tdm_PM
       FieldName = 'ID'
       Origin = 'ID'
       ProviderFlags = [pfInWhere, pfInKey]
+      ReadOnly = True
     end
     object qry_RFQCLIENT: TStringField
       FieldName = 'CLIENT'
@@ -14038,7 +14019,6 @@ object dm_PM: Tdm_PM
     end
   end
   object qry_RFQDetail: TFDQuery
-    Active = True
     CachedUpdates = True
     Connection = dbConn
     SQL.Strings = (
@@ -14052,6 +14032,7 @@ object dm_PM: Tdm_PM
       FieldName = 'ID'
       Origin = 'ID'
       ProviderFlags = [pfInWhere, pfInKey]
+      ReadOnly = True
     end
     object qry_RFQDetailHEADERID: TIntegerField
       FieldName = 'HEADERID'

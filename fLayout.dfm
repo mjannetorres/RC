@@ -47,7 +47,6 @@ object f_Layout: Tf_Layout
     ParentBackground = False
     TabOrder = 0
     StyleElements = [seFont, seBorder]
-    ExplicitWidth = 977
     DesignSize = (
       1094
       71)
@@ -124,7 +123,6 @@ object f_Layout: Tf_Layout
         'CLIENT'
         'JO NO.'
         'PARTICULARS')
-      ExplicitLeft = 873
     end
     object date_1: TDateTimePicker
       Left = 749
@@ -135,7 +133,6 @@ object f_Layout: Tf_Layout
       Date = 44189.551065162040000000
       Time = 44189.551065162040000000
       TabOrder = 1
-      ExplicitLeft = 632
     end
     object date_2: TDateTimePicker
       Left = 848
@@ -146,7 +143,6 @@ object f_Layout: Tf_Layout
       Date = 44189.551065162040000000
       Time = 44189.551065162040000000
       TabOrder = 2
-      ExplicitLeft = 731
     end
     object txt_search: TButtonedEdit
       Left = 692
@@ -176,7 +172,6 @@ object f_Layout: Tf_Layout
       StyleElements = [seFont, seBorder]
       OnKeyPress = txt_searchKeyPress
       OnRightButtonClick = txt_searchRightButtonClick
-      ExplicitLeft = 575
     end
   end
   object scToolBar2: TscToolBar
@@ -251,8 +246,6 @@ object f_Layout: Tf_Layout
     TabOrder = 2
     LookAndFeel.NativeStyle = False
     LookAndFeel.SkinName = 'VisualStudio2013Light'
-    ExplicitWidth = 977
-    ExplicitHeight = 376
     object cxGrid1DBTableView1: TcxGridDBTableView
       OnDblClick = EditExecute
       Navigator.Buttons.CustomButtons = <>
@@ -315,36 +308,6 @@ object f_Layout: Tf_Layout
         Options.Filtering = False
         Options.Sorting = False
         Width = 200
-      end
-      object cxGrid1DBTableView1JONO: TcxGridDBColumn
-        Caption = 'JO NO.'
-        DataBinding.FieldName = 'JONO'
-        HeaderAlignmentHorz = taCenter
-        Options.Editing = False
-        Options.Filtering = False
-        Options.Sorting = False
-        Width = 96
-      end
-      object cxGrid1DBTableView1ORDERED: TcxGridDBColumn
-        DataBinding.FieldName = 'ORDERED'
-        PropertiesClassName = 'TcxImageComboBoxProperties'
-        Properties.Alignment.Horz = taCenter
-        Properties.Images = sCharImageList1
-        Properties.ImmediatePost = True
-        Properties.Items = <
-          item
-            ImageIndex = 5
-            Value = True
-          end
-          item
-            ImageIndex = 6
-            Value = False
-          end>
-        HeaderAlignmentHorz = taCenter
-        Options.Editing = False
-        Options.Filtering = False
-        Options.Sorting = False
-        Width = 93
       end
       object cxGrid1DBTableView1CREATEDDATETIME: TcxGridDBColumn
         Caption = 'CREATED'

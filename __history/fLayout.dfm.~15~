@@ -15,6 +15,7 @@ object f_Layout: Tf_Layout
   Position = poDesktopCenter
   Visible = True
   WindowState = wsMaximized
+  OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
   object Splitter1: TSplitter
@@ -173,6 +174,8 @@ object f_Layout: Tf_Layout
       TabOrder = 3
       TextHint = 'Search ...'
       StyleElements = [seFont, seBorder]
+      OnKeyPress = txt_searchKeyPress
+      OnRightButtonClick = txt_searchRightButtonClick
       ExplicitLeft = 575
     end
   end
@@ -251,6 +254,7 @@ object f_Layout: Tf_Layout
     ExplicitWidth = 977
     ExplicitHeight = 376
     object cxGrid1DBTableView1: TcxGridDBTableView
+      OnDblClick = EditExecute
       Navigator.Buttons.CustomButtons = <>
       DataController.DataSource = ds_Layout
       DataController.Summary.DefaultGroupSummaryItems = <>
@@ -273,6 +277,7 @@ object f_Layout: Tf_Layout
       DataController.Summary.SummaryGroups = <>
       OptionsSelection.CellSelect = False
       OptionsView.NoDataToDisplayInfoText = 'No Data To Display'
+      OptionsView.CellAutoHeight = True
       OptionsView.ColumnAutoWidth = True
       OptionsView.Footer = True
       OptionsView.GroupByBox = False
@@ -283,35 +288,47 @@ object f_Layout: Tf_Layout
         DataBinding.FieldName = 'ID'
         HeaderAlignmentHorz = taCenter
         Options.Editing = False
+        Options.Filtering = False
+        Options.Sorting = False
         Width = 48
       end
       object cxGrid1DBTableView1CLIENT: TcxGridDBColumn
         DataBinding.FieldName = 'CLIENT'
         HeaderAlignmentHorz = taCenter
         Options.Editing = False
+        Options.Filtering = False
+        Options.Sorting = False
         Width = 247
       end
       object cxGrid1DBTableView1PARTICULARS: TcxGridDBColumn
         DataBinding.FieldName = 'PARTICULARS'
         HeaderAlignmentHorz = taCenter
         Options.Editing = False
-        Width = 242
+        Options.Filtering = False
+        Options.Sorting = False
+        Width = 266
       end
       object cxGrid1DBTableView1NOTES: TcxGridDBColumn
         DataBinding.FieldName = 'NOTES'
         HeaderAlignmentHorz = taCenter
         Options.Editing = False
-        Width = 209
+        Options.Filtering = False
+        Options.Sorting = False
+        Width = 200
       end
       object cxGrid1DBTableView1JONO: TcxGridDBColumn
+        Caption = 'JO NO.'
         DataBinding.FieldName = 'JONO'
         HeaderAlignmentHorz = taCenter
         Options.Editing = False
-        Width = 100
+        Options.Filtering = False
+        Options.Sorting = False
+        Width = 96
       end
       object cxGrid1DBTableView1ORDERED: TcxGridDBColumn
         DataBinding.FieldName = 'ORDERED'
         PropertiesClassName = 'TcxImageComboBoxProperties'
+        Properties.Alignment.Horz = taCenter
         Properties.Images = sCharImageList1
         Properties.ImmediatePost = True
         Properties.Items = <
@@ -325,14 +342,20 @@ object f_Layout: Tf_Layout
           end>
         HeaderAlignmentHorz = taCenter
         Options.Editing = False
-        Width = 98
+        Options.Filtering = False
+        Options.Sorting = False
+        Width = 93
       end
       object cxGrid1DBTableView1CREATEDDATETIME: TcxGridDBColumn
         Caption = 'CREATED'
         DataBinding.FieldName = 'CREATEDDATETIME'
+        PropertiesClassName = 'TcxDateEditProperties'
+        Properties.ShowTime = False
         HeaderAlignmentHorz = taCenter
         Options.Editing = False
-        Width = 148
+        Options.Filtering = False
+        Options.Sorting = False
+        Width = 142
       end
     end
     object cxGrid1Level1: TcxGridLevel
@@ -344,15 +367,15 @@ object f_Layout: Tf_Layout
     Top = 191
     object New: TAction
       Caption = 'New'
+      OnExecute = NewExecute
     end
     object Edit: TAction
       Caption = 'Edit'
+      OnExecute = EditExecute
     end
     object Delete: TAction
       Caption = 'Delete'
-    end
-    object Print: TAction
-      Caption = 'Print'
+      OnExecute = DeleteExecute
     end
   end
   object sCharImageList1: TsCharImageList

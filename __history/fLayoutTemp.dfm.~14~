@@ -1,7 +1,7 @@
-object Layout: TLayout
+object f_layoutTemp: Tf_layoutTemp
   Left = 0
   Top = 0
-  Caption = 'Layout'
+  Caption = 'f_layoutTemp'
   ClientHeight = 485
   ClientWidth = 855
   Color = clBtnFace
@@ -12,6 +12,7 @@ object Layout: TLayout
   Font.Style = []
   OldCreateOrder = False
   Position = poMainFormCenter
+  OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
   object Panel1: TPanel
@@ -22,7 +23,7 @@ object Layout: TLayout
     Align = alBottom
     BevelOuter = bvNone
     TabOrder = 0
-    ExplicitTop = 344
+    ExplicitTop = 434
     DesignSize = (
       855
       57)
@@ -133,12 +134,13 @@ object Layout: TLayout
       Left = 746
       Top = 39
       Anchors = [akTop, akRight]
-      DataBinding.DataField = 'LOGDATE'
+      DataBinding.DataField = 'CREATEDDATETIME'
       DataBinding.DataSource = ds_Layout
       ParentFont = False
       Properties.DisplayFormat = 'mm/dd/yyyy'
       Properties.EditFormat = 'mm/dd/yyyy'
       Properties.ImmediatePost = True
+      Properties.ReadOnly = True
       Properties.SaveTime = False
       Properties.ShowTime = False
       Style.BorderColor = 1184274
@@ -169,6 +171,7 @@ object Layout: TLayout
       StyleHot.LookAndFeel.NativeStyle = False
       StyleHot.LookAndFeel.SkinName = ''
       TabOrder = 2
+      OnExit = cxDBLookupComboBox1Exit
       Width = 94
     end
     object cxDBLabel1: TcxDBLabel
@@ -176,7 +179,7 @@ object Layout: TLayout
       Top = 10
       Anchors = [akTop, akRight]
       AutoSize = True
-      DataBinding.DataField = 'JONO'
+      DataBinding.DataField = 'ID'
       DataBinding.DataSource = ds_Layout
       ParentColor = False
       ParentFont = False
@@ -193,12 +196,14 @@ object Layout: TLayout
     end
     object btnAdd: TscGPCharGlyphButton
       Left = 301
-      Top = 11
+      Top = 10
       Width = 26
       Height = 21
       FluentUIOpaque = False
       TabOrder = 4
       TabStop = True
+      OnClick = AddClientExecute
+      Action = AddClient
       Animation = False
       Badge.Color = clRed
       Badge.ColorAlpha = 255
@@ -208,7 +213,6 @@ object Layout: TLayout
       Badge.Font.Name = 'Tahoma'
       Badge.Font.Style = [fsBold]
       Badge.Visible = False
-      Caption = 'btnAdd'
       CanFocused = True
       CustomDropDown = False
       DrawTextMode = scdtmGDI
@@ -304,7 +308,7 @@ object Layout: TLayout
     object cxDBMemo1: TcxDBMemo
       Left = 55
       Top = 38
-      DataBinding.DataField = 'REMARKS'
+      DataBinding.DataField = 'NOTES'
       DataBinding.DataSource = ds_Layout
       ParentFont = False
       Properties.CharCase = ecUpperCase
@@ -322,12 +326,13 @@ object Layout: TLayout
       StyleFocused.LookAndFeel.NativeStyle = False
       StyleHot.LookAndFeel.NativeStyle = False
       TabOrder = 1
+      OnExit = cxDBLookupComboBox1Exit
       Height = 89
       Width = 269
     end
     object cxDBLookupComboBox1: TcxDBLookupComboBox
-      Left = 55
-      Top = 11
+      Left = 56
+      Top = 10
       DataBinding.DataField = 'CLIENTID'
       DataBinding.DataSource = ds_Layout
       ParentFont = False
@@ -391,6 +396,7 @@ object Layout: TLayout
       StyleFocused.LookAndFeel.NativeStyle = False
       StyleHot.LookAndFeel.NativeStyle = False
       TabOrder = 0
+      OnExit = cxDBLookupComboBox1Exit
       Width = 239
     end
   end
@@ -563,6 +569,7 @@ object Layout: TLayout
         Font.Style = []
         ParentFont = False
         TabOrder = 0
+        OnExit = cxDBLookupComboBox1Exit
         LookAndFeel.Kind = lfUltraFlat
         LookAndFeel.NativeStyle = False
         LookAndFeel.SkinName = 'VisualStudio2013Light'
@@ -603,7 +610,7 @@ object Layout: TLayout
           OptionsView.GroupByBox = False
           object cxGridDBTableView1SHIRTID: TcxGridDBColumn
             Caption = 'DESCRIPTION'
-            DataBinding.FieldName = 'SHIRTID'
+            DataBinding.FieldName = 'ITEMID'
             PropertiesClassName = 'TcxLookupComboBoxProperties'
             Properties.CharCase = ecUpperCase
             Properties.DropDownSizeable = True
@@ -620,6 +627,7 @@ object Layout: TLayout
               end>
             Properties.ListOptions.ShowHeader = False
             Properties.ListSource = ds_garment
+            Properties.OnCloseUp = cxGridDBTableView1SHIRTIDPropertiesCloseUp
             HeaderAlignmentHorz = taCenter
             Options.Filtering = False
             Options.Sorting = False
@@ -648,6 +656,7 @@ object Layout: TLayout
           end
           object cxGridDBTableView1REMARKS: TcxGridDBColumn
             DataBinding.FieldName = 'REMARKS'
+            PropertiesClassName = 'TcxTextEditProperties'
             HeaderAlignmentHorz = taCenter
             Options.Filtering = False
             Options.Sorting = False
@@ -662,7 +671,7 @@ object Layout: TLayout
     end
   end
   object ds_Layout: TDataSource
-    DataSet = dm_PM.qry_JO
+    DataSet = dm_PM.qry_Layout
     Left = 200
     Top = 208
   end
@@ -672,7 +681,7 @@ object Layout: TLayout
     Top = 208
   end
   object ds_LoDetail: TDataSource
-    DataSet = dm_PM.tb_JODetail
+    DataSet = dm_PM.tb_LayoutDetail
     Left = 248
     Top = 208
   end
@@ -692,6 +701,10 @@ object Layout: TLayout
     object Delete: TAction
       Caption = 'Delete'
       OnExecute = DeleteExecute
+    end
+    object AddClient: TAction
+      Caption = 'AddClient'
+      OnExecute = AddClientExecute
     end
   end
   object cxStyleRepository1: TcxStyleRepository

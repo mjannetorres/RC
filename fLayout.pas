@@ -57,8 +57,6 @@ type
     cxGrid1DBTableView1ID: TcxGridDBColumn;
     cxGrid1DBTableView1PARTICULARS: TcxGridDBColumn;
     cxGrid1DBTableView1NOTES: TcxGridDBColumn;
-    cxGrid1DBTableView1ORDERED: TcxGridDBColumn;
-    cxGrid1DBTableView1JONO: TcxGridDBColumn;
     cxGrid1DBTableView1CLIENT: TcxGridDBColumn;
     cxGrid1DBTableView1CREATEDDATETIME: TcxGridDBColumn;
     procedure FormShow(Sender: TObject);
@@ -91,11 +89,6 @@ begin
   begin
     if brw_LayoutID.Value > 0 then
     begin
-      if brw_LayoutORDERED.Value then
-      begin
-        MessageDlg('Job Order has been made already. Cannot proceed to delete record', mtInformation, [mbOK], 0);
-        Exit
-      end;
 
       if MessageDlg('Do you want to delete this record?', mtConfirmation, [mbYes, mbNo], 0) = mrYes then
       begin
@@ -278,8 +271,7 @@ begin
     qry_LayoutCANCELLED.Value       := False;
     qry_LayoutCREATEDBYID.Value     := userid;
     qry_LayoutCREATEDDATETIME.Value := Now;
-    qry_LayoutORDERED.Value         := False;
-
+    
     tb_LayoutDetail.Close;
     tb_LayoutDetail.Open;
 

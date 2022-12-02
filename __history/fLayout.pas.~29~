@@ -25,7 +25,7 @@ uses
   System.ImageList, Vcl.ImgList, acAlphaImageList, System.Actions, Vcl.ActnList,
   cxGridLevel, cxGridCustomTableView, cxGridTableView, cxGridDBTableView,
   cxGridCustomView, cxGrid, Vcl.ComCtrls, Vcl.ToolWin, scControls, Vcl.StdCtrls,
-  Vcl.ExtCtrls, cxImageComboBox;
+  Vcl.ExtCtrls, cxImageComboBox, cxCalendar;
 
 type
   Tf_Layout = class(TForm)
@@ -65,6 +65,8 @@ type
     procedure NewExecute(Sender: TObject);
     procedure EditExecute(Sender: TObject);
     procedure DeleteExecute(Sender: TObject);
+    procedure txt_searchRightButtonClick(Sender: TObject);
+    procedure txt_searchKeyPress(Sender: TObject; var Key: Char);
   private
     { Private declarations }
     procedure search;
@@ -89,6 +91,12 @@ begin
   begin
     if brw_LayoutID.Value > 0 then
     begin
+      if brw_LayoutORDERED.Value then
+      begin
+        MessageDlg('Job Order has been made already. Cannot proceed to delete record', mtInformation, [mbOK], 0);
+        Exit
+      end;
+
       if MessageDlg('Do you want to delete this record?', mtConfirmation, [mbYes, mbNo], 0) = mrYes then
       begin
         qry_Layout.Close;
@@ -112,8 +120,6 @@ begin
           del_LoDetails.SQL[3] := 'CANCELLEDDATETIME = '+''''+FormatDateTime('yyyy-mm-dd hh:nn:ss', Now)+'''';
           del_LoDetails.SQL[4] := 'WHERE HEADERID = '+brw_LayoutID.AsString;
           del_LoDetails.ExecSQL;
-
-
 
           MessageDlg('Record has been deleted.', mtInformation, [mbOK], 0);
 
@@ -272,7 +278,7 @@ begin
     qry_LayoutCANCELLED.Value       := False;
     qry_LayoutCREATEDBYID.Value     := userid;
     qry_LayoutCREATEDDATETIME.Value := Now;
-
+    qry_LayoutORDERED.Value         := False;
 
     tb_LayoutDetail.Close;
     tb_LayoutDetail.Open;
@@ -284,6 +290,7 @@ begin
     if f_LayoutTemp.ShowModal = mrOk then
     begin
 
+      qry_LayoutPARTICULARS.Value   := ' ';
       qry_Layout.Post;
       qry_Layout.ApplyUpdates();
 
@@ -355,6 +362,17 @@ begin
 
     brw_Layout.Open;
   end;
+end;
+
+procedure Tf_Layout.txt_searchKeyPress(Sender: TObject; var Key: Char);
+begin
+  if Key = #13 then
+  search;
+end;
+
+procedure Tf_Layout.txt_searchRightButtonClick(Sender: TObject);
+begin
+   search;
 end;
 
 end.

@@ -89,6 +89,8 @@ type
     cxStyleRepository2: TcxStyleRepository;
     cxStyle1: TcxStyle;
     cxGrid1DBTableView1STATUS: TcxGridDBColumn;
+    SetStatus: TAction;
+    ToolButton1: TToolButton;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure EditExecute(Sender: TObject);
     procedure DeleteExecute(Sender: TObject);
@@ -109,9 +111,10 @@ type
     procedure cxGrid1DBTableView1JONOStylesGetContentStyle(
       Sender: TcxCustomGridTableView; ARecord: TcxCustomGridRecord;
       AItem: TcxCustomGridTableItem; var AStyle: TcxStyle);
+    procedure SetStatusExecute(Sender: TObject);
   private
     { Private declarations }
-    ARedStyle, AVioletSyle, ABlueStyle, AGreenStyle, AYellowStyle, AOrangeStyle, AVermillionStyle, APinkStyle: TcxStyle;
+    ARedStyle, AVioletSyle, ABlueStyle, AGreenStyle, AYellowStyle, AOrangeStyle, AVermillionStyle, APinkStyle, ANoneStyle: TcxStyle;
     procedure user_rights;
     procedure notif;
   public
@@ -127,7 +130,7 @@ implementation
 {$R *.dfm}
 
 uses dmPM, fJO, DateUtils, fOPSheet, fLogTemp, fmenu, fMatRequest, fPassword,
-  fPBReassign, fEnterJO, fEditOPSheet;
+  fPBReassign, fEnterJO, fEditOPSheet, FJOStatus;
 
 procedure Tf_PMBoard.txt_searchKeyPress(Sender: TObject; var Key: Char);
 begin
@@ -287,6 +290,8 @@ begin
   AStyle  := AVermillionStyle
   else if layout = 'Z' then
   AStyle  := APinkStyle
+  else
+  AStyle  := ANoneStyle;
 end;
 
 procedure Tf_PMBoard.DeleteExecute(Sender: TObject);
@@ -779,6 +784,9 @@ begin
   APinkStyle           := TcxStyle.Create(Self);
   APinkStyle.Color     := $008000FF;
 
+  ANoneStyle           := TcxStyle.Create(Self);
+  ANoneStyle.Color     := clWhite;
+
 
   date_1.Date := StartOfTheMonth(Date);
   date_2.Date := Now;
@@ -996,6 +1004,31 @@ begin
       end;
     end;
     brw_JO.Open();
+  end;
+end;
+
+procedure Tf_PMBoard.SetStatusExecute(Sender: TObject);
+begin
+  with dm_PM do
+  begin
+    if brw_JO.RecordCount > 0 then
+    begin
+
+      qry_JO.Close;
+      qry_JO.SQL[2] := 'WHERE ID = '+brw_JOID.AsString;
+      qry_JO.Open();
+
+      qry_JO.Edit;
+      f_JOStatus  := Tf_JOStatus.Create(Self);
+      f_JOStatus.Caption  := 'Set Status';
+      if f_JOStatus.ShowModal = mrOk then
+      begin
+        qry_JO.Post;
+        qry_JO.ApplyUpdates();
+
+        search;
+      end;
+    end;
   end;
 end;
 

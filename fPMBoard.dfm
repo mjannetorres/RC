@@ -55,7 +55,6 @@ object f_PMBoard: Tf_PMBoard
       ParentFont = False
       TabOrder = 0
       StyleElements = [seFont, seBorder]
-      ExplicitTop = -3
       DesignSize = (
         1370
         71)
@@ -259,7 +258,7 @@ object f_PMBoard: Tf_PMBoard
       Left = 0
       Top = 101
       Width = 1370
-      Height = 569
+      Height = 523
       Align = alClient
       BevelInner = bvNone
       BevelOuter = bvNone
@@ -322,7 +321,6 @@ object f_PMBoard: Tf_PMBoard
           Options.Editing = False
           Options.Filtering = False
           Options.Sorting = False
-          Styles.OnGetContentStyle = cxGrid1DBTableView1JONOStylesGetContentStyle
           Styles.Header = cxStyle1
           Width = 49
         end
@@ -332,7 +330,6 @@ object f_PMBoard: Tf_PMBoard
           Options.Editing = False
           Options.Filtering = False
           Options.Sorting = False
-          Styles.OnGetContentStyle = cxGrid1DBTableView1JONOStylesGetContentStyle
           Styles.Header = cxStyle1
           Width = 197
         end
@@ -343,7 +340,6 @@ object f_PMBoard: Tf_PMBoard
           Options.Editing = False
           Options.Filtering = False
           Options.Sorting = False
-          Styles.OnGetContentStyle = cxGrid1DBTableView1JONOStylesGetContentStyle
           Styles.Header = cxStyle1
           Width = 268
         end
@@ -354,7 +350,6 @@ object f_PMBoard: Tf_PMBoard
           Options.Editing = False
           Options.Filtering = False
           Options.Sorting = False
-          Styles.OnGetContentStyle = cxGrid1DBTableView1JONOStylesGetContentStyle
           Styles.Header = cxStyle1
           Width = 163
         end
@@ -365,7 +360,6 @@ object f_PMBoard: Tf_PMBoard
           Options.Editing = False
           Options.Filtering = False
           Options.Sorting = False
-          Styles.OnGetContentStyle = cxGrid1DBTableView1JONOStylesGetContentStyle
           Styles.Header = cxStyle1
           Width = 124
         end
@@ -376,7 +370,6 @@ object f_PMBoard: Tf_PMBoard
           Options.Editing = False
           Options.Filtering = False
           Options.Sorting = False
-          Styles.OnGetContentStyle = cxGrid1DBTableView1JONOStylesGetContentStyle
           Styles.Header = cxStyle1
           Width = 117
         end
@@ -386,7 +379,6 @@ object f_PMBoard: Tf_PMBoard
           Options.Editing = False
           Options.Filtering = False
           Options.Sorting = False
-          Styles.OnGetContentStyle = cxGrid1DBTableView1JONOStylesGetContentStyle
           Styles.Header = cxStyle1
           Width = 107
         end
@@ -407,7 +399,6 @@ object f_PMBoard: Tf_PMBoard
           Options.Editing = False
           Options.Filtering = False
           Options.Sorting = False
-          Styles.OnGetContentStyle = cxGrid1DBTableView1JONOStylesGetContentStyle
           Styles.Header = cxStyle1
           Width = 130
         end
@@ -418,7 +409,6 @@ object f_PMBoard: Tf_PMBoard
           Options.Editing = False
           Options.Filtering = False
           Options.Sorting = False
-          Styles.OnGetContentStyle = cxGrid1DBTableView1JONOStylesGetContentStyle
           Styles.Header = cxStyle1
           Width = 107
         end
@@ -429,7 +419,6 @@ object f_PMBoard: Tf_PMBoard
           Options.Editing = False
           Options.Filtering = False
           Options.Sorting = False
-          Styles.OnGetContentStyle = cxGrid1DBTableView1JONOStylesGetContentStyle
           Styles.Header = cxStyle1
           Width = 106
         end
@@ -437,9 +426,278 @@ object f_PMBoard: Tf_PMBoard
           DataBinding.FieldName = 'STATUS'
           Visible = False
         end
+        object cxGrid1DBTableView1Color: TcxGridDBColumn
+          Caption = 'STATUS'
+          HeaderAlignmentHorz = taCenter
+          Options.Editing = False
+          Options.Filtering = False
+          Options.Sorting = False
+          Styles.OnGetContentStyle = cxGrid1DBTableView1ColorStylesGetContentStyle
+        end
       end
       object cxGrid1Level1: TcxGridLevel
         GridView = cxGrid1DBTableView1
+      end
+    end
+    object Panel1: TPanel
+      Left = 0
+      Top = 624
+      Width = 1370
+      Height = 46
+      Align = alBottom
+      BevelOuter = bvNone
+      TabOrder = 3
+      StyleElements = [seBorder]
+      ExplicitTop = 630
+      DesignSize = (
+        1370
+        46)
+      object Label4: TLabel
+        Left = 383
+        Top = 21
+        Width = 82
+        Height = 15
+        Anchors = [akTop, akRight]
+        Caption = 'Status Legend:'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Height = -12
+        Font.Name = 'Segoe UI'
+        Font.Style = [fsBold]
+        ParentFont = False
+        StyleElements = []
+      end
+      object Label5: TLabel
+        Left = 507
+        Top = 21
+        Width = 44
+        Height = 15
+        Anchors = [akTop, akRight]
+        Caption = 'Pending'
+        Color = clBtnFace
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Height = -12
+        Font.Name = 'Segoe UI'
+        Font.Style = []
+        ParentColor = False
+        ParentFont = False
+        StyleElements = []
+      end
+      object Label6: TLabel
+        Left = 626
+        Top = 21
+        Width = 36
+        Height = 15
+        Anchors = [akTop, akRight]
+        Caption = 'Layout'
+        Color = clBtnFace
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Height = -12
+        Font.Name = 'Segoe UI'
+        Font.Style = []
+        ParentColor = False
+        ParentFont = False
+        StyleElements = []
+      end
+      object Label7: TLabel
+        Left = 735
+        Top = 21
+        Width = 42
+        Height = 15
+        Anchors = [akTop, akRight]
+        Caption = 'Printing'
+        Color = clBtnFace
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Height = -12
+        Font.Name = 'Segoe UI'
+        Font.Style = []
+        ParentColor = False
+        ParentFont = False
+        StyleElements = []
+      end
+      object Label8: TLabel
+        Left = 841
+        Top = 21
+        Width = 37
+        Height = 15
+        Anchors = [akTop, akRight]
+        Caption = 'Boxing'
+        Color = clBtnFace
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Height = -12
+        Font.Name = 'Segoe UI'
+        Font.Style = []
+        ParentColor = False
+        ParentFont = False
+        StyleElements = []
+      end
+      object Label9: TLabel
+        Left = 948
+        Top = 21
+        Width = 55
+        Height = 15
+        Anchors = [akTop, akRight]
+        Caption = 'Heat Press'
+        Color = clBtnFace
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Height = -12
+        Font.Name = 'Segoe UI'
+        Font.Style = []
+        ParentColor = False
+        ParentFont = False
+        StyleElements = []
+      end
+      object Label10: TLabel
+        Left = 1067
+        Top = 21
+        Width = 40
+        Height = 15
+        Anchors = [akTop, akRight]
+        Caption = 'Cutting'
+        Color = clBtnFace
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Height = -12
+        Font.Name = 'Segoe UI'
+        Font.Style = []
+        ParentColor = False
+        ParentFont = False
+        StyleElements = []
+      end
+      object Label11: TLabel
+        Left = 1171
+        Top = 21
+        Width = 38
+        Height = 15
+        Anchors = [akTop, akRight]
+        Caption = 'Sewing'
+        Color = clBtnFace
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Height = -12
+        Font.Name = 'Segoe UI'
+        Font.Style = []
+        ParentColor = False
+        ParentFont = False
+        StyleElements = []
+      end
+      object Label12: TLabel
+        Left = 1281
+        Top = 21
+        Width = 36
+        Height = 15
+        Anchors = [akTop, akRight]
+        Caption = 'Closed'
+        Color = clBtnFace
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Height = -12
+        Font.Name = 'Segoe UI'
+        Font.Style = []
+        ParentColor = False
+        ParentFont = False
+        StyleElements = []
+      end
+      object sPanel1: TsPanel
+        Left = 559
+        Top = 11
+        Width = 33
+        Height = 27
+        Anchors = [akTop, akRight]
+        BevelOuter = bvNone
+        Color = clWhite
+        StyleElements = [seFont, seBorder]
+        ParentBackground = False
+        TabOrder = 0
+      end
+      object sPanel2: TsPanel
+        Left = 671
+        Top = 11
+        Width = 33
+        Height = 27
+        Anchors = [akTop, akRight]
+        BevelOuter = bvNone
+        Color = 8454016
+        StyleElements = [seFont, seBorder]
+        ParentBackground = False
+        TabOrder = 1
+      end
+      object sPanel3: TsPanel
+        Left = 783
+        Top = 11
+        Width = 33
+        Height = 27
+        Anchors = [akTop, akRight]
+        BevelOuter = bvNone
+        Color = clAqua
+        StyleElements = [seFont, seBorder]
+        ParentBackground = False
+        TabOrder = 2
+      end
+      object sPanel4: TsPanel
+        Left = 887
+        Top = 11
+        Width = 33
+        Height = 27
+        Anchors = [akTop, akRight]
+        BevelOuter = bvNone
+        Color = 16744448
+        StyleElements = [seFont, seBorder]
+        ParentBackground = False
+        TabOrder = 3
+      end
+      object sPanel5: TsPanel
+        Left = 1009
+        Top = 11
+        Width = 33
+        Height = 27
+        Anchors = [akTop, akRight]
+        BevelOuter = bvNone
+        Color = 8454143
+        StyleElements = [seFont, seBorder]
+        ParentBackground = False
+        TabOrder = 4
+      end
+      object sPanel6: TsPanel
+        Left = 1113
+        Top = 11
+        Width = 33
+        Height = 27
+        Anchors = [akTop, akRight]
+        BevelOuter = bvNone
+        Color = 12615935
+        StyleElements = [seFont, seBorder]
+        ParentBackground = False
+        TabOrder = 5
+      end
+      object sPanel7: TsPanel
+        Left = 1217
+        Top = 11
+        Width = 33
+        Height = 27
+        Anchors = [akTop, akRight]
+        BevelOuter = bvNone
+        Color = 33023
+        StyleElements = [seFont, seBorder]
+        ParentBackground = False
+        TabOrder = 6
+      end
+      object sPanel8: TsPanel
+        Left = 1327
+        Top = 11
+        Width = 33
+        Height = 27
+        Anchors = [akTop, akRight]
+        BevelOuter = bvNone
+        Color = clGray
+        StyleElements = [seFont, seBorder]
+        ParentBackground = False
+        TabOrder = 7
       end
     end
   end

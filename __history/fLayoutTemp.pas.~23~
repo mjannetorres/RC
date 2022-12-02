@@ -185,24 +185,21 @@ begin
        end;
      end;
    tb_LayoutDetail.Delete;
+   manageui;
   end;
 end;
 
 
 procedure Tf_layoutTemp.FormShow(Sender: TObject);
 begin
-   manageui;
+  cxDBLookupComboBox1.SetFocus;
+  manageui;
 end;
 
 function Tf_layoutTemp.manageui: Boolean;
 begin
   with dm_PM do
   begin
-    if qry_LayoutORDERED.Value then
-    begin
-      readonly;
-      Exit
-    end;
 
     cxDBLookupComboBox1.Style.BorderColor := $00121212;
     if qry_LayoutCLIENTID.IsNull then
@@ -224,15 +221,7 @@ end;
 
 function Tf_layoutTemp.readonly: Boolean;
 begin
-  with dm_PM do
-  begin
-    cxDBLookupComboBox1.Properties.ReadOnly := qry_LayoutORDERED.Value;
-    cxDBMemo1.Properties.ReadOnly           := qry_LayoutORDERED.Value;
-    cxDBDateEdit1.Properties.ReadOnly       := qry_LayoutORDERED.Value;
 
-    btnSave.Enabled  := not qry_LayoutORDERED.Value;
-
-  end;
 end;
 
 end.

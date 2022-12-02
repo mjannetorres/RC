@@ -191,7 +191,6 @@ object f_layoutTemp: Tf_layoutTemp
       Style.Font.Style = [fsBold]
       Style.IsFontAssigned = True
       Transparent = True
-      ExplicitLeft = 735
       AnchorX = 840
     end
     object btnAdd: TscGPCharGlyphButton
@@ -530,8 +529,8 @@ object f_layoutTemp: Tf_layoutTemp
     ActivePage = scGPPageControlPage1
     StorePaintBuffer = False
     FreeOnClose = False
-    ExplicitWidth = 837
-    ExplicitHeight = 248
+    ExplicitWidth = 304
+    ExplicitHeight = 7
     object scGPPageControlPage1: TscGPPageControlPage
       Left = 0
       Top = 30

@@ -71,7 +71,6 @@ type
   private
     { Private declarations }
     function manageui: Boolean;
-    function readonly: Boolean;
   public
     { Public declarations }
   end;
@@ -209,8 +208,6 @@ begin
     if qry_LayoutCREATEDDATETIME.IsNull then
     cxDBDateEdit1.Style.BorderColor     := clRed;
 
-    if readonly then
-    Exit;
 
     if (qry_LayoutCLIENTID.IsNull) or (qry_LayoutCREATEDDATETIME.IsNull) or (tb_LayoutDetail.RecordCount = 0)  then
     btnSave.Enabled := False
@@ -221,19 +218,5 @@ begin
   end;
 end;
 
-function Tf_layoutTemp.readonly: Boolean;
-begin
-  with dm_PM do
-  begin
-    cxDBLookupComboBox1.Properties.ReadOnly         := qry_LayoutORDERED.Value;
-    cxDBMemo1.Properties.ReadOnly                   := qry_LayoutORDERED.Value;
-    cxGridDBTableView1SHIRTID.Options.Editing       := not qry_LayoutORDERED.Value;
-    cxGridDBTableView1REMARKS.Options.Editing       := not qry_LayoutORDERED.Value;
-
-    btnSave.Enabled  := not qry_LayoutORDERED.Value;
-
-    Result  := qry_LayoutORDERED.Value;
-  end;
-end;
 
 end.

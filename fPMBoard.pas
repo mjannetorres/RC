@@ -91,6 +91,25 @@ type
     cxGrid1DBTableView1STATUS: TcxGridDBColumn;
     SetStatus: TAction;
     ToolButton1: TToolButton;
+    cxGrid1DBTableView1Color: TcxGridDBColumn;
+    Panel1: TPanel;
+    Label4: TLabel;
+    sPanel1: TsPanel;
+    Label5: TLabel;
+    Label6: TLabel;
+    sPanel2: TsPanel;
+    Label7: TLabel;
+    sPanel3: TsPanel;
+    Label8: TLabel;
+    sPanel4: TsPanel;
+    Label9: TLabel;
+    sPanel5: TsPanel;
+    Label10: TLabel;
+    sPanel6: TsPanel;
+    Label11: TLabel;
+    sPanel7: TsPanel;
+    Label12: TLabel;
+    sPanel8: TsPanel;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure EditExecute(Sender: TObject);
     procedure DeleteExecute(Sender: TObject);
@@ -112,6 +131,9 @@ type
       Sender: TcxCustomGridTableView; ARecord: TcxCustomGridRecord;
       AItem: TcxCustomGridTableItem; var AStyle: TcxStyle);
     procedure SetStatusExecute(Sender: TObject);
+    procedure cxGrid1DBTableView1ColorStylesGetContentStyle(
+      Sender: TcxCustomGridTableView; ARecord: TcxCustomGridRecord;
+      AItem: TcxCustomGridTableItem; var AStyle: TcxStyle);
   private
     { Private declarations }
     ARedStyle, AVioletSyle, ABlueStyle, AGreenStyle, AYellowStyle, AOrangeStyle, AVermillionStyle, APinkStyle, ANoneStyle: TcxStyle;
@@ -265,6 +287,33 @@ procedure Tf_PMBoard.cxGrid1DBTableView1CellClick(
   AButton: TMouseButton; AShift: TShiftState; var AHandled: Boolean);
 begin
   btnOverride.Visible   := (dm_PM.brw_JOPOSTED.Value or dm_PM.brw_JOLAYOUT.Value) and dm_PM.brw_Rights.Locate('POLICYID;SELECT;ROLEID',VarArrayOf([5, True, dm_PM.roleid]), [])
+end;
+
+procedure Tf_PMBoard.cxGrid1DBTableView1ColorStylesGetContentStyle(
+  Sender: TcxCustomGridTableView; ARecord: TcxCustomGridRecord;
+  AItem: TcxCustomGridTableItem; var AStyle: TcxStyle);
+  var layout : string;
+begin
+  layout := '';
+  if ARecord.Values[cxGrid1DBTableView1STATUS.Index] <> Null then
+  layout  := ARecord.Values[cxGrid1DBTableView1STATUS.Index];
+
+  if layout = 'L' then
+  AStyle  :=  AVioletSyle
+  else if layout = 'P' then
+  AStyle  := ABlueStyle
+  else if layout = 'B' then
+  AStyle  := AGreenStyle
+  else if layout = 'H' then
+  AStyle  := AYellowStyle
+  else if layout = 'C' then
+  AStyle  := AOrangeStyle
+  else if layout = 'S' then
+  AStyle  := AVermillionStyle
+  else if layout = 'Z' then
+  AStyle  := APinkStyle
+  else
+  AStyle  := ANoneStyle;
 end;
 
 procedure Tf_PMBoard.cxGrid1DBTableView1JONOStylesGetContentStyle(
@@ -782,7 +831,7 @@ begin
   AVermillionStyle.Color  := $000080FF;
 
   APinkStyle           := TcxStyle.Create(Self);
-  APinkStyle.Color     := $008000FF;
+  APinkStyle.Color     := clGray;
 
   ANoneStyle           := TcxStyle.Create(Self);
   ANoneStyle.Color     := clWhite;
