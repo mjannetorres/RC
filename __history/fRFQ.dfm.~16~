@@ -15,6 +15,7 @@ object f_RFQ: Tf_RFQ
   Position = poDesktopCenter
   Visible = True
   WindowState = wsMaximized
+  OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
   object Splitter1: TSplitter
@@ -121,7 +122,6 @@ object f_RFQ: Tf_RFQ
       Items.Strings = (
         'NO.'
         'CLIENT'
-        'JO NO.'
         'PARTICULARS')
       ExplicitLeft = 873
     end
@@ -173,6 +173,8 @@ object f_RFQ: Tf_RFQ
       TabOrder = 3
       TextHint = 'Search ...'
       StyleElements = [seFont, seBorder]
+      OnKeyPress = txt_searchKeyPress
+      OnRightButtonClick = txt_searchRightButtonClick
       ExplicitLeft = 692
     end
   end
@@ -211,7 +213,6 @@ object f_RFQ: Tf_RFQ
     TabOrder = 1
     Transparent = True
     StyleElements = []
-    ExplicitWidth = 1094
     object ToolButton1: TToolButton
       Left = 5
       Top = 0
@@ -233,6 +234,12 @@ object f_RFQ: Tf_RFQ
       AutoSize = True
       ImageIndex = 2
     end
+    object ToolButton4: TToolButton
+      Left = 213
+      Top = 0
+      Action = Print
+      ImageIndex = 3
+    end
   end
   object cxGrid1: TcxGrid
     Left = 0
@@ -252,6 +259,7 @@ object f_RFQ: Tf_RFQ
     ExplicitWidth = 977
     ExplicitHeight = 376
     object cxGrid1DBTableView1: TcxGridDBTableView
+      OnDblClick = EditExecute
       Navigator.Buttons.CustomButtons = <>
       DataController.DataSource = ds_RFQ
       DataController.Summary.DefaultGroupSummaryItems = <>
@@ -295,6 +303,7 @@ object f_RFQ: Tf_RFQ
         Width = 277
       end
       object cxGrid1DBTableView1SUMMARY: TcxGridDBColumn
+        Caption = 'PARTICULARS'
         DataBinding.FieldName = 'SUMMARY'
         HeaderAlignmentHorz = taCenter
         Options.Editing = False
@@ -321,6 +330,8 @@ object f_RFQ: Tf_RFQ
       object cxGrid1DBTableView1CREATEDDATETIME: TcxGridDBColumn
         Caption = 'CREATED'
         DataBinding.FieldName = 'CREATEDDATETIME'
+        PropertiesClassName = 'TcxDateEditProperties'
+        Properties.ShowTime = False
         HeaderAlignmentHorz = taCenter
         Options.Editing = False
         Options.Filtering = False
@@ -346,6 +357,10 @@ object f_RFQ: Tf_RFQ
     object Delete: TAction
       Caption = 'Delete'
       OnExecute = DeleteExecute
+    end
+    object Print: TAction
+      Caption = 'Print'
+      OnExecute = PrintExecute
     end
   end
   object sCharImageList1: TsCharImageList

@@ -25,7 +25,7 @@ uses
   cxClasses, System.ImageList, Vcl.ImgList, acAlphaImageList, System.Actions,
   Vcl.ActnList, cxGridLevel, cxGridCustomTableView, cxGridTableView,
   cxGridDBTableView, cxGridCustomView, cxGrid, Vcl.ComCtrls, Vcl.ToolWin,
-  scControls, Vcl.StdCtrls, Vcl.ExtCtrls;
+  scControls, Vcl.StdCtrls, Vcl.ExtCtrls, cxCalendar;
 
 type
   Tf_RFQ = class(TForm)
@@ -60,12 +60,15 @@ type
     cxGrid1DBTableView1CREATEDDATETIME: TcxGridDBColumn;
     cxGrid1DBTableView1SUMMARY: TcxGridDBColumn;
     cxGrid1DBTableView1TOTAL: TcxGridDBColumn;
+    ToolButton4: TToolButton;
+    Print: TAction;
     procedure NewExecute(Sender: TObject);
     procedure EditExecute(Sender: TObject);
     procedure DeleteExecute(Sender: TObject);
     procedure txt_searchKeyPress(Sender: TObject; var Key: Char);
     procedure txt_searchRightButtonClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
+    procedure PrintExecute(Sender: TObject);
   private
     { Private declarations }
     procedure search;
@@ -157,12 +160,16 @@ begin
       begin
 
         tb_RFQDetail.Append;
-        tb_RFQDetailID.Value             := qry_RFQDetailID.Value;
-        tb_RFQDetailDESCRIPTION.Value    := qry_RFQDetailDESCRIPTION.Value;
-        tb_RFQDetailFABRICID.Value       := qry_RFQDetailFABRICID.Value;
-        tb_RFQDetailFABRIC.Value         := qry_RFQDetailFABRIC.Value;
-        tb_RFQDetailITEMID.Value         := qry_RFQDetailITEMID.Value;
-        tb_RFQDetailREMARKS.Value        := qry_RFQDetailREMARKS.Value;
+        tb_RFQDetailID.Value           := qry_RFQDetailID.Value;
+        tb_RFQDetailDESCRIPTION.Value  := qry_RFQDetailDESCRIPTION.Value;
+        tb_RFQDetailFABRICID.Value     := qry_RFQDetailFABRICID.Value;
+        tb_RFQDetailFABRIC.Value       := qry_RFQDetailFABRIC.Value;
+        tb_RFQDetailITEMID.Value       := qry_RFQDetailITEMID.Value;
+        tb_RFQDetailREMARKS.Value      := qry_RFQDetailREMARKS.Value;
+        tb_RFQDetailUNIT.Value         := qry_RFQDetailUNIT.Value;
+        tb_RFQDetailQTY.Value          := qry_RFQDetailQTY.Value;
+        tb_RFQDetailCOST.Value         := qry_RFQDetailCOST.Value;
+        tb_RFQDetailTOTAL.Value        := qry_RFQDetailTOTAL.Value;
         tb_RFQDetail.Post;
 
         qry_RFQDetail.Next;
@@ -215,6 +222,9 @@ begin
         qry_RFQDetailCANCELLED.Value   := False;
         qry_RFQDetailFABRIC.Value      := tb_RFQDetailFABRIC.Value;
         qry_RFQDetailUNIT.Value        := tb_RFQDetailUNIT.Value;
+        qry_RFQDetailQTY.Value         := tb_RFQDetailQTY.Value;
+        qry_RFQDetailCOST.Value        := tb_RFQDetailCOST.Value;
+        qry_RFQDetailTOTAL.Value       := tb_RFQDetailTOTAL.Value;
         qry_RFQDetail.Post;
         qry_RFQDetail.ApplyUpdates();
 
@@ -222,7 +232,7 @@ begin
       end;
 
       upd_RFQ.Close;
-      upd_RFQ.SQL[1] := 'SET PARTICULARS  = '''+particulars+'''';
+      upd_RFQ.SQL[1] := 'SET SUMMARY  = '''+particulars+''',';
       upd_RFQ.SQl[2] := 'TOTAL = '+FloatToStr(total)+'';
       upd_RFQ.SQL[3] := 'WHERE ID = '+IntToStr(qry_RFQID.Value);
       upd_RFQ.ExecSQL;
@@ -313,6 +323,10 @@ begin
         qry_RFQDetailREMARKS.Value        := tb_RFQDetailREMARKS.Value;
         qry_RFQDetailCANCELLED.Value      := False;
         qry_RFQDetailFABRIC.Value         := tb_RFQDetailFABRIC.Value;
+        qry_RFQDetailUNIT.Value           := tb_RFQDetailUNIT.Value;
+        qry_RFQDetailQTY.Value            := tb_RFQDetailQTY.Value;
+        qry_RFQDetailCOST.Value           := tb_RFQDetailCOST.Value;
+        qry_RFQDetailTOTAL.Value          := tb_RFQDetailTOTAL.Value;
         qry_RFQDetail.Post;
         qry_RFQDetail.ApplyUpdates();
 
@@ -320,7 +334,7 @@ begin
       end;
 
       upd_RFQ.Close;
-      upd_RFQ.SQL[1] := 'SET PARTICULARS  = '''+particulars+'''';
+      upd_RFQ.SQL[1] := 'SET SUMMARY  = '''+particulars+''',';
       upd_RFQ.SQl[2] := 'TOTAL = '+FloatToStr(total)+'';
       upd_RFQ.SQL[3] := 'WHERE ID = '+IntToStr(qry_RFQID.Value);
       upd_RFQ.ExecSQL;
@@ -330,6 +344,54 @@ begin
   end;
 end;
 
+
+procedure Tf_RFQ.PrintExecute(Sender: TObject);
+begin
+  with dm_PM do
+  begin
+
+    qry_RFQ.Close;
+    qry_RFQ.SQL[2] := 'WHERE ID = :ID';
+    qry_RFQ.ParamByName('ID').Value    := brw_RFQID.Value;
+    qry_RFQ.Open();
+
+    tb_RFQDetail.Close;
+    tb_RFQDetail.Open;
+
+    qry_RFQDetail.Close;
+    qry_RFQDetail.SQL[2] := 'WHERE HEADERID = :ID AND CANCELLED = FALSE';
+    qry_RFQDetail.ParamByName('ID').Value    := brw_RFQID.Value;
+    qry_RFQDetail.Open();
+
+    if qry_RFQDetail.RecordCount > 0 then
+    begin
+      qry_RFQDetail.First;
+
+      while not qry_RFQDetail.Eof do
+      begin
+
+        tb_RFQDetail.Append;
+        tb_RFQDetailID.Value           := qry_RFQDetailID.Value;
+        tb_RFQDetailDESCRIPTION.Value  := qry_RFQDetailDESCRIPTION.Value;
+        tb_RFQDetailFABRICID.Value     := qry_RFQDetailFABRICID.Value;
+        tb_RFQDetailFABRIC.Value       := qry_RFQDetailFABRIC.Value;
+        tb_RFQDetailITEMID.Value       := qry_RFQDetailITEMID.Value;
+        tb_RFQDetailREMARKS.Value      := qry_RFQDetailREMARKS.Value;
+        tb_RFQDetailUNIT.Value         := qry_RFQDetailUNIT.Value;
+        tb_RFQDetailQTY.Value          := qry_RFQDetailQTY.Value;
+        tb_RFQDetailCOST.Value         := qry_RFQDetailCOST.Value;
+        tb_RFQDetailTOTAL.Value        := qry_RFQDetailTOTAL.Value;
+        tb_RFQDetail.Post;
+
+        qry_RFQDetail.Next;
+      end;
+    end;
+
+    f_RFQTemp  := Tf_RFQTemp.Create(Self);
+    f_RFQTemp.PrintExecute(nil);
+  end;
+
+end;
 
 procedure Tf_RFQ.search;
 begin

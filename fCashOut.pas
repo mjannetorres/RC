@@ -131,8 +131,8 @@ begin
               brw_ComputePay.Close;
               brw_ComputePay.SQL[2]  := 'WHERE WORKERID = :EMPID AND (CREATEDDATETIME BETWEEN :DATE1 AND :DATE2) AND CANCELLED = FALSE';
               brw_ComputePay.ParamByName('EMPID').Value    := qry_CashOutDetailEMPID.Value;
-              brw_ComputePay.ParamByName('DATE1').Value    := date1;
-              brw_ComputePay.ParamByName('DATE2').Value    := date2;
+              brw_ComputePay.ParamByName('DATE1').Value    := FormatDateTime('yyyy-mm-dd hh:nn', date1);
+              brw_ComputePay.ParamByName('DATE2').Value    := FormatDateTime('yyyy-mm-dd hh:nn', date2);
               brw_ComputePay.Open();
 
               qry_CashOutDetailGROSS.Value := brw_ComputePayAMNT.Value;
@@ -140,8 +140,8 @@ begin
               brw_CompExpense.Close;
               brw_CompExpense.SQL[4]  := 'WHERE (DETAIL.REFDATE BETWEEN :date1 and :date2) AND DETAIL.EMPID = :EMPID AND EXP.CATEGORY = 2 AND HEADER.CANCELLED = FALSE AND DETAIL.CANCELLED = FALSE';
               brw_CompExpense.ParamByName('EMPID').Value   := qry_CashOutDetailEMPID.Value;
-              brw_CompExpense.ParamByName('date1').Value   := date1;
-              brw_CompExpense.ParamByName('date2').Value   := date2;
+              brw_CompExpense.ParamByName('date1').Value   := FormatDateTime('yyyy-mm-dd hh:nn', date1);
+              brw_CompExpense.ParamByName('date2').Value   := FormatDateTime('yyyy-mm-dd hh:nn', date2);
               brw_CompExpense.Open();
 
               qry_CashOutDetailCASHADVACTUAL.Value    :=  brw_CompExpenseAMOUNT.Value;
@@ -321,8 +321,8 @@ begin
       brw_ViewCA.Close;
       brw_ViewCA.SQL[4]  := 'WHERE (HEADER.SALESDATE BETWEEN :date1 and :date2) AND DETAIL.EMPID = :EMPID AND EXP.CATEGORY = 2 AND HEADER.CANCELLED = FALSE AND DETAIL.CANCELLED = FALSE';
       brw_ViewCA.ParamByName('EMPID').Value   := qry_CashOutDetailEMPID.Value;
-      brw_ViewCA.ParamByName('date1').Value   := date1;
-      brw_ViewCA.ParamByName('date2').Value   := date2;
+      brw_ViewCA.ParamByName('date1').Value   := FormatDateTime('yyyy-mm-dd hh:nn', StartOfTheDay(date1));
+      brw_ViewCA.ParamByName('date2').Value   := FormatDateTime('yyyy-mm-dd hh:nn', EndOfTheDay(date2));
       brw_ViewCA.Open();
 
       brw_ViewCA.First;

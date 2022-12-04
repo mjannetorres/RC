@@ -229,7 +229,7 @@ object f_CashOut: Tf_CashOut
       Width = 270
     end
     object txt_payee: TcxDBMemo
-      Left = 155
+      Left = 156
       Top = 2
       DataBinding.DataField = 'PAYEE'
       DataBinding.DataSource = ds_cash
@@ -371,8 +371,8 @@ object f_CashOut: Tf_CashOut
       Width = 126
     end
     object txt_gross: TcxDBButtonEdit
-      Left = 155
-      Top = 44
+      Left = 154
+      Top = 41
       DataBinding.DataField = 'GROSS'
       DataBinding.DataSource = ds_cash
       ParentFont = False

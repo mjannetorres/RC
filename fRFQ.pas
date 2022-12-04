@@ -410,7 +410,7 @@ begin
     end
     else if cmb_filter.ItemIndex = 2 then
     begin
-     brw_RFQ.SQL[2] := 'WHERE (CREATEDDATETIME BETWEEN :DATE1 AND :DATE2) AND SUMMRY LIKE :DESC AND CANCELLED = FALSE';
+     brw_RFQ.SQL[2] := 'WHERE (CREATEDDATETIME BETWEEN :DATE1 AND :DATE2) AND SUMMARY LIKE :DESC AND CANCELLED = FALSE';
      brw_RFQ.ParamByName('DESC').Value  := '%'+Trim(txt_search.Text)+'%';
     end;
 

@@ -47,7 +47,6 @@ object f_RFQ: Tf_RFQ
     ParentBackground = False
     TabOrder = 0
     StyleElements = [seFont, seBorder]
-    ExplicitWidth = 977
     DesignSize = (
       1104
       71)
@@ -123,7 +122,6 @@ object f_RFQ: Tf_RFQ
         'NO.'
         'CLIENT'
         'PARTICULARS')
-      ExplicitLeft = 873
     end
     object date_1: TDateTimePicker
       Left = 759
@@ -134,7 +132,6 @@ object f_RFQ: Tf_RFQ
       Date = 44189.551065162040000000
       Time = 44189.551065162040000000
       TabOrder = 1
-      ExplicitLeft = 749
     end
     object date_2: TDateTimePicker
       Left = 858
@@ -145,7 +142,6 @@ object f_RFQ: Tf_RFQ
       Date = 44189.551065162040000000
       Time = 44189.551065162040000000
       TabOrder = 2
-      ExplicitLeft = 848
     end
     object txt_search: TButtonedEdit
       Left = 702
@@ -175,7 +171,6 @@ object f_RFQ: Tf_RFQ
       StyleElements = [seFont, seBorder]
       OnKeyPress = txt_searchKeyPress
       OnRightButtonClick = txt_searchRightButtonClick
-      ExplicitLeft = 692
     end
   end
   object scToolBar2: TscToolBar
@@ -256,8 +251,6 @@ object f_RFQ: Tf_RFQ
     TabOrder = 2
     LookAndFeel.NativeStyle = False
     LookAndFeel.SkinName = 'VisualStudio2013Light'
-    ExplicitWidth = 977
-    ExplicitHeight = 376
     object cxGrid1DBTableView1: TcxGridDBTableView
       OnDblClick = EditExecute
       Navigator.Buttons.CustomButtons = <>

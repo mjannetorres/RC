@@ -484,8 +484,6 @@ object f_menu: Tf_menu
     ActivePage = scGPToolPagerPage2
     FreeOnClose = False
     StorePaintBuffer = True
-    ExplicitLeft = 7
-    ExplicitTop = 47
     object scGPToolPagerPage4: TscGPToolPagerPage
       Left = 0
       Top = 35
@@ -3715,7 +3713,7 @@ object f_menu: Tf_menu
       object scGPToolGroupPanel3: TscGPToolGroupPanel
         Left = 10
         Top = 0
-        Width = 665
+        Width = 455
         Height = 93
         Align = alLeft
         Font.Charset = DEFAULT_CHARSET
@@ -3862,263 +3860,6 @@ object f_menu: Tf_menu
           Down = False
           GroupIndex = 0
           AllowAllUp = False
-          ExplicitLeft = 187
-        end
-        object btnGarments: TscGPButton
-          Left = 553
-          Top = 3
-          Width = 110
-          Height = 70
-          Align = alLeft
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -12
-          Font.Name = 'Tahoma'
-          Font.Style = []
-          ParentFont = False
-          FluentUIOpaque = False
-          TabOrder = 1
-          OnClick = GarmentsExecute
-          Action = Garments
-          Animation = True
-          Badge.Color = clRed
-          Badge.ColorAlpha = 255
-          Badge.Font.Charset = DEFAULT_CHARSET
-          Badge.Font.Color = clWhite
-          Badge.Font.Height = -12
-          Badge.Font.Name = 'Tahoma'
-          Badge.Font.Style = [fsBold]
-          Badge.Visible = False
-          CanFocused = False
-          CustomDropDown = False
-          DrawTextMode = scdtmGDI
-          Margin = -1
-          Spacing = 1
-          Layout = blGlyphTop
-          Images = scGPVirtualImageList1
-          ImageIndex = 5
-          ImageMargin = 0
-          TransparentBackground = True
-          Options.NormalColor = clNone
-          Options.HotColor = clWindowText
-          Options.PressedColor = clWindowText
-          Options.FocusedColor = clNone
-          Options.DisabledColor = clNone
-          Options.NormalColor2 = clNone
-          Options.HotColor2 = clNone
-          Options.PressedColor2 = clNone
-          Options.FocusedColor2 = clNone
-          Options.DisabledColor2 = clNone
-          Options.NormalColorAlpha = 255
-          Options.HotColorAlpha = 30
-          Options.PressedColorAlpha = 50
-          Options.FocusedColorAlpha = 255
-          Options.DisabledColorAlpha = 255
-          Options.NormalColor2Alpha = 255
-          Options.HotColor2Alpha = 255
-          Options.PressedColor2Alpha = 255
-          Options.FocusedColor2Alpha = 255
-          Options.DisabledColor2Alpha = 255
-          Options.FrameNormalColor = clNone
-          Options.FrameHotColor = clNone
-          Options.FramePressedColor = clNone
-          Options.FrameFocusedColor = clNone
-          Options.FrameDisabledColor = clNone
-          Options.FrameWidth = 1
-          Options.FrameNormalColorAlpha = 255
-          Options.FrameHotColorAlpha = 255
-          Options.FramePressedColorAlpha = 255
-          Options.FrameFocusedColorAlpha = 255
-          Options.FrameDisabledColorAlpha = 255
-          Options.FontNormalColor = clWindowText
-          Options.FontHotColor = clWindowText
-          Options.FontPressedColor = clWindowText
-          Options.FontFocusedColor = clWindowText
-          Options.FontDisabledColor = clGray
-          Options.ShapeFillGradientAngle = 90
-          Options.ShapeFillGradientPressedAngle = -90
-          Options.ShapeFillGradientColorOffset = 25
-          Options.ShapeCornerRadius = 10
-          Options.ShapeStyle = scgpRect
-          Options.ArrowSize = 9
-          Options.ArrowAreaSize = 0
-          Options.ArrowType = scgpatDefault
-          Options.ArrowThickness = 2
-          Options.ArrowThicknessScaled = False
-          Options.ArrowNormalColor = clWindowText
-          Options.ArrowHotColor = clWindowText
-          Options.ArrowPressedColor = clWindowText
-          Options.ArrowFocusedColor = clWindowText
-          Options.ArrowDisabledColor = clWindowText
-          Options.ArrowNormalColorAlpha = 200
-          Options.ArrowHotColorAlpha = 255
-          Options.ArrowPressedColorAlpha = 255
-          Options.ArrowFocusedColorAlpha = 200
-          Options.ArrowDisabledColorAlpha = 125
-          Options.StyleColors = True
-          Options.PressedHotColors = False
-          HotImageIndex = 5
-          FluentLightEffect = False
-          FocusedImageIndex = 5
-          PressedImageIndex = 5
-          UseGalleryMenuImage = False
-          UseGalleryMenuCaption = False
-          ScaleMarginAndSpacing = False
-          WidthWithCaption = 0
-          WidthWithoutCaption = 0
-          SplitButton = False
-          RepeatClick = False
-          RepeatClickInterval = 100
-          GlowEffect.Enabled = False
-          GlowEffect.Color = clHighlight
-          GlowEffect.AlphaValue = 255
-          GlowEffect.GlowSize = 7
-          GlowEffect.Offset = 0
-          GlowEffect.Intensive = True
-          GlowEffect.StyleColors = True
-          GlowEffect.HotColor = clNone
-          GlowEffect.PressedColor = clNone
-          GlowEffect.FocusedColor = clNone
-          GlowEffect.PressedGlowSize = 7
-          GlowEffect.PressedAlphaValue = 255
-          GlowEffect.States = [scsHot, scsPressed, scsFocused]
-          ImageGlow = True
-          ShowGalleryMenuFromTop = False
-          ShowGalleryMenuFromRight = False
-          ShowMenuArrow = True
-          ShowFocusRect = True
-          Down = False
-          GroupIndex = 0
-          AllowAllUp = False
-          ExplicitLeft = 443
-        end
-        object btnClients: TscGPButton
-          Left = 443
-          Top = 3
-          Width = 110
-          Height = 70
-          Align = alLeft
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -12
-          Font.Name = 'Tahoma'
-          Font.Style = []
-          ParentFont = False
-          FluentUIOpaque = False
-          TabOrder = 2
-          OnClick = ClientsExecute
-          Action = Clients
-          Animation = True
-          Badge.Color = clRed
-          Badge.ColorAlpha = 255
-          Badge.Font.Charset = DEFAULT_CHARSET
-          Badge.Font.Color = clWhite
-          Badge.Font.Height = -12
-          Badge.Font.Name = 'Tahoma'
-          Badge.Font.Style = [fsBold]
-          Badge.Visible = False
-          CanFocused = False
-          CustomDropDown = False
-          DrawTextMode = scdtmGDI
-          Margin = -1
-          Spacing = 1
-          Layout = blGlyphTop
-          Images = scGPVirtualImageList1
-          ImageIndex = 24
-          ImageMargin = 0
-          TransparentBackground = True
-          Options.NormalColor = clNone
-          Options.HotColor = clWindowText
-          Options.PressedColor = clWindowText
-          Options.FocusedColor = clNone
-          Options.DisabledColor = clNone
-          Options.NormalColor2 = clNone
-          Options.HotColor2 = clNone
-          Options.PressedColor2 = clNone
-          Options.FocusedColor2 = clNone
-          Options.DisabledColor2 = clNone
-          Options.NormalColorAlpha = 255
-          Options.HotColorAlpha = 30
-          Options.PressedColorAlpha = 50
-          Options.FocusedColorAlpha = 255
-          Options.DisabledColorAlpha = 255
-          Options.NormalColor2Alpha = 255
-          Options.HotColor2Alpha = 255
-          Options.PressedColor2Alpha = 255
-          Options.FocusedColor2Alpha = 255
-          Options.DisabledColor2Alpha = 255
-          Options.FrameNormalColor = clNone
-          Options.FrameHotColor = clNone
-          Options.FramePressedColor = clNone
-          Options.FrameFocusedColor = clNone
-          Options.FrameDisabledColor = clNone
-          Options.FrameWidth = 1
-          Options.FrameNormalColorAlpha = 255
-          Options.FrameHotColorAlpha = 255
-          Options.FramePressedColorAlpha = 255
-          Options.FrameFocusedColorAlpha = 255
-          Options.FrameDisabledColorAlpha = 255
-          Options.FontNormalColor = clWindowText
-          Options.FontHotColor = clWindowText
-          Options.FontPressedColor = clWindowText
-          Options.FontFocusedColor = clWindowText
-          Options.FontDisabledColor = clGray
-          Options.ShapeFillGradientAngle = 90
-          Options.ShapeFillGradientPressedAngle = -90
-          Options.ShapeFillGradientColorOffset = 25
-          Options.ShapeCornerRadius = 10
-          Options.ShapeStyle = scgpRect
-          Options.ArrowSize = 9
-          Options.ArrowAreaSize = 0
-          Options.ArrowType = scgpatDefault
-          Options.ArrowThickness = 2
-          Options.ArrowThicknessScaled = False
-          Options.ArrowNormalColor = clWindowText
-          Options.ArrowHotColor = clWindowText
-          Options.ArrowPressedColor = clWindowText
-          Options.ArrowFocusedColor = clWindowText
-          Options.ArrowDisabledColor = clWindowText
-          Options.ArrowNormalColorAlpha = 200
-          Options.ArrowHotColorAlpha = 255
-          Options.ArrowPressedColorAlpha = 255
-          Options.ArrowFocusedColorAlpha = 200
-          Options.ArrowDisabledColorAlpha = 125
-          Options.StyleColors = True
-          Options.PressedHotColors = False
-          HotImageIndex = 24
-          FluentLightEffect = False
-          FocusedImageIndex = 24
-          PressedImageIndex = 24
-          UseGalleryMenuImage = False
-          UseGalleryMenuCaption = False
-          ScaleMarginAndSpacing = False
-          WidthWithCaption = 0
-          WidthWithoutCaption = 0
-          SplitButton = False
-          RepeatClick = False
-          RepeatClickInterval = 100
-          GlowEffect.Enabled = False
-          GlowEffect.Color = clHighlight
-          GlowEffect.AlphaValue = 255
-          GlowEffect.GlowSize = 7
-          GlowEffect.Offset = 0
-          GlowEffect.Intensive = True
-          GlowEffect.StyleColors = True
-          GlowEffect.HotColor = clNone
-          GlowEffect.PressedColor = clNone
-          GlowEffect.FocusedColor = clNone
-          GlowEffect.PressedGlowSize = 7
-          GlowEffect.PressedAlphaValue = 255
-          GlowEffect.States = [scsHot, scsPressed, scsFocused]
-          ImageGlow = True
-          ShowGalleryMenuFromTop = False
-          ShowGalleryMenuFromRight = False
-          ShowMenuArrow = True
-          ShowFocusRect = True
-          Down = False
-          GroupIndex = 0
-          AllowAllUp = False
-          ExplicitLeft = 333
         end
         object btnMatRequest: TscGPButton
           Left = 333
@@ -4133,7 +3874,7 @@ object f_menu: Tf_menu
           Font.Style = []
           ParentFont = False
           FluentUIOpaque = False
-          TabOrder = 3
+          TabOrder = 1
           OnClick = FabRequestExecute
           Action = FabRequest
           Animation = True
@@ -4246,7 +3987,6 @@ object f_menu: Tf_menu
           Down = False
           GroupIndex = 0
           AllowAllUp = False
-          ExplicitLeft = 223
         end
         object btnWorkLog: TscGPButton
           Left = 223
@@ -4261,7 +4001,7 @@ object f_menu: Tf_menu
           Font.Style = []
           ParentFont = False
           FluentUIOpaque = False
-          TabOrder = 4
+          TabOrder = 2
           OnClick = WorkLogExecute
           Action = WorkLog
           Animation = True
@@ -4374,7 +4114,6 @@ object f_menu: Tf_menu
           Down = False
           GroupIndex = 0
           AllowAllUp = False
-          ExplicitLeft = 113
         end
         object scGPButton6: TscGPButton
           Left = 3
@@ -4389,7 +4128,7 @@ object f_menu: Tf_menu
           Font.Style = []
           ParentFont = False
           FluentUIOpaque = False
-          TabOrder = 5
+          TabOrder = 3
           OnClick = LayoutBoardExecute
           Action = LayoutBoard
           Animation = True
@@ -4502,12 +4241,10 @@ object f_menu: Tf_menu
           Down = False
           GroupIndex = 0
           AllowAllUp = False
-          ExplicitLeft = 11
-          ExplicitTop = 11
         end
       end
       object scGPToolGroupPanel12: TscGPToolGroupPanel
-        Left = 675
+        Left = 697
         Top = 0
         Width = 112
         Height = 93
@@ -4529,7 +4266,6 @@ object f_menu: Tf_menu
         StorePaintBuffer = True
         SeparatorColor = clWindowText
         SeparatorColorAlpha = 50
-        ExplicitLeft = 577
         object btnPMReports: TscGPButton
           Left = 3
           Top = 3
@@ -4658,133 +4394,424 @@ object f_menu: Tf_menu
           AllowAllUp = False
         end
       end
-      object scGPButton4: TscGPButton
-        Left = 787
+      object scGPToolGroupPanel4: TscGPToolGroupPanel
+        Left = 465
         Top = 0
-        Width = 110
+        Width = 232
         Height = 93
         Align = alLeft
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -12
-        Font.Name = 'Tahoma'
-        Font.Style = []
-        ParentFont = False
         FluentUIOpaque = False
         TabOrder = 2
-        OnClick = NotifExecute
-        Action = Notif
-        Animation = True
-        Badge.Color = clRed
-        Badge.ColorAlpha = 255
-        Badge.Font.Charset = DEFAULT_CHARSET
-        Badge.Font.Color = clWhite
-        Badge.Font.Height = -12
-        Badge.Font.Name = 'Tahoma'
-        Badge.Font.Style = [fsBold]
-        Badge.Visible = False
-        CanFocused = False
-        CustomDropDown = False
+        Caption = 'Settings'
+        CaptionHeight = 17
+        CaptionFontColor = clNone
+        CaptionFontDisabledColor = clNone
         DrawTextMode = scdtmGDI
-        Margin = -1
-        Spacing = 1
-        Layout = blGlyphTop
-        Images = scGPVirtualImageList1
-        ImageIndex = 13
-        ImageMargin = 0
-        TransparentBackground = True
-        Options.NormalColor = clNone
-        Options.HotColor = clWindowText
-        Options.PressedColor = clWindowText
-        Options.FocusedColor = clNone
-        Options.DisabledColor = clNone
-        Options.NormalColor2 = clNone
-        Options.HotColor2 = clNone
-        Options.PressedColor2 = clNone
-        Options.FocusedColor2 = clNone
-        Options.DisabledColor2 = clNone
-        Options.NormalColorAlpha = 255
-        Options.HotColorAlpha = 30
-        Options.PressedColorAlpha = 50
-        Options.FocusedColorAlpha = 255
-        Options.DisabledColorAlpha = 255
-        Options.NormalColor2Alpha = 255
-        Options.HotColor2Alpha = 255
-        Options.PressedColor2Alpha = 255
-        Options.FocusedColor2Alpha = 255
-        Options.DisabledColor2Alpha = 255
-        Options.FrameNormalColor = clNone
-        Options.FrameHotColor = clNone
-        Options.FramePressedColor = clNone
-        Options.FrameFocusedColor = clNone
-        Options.FrameDisabledColor = clNone
-        Options.FrameWidth = 1
-        Options.FrameNormalColorAlpha = 255
-        Options.FrameHotColorAlpha = 255
-        Options.FramePressedColorAlpha = 255
-        Options.FrameFocusedColorAlpha = 255
-        Options.FrameDisabledColorAlpha = 255
-        Options.FontNormalColor = clWindowText
-        Options.FontHotColor = clWindowText
-        Options.FontPressedColor = clWindowText
-        Options.FontFocusedColor = clWindowText
-        Options.FontDisabledColor = clGray
-        Options.ShapeFillGradientAngle = 90
-        Options.ShapeFillGradientPressedAngle = -90
-        Options.ShapeFillGradientColorOffset = 25
-        Options.ShapeCornerRadius = 10
-        Options.ShapeStyle = scgpRect
-        Options.ArrowSize = 9
-        Options.ArrowAreaSize = 0
-        Options.ArrowType = scgpatDefault
-        Options.ArrowThickness = 2
-        Options.ArrowThicknessScaled = False
-        Options.ArrowNormalColor = clWindowText
-        Options.ArrowHotColor = clWindowText
-        Options.ArrowPressedColor = clWindowText
-        Options.ArrowFocusedColor = clWindowText
-        Options.ArrowDisabledColor = clWindowText
-        Options.ArrowNormalColorAlpha = 200
-        Options.ArrowHotColorAlpha = 255
-        Options.ArrowPressedColorAlpha = 255
-        Options.ArrowFocusedColorAlpha = 200
-        Options.ArrowDisabledColorAlpha = 125
-        Options.StyleColors = True
-        Options.PressedHotColors = False
-        HotImageIndex = 13
-        FluentLightEffect = False
-        FocusedImageIndex = 13
-        PressedImageIndex = 13
-        UseGalleryMenuImage = False
-        UseGalleryMenuCaption = False
-        ScaleMarginAndSpacing = False
-        WidthWithCaption = 0
-        WidthWithoutCaption = 0
-        SplitButton = False
-        RepeatClick = False
-        RepeatClickInterval = 100
-        GlowEffect.Enabled = False
-        GlowEffect.Color = clHighlight
-        GlowEffect.AlphaValue = 255
-        GlowEffect.GlowSize = 7
-        GlowEffect.Offset = 0
-        GlowEffect.Intensive = True
-        GlowEffect.StyleColors = True
-        GlowEffect.HotColor = clNone
-        GlowEffect.PressedColor = clNone
-        GlowEffect.FocusedColor = clNone
-        GlowEffect.PressedGlowSize = 7
-        GlowEffect.PressedAlphaValue = 255
-        GlowEffect.States = [scsHot, scsPressed, scsFocused]
-        ImageGlow = True
-        ShowGalleryMenuFromTop = False
-        ShowGalleryMenuFromRight = False
-        ShowMenuArrow = True
-        ShowFocusRect = True
-        Down = False
-        GroupIndex = 0
-        AllowAllUp = False
-        ExplicitLeft = 689
+        DialogButtonColor = clNone
+        ShowDialogButton = False
+        StorePaintBuffer = True
+        SeparatorColor = clNone
+        SeparatorColorAlpha = 255
+        object btnClients: TscGPButton
+          Left = 3
+          Top = 3
+          Width = 110
+          Height = 70
+          Align = alLeft
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          ParentFont = False
+          FluentUIOpaque = False
+          TabOrder = 0
+          OnClick = ClientsExecute
+          Action = Clients
+          Animation = True
+          Badge.Color = clRed
+          Badge.ColorAlpha = 255
+          Badge.Font.Charset = DEFAULT_CHARSET
+          Badge.Font.Color = clWhite
+          Badge.Font.Height = -12
+          Badge.Font.Name = 'Tahoma'
+          Badge.Font.Style = [fsBold]
+          Badge.Visible = False
+          CanFocused = False
+          CustomDropDown = False
+          DrawTextMode = scdtmGDI
+          Margin = -1
+          Spacing = 1
+          Layout = blGlyphTop
+          Images = scGPVirtualImageList1
+          ImageIndex = 24
+          ImageMargin = 0
+          TransparentBackground = True
+          Options.NormalColor = clNone
+          Options.HotColor = clWindowText
+          Options.PressedColor = clWindowText
+          Options.FocusedColor = clNone
+          Options.DisabledColor = clNone
+          Options.NormalColor2 = clNone
+          Options.HotColor2 = clNone
+          Options.PressedColor2 = clNone
+          Options.FocusedColor2 = clNone
+          Options.DisabledColor2 = clNone
+          Options.NormalColorAlpha = 255
+          Options.HotColorAlpha = 30
+          Options.PressedColorAlpha = 50
+          Options.FocusedColorAlpha = 255
+          Options.DisabledColorAlpha = 255
+          Options.NormalColor2Alpha = 255
+          Options.HotColor2Alpha = 255
+          Options.PressedColor2Alpha = 255
+          Options.FocusedColor2Alpha = 255
+          Options.DisabledColor2Alpha = 255
+          Options.FrameNormalColor = clNone
+          Options.FrameHotColor = clNone
+          Options.FramePressedColor = clNone
+          Options.FrameFocusedColor = clNone
+          Options.FrameDisabledColor = clNone
+          Options.FrameWidth = 1
+          Options.FrameNormalColorAlpha = 255
+          Options.FrameHotColorAlpha = 255
+          Options.FramePressedColorAlpha = 255
+          Options.FrameFocusedColorAlpha = 255
+          Options.FrameDisabledColorAlpha = 255
+          Options.FontNormalColor = clWindowText
+          Options.FontHotColor = clWindowText
+          Options.FontPressedColor = clWindowText
+          Options.FontFocusedColor = clWindowText
+          Options.FontDisabledColor = clGray
+          Options.ShapeFillGradientAngle = 90
+          Options.ShapeFillGradientPressedAngle = -90
+          Options.ShapeFillGradientColorOffset = 25
+          Options.ShapeCornerRadius = 10
+          Options.ShapeStyle = scgpRect
+          Options.ArrowSize = 9
+          Options.ArrowAreaSize = 0
+          Options.ArrowType = scgpatDefault
+          Options.ArrowThickness = 2
+          Options.ArrowThicknessScaled = False
+          Options.ArrowNormalColor = clWindowText
+          Options.ArrowHotColor = clWindowText
+          Options.ArrowPressedColor = clWindowText
+          Options.ArrowFocusedColor = clWindowText
+          Options.ArrowDisabledColor = clWindowText
+          Options.ArrowNormalColorAlpha = 200
+          Options.ArrowHotColorAlpha = 255
+          Options.ArrowPressedColorAlpha = 255
+          Options.ArrowFocusedColorAlpha = 200
+          Options.ArrowDisabledColorAlpha = 125
+          Options.StyleColors = True
+          Options.PressedHotColors = False
+          HotImageIndex = 24
+          FluentLightEffect = False
+          FocusedImageIndex = 24
+          PressedImageIndex = 24
+          UseGalleryMenuImage = False
+          UseGalleryMenuCaption = False
+          ScaleMarginAndSpacing = False
+          WidthWithCaption = 0
+          WidthWithoutCaption = 0
+          SplitButton = False
+          RepeatClick = False
+          RepeatClickInterval = 100
+          GlowEffect.Enabled = False
+          GlowEffect.Color = clHighlight
+          GlowEffect.AlphaValue = 255
+          GlowEffect.GlowSize = 7
+          GlowEffect.Offset = 0
+          GlowEffect.Intensive = True
+          GlowEffect.StyleColors = True
+          GlowEffect.HotColor = clNone
+          GlowEffect.PressedColor = clNone
+          GlowEffect.FocusedColor = clNone
+          GlowEffect.PressedGlowSize = 7
+          GlowEffect.PressedAlphaValue = 255
+          GlowEffect.States = [scsHot, scsPressed, scsFocused]
+          ImageGlow = True
+          ShowGalleryMenuFromTop = False
+          ShowGalleryMenuFromRight = False
+          ShowMenuArrow = True
+          ShowFocusRect = True
+          Down = False
+          GroupIndex = 0
+          AllowAllUp = False
+        end
+        object btnGarments: TscGPButton
+          Left = 113
+          Top = 3
+          Width = 110
+          Height = 70
+          Align = alLeft
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          ParentFont = False
+          FluentUIOpaque = False
+          TabOrder = 1
+          OnClick = GarmentsExecute
+          Action = Garments
+          Animation = True
+          Badge.Color = clRed
+          Badge.ColorAlpha = 255
+          Badge.Font.Charset = DEFAULT_CHARSET
+          Badge.Font.Color = clWhite
+          Badge.Font.Height = -12
+          Badge.Font.Name = 'Tahoma'
+          Badge.Font.Style = [fsBold]
+          Badge.Visible = False
+          CanFocused = False
+          CustomDropDown = False
+          DrawTextMode = scdtmGDI
+          Margin = -1
+          Spacing = 1
+          Layout = blGlyphTop
+          Images = scGPVirtualImageList1
+          ImageIndex = 5
+          ImageMargin = 0
+          TransparentBackground = True
+          Options.NormalColor = clNone
+          Options.HotColor = clWindowText
+          Options.PressedColor = clWindowText
+          Options.FocusedColor = clNone
+          Options.DisabledColor = clNone
+          Options.NormalColor2 = clNone
+          Options.HotColor2 = clNone
+          Options.PressedColor2 = clNone
+          Options.FocusedColor2 = clNone
+          Options.DisabledColor2 = clNone
+          Options.NormalColorAlpha = 255
+          Options.HotColorAlpha = 30
+          Options.PressedColorAlpha = 50
+          Options.FocusedColorAlpha = 255
+          Options.DisabledColorAlpha = 255
+          Options.NormalColor2Alpha = 255
+          Options.HotColor2Alpha = 255
+          Options.PressedColor2Alpha = 255
+          Options.FocusedColor2Alpha = 255
+          Options.DisabledColor2Alpha = 255
+          Options.FrameNormalColor = clNone
+          Options.FrameHotColor = clNone
+          Options.FramePressedColor = clNone
+          Options.FrameFocusedColor = clNone
+          Options.FrameDisabledColor = clNone
+          Options.FrameWidth = 1
+          Options.FrameNormalColorAlpha = 255
+          Options.FrameHotColorAlpha = 255
+          Options.FramePressedColorAlpha = 255
+          Options.FrameFocusedColorAlpha = 255
+          Options.FrameDisabledColorAlpha = 255
+          Options.FontNormalColor = clWindowText
+          Options.FontHotColor = clWindowText
+          Options.FontPressedColor = clWindowText
+          Options.FontFocusedColor = clWindowText
+          Options.FontDisabledColor = clGray
+          Options.ShapeFillGradientAngle = 90
+          Options.ShapeFillGradientPressedAngle = -90
+          Options.ShapeFillGradientColorOffset = 25
+          Options.ShapeCornerRadius = 10
+          Options.ShapeStyle = scgpRect
+          Options.ArrowSize = 9
+          Options.ArrowAreaSize = 0
+          Options.ArrowType = scgpatDefault
+          Options.ArrowThickness = 2
+          Options.ArrowThicknessScaled = False
+          Options.ArrowNormalColor = clWindowText
+          Options.ArrowHotColor = clWindowText
+          Options.ArrowPressedColor = clWindowText
+          Options.ArrowFocusedColor = clWindowText
+          Options.ArrowDisabledColor = clWindowText
+          Options.ArrowNormalColorAlpha = 200
+          Options.ArrowHotColorAlpha = 255
+          Options.ArrowPressedColorAlpha = 255
+          Options.ArrowFocusedColorAlpha = 200
+          Options.ArrowDisabledColorAlpha = 125
+          Options.StyleColors = True
+          Options.PressedHotColors = False
+          HotImageIndex = 5
+          FluentLightEffect = False
+          FocusedImageIndex = 5
+          PressedImageIndex = 5
+          UseGalleryMenuImage = False
+          UseGalleryMenuCaption = False
+          ScaleMarginAndSpacing = False
+          WidthWithCaption = 0
+          WidthWithoutCaption = 0
+          SplitButton = False
+          RepeatClick = False
+          RepeatClickInterval = 100
+          GlowEffect.Enabled = False
+          GlowEffect.Color = clHighlight
+          GlowEffect.AlphaValue = 255
+          GlowEffect.GlowSize = 7
+          GlowEffect.Offset = 0
+          GlowEffect.Intensive = True
+          GlowEffect.StyleColors = True
+          GlowEffect.HotColor = clNone
+          GlowEffect.PressedColor = clNone
+          GlowEffect.FocusedColor = clNone
+          GlowEffect.PressedGlowSize = 7
+          GlowEffect.PressedAlphaValue = 255
+          GlowEffect.States = [scsHot, scsPressed, scsFocused]
+          ImageGlow = True
+          ShowGalleryMenuFromTop = False
+          ShowGalleryMenuFromRight = False
+          ShowMenuArrow = True
+          ShowFocusRect = True
+          Down = False
+          GroupIndex = 0
+          AllowAllUp = False
+        end
+      end
+      object scGPToolGroupPanel17: TscGPToolGroupPanel
+        Left = 809
+        Top = 0
+        Width = 112
+        Height = 93
+        Align = alLeft
+        FluentUIOpaque = False
+        TabOrder = 3
+        Visible = False
+        CaptionHeight = 17
+        CaptionFontColor = clNone
+        CaptionFontDisabledColor = clNone
+        DrawTextMode = scdtmGDI
+        DialogButtonColor = clNone
+        ShowDialogButton = False
+        StorePaintBuffer = True
+        SeparatorColor = clNone
+        SeparatorColorAlpha = 255
+        object scGPButton4: TscGPButton
+          Left = 3
+          Top = 3
+          Width = 110
+          Height = 70
+          Align = alLeft
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          ParentFont = False
+          FluentUIOpaque = False
+          TabOrder = 0
+          OnClick = NotifExecute
+          Action = Notif
+          Animation = True
+          Badge.Color = clRed
+          Badge.ColorAlpha = 255
+          Badge.Font.Charset = DEFAULT_CHARSET
+          Badge.Font.Color = clWhite
+          Badge.Font.Height = -12
+          Badge.Font.Name = 'Tahoma'
+          Badge.Font.Style = [fsBold]
+          Badge.Visible = False
+          CanFocused = False
+          CustomDropDown = False
+          DrawTextMode = scdtmGDI
+          Margin = -1
+          Spacing = 1
+          Layout = blGlyphTop
+          Images = scGPVirtualImageList1
+          ImageIndex = 13
+          ImageMargin = 0
+          TransparentBackground = True
+          Options.NormalColor = clNone
+          Options.HotColor = clWindowText
+          Options.PressedColor = clWindowText
+          Options.FocusedColor = clNone
+          Options.DisabledColor = clNone
+          Options.NormalColor2 = clNone
+          Options.HotColor2 = clNone
+          Options.PressedColor2 = clNone
+          Options.FocusedColor2 = clNone
+          Options.DisabledColor2 = clNone
+          Options.NormalColorAlpha = 255
+          Options.HotColorAlpha = 30
+          Options.PressedColorAlpha = 50
+          Options.FocusedColorAlpha = 255
+          Options.DisabledColorAlpha = 255
+          Options.NormalColor2Alpha = 255
+          Options.HotColor2Alpha = 255
+          Options.PressedColor2Alpha = 255
+          Options.FocusedColor2Alpha = 255
+          Options.DisabledColor2Alpha = 255
+          Options.FrameNormalColor = clNone
+          Options.FrameHotColor = clNone
+          Options.FramePressedColor = clNone
+          Options.FrameFocusedColor = clNone
+          Options.FrameDisabledColor = clNone
+          Options.FrameWidth = 1
+          Options.FrameNormalColorAlpha = 255
+          Options.FrameHotColorAlpha = 255
+          Options.FramePressedColorAlpha = 255
+          Options.FrameFocusedColorAlpha = 255
+          Options.FrameDisabledColorAlpha = 255
+          Options.FontNormalColor = clWindowText
+          Options.FontHotColor = clWindowText
+          Options.FontPressedColor = clWindowText
+          Options.FontFocusedColor = clWindowText
+          Options.FontDisabledColor = clGray
+          Options.ShapeFillGradientAngle = 90
+          Options.ShapeFillGradientPressedAngle = -90
+          Options.ShapeFillGradientColorOffset = 25
+          Options.ShapeCornerRadius = 10
+          Options.ShapeStyle = scgpRect
+          Options.ArrowSize = 9
+          Options.ArrowAreaSize = 0
+          Options.ArrowType = scgpatDefault
+          Options.ArrowThickness = 2
+          Options.ArrowThicknessScaled = False
+          Options.ArrowNormalColor = clWindowText
+          Options.ArrowHotColor = clWindowText
+          Options.ArrowPressedColor = clWindowText
+          Options.ArrowFocusedColor = clWindowText
+          Options.ArrowDisabledColor = clWindowText
+          Options.ArrowNormalColorAlpha = 200
+          Options.ArrowHotColorAlpha = 255
+          Options.ArrowPressedColorAlpha = 255
+          Options.ArrowFocusedColorAlpha = 200
+          Options.ArrowDisabledColorAlpha = 125
+          Options.StyleColors = True
+          Options.PressedHotColors = False
+          HotImageIndex = 13
+          FluentLightEffect = False
+          FocusedImageIndex = 13
+          PressedImageIndex = 13
+          UseGalleryMenuImage = False
+          UseGalleryMenuCaption = False
+          ScaleMarginAndSpacing = False
+          WidthWithCaption = 0
+          WidthWithoutCaption = 0
+          SplitButton = False
+          RepeatClick = False
+          RepeatClickInterval = 100
+          GlowEffect.Enabled = False
+          GlowEffect.Color = clHighlight
+          GlowEffect.AlphaValue = 255
+          GlowEffect.GlowSize = 7
+          GlowEffect.Offset = 0
+          GlowEffect.Intensive = True
+          GlowEffect.StyleColors = True
+          GlowEffect.HotColor = clNone
+          GlowEffect.PressedColor = clNone
+          GlowEffect.FocusedColor = clNone
+          GlowEffect.PressedGlowSize = 7
+          GlowEffect.PressedAlphaValue = 255
+          GlowEffect.States = [scsHot, scsPressed, scsFocused]
+          ImageGlow = True
+          ShowGalleryMenuFromTop = False
+          ShowGalleryMenuFromRight = False
+          ShowMenuArrow = True
+          ShowFocusRect = True
+          Down = False
+          GroupIndex = 0
+          AllowAllUp = False
+        end
       end
     end
     object scGPToolPagerPage2: TscGPToolPagerPage
@@ -4978,7 +5005,6 @@ object f_menu: Tf_menu
           Down = False
           GroupIndex = 0
           AllowAllUp = False
-          ExplicitLeft = 0
         end
         object scGPButton8: TscGPButton
           Left = 3
@@ -5106,8 +5132,6 @@ object f_menu: Tf_menu
           Down = False
           GroupIndex = 0
           AllowAllUp = False
-          ExplicitLeft = 11
-          ExplicitTop = 11
         end
       end
       object scGPToolGroupPanel13: TscGPToolGroupPanel
@@ -5133,7 +5157,6 @@ object f_menu: Tf_menu
         StorePaintBuffer = True
         SeparatorColor = clWindowText
         SeparatorColorAlpha = 50
-        ExplicitLeft = 129
         object scGPButton1: TscGPButton
           Left = 3
           Top = 3
@@ -5831,7 +5854,7 @@ object f_menu: Tf_menu
     Height = 530
     Align = alClient
     TabOrder = 3
-    ExplicitLeft = 7
+    ExplicitLeft = 13
     ControlData = {
       4C00000009700000C73600000000000000000000000000000000000000000000
       000000004C000000000000000000000001000000E0D057007335CF11AE690800
@@ -10310,67 +10333,40 @@ object f_menu: Tf_menu
       end
       item
         PngImage.Data = {
-          89504E470D0A1A0A0000000D4948445200000040000000400806000000AA6971
-          DE00000006624B474400FF00FF00FFA0BDA7930000073B4944415478DAED9BFB
-          4F1C5514C7BFF3D8F77B9765BB14044A5B40A0B5B43E6235C6477D274613FD49
-          7F3126FA938956FDA5BFF4879A26FE09FAAB3131F1ADB5DAD6546D6A6C63AD52
-          56A02D0A52696159D8173BB3F3F4DE59586881754BCB0EC89EB0612E7B67E69E
-          CF3DF7DC73CE0C0CD6B930660FC06C595100878F9FD99F17C5B724597230E44E
-          5E9F0F3E8F073CCF9771B6AE90E1F5EA3AB3EFF66D4D5FAF3900DF1CFFE5A574
-          26FB1E51C468FB7D5E0483C1E55C4A058BDDBB3A9A4FAD29005F1EFDB95F1084
-          D6D976437D3D2C9672667EA1E80CDEBDBDB3F9E53505E0F3233F4DE4C57C68B6
-          DDDCD40466F9773BBAABABF9E12A802A805500E0CD58EC515D515F21AE2D42DB
-          9CD57A8977B847588B459ADF6F67DF9FAFCA39D1713300643876E83B9FFDC392
-          9D747D4C0577E8607DF8FC8A017823163B20A7D3FBC8CD8CB6CD1F84D51758B4
-          6F77DF5F507242B17D2300E2160E273DB672BAE60989E70E6CDCF0C58A0078ED
-          D469595315C395931987ABEE9625FBBA25199CAA15DBB2D5BA3CED89682C2096
-          498F4CCDD0DB1B23CD371DC0DE5FFF6854C4E4D06C9B77BAE0086F58B6522B29
-          BC640DEC6F0E246F2E809E9E36259BEDA3C77BEAC89E6EB5E1846EB6AA8B8BCA
-          6AB507A3D1F88A0178714B1B2C249CFD60DE1A5F4DB2E2007685C2B0D81DE8E5
-          2D66EB6A0E002ABCD34D7C40C46C5DCD01E021334F0128816525376B1FC0F32D
-          5B0D1FF09198375B577300AC7B275805B004803F4FA6C1591834DEE1597F0032
-          71198327526058062DF7FAE00E2DAFF8B126018CF509183E933166DF1880A2A3
-          E94E2F6A37DB8BE7EB3481D2D4FF1C0EC37157FD45579525BAB2E487351F802C
-          6AF8FDD309F8EBED68D9ED3514BDF0631A997109DDCFD490A48981A6C8889FFB
-          15BAA695BE094978825B6F85D5ED359AA9E1410813E34B7465106ADF0EDEE158
-          F05D450164C664F41D9D42FB1E3F3C9142C697BE22A3FFD8143A1E0FC2152C2C
-          05AA0805515A7F0EF69A30D8192B9073D390D28BE734D4529C35112C9663AF38
-          80EE600DAC24148E59ACC86755FCFE59020DB7B910ED74153A132B485E96E08F
-          5A712365A0E54AC543E18BC4E4274744B20C6C86F30B34D8E1F05DBD96C5A904
-          B10065C9EBD359B713B0B3A2083948D9CCD203E758380235E658C0B5003455C7
-          E8B96902210F31AD19176DB9C78360A37DE67B05E33D67C841091F4014A9EDEA
-          263EA3B08C5243172124E225FB87DABB6071B8CC07305F1449C7C51F52989E54
-          D0FD6C0D75D60521CAEB7A2900D77875B28CF452BB8699BBC07C0054D1FE6349
-          743D1980D55930FBA94B122E7C9F44C76301B842954F992B0A4048AA38F75502
-          8D3B3D88B417B6A47F7AA68DCF6DCF848A50E2B1DFA08AD784CEC48C7D4D9BE1
-          9859FB898118E46CDA38A635C79A8E1D866F50F222127DE7AE8A09E82E106AED
-          32671B9C0F80CAC0F114D2A31242CD3662B63A12C379841A6DC40FF88AE7D36D
-          902A72EDDD9DA108385BA1E22B4E26200BD3C6314700386BA3C6318D2D725746
-          C92A9A5B12148C33BC6141E0640A008D447E2367B3885F148D2BD66E71A06187
-          7B6EFD57584C73827D479246E4D77ABFAFDCCBFEBF00D0848825EBDA55635E22
-          642A80D522550055005500E60048910C9046A7B369F1BA03F0C7B753E078B20D
-          3EE85F5F00A49C8AC19369A33842C517B562D3DD5E92A9991309551C40EFA149
-          92BB6B88763A8D2C6E349683D3CFA3FD91999727C8DFB2A323465A5C52C8FA71
-          47361A7900957C3A897C7272F181B31CDCD17AF343E1E9848CD8E129B490190F
-          6D2AE4FF63E7050C9FCE60DB5321D83D9CA1F824496654A534009665E06F6983
-          C5E536DA997FFE462E3EB6785F8E45606B07789B7DC1771505408B9F34046E7D
-          C00F5F5DC1F9498286C11F5368B9D75BCC062B291505406B1CBF7D1C27692987
-          E6BB3C24FFE78D8AAD9952711F90BA2219334EAB4134030C34D8D07487979867
-          E1F2E52C019ADED212173BF3CE41E6D230724B94C48DFEC45FD0123A675F05F5
-          002A54F9CC9884EC8482B1811C3C61CBDC76489D20C9E74B95B8A8337347A298
-          CDA1A5740AF94C6AE9FEC4CA9C91BA6209DD3400AAAC217E4144A4CD613C16A3
-          72A55FC0DFBFCC39C14A4B4501A4C9ACF71F4DA26D4F00DE48C17C9323799CFF
-          2185CE278270060AA9B1383901555AF83E012D8573D64245886E79CA4CD98C99
-          A9F818422B42E363E4D79C0531C452E8FD172B8C56D80274E3D198DDCB63D36E
-          2F59F02041510AB2A063FBD3A1625528DE7B16EA829218D9F69A36179F074CF6
-          F7429A2E3C0B60791EE1CE1D04043F5313EC81AECE0340140FB56D5B1D35415A
-          051E3C912C3EFBA40F49B7DCE7877783392F5199E20465B2F7F791A5400234B4
-          3D1428EE00EB0600952112FDD164A8A1DB6D9AF2A602582D5205500550055005
-          70D301EC8FC5DC53E97466F6BF4568124263F15528E2F8E55AEFBBBB18B99CCE
-          D7B559BF7EE6EC5F6A5E68324EA4C9485D43317B5B35A2E3FD03F59117CAED7E
-          5D00F60D0C6C1405F1982A0AADBAA63154791B8DE58935985D032092209F4F24
-          2BBBF79D703853EE49A68FDA6C59F700FE05E24D797D11A5A122000000004945
-          4E44AE426082}
+          89504E470D0A1A0A0000000D494844520000003C0000003C08060000003AFCD9
+          7200000006624B474400FF00FF00FFA0BDA793000003E74944415478DAED9BCB
+          4F13411CC77FB3BB2DB43C1A95286F48046F2A247AF6152D1A488B074C3C98F8
+          27684C0C3E6E6A8C26241EFC1F8C1A5311237010CF1A43F1E0058CC82B104085
+          4241F631FE767908F2EA74671828FD264D7727EDB7DFCF4E77E637DB2D815D26
+          B27CA7AAB53904845E03A0C770374B7638979A46BA4F1685A62FC1F09B55C0D5
+          ED918794C24DD9298588C283684DF8F612F07CCF5A11D9B9C4325B755DC18B2D
+          F3C06DAF3F60D309D9A104AB231A0C9F5E008EC4F0295B7622C18A2170EE2230
+          959D662B84C0240D9CCA4A03A7BA5C015BF169A0B118583333400DC369239A07
+          88CF074A4E0E287EBFAB7022FC9302A67373608E8C6090F886AF53FC3E50F7E7
+          03F17A994289F46706B643188343B86126F6098A0A9EA222A757B6833F13B07D
+          E4F5BEBEC4C32C4A55C0535A06C4B3714F88F66706D607FA81C6E39B9AAE25C5
+          E707ADA444AA3F13B03D8018030349855994565CB2EE4023DA9F19D81C190673
+          62C25520251000ED40BE147F6660BDF7BB738EB911F16680A7BC5C8A3F33F05C
+          4F377EEF2C57814051C05B5129C55F0E307E94B7F290147F66602E5F3915E7CC
+          831552FC9981790C2A1B9D63A2FD99812D9C1F0D9C27DD48C9CE06ADB0488A3F
+          33B02D63A00F83CD241D48DDBB0FD4BC3C69FECCC054D7C1E8FB01D4642CFD16
+          A415176361B0FEA56ED1FECCC04E285CAAE9435811998C23AA3D82DA030A4E1D
+          32FD935E1E1AB87CA33389D7BD899C5F5BE1EFF202401CACD8A4D32BCE027D83
+          79542B2A04252B47BA3FD74B3CD6AF9F608C8EAE6AB7976DCE744108BB29677F
+          AEC0C6F0305893ABE752353F1FD4DC805B7B2EFE5C81757B849D9D5DD1463232
+          412B2B03777DCBCF9F1F30A5A07FEB066A2DB3416BADA41494CC4CF7B49CFCB9
+          01DB23AADEBFB252B28B00BB18E0215EFEDC80CDF1317C8C2FEDB34C435BE9CF
+          0DD8181A046B6ACAD9263E3F788A310C51DC580AF1E7066C4DC7C01C1E0192E9
+          03ADA060D38A47967FFAA79654571A38D595064E75ED6AE0DD70DBD2240207E6
+          81DB231D40E1A4EC44224580BEEF0CD69F71808FB445EAB07669961D4AA828A9
+          8DD684DE2E2D25AB5A23F7F130DC929D4B84B077EF61EFDE9DDF5EA6A36DAF6A
+          0928D771F338ECFC737A0A413F52AA34D93DFB0F3E41B918C90D5CACDF889E0B
+          3D917D04C4035318A3401ABA6A421DB241B7009874816585A3E7EB7B65438A07
+          26E4B9FA47B9FAB9AE2EB9BB54761030C552E651E7D95023426FCBEA8D273056
+          6BF44A3458BFADFF4AC00BB8879810EABC10FE2A1B8827F0343EAD7123147907
+          5EEB72F454FD6FD9305C81ABDB22CFB08B2FFDD7FCB87262AEF1454343723FEA
+          6E67E0C32D2D7B54CD7C0A8406717714DF78A733187E291B401870AAE82FCE77
+          9C5B5735E9EA0000000049454E44AE426082}
         ContentLeftMargin = 0
         ContentRightMargin = 0
         ContentTopMargin = 0
@@ -10436,10 +10432,6 @@ object f_menu: Tf_menu
     object Payroll: TAction
       Caption = 'Payroll Register'
       OnExecute = PayrollExecute
-    end
-    object Roles: TAction
-      Caption = 'Roles'
-      OnExecute = RolesExecute
     end
     object Items: TAction
       Caption = 'Items'
