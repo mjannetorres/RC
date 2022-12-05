@@ -23,7 +23,8 @@ uses
   dxSkinXmas2008Blue, cxStyles, dxSkinscxPCPainter, cxCustomData, cxFilter,
   cxData, cxDataStorage, cxNavigator, Data.DB, cxDBData, cxGridCustomTableView,
   cxGridTableView, cxGridDBTableView, cxClasses, cxGridLevel, cxGridCustomView,
-  cxGrid, cxLabel, Vcl.StdCtrls, Vcl.ExtCtrls;
+  cxGrid, cxLabel, Vcl.StdCtrls, Vcl.ExtCtrls, scControls, scGPPagers,
+  cxImageComboBox, System.ImageList, Vcl.ImgList, acAlphaImageList;
 
 type
   Tf_ViewBalance = class(TForm)
@@ -31,22 +32,36 @@ type
     Button1: TButton;
     Panel2: TPanel;
     cxLabel1: TcxLabel;
-    grid_jodetail: TcxGrid;
-    cxGridDBTableView1: TcxGridDBTableView;
-    cxGridLevel1: TcxGridLevel;
     cxStyleRepository1: TcxStyleRepository;
     Header_style: TcxStyle;
     select_style: TcxStyle;
     ds_detail: TDataSource;
-    cxGridDBTableView1REMARKS: TcxGridDBColumn;
+    lblBalance: TcxLabel;
+    scGPPageControl1: TscGPPageControl;
+    scGPPageControlPage2: TscGPPageControlPage;
+    grid_jodetail: TcxGrid;
+    cxGridDBTableView1: TcxGridDBTableView;
     cxGridDBTableView1REFDATE: TcxGridDBColumn;
+    cxGridDBTableView1REMARKS: TcxGridDBColumn;
     cxGridDBTableView1PAYDATEFROM: TcxGridDBColumn;
     cxGridDBTableView1PAYDATETO: TcxGridDBColumn;
-    cxGridDBTableView1CASHADVANCES: TcxGridDBColumn;
-    cxGridDBTableView1CASHADVACTUAL: TcxGridDBColumn;
-    lblBalance: TcxLabel;
-    cxGridDBTableView1CASHADVCREDIT: TcxGridDBColumn;
     cxGridDBTableView1CASHADVBALANCE: TcxGridDBColumn;
+    cxGridDBTableView1CASHADVACTUAL: TcxGridDBColumn;
+    cxGridDBTableView1CASHADVANCES: TcxGridDBColumn;
+    cxGridDBTableView1CASHADVCREDIT: TcxGridDBColumn;
+    cxGridLevel1: TcxGridLevel;
+    scGPPageControl2: TscGPPageControl;
+    scGPPageControlPage1: TscGPPageControlPage;
+    cxGrid1: TcxGrid;
+    cxGridDBTableView2: TcxGridDBTableView;
+    cxGridLevel2: TcxGridLevel;
+    ds_accts: TDataSource;
+    cxGridDBTableView2BALANCE: TcxGridDBColumn;
+    cxGridDBTableView2EFFECTIVITYDATE: TcxGridDBColumn;
+    cxGridDBTableView2REMARKS: TcxGridDBColumn;
+    cxGridDBTableView2FORWARDED: TcxGridDBColumn;
+    cxGridDBTableView2CREATEDDATETIME: TcxGridDBColumn;
+    sCharImageList1: TsCharImageList;
     procedure cxGridDBTableView1CASHADVCREDITStylesGetContentStyle(
       Sender: TcxCustomGridTableView; ARecord: TcxCustomGridRecord;
       AItem: TcxCustomGridTableItem; var AStyle: TcxStyle);

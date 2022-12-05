@@ -1409,6 +1409,24 @@ begin
                   TfrxMemoView(f_Reports.rep_PaySlip.FindObject('mem_count')).Text  := IntToStr(brw_WorkLogs.RecordCount) + ' NO. OF ITEM(S)';
                   f_Reports.rep_PaySlip.ShowReport();
                   //preview_payslip(qry_CashOutDetailEMPID.Value, qry_CashOutDetailPAYDATEFROM.Value, qry_CashOutDetailPAYDATETO.Value);
+
+                  brw_ComputeAccts.Close;
+                  brw_ComputeAccts.SQL[2] := 'WHERE EMPID = :EMPID AND EFFECTIVITYDATE = :DATE AND FORWARDED = FALSE AND CANCELLED = FALSE';
+                  brw_ComputeAccts.ParamByName('EMPID').Value   := qry_CashOutDetailEMPID.Value;
+                  brw_ComputeAccts.ParamByName('DATE').Value    := FormatDateTime('yyyy-mm-dd', qry_CashOutDetailPAYDATETO.Value);
+                  brw_ComputeAccts.Open();
+
+                  if brw_ComputeAccts.RecordCount > 0 then
+                  begin
+                    upd_CurrentAcct.Close;
+                    upd_CurrentAcct.SQL[1] := 'SET FORWARDED = TRUE, ';
+                    upd_CurrentAcct.SQL[2] := 'DATEFORWARDED = '+''''+FormatDateTime('yyyy-mm-dd hh:nn:ss', Now)+'''';
+                    upd_CurrentAcct.SQL[3] := 'WHERE EMPID = :EMPID AND EFFECTIVITYDATE = :DATE AND FORWARDED = FALSE AND CANCELLED = FALSE';
+                    upd_CurrentAcct.ParamByName('EMPID').Value := qry_CashOutDetailEMPID.Value;
+                    upd_CurrentAcct.ParamByName('DATE').Value  := FormatDateTime('yyyy-mm-dd', qry_CashOutDetailPAYDATETO.Value);
+                    upd_CurrentAcct.ExecSQL;
+                  end;
+
                 end;
               end;
               brw_ExpenseType.EnableControls;

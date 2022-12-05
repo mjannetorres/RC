@@ -152,8 +152,20 @@ begin
               brw_CompExpense.ParamByName('EMPID').Value   := qry_CashOutDetailEMPID.Value;
               brw_CompExpense.Open();
 
-              qry_CashOutDetailCASHADVBALANCE.Value   := brw_CompExpenseACTUAL.Value - brw_CompExpenseCASHADV.Value;
+              // GET EXISTING ACCOUNT/OBLIGATION OF EMPLOYEE
+              brw_ComputeAccts.Close;
+              brw_ComputeAccts.SQL[2] := 'WHERE EMPID = :EMPID AND EFFECTIVITYDATE = :DATE AND FORWARDED = FALSE AND CANCELLED = FALSE';
+              brw_ComputeAccts.ParamByName('EMPID').Value   := qry_CashOutDetailEMPID.Value;
+              brw_ComputeAccts.ParamByName('DATE').Value    := FormatDateTime('yyyy-mm-dd', date2);
+              brw_ComputeAccts.Open();
 
+              // PAST EXISTING OBLIGATION
+              qry_CashOutDetailLIABILITY.Value        := brw_ComputeAcctsAMOUNT.Value;
+
+              //FORWARDED BALANCE
+              qry_CashOutDetailCASHADVBALANCE.Value   := (brw_CompExpenseACTUAL.Value + brw_CompExpenseLIABILITY.Value) - brw_CompExpenseCASHADV.Value + qry_CashOutDetailLIABILITY.Value;
+
+              //BALANCE FOR NEXT PAYROLL
               qry_CashOutDetailCASHADVCREDIT.Value := (qry_CashOutDetailCASHADVACTUAL.Value + qry_CashOutDetailCASHADVBALANCE.Value) - qry_CashOutDetailCASHADVANCES.Value;
 
               cash_adv  := qry_CashOutDetailCASHADVACTUAL.Value + qry_CashOutDetailCASHADVBALANCE.Value;
@@ -216,8 +228,8 @@ begin
 
         if brw_ExpenseTypeCATEGORY.Value = 1 then
         begin
-          qry_CashOutDetailPAYDATEFROM.Value    := IncDay(StartOfTheWeek(Now), -2);
-          qry_CashOutDetailPAYDATETO.Value      := IncDay(EndOfTheWeek(Now), -2);
+          qry_CashOutDetailPAYDATEFROM.Value    := StartOfTheWeek(Now);
+          qry_CashOutDetailPAYDATETO.Value      := IncDay(EndOfTheWeek(Now), -1);
         end;
 
       end;
@@ -336,11 +348,14 @@ begin
 end;
 
 procedure Tf_CashOut.ViewForwardedBalanceExecute(Sender: TObject);
+var date: TDate;
 begin
   with dm_PM do
   begin
     if qry_CashOutDetailEMPID.Value > 0 then
     begin
+
+      date  :=  date_payto.Date;
 
       brw_ForwardedBal.Close;
       brw_ForwardedBal.SQL[4]  := 'WHERE DETAIL.CASHADVCREDIT > 0 AND EXP.CATEGORY = 1 AND DETAIL.EMPID = :EMPID AND HEADER.CANCELLED = FALSE AND DETAIL.CANCELLED = FALSE';
@@ -348,6 +363,12 @@ begin
       brw_ForwardedBal.Open();
 
       brw_ForwardedBal.First;
+
+      brw_EmpAccnts.Close;
+      brw_EmpAccnts.SQL[3] := 'WHERE BAL.EMPID = :EMPID AND BAL.EFFECTIVITYDATE = :DATE AND BAL.FORWARDED = FALSE AND BAL.CANCELLED = FALSE';
+      brw_EmpAccnts.ParamByName('EMPID').Value    := qry_CashOutDetailEMPID.Value;
+      brw_EmpAccnts.ParamByName('DATE').Value    := FormatDateTime('yyyy-mm-dd hh:nn', date);
+      brw_EmpAccnts.Open();
 
       f_ViewBalance   := Tf_ViewBalance.Create(Self);
       f_ViewBalance.cxLabel1.Caption    := qry_CashOutDetailPAYEE.AsString;

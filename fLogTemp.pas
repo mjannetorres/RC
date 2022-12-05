@@ -25,11 +25,11 @@ uses
   cxClasses, cxGridCustomView, cxGridCustomTableView, cxGridTableView,
   cxGridDBTableView, cxGrid, cxMemo, cxDBEdit, cxLabel, cxDBLabel, cxSpinEdit,
   cxMaskEdit, cxDropDownEdit, cxLookupEdit, cxDBLookupEdit, cxDBLookupComboBox,
-  cxImageComboBox;
+  cxImageComboBox, cxCheckBox;
 
 type
   Tf_LogTemp = class(TForm)
-    Button1: TButton;
+    btnSave: TButton;
     Button2: TButton;
     Panel1: TPanel;
     Panel2: TPanel;
@@ -55,12 +55,18 @@ type
     ds_output: TDataSource;
     ds_jo: TDataSource;
     cmb_role: TcxDBImageComboBox;
+    txt_remarks: TcxDBMemo;
+    Label4: TLabel;
+    check_contract: TcxDBCheckBox;
     procedure cmb_joPropertiesValidate(Sender: TObject;
       var DisplayValue: Variant; var ErrorText: TCaption; var Error: Boolean);
     procedure cmb_rolePropertiesValidate(Sender: TObject;
       var DisplayValue: Variant; var ErrorText: TCaption; var Error: Boolean);
+    procedure cmb_joExit(Sender: TObject);
+    procedure FormShow(Sender: TObject);
   private
     { Private declarations }
+    function manageui: Boolean;
   public
     { Public declarations }
   end;
@@ -73,6 +79,11 @@ implementation
 {$R *.dfm}
 
 uses dmPM;
+
+procedure Tf_LogTemp.cmb_joExit(Sender: TObject);
+begin
+  manageui;
+end;
 
 procedure Tf_LogTemp.cmb_joPropertiesValidate(Sender: TObject;
   var DisplayValue: Variant; var ErrorText: TCaption; var Error: Boolean);
@@ -136,6 +147,67 @@ begin
         end;
       end;
     end;
+  end;
+end;
+
+procedure Tf_LogTemp.FormShow(Sender: TObject);
+begin
+  cmb_jo.SetFocus;
+  manageui;
+end;
+
+function Tf_LogTemp.manageui: Boolean;
+begin
+  with dm_PM do
+  begin
+    if qry_WorkLogsCONTRACTOUT.Value then
+    begin
+     qry_WorkLogsJONO.Clear;
+     qry_WorkLogsCLIENTID.Clear;
+     qry_WorkLogsCLIENT.Clear;
+     qry_WorkLogsOUTPUT.Clear;
+    end;
+
+     cmb_jo.Enabled       := not check_contract.Checked;
+     cmb_client.Enabled   := not check_contract.Checked;
+     cmb_output.Enabled   := not check_contract.Checked;
+
+     cmb_jo.Style.BorderColor       := $00121212;
+     if (cmb_jo.Enabled) and (qry_WorkLogsJONO.IsNull)then
+     cmb_jo.Style.BorderColor       := clRed;
+
+     cmb_client.Style.BorderColor   := $00121212;
+     if (cmb_client.Enabled) and (qry_WorkLogsCLIENTID.IsNull)then
+     cmb_client.Style.BorderColor       := clRed;
+
+     cmb_worker.Style.BorderColor   := $00121212;
+     if qry_WorkLogsWORKERID.IsNull then
+     cmb_worker.Style.BorderColor   := clRed;
+
+     cmb_output.Style.BorderColor   := $00121212;
+     if (cmb_output.Enabled) and (qry_WorkLogsOUTPUT.IsNull)then
+     cmb_output.Style.BorderColor       := clRed;
+
+     cmb_role.Style.BorderColor     := $00121212;
+     if qry_WorkLogsROLEID.IsNull then
+     cmb_role.Style.BorderColor   := clRed;
+
+     txt_qty.Style.BorderColor      := $00121212;
+     if qry_WorkLogsQTY.Value = 0  then
+     txt_qty.Style.BorderColor   := clRed;
+
+     txt_cost.Style.BorderColor     := $00121212;
+     if qry_WorkLogsCOST.Value = 0  then
+     txt_cost.Style.BorderColor   := clRed;
+
+     txt_remarks.Style.BorderColor  := $00121212;
+     if (qry_WorkLogsCONTRACTOUT.Value) and ((qry_WorkLogsREMARKS.IsNull) or (Trim(qry_WorkLogsREMARKS.Value) = '')) then
+     txt_remarks.Style.BorderColor       := clRed;
+
+
+     btnSave.Enabled := (cmb_jo.Style.BorderColor <> clRed) and (cmb_client.Style.BorderColor <> clRed) and (cmb_worker.Style.BorderColor <> clRed) and (cmb_output.Style.BorderColor <> clRed) and (cmb_role.Style.BorderColor <> clRed) and (not txt_qty.Style.BorderColor <> clRed) and (txt_cost.Style.BorderColor <> clRed) and (txt_remarks.Style.BorderColor <> clRed);
+
+     Result := btnSave.Enabled;
   end;
 end;
 

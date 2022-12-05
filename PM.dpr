@@ -85,7 +85,9 @@ uses
   fLayoutTemp in 'fLayoutTemp.pas' {f_layoutTemp},
   fRFQ in 'fRFQ.pas' {f_RFQ},
   fRFQDetail in 'fRFQDetail.pas' {f_RFQTemp},
-  FJOStatus in 'FJOStatus.pas' {f_JOStatus};
+  FJOStatus in 'FJOStatus.pas' {f_JOStatus},
+  fEmpAccounts in 'fEmpAccounts.pas' {f_EmpAccounts},
+  fEmpAccountsTemp in 'fEmpAccountsTemp.pas' {f_EmpAccountsTemp};
 
 {$R *.res}
 
@@ -97,5 +99,7 @@ begin
   Application.CreateForm(Tf_menu, f_menu);
   Application.CreateForm(Tf_Login1, f_Login1);
   Application.CreateForm(Tf_JOStatus, f_JOStatus);
+  Application.CreateForm(Tf_EmpAccounts, f_EmpAccounts);
+  Application.CreateForm(Tf_EmpAccountsTemp, f_EmpAccountsTemp);
   Application.Run;
 end.

@@ -56,12 +56,15 @@ type
     cxGrid1DBTableView1FIRSTNAME: TcxGridDBColumn;
     cxGrid1DBTableView1MIDDLENAME: TcxGridDBColumn;
     cxGrid1DBTableView1TITLE: TcxGridDBColumn;
+    Account: TAction;
+    ToolButton4: TToolButton;
     procedure txt_searchRightButtonClick(Sender: TObject);
     procedure txt_searchKeyPress(Sender: TObject; var Key: Char);
     procedure NewExecute(Sender: TObject);
     procedure EditExecute(Sender: TObject);
     procedure DeleteExecute(Sender: TObject);
     procedure FormCreate(Sender: TObject);
+    procedure AccountExecute(Sender: TObject);
   private
     { Private declarations }
     procedure search;
@@ -76,9 +79,21 @@ implementation
 
 {$R *.dfm}
 
-uses dmPM, fEmpTemp;
+uses dmPM, fEmpTemp, fEmpAccounts;
 
 { Tf_Emp }
+
+procedure Tf_Emp.AccountExecute(Sender: TObject);
+begin
+  with dm_PM do
+  begin
+    f_EmpAccounts := Tf_EmpAccounts.Create(nil);
+    f_EmpAccounts.Caption         := 'Current Accounts';
+    f_EmpAccounts.Label1.Caption  :=  brw_EmpRegLASTNAME.AsString + ', '+brw_EmpRegFIRSTNAME.AsString + ' ' +brw_EmpRegMIDDLENAME.AsString;
+    f_EmpAccounts.ShowModal;
+
+  end;
+end;
 
 procedure Tf_Emp.DeleteExecute(Sender: TObject);
 begin

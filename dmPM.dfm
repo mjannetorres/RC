@@ -1,6 +1,6 @@
 object dm_PM: Tdm_PM
   OldCreateOrder = False
-  Height = 834
+  Height = 860
   Width = 841
   object dbConn: TFDConnection
     Params.Strings = (
@@ -9677,6 +9677,13 @@ object dm_PM: Tdm_PM
       DisplayFormat = '###,###,##0.00'
       currency = True
     end
+    object qry_CashOutDetailLIABILITY: TSingleField
+      AutoGenerateValue = arDefault
+      FieldName = 'LIABILITY'
+      Origin = 'LIABILITY'
+      DisplayFormat = '###,###,##0.00'
+      currency = True
+    end
   end
   object brw_CashSum: TFDQuery
     OnCalcFields = brw_CashSumCalcFields
@@ -10602,7 +10609,8 @@ object dm_PM: Tdm_PM
     SQL.Strings = (
       
         'SELECT SUM(DETAIL.AMOUNT) AS AMOUNT, SUM(DETAIL.CASHADVACTUAL) A' +
-        'S ACTUAL, SUM(DETAIL.CASHADVANCES) AS CASHADV'
+        'S ACTUAL, SUM(DETAIL.CASHADVANCES) AS CASHADV, SUM(DETAIL.LIABIL' +
+        'ITY) AS LIABILITY'
       'FROM CASH_OUTDETAIL DETAIL'
       'INNER JOIN EXPENSE_TYPE EXP ON EXP.ID = DETAIL.CATEGORYID  '
       'INNER JOIN CASH_HEADER HEADER ON HEADER.ID = DETAIL.HEADERID'
@@ -10628,6 +10636,13 @@ object dm_PM: Tdm_PM
       AutoGenerateValue = arDefault
       FieldName = 'CASHADV'
       Origin = 'CASHADV'
+      ProviderFlags = []
+      ReadOnly = True
+    end
+    object brw_CompExpenseLIABILITY: TFloatField
+      AutoGenerateValue = arDefault
+      FieldName = 'LIABILITY'
+      Origin = 'LIABILITY'
       ProviderFlags = []
       ReadOnly = True
     end
@@ -12611,6 +12626,17 @@ object dm_PM: Tdm_PM
       FixedChar = True
       Size = 1
     end
+    object qry_WorkLogsREMARKS: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'REMARKS'
+      Origin = 'REMARKS'
+      Size = 200
+    end
+    object qry_WorkLogsCONTRACTOUT: TBooleanField
+      AutoGenerateValue = arDefault
+      FieldName = 'CONTRACTOUT'
+      Origin = 'CONTRACTOUT'
+    end
   end
   object brw_WorkLogs: TFDQuery
     OnCalcFields = brw_WorkLogsCalcFields
@@ -12618,7 +12644,7 @@ object dm_PM: Tdm_PM
     SQL.Strings = (
       'SELECT PM_WORKLOGS.*, JO_DETAIL.DESCRIPTION'
       'FROM PM_WORKLOGS'
-      'INNER JOIN JO_DETAIL ON JO_DETAIL.ID = PM_WORKLOGS.OUTPUT'
+      'LEFT JOIN JO_DETAIL ON JO_DETAIL.ID = PM_WORKLOGS.OUTPUT'
       ''
       'ORDER BY CREATEDDATETIME DESC;')
     Left = 560
@@ -12738,6 +12764,17 @@ object dm_PM: Tdm_PM
       FieldName = 'TOTAL'
       DisplayFormat = '###,###,##0.00'
       Calculated = True
+    end
+    object brw_WorkLogsREMARKS: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'REMARKS'
+      Origin = 'REMARKS'
+      Size = 200
+    end
+    object brw_WorkLogsCONTRACTOUT: TBooleanField
+      AutoGenerateValue = arDefault
+      FieldName = 'CONTRACTOUT'
+      Origin = 'CONTRACTOUT'
     end
   end
   object brw_ComputePay: TFDQuery
@@ -14197,5 +14234,189 @@ object dm_PM: Tdm_PM
       ';')
     Left = 40
     Top = 688
+  end
+  object brw_EmpAccnts: TFDQuery
+    Connection = dbConn
+    SQL.Strings = (
+      'SELECT BAL.*'
+      'FROM EMP_BALANCE BAL'
+      'INNER JOIN EMP_REG ON EMP_REG.ID = BAL.EMPID'
+      ''
+      'ORDER BY BAL.EFFECTIVITYDATE DESC;')
+    Left = 768
+    Top = 768
+    object brw_EmpAccntsID: TFDAutoIncField
+      FieldName = 'ID'
+      Origin = 'ID'
+      ProviderFlags = [pfInWhere, pfInKey]
+      ReadOnly = True
+    end
+    object brw_EmpAccntsEMPID: TIntegerField
+      FieldName = 'EMPID'
+      Origin = 'EMPID'
+      Required = True
+    end
+    object brw_EmpAccntsBALANCE: TSingleField
+      FieldName = 'BALANCE'
+      Origin = 'BALANCE'
+      Required = True
+      DisplayFormat = '###,###,##0.00'
+      currency = True
+    end
+    object brw_EmpAccntsEFFECTIVITYDATE: TDateField
+      FieldName = 'EFFECTIVITYDATE'
+      Origin = 'EFFECTIVITYDATE'
+      Required = True
+    end
+    object brw_EmpAccntsCANCELLED: TBooleanField
+      FieldName = 'CANCELLED'
+      Origin = 'CANCELLED'
+      Required = True
+    end
+    object brw_EmpAccntsCREATEDBYID: TIntegerField
+      FieldName = 'CREATEDBYID'
+      Origin = 'CREATEDBYID'
+      Required = True
+    end
+    object brw_EmpAccntsCREATEDDATETIME: TDateTimeField
+      FieldName = 'CREATEDDATETIME'
+      Origin = 'CREATEDDATETIME'
+      Required = True
+    end
+    object brw_EmpAccntsUPDATEDBYID: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'UPDATEDBYID'
+      Origin = 'UPDATEDBYID'
+    end
+    object brw_EmpAccntsUPDATEDDATETIME: TDateTimeField
+      AutoGenerateValue = arDefault
+      FieldName = 'UPDATEDDATETIME'
+      Origin = 'UPDATEDDATETIME'
+    end
+    object brw_EmpAccntsFORWARDED: TBooleanField
+      FieldName = 'FORWARDED'
+      Origin = 'FORWARDED'
+      Required = True
+    end
+    object brw_EmpAccntsREMARKS: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'REMARKS'
+      Origin = 'REMARKS'
+      Size = 100
+    end
+    object brw_EmpAccntsDATEFORWARDED: TDateTimeField
+      AutoGenerateValue = arDefault
+      FieldName = 'DATEFORWARDED'
+      Origin = 'DATEFORWARDED'
+    end
+  end
+  object qry_EmpAccnts: TFDQuery
+    CachedUpdates = True
+    Connection = dbConn
+    SQL.Strings = (
+      'SELECT *'
+      'FROM EMP_BALANCE'
+      ''
+      ';')
+    Left = 424
+    Top = 640
+    object qry_EmpAccntsID: TFDAutoIncField
+      FieldName = 'ID'
+      Origin = 'ID'
+      ProviderFlags = [pfInWhere, pfInKey]
+      ReadOnly = True
+    end
+    object qry_EmpAccntsEMPID: TIntegerField
+      FieldName = 'EMPID'
+      Origin = 'EMPID'
+      Required = True
+    end
+    object qry_EmpAccntsBALANCE: TSingleField
+      FieldName = 'BALANCE'
+      Origin = 'BALANCE'
+      Required = True
+      DisplayFormat = '###,###,##0.00'
+      currency = True
+    end
+    object qry_EmpAccntsEFFECTIVITYDATE: TDateField
+      FieldName = 'EFFECTIVITYDATE'
+      Origin = 'EFFECTIVITYDATE'
+      Required = True
+    end
+    object qry_EmpAccntsFORWARDED: TBooleanField
+      AutoGenerateValue = arDefault
+      FieldName = 'FORWARDED'
+      Origin = 'FORWARDED'
+    end
+    object qry_EmpAccntsCANCELLED: TBooleanField
+      FieldName = 'CANCELLED'
+      Origin = 'CANCELLED'
+      Required = True
+    end
+    object qry_EmpAccntsCREATEDBYID: TIntegerField
+      FieldName = 'CREATEDBYID'
+      Origin = 'CREATEDBYID'
+      Required = True
+    end
+    object qry_EmpAccntsCREATEDDATETIME: TDateTimeField
+      FieldName = 'CREATEDDATETIME'
+      Origin = 'CREATEDDATETIME'
+      Required = True
+    end
+    object qry_EmpAccntsUPDATEDBYID: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'UPDATEDBYID'
+      Origin = 'UPDATEDBYID'
+    end
+    object qry_EmpAccntsUPDATEDDATETIME: TDateTimeField
+      AutoGenerateValue = arDefault
+      FieldName = 'UPDATEDDATETIME'
+      Origin = 'UPDATEDDATETIME'
+    end
+    object qry_EmpAccntsREMARKS: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'REMARKS'
+      Origin = 'REMARKS'
+      Size = 100
+    end
+    object qry_EmpAccntsCANCELLEDBYD: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'CANCELLEDBYD'
+      Origin = 'CANCELLEDBYD'
+    end
+    object qry_EmpAccntsCANCELLEDDATETIME: TDateTimeField
+      AutoGenerateValue = arDefault
+      FieldName = 'CANCELLEDDATETIME'
+      Origin = 'CANCELLEDDATETIME'
+    end
+  end
+  object brw_ComputeAccts: TFDQuery
+    Connection = dbConn
+    SQL.Strings = (
+      'SELECT SUM(BALANCE) AS AMOUNT'
+      'FROM EMP_BALANCE'
+      ''
+      ';')
+    Left = 560
+    Top = 808
+    object brw_ComputeAcctsAMOUNT: TFloatField
+      AutoGenerateValue = arDefault
+      FieldName = 'AMOUNT'
+      Origin = 'AMOUNT'
+      ProviderFlags = []
+      ReadOnly = True
+      DisplayFormat = '###,###,##0.00'
+      currency = True
+    end
+  end
+  object upd_CurrentAcct: TFDQuery
+    Connection = dbConn
+    SQL.Strings = (
+      'UPDATE EMP_BALANCE'
+      'SET FORWARDED = TRUE'
+      'WHERE ID = 0'
+      ';')
+    Left = 16
+    Top = 400
   end
 end

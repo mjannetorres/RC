@@ -518,15 +518,61 @@ begin
           end
           else if qry_CashRegSOURCE.Value = 'OUT' then
           begin
-            del_CashoutDetail.Close;
-            del_CashoutDetail.SQL[2] := 'WHERE HEADERID = '+qry_CashRegID.AsString;
-            del_CashoutDetail.ExecSQL;
+
+            qry_CashOutDetail.Close;
+            qry_CashOutDetail.SQL[2]  := 'WHERE HEADERID = :ID';
+            qry_CashOutDetail.ParamByName('ID').Value := qry_CashRegID.Value;
+            qry_CashOutDetail.Open();
+
+            qry_CashOutDetail.Edit;
+            qry_CashOutDetailCANCELLED.Value          := True;
+            qry_CashOutDetailCANCELLEDBYID.Value      := userid;
+            qry_CashOutDetailCANCELLEDDATETIME.Value  := Now;
+            qry_CashOutDetail.Post;
+            qry_CashOutDetail.ApplyUpdates();
+
+            brw_ExpenseType.Close;
+            brw_ExpenseType.SQL[2]  := 'WHERE CANCELLED = FALSE';
+            brw_ExpenseType.Open();
+
+            brw_ExpenseType.DisableControls;
+            if brw_ExpenseType.Locate('ID', qry_CashOutDetailCATEGORYID.Value, []) then
+            begin
+              if brw_ExpenseTypeCATEGORY.Value = 1 then
+              begin
+                brw_ComputeAccts.Close;
+                brw_ComputeAccts.SQL[2] := 'WHERE EMPID = :EMPID AND EFFECTIVITYDATE = :DATE AND FORWARDED = TRUE AND CANCELLED = FALSE';
+                brw_ComputeAccts.ParamByName('EMPID').Value   := qry_CashOutDetailEMPID.Value;
+                brw_ComputeAccts.ParamByName('DATE').Value    := FormatDateTime('yyyy-mm-dd', qry_CashOutDetailPAYDATETO.Value);
+                brw_ComputeAccts.Open();
+
+                if brw_ComputeAccts.RecordCount > 0 then
+                begin
+                  upd_CurrentAcct.Close;
+                  upd_CurrentAcct.SQL[1] := 'SET FORWARDED = FALSE, ';
+                  upd_CurrentAcct.SQL[2] := 'DATEFORWARDED = null';
+                  upd_CurrentAcct.SQL[3] := 'WHERE EMPID = :EMPID AND EFFECTIVITYDATE = :DATE AND FORWARDED = TRUE AND CANCELLED = FALSE';
+                  upd_CurrentAcct.ParamByName('EMPID').Value := qry_CashOutDetailEMPID.Value;
+                  upd_CurrentAcct.ParamByName('DATE').Value  := FormatDateTime('yyyy-mm-dd', qry_CashOutDetailPAYDATETO.Value);
+                  upd_CurrentAcct.ExecSQL;
+                end;
+              end;
+            end;
+            brw_ExpenseType.EnableControls;
           end
           else if qry_CashRegSOURCE.Value = 'IN' then
           begin
-            del_CashInDetail.Close;
-            del_CashInDetail.SQL[2] := 'WHERE HEADERID = '+qry_CashRegID.AsString;
-            del_CashInDetail.ExecSQL;
+            qry_CashInDetail.Close;
+            qry_CashInDetail.SQL[2]  := 'WHERE HEADERID = :ID';
+            qry_CashInDetail.ParamByName('ID').Value := qry_CashRegID.Value;
+            qry_CashInDetail.Open();
+
+            qry_CashInDetail.Edit;
+            qry_CashInDetailCANCELLED.Value          := True;
+            qry_CashInDetailCANCELLEDBYID.Value      := userid;
+            qry_CashInDetailCANCELLEDDATETIME.Value  := Now;
+            qry_CashInDetail.Post;
+            qry_CashInDetail.ApplyUpdates();
           end;
 
           search;

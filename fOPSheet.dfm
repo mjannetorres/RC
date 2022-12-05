@@ -544,6 +544,7 @@ object f_OPSheet: Tf_OPSheet
     ActivePage = scGPPageControlPage2
     StorePaintBuffer = False
     FreeOnClose = False
+    ExplicitTop = 155
     object scGPPageControlPage2: TscGPPageControlPage
       Left = 0
       Top = 30

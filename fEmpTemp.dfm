@@ -15,7 +15,7 @@ object f_EmpTemp: Tf_EmpTemp
   Position = poMainFormCenter
   OnShow = FormShow
   PixelsPerInch = 96
-  TextHeight = 13
+  TextHeight = 14
   object Panel1: TPanel
     Left = 0
     Top = 306
@@ -226,11 +226,342 @@ object f_EmpTemp: Tf_EmpTemp
         ShowCloseButton = True
         UseCustomOptions = False
       end>
-    TabIndex = 1
-    ActivePage = scGPPageControlPage2
+    TabIndex = 0
+    ActivePage = scGPPageControlPage1
     StorePaintBuffer = False
     FreeOnClose = False
     OnChangePage = scGPPageControl1ChangePage
+    object scGPPageControlPage2: TscGPPageControlPage
+      Left = 0
+      Top = 30
+      Width = 406
+      Height = 276
+      HorzScrollBar.Tracking = True
+      VertScrollBar.Tracking = True
+      BorderStyle = bsNone
+      Color = clBtnFace
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentColor = False
+      ParentFont = False
+      TabOrder = 1
+      Visible = False
+      WallpaperIndex = -1
+      CustomBackgroundImageIndex = -1
+      FluentUIOpaque = False
+      StorePaintBuffer = False
+      BGStyle = scgppsForm
+      object Panel3: TPanel
+        Left = 0
+        Top = 0
+        Width = 406
+        Height = 276
+        Align = alClient
+        BevelOuter = bvNone
+        Color = clTeal
+        ParentBackground = False
+        TabOrder = 0
+        StyleElements = []
+        object Label10: TLabel
+          Left = 126
+          Top = 77
+          Width = 95
+          Height = 17
+          Caption = 'Salary Schedule'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWhite
+          Font.Height = -13
+          Font.Name = 'Segoe UI Semibold'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object Label13: TLabel
+          Left = 14
+          Top = 19
+          Width = 143
+          Height = 17
+          Caption = 'Mode of Compensation'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWhite
+          Font.Height = -13
+          Font.Name = 'Segoe UI Semibold'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object Label15: TLabel
+          Left = 14
+          Top = 77
+          Width = 27
+          Height = 17
+          Caption = 'Rate'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWhite
+          Font.Height = -13
+          Font.Name = 'Segoe UI Semibold'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object rad_source: TcxDBRadioGroup
+          Left = 14
+          Top = 42
+          Alignment = alCenterCenter
+          Caption = 'SOURCE'
+          DataBinding.DataField = 'MODEOFCOMP'
+          DataBinding.DataSource = ds_Emp
+          ParentBackground = False
+          ParentColor = False
+          ParentFont = False
+          Properties.Columns = 3
+          Properties.DefaultValue = 'O'
+          Properties.ImmediatePost = True
+          Properties.Items = <
+            item
+              Caption = 'FIXED'
+              Value = 'F'
+            end
+            item
+              Caption = 'DAILY'
+              Value = 'D'
+            end
+            item
+              Caption = 'PER PIECE'
+              Value = 'P'
+            end>
+          Properties.WordWrap = True
+          Properties.OnChange = rad_sourcePropertiesChange
+          Style.BorderColor = 1184274
+          Style.BorderStyle = ebsThick
+          Style.Color = 6570553
+          Style.Font.Charset = DEFAULT_CHARSET
+          Style.Font.Color = clBlack
+          Style.Font.Height = -12
+          Style.Font.Name = 'Tahoma'
+          Style.Font.Style = []
+          Style.LookAndFeel.NativeStyle = False
+          Style.Shadow = False
+          Style.TextColor = clWhite
+          Style.TransparentBorder = True
+          Style.IsFontAssigned = True
+          StyleDisabled.LookAndFeel.NativeStyle = False
+          StyleFocused.LookAndFeel.NativeStyle = False
+          StyleHot.LookAndFeel.NativeStyle = False
+          TabOrder = 0
+          OnExit = UIExecute
+          Height = 29
+          Width = 281
+        end
+        object txt_rate: TcxDBTextEdit
+          Left = 14
+          Top = 98
+          DataBinding.DataField = 'RATE'
+          DataBinding.DataSource = ds_Emp
+          ParentFont = False
+          ParentShowHint = False
+          Properties.CharCase = ecUpperCase
+          ShowHint = False
+          Style.BorderColor = 1184274
+          Style.BorderStyle = ebsThick
+          Style.Color = 6570553
+          Style.Font.Charset = ANSI_CHARSET
+          Style.Font.Color = clWhite
+          Style.Font.Height = -12
+          Style.Font.Name = 'Tahoma'
+          Style.Font.Style = []
+          Style.LookAndFeel.NativeStyle = False
+          Style.IsFontAssigned = True
+          StyleDisabled.Color = 6570553
+          StyleDisabled.LookAndFeel.NativeStyle = False
+          StyleFocused.LookAndFeel.NativeStyle = False
+          StyleHot.LookAndFeel.NativeStyle = False
+          TabOrder = 1
+          OnExit = UIExecute
+          Width = 91
+        end
+        object cxGroupBox1: TcxGroupBox
+          Left = 14
+          Top = 125
+          Alignment = alTopCenter
+          Caption = 'BENEFITS'
+          ParentBackground = False
+          ParentColor = False
+          ParentFont = False
+          Style.BorderColor = clWhite
+          Style.BorderStyle = ebsThick
+          Style.Color = 6570553
+          Style.Font.Charset = ANSI_CHARSET
+          Style.Font.Color = clWhite
+          Style.Font.Height = -13
+          Style.Font.Name = 'Segoe UI Semibold'
+          Style.Font.Style = [fsBold]
+          Style.LookAndFeel.Kind = lfUltraFlat
+          Style.LookAndFeel.NativeStyle = False
+          Style.LookAndFeel.SkinName = ''
+          Style.IsFontAssigned = True
+          StyleDisabled.LookAndFeel.Kind = lfUltraFlat
+          StyleDisabled.LookAndFeel.NativeStyle = False
+          StyleDisabled.LookAndFeel.SkinName = ''
+          StyleFocused.LookAndFeel.Kind = lfUltraFlat
+          StyleFocused.LookAndFeel.NativeStyle = False
+          StyleFocused.LookAndFeel.SkinName = ''
+          StyleHot.LookAndFeel.Kind = lfUltraFlat
+          StyleHot.LookAndFeel.NativeStyle = False
+          StyleHot.LookAndFeel.SkinName = ''
+          TabOrder = 3
+          Transparent = True
+          Height = 105
+          Width = 281
+          object Label12: TLabel
+            Left = 69
+            Top = 25
+            Width = 21
+            Height = 17
+            Caption = 'SSS'
+            Font.Charset = ANSI_CHARSET
+            Font.Color = clWhite
+            Font.Height = -13
+            Font.Name = 'Segoe UI Semibold'
+            Font.Style = [fsBold]
+            ParentFont = False
+          end
+          object Label14: TLabel
+            Left = 40
+            Top = 51
+            Width = 50
+            Height = 17
+            Caption = 'PAGIBIG'
+            Font.Charset = ANSI_CHARSET
+            Font.Color = clWhite
+            Font.Height = -13
+            Font.Name = 'Segoe UI Semibold'
+            Font.Style = [fsBold]
+            ParentFont = False
+          end
+          object Label16: TLabel
+            Left = 14
+            Top = 75
+            Width = 76
+            Height = 17
+            Caption = 'PHILHEALTH'
+            Font.Charset = ANSI_CHARSET
+            Font.Color = clWhite
+            Font.Height = -13
+            Font.Name = 'Segoe UI Semibold'
+            Font.Style = [fsBold]
+            ParentFont = False
+          end
+          object txt_phic: TcxDBTextEdit
+            Left = 112
+            Top = 75
+            DataBinding.DataField = 'PHILHEALTH'
+            DataBinding.DataSource = ds_Emp
+            ParentFont = False
+            ParentShowHint = False
+            Properties.CharCase = ecUpperCase
+            ShowHint = False
+            Style.BorderColor = 1184274
+            Style.BorderStyle = ebsThick
+            Style.Color = 6570553
+            Style.Font.Charset = ANSI_CHARSET
+            Style.Font.Color = clWhite
+            Style.Font.Height = -12
+            Style.Font.Name = 'Tahoma'
+            Style.Font.Style = []
+            Style.LookAndFeel.NativeStyle = False
+            Style.IsFontAssigned = True
+            StyleDisabled.Color = 6570553
+            StyleDisabled.LookAndFeel.NativeStyle = False
+            StyleFocused.LookAndFeel.NativeStyle = False
+            StyleHot.LookAndFeel.NativeStyle = False
+            TabOrder = 2
+            OnExit = UIExecute
+            Width = 150
+          end
+          object txt_pagibig: TcxDBTextEdit
+            Left = 112
+            Top = 48
+            DataBinding.DataField = 'PAGIBIG'
+            DataBinding.DataSource = ds_Emp
+            ParentFont = False
+            ParentShowHint = False
+            Properties.CharCase = ecUpperCase
+            ShowHint = False
+            Style.BorderColor = 1184274
+            Style.BorderStyle = ebsThick
+            Style.Color = 6570553
+            Style.Font.Charset = ANSI_CHARSET
+            Style.Font.Color = clWhite
+            Style.Font.Height = -12
+            Style.Font.Name = 'Tahoma'
+            Style.Font.Style = []
+            Style.LookAndFeel.NativeStyle = False
+            Style.IsFontAssigned = True
+            StyleDisabled.Color = 6570553
+            StyleDisabled.LookAndFeel.NativeStyle = False
+            StyleFocused.LookAndFeel.NativeStyle = False
+            StyleHot.LookAndFeel.NativeStyle = False
+            TabOrder = 1
+            OnExit = UIExecute
+            Width = 150
+          end
+          object txt_sss: TcxDBTextEdit
+            Left = 112
+            Top = 21
+            DataBinding.DataField = 'SSS'
+            DataBinding.DataSource = ds_Emp
+            ParentFont = False
+            ParentShowHint = False
+            Properties.CharCase = ecUpperCase
+            ShowHint = False
+            Style.BorderColor = 1184274
+            Style.BorderStyle = ebsThick
+            Style.Color = 6570553
+            Style.Font.Charset = ANSI_CHARSET
+            Style.Font.Color = clWhite
+            Style.Font.Height = -12
+            Style.Font.Name = 'Tahoma'
+            Style.Font.Style = []
+            Style.LookAndFeel.NativeStyle = False
+            Style.IsFontAssigned = True
+            StyleDisabled.Color = 6570553
+            StyleDisabled.LookAndFeel.NativeStyle = False
+            StyleFocused.LookAndFeel.NativeStyle = False
+            StyleHot.LookAndFeel.NativeStyle = False
+            TabOrder = 0
+            OnExit = UIExecute
+            Width = 150
+          end
+        end
+        object cmb_freq: TcxDBComboBox
+          Left = 128
+          Top = 98
+          DataBinding.DataField = 'FREQUENCY'
+          DataBinding.DataSource = ds_Emp
+          Properties.CharCase = ecUpperCase
+          Properties.ImmediatePost = True
+          Properties.Items.Strings = (
+            'MONTHLY'
+            'TWICE A MONTH'
+            'WEEKLY')
+          Style.BorderColor = 1184274
+          Style.BorderStyle = ebsThick
+          Style.Color = 6570553
+          Style.LookAndFeel.NativeStyle = False
+          Style.LookAndFeel.SkinName = 'DevExpressDarkStyle'
+          StyleDisabled.LookAndFeel.NativeStyle = False
+          StyleDisabled.LookAndFeel.SkinName = 'DevExpressDarkStyle'
+          StyleFocused.LookAndFeel.NativeStyle = False
+          StyleFocused.LookAndFeel.SkinName = 'DevExpressDarkStyle'
+          StyleHot.LookAndFeel.NativeStyle = False
+          StyleHot.LookAndFeel.SkinName = 'DevExpressDarkStyle'
+          TabOrder = 2
+          OnExit = UIExecute
+          Width = 167
+        end
+      end
+    end
     object scGPPageControlPage1: TscGPPageControlPage
       Left = 0
       Top = 30
@@ -248,7 +579,6 @@ object f_EmpTemp: Tf_EmpTemp
       ParentColor = False
       ParentFont = False
       TabOrder = 0
-      Visible = False
       StyleElements = []
       WallpaperIndex = -1
       CustomBackgroundImageIndex = -1
@@ -713,336 +1043,6 @@ object f_EmpTemp: Tf_EmpTemp
           OnExit = UIExecute
           Height = 48
           Width = 281
-        end
-      end
-    end
-    object scGPPageControlPage2: TscGPPageControlPage
-      Left = 0
-      Top = 30
-      Width = 406
-      Height = 276
-      HorzScrollBar.Tracking = True
-      VertScrollBar.Tracking = True
-      BorderStyle = bsNone
-      Color = clBtnFace
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -12
-      Font.Name = 'Tahoma'
-      Font.Style = []
-      ParentColor = False
-      ParentFont = False
-      TabOrder = 1
-      WallpaperIndex = -1
-      CustomBackgroundImageIndex = -1
-      FluentUIOpaque = False
-      StorePaintBuffer = False
-      BGStyle = scgppsForm
-      object Panel3: TPanel
-        Left = 0
-        Top = 0
-        Width = 406
-        Height = 276
-        Align = alClient
-        BevelOuter = bvNone
-        Color = clTeal
-        ParentBackground = False
-        TabOrder = 0
-        StyleElements = []
-        object Label10: TLabel
-          Left = 126
-          Top = 77
-          Width = 95
-          Height = 17
-          Caption = 'Salary Schedule'
-          Font.Charset = ANSI_CHARSET
-          Font.Color = clWhite
-          Font.Height = -13
-          Font.Name = 'Segoe UI Semibold'
-          Font.Style = [fsBold]
-          ParentFont = False
-        end
-        object Label13: TLabel
-          Left = 14
-          Top = 19
-          Width = 143
-          Height = 17
-          Caption = 'Mode of Compensation'
-          Font.Charset = ANSI_CHARSET
-          Font.Color = clWhite
-          Font.Height = -13
-          Font.Name = 'Segoe UI Semibold'
-          Font.Style = [fsBold]
-          ParentFont = False
-        end
-        object Label15: TLabel
-          Left = 14
-          Top = 77
-          Width = 27
-          Height = 17
-          Caption = 'Rate'
-          Font.Charset = ANSI_CHARSET
-          Font.Color = clWhite
-          Font.Height = -13
-          Font.Name = 'Segoe UI Semibold'
-          Font.Style = [fsBold]
-          ParentFont = False
-        end
-        object rad_source: TcxDBRadioGroup
-          Left = 14
-          Top = 42
-          Alignment = alCenterCenter
-          Caption = 'SOURCE'
-          DataBinding.DataField = 'MODEOFCOMP'
-          DataBinding.DataSource = ds_Emp
-          ParentBackground = False
-          ParentColor = False
-          ParentFont = False
-          Properties.Columns = 3
-          Properties.DefaultValue = 'O'
-          Properties.ImmediatePost = True
-          Properties.Items = <
-            item
-              Caption = 'FIXED'
-              Value = 'F'
-            end
-            item
-              Caption = 'DAILY'
-              Value = 'D'
-            end
-            item
-              Caption = 'PER PIECE'
-              Value = 'P'
-            end>
-          Properties.WordWrap = True
-          Properties.OnChange = rad_sourcePropertiesChange
-          Style.BorderColor = 1184274
-          Style.BorderStyle = ebsThick
-          Style.Color = 6570553
-          Style.Font.Charset = DEFAULT_CHARSET
-          Style.Font.Color = clBlack
-          Style.Font.Height = -12
-          Style.Font.Name = 'Tahoma'
-          Style.Font.Style = []
-          Style.LookAndFeel.NativeStyle = False
-          Style.Shadow = False
-          Style.TextColor = clWhite
-          Style.TransparentBorder = True
-          Style.IsFontAssigned = True
-          StyleDisabled.LookAndFeel.NativeStyle = False
-          StyleFocused.LookAndFeel.NativeStyle = False
-          StyleHot.LookAndFeel.NativeStyle = False
-          TabOrder = 0
-          OnExit = UIExecute
-          Height = 29
-          Width = 281
-        end
-        object txt_rate: TcxDBTextEdit
-          Left = 14
-          Top = 98
-          DataBinding.DataField = 'RATE'
-          DataBinding.DataSource = ds_Emp
-          ParentFont = False
-          ParentShowHint = False
-          Properties.CharCase = ecUpperCase
-          ShowHint = False
-          Style.BorderColor = 1184274
-          Style.BorderStyle = ebsThick
-          Style.Color = 6570553
-          Style.Font.Charset = ANSI_CHARSET
-          Style.Font.Color = clWhite
-          Style.Font.Height = -12
-          Style.Font.Name = 'Tahoma'
-          Style.Font.Style = []
-          Style.LookAndFeel.NativeStyle = False
-          Style.IsFontAssigned = True
-          StyleDisabled.Color = 6570553
-          StyleDisabled.LookAndFeel.NativeStyle = False
-          StyleFocused.LookAndFeel.NativeStyle = False
-          StyleHot.LookAndFeel.NativeStyle = False
-          TabOrder = 1
-          OnExit = UIExecute
-          Width = 91
-        end
-        object cxGroupBox1: TcxGroupBox
-          Left = 14
-          Top = 125
-          Alignment = alTopCenter
-          Caption = 'BENEFITS'
-          ParentBackground = False
-          ParentColor = False
-          ParentFont = False
-          Style.BorderColor = clWhite
-          Style.BorderStyle = ebsThick
-          Style.Color = 6570553
-          Style.Font.Charset = ANSI_CHARSET
-          Style.Font.Color = clWhite
-          Style.Font.Height = -13
-          Style.Font.Name = 'Segoe UI Semibold'
-          Style.Font.Style = [fsBold]
-          Style.LookAndFeel.Kind = lfUltraFlat
-          Style.LookAndFeel.NativeStyle = False
-          Style.LookAndFeel.SkinName = ''
-          Style.IsFontAssigned = True
-          StyleDisabled.LookAndFeel.Kind = lfUltraFlat
-          StyleDisabled.LookAndFeel.NativeStyle = False
-          StyleDisabled.LookAndFeel.SkinName = ''
-          StyleFocused.LookAndFeel.Kind = lfUltraFlat
-          StyleFocused.LookAndFeel.NativeStyle = False
-          StyleFocused.LookAndFeel.SkinName = ''
-          StyleHot.LookAndFeel.Kind = lfUltraFlat
-          StyleHot.LookAndFeel.NativeStyle = False
-          StyleHot.LookAndFeel.SkinName = ''
-          TabOrder = 3
-          Transparent = True
-          Height = 105
-          Width = 281
-          object Label12: TLabel
-            Left = 69
-            Top = 25
-            Width = 21
-            Height = 17
-            Caption = 'SSS'
-            Font.Charset = ANSI_CHARSET
-            Font.Color = clWhite
-            Font.Height = -13
-            Font.Name = 'Segoe UI Semibold'
-            Font.Style = [fsBold]
-            ParentFont = False
-          end
-          object Label14: TLabel
-            Left = 40
-            Top = 51
-            Width = 50
-            Height = 17
-            Caption = 'PAGIBIG'
-            Font.Charset = ANSI_CHARSET
-            Font.Color = clWhite
-            Font.Height = -13
-            Font.Name = 'Segoe UI Semibold'
-            Font.Style = [fsBold]
-            ParentFont = False
-          end
-          object Label16: TLabel
-            Left = 14
-            Top = 75
-            Width = 76
-            Height = 17
-            Caption = 'PHILHEALTH'
-            Font.Charset = ANSI_CHARSET
-            Font.Color = clWhite
-            Font.Height = -13
-            Font.Name = 'Segoe UI Semibold'
-            Font.Style = [fsBold]
-            ParentFont = False
-          end
-          object txt_phic: TcxDBTextEdit
-            Left = 112
-            Top = 75
-            DataBinding.DataField = 'PHILHEALTH'
-            DataBinding.DataSource = ds_Emp
-            ParentFont = False
-            ParentShowHint = False
-            Properties.CharCase = ecUpperCase
-            ShowHint = False
-            Style.BorderColor = 1184274
-            Style.BorderStyle = ebsThick
-            Style.Color = 6570553
-            Style.Font.Charset = ANSI_CHARSET
-            Style.Font.Color = clWhite
-            Style.Font.Height = -12
-            Style.Font.Name = 'Tahoma'
-            Style.Font.Style = []
-            Style.LookAndFeel.NativeStyle = False
-            Style.IsFontAssigned = True
-            StyleDisabled.Color = 6570553
-            StyleDisabled.LookAndFeel.NativeStyle = False
-            StyleFocused.LookAndFeel.NativeStyle = False
-            StyleHot.LookAndFeel.NativeStyle = False
-            TabOrder = 2
-            OnExit = UIExecute
-            Width = 150
-          end
-          object txt_pagibig: TcxDBTextEdit
-            Left = 112
-            Top = 48
-            DataBinding.DataField = 'PAGIBIG'
-            DataBinding.DataSource = ds_Emp
-            ParentFont = False
-            ParentShowHint = False
-            Properties.CharCase = ecUpperCase
-            ShowHint = False
-            Style.BorderColor = 1184274
-            Style.BorderStyle = ebsThick
-            Style.Color = 6570553
-            Style.Font.Charset = ANSI_CHARSET
-            Style.Font.Color = clWhite
-            Style.Font.Height = -12
-            Style.Font.Name = 'Tahoma'
-            Style.Font.Style = []
-            Style.LookAndFeel.NativeStyle = False
-            Style.IsFontAssigned = True
-            StyleDisabled.Color = 6570553
-            StyleDisabled.LookAndFeel.NativeStyle = False
-            StyleFocused.LookAndFeel.NativeStyle = False
-            StyleHot.LookAndFeel.NativeStyle = False
-            TabOrder = 1
-            OnExit = UIExecute
-            Width = 150
-          end
-          object txt_sss: TcxDBTextEdit
-            Left = 112
-            Top = 21
-            DataBinding.DataField = 'SSS'
-            DataBinding.DataSource = ds_Emp
-            ParentFont = False
-            ParentShowHint = False
-            Properties.CharCase = ecUpperCase
-            ShowHint = False
-            Style.BorderColor = 1184274
-            Style.BorderStyle = ebsThick
-            Style.Color = 6570553
-            Style.Font.Charset = ANSI_CHARSET
-            Style.Font.Color = clWhite
-            Style.Font.Height = -12
-            Style.Font.Name = 'Tahoma'
-            Style.Font.Style = []
-            Style.LookAndFeel.NativeStyle = False
-            Style.IsFontAssigned = True
-            StyleDisabled.Color = 6570553
-            StyleDisabled.LookAndFeel.NativeStyle = False
-            StyleFocused.LookAndFeel.NativeStyle = False
-            StyleHot.LookAndFeel.NativeStyle = False
-            TabOrder = 0
-            OnExit = UIExecute
-            Width = 150
-          end
-        end
-        object cmb_freq: TcxDBComboBox
-          Left = 128
-          Top = 98
-          DataBinding.DataField = 'FREQUENCY'
-          DataBinding.DataSource = ds_Emp
-          Properties.CharCase = ecUpperCase
-          Properties.ImmediatePost = True
-          Properties.Items.Strings = (
-            'MONTHLY'
-            'TWICE A MONTH'
-            'WEEKLY')
-          Style.BorderColor = 1184274
-          Style.BorderStyle = ebsThick
-          Style.Color = 6570553
-          Style.LookAndFeel.NativeStyle = False
-          Style.LookAndFeel.SkinName = 'DevExpressDarkStyle'
-          StyleDisabled.LookAndFeel.NativeStyle = False
-          StyleDisabled.LookAndFeel.SkinName = 'DevExpressDarkStyle'
-          StyleFocused.LookAndFeel.NativeStyle = False
-          StyleFocused.LookAndFeel.SkinName = 'DevExpressDarkStyle'
-          StyleHot.LookAndFeel.NativeStyle = False
-          StyleHot.LookAndFeel.SkinName = 'DevExpressDarkStyle'
-          TabOrder = 2
-          OnExit = UIExecute
-          Width = 167
         end
       end
     end

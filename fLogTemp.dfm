@@ -3,7 +3,7 @@ object f_LogTemp: Tf_LogTemp
   Top = 0
   BorderStyle = bsDialog
   Caption = 'New Log'
-  ClientHeight = 294
+  ClientHeight = 375
   ClientWidth = 410
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -13,6 +13,7 @@ object f_LogTemp: Tf_LogTemp
   Font.Style = []
   OldCreateOrder = False
   Position = poMainFormCenter
+  OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 14
   object Label9: TLabel
@@ -32,7 +33,7 @@ object f_LogTemp: Tf_LogTemp
     Left = 0
     Top = 0
     Width = 410
-    Height = 257
+    Height = 338
     Align = alClient
     BevelOuter = bvNone
     Color = clTeal
@@ -134,6 +135,19 @@ object f_LogTemp: Tf_LogTemp
       Font.Style = [fsBold]
       ParentFont = False
     end
+    object Label4: TLabel
+      Left = 13
+      Top = 222
+      Width = 62
+      Height = 21
+      Caption = 'Remarks'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWhite
+      Font.Height = -16
+      Font.Name = 'Segoe UI Semibold'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
     object cmb_jo: TcxDBLookupComboBox
       Left = 120
       Top = 20
@@ -168,6 +182,7 @@ object f_LogTemp: Tf_LogTemp
       StyleFocused.LookAndFeel.NativeStyle = False
       StyleHot.LookAndFeel.NativeStyle = False
       TabOrder = 0
+      OnExit = cmb_joExit
       Width = 94
     end
     object cmb_client: TcxDBLookupComboBox
@@ -237,6 +252,7 @@ object f_LogTemp: Tf_LogTemp
       StyleFocused.LookAndFeel.NativeStyle = False
       StyleHot.LookAndFeel.NativeStyle = False
       TabOrder = 1
+      OnExit = cmb_joExit
       Width = 270
     end
     object cmb_worker: TcxDBLookupComboBox
@@ -305,6 +321,7 @@ object f_LogTemp: Tf_LogTemp
       StyleFocused.LookAndFeel.NativeStyle = False
       StyleHot.LookAndFeel.NativeStyle = False
       TabOrder = 2
+      OnExit = cmb_joExit
       Width = 270
     end
     object cmb_output: TcxDBLookupComboBox
@@ -373,6 +390,7 @@ object f_LogTemp: Tf_LogTemp
       StyleFocused.LookAndFeel.NativeStyle = False
       StyleHot.LookAndFeel.NativeStyle = False
       TabOrder = 4
+      OnExit = cmb_joExit
       Width = 270
     end
     object txt_qty: TcxDBTextEdit
@@ -398,6 +416,7 @@ object f_LogTemp: Tf_LogTemp
       StyleFocused.LookAndFeel.NativeStyle = False
       StyleHot.LookAndFeel.NativeStyle = False
       TabOrder = 5
+      OnExit = cmb_joExit
       Width = 94
     end
     object txt_cost: TcxDBTextEdit
@@ -423,6 +442,7 @@ object f_LogTemp: Tf_LogTemp
       StyleFocused.LookAndFeel.NativeStyle = False
       StyleHot.LookAndFeel.NativeStyle = False
       TabOrder = 6
+      OnExit = cmb_joExit
       Width = 110
     end
     object cmb_role: TcxDBImageComboBox
@@ -512,12 +532,65 @@ object f_LogTemp: Tf_LogTemp
       StyleHot.LookAndFeel.Kind = lfUltraFlat
       StyleHot.LookAndFeel.NativeStyle = False
       TabOrder = 3
+      OnExit = cmb_joExit
       Width = 270
+    end
+    object txt_remarks: TcxDBMemo
+      Left = 120
+      Top = 224
+      DataBinding.DataField = 'REMARKS'
+      DataBinding.DataSource = ds_logs
+      ParentFont = False
+      Properties.CharCase = ecUpperCase
+      Style.BorderColor = 1184274
+      Style.BorderStyle = ebsThick
+      Style.Color = 6570553
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWhite
+      Style.Font.Height = -16
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.LookAndFeel.NativeStyle = False
+      Style.IsFontAssigned = True
+      StyleDisabled.LookAndFeel.NativeStyle = False
+      StyleFocused.LookAndFeel.NativeStyle = False
+      StyleHot.LookAndFeel.NativeStyle = False
+      TabOrder = 7
+      OnExit = cmb_joExit
+      Height = 89
+      Width = 270
+    end
+    object check_contract: TcxDBCheckBox
+      Left = 238
+      Top = 18
+      Caption = 'Contract Out'
+      DataBinding.DataField = 'CONTRACTOUT'
+      DataBinding.DataSource = ds_logs
+      ParentFont = False
+      Properties.Alignment = taLeftJustify
+      Properties.DisplayChecked = 'True'
+      Properties.DisplayUnchecked = 'False'
+      Properties.DisplayGrayed = 'False'
+      Properties.NullStyle = nssUnchecked
+      Style.BorderColor = 1184274
+      Style.BorderStyle = ebsThick
+      Style.Font.Charset = ANSI_CHARSET
+      Style.Font.Color = clWhite
+      Style.Font.Height = -16
+      Style.Font.Name = 'Segoe UI'
+      Style.Font.Style = []
+      Style.LookAndFeel.NativeStyle = False
+      Style.IsFontAssigned = True
+      StyleDisabled.LookAndFeel.NativeStyle = False
+      StyleFocused.LookAndFeel.NativeStyle = False
+      StyleHot.LookAndFeel.NativeStyle = False
+      TabOrder = 8
+      OnClick = cmb_joExit
     end
   end
   object Panel1: TPanel
     Left = 0
-    Top = 257
+    Top = 338
     Width = 410
     Height = 37
     Align = alBottom
@@ -526,7 +599,7 @@ object f_LogTemp: Tf_LogTemp
     DesignSize = (
       410
       37)
-    object Button1: TButton
+    object btnSave: TButton
       Left = 234
       Top = 6
       Width = 75
