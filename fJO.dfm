@@ -863,6 +863,7 @@ object f_JO: Tf_JO
       ParentColor = False
       ParentFont = False
       TabOrder = 1
+      Visible = False
       WallpaperIndex = -1
       CustomBackgroundImageIndex = -1
       FluentUIOpaque = False

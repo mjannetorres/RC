@@ -9,7 +9,6 @@ object dm_PM: Tdm_PM
       'User_Name=rcadmin'
       'Password=rcadmin123'
       'DriverID=MySQL')
-    Connected = True
     LoginPrompt = False
     Left = 16
     Top = 40
@@ -9678,6 +9677,13 @@ object dm_PM: Tdm_PM
       DisplayFormat = '###,###,##0.00'
       currency = True
     end
+    object qry_CashOutDetailLIABILITY: TSingleField
+      AutoGenerateValue = arDefault
+      FieldName = 'LIABILITY'
+      Origin = 'LIABILITY'
+      DisplayFormat = '###,###,##0.00'
+      currency = True
+    end
   end
   object brw_CashSum: TFDQuery
     OnCalcFields = brw_CashSumCalcFields
@@ -10603,7 +10609,8 @@ object dm_PM: Tdm_PM
     SQL.Strings = (
       
         'SELECT SUM(DETAIL.AMOUNT) AS AMOUNT, SUM(DETAIL.CASHADVACTUAL) A' +
-        'S ACTUAL, SUM(DETAIL.CASHADVANCES) AS CASHADV'
+        'S ACTUAL, SUM(DETAIL.CASHADVANCES) AS CASHADV, SUM(DETAIL.LIABIL' +
+        'ITY) AS LIABILITY'
       'FROM CASH_OUTDETAIL DETAIL'
       'INNER JOIN EXPENSE_TYPE EXP ON EXP.ID = DETAIL.CATEGORYID  '
       'INNER JOIN CASH_HEADER HEADER ON HEADER.ID = DETAIL.HEADERID'
@@ -10629,6 +10636,13 @@ object dm_PM: Tdm_PM
       AutoGenerateValue = arDefault
       FieldName = 'CASHADV'
       Origin = 'CASHADV'
+      ProviderFlags = []
+      ReadOnly = True
+    end
+    object brw_CompExpenseLIABILITY: TFloatField
+      AutoGenerateValue = arDefault
+      FieldName = 'LIABILITY'
+      Origin = 'LIABILITY'
       ProviderFlags = []
       ReadOnly = True
     end
@@ -14235,6 +14249,7 @@ object dm_PM: Tdm_PM
       FieldName = 'ID'
       Origin = 'ID'
       ProviderFlags = [pfInWhere, pfInKey]
+      ReadOnly = True
     end
     object brw_EmpAccntsEMPID: TIntegerField
       FieldName = 'EMPID'
@@ -14289,6 +14304,11 @@ object dm_PM: Tdm_PM
       Origin = 'REMARKS'
       Size = 100
     end
+    object brw_EmpAccntsDATEFORWARDED: TDateTimeField
+      AutoGenerateValue = arDefault
+      FieldName = 'DATEFORWARDED'
+      Origin = 'DATEFORWARDED'
+    end
   end
   object qry_EmpAccnts: TFDQuery
     CachedUpdates = True
@@ -14304,6 +14324,7 @@ object dm_PM: Tdm_PM
       FieldName = 'ID'
       Origin = 'ID'
       ProviderFlags = [pfInWhere, pfInKey]
+      ReadOnly = True
     end
     object qry_EmpAccntsEMPID: TIntegerField
       FieldName = 'EMPID'
@@ -14358,5 +14379,44 @@ object dm_PM: Tdm_PM
       Origin = 'REMARKS'
       Size = 100
     end
+    object qry_EmpAccntsCANCELLEDBYD: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'CANCELLEDBYD'
+      Origin = 'CANCELLEDBYD'
+    end
+    object qry_EmpAccntsCANCELLEDDATETIME: TDateTimeField
+      AutoGenerateValue = arDefault
+      FieldName = 'CANCELLEDDATETIME'
+      Origin = 'CANCELLEDDATETIME'
+    end
+  end
+  object brw_ComputeAccts: TFDQuery
+    Connection = dbConn
+    SQL.Strings = (
+      'SELECT SUM(BALANCE) AS AMOUNT'
+      'FROM EMP_BALANCE'
+      ''
+      ';')
+    Left = 560
+    Top = 808
+    object brw_ComputeAcctsAMOUNT: TFloatField
+      AutoGenerateValue = arDefault
+      FieldName = 'AMOUNT'
+      Origin = 'AMOUNT'
+      ProviderFlags = []
+      ReadOnly = True
+      DisplayFormat = '###,###,##0.00'
+      currency = True
+    end
+  end
+  object upd_CurrentAcct: TFDQuery
+    Connection = dbConn
+    SQL.Strings = (
+      'UPDATE EMP_BALANCE'
+      'SET FORWARDED = TRUE'
+      'WHERE ID = 0'
+      ';')
+    Left = 16
+    Top = 400
   end
 end
