@@ -77,7 +77,6 @@ type
     scGPToolGroupPanel6: TscGPToolGroupPanel;
     btnPayroll: TscGPButton;
     Payroll: TAction;
-    Roles: TAction;
     scGPToolGroupPanel7: TscGPToolGroupPanel;
     btnItems: TscGPButton;
     btnFabrics: TscGPButton;
@@ -102,7 +101,6 @@ type
     Expense: TAction;
     btnPayment: TscGPButton;
     PettyCash: TAction;
-    btnGarments: TscGPButton;
     btnUnit: TscGPButton;
     UserRoles: TAction;
     LogOut: TAction;
@@ -154,9 +152,7 @@ type
     ReplenishmentSummary1: TMenuItem;
     ReplenishmentSummary: TAction;
     ReplenishmentSummary2: TMenuItem;
-    scGPButton4: TscGPButton;
     Notif: TAction;
-    btnClients: TscGPButton;
     Clients: TAction;
     btnMatRequest: TscGPButton;
     scGPButton5: TscGPButton;
@@ -179,6 +175,13 @@ type
     btnEmpReg1: TscGPButton;
     scGPButton6: TscGPButton;
     LayoutBoard: TAction;
+    scGPButton8: TscGPButton;
+    RFQ: TAction;
+    scGPToolGroupPanel4: TscGPToolGroupPanel;
+    btnClients: TscGPButton;
+    btnGarments: TscGPButton;
+    scGPToolGroupPanel17: TscGPToolGroupPanel;
+    scGPButton4: TscGPButton;
     procedure MinButtonClick(Sender: TObject);
     procedure MaxButtonClick(Sender: TObject);
     procedure CloseButtonClick(Sender: TObject);
@@ -192,7 +195,6 @@ type
     procedure EmployeeRegistrationExecute(Sender: TObject);
     procedure UserRegistrationExecute(Sender: TObject);
     procedure PayrollExecute(Sender: TObject);
-    procedure RolesExecute(Sender: TObject);
     procedure ItemsExecute(Sender: TObject);
     procedure GarmentsExecute(Sender: TObject);
     procedure FabricsExecute(Sender: TObject);
@@ -235,6 +237,7 @@ type
     procedure CashAdvancesExecute(Sender: TObject);
     procedure PayrollSummaryExecute(Sender: TObject);
     procedure LayoutBoardExecute(Sender: TObject);
+    procedure RFQExecute(Sender: TObject);
   private
     { Private declarations }
     procedure user_rights;
@@ -255,7 +258,8 @@ implementation
 uses frmPM, fPMBoard, FJO, dmPM, DateUtils, fMatRequest, fCompany, fUsers, fEmp,
   fFabrics, fGarments, fUnit, fItems, fLogin, fCashReg, fPO, fRR, fPayment,
   fPettyCash, fExpense, fPayroll, fPolicy, fVendor, fBank, fExpenseType,
-  fRequest, fDateRange, fReports, fnotif, fClients, fLogin1, fWorkLog;
+  fRequest, fDateRange, fReports, fnotif, fClients, fLogin1, fWorkLog, fLayout,
+  fRFQ;
 
 procedure Tf_menu.ARAgingScheduleExecute(Sender: TObject);
 var d30, d60, d90, d120, d121, current, paid, fp, paidamnt : Real;
@@ -958,6 +962,7 @@ begin
           while not brw_WorkLogs.Eof do
           begin
             tb_Payroll.Append;
+            tb_PayrollTITLE.Value       := 'ALL';
             tb_PayrollEMPLOYEE.Value    := brw_ComputePayWORKER.Value;
             tb_PayrollGROSS.Value       := brw_ComputePayAMNT.Value;
             tb_PayrollCASHADV.Value     := brw_CompExpenseAMOUNT.Value;
@@ -1336,9 +1341,11 @@ begin
   end;
 end;
 
-procedure Tf_menu.RolesExecute(Sender: TObject);
+procedure Tf_menu.RFQExecute(Sender: TObject);
 begin
-  //
+  CloseAllForms;
+  f_RFQ := Tf_RFQ.Create(Self);
+  webOff;
 end;
 
 procedure Tf_menu.RRSummaryExecute(Sender: TObject);

@@ -2385,6 +2385,8 @@ type
     qry_CashOutDetailLIABILITY: TSingleField;
     brw_CompExpenseLIABILITY: TFloatField;
     brw_EmpAccntsDATEFORWARDED: TDateTimeField;
+    tb_PayrollTITLE: TStringField;
+    tb_PayrollGRANDTOTAL: TFloatField;
     procedure tb_JODetailCalcFields(DataSet: TDataSet);
     procedure brw_pmboardCalcFields(DataSet: TDataSet);
     procedure brw_EmpCalcFields(DataSet: TDataSet);

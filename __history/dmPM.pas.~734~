@@ -2363,7 +2363,6 @@ type
     brw_EmpAccntsCREATEDDATETIME: TDateTimeField;
     brw_EmpAccntsUPDATEDBYID: TIntegerField;
     brw_EmpAccntsUPDATEDDATETIME: TDateTimeField;
-    brw_EmpAccntsFORWARDED: TBooleanField;
     qry_EmpAccnts: TFDQuery;
     qry_EmpAccntsID: TFDAutoIncField;
     qry_EmpAccntsEMPID: TIntegerField;
@@ -2375,6 +2374,17 @@ type
     qry_EmpAccntsCREATEDDATETIME: TDateTimeField;
     qry_EmpAccntsUPDATEDBYID: TIntegerField;
     qry_EmpAccntsUPDATEDDATETIME: TDateTimeField;
+    brw_EmpAccntsFORWARDED: TBooleanField;
+    brw_EmpAccntsREMARKS: TStringField;
+    qry_EmpAccntsREMARKS: TStringField;
+    qry_EmpAccntsCANCELLEDBYD: TIntegerField;
+    qry_EmpAccntsCANCELLEDDATETIME: TDateTimeField;
+    brw_ComputeAccts: TFDQuery;
+    brw_ComputeAcctsAMOUNT: TFloatField;
+    upd_CurrentAcct: TFDQuery;
+    qry_CashOutDetailLIABILITY: TSingleField;
+    brw_CompExpenseLIABILITY: TFloatField;
+    brw_EmpAccntsDATEFORWARDED: TDateTimeField;
     procedure tb_JODetailCalcFields(DataSet: TDataSet);
     procedure brw_pmboardCalcFields(DataSet: TDataSet);
     procedure brw_EmpCalcFields(DataSet: TDataSet);

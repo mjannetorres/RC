@@ -962,17 +962,31 @@ begin
           while not brw_WorkLogs.Eof do
           begin
             tb_Payroll.Append;
+            tb_PayrollTITLE.Value       := 'ALL';
             tb_PayrollEMPLOYEE.Value    := brw_ComputePayWORKER.Value;
             tb_PayrollGROSS.Value       := brw_ComputePayAMNT.Value;
             tb_PayrollCASHADV.Value     := brw_CompExpenseAMOUNT.Value;
             tb_PayrollWORKERID.Value    := brw_ComputePayWORKERID.Value;
             tb_PayrollLOGDATE.Value     := brw_WorkLogsCREATEDDATETIME.Value;
+
+            if brw_WorkLogsCONTRACTOUT.Value then
+            tb_PayrollCLIENT.Value      := 'CONTRACT OUT'
+            else
+            tb_PayrollCLIENT.Value      := brw_WorkLogsCLIENT.Value;
+
+            if brw_WorkLogsCONTRACTOUT.Value then
+            tb_PayrollDESCRIPTION.Value := brw_WorkLogsREMARKS.AsString
+            else
             tb_PayrollDESCRIPTION.Value := brw_WorkLogsDESCRIPTION.Value;
+
             tb_PayrollJONO.Value        := brw_WorkLogsJONO.Value;
             tb_PayrollROLE.Value        := brw_WorkLogsROLE.Value;
             tb_PayrollQTY.Value         := brw_WorkLogsQTY.Value;
             tb_PayrollCOST.Value        := brw_WorkLogsCOST.Value;
-            tb_PayrollCLIENT.Value      := brw_WorkLogsCLIENT.Value;
+
+            if brw_WorkLogs.RecNo = brw_WorkLogs.RecordCount then
+            tb_PayrollGRANDTOTAL.Value  := tb_PayrollGROSS.Value - tb_PayrollCASHADV.Value;
+
             tb_Payroll.Post;
 
             brw_WorkLogs.Next;

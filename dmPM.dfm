@@ -13374,8 +13374,9 @@ object dm_PM: Tdm_PM
     end
   end
   object tb_Payroll: TFDMemTable
-    Active = True
     OnCalcFields = tb_PayrollCalcFields
+    FieldDefs = <>
+    IndexDefs = <>
     FetchOptions.AssignedValues = [evMode]
     FetchOptions.Mode = fmAll
     ResourceOptions.AssignedValues = [rvSilentMode]
@@ -13383,6 +13384,7 @@ object dm_PM: Tdm_PM
     UpdateOptions.AssignedValues = [uvCheckRequired, uvAutoCommitUpdates]
     UpdateOptions.CheckRequired = False
     UpdateOptions.AutoCommitUpdates = True
+    StoreDefs = True
     Left = 240
     Top = 632
     object tb_PayrollEMPLOYEE: TStringField
@@ -13435,6 +13437,12 @@ object dm_PM: Tdm_PM
     object tb_PayrollCLIENT: TStringField
       FieldName = 'CLIENT'
       Size = 50
+    end
+    object tb_PayrollTITLE: TStringField
+      FieldName = 'TITLE'
+    end
+    object tb_PayrollGRANDTOTAL: TFloatField
+      FieldName = 'GRANDTOTAL'
     end
   end
   object brw_ForwardedBal: TFDQuery

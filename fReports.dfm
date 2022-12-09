@@ -22417,7 +22417,9 @@ object f_Reports: Tf_Reports
       'QTY=QTY'
       'COST=COST'
       'TOTAL=TOTAL'
-      'CLIENT=CLIENT')
+      'CLIENT=CLIENT'
+      'TITLE=TITLE'
+      'GRANDTOTAL=GRANDTOTAL')
     DataSet = dm_PM.tb_Payroll
     BCDToCurrency = False
     Left = 280
@@ -36667,7 +36669,7 @@ object f_Reports: Tf_Reports
         object Memo31: TfrxMemoView
           Align = baRight
           AllowVectorExport = True
-          Left = 536.315307000000100000
+          Left = 536.315307000000000000
           Width = 49.133890000000000000
           Height = 18.897650000000000000
           StretchMode = smMaxHeight
@@ -36686,34 +36688,10 @@ object f_Reports: Tf_Reports
       end
       object ReportSummary1: TfrxReportSummary
         FillType = ftBrush
-        Frame.Typ = [ftTop]
+        Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
         Height = 34.015770000000000000
         Top = 570.709030000000000000
         Width = 740.409927000000000000
-        object grandtotal: TfrxMemoView
-          Align = baRight
-          AllowVectorExport = True
-          Left = 449.386117000000000000
-          Top = 2.220469999999980000
-          Width = 291.023810000000000000
-          Height = 22.677180000000000000
-          StretchMode = smMaxHeight
-          AutoWidth = True
-          DataSet = ds_CPRSummary
-          DataSetName = 'ds_CPRSummary'
-          DisplayFormat.FormatStr = '%2.2n'
-          DisplayFormat.Kind = fkNumeric
-          Font.Charset = ANSI_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Segoe UI Semibold'
-          Font.Style = [fsBold]
-          Frame.Typ = []
-          GapX = 5.000000000000000000
-          HAlign = haRight
-          ParentFont = False
-          VAlign = vaCenter
-        end
         object Memo70: TfrxMemoView
           Align = baRight
           AllowVectorExport = True
@@ -36735,6 +36713,53 @@ object f_Reports: Tf_Reports
           Frame.Typ = []
           GapX = 5.000000000000000000
           HAlign = haRight
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object grandtotal: TfrxMemoView
+          AllowVectorExport = True
+          Left = 654.260267000000000000
+          Top = 2.000000000000000000
+          Width = 83.149660000000000000
+          Height = 22.677180000000000000
+          DataSet = ds_CPRSummary
+          DataSetName = 'ds_CPRSummary'
+          DisplayFormat.FormatStr = '%2.2n'
+          DisplayFormat.Kind = fkNumeric
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Segoe UI'
+          Font.Style = [fsBold]
+          Frame.Typ = [ftBottom]
+          Frame.BottomLine.Style = fsDouble
+          GapX = 5.000000000000000000
+          HAlign = haRight
+          Memo.UTF8W = (
+            '[SUM(<ds_payreport."GRANDTOTAL">,MasterData3)]')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object Memo42: TfrxMemoView
+          AllowVectorExport = True
+          Left = 534.693260000000000000
+          Top = 2.000000000000000000
+          Width = 113.007947000000000000
+          Height = 18.897650000000000000
+          DataSet = ds_payreport
+          DataSetName = 'ds_payreport'
+          DisplayFormat.FormatStr = '%2.2n'
+          DisplayFormat.Kind = fkNumeric
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Segoe UI'
+          Font.Style = [fsBold]
+          Frame.Typ = []
+          GapX = 5.000000000000000000
+          HAlign = haRight
+          Memo.UTF8W = (
+            'GRAND TOTAL :')
           ParentFont = False
           VAlign = vaCenter
         end
@@ -36909,7 +36934,7 @@ object f_Reports: Tf_Reports
           Align = baWidth
           AllowVectorExport = True
           Left = 676.535870000000000000
-          Width = 63.874056999999990000
+          Width = 63.874057000000000000
           Height = 18.897650000000000000
           StretchMode = smMaxHeight
           DataSet = ds_payreport
@@ -36966,7 +36991,7 @@ object f_Reports: Tf_Reports
       object GroupFooter5: TfrxGroupFooter
         FillType = ftBrush
         Frame.Typ = [ftLeft, ftRight, ftBottom]
-        Height = 68.031540000000010000
+        Height = 68.031540000000000000
         Top = 442.205010000000000000
         Width = 740.409927000000000000
         object Memo36: TfrxMemoView
@@ -37018,7 +37043,7 @@ object f_Reports: Tf_Reports
           Align = baRight
           AllowVectorExport = True
           Left = 653.858690000000000000
-          Top = 22.456709999999990000
+          Top = 22.456710000000000000
           Width = 86.551237000000000000
           Height = 18.897650000000000000
           DataSet = ds_payreport
@@ -37041,7 +37066,7 @@ object f_Reports: Tf_Reports
         object Memo39: TfrxMemoView
           AllowVectorExport = True
           Left = 567.307453000000000000
-          Top = 22.456709999999990000
+          Top = 22.456710000000000000
           Width = 82.771707000000000000
           Height = 18.897650000000000000
           DataSet = ds_payreport
@@ -37065,7 +37090,7 @@ object f_Reports: Tf_Reports
           Align = baRight
           AllowVectorExport = True
           Left = 653.858690000000000000
-          Top = 45.692949999999990000
+          Top = 45.692950000000000000
           Width = 86.551237000000000000
           Height = 18.897650000000000000
           DataSet = ds_payreport
@@ -37087,8 +37112,8 @@ object f_Reports: Tf_Reports
         end
         object Memo41: TfrxMemoView
           AllowVectorExport = True
-          Left = 552.189333000000100000
-          Top = 45.692949999999990000
+          Left = 552.189333000000000000
+          Top = 45.692950000000000000
           Width = 97.889827000000000000
           Height = 18.897650000000000000
           DataSet = ds_payreport
@@ -37317,7 +37342,7 @@ object f_Reports: Tf_Reports
           Align = baWidth
           AllowVectorExport = True
           Left = 676.535870000000000000
-          Width = 63.874056999999990000
+          Width = 63.874057000000000000
           Height = 18.897637800000000000
           StretchMode = smMaxHeight
           DataSet = ds_RepSalesCashin

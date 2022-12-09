@@ -22417,7 +22417,8 @@ object f_Reports: Tf_Reports
       'QTY=QTY'
       'COST=COST'
       'TOTAL=TOTAL'
-      'CLIENT=CLIENT')
+      'CLIENT=CLIENT'
+      'TITLE=TITLE')
     DataSet = dm_PM.tb_Payroll
     BCDToCurrency = False
     Left = 280
@@ -36591,7 +36592,7 @@ object f_Reports: Tf_Reports
         FillType = ftBrush
         Frame.Typ = []
         Height = 22.677180000000000000
-        Top = 627.401980000000000000
+        Top = 718.110700000000000000
         Width = 740.409927000000000000
         object Memo30: TfrxMemoView
           Align = baLeft
@@ -36667,7 +36668,7 @@ object f_Reports: Tf_Reports
         object Memo31: TfrxMemoView
           Align = baRight
           AllowVectorExport = True
-          Left = 536.315307000000100000
+          Left = 536.315307000000000000
           Width = 49.133890000000000000
           Height = 18.897650000000000000
           StretchMode = smMaxHeight
@@ -36686,34 +36687,10 @@ object f_Reports: Tf_Reports
       end
       object ReportSummary1: TfrxReportSummary
         FillType = ftBrush
-        Frame.Typ = [ftTop]
+        Frame.Typ = []
         Height = 34.015770000000000000
-        Top = 570.709030000000000000
+        Top = 661.417750000000000000
         Width = 740.409927000000000000
-        object grandtotal: TfrxMemoView
-          Align = baRight
-          AllowVectorExport = True
-          Left = 449.386117000000000000
-          Top = 2.220469999999980000
-          Width = 291.023810000000000000
-          Height = 22.677180000000000000
-          StretchMode = smMaxHeight
-          AutoWidth = True
-          DataSet = ds_CPRSummary
-          DataSetName = 'ds_CPRSummary'
-          DisplayFormat.FormatStr = '%2.2n'
-          DisplayFormat.Kind = fkNumeric
-          Font.Charset = ANSI_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Segoe UI Semibold'
-          Font.Style = [fsBold]
-          Frame.Typ = []
-          GapX = 5.000000000000000000
-          HAlign = haRight
-          ParentFont = False
-          VAlign = vaCenter
-        end
         object Memo70: TfrxMemoView
           Align = baRight
           AllowVectorExport = True
@@ -36743,7 +36720,7 @@ object f_Reports: Tf_Reports
         FillType = ftBrush
         Frame.Typ = []
         Height = 20.677180000000000000
-        Top = 396.850650000000000000
+        Top = 442.205010000000000000
         Width = 740.409927000000000000
         DataSet = ds_payreport
         DataSetName = 'ds_payreport'
@@ -36909,7 +36886,7 @@ object f_Reports: Tf_Reports
           Align = baWidth
           AllowVectorExport = True
           Left = 676.535870000000000000
-          Width = 63.874056999999990000
+          Width = 63.874057000000000000
           Height = 18.897650000000000000
           StretchMode = smMaxHeight
           DataSet = ds_payreport
@@ -36935,7 +36912,7 @@ object f_Reports: Tf_Reports
         Fill.BackColor = clTeal
         Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
         Height = 26.456710000000000000
-        Top = 306.141930000000000000
+        Top = 351.496290000000000000
         Width = 740.409927000000000000
         Child = rep_payrollSummary.Child1
         Condition = 'ds_payreport."EMPLOYEE"'
@@ -36966,8 +36943,8 @@ object f_Reports: Tf_Reports
       object GroupFooter5: TfrxGroupFooter
         FillType = ftBrush
         Frame.Typ = [ftLeft, ftRight, ftBottom]
-        Height = 68.031540000000010000
-        Top = 442.205010000000000000
+        Height = 68.031540000000000000
+        Top = 487.559370000000000000
         Width = 740.409927000000000000
         object Memo36: TfrxMemoView
           Align = baRight
@@ -37018,7 +36995,7 @@ object f_Reports: Tf_Reports
           Align = baRight
           AllowVectorExport = True
           Left = 653.858690000000000000
-          Top = 22.456709999999990000
+          Top = 22.456710000000000000
           Width = 86.551237000000000000
           Height = 18.897650000000000000
           DataSet = ds_payreport
@@ -37041,7 +37018,7 @@ object f_Reports: Tf_Reports
         object Memo39: TfrxMemoView
           AllowVectorExport = True
           Left = 567.307453000000000000
-          Top = 22.456709999999990000
+          Top = 22.456710000000000000
           Width = 82.771707000000000000
           Height = 18.897650000000000000
           DataSet = ds_payreport
@@ -37065,7 +37042,7 @@ object f_Reports: Tf_Reports
           Align = baRight
           AllowVectorExport = True
           Left = 653.858690000000000000
-          Top = 45.692949999999990000
+          Top = 45.692950000000000000
           Width = 86.551237000000000000
           Height = 18.897650000000000000
           DataSet = ds_payreport
@@ -37087,8 +37064,8 @@ object f_Reports: Tf_Reports
         end
         object Memo41: TfrxMemoView
           AllowVectorExport = True
-          Left = 552.189333000000100000
-          Top = 45.692949999999990000
+          Left = 552.189333000000000000
+          Top = 45.692950000000000000
           Width = 97.889827000000000000
           Height = 18.897650000000000000
           DataSet = ds_payreport
@@ -37163,7 +37140,7 @@ object f_Reports: Tf_Reports
         Fill.BackColor = clTeal
         Frame.Typ = []
         Height = 18.897650000000000000
-        Top = 355.275820000000000000
+        Top = 400.630180000000000000
         Width = 740.409927000000000000
         ToNRows = 0
         ToNRowsMode = rmCount
@@ -37317,7 +37294,7 @@ object f_Reports: Tf_Reports
           Align = baWidth
           AllowVectorExport = True
           Left = 676.535870000000000000
-          Width = 63.874056999999990000
+          Width = 63.874057000000000000
           Height = 18.897637800000000000
           StretchMode = smMaxHeight
           DataSet = ds_RepSalesCashin
@@ -37334,6 +37311,48 @@ object f_Reports: Tf_Reports
             'TOTAL')
           ParentFont = False
         end
+      end
+      object GroupFooter1: TfrxGroupFooter
+        FillType = ftBrush
+        Frame.Typ = []
+        Height = 22.677180000000000000
+        Top = 578.268090000000000000
+        Width = 740.409927000000000000
+        object grandtotal: TfrxMemoView
+          Align = baRight
+          AllowVectorExport = True
+          Left = 555.212957000000000000
+          Width = 185.196970000000000000
+          Height = 22.677180000000000000
+          StretchMode = smMaxHeight
+          AutoWidth = True
+          DataSet = ds_CPRSummary
+          DataSetName = 'ds_CPRSummary'
+          DisplayFormat.FormatStr = '%2.2n'
+          DisplayFormat.Kind = fkNumeric
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Segoe UI Semibold'
+          Font.Style = [fsBold]
+          Frame.Typ = []
+          GapX = 5.000000000000000000
+          HAlign = haRight
+          Memo.UTF8W = (
+            
+              'Grand Total : [SUM(<ds_payreport."TOTAL">,MasterData3)] - [SUM(<' +
+              'ds_payreport."CASHADV">,MasterData3)]')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+      end
+      object GroupHeader1: TfrxGroupHeader
+        FillType = ftBrush
+        Frame.Typ = []
+        Height = 22.677180000000000000
+        Top = 306.141930000000000000
+        Width = 740.409927000000000000
+        Condition = 'ds_payreport."TITLE"'
       end
     end
   end
@@ -38116,7 +38135,6 @@ object f_Reports: Tf_Reports
           Font.Style = []
           Frame.Typ = [ftLeft]
           GapX = 5.000000000000000000
-          HAlign = haRight
           Memo.UTF8W = (
             '[ds_RFQDetail."REMARKS"]')
           ParentFont = False
@@ -38165,7 +38183,7 @@ object f_Reports: Tf_Reports
           Frame.Typ = [ftBottom]
           HAlign = haRight
           Memo.UTF8W = (
-            '[ds_RFQ."TOTAL"]')
+            '[SUM(<ds_RFQDetail."TOTAL">,DetailData1)]')
           ParentFont = False
         end
         object Memo43: TfrxMemoView
