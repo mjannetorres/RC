@@ -127,10 +127,17 @@ type
     procedure cxGridDBTableView1ITEMIDStylesGetContentStyle(
       Sender: TcxCustomGridTableView; ARecord: TcxCustomGridRecord;
       AItem: TcxCustomGridTableItem; var AStyle: TcxStyle);
+    procedure cxGridDBTableView1QTYPropertiesValidate(Sender: TObject;
+      var DisplayValue: Variant; var ErrorText: TCaption; var Error: Boolean);
+    procedure cxGridDBTableView1FREEPropertiesValidate(Sender: TObject;
+      var DisplayValue: Variant; var ErrorText: TCaption; var Error: Boolean);
+    procedure cxGridDBTableView1COSTPropertiesValidate(Sender: TObject;
+      var DisplayValue: Variant; var ErrorText: TCaption; var Error: Boolean);
   private
     { Private declarations }
     ARedStyle: TcxStyle;
     posted: Boolean;
+    procedure compute_amnt_ui;
     procedure generate_costing;
     procedure readonly(flag: Boolean);
     function manageui: Boolean;
@@ -212,25 +219,27 @@ begin
 end;
 
 procedure Tf_JO.ComputeAmntExecute(Sender: TObject);
+begin
+  generate_costing;
+  compute_amnt_ui;
+end;
+
+procedure Tf_JO.compute_amnt_ui;
 var
   AValue: Variant;
 begin
-  generate_costing;
-
   dm_PM.tb_JODetail.Append;
   dm_PM.tb_JODetail.Delete;
 
   if (dm_PM.qry_JO.State = dsInsert) or (dm_PM.qry_JO.State = dsEdit) then
   begin
-    if not dm_PM.qry_JOPOSTED.Value then
-    begin
       AValue := cxGridDBTableView1.DataController.Summary.FooterSummaryValues[3];
       if AValue <> Null then
         dm_PM.qry_JOGROSSAMNT.Value   :=  StrToFloat(VarToStr(AValue))
       else
         dm_PM.qry_JOGROSSAMNT.Value   :=  0;
       dm_PM.qry_JONETAMNT.Value       :=  dm_PM.qry_JOGROSSAMNT.Value - dm_PM.qry_JODISCOUNT.Value;
-    end;
+
   end;
 
   if not dm_PM.qry_JOOVERRIDE.Value then
@@ -245,7 +254,6 @@ begin
     posted  := True;
     readonly(False);
   end;
-
 end;
 
 procedure Tf_JO.cxDBDateEdit2PropertiesValidate(Sender: TObject;
@@ -283,6 +291,18 @@ begin
     DisplayValue := 0;
     MessageDlg('Invalid qty!', mtError, [mbOK], 0);
   end;
+end;
+
+procedure Tf_JO.cxGridDBTableView1COSTPropertiesValidate(Sender: TObject;
+  var DisplayValue: Variant; var ErrorText: TCaption; var Error: Boolean);
+begin
+  compute_amnt_ui;
+end;
+
+procedure Tf_JO.cxGridDBTableView1FREEPropertiesValidate(Sender: TObject;
+  var DisplayValue: Variant; var ErrorText: TCaption; var Error: Boolean);
+begin
+  compute_amnt_ui;
 end;
 
 procedure Tf_JO.cxGridDBTableView1ITEMIDPropertiesCloseUp(Sender: TObject);
@@ -339,6 +359,12 @@ procedure Tf_JO.cxGridDBTableView1KeyDown(Sender: TObject; var Key: Word;
 begin
   if Key = VK_DOWN then
   ComputeAmntExecute(nil);
+end;
+
+procedure Tf_JO.cxGridDBTableView1QTYPropertiesValidate(Sender: TObject;
+  var DisplayValue: Variant; var ErrorText: TCaption; var Error: Boolean);
+begin
+  compute_amnt_ui;
 end;
 
 procedure Tf_JO.cxGridDBTableView1SHIRTIDPropertiesCloseUp(Sender: TObject);
@@ -432,7 +458,7 @@ begin
        qry_JODetail.ApplyUpdates();
 
        qry_JoCost.Close;
-       qry_JoCost.SQL[2]  := 'WHERE GARMENTID = :GARMENTID AND ITEMID = :ITEMID AND CANCELLED = FALSE';
+       qry_JoCost.SQL[2]  := 'WHERE GARMENTID = :GARMENTID AND CANCELLED = FALSE';
        qry_JoCost.ParamByName('GARMENTID').Value   := tb_JODetailSHIRTID.Value;
        qry_JoCost.Open();
 

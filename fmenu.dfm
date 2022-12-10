@@ -4713,6 +4713,7 @@ object f_menu: Tf_menu
           Down = False
           GroupIndex = 0
           AllowAllUp = False
+          ExplicitLeft = -3
         end
       end
       object scGPToolGroupPanel12: TscGPToolGroupPanel
@@ -5844,7 +5845,7 @@ object f_menu: Tf_menu
       AutoSize = False
       Alignment = taCenter
       ShowEllipsis = True
-      Caption = 'RC Digital Prints and Garments v1.2  Build 120920221300'
+      Caption = 'RC Digital Prints and Garments v1.2  Build 1201020221100'
     end
   end
   object sWebBrowser1: TsWebBrowser

@@ -558,8 +558,6 @@ begin
     //tb_JODetail.Post;
     //tb_JOClone.CopyRecord(tb_JODetail);
 
-    tb_InvReqDetail.Close;
-    tb_InvReqDetail.Open;
 
     qry_JoCost.Close;
     qry_JoCost.SQL[2]  := 'WHERE HEADERID = :ID AND CANCELLED = FALSE';
@@ -569,6 +567,9 @@ begin
 
     if qry_JoCost.RecordCount > 0 then
     begin
+      tb_InvReqDetail.Close;
+      tb_InvReqDetail.Open;
+
       qry_JoCost.First;
        while not qry_JoCost.Eof do
        begin
