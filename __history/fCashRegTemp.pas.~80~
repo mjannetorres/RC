@@ -56,14 +56,23 @@ type
     Button2: TButton;
     Button3: TButton;
     Panel3: TPanel;
+    cxGridDBTableView1MINQTY: TcxGridDBColumn;
     procedure FormShow(Sender: TObject);
     procedure txt_searchRightButtonClick(Sender: TObject);
     procedure txt_searchKeyPress(Sender: TObject; var Key: Char);
     procedure cxGridDBTableView1DblClick(Sender: TObject);
     procedure Button3Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
+    procedure cxGridDBTableView1ONHANDStylesGetContentStyle(
+      Sender: TcxCustomGridTableView; ARecord: TcxCustomGridRecord;
+      AItem: TcxCustomGridTableItem; var AStyle: TcxStyle);
+    procedure FormCreate(Sender: TObject);
+    procedure cxGridDBTableView1KeyDown(Sender: TObject; var Key: Word;
+      Shift: TShiftState);
   private
     { Private declarations }
+    AYellowStyle: TcxStyle;
+    ARedStyle: TcxStyle;
     procedure search;
   public
     { Public declarations }
@@ -97,10 +106,48 @@ begin
   Close;
 end;
 
+procedure Tf_CashRegTemp.cxGridDBTableView1KeyDown(Sender: TObject;
+  var Key: Word; Shift: TShiftState);
+begin
+  if Key = 13 then
+  Button2Click(nil);
+end;
+
+procedure Tf_CashRegTemp.cxGridDBTableView1ONHANDStylesGetContentStyle(
+  Sender: TcxCustomGridTableView; ARecord: TcxCustomGridRecord;
+  AItem: TcxCustomGridTableItem; var AStyle: TcxStyle);
+  var stock_level, onhand: Real;
+begin
+  if ARecord.Values[cxGridDBTableView1MINQTY.Index] = Null then
+  stock_level := 0
+  else
+  stock_level := ARecord.Values[cxGridDBTableView1MINQTY.Index];
+
+  if ARecord.Values[cxGridDBTableView1ONHAND.Index] = Null then
+  onhand := 0
+  else
+  onhand := ARecord.Values[cxGridDBTableView1ONHAND.Index];
+
+  if (stock_level + 3 <= onhand) and (onhand > stock_level) then //((onhand - 3) = stock_level) then
+  AStyle  :=  AYellowStyle
+  else if (onhand < stock_level) then
+  AStyle  := ARedStyle;
+end;
+
+procedure Tf_CashRegTemp.FormCreate(Sender: TObject);
+begin
+  AYellowStyle         := TcxStyle.Create(Self);
+  AYellowStyle.Color   := clYellow;
+
+  ARedStyle         := TcxStyle.Create(Self);
+  ARedStyle.Color   := clRed;
+end;
+
 procedure Tf_CashRegTemp.FormShow(Sender: TObject);
 begin
   cmb_filter.ItemIndex := 0;
   txt_search.SetFocus;
+  Button2.Enabled := False;
   search;
 end;
 
@@ -122,7 +169,10 @@ begin
 
     grid_items.SetFocus;
     if brw_items.RecordCount > 0 then
-    cxGridDBTableView1.ViewData.Rows[0].Focused := True;
+    begin
+      cxGridDBTableView1.ViewData.Rows[0].Focused := True;
+      Button2.Enabled := True;
+    end;
   end;
 end;
 

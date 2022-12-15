@@ -3361,7 +3361,7 @@ object f_CashReg: Tf_CashReg
                   Width = 65
                 end
                 object cxGridDBTableView1NETAMNT: TcxGridDBColumn
-                  Caption = 'NET AMNT'
+                  Caption = 'PAYABLE'
                   DataBinding.FieldName = 'NETAMNT'
                   HeaderAlignmentHorz = taCenter
                   Options.Editing = False
@@ -3541,7 +3541,8 @@ object f_CashReg: Tf_CashReg
               StyleFocused.LookAndFeel.NativeStyle = False
               StyleHot.LookAndFeel.NativeStyle = False
               TabOrder = 0
-              OnKeyDown = txt_codeKeyDown
+              OnEnter = txt_codeEnter
+              OnKeyPress = txt_codeKeyPress
               Width = 151
             end
             object cxLabel11: TcxLabel
@@ -3622,7 +3623,7 @@ object f_CashReg: Tf_CashReg
             end
             object txt_desc: TcxTextEdit
               Left = 154
-              Top = 47
+              Top = 45
               ParentFont = False
               Properties.Alignment.Horz = taLeftJustify
               Properties.CharCase = ecUpperCase
@@ -3838,7 +3839,7 @@ object f_CashReg: Tf_CashReg
       Align = alClient
       Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText
-      Font.Height = -13
+      Font.Height = -16
       Font.Name = 'Segoe UI'
       Font.Style = []
       ParentFont = False

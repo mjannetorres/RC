@@ -8,48 +8,15 @@ object f_CashRegTemp: Tf_CashRegTemp
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -11
+  Font.Height = -12
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
   Position = poMainFormCenter
+  OnCreate = FormCreate
   OnShow = FormShow
   PixelsPerInch = 96
-  TextHeight = 13
-  object Panel2: TPanel
-    Left = 0
-    Top = 323
-    Width = 757
-    Height = 41
-    Align = alBottom
-    BevelOuter = bvNone
-    TabOrder = 0
-    DesignSize = (
-      757
-      41)
-    object btnClose: TButton
-      Left = 666
-      Top = 6
-      Width = 75
-      Height = 25
-      Anchors = [akTop, akRight]
-      Caption = 'Close'
-      Default = True
-      TabOrder = 1
-      OnClick = btnCloseClick
-    end
-    object Button1: TButton
-      Left = 585
-      Top = 6
-      Width = 75
-      Height = 25
-      Anchors = [akTop, akRight]
-      Caption = 'OK'
-      Default = True
-      TabOrder = 0
-      OnClick = Button1Click
-    end
-  end
+  TextHeight = 14
   object Panel1: TPanel
     Left = 0
     Top = 0
@@ -59,7 +26,7 @@ object f_CashRegTemp: Tf_CashRegTemp
     BevelOuter = bvNone
     Color = clTeal
     ParentBackground = False
-    TabOrder = 1
+    TabOrder = 0
     StyleElements = []
     DesignSize = (
       757
@@ -100,12 +67,12 @@ object f_CashRegTemp: Tf_CashRegTemp
       Left = 458
       Top = 13
       Width = 119
-      Height = 21
+      Height = 23
       Style = csDropDownList
       Anchors = [akTop, akRight]
       Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText
-      Font.Height = -11
+      Font.Height = -12
       Font.Name = 'Segoe UI Semibold'
       Font.Style = [fsBold]
       ParentFont = False
@@ -150,7 +117,7 @@ object f_CashRegTemp: Tf_CashRegTemp
     Left = 0
     Top = 49
     Width = 757
-    Height = 274
+    Height = 278
     Align = alClient
     Font.Charset = ANSI_CHARSET
     Font.Color = clWindowText
@@ -159,7 +126,7 @@ object f_CashRegTemp: Tf_CashRegTemp
     Font.Style = [fsBold]
     ParentFont = False
     FluentUIOpaque = False
-    TabOrder = 2
+    TabOrder = 1
     StyleElements = []
     Color = 6570553
     DrawTextMode = scdtmGDI
@@ -280,14 +247,14 @@ object f_CashRegTemp: Tf_CashRegTemp
       Left = 0
       Top = 30
       Width = 757
-      Height = 244
+      Height = 248
       HorzScrollBar.Tracking = True
       VertScrollBar.Tracking = True
       BorderStyle = bsNone
       Color = clBtnFace
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
-      Font.Height = -11
+      Font.Height = -12
       Font.Name = 'Tahoma'
       Font.Style = []
       ParentColor = False
@@ -302,13 +269,13 @@ object f_CashRegTemp: Tf_CashRegTemp
         Left = 0
         Top = 0
         Width = 757
-        Height = 244
+        Height = 248
         Align = alClient
         BevelInner = bvNone
         BevelOuter = bvNone
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
-        Font.Height = -11
+        Font.Height = -12
         Font.Name = 'Tahoma'
         Font.Style = []
         ParentFont = False
@@ -319,7 +286,6 @@ object f_CashRegTemp: Tf_CashRegTemp
         object cxGridDBTableView1: TcxGridDBTableView
           OnDblClick = cxGridDBTableView1DblClick
           Navigator.Buttons.CustomButtons = <>
-          OnEditKeyPress = cxGridDBTableView1EditKeyPress
           DataController.DataSource = ds_items
           DataController.Summary.DefaultGroupSummaryItems = <>
           DataController.Summary.FooterSummaryItems = <
@@ -379,6 +345,7 @@ object f_CashRegTemp: Tf_CashRegTemp
             Options.Editing = False
             Options.Filtering = False
             Options.Sorting = False
+            Styles.OnGetContentStyle = cxGridDBTableView1ONHANDStylesGetContentStyle
             Width = 98
           end
           object cxGridDBTableView1SELLINGPRICE: TcxGridDBColumn
@@ -389,11 +356,55 @@ object f_CashRegTemp: Tf_CashRegTemp
             Options.Sorting = False
             Width = 99
           end
+          object cxGridDBTableView1MINQTY: TcxGridDBColumn
+            DataBinding.FieldName = 'MINQTY'
+            Visible = False
+            HeaderAlignmentHorz = taCenter
+            Options.Editing = False
+            Options.Filtering = False
+            Options.Sorting = False
+          end
         end
         object cxGridLevel1: TcxGridLevel
           GridView = cxGridDBTableView1
         end
       end
+    end
+  end
+  object Panel3: TPanel
+    Left = 0
+    Top = 327
+    Width = 757
+    Height = 37
+    Align = alBottom
+    BevelOuter = bvNone
+    TabOrder = 2
+    DesignSize = (
+      757
+      37)
+    object Button2: TButton
+      Left = 589
+      Top = 6
+      Width = 75
+      Height = 25
+      Anchors = [akTop, akRight]
+      Caption = 'OK'
+      Default = True
+      ModalResult = 1
+      TabOrder = 0
+      OnClick = Button2Click
+    end
+    object Button3: TButton
+      Left = 676
+      Top = 6
+      Width = 75
+      Height = 25
+      Anchors = [akTop, akRight]
+      Cancel = True
+      Caption = 'Cancel'
+      ModalResult = 2
+      TabOrder = 1
+      OnClick = Button3Click
     end
   end
   object cxStyleRepository1: TcxStyleRepository
@@ -405,7 +416,7 @@ object f_CashRegTemp: Tf_CashRegTemp
       Color = clTeal
       Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText
-      Font.Height = -11
+      Font.Height = -12
       Font.Name = 'Segoe UI'
       Font.Style = [fsBold]
       TextColor = 6570553

@@ -3541,12 +3541,13 @@ object f_CashReg: Tf_CashReg
               StyleFocused.LookAndFeel.NativeStyle = False
               StyleHot.LookAndFeel.NativeStyle = False
               TabOrder = 0
-              OnKeyDown = txt_codeKeyDown
+              OnEnter = txt_codeEnter
+              OnKeyPress = txt_codeKeyPress
               Width = 151
             end
             object cxLabel11: TcxLabel
               Left = 5
-              Top = 118
+              Top = 120
               Caption = 'PRICE :'
               ParentFont = False
               Style.BorderStyle = ebsNone
@@ -3569,11 +3570,11 @@ object f_CashReg: Tf_CashReg
               Properties.Alignment.Vert = taVCenter
               Transparent = True
               AnchorX = 40
-              AnchorY = 133
+              AnchorY = 135
             end
             object txt_price: TcxTextEdit
               Left = 154
-              Top = 121
+              Top = 123
               ParentFont = False
               Properties.Alignment.Horz = taLeftJustify
               Properties.CharCase = ecUpperCase
@@ -3828,6 +3829,33 @@ object f_CashReg: Tf_CashReg
             end
           end
         end
+        object cxLabel18: TcxLabel
+          Left = 357
+          Top = 38
+          Caption = '(F5)'
+          ParentFont = False
+          Style.BorderStyle = ebsNone
+          Style.Edges = [bLeft, bTop, bRight, bBottom]
+          Style.Font.Charset = ANSI_CHARSET
+          Style.Font.Color = 3614763
+          Style.Font.Height = -19
+          Style.Font.Name = 'Segoe UI Black'
+          Style.Font.Style = [fsBold]
+          Style.LookAndFeel.NativeStyle = False
+          Style.LookAndFeel.SkinName = ''
+          Style.IsFontAssigned = True
+          StyleDisabled.LookAndFeel.NativeStyle = False
+          StyleDisabled.LookAndFeel.SkinName = ''
+          StyleFocused.LookAndFeel.NativeStyle = False
+          StyleFocused.LookAndFeel.SkinName = ''
+          StyleHot.LookAndFeel.NativeStyle = False
+          StyleHot.LookAndFeel.SkinName = ''
+          Properties.Alignment.Horz = taCenter
+          Properties.Alignment.Vert = taVCenter
+          Transparent = True
+          AnchorX = 378
+          AnchorY = 53
+        end
       end
     end
     object cxGrid1: TcxGrid
@@ -3838,7 +3866,7 @@ object f_CashReg: Tf_CashReg
       Align = alClient
       Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText
-      Font.Height = -13
+      Font.Height = -16
       Font.Name = 'Segoe UI'
       Font.Style = []
       ParentFont = False
@@ -3846,7 +3874,6 @@ object f_CashReg: Tf_CashReg
       OnExit = cxGrid1Exit
       LookAndFeel.NativeStyle = False
       LookAndFeel.SkinName = 'Foggy'
-      ExplicitTop = 57
       object cxGrid1DBTableView1: TcxGridDBTableView
         Navigator.Buttons.CustomButtons = <>
         OnCellClick = cxGrid1DBTableView1CellClick

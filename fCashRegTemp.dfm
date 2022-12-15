@@ -4,7 +4,7 @@ object f_CashRegTemp: Tf_CashRegTemp
   BorderStyle = bsDialog
   Caption = 'Items'
   ClientHeight = 364
-  ClientWidth = 757
+  ClientWidth = 867
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -20,7 +20,7 @@ object f_CashRegTemp: Tf_CashRegTemp
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 757
+    Width = 867
     Height = 49
     Align = alTop
     BevelOuter = bvNone
@@ -28,19 +28,20 @@ object f_CashRegTemp: Tf_CashRegTemp
     ParentBackground = False
     TabOrder = 0
     StyleElements = []
+    ExplicitWidth = 757
     DesignSize = (
-      757
+      867
       49)
     object Label3: TLabel
-      Left = 13
-      Top = 16
-      Width = 80
-      Height = 17
+      Left = 8
+      Top = 17
+      Width = 98
+      Height = 21
       Caption = 'Search Item :'
       Color = clWhite
       Font.Charset = ANSI_CHARSET
       Font.Color = clWhite
-      Font.Height = -13
+      Font.Height = -16
       Font.Name = 'Segoe UI'
       Font.Style = [fsBold]
       ParentColor = False
@@ -64,16 +65,16 @@ object f_CashRegTemp: Tf_CashRegTemp
       StyleElements = []
     end
     object cmb_filter: TComboBox
-      Left = 458
-      Top = 13
+      Left = 549
+      Top = 14
       Width = 119
-      Height = 23
+      Height = 25
       Style = csDropDownList
       Anchors = [akTop, akRight]
       Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText
-      Font.Height = -12
-      Font.Name = 'Segoe UI Semibold'
+      Font.Height = -13
+      Font.Name = 'Segoe UI'
       Font.Style = [fsBold]
       ParentFont = False
       TabOrder = 0
@@ -84,17 +85,17 @@ object f_CashRegTemp: Tf_CashRegTemp
         'ITEM TYPE')
     end
     object txt_search: TButtonedEdit
-      Left = 105
+      Left = 131
       Top = 12
-      Width = 309
-      Height = 25
+      Width = 412
+      Height = 28
       Anchors = [akTop, akRight]
       CharCase = ecUpperCase
       Color = clWhite
       Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText
-      Font.Height = -13
-      Font.Name = 'Segoe UI Semibold'
+      Font.Height = -15
+      Font.Name = 'Segoe UI'
       Font.Style = [fsBold]
       Images = sCharImageList1
       LeftButton.HotImageIndex = 0
@@ -116,7 +117,7 @@ object f_CashRegTemp: Tf_CashRegTemp
   object scGPPageControl1: TscGPPageControl
     Left = 0
     Top = 49
-    Width = 757
+    Width = 867
     Height = 278
     Align = alClient
     Font.Charset = ANSI_CHARSET
@@ -243,10 +244,11 @@ object f_CashRegTemp: Tf_CashRegTemp
     ActivePage = scGPPageControlPage3
     StorePaintBuffer = False
     FreeOnClose = False
+    ExplicitWidth = 757
     object scGPPageControlPage3: TscGPPageControlPage
       Left = 0
       Top = 30
-      Width = 757
+      Width = 867
       Height = 248
       HorzScrollBar.Tracking = True
       VertScrollBar.Tracking = True
@@ -268,14 +270,14 @@ object f_CashRegTemp: Tf_CashRegTemp
       object grid_items: TcxGrid
         Left = 0
         Top = 0
-        Width = 757
+        Width = 867
         Height = 248
         Align = alClient
         BevelInner = bvNone
         BevelOuter = bvNone
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
-        Font.Height = -12
+        Font.Height = -15
         Font.Name = 'Tahoma'
         Font.Style = []
         ParentFont = False
@@ -283,8 +285,10 @@ object f_CashRegTemp: Tf_CashRegTemp
         LookAndFeel.Kind = lfUltraFlat
         LookAndFeel.NativeStyle = False
         LookAndFeel.SkinName = 'VisualStudio2013Light'
+        ExplicitWidth = 757
         object cxGridDBTableView1: TcxGridDBTableView
           OnDblClick = cxGridDBTableView1DblClick
+          OnKeyDown = cxGridDBTableView1KeyDown
           Navigator.Buttons.CustomButtons = <>
           DataController.DataSource = ds_items
           DataController.Summary.DefaultGroupSummaryItems = <>
@@ -374,36 +378,25 @@ object f_CashRegTemp: Tf_CashRegTemp
   object Panel3: TPanel
     Left = 0
     Top = 327
-    Width = 757
+    Width = 867
     Height = 37
     Align = alBottom
     BevelOuter = bvNone
     TabOrder = 2
+    ExplicitWidth = 757
     DesignSize = (
-      757
+      867
       37)
-    object Button2: TButton
-      Left = 589
-      Top = 6
-      Width = 75
-      Height = 25
-      Anchors = [akTop, akRight]
-      Caption = 'OK'
-      Default = True
-      ModalResult = 1
-      TabOrder = 0
-      OnClick = Button2Click
-    end
     object Button3: TButton
-      Left = 676
+      Left = 776
       Top = 6
       Width = 75
       Height = 25
       Anchors = [akTop, akRight]
       Cancel = True
-      Caption = 'Cancel'
+      Caption = 'Close'
       ModalResult = 2
-      TabOrder = 1
+      TabOrder = 0
       OnClick = Button3Click
     end
   end
@@ -416,7 +409,7 @@ object f_CashRegTemp: Tf_CashRegTemp
       Color = clTeal
       Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText
-      Font.Height = -12
+      Font.Height = -13
       Font.Name = 'Segoe UI'
       Font.Style = [fsBold]
       TextColor = 6570553

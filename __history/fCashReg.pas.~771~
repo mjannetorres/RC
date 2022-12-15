@@ -252,6 +252,7 @@ type
     procedure CashOutExecute(Sender: TObject);
     procedure DateConfigExecute(Sender: TObject);
     procedure ReOpenDayExecute(Sender: TObject);
+    procedure txt_codeEnter(Sender: TObject);
   private
     { Private declarations }
     const CashAmnt : array[0..11] of Real = (1000, 500, 200, 100, 50, 20, 10, 5, 1, 0.25, 0.1, 0.05);
@@ -1400,14 +1401,32 @@ begin
                   brw_WorkLogs.Close;
                   brw_WorkLogs.SQL[3] := 'WHERE PM_WORKLOGS.WORKERID = :EMPID AND (PM_WORKLOGS.CREATEDDATETIME BETWEEN :DATE1 AND :DATE2) AND PM_WORKLOGS.CANCELLED = FALSE';
                   brw_WorkLogs.ParamByName('EMPID').Value      := qry_CashOutDetailEMPID.Value;
-                  brw_WorkLogs.ParamByName('DATE1').Value      := StartOfTheDay(qry_CashOutDetailPAYDATEFROM.Value);
-                  brw_WorkLogs.ParamByName('DATE2').Value      := EndOfTheDay(qry_CashOutDetailPAYDATETO.Value);
+                  brw_WorkLogs.ParamByName('DATE1').Value      := FormatDateTime('yyyy-mm-dd hh:nn', StartOfTheDay(qry_CashOutDetailPAYDATEFROM.Value));
+                  brw_WorkLogs.ParamByName('DATE2').Value      := FormatDateTime('yyyy-mm-dd hh:nn', EndOfTheDay(qry_CashOutDetailPAYDATETO.Value));
                   brw_WorkLogs.Open();
 
                   f_Reports := Tf_Reports.Create(Self);
                   TfrxMemoView(f_Reports.rep_PaySlip.FindObject('mem_days')).Text  := VarToStr(DaysBetween(StartOfTheDay(qry_CashOutDetailPAYDATEFROM.Value), EndOfTheDay(qry_CashOutDetailPAYDATETO.Value)));
-                  TfrxMemoView(f_Reports.rep_PaySlip.FindObject('mem_count')).Text  := IntToStr(brw_WorkLogs.RecordCount) + ' NO. OF ITEMS';
+                  TfrxMemoView(f_Reports.rep_PaySlip.FindObject('mem_count')).Text  := IntToStr(brw_WorkLogs.RecordCount) + ' NO. OF ITEM(S)';
                   f_Reports.rep_PaySlip.ShowReport();
+                  //preview_payslip(qry_CashOutDetailEMPID.Value, qry_CashOutDetailPAYDATEFROM.Value, qry_CashOutDetailPAYDATETO.Value);
+
+                  brw_ComputeAccts.Close;
+                  brw_ComputeAccts.SQL[2] := 'WHERE EMPID = :EMPID AND EFFECTIVITYDATE = :DATE AND FORWARDED = FALSE AND CANCELLED = FALSE';
+                  brw_ComputeAccts.ParamByName('EMPID').Value   := qry_CashOutDetailEMPID.Value;
+                  brw_ComputeAccts.ParamByName('DATE').Value    := FormatDateTime('yyyy-mm-dd', qry_CashOutDetailPAYDATETO.Value);
+                  brw_ComputeAccts.Open();
+
+                  if brw_ComputeAccts.RecordCount > 0 then
+                  begin
+                    upd_CurrentAcct.Close;
+                    upd_CurrentAcct.SQL[1] := 'SET FORWARDED = TRUE, ';
+                    upd_CurrentAcct.SQL[2] := 'DATEFORWARDED = '+''''+FormatDateTime('yyyy-mm-dd hh:nn:ss', Now)+'''';
+                    upd_CurrentAcct.SQL[3] := 'WHERE EMPID = :EMPID AND EFFECTIVITYDATE = :DATE AND FORWARDED = FALSE AND CANCELLED = FALSE';
+                    upd_CurrentAcct.ParamByName('EMPID').Value := qry_CashOutDetailEMPID.Value;
+                    upd_CurrentAcct.ParamByName('DATE').Value  := FormatDateTime('yyyy-mm-dd', qry_CashOutDetailPAYDATETO.Value);
+                    upd_CurrentAcct.ExecSQL;
+                  end;
 
                 end;
               end;
@@ -1824,30 +1843,33 @@ procedure Tf_CashReg.search;
 begin
   with dm_PM do
   begin
-    brw_items.Close;
-    brw_items.SQL[2]  := 'WHERE CODE = :TEXT AND CANCELLED = FALSE AND SALES = TRUE';
-    brw_items.ParamByName('TEXT').Value := Trim(txt_code.Text);
-    brw_items.Open();
-
-    brw_items.First;
-
-    if brw_items.RecordCount > 0 then
+    if Trim(txt_code.Text) <> '' then
     begin
-      if brw_items.RecordCount = 1 then
-      begin
-        txt_code.Text       := Trim(brw_itemsCODE.AsString);
-        txt_desc.Text       := Trim(brw_itemsDESCRIPTION.AsString);
-        txt_qty.Text        := '1';
-        cmb_unit.EditValue  := brw_itemsINVUNIT.Value;
-        txt_price.Text      := FormatCurr('###,###,##0.00', brw_itemsPRICE.Value);
+      brw_items.Close;
+      brw_items.SQL[2]  := 'WHERE CODE = :TEXT AND CANCELLED = FALSE AND SALES = TRUE';
+      brw_items.ParamByName('TEXT').Value := Trim(txt_code.Text);
+      brw_items.Open();
 
-        add_item;
+      brw_items.First;
+
+      if brw_items.RecordCount > 0 then
+      begin
+        if brw_items.RecordCount = 1 then
+        begin
+          txt_code.Text       := Trim(brw_itemsCODE.AsString);
+          txt_desc.Text       := Trim(brw_itemsDESCRIPTION.AsString);
+          txt_qty.Text        := '1';
+          cmb_unit.EditValue  := brw_itemsINVUNIT.Value;
+          txt_price.Text      := FormatCurr('###,###,##0.00', brw_itemsPRICE.Value);
+
+          add_item;
+        end
+        else
+          AddItemExecute(nil);
       end
       else
-        AddItemExecute(nil);
-    end
-    else
-      MessageDlg('No item matched! Click search or F5 to browse for available items.', mtInformation, [mbOK], 0);
+        MessageDlg('No item matched! Click search or F5 to browse for available items.', mtInformation, [mbOK], 0);
+    end;
 
   end;
 end;
@@ -1882,6 +1904,11 @@ begin
     else
     lbl_POS.Caption := 'POS DAY : '+FormatDateTime('mmmm d, yyyy hh:nn:ss AM/PM', dm_PM.qry_dateconfigDATE.Value + Time);
   end;
+end;
+
+procedure Tf_CashReg.txt_codeEnter(Sender: TObject);
+begin
+  search;
 end;
 
 procedure Tf_CashReg.txt_codeKeyDown(Sender: TObject; var Key: Word;

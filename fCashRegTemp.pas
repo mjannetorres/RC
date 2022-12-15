@@ -53,7 +53,6 @@ type
     cxGridDBTableView1SELLINGPRICE: TcxGridDBColumn;
     cxGridLevel1: TcxGridLevel;
     ActionList1: TActionList;
-    Button2: TButton;
     Button3: TButton;
     Panel3: TPanel;
     cxGridDBTableView1MINQTY: TcxGridDBColumn;
@@ -67,6 +66,8 @@ type
       Sender: TcxCustomGridTableView; ARecord: TcxCustomGridRecord;
       AItem: TcxCustomGridTableItem; var AStyle: TcxStyle);
     procedure FormCreate(Sender: TObject);
+    procedure cxGridDBTableView1KeyDown(Sender: TObject; var Key: Word;
+      Shift: TShiftState);
   private
     { Private declarations }
     AYellowStyle: TcxStyle;
@@ -104,6 +105,16 @@ begin
   Close;
 end;
 
+procedure Tf_CashRegTemp.cxGridDBTableView1KeyDown(Sender: TObject;
+  var Key: Word; Shift: TShiftState);
+begin
+  if Key = 13 then
+  begin
+    f_CashReg.add_item;
+    Close;
+  end;
+end;
+
 procedure Tf_CashRegTemp.cxGridDBTableView1ONHANDStylesGetContentStyle(
   Sender: TcxCustomGridTableView; ARecord: TcxCustomGridRecord;
   AItem: TcxCustomGridTableItem; var AStyle: TcxStyle);
@@ -137,8 +148,8 @@ end;
 procedure Tf_CashRegTemp.FormShow(Sender: TObject);
 begin
   cmb_filter.ItemIndex := 0;
-  txt_search.SetFocus;
   search;
+  txt_search.SetFocus;
 end;
 
 procedure Tf_CashRegTemp.search;
@@ -159,7 +170,9 @@ begin
 
     grid_items.SetFocus;
     if brw_items.RecordCount > 0 then
-    cxGridDBTableView1.ViewData.Rows[0].Focused := True;
+    begin
+      cxGridDBTableView1.ViewData.Rows[0].Focused := True;
+    end;
   end;
 end;
 

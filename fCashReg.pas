@@ -215,6 +215,7 @@ type
     cxGrid1DBLayoutView2AMOUNT: TcxGridDBLayoutViewItem;
     DateConfig: TAction;
     ReOpenDay: TAction;
+    cxLabel18: TcxLabel;
     procedure CashExecute(Sender: TObject);
     procedure JobOrderExecute(Sender: TObject);
     procedure SalesInvoiceExecute(Sender: TObject);
@@ -229,8 +230,6 @@ type
     procedure VoidExecute(Sender: TObject);
     procedure PostExecute(Sender: TObject);
     procedure DeleteExecute(Sender: TObject);
-    procedure txt_codeKeyDown(Sender: TObject; var Key: Word;
-      Shift: TShiftState);
     procedure cxGrid1DBTableView1CellClick(Sender: TcxCustomGridTableView;
       ACellViewInfo: TcxGridTableDataCellViewInfo; AButton: TMouseButton;
       AShift: TShiftState; var AHandled: Boolean);
@@ -252,6 +251,8 @@ type
     procedure CashOutExecute(Sender: TObject);
     procedure DateConfigExecute(Sender: TObject);
     procedure ReOpenDayExecute(Sender: TObject);
+    procedure txt_codeEnter(Sender: TObject);
+    procedure txt_codeKeyPress(Sender: TObject; var Key: Char);
   private
     { Private declarations }
     const CashAmnt : array[0..11] of Real = (1000, 500, 200, 100, 50, 20, 10, 5, 1, 0.25, 0.1, 0.05);
@@ -289,6 +290,7 @@ begin
     f_CashRegTemp := Tf_CashRegTemp.Create(Self);
     f_CashRegTemp.txt_search.Text := Trim(txt_desc.Text);
     f_CashRegTemp.ShowModal;
+    txt_qty.SetFocus;
   end;
 end;
 
@@ -1842,30 +1844,33 @@ procedure Tf_CashReg.search;
 begin
   with dm_PM do
   begin
-    brw_items.Close;
-    brw_items.SQL[2]  := 'WHERE CODE = :TEXT AND CANCELLED = FALSE AND SALES = TRUE';
-    brw_items.ParamByName('TEXT').Value := Trim(txt_code.Text);
-    brw_items.Open();
-
-    brw_items.First;
-
-    if brw_items.RecordCount > 0 then
+    if Trim(txt_code.Text) <> '' then
     begin
-      if brw_items.RecordCount = 1 then
-      begin
-        txt_code.Text       := Trim(brw_itemsCODE.AsString);
-        txt_desc.Text       := Trim(brw_itemsDESCRIPTION.AsString);
-        txt_qty.Text        := '1';
-        cmb_unit.EditValue  := brw_itemsINVUNIT.Value;
-        txt_price.Text      := FormatCurr('###,###,##0.00', brw_itemsPRICE.Value);
+      brw_items.Close;
+      brw_items.SQL[2]  := 'WHERE CODE = :TEXT AND CANCELLED = FALSE AND SALES = TRUE';
+      brw_items.ParamByName('TEXT').Value := Trim(txt_code.Text);
+      brw_items.Open();
 
-        add_item;
+      brw_items.First;
+
+      if brw_items.RecordCount > 0 then
+      begin
+        if brw_items.RecordCount = 1 then
+        begin
+          txt_code.Text       := Trim(brw_itemsCODE.AsString);
+          txt_desc.Text       := Trim(brw_itemsDESCRIPTION.AsString);
+          txt_qty.Text        := '1';
+          cmb_unit.EditValue  := brw_itemsINVUNIT.Value;
+          txt_price.Text      := FormatCurr('###,###,##0.00', brw_itemsPRICE.Value);
+
+          add_item;
+        end
+        else
+          AddItemExecute(nil);
       end
       else
-        AddItemExecute(nil);
-    end
-    else
-      MessageDlg('No item matched! Click search or F5 to browse for available items.', mtInformation, [mbOK], 0);
+        MessageDlg('No item matched! Click search or F5 to browse for available items.', mtInformation, [mbOK], 0);
+    end;
 
   end;
 end;
@@ -1902,10 +1907,14 @@ begin
   end;
 end;
 
-procedure Tf_CashReg.txt_codeKeyDown(Sender: TObject; var Key: Word;
-  Shift: TShiftState);
+procedure Tf_CashReg.txt_codeEnter(Sender: TObject);
 begin
-  if Key = 13 then
+  search;
+end;
+
+procedure Tf_CashReg.txt_codeKeyPress(Sender: TObject; var Key: Char);
+begin
+  if Key = #13 then
   search;
 end;
 

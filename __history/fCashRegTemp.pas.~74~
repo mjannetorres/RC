@@ -56,6 +56,7 @@ type
     Button2: TButton;
     Button3: TButton;
     Panel3: TPanel;
+    cxGridDBTableView1MINQTY: TcxGridDBColumn;
     procedure FormShow(Sender: TObject);
     procedure txt_searchRightButtonClick(Sender: TObject);
     procedure txt_searchKeyPress(Sender: TObject; var Key: Char);
@@ -66,6 +67,7 @@ type
       Sender: TcxCustomGridTableView; ARecord: TcxCustomGridRecord;
       AItem: TcxCustomGridTableItem; var AStyle: TcxStyle);
     procedure FormCreate(Sender: TObject);
+    procedure txt_searchEnter(Sender: TObject);
   private
     { Private declarations }
     AYellowStyle: TcxStyle;
@@ -108,15 +110,15 @@ procedure Tf_CashRegTemp.cxGridDBTableView1ONHANDStylesGetContentStyle(
   AItem: TcxCustomGridTableItem; var AStyle: TcxStyle);
   var stock_level, onhand: Real;
 begin
-//  if ARecord.Values[cxGrid1DBBandedTableView1MINQTY.Index] = Null then
-//  stock_level := 0
-//  else
-//  stock_level := ARecord.Values[cxGrid1DBBandedTableView1MINQTY.Index];
-//
-//  if ARecord.Values[cxGridDBTableView1ONHAND.Index] = Null then
-//  onhand := 0
-//  else
-//  onhand := ARecord.Values[cxGridDBTableView1ONHAND.Index];
+  if ARecord.Values[cxGridDBTableView1MINQTY.Index] = Null then
+  stock_level := 0
+  else
+  stock_level := ARecord.Values[cxGridDBTableView1MINQTY.Index];
+
+  if ARecord.Values[cxGridDBTableView1ONHAND.Index] = Null then
+  onhand := 0
+  else
+  onhand := ARecord.Values[cxGridDBTableView1ONHAND.Index];
 
   if (stock_level + 3 <= onhand) and (onhand > stock_level) then //((onhand - 3) = stock_level) then
   AStyle  :=  AYellowStyle
@@ -136,8 +138,8 @@ end;
 procedure Tf_CashRegTemp.FormShow(Sender: TObject);
 begin
   cmb_filter.ItemIndex := 0;
-  txt_search.SetFocus;
   search;
+  txt_search.SetFocus;
 end;
 
 procedure Tf_CashRegTemp.search;
@@ -160,6 +162,11 @@ begin
     if brw_items.RecordCount > 0 then
     cxGridDBTableView1.ViewData.Rows[0].Focused := True;
   end;
+end;
+
+procedure Tf_CashRegTemp.txt_searchEnter(Sender: TObject);
+begin
+  search;
 end;
 
 procedure Tf_CashRegTemp.txt_searchKeyPress(Sender: TObject; var Key: Char);

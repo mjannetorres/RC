@@ -2747,7 +2747,6 @@ object f_CashReg: Tf_CashReg
           Down = False
           GroupIndex = 0
           AllowAllUp = False
-          ExplicitTop = 85
         end
         object btnCashIn: TscGPButton
           Left = 404
@@ -3362,7 +3361,7 @@ object f_CashReg: Tf_CashReg
                   Width = 65
                 end
                 object cxGridDBTableView1NETAMNT: TcxGridDBColumn
-                  Caption = 'NET AMNT'
+                  Caption = 'PAYABLE'
                   DataBinding.FieldName = 'NETAMNT'
                   HeaderAlignmentHorz = taCenter
                   Options.Editing = False
@@ -3469,8 +3468,6 @@ object f_CashReg: Tf_CashReg
             ParentBackground = False
             TabOrder = 0
             StyleElements = []
-            ExplicitLeft = 232
-            ExplicitTop = 9
             object cxLabel1: TcxLabel
               Left = 5
               Top = 9
@@ -3544,7 +3541,8 @@ object f_CashReg: Tf_CashReg
               StyleFocused.LookAndFeel.NativeStyle = False
               StyleHot.LookAndFeel.NativeStyle = False
               TabOrder = 0
-              OnKeyDown = txt_codeKeyDown
+              OnEnter = txt_codeEnter
+              OnKeyPress = txt_codeKeyPress
               Width = 151
             end
             object cxLabel11: TcxLabel
